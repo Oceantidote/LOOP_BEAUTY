@@ -1,1 +1,187 @@
 // Specific CSS for your home-page
+.offers-banner {
+  height: 40px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.offers-banner-text {
+  margin: 0;
+  font-weight: 800;
+  color: white;
+  @include for-phone-only {
+    font-size: 14px;
+  }
+}
+
+.logo-bar {
+  display: flex;
+  background: white;
+  height: 85px;
+}
+
+.logo-bar-section {
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  i {
+    font-size: 45px;
+    @include for-phone-only {
+      font-size: 30px;
+    }
+  }
+}
+
+.middle-section {
+  justify-content: center;
+  img {
+    height: 38%;
+    @include for-phone-only {
+      height: 26%;
+    }
+  }
+}
+
+.last-section {
+  justify-content: flex-end;
+  padding-right: 5px;
+  @include for-phone-only {
+    padding-right: 10px;
+  }
+}
+
+.follow-us-instagram {
+  margin: 0;
+  text-align: right;
+  font-size: 18px;
+  margin-right: 10px;
+  font-weight: bold;
+  @include for-phone-only {
+    font-size: 14px;
+    margin-right: 5px;
+    display: none;
+  }
+}
+
+.holding-page-text-banner {
+  min-height: 350px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include for-phone-only {
+    min-height: auto;
+  }
+}
+
+.holding-page-text {
+  text-align: center;
+  font-weight: 900;
+  width: 480px;
+  padding: 20px 0;
+  @include for-small-devices-down {
+    width: 390px;
+  }
+  @include for-phone-only {
+    width: 90%;
+    font-size: 14px;
+    font-weight: 800;
+  }
+}
+
+.holding-page-newsletter-banner {
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  h1 {
+    font-weight: 900;
+    @include for-phone-only {
+      font-weight: 800;
+      font-size: 26px;
+    }
+  }
+  p {
+    font-weight: 900;
+    width: 30%;
+    margin: 20px 0;
+    @include for-small-devices-down {
+      width: 55%;
+    }
+    @include for-phone-only {
+      font-weight: 800;
+      width: 80%;
+      margin: 10px 0;
+    }
+  }
+  @include for-phone-only {
+    min-height: auto;
+    padding-bottom: 30px;
+  }
+}
+
+.send_email_email {
+  margin: 0;
+}
+
+.send_email_input {
+  background: transparent;
+  border: 3px solid black;
+  height: 50px;
+  border-radius: 0;
+  width: 275px;
+  padding-left: 5px;
+  @include for-phone-only {
+    width: auto;
+  }
+}
+
+.contact-form-button {
+  border: none;
+  height: 50px;
+  background-color: black;
+  color: #F5F5F5;
+  border-radius: 0;
+  padding: 6px 50px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+  &:hover {
+    color: #F5F5F5;
+  }
+  @include for-phone-only {
+    padding: 10px;
+  }
+}
+
+#mc_embed_signup input.mce_inline_error {
+  border-color: black !important;
+  background: transparent !important;
+  color: black !important;
+  text-align: left !important;
+
+}
+
+.mce_inline_error {
+  background: transparent !important;
+  color: #b33232 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.response {
+  text-align: center;
+  margin: 0 20px;
+}
+
+#mce-success-response {
+  color: #0a9c0a !important;
+  font-weight: 800 !important;
+}
