@@ -47,6 +47,13 @@
 .last-section {
   justify-content: flex-end;
   padding-right: 5px;
+  a {
+    color: black;
+    transition: color 0.2s ease;
+    &:hover {
+      color: #9E9E9D;
+    }
+  }
   @include for-phone-only {
     padding-right: 10px;
   }
@@ -107,14 +114,10 @@
   }
   p {
     font-weight: 900;
-    width: 30%;
+    width: 280px;
     margin: 20px 0;
-    @include for-small-devices-down {
-      width: 55%;
-    }
     @include for-phone-only {
       font-weight: 800;
-      width: 80%;
       margin: 10px 0;
     }
   }

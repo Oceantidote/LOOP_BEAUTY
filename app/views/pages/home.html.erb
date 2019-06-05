@@ -8,14 +8,17 @@
       <%= image_tag 'loop-beauty-logo.svg' %>
     </div>
     <div class="logo-bar-section last-section">
-      <p class="follow-us-instagram">Follow us: </p><i class="fab fa-instagram"></i>
+      <p class="follow-us-instagram">Follow us: </p>
+      <%= link_to 'https://www.instagram.com/loop_beauty/', target: "_blank" do %>
+        <i class="fab fa-instagram"></i>
+      <% end %>
     </div>
   </div>
   <div class="holding-page-image-banner" style="background-image: url('<%= asset_path 'homepage-header.jpg' %>')"></div>
   <%= image_tag 'homepage-header.jpg', style: "width: 100%;" %>
   <div class="holding-page-text-banner">
     <div class="holding-page-text">
-      <p>As women of colour we know filtering through the 100s of beauty brands to find the perfect product can be daunting</p>
+      <p>As women of colour we know filtering through the 100s of beauty brands to find the perfect product can be daunting.</p>
       <p>Loop Beauty makes it easier and more effective. Partnering with your favourite beauty influencers we curate the very best beauty products for women of colour.</p>
       <p>Expert advice. Fun secrets. Master classes. Exciting stories. Perfect your look in one place.</p>
     </div>
