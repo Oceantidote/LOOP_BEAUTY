@@ -22,12 +22,14 @@ makeup = Department.create!(name: "Makeup")
 
 black_opal = Brand.create!(name: "Black Opal")
 juvias_place = Brand.create!(name: "Juvia's Place")
-beauty_edit_mayfair = Brand.create!(name: "Beauty Edit Mayfair")
-makeup_54 = Brand.create!(name: "Makeup 54")
+beauty_edit_mayfair = Brand.create!(name: "Beauty Edit Mayfair", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
+makeup_54 = Brand.create!(name: "Makeup 54", description: "MAKEUP54 embodies the glittering glamour of the seventies and eighties decades. Paying tribute to the iconic figures who seized the style of the era, MAKEUP54 celebrates idols who reflect the age and the decadence of discotheques they danced in. MAKEUP54 captures the escapism of its eras, campaigns for colour and is makeup styled to BE SEEN in.")
 sacha_cosmetics = Brand.create!(name: "Sacha Cosmetics")
 black_up = Brand.create!(name: "Black Up")
 mdm_flow = Brand.create!(name: "MDM Flow")
 
+makeup_54.image.attach(io: File.open('/app/assets/images'), filename: 'makeup_54_logo.png')
+beauty_edit_mayfair.image.attach(io: File.open('/app/assets/images'), filename: 'beauty_edit_mayfair_logo.png')
 
 # CREATING CATEGORIES
 
