@@ -1,13 +1,20 @@
+<div class="offers-banner">
+  <p class="offers-banner-text">FREE SAMPLES WITH EVERY ORDER</p>
+</div>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
+    <%= image_tag 'loop-beauty-logo.svg' %>
+  <% end %>
+  <div class="navbar-middle">
+    <p id="navbar-brands" class="navbar-middle-item">Brands</p>
+    <p id="navbar-influencers" class="navbar-middle-item">Influencers</p>
+    <%= link_to 'Make-Up', '#', class: 'navbar-middle-item' %>
+    <%= link_to 'Insider','#', class: 'navbar-middle-item' %>
+    <%= link_to 'Video','#', class: 'navbar-middle-item' %>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -26,10 +33,72 @@
           </div>
         </li>
       <% else %>
+        <div style="display: flex; align-items: center;">
+          <li class="nav-item">
+            <%= link_to 'Follow', 'https://www.instagram.com/loop_beauty/', target: "_blank", class: "nav-link-normal" %>
+          </li>
+          |
+          <li class="nav-item">
+            <%= link_to 'Freebies', '#', class: "nav-link-normal" %>
+          </li>
+        </div>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to '#', class: "nav-link" do %>
+            <%= image_tag 'navbar-search.png' %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link" do %>
+            <%= image_tag 'navbar-user.png' %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link" do %>
+            <%= image_tag 'navbar-basket.png' %>
+          <% end %>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
+<div class="navbar-submenu-brands">
+
+</div>
+<div class="navbar-submenu-influencers">
+
+</div>
+
+<script>
+  navbarBrands = document.getElementById('navbar-brands');
+  menuBrands = document.querySelector('.navbar-submenu-brands');
+  navbarInfluencers = document.getElementById('navbar-influencers');
+  menuInfluencers = document.querySelector('.navbar-submenu-influencers');
+
+  navbarBrands.addEventListener('mouseover', function() {
+    menuBrands.style.display = "block";
+  });
+  navbarBrands.addEventListener('mouseleave', function() {
+    menuBrands.style.display = "none";
+  });
+
+  menuBrands.addEventListener('mouseover', function() {
+    menuBrands.style.display = "block";
+  });
+  menuBrands.addEventListener('mouseleave', function() {
+    menuBrands.style.display = "none";
+  });
+
+  navbarInfluencers.addEventListener('mouseover', function() {
+    menuInfluencers.style.display = "block";
+  });
+  navbarInfluencers.addEventListener('mouseleave', function() {
+    menuInfluencers.style.display = "none";
+  });
+
+  menuInfluencers.addEventListener('mouseover', function() {
+    menuInfluencers.style.display = "block";
+  });
+  menuInfluencers.addEventListener('mouseleave', function() {
+    menuInfluencers.style.display = "none";
+  });
+</script>
