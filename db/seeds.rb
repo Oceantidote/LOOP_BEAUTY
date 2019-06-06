@@ -28,8 +28,10 @@ sacha_cosmetics = Brand.create!(name: "Sacha Cosmetics")
 black_up = Brand.create!(name: "Black Up")
 mdm_flow = Brand.create!(name: "MDM Flow")
 
-makeup_54.image.attach(io: File.open('/app/assets/images'), filename: 'makeup_54_logo.png')
-beauty_edit_mayfair.image.attach(io: File.open('/app/assets/images'), filename: 'beauty_edit_mayfair_logo.png')
+mp = File.join(Rails.root,'app/assets/images/makeup_54_logo.png')
+bp = File.join(Rails.root,'app/assets/images/beauty_edit_mayfair_logo.png')
+makeup_54.photo.attach(io: File.open(mp) , filename: 'makeup_54_logo.png')
+beauty_edit_mayfair.photo.attach(io: File.open(bp), filename: 'beauty_edit_mayfair_logo.png')
 
 # CREATING CATEGORIES
 

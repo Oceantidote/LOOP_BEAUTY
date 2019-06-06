@@ -1,4 +1,4 @@
 class Brand < ApplicationRecord
   has_many :products
-  has_one :photo
+  has_one_attached :photo
 end
