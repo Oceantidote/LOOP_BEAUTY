@@ -258,6 +258,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_104910) do
     t.string "youtube"
     t.boolean "newsletter", default: false
     t.boolean "accepts_terms", default: false
+    t.boolean "influencer", default: false
     t.date "dob"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
