@@ -1,12 +1,17 @@
 .footer-top {
+  font-family: $menu-font;
   height: 60px;
   background: white;
   border-bottom: 1px solid #d0cdcd;
   display: flex;
   justify-content: space-between;
+  @include for-phone-only {
+    display: none;
+  }
 }
 
 .footer-bottom {
+  font-family: $menu-font;
   padding: 30px 0;
   background: white;
   @include absCenter;
