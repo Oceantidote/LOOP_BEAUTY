@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_110443) do
+ActiveRecord::Schema.define(version: 2019_06_05_150331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2019_06_05_110443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_baskets_on_user_id"
+  end
+
+  create_table "benefits", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "brands", force: :cascade do |t|
@@ -141,16 +147,28 @@ ActiveRecord::Schema.define(version: 2019_06_05_110443) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "product_benefits", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "benefit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["benefit_id"], name: "index_product_benefits_on_benefit_id"
+    t.index ["product_id"], name: "index_product_benefits_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
-    t.integer "weight"
+    t.float "weight"
+    t.string "measurement"
     t.string "title"
     t.text "details"
+    t.string "lb_id"
     t.bigint "category_id"
     t.bigint "sub_category_id"
     t.bigint "brand_id"
     t.bigint "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["department_id"], name: "index_products_on_department_id"
@@ -162,6 +180,15 @@ ActiveRecord::Schema.define(version: 2019_06_05_110443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_question_answers_on_user_id"
+  end
+
+  create_table "recommended_products", force: :cascade do |t|
+    t.bigint "recommender_id"
+    t.bigint "recommended_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recommended_id"], name: "index_recommended_products_on_recommended_id"
+    t.index ["recommender_id"], name: "index_recommended_products_on_recommender_id"
   end
 
   create_table "shades", force: :cascade do |t|
@@ -261,11 +288,15 @@ ActiveRecord::Schema.define(version: 2019_06_05_110443) do
   add_foreign_key "order_products", "users"
   add_foreign_key "orders", "discount_codes"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_benefits", "benefits"
+  add_foreign_key "product_benefits", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "departments"
   add_foreign_key "products", "sub_categories"
   add_foreign_key "question_answers", "users"
+  add_foreign_key "recommended_products", "products", column: "recommended_id"
+  add_foreign_key "recommended_products", "products", column: "recommender_id"
   add_foreign_key "shades", "products"
   add_foreign_key "showroom_products", "products"
   add_foreign_key "showroom_products", "showrooms"
