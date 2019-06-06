@@ -4,4 +4,16 @@ class BasketProductPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    true
+  end
+
+  def update?
+    create?
+  end
+
+  def destroy?
+    create?
+  end
 end

@@ -1,0 +1,19 @@
+<% @basket.basket_products.each do |item| %>
+  <div>
+    <p><%= item.product.title %></p>
+    <% if item.quantity > 1 %>
+      <%= simple_form_for(item) do |f| %>
+        <%= f.input :quantity, as: :hidden, input_html: {value: item.quantity - 1} %>
+        <%= f.submit 'Decrease' %>
+      <% end %>
+    <% end %>
+    <p><%= item.quantity %></p>
+    <%= simple_form_for(item) do |f| %>
+      <%= f.input :quantity, as: :hidden, input_html: {value: item.quantity + 1} %>
+      <%= f.submit 'Increase' %>
+    <% end %>
+    <%= simple_form_for(item, method: :delete) do |f| %>
+      <%= f.submit 'Delete' %>
+    <% end %>
+  </div>
+<% end %>
