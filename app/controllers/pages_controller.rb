@@ -5,5 +5,7 @@ class PagesController < ApplicationController
   end
 
   def homepage
+    @brands = Brand.all.order(name: :asc)
+    @influencers = User.where(influencer: true).order(first_name: :asc)
   end
 end
