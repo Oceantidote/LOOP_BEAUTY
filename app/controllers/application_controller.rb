@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_action :set_navbar_variables
   include Pundit
+  @influencers = User.where(influencer: true)
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -68,5 +70,10 @@ class ApplicationController < ActionController::Base
     end
     old_basket.destroy
     new_basket
+  end
+
+  def set_navbar_variables
+    @brands = Brand.all
+    @influencers = User.where(influencer: true)
   end
 end
