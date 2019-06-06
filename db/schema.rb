@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_122340) do
+ActiveRecord::Schema.define(version: 2019_06_06_132720) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_122340) do
     t.bigint "shade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["basket_id"], name: "index_basket_products_on_basket_id"
     t.index ["product_id"], name: "index_basket_products_on_product_id"
     t.index ["shade_id"], name: "index_basket_products_on_shade_id"
@@ -68,6 +69,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_122340) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_brands_on_slug", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -164,6 +167,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_122340) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["shade_id"], name: "index_order_products_on_shade_id"
