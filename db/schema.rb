@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_150331) do
   create_table "shades", force: :cascade do |t|
     t.bigint "product_id"
     t.string "sku"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_shades_on_product_id"

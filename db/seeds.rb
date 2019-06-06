@@ -76,7 +76,7 @@ non_drying = Benefit.create!(name: "Non Drying")
 
 
 # DISCO FLUID LIPSTICK
-disco_fluid_lipstick = Product.create!(measurement: "grams", name: "Disco Fluid Lipstick", lb_id: "LB00001", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1700, details: "Take your lips to the dancefloor for velvet smooth, kissable lips that will last all night long.
+disco_fluid_lipstick = Product.create!(measurement: "grams", title: "Disco Fluid Lipstick", lb_id: "LB00001", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1700, details: "Take your lips to the dancefloor for velvet smooth, kissable lips that will last all night long.
 This unique texture changes continuously, creamy and enveloping in application, it transforms itself from velvety to absolute matte for impeccable perfection. A special mix of emollient oils give a creamy texture and smooth finish, with a silky touch. Optimal hold and no transfer for impeccable colour that lasts over time.")
 
 red_jerry = Shade.create!(name: "Red - Jerry", sku: "M5400001", product: disco_fluid_lipstick)
@@ -97,7 +97,7 @@ non_dry_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, bene
 
 # DISCO TOPPER
 
-disco_topper_lip_topper = Product.create!(measurement: "grams", name: "Disco Topper Lip Topper", lb_id: "LB0002", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1800, details: "The only accessory to be seen with on the dancefloor. Transform your lips before you hit the dancefloor and see the stars from the sky light up your lips with one swipe of this dazzling glitter topcoat. A special water infused gel texture, with moonstone extract gives a multidimensional, glittered effect when applied on lips. Once set it gives a long, locked in finish. Use with your favourite Makeup54 disco lipstick for the ultimate lip colour that is sure to get you seen.")
+disco_topper_lip_topper = Product.create!(measurement: "grams", title: "Disco Topper Lip Topper", lb_id: "LB0002", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1800, details: "The only accessory to be seen with on the dancefloor. Transform your lips before you hit the dancefloor and see the stars from the sky light up your lips with one swipe of this dazzling glitter topcoat. A special water infused gel texture, with moonstone extract gives a multidimensional, glittered effect when applied on lips. Once set it gives a long, locked in finish. Use with your favourite Makeup54 disco lipstick for the ultimate lip colour that is sure to get you seen.")
 
 gliterball = Shade.create!(name: "Glitterball", sku: "M5400005", product: disco_topper_lip_topper)
 
@@ -126,7 +126,7 @@ disco_top_recom = RecommendedProduct.create!(recommender: disco_topper_lip_toppe
 # BROW LIFT
 
 brow_lift = Product.create!(
-  name: "Brow Lift",
+  title: "Brow Lift",
   lb_id: "LB00003",
   measurement: "grams",
   department: makeup,
@@ -153,7 +153,7 @@ derma_brow_lift = ProductBenefit.create!(product: brow_lift, benefit: derma_test
 # BROW FILLER
 
 brow_filler = Product.create!(
-  name: "Brow Filler",
+  title: "Brow Filler",
   lb_id: "LB00004",
   measurement: "grams",
   department: makeup,
@@ -181,7 +181,7 @@ derma_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: derma_
 # BROW SETTER
 
 brow_setter = Product.create!(
-  name: "Brow setter",
+  title: "Brow setter",
   lb_id: "LB00005",
   measurement: "ml",
   department: makeup,
@@ -207,7 +207,7 @@ derma_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: derma_
 # BROW styler
 
 brow_styler = Product.create!(
-  name: "Brow Styler",
+  title: "Brow Styler",
   lb_id: "LB00006",
   measurement: "",
   department: makeup,
@@ -227,7 +227,7 @@ cruelty_brow_styler = ProductBenefit.create!(product: brow_styler, benefit: crue
 # HIGHLIGHTER BRUSH
 
 highlighter_brush = Product.create!(
-  name: "Brow Styler",
+  title: "Brow Styler",
   lb_id: "LB00007",
   measurement: "",
   department: makeup,
@@ -239,7 +239,7 @@ highlighter_brush = Product.create!(
 This brush effortlessly blends a brow highlighter pencil which helps to define the brow bone and create a sought-after shape. It is also handy for applying concealer on delicate areas."
 )
 
-highlighter_brush = Shade.create!(name: "", sku: "HB01", product: highlighter_brush)
+highlighter_brush_shade = Shade.create!(name: "", sku: "HB01", product: highlighter_brush)
 
 v_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: vegan)
 cruelty_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: cruelty_free)
