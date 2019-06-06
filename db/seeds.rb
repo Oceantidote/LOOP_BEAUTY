@@ -86,6 +86,42 @@ red_jerry = Shade.create!(name: "Red - Jerry", sku: "M5400001", product: disco_f
 pink_ross = Shade.create!(name: "Pink - Ross", sku: "M5400002", product: disco_fluid_lipstick)
 nude_gaynor = Shade.create!(name: "Nude - Gaynor", sku: "M5400004", product: disco_fluid_lipstick)
 
+rj1 = File.join(Rails.root,'app/assets/images/red_jerry1.jpg')
+red_jerry.photos.attach(io: File.open(rj1) , filename: 'red_jerry1.jpg')
+
+rj2 = File.join(Rails.root,'app/assets/images/red_jerry2.jpg')
+red_jerry.photos.attach(io: File.open(rj2) , filename: 'red_jerry2.jpg')
+
+rj3 = File.join(Rails.root,'app/assets/images/red_jerry3.jpg')
+red_jerry.photos.attach(io: File.open(rj3) , filename: 'red_jerry3.jpg')
+
+rj4 = File.join(Rails.root,'app/assets/images/red_jerry4.png')
+red_jerry.photos.attach(io: File.open(rj4) , filename: 'red_jerry4.png')
+
+pink_ross1 = File.join(Rails.root,'app/assets/images/pink_ross1.jpg')
+pink_ross.photos.attach(io: File.open(pink_ross1) , filename: 'pink_ross1.jpg')
+
+pink_ross2 = File.join(Rails.root,'app/assets/images/pink_ross2.jpg')
+pink_ross.photos.attach(io: File.open(pink_ross2) , filename: 'pink_ross2.jpg')
+
+pink_ross3 = File.join(Rails.root,'app/assets/images/pink_ross3.jpg')
+pink_ross.photos.attach(io: File.open(pink_ross3) , filename: 'pink_ross3.jpg')
+
+pink_ross4 = File.join(Rails.root,'app/assets/images/pink_ross4.png')
+pink_ross.photos.attach(io: File.open(pink_ross4) , filename: 'pink_ross4.png')
+
+nude_gaynor1 = File.join(Rails.root,'app/assets/images/nude_gaynor1.jpg')
+nude_gaynor.photos.attach(io: File.open(nude_gaynor1) , filename: 'nude_gaynor1.jpg')
+
+nude_gaynor2 = File.join(Rails.root,'app/assets/images/nude_gaynor2.jpg')
+nude_gaynor.photos.attach(io: File.open(nude_gaynor2) , filename: 'nude_gaynor2.jpg')
+
+nude_gaynor3 = File.join(Rails.root,'app/assets/images/nude_gaynor3.png')
+nude_gaynor.photos.attach(io: File.open(nude_gaynor3) , filename: 'nude_gaynor3.png')
+
+nude_gaynor4 = File.join(Rails.root,'app/assets/images/nude_gaynor4.jpg')
+nude_gaynor.photos.attach(io: File.open(nude_gaynor4) , filename: 'nude_gaynor4.jpg')
+
 v_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: vegan)
 long_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: longwearing)
 build_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: buildable_coverage)
@@ -102,7 +138,20 @@ non_dry_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, bene
 
 disco_topper_lip_topper = Product.create!(measurement: "grams", title: "Disco Topper Lip Topper", lb_id: "LB0002", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1800, details: "The only accessory to be seen with on the dancefloor. Transform your lips before you hit the dancefloor and see the stars from the sky light up your lips with one swipe of this dazzling glitter topcoat. A special water infused gel texture, with moonstone extract gives a multidimensional, glittered effect when applied on lips. Once set it gives a long, locked in finish. Use with your favourite Makeup54 disco lipstick for the ultimate lip colour that is sure to get you seen.")
 
-gliterball = Shade.create!(name: "Glitterball", sku: "M5400005", product: disco_topper_lip_topper)
+glitterball = Shade.create!(name: "Glitterball", sku: "M5400005", product: disco_topper_lip_topper)
+
+glitterball1 = File.join(Rails.root,'app/assets/images/glitterball1.jpg')
+glitterball.photos.attach(io: File.open(glitterball1) , filename: 'glitterball1.jpg')
+
+glitterball2 = File.join(Rails.root,'app/assets/images/glitterball2.jpg')
+glitterball.photos.attach(io: File.open(glitterball2) , filename: 'glitterball2.jpg')
+
+glitterball3 = File.join(Rails.root,'app/assets/images/glitterball3.jpg')
+glitterball.photos.attach(io: File.open(glitterball3) , filename: 'glitterball3.jpg')
+
+glitterball4 = File.join(Rails.root,'app/assets/images/glitterball4.png')
+glitterball.photos.attach(io: File.open(glitterball4) , filename: 'glitterball4.png')
+
 
 v_disco_topper = ProductBenefit.create!(product: disco_topper_lip_topper, benefit: vegan)
 long_disco_topper = ProductBenefit.create!(product: disco_topper_lip_topper, benefit: longwearing)
@@ -144,6 +193,15 @@ This lightweight, silky highlighter defines brows with a matte finish to raise a
 
 pick_me_up = Shade.create!(name: "Pick-Me-Up", sku: "BL03", product: brow_lift)
 
+pick_me_up1 = File.join(Rails.root,'app/assets/images/pick_me_up1.png')
+pick_me_up.photos.attach(io: File.open(pick_me_up1) , filename: 'pick_me_up1.png')
+
+pick_me_up2 = File.join(Rails.root,'app/assets/images/pick_me_up2.tif')
+pick_me_up.photos.attach(io: File.open(pick_me_up2) , filename: 'pick_me_up2.tif')
+
+pick_me_up3 = File.join(Rails.root,'app/assets/images/pick_me_up3.png')
+pick_me_up.photos.attach(io: File.open(pick_me_up3) , filename: 'pick_me_up3.png')
+
 v_brow_lift = ProductBenefit.create!(product: brow_lift, benefit: vegan)
 cruelty_brow_lift = ProductBenefit.create!(product: brow_lift, benefit: cruelty_free)
 paraben_brow_lift = ProductBenefit.create!(product: brow_lift, benefit: paraben_free)
@@ -170,6 +228,15 @@ This creates beautifully defined brows with a non-waxy finish. The intensely pig
 
 dark_dahlia = Shade.create!(name: "Dark Dahlia", sku: "BF03", product: brow_filler)
 
+dark_dahlia1 = File.join(Rails.root,'app/assets/images/dark_dahlia1.png')
+dark_dahlia.photos.attach(io: File.open(dark_dahlia1) , filename: 'dark_dahlia1.png')
+
+dark_dahlia2 = File.join(Rails.root,'app/assets/images/dark_dahlia2.tif')
+dark_dahlia.photos.attach(io: File.open(dark_dahlia2) , filename: 'dark_dahlia2.tif')
+
+dark_dahlia3 = File.join(Rails.root,'app/assets/images/dark_dahlia3.png')
+dark_dahlia.photos.attach(io: File.open(dark_dahlia3) , filename: 'dark_dahlia3.png')
+
 v_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: vegan)
 cruelty_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: cruelty_free)
 waterproof_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: waterproof)
@@ -184,7 +251,7 @@ derma_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: derma_
 # BROW SETTER
 
 brow_setter = Product.create!(
-  title: "Brow setter",
+  title: "Brow Setter",
   lb_id: "LB00005",
   measurement: "ml",
   department: makeup,
@@ -198,6 +265,12 @@ A clear brow gel that sets and holds brows and can be worn alone or with an eyeb
 )
 
 clear = Shade.create!(name: "Clear", sku: "BR01", product: brow_setter)
+
+clear1 = File.join(Rails.root,'app/assets/images/clear1.png')
+clear.photos.attach(io: File.open(clear1) , filename: 'clear1.png')
+
+clear2 = File.join(Rails.root,'app/assets/images/clear2.png')
+clear.photos.attach(io: File.open(clear2) , filename: 'clear2.png')
 
 v_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: vegan)
 cruelty_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: cruelty_free)
@@ -224,13 +297,19 @@ This nifty-sized spoolie brush is the perfect brow styling tool which also tames
 
 brush = Shade.create!(name: "", sku: "BS01", product: brow_styler)
 
+brush1 = File.join(Rails.root,'app/assets/images/brush1.png')
+brush.photos.attach(io: File.open(brush1) , filename: 'brush1.png')
+
+brush2 = File.join(Rails.root,'app/assets/images/brush2.png')
+brush.photos.attach(io: File.open(brush2) , filename: 'brush2.png')
+
 v_brow_styler = ProductBenefit.create!(product: brow_styler, benefit: vegan)
 cruelty_brow_styler = ProductBenefit.create!(product: brow_styler, benefit: cruelty_free)
 
 # HIGHLIGHTER BRUSH
 
 highlighter_brush = Product.create!(
-  title: "Brow Styler",
+  title: "Highlighter Brush",
   lb_id: "LB00007",
   measurement: "",
   department: makeup,
@@ -243,6 +322,12 @@ This brush effortlessly blends a brow highlighter pencil which helps to define t
 )
 
 highlighter_brush_shade = Shade.create!(name: "", sku: "HB01", product: highlighter_brush)
+
+highlighter_brush1 = File.join(Rails.root,'app/assets/images/highlighter_brush1.png')
+highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush1) , filename: 'highlighter_brush1.png')
+
+highlighter_brush2 = File.join(Rails.root,'app/assets/images/highlighter_brush2.png')
+highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush2) , filename: 'brush2.png')
 
 v_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: vegan)
 cruelty_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: cruelty_free)
@@ -289,11 +374,12 @@ highlighter_brush_rec_4 = RecommendedProduct.create!(recommender: highlighter_br
 puts "Creating users"
 
 
-esther = User.create!(influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@esaregrams", password: "esther123", email: "esther@email.com")
-ropo = User.create!(influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", password: "ropo123", email: "ropo@email.com")
-breen = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenlee", password: "breeny123", email: "breeny@email.com")
-nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", password: "nikki123", email: "nicky@email.com")
-shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", password: "shantania123", email: "shantania@email.com")
+esther = User.create!(influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@esaregrams", password: "esther123", email: "esther@estareonline.com")
+ropo = User.create!(influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", password: "ropo123", email: "ropo_demuren@gmail.com")
+breen = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenlee", password: "breeny123", email: "info.breenylee@gmail.com")
+nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", password: "nikki123", email: "nicky.o.patel@gmail.com")
+shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", password: "shantania123", email: "shantaniabeckford@gmail.com")
+bemi = User.create!(influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
 
 
 
