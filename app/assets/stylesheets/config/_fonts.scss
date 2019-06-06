@@ -1,9 +1,11 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Muli:400,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Muli:400,600,700,800,900");
 
 // Define fonts for body and headers
-$body-font: "Muli", "Helvetica", "sans-serif";
+$body-font: "Playfair Display", "Helvetica", "sans-serif";
 $headers-font: "Muli", "Helvetica", "sans-serif";
+$menu-font: "Muli", "Helvetica", "sans-serif";
+$title-font: "Muli", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -14,3 +16,92 @@ $headers-font: "Muli", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+h1 {
+  @include for-large-devices-down {
+    font-size: 38px;
+  }
+  @include for-medium-devices-down {
+    font-size: 36px;
+  }
+  @include for-small-devices-down {
+    font-size: 34px;
+  }
+  @include for-phone-only {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  @include for-large-devices-down {
+    font-size: 30px;
+  }
+  @include for-medium-devices-down {
+    font-size: 28px;
+  }
+  @include for-small-devices-down {
+    font-size: 26px;
+  }
+  @include for-phone-only {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  @include for-large-devices-down {
+    font-size: 26px;
+  }
+  @include for-medium-devices-down {
+    font-size: 24px;
+  }
+  @include for-small-devices-down {
+    font-size: 22px;
+  }
+  @include for-phone-only {
+    font-size: 20px;
+  }
+}
+
+h4 {
+  @include for-large-devices-down {
+    font-size: 22px;
+  }
+  @include for-medium-devices-down {
+    font-size: 20px;
+  }
+  @include for-small-devices-down {
+    font-size: 18px;
+  }
+  @include for-phone-only {
+    font-size: 16px;
+  }
+}
+
+h5 {
+  @include for-large-devices-down {
+    font-size: 18px;
+  }
+  @include for-medium-devices-down {
+    font-size: 18px;
+  }
+  @include for-small-devices-down {
+    font-size: 16px;
+  }
+  @include for-phone-only {
+    font-size: 14px;
+  }
+}
+
+p {
+  font-size: 14px;
+  @include for-phone-only {
+    font-size: 12px;
+  }
+}
+
+a {
+  font-size: 14px;
+  @include for-phone-only {
+    font-size: 12px;
+  }
+}
