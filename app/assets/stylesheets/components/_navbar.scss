@@ -30,6 +30,7 @@
   font-weight: 900;
   border-bottom: 1px solid black;
   margin: 0 5px;
+  line-height: 15px;
   &:hover {
     color: black;
     text-decoration: none;
@@ -62,26 +63,47 @@
   border-color: black !important;
 }
 
-#navbar-brands:hover + .navbar-submenu-brands {
-  background: blue;
-}
-
-.navbar-submenu-brands {
+.navbar-submenu {
   position: fixed;
-  height: 200px;
+  height: 150px;
   width: 100%;
   top: 100px;
   display: none;
+  justify-content: center;
+  background: white;
+  padding: 15px;
 }
 
-#navbar-influencers:hover {
-
+.navbar-submenu-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-.navbar-submenu-influencers {
-  position: fixed;
-  height: 200px;
-  width: 100%;
-  top: 100px;
-  display: none;
+.each-brand {
+  margin-bottom: 5px;
+  color: #565656;
+  font-weight: 900;
+  font-size: 14px;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
 }
+
+.basket-icon-container {
+  position: relative;
+}
+
+.basket-item-count {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  @include absCenter;
+  font-size: 8px;
+}
+

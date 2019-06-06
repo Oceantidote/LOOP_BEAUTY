@@ -11,9 +11,7 @@
   margin: 0;
   font-weight: 800;
   color: white;
-  @include for-phone-only {
-    font-size: 14px;
-  }
+  font-size: 14px;
 }
 
 .logo-bar {
