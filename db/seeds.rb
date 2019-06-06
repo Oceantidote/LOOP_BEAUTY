@@ -13,7 +13,7 @@ ProductBenefit.destroy_all
 Benefit.destroy_all
 RecommendedProduct.destroy_all
 Product.destroy_all
-
+User.destroy_all
 # CREATING DEPARTMENTS
 
 makeup = Department.create!(name: "Makeup")
@@ -31,11 +31,11 @@ mdm_flow = Brand.create!(name: "MDM Flow")
 
 # CREATING CATEGORIES
 
-face = Category.create(name: "Face")
-tools = Category.create(name: "Tools")
-lips = Category.create(name: "Lips")
-eyes = Category.create(name: "Eyes")
-gifts_sets = Category.create(name: "Gift Sets")
+face = Category.create!(name: "Face")
+tools = Category.create!(name: "Tools")
+lips = Category.create!(name: "Lips")
+eyes = Category.create!(name: "Eyes")
+gifts_sets = Category.create!(name: "Gift Sets")
 
 # CREATING SUB_CATEGORIES
 
@@ -281,6 +281,15 @@ highlighter_brush_rec_3 = RecommendedProduct.create!(recommender: highlighter_br
 highlighter_brush_rec_4 = RecommendedProduct.create!(recommender: highlighter_brush, recommended: brow_styler)
 
 
+# CREATING INFLUENCERS
+puts "Creating users"
+
+
+esther = User.create!(influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@esaregrams", password: "esther123", email: "esther@email.com")
+ropo = User.create!(influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", password: "ropo123", email: "ropo@email.com")
+breen = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenlee", password: "breeny123", email: "breeny@email.com")
+nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", password: "nikki123", email: "nicky@email.com")
+shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", password: "shantania123", email: "shantania@email.com")
 
 
 

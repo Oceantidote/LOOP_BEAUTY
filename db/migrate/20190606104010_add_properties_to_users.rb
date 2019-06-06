@@ -7,5 +7,6 @@ class AddPropertiesToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :youtube, :string
     add_column :users, :newsletter, :boolean, default: false
     add_column :users, :accepts_terms, :boolean, default: false
+    add_column :users, :influencer, :boolean, default: false
   end
 end
