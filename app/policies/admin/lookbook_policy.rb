@@ -1,4 +1,4 @@
-class TutorialPolicy < ApplicationPolicy
+class Admin::LookbookPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.admin?

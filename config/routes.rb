@@ -2,6 +2,20 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/homepage', to: 'pages#homepage'
+  namespace :admin do
+    resources :lookbooks, only: [:index] do
+      member do
+        patch '/approve', to: 'admin/lookbooks#approve'
+        patch '/reject', to: 'admin/lookbooks#reject'
+      end
+    end
+    resources :tutorials, only: [:index] do
+      member do
+        patch '/approve', to: 'admin/tutorials#approve'
+        patch '/reject', to: 'admin/tutorials#reject'
+      end
+    end
+  end
   resources :products, only: [:index, :show], path: 'make-up' do
     resources :basket_products, only: [:create]
   end
