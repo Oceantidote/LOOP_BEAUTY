@@ -8,7 +8,7 @@
   <div class="navbar-middle">
     <p id="navbar-brands" class="navbar-middle-item">Brands</p>
     <p id="navbar-influencers" class="navbar-middle-item">Influencers</p>
-    <%= link_to 'Make-Up', '#', class: 'navbar-middle-item' %>
+    <%= link_to 'Make-Up', products_path, class: 'navbar-middle-item' %>
     <%= link_to 'Insider','#', class: 'navbar-middle-item' %>
     <%= link_to 'Video','#', class: 'navbar-middle-item' %>
   </div>
@@ -52,12 +52,12 @@
             <%= image_tag 'navbar-user.png' %>
           <% end %>
         </li>
-        <li class="nav-item basket-icon-container">
-          <%= link_to '#', class: "nav-link" do %>
-            <%= image_tag 'navbar-basket.png' %>
-          <% end %>
-          <p class="basket-item-count">10</p>
-        </li>
+          <li class="nav-item basket-icon-container">
+            <%= link_to bag_path, class: "nav-link" do %>
+              <%= image_tag 'navbar-basket.png' %>
+              <p class="basket-item-count"><%= @basket.basket_products.count %></p>
+            <% end %>
+          </li>
       <% end %>
     </ul>
   </div>
@@ -65,7 +65,7 @@
 <div class="navbar-submenu navbar-submenu-brands">
   <div class="navbar-submenu-container">
     <% @brands.each do |brand| %>
-      <%= link_to :root, class: "each-brand" do %>
+      <%= link_to brand_path(brand), class: "each-brand" do %>
         <%= brand.name %>
       <% end %>
     <% end %>
