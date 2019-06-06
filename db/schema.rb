@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_112543) do
+
+ActiveRecord::Schema.define(version: 2019_06_06_112809) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +111,17 @@ ActiveRecord::Schema.define(version: 2019_06_06_112543) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "insider_articles", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -190,9 +203,11 @@ ActiveRecord::Schema.define(version: 2019_06_06_112543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
+    t.string "slug"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["department_id"], name: "index_products_on_department_id"
+    t.index ["slug"], name: "index_products_on_slug", unique: true
     t.index ["sub_category_id"], name: "index_products_on_sub_category_id"
   end
 
@@ -279,7 +294,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_112543) do
     t.string "youtube"
     t.boolean "newsletter", default: false
     t.boolean "accepts_terms", default: false
-    t.boolean "influencer", default: false
     t.date "dob"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

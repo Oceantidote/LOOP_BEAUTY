@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'money-rails'
+gem 'friendly_id', '~> 5.2.4'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

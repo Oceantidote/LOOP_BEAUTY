@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :category
   belongs_to :sub_category
   belongs_to :brand
