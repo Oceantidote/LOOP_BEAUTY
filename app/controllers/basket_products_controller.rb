@@ -24,13 +24,19 @@ class BasketProductsController < ApplicationController
     if @item.quantity < 1
       destroy
     else
-      redirect_to bag_path
+      respond_to do |format|
+        format.html { redirect_to bag_path }
+        format.js
+      end
     end
   end
 
   def destroy
     @item.destroy
-    redirect_to bag_path
+   respond_to do |format|
+      format.html { redirect_to bag_path }
+      format.js
+    end
   end
 
   private

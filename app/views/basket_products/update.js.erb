@@ -1,0 +1,2 @@
+container = document.getElementById(`item-<%= @item.id %>`)
+container.innerHTML = "<%= j render 'shared/basket_product_card', item: @item %>"
