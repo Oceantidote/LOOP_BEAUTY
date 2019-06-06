@@ -75,5 +75,6 @@ class ApplicationController < ActionController::Base
   def set_navbar_variables
     @brands = Brand.all
     @influencers = User.where(influencer: true)
+    @basket = find_basket
   end
 end
