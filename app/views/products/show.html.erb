@@ -1,1 +1,6 @@
 <%= @product.title %>
+<%= simple_form_for([@product, BasketProduct.new(product: @product)]) do |f| %>
+  <%= f.input :shade_id, collection: @product.shades, prompt: 'Shade?' %>
+  <%= f.input :quantity %>
+  <%= f.submit 'Add to bag' %>
+<% end %>
