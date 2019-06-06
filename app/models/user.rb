@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :basket
+  has_one_attached :photo
   has_many :products, through: :order_products, as: :ordered_products
   has_many :lookbooks
   has_many :insider_articles
