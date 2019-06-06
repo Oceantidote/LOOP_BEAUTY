@@ -17,4 +17,8 @@ class User < ApplicationRecord
   has_many :shades, through: :order_products
   has_many :tutorials
   has_one :showroom
+
+  def admin?
+    admin
+  end
 end
