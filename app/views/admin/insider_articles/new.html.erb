@@ -1,0 +1,51 @@
+<div class="container">
+  <%= form_for [:admin, @insider_article] do |f| %>
+    <%= f.label :title, 'Article title', class:"form-control-label" %>
+    <%= f.text_field :title, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :cover_photo, 'Project Photos', class:"form-control-label" %>
+    <%= f.file_field :cover_photo %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :cover_alt_text, 'Cover photo alt text', class:"form-control-label" %>
+    <%= f.text_field :cover_alt_text, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :text1, 'Text block one', class:"form-control-label" %>
+    <%= f.text_field :text1, class:"form-control", id: :text1%>
+    <trix-editor input="text1"></trix-editor>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo1, 'Photo/Video 1', class:"form-control-label" %>
+    <%= f.file_field :photo1 %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo1_alt_text, 'Photo 1 alt text', class:"form-control-label" %>
+    <%= f.text_field :photo1_alt_text, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :text2, 'Text block two', class:"form-control-label" %>
+    <%= f.text_field :text2, class:"form-control", id: :text2%>
+    <trix-editor input="text2"></trix-editor>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo2, 'Photo/Video 2', class:"form-control-label" %>
+    <%= f.file_field :photo2 %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo2_alt_text, 'Photo 2 alt text', class:"form-control-label" %>
+    <%= f.text_field :photo2_alt_text, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :text3, 'Text block three', class:"form-control-label" %>
+    <%= f.text_field :text3, class:"form-control", id: :text3%>
+    <trix-editor input="text3"></trix-editor>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo3, 'Photo/Video 3', class:"form-control-label" %>
+    <%= f.file_field :photo3 %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo3_alt_text, 'Photo 3 alt text', class:"form-control-label" %>
+    <%= f.text_field :photo3_alt_text, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :text4, 'Text block four', class:"form-control-label" %>
+    <%= f.text_field :text4, class:"form-control", id: :text4%>
+    <trix-editor input="text4"></trix-editor>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.submit class: "btn btn-primary btn-lg" %>
+  <% end %>
+
+</div>
+
+

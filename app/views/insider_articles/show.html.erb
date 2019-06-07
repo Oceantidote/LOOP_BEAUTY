@@ -1,0 +1,48 @@
+<div class="insider_article-image-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)"></div>
+<% if policy([:admin, @insider_article]).publish? %>
+  <% if @insider_article.published %>
+    <div class="btn-primary">
+      <p>PUBLISHED</p>
+    </div>
+  <% end %>
+<% end %>
+<div class="container">
+  <p><strong>Ask the expert:</strong></p>
+  <h1><%= @insider_article.title %></h1>
+  <h5><strong>by <%= @insider_article.by %></strong></h5>
+  <%= simple_format(@insider_article.text1) %>
+  <% if @insider_article.photo1.attached? %>
+    <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+      <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
+    <% else %>
+      <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
+    <% end %>
+  <% end %>
+  <%= simple_format(@insider_article.text2) %>
+  <% if @insider_article.photo2.attached? %>
+    <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+      <h1>ITS A MOVIE</h1>
+    <% else %>
+      <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
+    <% end %>
+  <% end %>
+  <%= simple_format(@insider_article.text3) %>
+  <% if @insider_article.photo3.attached? %>
+    <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+      <h1>ITS A MOVIE</h1>
+    <% else %>
+      <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
+    <% end %>
+  <% end %>
+  <%= simple_format(@insider_article.text4) %>
+</div>
+<% if policy([:admin, @insider_article]).publish? %>
+  <% if @insider_article.published %>
+    <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch %>
+  <% else %>
+    <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch %>
+  <% end %>
+  <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article) %>
+  <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete %>
+<% end %>
+

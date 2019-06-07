@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def admin?
     admin
   end
+
+  def influencer?
+    influencer
+  end
 end

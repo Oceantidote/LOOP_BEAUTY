@@ -5,17 +5,17 @@ class Admin::TutorialsController < ApplicationController
 
   def approve
     @tutorial.approve!
-    redirect_to admin_lookbooks_path
+    redirect_to admin_tutorials_path
   end
 
   def reject
     @tutorial.reject!
-    redirect_to admin_lookbooks_path
+    redirect_to admin_tutorials_path
   end
 
   private
 
-  def set_lookbook
+  def set_tutorial
     @tutorial = Tutorial.find(params[:id])
     authorize [:admin, @tutorial]
   end

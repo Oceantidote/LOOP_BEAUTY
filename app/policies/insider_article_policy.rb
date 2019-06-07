@@ -4,4 +4,8 @@ class InsiderArticlePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def show?
+    record.published == true || user.admin
+  end
 end

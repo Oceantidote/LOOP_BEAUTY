@@ -1,26 +1,66 @@
+.insider-info-wrapper {
+}
+
 .insider-info-cards {
   padding: 10px;
   width: 100%;
-  height: 220px;
   background: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid rgba(0,0,0,0.2);
-  margin: 20px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease;
   // padding: 10px 30px;
+}
+
+.insider-info-left {
+  width: 45%;
+  height: 100%;
+  @include absCenter;
+}
+
+.insider-info-right {
+  width: 50%;
+  height: 100%;
+  @include absCenter;
 }
 
 .insider-info-image {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  height: 170px;
-  width: 170px;
+  width: 100%;
+}
+
+.insider-info-image:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.insider-info-container {
+  padding-bottom: 20px;
+  margin: 0 10%;
+  @include for-xlarge-devices-down {
+    margin: 0 5%;
+  }
+  @include for-large-devices-down {
+    margin: 0 4%;
+  }
+  @include for-medium-devices-down {
+    margin: 0 3%;
+  }
+  @include for-small-devices-down {
+    margin: 0 15%;
+  }
+  @include for-phone-only {
+    margin: 0 5%;
+  }
 }
 
 .insider-info-text {
-  width: 150px;
+  // width: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,4 +104,64 @@
   flex-direction: column;
   margin: auto;
   width: 35%;
+  @include for-phone-only {
+    width: 70%;
+  }
+}
+
+.latest-videos-wrapper {
+  background: #F5F5F5;
+  padding: 15px;
+}
+
+.homepage-video-card {
+  @include for-medium-devices-down {
+    margin: 15px 0;
+  }
+}
+
+.video-holder {
+  height: 180px;
+  width: 100%;
+  @include absCenter;
+  background-size: cover;
+  background-position: center;
+}
+
+.homepage-video-card-text {
+  background: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 40px;
+}
+
+.video-card-text-title {
+  font-family: $title-font;
+  font-weight: 900;
+}
+
+.play-button {
+  transition: transform 0.3s ease;
+}
+
+.card-link {
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.insider-info-card-link:hover {
+  .insider-info-cards {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+}
+
+.video-card-link:hover {
+  .play-button {
+    transform: scale(1.1);
+  }
 }
