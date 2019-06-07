@@ -3,7 +3,7 @@ class LookbooksController < ApplicationController
   before_action :set_lookbook, only: [:edit, :update, :destroy, :show]
 
   def index
-    @lookbooks = policy_scope(Lookbook)
+    @lookbooks = policy_scope(Lookbook).where(user: params[:user_id])
   end
 
   def show

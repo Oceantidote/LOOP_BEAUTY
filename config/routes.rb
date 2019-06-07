@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   resources :products, only: [:index, :show]
+  resources :lookbooks, except: [:index]
+  resources :users, only: [], path: 'influencers' do
+    resources :lookbooks, only: [:index]
+  end
   namespace :admin do
     resources :lookbooks, only: [:index] do
       member do
