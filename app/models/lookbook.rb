@@ -1,4 +1,7 @@
 class Lookbook < ApplicationRecord
+  include FriendlyId
+
+  friendly_id :title, use: :slugged
   belongs_to :user
   has_one_attached :photo
   has_many :lookbook_products

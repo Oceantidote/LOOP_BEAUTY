@@ -1,4 +1,7 @@
 class Tutorial < ApplicationRecord
+  include FriendlyId
+
+  friendly_id :title, use: :slugged
   belongs_to :user
   has_one_attached :video
   has_many :products, through: :tutorial_products
