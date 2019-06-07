@@ -50,7 +50,7 @@ class TutorialsController < ApplicationController
   private
 
   def set_tutorial
-    @tutorial = Tutorial.find(params[:id])
+    @tutorial = Tutorial.friendly.find(params[:id])
     authorize @tutorial
   end
 

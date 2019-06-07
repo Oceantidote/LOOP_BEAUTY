@@ -1,0 +1,5 @@
+<% @lookbooks.each do |lookbook| %>
+  <p><%= lookbook.title %></p>
+  <%= link_to 'Approve', approve_admin_lookbook_path(lookbook), method: :patch %>
+  <%= link_to 'Reject', reject_admin_lookbook_path(lookbook), method: :patch %>
+<% end %>

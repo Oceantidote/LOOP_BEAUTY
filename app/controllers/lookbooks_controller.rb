@@ -51,7 +51,7 @@ class LookbooksController < ApplicationController
   private
 
   def set_lookbook
-    @lookbook = Lookbook.find(params[:id])
+    @lookbook = Lookbook.friendly.find(params[:id])
     authorize @lookbook
   end
 
