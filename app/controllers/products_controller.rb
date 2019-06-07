@@ -3,10 +3,17 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
+    @products = Product.filter(params.slice(:category, :brand ))
+    @categories = Category.all.map { |category| category.name }
   end
 
   def show
     @product = Product.friendly.find(params[:id])
     authorize @product
   end
+
+  private
+
+
+
 end

@@ -1,4 +1,6 @@
 class Admin::LookbooksController < ApplicationController
+  before_action :set_loobook, only: [:destroy, :approve, :reject]
+
   def index
     @lookbooks = policy_scope([:admin, Lookbook])
   end
@@ -10,6 +12,11 @@ class Admin::LookbooksController < ApplicationController
 
   def reject
     @lookbook.reject!
+    redirect_to admin_lookbooks_path
+  end
+
+  def destroy
+    @lookbook.destroy
     redirect_to admin_lookbooks_path
   end
 
