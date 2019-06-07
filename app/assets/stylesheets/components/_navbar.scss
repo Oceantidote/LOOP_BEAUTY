@@ -3,6 +3,7 @@
   justify-content: space-between;
   background: white;
   // border-bottom: 1px solid #ececec;
+  padding: 0 16px;
   height: 60px;
   position: relative;
   z-index: 100;
@@ -238,4 +239,11 @@
   position: absolute;
   left: 0;
   @include absCenter;
+}
+
+.navbar-logo {
+  @include for-phone-only {
+    @include absCenter;
+    flex: 1;
+  }
 }
