@@ -9,7 +9,7 @@ class TutorialPolicy < ApplicationPolicy
     user.influencer?
   end
 
-  def create
+  def create?
     new?
   end
 

@@ -1,0 +1,6 @@
+<%= simple_form_for @lookbook do |f| %>
+  <%= f.input :title %>
+  <%= f.input :photo %>
+  <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>

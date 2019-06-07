@@ -11,10 +11,13 @@ class TutorialsController < ApplicationController
 
   def new
     @tutorial = Tutorial.new
+    authorize @tutorial
   end
 
   def create
     @tutorial = Tutorial.new(tutorial_params)
+    @tutorial.user = current_user
+    authorize @tutorial
     if @tutorial.save
       flash[:notice] = 'Tutorial pending approval'
       redirect_to root_path
@@ -48,6 +51,7 @@ class TutorialsController < ApplicationController
 
   def set_tutorial
     @tutorial = Tutorial.find(params[:id])
+    authorize @tutorial
   end
 
   def tutorial_params
