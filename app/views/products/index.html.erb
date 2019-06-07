@@ -31,8 +31,23 @@
           <%= product.title %>
         </div>
       </div>
+      <%= hidden_field_tag :query , "", id: "query-filter" %>
+      <%= hidden_field_tag :place , "", id: "place-filter" %>
+
+      <%= submit_tag 'Apply', id: "filter-button" %>
     <% end %>
+  </div>
+  <div class="partial-products" id="results">
+      <%= render 'card_results', products: @products %>
   </div>
 </div>
 
 
+<script>
+  let query = document.getElementById('query').value
+  let place = document.getElementById('place').value
+  let queryFilter = document.getElementById('query-filter')
+  let placeFilter = document.getElementById('place-filter')
+  queryFilter.value = query
+  placeFilter.value = place
+</script>

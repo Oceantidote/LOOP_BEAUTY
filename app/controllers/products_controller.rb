@@ -5,6 +5,11 @@ class ProductsController < ApplicationController
     @products = policy_scope(Product)
     @products = Product.filter(params.slice(:category, :brand ))
     @categories = Category.all.map { |category| category.name }
+    @brand_names = Brand.all.map { |brand| brand.name }
+    respond_to do |format|
+      format.html { render 'products/index' }
+      format.js
+    end
   end
 
   def show

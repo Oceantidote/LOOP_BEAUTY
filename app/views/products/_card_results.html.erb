@@ -1,0 +1,41 @@
+<% products.each do |product| %>
+  <div class="card-image-results">
+    <div class="card">
+      <%= link_to product_path(product) do %>
+        <div class="card_image">
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.shades.first.photos.first %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="card_header">
+        <%= product.title %>
+      </div>
+      <div class="card_price-heart">
+        <%= humanized_money_with_symbol(product.price) %>
+        <% if user_signed_in? %>
+          <% if current_user.voted_for? product %>
+            <%= link_to '<i class="fas fa-minus-square plus_and_minus_button"></i>'.html_safe, item_unlike_path(product.id)%>
+          <% else %>
+            <%= link_to '<i class="fas fa-plus-square plus_and_minus_button"></i>'.html_safe, item_like_path(product.id)%>
+          <% end %>
+        <% else %>
+        <% end %>
+
+      </div>
+      <div class="card_ratings">
+        <% if product.average_rating == 0 %>
+         <% 5.times do %>
+          <i class="far fa-star"></i>
+          <% end %>
+         <p>(0) Reviews</p>
+        <% else  %>
+          <% product.average_rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <%= product.total_reviews %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
