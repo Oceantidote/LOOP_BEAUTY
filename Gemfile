@@ -18,7 +18,7 @@ gem 'webpacker'
 gem 'money-rails'
 gem 'friendly_id', '~> 5.2.4'
 gem "aws-sdk-s3", require: false
-
+gem 'trix'
 gem 'image_processing', '~> 1.2'
 
 group :development do

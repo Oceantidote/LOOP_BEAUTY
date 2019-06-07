@@ -22,7 +22,14 @@ Rails.application.routes.draw do
         patch '/reject', to: 'admin/tutorials#reject'
       end
     end
+    resources :insider_articles, only: [:new, :edit, :create, :update, :destroy] do
+      member do
+        patch '/publish', to: 'insider_articles#publish'
+        patch '/unpublish', to: 'insider_articles#unpublish'
+      end
+    end
   end
+  resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
     resources :basket_products, only: [:create]
   end

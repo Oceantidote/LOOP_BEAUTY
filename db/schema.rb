@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_102202) do
+ActiveRecord::Schema.define(version: 2019_06_07_134100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,18 @@ ActiveRecord::Schema.define(version: 2019_06_07_102202) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "by"
+    t.string "category"
+    t.string "title"
+    t.text "text1"
+    t.text "text2"
+    t.text "text3"
+    t.text "text4"
+    t.string "cover_alt_text"
+    t.string "photo1_alt_text"
+    t.string "photo2_alt_text"
+    t.string "photo3_alt_text"
+    t.boolean "published", default: false
     t.index ["user_id"], name: "index_insider_articles_on_user_id"
   end
 
