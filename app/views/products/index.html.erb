@@ -9,29 +9,32 @@
 </div>
 <div class="partial-filters-two">
   <div class="partial-filters">
-    <div class="partial-filters_collection">
-      <h6>Category</h6>
-      <%= collection_check_boxes :catogory, :product_id, Category.all, :id, :name %>
-    </div>
-    <div class="partial-filters_collection">
-      <h6>Brand</h6>
-      <%= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
-    </div>
-  </div>
-  <div class="partial-products">
-    <% @products.each do |product| %>
-      <div class="card">
-        <%= link_to product_path(product) do %>
-          <div class="card_image">
-            <%#= image_tag product.shades.first.photo %>
-          </div>
-        <% end %>
-        <div class="card_header">
-          <%= product.title %>
-        </div>
+    <%= form_tag products_path, remote: true, method: :get do %>
+      <div class="partial-filters_collection">
+        <h6>Category</h6>
+        <%= collection_check_boxes :category, :category_id, Category.all, :id, :name %>
+        <%#= select_tag "Cateogory" options_for_select(Category.all) %>
       </div>
+      <div class="partial-filters_collection">
+        <h6>Brand</h6>
+        <%= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
+      </div>
+      <%= hidden_field_tag :query , "", id: "query-filter" %>
+      <%= hidden_field_tag :place , "", id: "place-filter" %>
+
+      <%= submit_tag 'Apply', id: "filter-button" %>
     <% end %>
+  </div>
+  <div class="partial-products" id="results">
+      <%= render 'card_results', products: @products %>
   </div>
 </div>
 
-
+<script>
+  let query = document.getElementById('query').value
+  let place = document.getElementById('place').value
+  let queryFilter = document.getElementById('query-filter')
+  let placeFilter = document.getElementById('place-filter')
+  queryFilter.value = query
+  placeFilter.value = place
+</script>

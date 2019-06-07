@@ -61,14 +61,17 @@
 
     @include for-medium-devices-up {
       width: 70%;
+      margin-left: 20px;
     }
 
     @include for-large-devices-up {
       width: 85%;
+      margin-left: -10px;
     }
 
     @include for-1500 {
       width: 80%;
+      margin-left: 20px;
     }
 
     @include for-1800 {
@@ -119,55 +122,55 @@
   }
 
   label {
-    width: 90%;
+    width: 95%;
     padding-left: 10px;
   }
 
-  input[type='checkbox'] {
-    margin-top: 40px;
-  }
+  // input[type='checkbox'] {
+  //   margin-top: 40px;
+  // }
 
-  input[type='checkbox'] {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeSpeed;
-    width: 13px;
-    height: 13px;
-    margin: 0;
-    margin-right: 1px;
-    margin-left: 10px;
-    display: block;
-    float: left;
-    position: relative;
-    cursor: pointer;
-  }
+  // input[type='checkbox'] {
+  //   -webkit-font-smoothing: antialiased;
+  //   text-rendering: optimizeSpeed;
+  //   width: 13px;
+  //   height: 13px;
+  //   margin: 0;
+  //   margin-right: 1px;
+  //   margin-left: 10px;
+  //   display: block;
+  //   float: left;
+  //   position: relative;
+  //   cursor: pointer;
+  // }
 
-  input[type='checkbox']:after {
-    content: "";
-    vertical-align: middle;
-    text-align: center;
-    line-height: 13px;
-    position: absolute;
-    cursor: pointer;
-    height: 13px;
-    width: 13px;
-    left: 0;
-    top: 0;
-    font-size: 10px;
-    background: white;
-    border: 1px solid gray;
-  }
+  // input[type='checkbox']:after {
+  //   content: "";
+  //   vertical-align: middle;
+  //   text-align: center;
+  //   line-height: 13px;
+  //   position: absolute;
+  //   cursor: pointer;
+  //   height: 13px;
+  //   width: 13px;
+  //   left: 0;
+  //   top: 0;
+  //   font-size: 10px;
+  //   background: white;
+  //   border: 1px solid gray;
+  // }
 
-  input[type='checkbox']:hover:after, input[type='checkbox']:checked:hover:after {
-    background: #ABABAB;
-    content: '\2714';
-    color: #ABABAB;
-  }
+  // input[type='checkbox']:hover:after, input[type='checkbox']:checked:hover:after {
+  //   background: #ABABAB;
+  //   content: '\2714';
+  //   color: #ABABAB;
+  // }
 
-  input[type='checkbox']:checked:after {
-    background: #303030;
-    content: '\2714';
-    color: #fff;
-  }
+  // input[type='checkbox']:checked:after {
+  //   background: #303030;
+  //   content: '\2714';
+  //   color: #fff;
+  // }
 }
 
 .partial-products {
@@ -175,7 +178,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  // justify-content: center;
   align-items: inherit;
 
 
