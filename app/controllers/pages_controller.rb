@@ -24,5 +24,4 @@ class PagesController < ApplicationController
 
   def returns_policy
   end
-
 end

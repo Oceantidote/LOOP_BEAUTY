@@ -11,14 +11,18 @@ class LookbooksController < ApplicationController
 
   def new
     @lookbook = Lookbook.new
+    authorize @lookbook
   end
 
   def create
     @lookbook = Lookbook.new(lookbook_params)
+    @lookbook.user = current_user
+    authorize @lookbook
     if @lookbook.save
       flash[:notice] = 'Lookbook pending approval'
       redirect_to root_path
     else
+      raise
       flash[:error] = 'Please review problems'
       render :new
     end
@@ -48,6 +52,7 @@ class LookbooksController < ApplicationController
 
   def set_lookbook
     @lookbook = Lookbook.find(params[:id])
+    authorize @lookbook
   end
 
   def lookbook_params

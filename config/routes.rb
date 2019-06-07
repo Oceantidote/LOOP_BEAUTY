@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/cookies_policy', to: 'pages#cookies_policy', as: :cookies_policy
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
+  get '/dashboard', to: 'users#dashboard'
   resources :products, only: [:index, :show]
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
