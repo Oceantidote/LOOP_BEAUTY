@@ -8,18 +8,25 @@ Rails.application.routes.draw do
   get '/cookies_policy', to: 'pages#cookies_policy', as: :cookies_policy
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
+  get '/dashboard', to: 'users#dashboard'
   resources :products, only: [:index, :show]
+  resources :tutorials, except: [:index]
+  resources :lookbooks, except: [:index]
+  resources :users, only: [], path: 'influencers' do
+    resources :lookbooks, only: [:index]
+    resources :tutorials, only: [:index]
+  end
   namespace :admin do
     resources :lookbooks, only: [:index] do
       member do
-        patch '/approve', to: 'admin/lookbooks#approve'
-        patch '/reject', to: 'admin/lookbooks#reject'
+        patch '/approve', to: 'lookbooks#approve'
+        patch '/reject', to: 'lookbooks#reject'
       end
     end
     resources :tutorials, only: [:index] do
       member do
-        patch '/approve', to: 'admin/tutorials#approve'
-        patch '/reject', to: 'admin/tutorials#reject'
+        patch '/approve', to: 'tutorials#approve'
+        patch '/reject', to: 'tutorials#reject'
       end
     end
     resources :insider_articles, only: [:new, :edit, :create, :update, :destroy] do

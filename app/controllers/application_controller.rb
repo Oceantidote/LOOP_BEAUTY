@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     old_basket = Basket.find(session[:basket_id])
     session[:basket_id] = nil
     new_basket = current_user.basket
-    old_basket.basket_items.each do |item|
+    old_basket.basket_products.each do |item|
       item.update(basket: new_basket)
     end
     old_basket.destroy

@@ -1,5 +1,5 @@
 class Admin::LookbooksController < ApplicationController
-  before_action :set_loobook, only: [:destroy, :approve, :reject]
+  before_action :set_lookbook, only: [:destroy, :approve, :reject]
 
   def index
     @lookbooks = policy_scope([:admin, Lookbook])
@@ -23,7 +23,7 @@ class Admin::LookbooksController < ApplicationController
   private
 
   def set_lookbook
-    @lookbook = Lookbook.find(params[:id])
+    @lookbook = Lookbook.friendly.find(params[:id])
     authorize [:admin, @lookbook]
   end
 end

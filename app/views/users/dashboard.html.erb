@@ -1,0 +1,4 @@
+<% if current_user.influencer? %>
+  <%= link_to 'New Lookbook', new_lookbook_path %>
+  <%= link_to 'New Tutorial', new_tutorial_path %>
+<% end %>
