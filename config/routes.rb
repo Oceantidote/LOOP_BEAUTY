@@ -19,14 +19,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :lookbooks, only: [:index] do
       member do
-        patch '/approve', to: 'admin/lookbooks#approve'
-        patch '/reject', to: 'admin/lookbooks#reject'
+        patch '/approve', to: 'lookbooks#approve'
+        patch '/reject', to: 'lookbooks#reject'
       end
     end
     resources :tutorials, only: [:index] do
       member do
-        patch '/approve', to: 'admin/tutorials#approve'
-        patch '/reject', to: 'admin/tutorials#reject'
+        patch '/approve', to: 'tutorials#approve'
+        patch '/reject', to: 'tutorials#reject'
       end
     end
   end
