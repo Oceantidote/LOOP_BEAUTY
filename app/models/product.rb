@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  include Filterable
+  scope :category, -> (category) { where category: category }
+  scope :brand, -> (brand) { where brand: brand }
   extend FriendlyId
   friendly_id :title, use: :slugged
 
