@@ -23,7 +23,8 @@
       <div class="card">
         <%= link_to product_path(product) do %>
           <div class="card_image">
-            <%#= image_tag product.shades.first.photo %>
+            <%= image_tag product.shades.first.photos.first.variant(resize: "100x100") %>
+
           </div>
         <% end %>
         <div class="card_header">

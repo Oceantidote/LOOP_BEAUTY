@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     @products = policy_scope(Product)
     @products = Product.filter(params.slice(:category, :brand ))
     @categories = Category.all.map { |category| category.name }
-    @brands = Brand.all.map { |brand| brand.name }
   end
 
   def show
@@ -14,5 +13,7 @@ class ProductsController < ApplicationController
   end
 
   private
+
+
 
 end
