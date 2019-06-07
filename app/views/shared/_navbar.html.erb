@@ -25,7 +25,7 @@
       <%= link_to '#', class: "" do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count">10</p>
+      <p class="basket-item-count"><%= @basket.basket_products.count %></p>
     </div>
   </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -68,8 +68,8 @@
         <li class="nav-item basket-icon-container">
           <%= link_to bag_path, class: "nav-link mobile-hidden" do %>
             <%= image_tag 'navbar-basket.png' %>
-            <p class="basket-item-count"><%= @basket.basket_products.count %></p>
           <% end %>
+          <p class="basket-item-count"><%= @basket.basket_products.count %></p>
         </li>
       <% end %>
     </ul>
@@ -93,38 +93,52 @@
     <% end %>
   </div>
 </div>
+<div class="navbar-submenu-underlay"></div>
 
 <script>
   navbarBrands = document.getElementById('navbar-brands');
   menuBrands = document.querySelector('.navbar-submenu-brands');
   navbarInfluencers = document.getElementById('navbar-influencers');
   menuInfluencers = document.querySelector('.navbar-submenu-influencers');
+  subnavUnderlay = document.querySelector('.navbar-submenu-underlay');
 
   navbarBrands.addEventListener('mouseover', function() {
     menuBrands.style.display = "flex";
+    subnavUnderlay.style.display = "block";
   });
+
   navbarBrands.addEventListener('mouseleave', function() {
     menuBrands.style.display = "none";
+    subnavUnderlay.style.display = "none";
   });
 
   menuBrands.addEventListener('mouseover', function() {
     menuBrands.style.display = "flex";
+    subnavUnderlay.style.display = "block";
   });
+
   menuBrands.addEventListener('mouseleave', function() {
     menuBrands.style.display = "none";
+    subnavUnderlay.style.display = "none";
   });
 
   navbarInfluencers.addEventListener('mouseover', function() {
     menuInfluencers.style.display = "flex";
+    subnavUnderlay.style.display = "block";
   });
+
   navbarInfluencers.addEventListener('mouseleave', function() {
     menuInfluencers.style.display = "none";
+    subnavUnderlay.style.display = "none";
   });
 
   menuInfluencers.addEventListener('mouseover', function() {
     menuInfluencers.style.display = "flex";
+    subnavUnderlay.style.display = "block";
   });
+
   menuInfluencers.addEventListener('mouseleave', function() {
     menuInfluencers.style.display = "none";
+    subnavUnderlay.style.display = "none";
   });
 </script>
