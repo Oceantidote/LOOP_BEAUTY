@@ -2,19 +2,32 @@
   <p class="offers-banner-text">FREE SAMPLES WITH EVERY ORDER</p>
 </div>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%= image_tag 'hamburger.png', width: 25 %>
+  </button>
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag 'loop-beauty-logo.svg' %>
   <% end %>
   <div class="navbar-middle">
     <p id="navbar-brands" class="navbar-middle-item">Brands</p>
     <p id="navbar-influencers" class="navbar-middle-item">Influencers</p>
-    <%= link_to 'Make-Up', '#', class: 'navbar-middle-item' %>
+    <%= link_to 'Make-Up', products_path, class: 'navbar-middle-item' %>
     <%= link_to 'Insider','#', class: 'navbar-middle-item' %>
     <%= link_to 'Video','#', class: 'navbar-middle-item' %>
   </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="mobile-nav-links-container">
+    <div class="mobile-left-links">
+      <%= link_to '#', class: "" do %>
+        <%= image_tag 'navbar-user.png' %>
+      <% end %>
+    </div>
+    <div class="mobile-left-links" style="margin-left: 5px;">
+      <%= link_to '#', class: "" do %>
+        <%= image_tag 'navbar-basket.png' %>
+      <% end %>
+      <p class="basket-item-count">10</p>
+    </div>
+  </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -35,28 +48,28 @@
       <% else %>
         <div style="display: flex; align-items: center;">
           <li class="nav-item">
-            <%= link_to 'Follow', 'https://www.instagram.com/loop_beauty/', target: "_blank", class: "nav-link-normal" %>
+            <%= link_to 'Follow', 'https://www.instagram.com/loop_beauty/', target: "_blank", class: "nav-link-normal mobile-hidden" %>
           </li>
           |
           <li class="nav-item">
-            <%= link_to 'Freebies', '#', class: "nav-link-normal" %>
+            <%= link_to 'Freebies', '#', class: "nav-link-normal mobile-hidden" %>
           </li>
         </div>
         <li class="nav-item">
-          <%= link_to '#', class: "nav-link" do %>
+          <%= link_to '#', class: "nav-link mobile-hidden" do %>
             <%= image_tag 'navbar-search.png' %>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to '#', class: "nav-link" do %>
+          <%= link_to '#', class: "nav-link mobile-hidden" do %>
             <%= image_tag 'navbar-user.png' %>
           <% end %>
         </li>
         <li class="nav-item basket-icon-container">
-          <%= link_to '#', class: "nav-link" do %>
+          <%= link_to bag_path, class: "nav-link mobile-hidden" do %>
             <%= image_tag 'navbar-basket.png' %>
+            <p class="basket-item-count"><%= @basket.basket_products.count %></p>
           <% end %>
-          <p class="basket-item-count">10</p>
         </li>
       <% end %>
     </ul>
@@ -65,8 +78,8 @@
 <div class="navbar-submenu navbar-submenu-brands">
   <div class="navbar-submenu-container">
     <% @brands.each do |brand| %>
-      <%= link_to :root, class: "each-brand" do %>
-        <%#= brand.name %>
+      <%= link_to brand_path(brand), class: "each-brand" do %>
+        <%= brand.name %>
       <% end %>
     <% end %>
   </div>

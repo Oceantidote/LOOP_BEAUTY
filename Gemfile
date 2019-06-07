@@ -17,9 +17,11 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'money-rails'
 gem 'friendly_id', '~> 5.2.4'
-gem 'hotloader'
+gem "aws-sdk-s3", require: false
+
 
 group :development do
+  gem 'hotloader'
   gem 'web-console', '>= 3.3.0'
 end
 

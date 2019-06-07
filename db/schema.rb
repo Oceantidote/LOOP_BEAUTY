@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_132720) do
+
+ActiveRecord::Schema.define(version: 2019_06_07_102202) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,9 +155,10 @@ ActiveRecord::Schema.define(version: 2019_06_06_132720) do
   create_table "lookbooks", force: :cascade do |t|
     t.bigint "user_id"
     t.string "affiliate_link"
-    t.string "approved"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
   end
 
@@ -273,7 +276,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_132720) do
     t.bigint "user_id"
     t.string "affiliate_link"
     t.string "video"
-    t.string "approved"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tutorials_on_user_id"
@@ -299,6 +302,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_132720) do
     t.boolean "influencer", default: false
     t.date "dob"
     t.string "slug"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
