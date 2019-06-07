@@ -1,3 +1,37 @@
-<% @products.each do |product| %>
-  <%= link_to product.title, product_path(product) %>
-<% end %>
+<div class="partial-banner">
+    <!-- IMAGE HERE -->
+</div>
+<div class="partial-filters-one">
+  <h4>Refine By</h4>
+  <div>
+    <h6 class="transparent-filter">Sort By: New In</h6>
+  </div>
+</div>
+<div class="partial-filters-two">
+  <div class="partial-filters">
+    <div class="partial-filters_collection">
+      <h6>Category</h6>
+      <%= collection_check_boxes :catogory, :product_id, Category.all, :id, :name %>
+    </div>
+    <div class="partial-filters_collection">
+      <h6>Brand</h6>
+      <%= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
+    </div>
+  </div>
+  <div class="partial-products">
+    <% @products.each do |product| %>
+      <div class="card">
+        <%= link_to product_path(product) do %>
+          <div class="card_image">
+            <%#= image_tag product.shades.first.photo %>
+          </div>
+        <% end %>
+        <div class="card_header">
+          <%= product.title %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

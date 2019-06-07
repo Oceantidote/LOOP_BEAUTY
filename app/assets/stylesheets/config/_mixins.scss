@@ -66,6 +66,7 @@
   @media (max-width: 1499.98px) { @content; }
 }
 
+
 // BOOTSTRAP MEDIA QUERIES MOBILE FIRST
 
 @mixin for-small-devices-up {
@@ -82,6 +83,15 @@
 
 @mixin for-xlarge-devices-up {
   @media (min-width: 1200px) { @content; }
+}
+
+@mixin for-1500 {
+  @media (min-width: 1499px) { @content; }
+}
+
+
+@mixin for-1800 {
+  @media (min-width: 1799px) { @content; }
 }
 
 @mixin for-xxlarge-devices-up {
