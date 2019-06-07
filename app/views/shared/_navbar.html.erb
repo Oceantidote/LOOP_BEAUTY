@@ -25,56 +25,111 @@
       <%= link_to '#', class: "" do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count"><%= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
     </div>
   </div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <div style="display: flex; align-items: center;">
-          <li class="nav-item">
-            <%= link_to 'Follow', 'https://www.instagram.com/loop_beauty/', target: "_blank", class: "nav-link-normal mobile-hidden" %>
-          </li>
-          |
-          <li class="nav-item">
-            <%= link_to 'Freebies', '#', class: "nav-link-normal mobile-hidden" %>
-          </li>
-        </div>
-        <li class="nav-item">
-          <%= link_to '#', class: "nav-link mobile-hidden" do %>
-            <%= image_tag 'navbar-search.png' %>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '#', class: "nav-link mobile-hidden" do %>
-            <%= image_tag 'navbar-user.png' %>
-          <% end %>
-        </li>
-        <li class="nav-item basket-icon-container">
-          <%= link_to bag_path, class: "nav-link mobile-hidden" do %>
-            <%= image_tag 'navbar-basket.png' %>
-          <% end %>
-          <p class="basket-item-count"><%= @basket.basket_products.count %></p>
-        </li>
-      <% end %>
-    </ul>
-  </div>
 </div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <% if user_signed_in? %>
+      <li class="nav-item ">
+        <%= link_to "Home", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Messages", "#", class: "nav-link" %>
+      </li>
+      <li class="dropdown">
+        <%= image_tag 'navbar-user.png', class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Action", "#", class: "dropdown-item" %>
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
+    <% else %>
+      <div style="display: flex; align-items: center;">
+        <!-- HIDDEN ON MOBILE -->
+        <li class="nav-item mobile-hidden">
+          <%= link_to 'Follow', 'https://www.instagram.com/loop_beauty/', target: "_blank", class: "nav-link-normal" %>
+        </li>
+        <span class="mobile-hidden">|</span>
+        <li class="nav-item mobile-hidden">
+          <%= link_to 'Freebies', '#', class: "nav-link-normal" %>
+        </li>
+      </div>
+      <li class="nav-item mobile-hidden">
+        <%= link_to '#', class: "nav-link" do %>
+          <%= image_tag 'navbar-search.png' %>
+        <% end %>
+      </li>
+      <li class="nav-item mobile-hidden">
+        <%= link_to '#', class: "nav-link" do %>
+          <%= image_tag 'navbar-user.png' %>
+        <% end %>
+      </li>
+      <li class="nav-item basket-icon-container mobile-hidden">
+        <%= link_to bag_path, class: "nav-link" do %>
+          <%= image_tag 'navbar-basket.png' %>
+        <% end %>
+        <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
+      </li>
+      <!-- HIDDEN ON MOBILE -->
+      <!-- SHOWING ON MOBILE -->
+      <li class="nav-item">
+        <%= link_to "Brands", "#", class: "nav-link mobile-dropdown-options" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Influencers", "#", class: "nav-link mobile-dropdown-options" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Make Up", "#", class: "nav-link mobile-dropdown-options" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Insider", "#", class: "nav-link mobile-dropdown-options" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Video", "#", class: "nav-link mobile-dropdown-options" %>
+      </li>
+      <!-- SHOWING ON MOBILE -->
+    <% end %>
+  </ul>
+</div>
+<!-- HIDDEN BRANDS BAR -->
+<!-- <div class="mobile-dropdown-options-brands">
+  <ul class="navbar-nav mr-auto">
+    <li class="back-to-menu">
+      <div class="dropdown-back-container">
+        <%#= image_tag 'dropdown-back.png', height: 15, class: "dropdown-back" %>
+      </div>
+      Brands</li>
+    <%# @brands.each do |brand| %>
+      <%#= link_to brand_path(brand), class: "each-brand" do %>
+        <li class="nav-item each-brand-dropdown">
+          <%#= brand.name %>
+        </li>
+      <%# end %>
+    <%# end %>
+  </ul>
+</div> -->
+<!-- HIDDEN BRANDS BAR -->
+<!-- HIDDEN INFLUENCERS BAR -->
+<!-- <div class="mobile-dropdown-options-influencers">
+  <ul class="navbar-nav mr-auto">
+    <li class="back-to-menu">
+      <div class="dropdown-back-container">
+        <%#= image_tag 'dropdown-back.png', height: 15, class: "dropdown-back" %>
+      </div>
+      Influencers</li>
+    <%# @influencers.each do |influencer| %>
+      <%#= link_to :root, class: "each-influencer" do %>
+        <li class="nav-item each-influencer-dropdown">
+          <%#= influencer.first_name.capitalize %> <%#= influencer.last_name.capitalize %>
+        </li>
+      <%# end %>
+    <%# end %>
+  </ul>
+</div> -->
+<!-- HIDDEN INFLUENCERS BAR -->
 <div class="navbar-submenu navbar-submenu-brands">
   <div class="navbar-submenu-container">
     <% @brands.each do |brand| %>
