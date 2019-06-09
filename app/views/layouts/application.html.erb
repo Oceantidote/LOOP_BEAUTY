@@ -32,7 +32,9 @@
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="minimum-height">
+      <%= yield %>
+    </div>
     <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
       <%= render 'shared/footer' %>
     <% end %>

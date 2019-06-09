@@ -1,5 +1,4 @@
 //*= require trix
-
 // Graphical variables
 @import "config/mixins";
 @import "config/fonts";
@@ -23,4 +22,11 @@
 
 //Partials
 @import "partials/page-and-filters";
-@import "insider_articles/index"
+@import "insider_articles/index";
+
+.minimum-height {
+  min-height: calc(100vh - 358px);
+  @include for-phone-only {
+    min-height: calc(100vh - 278px);
+  }
+}
