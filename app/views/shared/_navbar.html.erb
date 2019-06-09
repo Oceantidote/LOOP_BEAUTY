@@ -2,11 +2,11 @@
   <p class="offers-banner-text">FREE SAMPLES WITH EVERY ORDER</p>
 </div>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#mobile-nav-brands-menu,#mobile-nav-influencers-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <%= image_tag 'hamburger.png', width: 25 %>
   </button>
   <div class="navbar-logo">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'loop-beauty-logo.svg' %>
     <% end %>
   </div>
@@ -19,7 +19,6 @@
   </div>
   <ul class="navbar-nav">
     <div style="display: flex; align-items: center;">
-      <!-- HIDDEN ON MOBILE -->
       <li class="nav-item mobile-hidden">
         <%= link_to 'Follow', 'https://www.instagram.com/loop_beauty/', target: "_blank", class: "nav-link-normal" %>
       </li>
@@ -78,65 +77,74 @@
       </li>
     <% else %>
       <!-- SHOWING ON MOBILE -->
-      <li class="nav-item">
-        <%= link_to "Brands", "#", class: "nav-link mobile-dropdown-options" %>
+      <li class="nav-item position-relative">
+        <div class="dropdown-forward-container">
+          <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow" %>
+        </div>
+        <%= link_to "Brands", "#", id: "mobile-nav-brands", class: "nav-link mobile-dropdown-options each-item" %>
+      </li>
+      <li class="nav-item position-relative">
+        <div class="dropdown-forward-container">
+          <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow" %>
+        </div>
+        <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Influencers", "#", class: "nav-link mobile-dropdown-options" %>
+        <%= link_to "Make Up", "#", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Make Up", "#", class: "nav-link mobile-dropdown-options" %>
+        <%= link_to "Insider", "#", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Insider", "#", class: "nav-link mobile-dropdown-options" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Video", "#", class: "nav-link mobile-dropdown-options" %>
+        <%= link_to "Video", "#", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <!-- SHOWING ON MOBILE -->
     <% end %>
   </ul>
 </div>
+
 <!-- HIDDEN BRANDS BAR -->
-<!-- <div class="mobile-dropdown-options-brands">
+<div id="mobile-nav-brands-menu" class="mobile-dropdown-options-brands collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
-    <li class="back-to-menu">
+    <li id="back-to-menu-brands" class="back-to-menu">
       <div class="dropdown-back-container">
-        <%#= image_tag 'dropdown-back.png', height: 15, class: "dropdown-back" %>
+        <%= image_tag 'dropdown-back.png', class: "dropdown-arrow" %>
       </div>
       Brands</li>
-    <%# @brands.each do |brand| %>
-      <%#= link_to brand_path(brand), class: "each-brand" do %>
-        <li class="nav-item each-brand-dropdown">
-          <%#= brand.name %>
+    <% @brands.each do |brand| %>
+      <%= link_to brand_path(brand), class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          <%= brand.name %>
         </li>
-      <%# end %>
-    <%# end %>
+      <% end %>
+    <% end %>
   </ul>
-</div> -->
+</div>
 <!-- HIDDEN BRANDS BAR -->
+
 <!-- HIDDEN INFLUENCERS BAR -->
-<!-- <div class="mobile-dropdown-options-influencers">
+<div id="mobile-nav-influencers-menu" class="mobile-dropdown-options-influencers collapse navbar-collapse">
   <ul class="navbar-nav mr-auto">
-    <li class="back-to-menu">
+    <li id="back-to-menu-influencers" class="back-to-menu">
       <div class="dropdown-back-container">
-        <%#= image_tag 'dropdown-back.png', height: 15, class: "dropdown-back" %>
+        <%= image_tag 'dropdown-back.png', class: "dropdown-arrow" %>
       </div>
       Influencers</li>
-    <%# @influencers.each do |influencer| %>
-      <%#= link_to :root, class: "each-influencer" do %>
-        <li class="nav-item each-influencer-dropdown">
-          <%#= influencer.first_name.capitalize %> <%#= influencer.last_name.capitalize %>
+    <% @influencers.each do |influencer| %>
+      <%= link_to :root, class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
         </li>
-      <%# end %>
-    <%# end %>
+      <% end %>
+    <% end %>
   </ul>
-</div> -->
+</div>
 <!-- HIDDEN INFLUENCERS BAR -->
+
 <div class="navbar-submenu navbar-submenu-brands">
   <div class="navbar-submenu-container">
     <% @brands.each do |brand| %>
-      <%= link_to brand_path(brand), class: "each-brand" do %>
+      <%= link_to brand_path(brand), class: "each-item" do %>
         <%= brand.name %>
       <% end %>
     <% end %>
@@ -145,7 +153,7 @@
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
     <% @influencers.each do |influencer| %>
-      <%= link_to :root, class: "each-brand" do %>
+      <%= link_to :root, class: "each-item" do %>
         <%= influencer.first_name %> <%= influencer.last_name %>
       <% end %>
     <% end %>
@@ -154,6 +162,7 @@
 <div class="navbar-submenu-underlay"></div>
 
 <script>
+  // WEB NAV
   navbarBrands = document.getElementById('navbar-brands');
   menuBrands = document.querySelector('.navbar-submenu-brands');
   navbarInfluencers = document.getElementById('navbar-influencers');
@@ -199,4 +208,45 @@
     menuInfluencers.style.display = "none";
     subnavUnderlay.style.display = "none";
   });
+  // WEB NAV
+
+  // MOBILE NAV
+  mobileNavBrands = document.getElementById('mobile-nav-brands');
+  mobileNavInfluencers = document.getElementById('mobile-nav-influencers');
+  mobileNavBrandsMenu = document.getElementById('mobile-nav-brands-menu');
+  mobileNavInfluencersMenu = document.getElementById('mobile-nav-influencers-menu');
+  backToMenuBrands = document.getElementById('back-to-menu-brands');
+  backToMenuInfluencers = document.getElementById('back-to-menu-influencers');
+
+  mobileNavBrands.addEventListener('click', function() {
+    mobileNavBrandsMenu.style.left = 0;
+  });
+
+  mobileNavInfluencers.addEventListener('click', function() {
+    mobileNavInfluencersMenu.style.left = 0;
+  });
+
+  backToMenuBrands.addEventListener('click', function() {
+    mobileNavBrandsMenu.style.left = "100%";
+  });
+
+  backToMenuInfluencers.addEventListener('click', function() {
+    mobileNavInfluencersMenu.style.left = "100%";
+  });
+
+  navbarToggler = document.getElementById('navbar-toggler');
+
+  navbarToggler.addEventListener('click', function() {
+      // setTimeout(function() {
+      //   navbarToggler.disabled = true;
+      //   }, 1
+      // );
+    setTimeout(function() {
+      mobileNavBrandsMenu.style.left = "100%";
+      mobileNavInfluencersMenu.style.left = "100%";
+      // navbarToggler.disabled = false;
+      }, 300
+    );
+  });
+  // MOBILE NAV
 </script>
