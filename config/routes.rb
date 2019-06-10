@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/homepage', to: 'pages#homepage'
+  get '/freebies', to: 'pages#freebies'
   get '/terms_and_conditions', to: 'pages#terms_and_conditions', as: :terms_and_conditions
   get '/shipping', to: 'pages#shipping', as: :shipping
   get '/sale_terms', to: 'pages#sale_terms', as: :sale_terms

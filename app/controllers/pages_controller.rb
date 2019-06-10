@@ -1,10 +1,13 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :homepage, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy]
+  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy]
 
   def home
   end
 
   def homepage
+  end
+
+  def freebies
   end
 
   def terms_and_conditions
