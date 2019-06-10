@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :lookbooks, only: [:index]
     resources :tutorials, only: [:index]
   end
+  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
+  resources :users, only: [:show]
+  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
+
   namespace :admin do
     resources :lookbooks, only: [:index] do
       member do

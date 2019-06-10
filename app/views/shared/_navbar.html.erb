@@ -135,7 +135,7 @@
       </div>
       Influencers</li>
     <% @influencers.each do |influencer| %>
-      <%= link_to :root, class: "each-item" do %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
         <li class="nav-item each-item-dropdown">
           <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
         </li>
@@ -157,7 +157,7 @@
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
     <% @influencers.each do |influencer| %>
-      <%= link_to :root, class: "each-item" do %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
         <%= influencer.first_name %> <%= influencer.last_name %>
       <% end %>
     <% end %>
@@ -246,10 +246,12 @@
   navbarToggler = document.getElementById('navbar-toggler');
 
   navbarToggler.addEventListener('click', function() {
-    setTimeout(function() {
-      subnavUnderlay.classList.toggle('show-underlay');
-      }, 300
-    );
+    subnavUnderlay.classList.toggle('show-underlay');
+    // setTimeout(function() {
+    //   subnavUnderlay.classList.toggle('show-underlay');
+    //   }, 300
+    // );
+
     // subnavUnderlay.classList.toggle('show-underlay');
       // setTimeout(function() {
       //   navbarToggler.disabled = true;
