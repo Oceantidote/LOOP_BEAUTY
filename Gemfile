@@ -26,6 +26,7 @@ gem 'image_processing', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'hotloader'
 end
 
 group :development, :test do

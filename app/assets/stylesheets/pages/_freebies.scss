@@ -1,0 +1,97 @@
+.freebies-title-banner {
+  background: #F5F5F5;
+  height: 200px;
+  @include absCenterColumn;
+  h1 {
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+  p {
+    margin: 0;
+  }
+  @include for-phone-only {
+    height: 150px;
+  }
+}
+
+.freebies-first-time-banner {
+  height: calc(100vw * 0.3);
+  background: #DDDEE2;
+  @include absCenterColumn;
+  h1 {
+    font-weight: 900;
+    border-bottom: 2px solid black;
+    margin-bottom: 40px;
+    @include for-medium-devices-down {
+      margin-bottom: 20px;
+    }
+  }
+  h5 {
+    font-weight: 600;
+    line-height: 20px;
+  }
+  @include for-large-devices-down {
+    height: calc(100vw * 0.4);
+  }
+  @include for-small-devices-down {
+    height: calc(100vw * 0.5);
+  }
+  @include for-phone-only {
+    min-height: 320px;
+  }
+}
+
+.freebies-newsletter-banner {
+  height: calc(100vw * 0.3);
+  background: #E6CFF9;
+  @include absCenterColumn;
+  h1 {
+    font-weight: 900;
+    border-bottom: 2px solid black;
+    margin-bottom: 40px;
+    @include for-medium-devices-down {
+      margin-bottom: 20px;
+    }
+  }
+  h5 {
+    font-weight: 600;
+    width: 33%;
+    text-align: center;
+    line-height: 30px;
+    @include for-medium-devices-down {
+      width: 50%;
+    }
+    @include for-phone-only {
+      width: 90%;
+    }
+  }
+  @include for-large-devices-down {
+    height: calc(100vw * 0.4);
+  }
+  @include for-small-devices-down {
+    height: calc(100vw * 0.5);
+  }
+  @include for-phone-only {
+    min-height: 320px;
+  }
+}
+
+.primary-button {
+  border: none;
+  height: 50px;
+  background-color: black;
+  color: #F5F5F5;
+  border-radius: 0;
+  padding: 6px 50px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  @include absCenter;
+  margin: 20px 0;
+  &:hover {
+    text-decoration: none;
+    color: #F5F5F5;
+  }
+  @include for-medium-devices-down {
+    margin: 10px;
+  }
+}

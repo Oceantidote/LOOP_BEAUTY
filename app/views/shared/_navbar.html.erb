@@ -6,7 +6,7 @@
     <%= image_tag 'hamburger.png', width: 25 %>
   </button>
   <div class="navbar-logo">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to homepage_path, class: "navbar-brand" do %>
       <%= image_tag 'loop-beauty-logo.svg' %>
     <% end %>
   </div>
@@ -24,7 +24,7 @@
       </li>
       <span class="mobile-hidden">|</span>
       <li class="nav-item mobile-hidden">
-        <%= link_to 'Freebies', '#', class: "nav-link-normal" %>
+        <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
       </li>
     </div>
     <li class="nav-item mobile-hidden">
