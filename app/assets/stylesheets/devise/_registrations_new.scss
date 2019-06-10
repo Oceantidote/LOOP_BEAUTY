@@ -1,0 +1,63 @@
+.registrations-new-wrapper {
+  background: #F5F5F5;
+  min-height: calc(100vh - 358px);
+  width: 100%;
+  @include absCenterColumn;
+  h1 {
+    font-weight: 900;
+    margin-bottom: 50px;
+    text-align: center;
+    @include for-phone-only {
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+  }
+  padding: 80px 0;
+  @include for-phone-only {
+    padding: 20px 0;
+    .primary-button {
+      margin: auto;
+      padding: 6px 30px;
+    }
+  }
+}
+
+.sign-up-container {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 20px 40px;
+  flex: 1;
+  h3, h5 {
+    font-weight: 900;
+    margin-bottom: 30px;
+  }
+  .form-check-label {
+    font-weight: 900;
+  }
+  a {
+    color: black;
+    font-weight: 900;
+    border-bottom: 1.1px solid #A3A3A3;
+    height: fit-content;
+    &:hover {
+      text-decoration: none;
+    }
+    @include for-phone-only {
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+  }
+  input[type="submit"] {
+    font-size: 14px;
+    @include for-phone-only {
+      font-size: 12px;
+    }
+  }
+  @include for-medium-devices-down {
+    margin-bottom: 15px;
+  }
+  @include for-phone-only {
+    padding: 30px 10px;
+
+  }
+}
