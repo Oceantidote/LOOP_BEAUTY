@@ -1,5 +1,5 @@
 .freebies-title-banner {
-  background: #F5F5F5;
+  background: $light-gray;
   height: 200px;
   @include absCenterColumn;
   h1 {
@@ -80,7 +80,7 @@
   border: none;
   height: 50px;
   background-color: black;
-  color: #F5F5F5;
+  color: $light-gray;
   border-radius: 0;
   padding: 6px 50px;
   letter-spacing: 2px;
@@ -89,7 +89,7 @@
   margin: 20px 0;
   &:hover {
     text-decoration: none;
-    color: #F5F5F5;
+    color: $light-gray;
   }
   @include for-medium-devices-down {
     margin: 10px;

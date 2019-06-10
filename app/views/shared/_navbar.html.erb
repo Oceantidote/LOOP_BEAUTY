@@ -11,11 +11,15 @@
     <% end %>
   </div>
   <div class="navbar-middle">
-    <p id="navbar-brands" class="navbar-middle-item">Brands</p>
-    <p id="navbar-influencers" class="navbar-middle-item">Influencers</p>
-    <%= link_to 'Make-Up', products_path, class: 'navbar-middle-item' %>
-    <%= link_to 'Insider','#', class: 'navbar-middle-item' %>
-    <%= link_to 'Video','#', class: 'navbar-middle-item' %>
+    <%= link_to brands_path do %>
+      <p id="navbar-brands" class="navbar-middle-item <%= params[:controller] == 'brands' && params[:action] == 'index' ? 'navbar-active' : '' %>">Brands</p>
+    <% end %>
+    <%= link_to influencers_path do %>
+      <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'influencers' ? 'navbar-active' : '' %>">Influencers</p>
+    <% end %>
+    <%= link_to 'Make-Up', products_path, class: "navbar-middle-item" %>
+    <%= link_to 'Insider','#', class: "navbar-middle-item" %>
+    <%= link_to 'Video','#', class: "navbar-middle-item" %>
   </div>
   <ul class="navbar-nav">
     <div style="display: flex; align-items: center;">
@@ -242,7 +246,11 @@
   navbarToggler = document.getElementById('navbar-toggler');
 
   navbarToggler.addEventListener('click', function() {
-    subnavUnderlay.classList.toggle('show-underlay');
+    setTimeout(function() {
+      subnavUnderlay.classList.toggle('show-underlay');
+      }, 300
+    );
+    // subnavUnderlay.classList.toggle('show-underlay');
       // setTimeout(function() {
       //   navbarToggler.disabled = true;
       //   }, 1

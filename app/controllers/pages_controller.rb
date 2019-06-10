@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy]
+  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :influencers, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy]
 
   def home
   end
@@ -8,6 +8,10 @@ class PagesController < ApplicationController
   end
 
   def freebies
+  end
+
+  def influencers
+    @influencers = User.where(influencer: true)
   end
 
   def terms_and_conditions

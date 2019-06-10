@@ -57,6 +57,9 @@
 .navbar-middle {
   display: flex;
   height: 100%;
+  a:hover {
+    text-decoration: none;
+  }
   @include for-medium-devices-down {
     display: none;
   }

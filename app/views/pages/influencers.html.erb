@@ -1,0 +1,22 @@
+<div class="influencers-wrapper">
+  <h2 class="insider-info-title text-center">Shop by Influencer</h2>
+  <div class="container d-flex justify-content-center">
+    <div class="influencers-container">
+      <div class="row">
+        <% @num = 0 %>
+        <% @influencers.each do |influencer| %>
+          <% @pics = ['https://weandthecolor.com/wp-content/uploads/2013/04/Women-Portrait-Photography-by-Hannes-Caspar-33463453.jpg','https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80','https://www.dhresource.com/0x0s/f2-albu-g8-M00-61-D3-rBVaVFxuHiWAS0GjAAJeXhnUowo228.jpg/2018-new-square-sunglasses-women-brand-designer.jpg','https://www.byrdie.com/thmb/a6rK0tlBEsIV2R6XquQP-krhMH8=/1277x849/filters:no_upscale():max_bytes(150000):strip_icc()/kiera-knightley-long-bob-57bef22b3df78cc16ef95c5c.jpg','https://www.byrdie.com/thmb/5LabFUFeXSjOFUzCs8KK-9otBGQ=/2341x1807/filters:no_upscale():max_bytes(150000):strip_icc()/mandy-moore-square-face-shape-56a084655f9b58eba4b13519.jpg', 'https://static1.squarespace.com/static/5913a5b33e00be4e120a1502/5916b8fd9de4bb3c017fab73/59172e8f2e69cf82b8e1a440/1496478943408/VCSSFA-12-s.jpg?format=500w'] %>
+          <div class="col-xs-12 col-sm-6 col-lg-3">
+            <%= link_to '#', class: "influencer-card-link" do %>
+              <div class="each-influencer-avatar-card text-center">
+                <%= image_tag @pics[@num], class: "influencer-large-avatar" %>
+                <h6><%= influencer.instagram %></h6>
+              </div>
+            <% end %>
+          </div>
+          <% @num += 1 %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
