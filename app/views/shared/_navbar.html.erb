@@ -58,7 +58,7 @@
     </div>
   </div>
 </div>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<div class="collapse navbar-collapse main-nav-dropdown" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
     <% if user_signed_in? %>
       <li class="nav-item ">
@@ -217,26 +217,32 @@
   mobileNavInfluencersMenu = document.getElementById('mobile-nav-influencers-menu');
   backToMenuBrands = document.getElementById('back-to-menu-brands');
   backToMenuInfluencers = document.getElementById('back-to-menu-influencers');
+  nav = document.getElementById('navbarSupportedContent');
 
   mobileNavBrands.addEventListener('click', function() {
     mobileNavBrandsMenu.style.left = 0;
+    nav.style.right = "100%";
   });
 
   mobileNavInfluencers.addEventListener('click', function() {
     mobileNavInfluencersMenu.style.left = 0;
+    nav.style.right = "100%";
   });
 
   backToMenuBrands.addEventListener('click', function() {
     mobileNavBrandsMenu.style.left = "100%";
+    nav.style.right = 0;
   });
 
   backToMenuInfluencers.addEventListener('click', function() {
     mobileNavInfluencersMenu.style.left = "100%";
+    nav.style.right = 0;
   });
 
   navbarToggler = document.getElementById('navbar-toggler');
 
   navbarToggler.addEventListener('click', function() {
+    subnavUnderlay.classList.toggle('show-underlay');
       // setTimeout(function() {
       //   navbarToggler.disabled = true;
       //   }, 1
@@ -248,5 +254,15 @@
       }, 300
     );
   });
+
+  // subnavUnderlay.addEventListener('click', function() {
+  //   subnavUnderlay.classList.toggle('show-underlay');
+  //   navbarToggler.classList.toggle('collapsed');
+  //   nav.classList.toggle('show');
+  //   mobileNavBrands.classList.toggle('show');
+  //   mobileNavInfluencers.classList.toggle('show');
+  // });
   // MOBILE NAV
+
+
 </script>
