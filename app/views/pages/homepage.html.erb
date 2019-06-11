@@ -149,3 +149,26 @@
     </div>
   </div>
 </div>
+<div class="homepage-pop-up"></div>
+<div class="pop-up-content">
+  <h3>First time with us</h3>
+  <h6>Get 10% off your first order</h6>
+  <h6 class="grey-font">CODE: WELCOME2LOOP</h6>
+  <%#= link_to 'SHOP NOW', homepage_path, class: "primary-button pop-up-content-button" %>
+  <p class="primary-button pop-up-content-button">SHOP NOW</p>
+  <h6 class="grey-font" style="border-bottom: 1px solid #676767;">Learn more</h6>
+</div>
+
+<script>
+  popUp = document.querySelector('.homepage-pop-up');
+  popUpContent = document.querySelector('.pop-up-content');
+  popUpContentButton = document.querySelector('.pop-up-content-button');
+  popUp.addEventListener('click', function() {
+    popUp.style.display = 'none'
+    popUpContent.style.display = 'none'
+  })
+  popUpContentButton.addEventListener('click', function() {
+    popUp.style.display = 'none'
+    popUpContent.style.display = 'none'
+  })
+</script>
