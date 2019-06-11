@@ -1,0 +1,155 @@
+.about-us-wrapper {
+  background-size: cover;
+  background-position: top;
+  @include absCenterColumn;
+  padding: 40px 0;
+  @include for-phone-only {
+    padding: 0;
+  }
+}
+
+.about-us-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 50px auto;
+  height: 500px;
+  @include for-medium-devices-down {
+    width: 100%;
+  }
+  @include for-phone-only {
+    flex-direction: column-reverse;
+  }
+}
+
+.about-us-image {
+  width: 380px;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 50px;
+  @include for-small-devices-down {
+    width: 300px;
+    height: 420px;
+    margin-right: 12px;
+  }
+  @include for-phone-only {
+    margin: 20px 0 0 0;
+    width: 100%;
+  }
+  // img {
+  //   max-height: 100%;
+  //   max-width: 100%;
+  // }
+}
+
+.about-us-text {
+  width: 40%;
+  h3 {
+    margin-bottom: 50px;
+    font-weight: 900;
+  }
+  h4 {
+    font-weight: 900;
+  }
+  @include for-phone-only {
+    width: 100%;
+  }
+}
+
+.our-history-banner {
+  width: 70%;
+  margin: 50px auto;
+  text-align: center;
+  @include absCenterColumn;
+  h3 {
+    font-weight: 900;
+  }
+  h6 {
+    width: 60%;
+    @include for-small-devices-down {
+      width: 90%;
+    }
+  }
+  @include for-medium-devices-down {
+    width: 100%;
+  }
+}
+
+.our-history-image {
+  width: 350px;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  margin: 25px auto;
+  @include for-small-devices-down {
+    width: 300px;
+    height: 420px;
+  }
+  @include for-phone-only {
+    width: 100%;
+  }
+}
+
+.loop-beauty-banner {
+  width: 70%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 40%;
+    margin-bottom: 20px;
+    @include for-phone-only {
+      width: 70%;
+    }
+  }
+  h4 {
+    width: 50%;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 50px;
+    @include for-phone-only {
+      width: 100%;
+    }
+  }
+  @include for-medium-devices-down {
+    width: 100%;
+  }
+}
+
+.loop-beauty-founder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include for-phone-only {
+    flex-direction: column-reverse;
+  }
+}
+
+.loop-beauty-founder-text {
+  text-align: right;
+  width: 38%;
+  margin-right: 50px;
+  @include for-small-devices-down {
+    margin-right: 12px;
+  }
+  @include for-phone-only {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 0 0;
+  }
+}
+
+.loop-beauty-founder-image {
+  width: 350px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  @include for-small-devices-down {
+    width: 250px;
+    height: 300px;
+  }
+}
