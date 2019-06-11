@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/freebies', to: 'pages#freebies'
   get '/influencers', to: 'pages#influencers'
   get '/about_us', to: 'pages#about_us'
+  get '/questions_and_answers', to: 'pages#questions_and_answers'
   get '/terms_and_conditions', to: 'pages#terms_and_conditions', as: :terms_and_conditions
   get '/shipping', to: 'pages#shipping', as: :shipping
   get '/sale_terms', to: 'pages#sale_terms', as: :sale_terms
