@@ -17,9 +17,15 @@
     <%= link_to influencers_path do %>
       <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'influencers' ? 'navbar-active' : '' %>">Influencers</p>
     <% end %>
-    <%= link_to 'Make-Up', products_path, class: "navbar-middle-item" %>
-    <%= link_to 'Insider','#', class: "navbar-middle-item" %>
-    <%= link_to 'Video','#', class: "navbar-middle-item" %>
+    <%= link_to products_path do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Make Up</p>
+    <% end %>
+    <%= link_to insider_path do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'insider' ? 'navbar-active' : '' %>">Insider</p>
+    <% end %>
+    <%= link_to '#' do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>
+    <% end %>
   </div>
   <ul class="navbar-nav">
     <div style="display: flex; align-items: center;">
@@ -97,7 +103,7 @@
         <%= link_to "Make Up", "#", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Insider", "#", class: "nav-link mobile-dropdown-options each-item" %>
+        <%= link_to "Insider", insider_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
         <%= link_to "Video", "#", class: "nav-link mobile-dropdown-options each-item" %>
@@ -273,6 +279,4 @@
   //   mobileNavInfluencers.classList.toggle('show');
   // });
   // MOBILE NAV
-
-
 </script>
