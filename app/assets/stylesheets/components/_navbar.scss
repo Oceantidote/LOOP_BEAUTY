@@ -57,6 +57,9 @@
 .navbar-middle {
   display: flex;
   height: 100%;
+  a:hover {
+    text-decoration: none;
+  }
   @include for-medium-devices-down {
     display: none;
   }
@@ -143,11 +146,11 @@
 }
 
 .basket-mobile {
-  bottom: 4px;
+  bottom: 3px;
 }
 
 .basket-web {
-  bottom: 12px;
+  bottom: 11px;
 }
 
 .mobile-nav-links-container {

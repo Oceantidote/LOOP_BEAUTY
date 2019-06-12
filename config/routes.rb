@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/homepage', to: 'pages#homepage'
+  get '/freebies', to: 'pages#freebies'
+  # TEMP ROUTES FOR INSIDER
+  get '/insider', to: 'pages#insider'
+  get '/insider_show', to: 'pages#insider_show'
+  # TEMP ROUTES FOR INSIDER
+  get '/influencers', to: 'pages#influencers'
+  get '/about_us', to: 'pages#about_us'
+  get '/questions_and_answers', to: 'pages#questions_and_answers'
   get '/terms_and_conditions', to: 'pages#terms_and_conditions', as: :terms_and_conditions
   get '/shipping', to: 'pages#shipping', as: :shipping
   get '/sale_terms', to: 'pages#sale_terms', as: :sale_terms
@@ -16,6 +24,10 @@ Rails.application.routes.draw do
     resources :lookbooks, only: [:index]
     resources :tutorials, only: [:index]
   end
+  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
+  resources :users, only: [:show]
+  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
+
   namespace :admin do
     resources :lookbooks, only: [:index] do
       member do

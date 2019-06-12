@@ -1,25 +1,55 @@
-<h2>Sign up</h2>
+<div class="registrations-new-wrapper">
+  <h1>Login or create an account</h1>
+  <div class="container registrations-new-sub-wrapper">
+    <h3 class="text-center">Your details</h3>
+    <div class="registrations-new-container">
+      <div class="sign-up-container">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :first_name,
+                        required: true,
+                        label: false,
+                        placeholder: "First name",
+                        autofocus: true,
+                        input_html: { autocomplete: "first_name" }%>
+            <%= f.input :last_name,
+                        required: true,
+                        label: false,
+                        placeholder: "Last name",
+                        autofocus: true,
+                        input_html: { autocomplete: "last_name" }%>
+            <%= f.input :email,
+                        required: true,
+                        label: false,
+                        placeholder: "Email address",
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        label: false,
+                        placeholder: "Password",
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        label: false,
+                        placeholder: "Confirm your password",
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+      </div>
+      <div class="sign-up-extras-container">
+          <h6>How did you hear about us?</h6>
+          <h6>Find out about the latest offers, new products and beauty news.</h6>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+          <h6 class="grey-font">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
+          <div class="form-actions">
+            <%= f.button :submit, "SUBMIT", class: "primary-button" %>
+          </div>
+      </div>
+        <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>

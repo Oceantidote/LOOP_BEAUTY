@@ -35,7 +35,7 @@
     <div class="minimum-height">
       <%= yield %>
     </div>
-    <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
+    <% unless (params[:controller] == 'pages' && params[:action] == 'home') || (params[:controller] == 'pages' && params[:action] == 'freebies') %>
       <%= render 'shared/footer' %>
     <% end %>
     <%= javascript_include_tag 'application' %>

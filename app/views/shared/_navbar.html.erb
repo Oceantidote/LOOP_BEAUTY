@@ -6,16 +6,26 @@
     <%= image_tag 'hamburger.png', width: 25 %>
   </button>
   <div class="navbar-logo">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to homepage_path, class: "navbar-brand" do %>
       <%= image_tag 'loop-beauty-logo.svg' %>
     <% end %>
   </div>
   <div class="navbar-middle">
-    <p id="navbar-brands" class="navbar-middle-item">Brands</p>
-    <p id="navbar-influencers" class="navbar-middle-item">Influencers</p>
-    <%= link_to 'Make-Up', products_path, class: 'navbar-middle-item' %>
-    <%= link_to 'Insider','#', class: 'navbar-middle-item' %>
-    <%= link_to 'Video','#', class: 'navbar-middle-item' %>
+    <%= link_to brands_path do %>
+      <p id="navbar-brands" class="navbar-middle-item <%= params[:controller] == 'brands' && params[:action] == 'index' ? 'navbar-active' : '' %>">Brands</p>
+    <% end %>
+    <%= link_to influencers_path do %>
+      <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'influencers' ? 'navbar-active' : '' %>">Influencers</p>
+    <% end %>
+    <%= link_to products_path do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Make Up</p>
+    <% end %>
+    <%= link_to insider_path do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'insider' ? 'navbar-active' : '' %>">Insider</p>
+    <% end %>
+    <%= link_to '#' do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>
+    <% end %>
   </div>
   <ul class="navbar-nav">
     <div style="display: flex; align-items: center;">
@@ -24,7 +34,7 @@
       </li>
       <span class="mobile-hidden">|</span>
       <li class="nav-item mobile-hidden">
-        <%= link_to 'Freebies', '#', class: "nav-link-normal" %>
+        <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
       </li>
     </div>
     <li class="nav-item mobile-hidden">
@@ -93,7 +103,7 @@
         <%= link_to "Make Up", "#", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Insider", "#", class: "nav-link mobile-dropdown-options each-item" %>
+        <%= link_to "Insider", insider_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
         <%= link_to "Video", "#", class: "nav-link mobile-dropdown-options each-item" %>
@@ -131,7 +141,7 @@
       </div>
       Influencers</li>
     <% @influencers.each do |influencer| %>
-      <%= link_to :root, class: "each-item" do %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
         <li class="nav-item each-item-dropdown">
           <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
         </li>
@@ -153,7 +163,7 @@
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
     <% @influencers.each do |influencer| %>
-      <%= link_to :root, class: "each-item" do %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
         <%= influencer.first_name %> <%= influencer.last_name %>
       <% end %>
     <% end %>
@@ -243,6 +253,12 @@
 
   navbarToggler.addEventListener('click', function() {
     subnavUnderlay.classList.toggle('show-underlay');
+    // setTimeout(function() {
+    //   subnavUnderlay.classList.toggle('show-underlay');
+    //   }, 300
+    // );
+
+    // subnavUnderlay.classList.toggle('show-underlay');
       // setTimeout(function() {
       //   navbarToggler.disabled = true;
       //   }, 1
@@ -263,6 +279,4 @@
   //   mobileNavInfluencers.classList.toggle('show');
   // });
   // MOBILE NAV
-
-
 </script>

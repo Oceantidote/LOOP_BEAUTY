@@ -1,0 +1,119 @@
+.insider-home-banner-text-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    letter-spacing: 1px;
+  }
+  a {
+    font-family: $title-font;
+    color: black;
+    font-weight: 900;
+    border-bottom: 1px solid black;
+    line-height: 15px;
+    width: fit-content;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.insider-home-banner-text {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 35%;
+  @include for-phone-only {
+    width: 70%;
+  }
+}
+
+.insider-home-image-banner {
+  width: 100vw;
+  height: calc(100vw * 0.4);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  @include for-phone-only {
+    height: calc(100vw * 0.7);
+  }
+}
+
+.insider-home-articles-banner {
+  width: 100vw;
+  height: calc(100vw * 0.3);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  @include for-phone-only {
+    height: calc(100vw * 0.5);
+  }
+}
+
+.insider-home-tabs-container {
+  height: 60px;
+  background: white;
+  @include absCenter;
+}
+
+.insider-home-tabs {
+  display: flex;
+  height: 100%;
+}
+
+.each-insider-home-tab {
+  padding: 0 15px;
+  margin: 0;
+  height: 100%;
+  @include absCenter;
+  border-bottom: 3px solid transparent;
+  color: black;
+  font-size: 14px;
+  font-weight: 900;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    background: black;
+    cursor: pointer;
+  }
+}
+
+.insider-home-tab-active {
+  background: black !important;
+  color: white !important;
+}
+
+.insider-home-articles-card {
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  h6 {
+    margin-bottom: 15px;
+    color: white;
+    font-weight: 900;
+  }
+  p {
+    color: white;
+    width: 40%;
+    margin-bottom: 0;
+  }
+}
+
+.insider-home-articles-card-text {
+  margin-left: 70px;
+}
+
+.insider-home-card-link {
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
