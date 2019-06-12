@@ -111,6 +111,10 @@
 .latest-videos-wrapper {
   background: $light-gray;
   padding: 15px;
+  position: relative;
+  // @include for-phone-only {
+  //   padding: 15px 0;
+  // }
 }
 
 .homepage-video-card {
