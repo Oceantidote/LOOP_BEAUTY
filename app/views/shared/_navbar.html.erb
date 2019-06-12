@@ -23,7 +23,7 @@
     <%= link_to insider_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'insider' ? 'navbar-active' : '' %>">Insider</p>
     <% end %>
-    <%= link_to '#' do %>
+    <%= link_to videos_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>
     <% end %>
   </div>
@@ -100,13 +100,13 @@
         <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Make Up", "#", class: "nav-link mobile-dropdown-options each-item" %>
+        <%= link_to "Make Up", products_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
         <%= link_to "Insider", insider_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Video", "#", class: "nav-link mobile-dropdown-options each-item" %>
+        <%= link_to "Video", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <!-- SHOWING ON MOBILE -->
     <% end %>
@@ -121,8 +121,14 @@
         <%= image_tag 'dropdown-back.png', class: "dropdown-arrow" %>
       </div>
       Brands</li>
+      <%= link_to brands_path, class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          SEE ALL BRANDS
+        </li>
+      <% end %>
     <% @brands.each do |brand| %>
       <%= link_to brand_path(brand), class: "each-item" do %>
+
         <li class="nav-item each-item-dropdown">
           <%= brand.name %>
         </li>
@@ -140,6 +146,11 @@
         <%= image_tag 'dropdown-back.png', class: "dropdown-arrow" %>
       </div>
       Influencers</li>
+      <%= link_to influencers_path, class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          SEE ALL INFLUENCERS
+        </li>
+      <% end %>
     <% @influencers.each do |influencer| %>
       <%= link_to user_path(influencer), class: "each-item" do %>
         <li class="nav-item each-item-dropdown">

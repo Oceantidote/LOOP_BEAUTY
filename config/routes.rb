@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/insider', to: 'pages#insider'
   get '/insider_show', to: 'pages#insider_show'
   # TEMP ROUTES FOR INSIDER
+  get '/videos', to: 'pages#videos'
+  get '/influencer_video', to: 'pages#influencer_video'
   get '/influencers', to: 'pages#influencers'
   get '/about_us', to: 'pages#about_us'
   get '/questions_and_answers', to: 'pages#questions_and_answers'

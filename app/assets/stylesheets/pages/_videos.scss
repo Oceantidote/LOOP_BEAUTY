@@ -1,0 +1,122 @@
+.see-all-videos-link {
+  position: absolute;
+  right: 30px;
+  top: 40px;
+  color: black;
+  font-weight: 900;
+  text-decoration: underline;
+  &:hover {
+    color: black;
+  }
+}
+
+.video-home-banner-text-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 0;
+  }
+  a {
+    font-family: $title-font;
+    color: white;
+    font-weight: 900;
+    border-bottom: 1px solid white;
+    line-height: 15px;
+    width: fit-content;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.video-home-banner-text {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 35%;
+  @include for-phone-only {
+    width: 70%;
+  }
+}
+
+.video-home-image-banner {
+  width: 100vw;
+  height: calc(100vw * 0.4);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  @include for-phone-only {
+    height: calc(100vw * 0.7);
+  }
+  &:hover {
+    .video-home-play-button {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.video-home-play-button {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  transition: all 0.3s ease;
+  @include for-small-devices-down {
+    left: calc(25% - 40px);
+  }
+}
+
+// INFLUENCER VIDEO PAGE
+
+.influencer-videos-title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  margin-bottom: 30px;
+  @include for-small-devices-down {
+    margin: 0;
+  }
+  @include for-phone-only {
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.filters-container {
+  min-width: 200px;
+  height: 35px;
+  background: white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  p {
+    margin: 0;
+    font-weight: 900;
+  }
+  @include for-phone-only {
+    height: 30px;
+    margin: 3px 0;
+  }
+}
+
+.influencer-videos-title-mobile {
+  display: none;
+  @include for-small-devices-down {
+    display: block;
+  }
+}
+
+.influencer-videos-title-web {
+  @include for-small-devices-down {
+    display: none;
+  }
+}
