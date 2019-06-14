@@ -79,9 +79,13 @@
   justify-content: center;
   align-items: center;
   max-resolution: res;
+  text-decoration: none;
+  border: none !important;
+  font-weight: normal !important;
   i {
     font-size: 35px;
     margin-right: 5px;
+    transition: all 0.3s ease;
     @include for-small-devices-down {
       font-size: 25px;
     }
@@ -90,8 +94,14 @@
     font-weight: 900;
     margin: 0;
   }
+  &:hover {
+    .social-youtube, .social-instagram {
+      color: white;
+    }
+  }
   margin-right: 15px;
 }
+
 
 .influencer-show-options {
   margin: 40px 0 80px 0;

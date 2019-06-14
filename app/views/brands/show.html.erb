@@ -1,8 +1,4 @@
-<% @products.each do |product| %>
-  <%= link_to product.title, product_path(product) %>
-<% end %>
-
-<%= @brand.name %>
+<h2 class="insider-info-title text-center"><%= @brand.name %></h2>
 <div class="brand-header-section-container">
   <div class="brand-header-section brand-description" style="width: 33%;">
     <% if @brand.description %>
@@ -20,3 +16,6 @@
     <% end %>
   </div>
 </div>
+<% @products.each do |product| %>
+  <%= link_to product.title, product_path(product) %>
+<% end %>
