@@ -2,6 +2,8 @@
   <%= form_for [:admin, @insider_article] do |f| %>
     <%= f.label :title, 'Article title', class:"form-control-label" %>
     <%= f.text_field :title, class:"form-control" %>
+    <%= f.label :category, 'Category', class:"form-control-label" %>
+    <%= f.select :category, ["Inspiration", "Ask the Expert", "Beauty News"], class:"form-control" %>
     <div class="spacer" style="height: 50px;"></div>
     <%= f.label :cover_photo, 'Project Photos', class:"form-control-label" %>
     <%= f.file_field :cover_photo %>

@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
 <div class="container">
-  <p><strong>Ask the expert:</strong></p>
+  <p><strong><%= @insider_article.category %>:</strong></p>
   <h1><%= @insider_article.title %></h1>
   <h5><strong>by <%= @insider_article.by %></strong></h5>
   <%= simple_format(@insider_article.text1) %>

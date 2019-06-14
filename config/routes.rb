@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         patch '/reject', to: 'tutorials#reject'
       end
     end
+    resources :brands, only: [:new, :edit, :create, :update, :destroy]
     resources :insider_articles, only: [:new, :edit, :create, :update, :destroy] do
       member do
         patch '/publish', to: 'insider_articles#publish'
@@ -56,6 +57,7 @@ Rails.application.routes.draw do
   end
   resources :basket_products, only: [:update, :destroy]
   resources :brands, only: [:index, :show]
+
   get '/bag', to: 'baskets#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
