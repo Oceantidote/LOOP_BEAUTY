@@ -1,1 +1,7 @@
-
+<%= simple_form_for [:admin, @brand] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo %>
+  <%= f.input :logo %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>

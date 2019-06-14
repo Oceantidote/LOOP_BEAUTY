@@ -3,11 +3,11 @@ class Admin::BrandsController < ApplicationController
 
   def new
     @brand = Brand.new
-    authorize @brand
+    authorize [:admin, @brand]
   end
 
   def create
-    @brand = Brand.create(brand_parmas)
+    @brand = Brand.create(brand_params)
     if @brand.save
       redirect_to brand_path(@brand)
     else
@@ -19,7 +19,7 @@ class Admin::BrandsController < ApplicationController
   end
 
   def update
-    if @brand.update(brand_parmas)
+    if @brand.update(brand_params)
       redirect_to brand_path(@brand)
     else
       render :edit
@@ -34,11 +34,11 @@ class Admin::BrandsController < ApplicationController
 
   def set_brand
     @brand = Brand.find(params[:id])
-    authorize @brand
+    authorize [:admin, @brand]
   end
 
-  def brand_parmas
-    parmas.require(:brand).permit(:name, :description, :logo, :photo, :slug)
+  def brand_params
+    params.require(:brand).permit(:name, :description, :logo, :photo, :slug)
   end
 
 end
