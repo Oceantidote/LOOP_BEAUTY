@@ -1,17 +1,21 @@
-<div class="influencers-show-banner"  style="background-image: url('<%= asset_path 'homepage-header.jpg' %>')">
+<div class="influencers-show-banner"  style="background-image: url('<%= @user.cover_photo.attached? ?  (rails_blob_url @user.cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
   <div class="influencer-show-banner-text-container">
     <div class="influencer-show-banner-text">
       <h4><%= @user.instagram %></h4>
       <h5 class="old-standard">I am all about makeup and fashion. I love expressing myself, having fun and helping people by sharing my beauty and fashion knowledge</h5>
       <div class="influencer-social-data">
-        <div class="each-social-data">
-          <i class="fab fa-instagram"></i>
-          <h6>274k</h6>
-        </div>
-        <div class="each-social-data">
-          <i class="fab fa-youtube"></i>
-          <h6>400k</h6>
-        </div>
+        <% if @user.instagram %>
+          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", class: "each-social-data" do %>
+              <i class="fab fa-instagram social-instagram"></i>
+              <h6>274k</h6>
+          <% end %>
+        <% end %>
+        <% if @user.youtube %>
+          <%= link_to @user.youtube, target: "_blank", class: "each-social-data" do %>
+              <i class="fab fa-youtube social-youtube"></i>
+              <h6>400k</h6>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
