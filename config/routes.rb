@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/freebies', to: 'pages#freebies'
   # TEMP ROUTES FOR INSIDER
   get '/insider', to: 'pages#insider'
-  get '/insider_show', to: 'pages#insider_show'
   # TEMP ROUTES FOR INSIDER
   get '/videos', to: 'pages#videos'
   get '/influencer_video', to: 'pages#influencer_video'

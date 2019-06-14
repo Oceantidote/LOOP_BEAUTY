@@ -21,6 +21,8 @@
   height: calc(100vw * 0.3);
   background-position: center;
   background-size: cover;
+  display: flex;
+  justify-content: flex-end;
   @include for-phone-only {
     height: calc(100vw * 0.5);
   }

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :insider, :insider_show, :videos, :influencer_video, :about_us, :questions_and_answers, :influencers, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy]
+  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :insider, :videos, :influencer_video, :about_us, :questions_and_answers, :influencers, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy]
 
   def home
   end
@@ -11,9 +11,6 @@ class PagesController < ApplicationController
   end
 
   def insider
-  end
-
-  def insider_show
   end
 
   def videos

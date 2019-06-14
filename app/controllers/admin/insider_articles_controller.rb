@@ -8,6 +8,8 @@ class Admin::InsiderArticlesController < ApplicationController
   def create
     @insider_article = InsiderArticle.new(insider_article_params)
     @insider_article.user = current_user
+    # VALIDATION ON SAVE WAS SAYING BY CANT BE BLANK
+    @insider_article.by = "#{current_user.first_name} #{current_user.last_name}"
     if @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
