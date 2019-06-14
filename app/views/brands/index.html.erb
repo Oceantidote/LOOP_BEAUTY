@@ -1,3 +1,29 @@
-<% @brands.each do |brand| %>
-  <%= link_to brand.name, brand_path(brand) %>
-<% end %>
+<div class="brands-wrapper">
+  <h2 class="insider-info-title text-center">Brand Directory</h2>
+  <div class="container">
+    <div class="brand-letter-container">
+      <% @brands_index.each do |letter| %>
+        <a href="#letter_<%= letter %>"><%= letter %></a>
+      <% end %>
+    </div>
+    <hr>
+  </div>
+  <div class="container brands-index-container">
+    <div class="row" style="width: 80%">
+      <% @brands_index.each do |letter| %>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="brands-letter-list">
+            <h5 id="letter_<%= letter %>"><%= letter %></h5>
+            <ul>
+              <% @brands.each do |brand| %>
+                <% if brand.name.first.capitalize == letter %>
+                  <li><%= link_to brand.name, brand_path(brand), class: "old-standard each-brand" %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
