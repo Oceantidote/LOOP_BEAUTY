@@ -18,6 +18,14 @@ class Admin::InsiderArticlesController < ApplicationController
   def edit
   end
 
+  def update
+    if @insider_article.update(insider_article_params)
+      redirect_to insider_article_path(@insider_article)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @insider_article.destroy
     redirect_to insider_articles_path

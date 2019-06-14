@@ -12,4 +12,9 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def q_and_a
+    true
+  end
+
 end

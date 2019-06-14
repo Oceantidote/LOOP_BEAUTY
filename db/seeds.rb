@@ -20,19 +20,20 @@ makeup = Department.create!(name: "Makeup")
 
 # CREATING BRANDS
 
-black_opal = Brand.create!(name: "Black Opal")
-juvias_place = Brand.create!(name: "Juvia's Place")
+black_opal = Brand.create!(name: "Black Opal", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
+juvias_place = Brand.create!(name: "Juvia's Place", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
 beauty_edit_mayfair = Brand.create!(name: "Beauty Edit Mayfair", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
 makeup_54 = Brand.create!(name: "Makeup 54", description: "MAKEUP54 embodies the glittering glamour of the seventies and eighties decades. Paying tribute to the iconic figures who seized the style of the era, MAKEUP54 celebrates idols who reflect the age and the decadence of discotheques they danced in. MAKEUP54 captures the escapism of its eras, campaigns for colour and is makeup styled to BE SEEN in.")
-sacha_cosmetics = Brand.create!(name: "Sacha Cosmetics")
-black_up = Brand.create!(name: "Black Up")
-mdm_flow = Brand.create!(name: "MDM Flow")
+sacha_cosmetics = Brand.create!(name: "Sacha Cosmetics", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
+black_up = Brand.create!(name: "Black Up", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
+mdm_flow = Brand.create!(name: "MDM Flow", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
 
 mp = File.join(Rails.root,'app/assets/images/makeup_54_logo.png')
 bp = File.join(Rails.root,'app/assets/images/beauty_edit_mayfair_logo.png')
 makeup_54.photo.attach(io: File.open(mp) , filename: 'makeup_54_logo.png')
 beauty_edit_mayfair.photo.attach(io: File.open(bp), filename: 'beauty_edit_mayfair_logo.png')
-
+makeup_54.logo.attach(io: File.open(mp) , filename: 'makeup_54_logo.png')
+beauty_edit_mayfair.logo.attach(io: File.open(bp), filename: 'beauty_edit_mayfair_logo.png')
 # CREATING CATEGORIES
 
 face = Category.create!(name: "Face")
@@ -380,3 +381,46 @@ breen = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", i
 nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", password: "nikki123", email: "nicky.o.patel@gmail.com")
 shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", password: "shantania123", email: "shantaniabeckford@gmail.com")
 bemi = User.create!(influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
+
+esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
+esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
+
+esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpeg')
+esther.avatar_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpeg')
+
+ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
+ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
+
+ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpeg')
+ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpeg')
+
+
+nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
+nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpeg')
+
+nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpeg')
+nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpeg')
+
+
+shatania_cover = File.join(Rails.root,'app/assets/images/shatania_cover.jpeg')
+shantania.cover_photo.attach(io: File.open(shatania_cover) , filename: 'shatania_cover.jpeg')
+
+shatania_avatar = File.join(Rails.root,'app/assets/images/shatania_avatar.jpeg')
+shantania.avatar_photo.attach(io: File.open(shatania_avatar) , filename: 'shatania_avatar.jpeg')
+
+bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
+bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
+
+bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpeg')
+bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpeg')
+
+
+
+
+
+
+
+
+
+
+

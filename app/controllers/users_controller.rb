@@ -14,4 +14,8 @@ class UsersController < ApplicationController
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
+  def q_and_a
+    raise
+  end
+
 end
