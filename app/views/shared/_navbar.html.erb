@@ -20,11 +20,16 @@
     <%= link_to products_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Make Up</p>
     <% end %>
-    <%= link_to insider_path do %>
+    <%= link_to insider_articles_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'insider' ? 'navbar-active' : '' %>">Insider</p>
     <% end %>
     <%= link_to videos_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to 'log out', destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
     <% end %>
   </div>
   <ul class="navbar-nav">
@@ -51,7 +56,7 @@
       <%= link_to bag_path, class: "nav-link" do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-web"><%#= @basket.basket_products.count %></p>
     </li>
   </ul>
   <div class="mobile-nav-links-container">
@@ -64,7 +69,7 @@
       <%= link_to '#', class: "" do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-mobile"><%#= @basket.basket_products.count %></p>
     </div>
   </div>
 </div>
@@ -103,7 +108,7 @@
         <%= link_to "Make Up", products_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Insider", insider_path, class: "nav-link mobile-dropdown-options each-item" %>
+        <%= link_to "Insider", insider_articles_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
       <li class="nav-item">
         <%= link_to "Video", videos_path, class: "nav-link mobile-dropdown-options each-item" %>

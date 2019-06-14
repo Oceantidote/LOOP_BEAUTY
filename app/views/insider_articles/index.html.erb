@@ -1,8 +1,8 @@
-<div class="insider-home-image-banner" style="background-image: url('<%= asset_path 'homepage-header.jpg' %>')">
+<div class="insider-show-banner" style="background-image: url(<%= url_for(@featured_article.cover_photo) %>)">
   <div class="insider-home-banner-text-container">
     <div class="insider-home-banner-text">
-      <h2 class="old-standard">What we're buying this month from Bobbi Brown</h2>
-      <%= link_to 'Read more', '#' %>
+      <h2 class="old-standard"><%= @featured_article.title %></h2>
+      <%= link_to 'Read more', insider_article_path(@featured_article) %>
     </div>
   </div>
 </div>
@@ -15,36 +15,18 @@
 </div>
 <div class="insider-home-articles">
   <div class="row">
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to '#', class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/1377034/pexels-photo-1377034.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260');">
-          <div class="insider-home-articles-card-text">
-            <h6>Inspiration</h6>
-            <p class="old-standard">Bella Michelle's friday night looks revealed</p>
+    <% @insider_articles.first(3).each do |article| %>
+      <div class="col-xs-12 col-md-4" style="padding: 0;">
+        <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
+          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
+            <div class="insider-home-articles-card-text">
+              <h6><%= article.category %></h6>
+              <p class="old-standard"><%= article.title %></p>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to '#', class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/458766/pexels-photo-458766.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260');">
-          <div class="insider-home-articles-card-text">
-            <h6>Ask the expert</h6>
-            <p class="old-standard">Bella Michelle's friday night looks revealed</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to '#', class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/1926620/pexels-photo-1926620.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
-          <div class="insider-home-articles-card-text">
-            <h6>Ask the expert</h6>
-            <p class="old-standard">Bella Michelle's friday night looks revealed</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="insider-home-articles-banner" style="background-image: url('https://99only.com/sites/default/files/2018-03/99c%20Web%20CategoryDetailPageBanner%20001%20Beauty%201280x560%402x.jpg')">

@@ -1,48 +1,83 @@
-<div class="insider_article-image-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)"></div>
-<% if policy([:admin, @insider_article]).publish? %>
-  <% if @insider_article.published %>
-    <div class="btn-primary">
-      <p>PUBLISHED</p>
+<div class="insider-show-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)"></div>
+<div class="insider-show-article-wrapper">
+  <div class="container">
+    <div class="selected-article">
+      <div class="article-header">
+        <h6><%= @insider_article.category %>:</h6>
+        <h2 class="old-standard"><%= @insider_article.title %></h2>
+        <p>by <%= @insider_article.by %></p>
+      </div>
+      <div class="article-content">
+        <p class="old-standard"><%= simple_format(@insider_article.text1) %></p>
+        <% if @insider_article.photo1.attached? %>
+          <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+            <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
+          <% else %>
+            <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
+          <% end %>
+        <% end %>
+        <p class="old-standard"><%= simple_format(@insider_article.text2) %></p>
+        <% if @insider_article.photo2.attached? %>
+          <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+            <h1>ITS A MOVIE</h1>
+          <% else %>
+            <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
+          <% end %>
+        <% end %>
+        <p class="old-standard"><%= simple_format(@insider_article.text3) %></p>
+        <% if @insider_article.photo3.attached? %>
+          <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+            <h1>ITS A MOVIE</h1>
+          <% else %>
+            <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
+          <% end %>
+        <% end %>
+        <p class="old-standard"> <%= simple_format(@insider_article.text4) %></p>
+        <% if policy([:admin, @insider_article]).publish? %>
+          <% if @insider_article.published %>
+            <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch %>
+          <% else %>
+            <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch %>
+          <% end %>
+          <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article) %>
+          <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete %>
+        <% end %>
+      </div>
+      <div class="share-articles-links">
+        <h6>Share</h6>
+        <div class="articles-link-icons">
+          <%= link_to '#' do %>
+            <i class="fab fa-facebook-f"></i>
+          <% end %>
+          <%= link_to '#' do %>
+            <i class="fab fa-twitter"></i>
+          <% end %>
+          <%= link_to '#' do %>
+            <i class="fab fa-pinterest-p"></i>
+          <% end %>
+          <%= link_to '#' do %>
+            <i class="far fa-envelope"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-<% end %>
-<div class="container">
-  <p><strong><%= @insider_article.category %>:</strong></p>
-  <h1><%= @insider_article.title %></h1>
-  <h5><strong>by <%= @insider_article.by %></strong></h5>
-  <%= simple_format(@insider_article.text1) %>
-  <% if @insider_article.photo1.attached? %>
-    <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
-      <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
-    <% else %>
-      <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
-    <% end %>
-  <% end %>
-  <%= simple_format(@insider_article.text2) %>
-  <% if @insider_article.photo2.attached? %>
-    <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
-      <h1>ITS A MOVIE</h1>
-    <% else %>
-      <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
-    <% end %>
-  <% end %>
-  <%= simple_format(@insider_article.text3) %>
-  <% if @insider_article.photo3.attached? %>
-    <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
-      <h1>ITS A MOVIE</h1>
-    <% else %>
-      <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
-    <% end %>
-  <% end %>
-  <%= simple_format(@insider_article.text4) %>
+  </div>
 </div>
-<% if policy([:admin, @insider_article]).publish? %>
-  <% if @insider_article.published %>
-    <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch %>
-  <% else %>
-    <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch %>
-  <% end %>
-  <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article) %>
-  <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete %>
-<% end %>
+<div class="insider-home-articles">
+  <div class="row">
+    <% @insider_articles.first(6).each do |article| %>
+      <div class="col-xs-12 col-md-4" style="padding: 0;">
+        <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
+          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
+            <div class="insider-home-articles-card-text">
+              <h6><%= article.category %></h6>
+              <p class="old-standard"><%= article.title %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 

@@ -4,7 +4,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Basket.destroy_all
 Department.destroy_all
 Brand.destroy_all
 Category.destroy_all
@@ -378,15 +377,15 @@ puts "Creating users"
 
 esther = User.create!(influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "esther123", email: "esther@estareonline.com")
 ropo = User.create!(influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "ropo123", email: "ropo_demuren@gmail.com")
-breen = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
+breeny = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
 nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
-shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
+shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com", admin: true)
 bemi = User.create!(influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
 
 puts "Creating admin user"
 puts "Email: admin@gmail.com"
 puts "Password: 123456"
-admin = User.create!(influencer: true, first_name: "contact", last_name: "hoxton", password: "123456", email: "admin@gmail.com", admin: true)
+admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxton", password: "123456", email: "admin@gmail.com", admin: true)
 
 esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
 esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
@@ -399,6 +398,12 @@ ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
 
 ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpeg')
 ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpeg')
+
+breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
+breeny.cover_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
+
+breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+breeny.avatar_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
 
 
 nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
