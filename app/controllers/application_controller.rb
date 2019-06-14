@@ -73,8 +73,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_navbar_variables
-    @brands = Brand.all
-    @influencers = User.where(influencer: true)
+    @brands = Brand.all.order(name: :ASC)
+    @influencers = User.where(influencer: true).order(first_name: :ASC)
     @basket = find_basket
   end
 end

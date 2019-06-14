@@ -1,4 +1,22 @@
-<%= @brand.name %>
 <% @products.each do |product| %>
   <%= link_to product.title, product_path(product) %>
 <% end %>
+
+<%= @brand.name %>
+<div class="brand-header-section-container">
+  <div class="brand-header-section brand-description" style="width: 33%;">
+    <% if @brand.description %>
+      <p><%= @brand.description %></p>
+    <% end %>
+  </div>
+  <div class="brand-header-section brand-logo" style="width: 33%;">
+    <% if @brand.logo.attached? %>
+      <%= image_tag @brand.logo %>
+    <% end %>
+  </div>
+  <div class="brand-header-section brand-photo" style="width: 33%;">
+    <% if @brand.photo.attached? %>
+      <%= image_tag @brand.photo %>
+    <% end %>
+  </div>
+</div>
