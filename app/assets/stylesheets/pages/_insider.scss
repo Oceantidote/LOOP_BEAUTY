@@ -43,7 +43,7 @@
 }
 
 .insider-home-articles-banner {
-  width: 100vw;
+  width: 100%;
   height: calc(100vw * 0.3);
   background-position: center;
   background-size: cover;
@@ -69,8 +69,8 @@
   padding: 0 15px;
   margin: 0;
   height: 100%;
+  border: none;
   @include absCenter;
-  border-bottom: 3px solid transparent;
   color: black;
   font-size: 14px;
   font-weight: 900;
@@ -79,6 +79,9 @@
     text-decoration: none;
     background: black;
     cursor: pointer;
+  }
+  &:focus {
+    outline: none;
   }
 }
 

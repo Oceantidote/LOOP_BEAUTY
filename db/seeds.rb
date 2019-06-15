@@ -379,13 +379,18 @@ esther = User.create!(influencer: true, first_name: "Esther", last_name: "Areola
 ropo = User.create!(influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "ropo123", email: "ropo_demuren@gmail.com")
 breeny = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
 nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
-shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com", admin: true)
+shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
 bemi = User.create!(influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
 
+# CREATING ADMIN USER
+
 puts "Creating admin user"
+
+admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxton", password: "123456", email: "admin@gmail.com", admin: true)
+
 puts "Email: admin@gmail.com"
 puts "Password: 123456"
-admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxton", password: "123456", email: "admin@gmail.com", admin: true)
+
 
 esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
 esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
@@ -426,7 +431,265 @@ bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpeg')
 bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpeg')
 
 
+# CREATING INSIDER ARTICLES
 
+puts "Creating insider articles"
+
+9.times do
+
+  esther_article = InsiderArticle.create!(
+                                          by: "Esther Areola",
+                                          category: "Ask the expert",
+                                          title: "3 BEAUTY TRICKS WE LEARNT BACKSTAGE AT AUSTRALIAN FASHION WEEK",
+                                          user: admin,
+                                          text1: "Fashion Week is a huge week for anyone - between witnessing expert hair and makeup artists work their magic (while under a serious time crunch),
+                                          previewing new season collections from our favourite brands AND taking note of the incredible street style outfits and beauty looks, it’s all a lot to take in.
+                                          And while it may all seem completely overwhelming (or for me, anyway), there are always a few tidbits worth mentioning; straight from the hair and makeup artists
+                                          themselves, these are the beauty lessons and tips we learnt backstage that we will be swearing by from now on.  ",
+                                          text2: "1. Prepping skin is the single most important step.\n\nIt’s so easy to get lazy, but creating a flawless makeup look really starts with good skincare.
+                                          Making sure you cleanse properly is one thing, but following with an exfoliation treatment is the key to a smooth, fresh complexion that will serve as a
+                                          perfect base for makeup. Emma Hobson, the Education Manager for the International Dermal Institute and Dermalogica explains backstage at Hansen & Gretel;
+                                          exfoliation is what 'gives that really smooth, healthy glow and smooth palette, particularly if [the models] aren’t putting foundation on'. She recommends
+                                          Dermalogica Daily Resurfacer. Makeup artist and director at Lee Mathews, Claire Thompson agrees; 'I feel that’s where makeup and skin is headed now - it’s
+                                          elevated and the quality is going into skin care, rather than making an impact with the base.'",
+                                          text3: "2. Manipulating your foundation is the key to the perfect dewy finish.\n\n
+                                          Glowing skin is in, and we have it from good authority that a dewy, radiant foundation finish isn’t going anywhere, anytime soon. So when we chatted to
+                                          Lara Srokowski, Lancome’s National Makeup Artist, we were super excited to learn her trick for achieving the perfect textured makeup base. 'We’ve used our
+                                          Lancome Absolue Precious Oil, so the oil has given that really beautiful dewy base before we even apply makeup. We’ve [then] used Ultra Wear Foundation, which
+                                          s actually a medium to full coverage foundation but we’ve manipulated the texture by adding a few drops of the oil into the foundation. [This] then gives it that
+                                          ‘second skin’ finish, and because we do the models makeup so many hours before, we wanted that long-wearing effect where we don’t need to do any retouches,'' but
+                                            still be able to maintain that gorgeous, dewy finish, explains Lara about the makeup for the AJE opening show.",
+                                          text4: "3. Blush is back in a big way.\n\n
+                                          Lee Mathews and Karla Spetic proved that blush is back and we couldn’t be more excited about it. Moving away from the overpowering and over-powdered look we
+                                          grew up terrified of, the hero products of Australian Fashion Week were cream and liquid blush formulas, specifically The Body Shop Lip and Cheek Stain in Deep
+                                          Berry and Pink Hibiscus and Westman Atelier Baby Cheek Blush Stick (find it at mecca.com.au, $76) . 'We applied with fingers, dabbing high on the cheek bones,
+                                          under the eye bone and across the nose to give [a] fresh, flushed look,' explained The Body Shop makeup artist at Karla Spetic.",
+                                          cover_alt_text: "esther cover",
+                                          photo1_alt_text: "esther photo one",
+                                          photo2_alt_text: "esther photo two",
+                                          photo3_alt_text: "esther photo three",
+                                          published: true
+                                          )
+
+  esther_article_cover = File.join(Rails.root,'app/assets/images/esther_article_cover.png')
+  esther_article.cover_photo.attach(io: File.open(esther_article_cover) , filename: 'esther_article_cover.png')
+
+  esther_photo_one = File.join(Rails.root,'app/assets/images/esther_photo_one.png')
+  esther_article.photo1.attach(io: File.open(esther_photo_one) , filename: 'esther_photo_one.png')
+
+  esther_photo_two = File.join(Rails.root,'app/assets/images/esther_photo_two.png')
+  esther_article.photo2.attach(io: File.open(esther_photo_two) , filename: 'esther_photo_two.png')
+
+  esther_photo_three = File.join(Rails.root,'app/assets/images/esther_photo_three.png')
+  esther_article.photo3.attach(io: File.open(esther_photo_three) , filename: 'esther_photo_three.png')
+
+
+  ropo_article = InsiderArticle.create!(
+                                          by: "Ropo Demure",
+                                          category: "Lifestyle",
+                                          title: "THE BEST CONCEALER FOR DRY SKIN",
+                                          user: admin,
+                                          text1: "Hiding dark circles with concealer after a late night is one thing, but when you combine that with skin that’s as dry as the Sahara desert –
+                                          the result is a flaky, creasing mess. Dry skin can be a nightmare to work with when you’re applying makeup. Which is why you need to find the right formula
+                                          to hydrate and smooth over dry patches, rather than accentuate them.",
+                                          text2: "How do you choose a concealer for dry skin?\n\n
+                                          The most important thing to remember is hydration, hydration, hydration. Martine recommends choosing creamy or liquid formulas as they’re more hydrating.
+                                          'You don’t want a concealer that is dry in its consistency as this will only make the skin and any dry areas appear worse and more textured.'",
+                                          text3: "Which types of concealers are standouts for dry skin?\n\n
+                                          When it comes to choosing a formula, you want to look out for concealers with a creamy consistency as they tend to work better on dry skin.
+                                          The next step is to choose the right ingredients. 'Look for concealers that are filled with hydrating ingredients such as Moringa Seed Oil – which
+                                          conditions, moisturisers and soothes the skin – and Algae Extract – which helps to prevent trans epidermal water loss,' recommends Martine.",
+                                          text4: "What other makeup products do you recommend for dry skin?\n\n
+                                          Martine suggests using a facial serum or oil, followed by a rich facial moisturiser, to help give the skin a plump, moisturised appearance.
+                                          'Foundation wise I would recommend using a liquid foundation with a dewy finish, as this will give the illusion of more hydrated skin,' she says.
+                                          And you can’t go past a hydration spray! 'These can be used throughout the day to add a boost of hydration to your skin, keeping it looking plump and fresh.'",
+                                          cover_alt_text: "ropo cover",
+                                          photo1_alt_text: "ropo photo one",
+                                          photo2_alt_text: "ropo photo two",
+                                          photo3_alt_text: "ropo photo",
+                                          published: true
+                                          )
+
+  ropo_article_cover = File.join(Rails.root,'app/assets/images/ropo_article_cover.png')
+  ropo_article.cover_photo.attach(io: File.open(ropo_article_cover) , filename: 'ropo_article_cover.png')
+
+  ropo_photo_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.png')
+  ropo_article.photo1.attach(io: File.open(ropo_photo_one) , filename: 'ropo_photo_one.png')
+
+  ropo_photo_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.png')
+  ropo_article.photo2.attach(io: File.open(ropo_photo_two) , filename: 'ropo_photo_two.png')
+
+  ropo_photo_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.png')
+  ropo_article.photo3.attach(io: File.open(ropo_photo_three) , filename: 'ropo_photo_three.png')
+
+
+  breeny_article = InsiderArticle.create!(
+                                          by: "Breeny Lee",
+                                          category: "Inspiration",
+                                          title: "It's Never Too Late To Get In The Makeup Game",
+                                          user: admin,
+                                          text1: "In middle school I wore thick black eyeliner all over my eyelids and about an inch below them as well with nothing else, not even mascara. In high
+                                          school, I would either wear no makeup or black eyeliner in my entire waterline and maaaaaybe some mascara, but nothing else. Then I stopped wearing makeup
+                                          completely for like five years except for 'special occasions' when I would wear the black eyeliner/mascara combo.",
+                                          text2: "A little over a year ago I got one of those Ulta deals where if you spend $20 on Ulta brand products, you get a makeup bag full of stuff. I got one
+                                          of their palettes, which I've since given away, and used the makeup that came in the GWP bag for a little bit. I got roped into buying this Mary Kay starter
+                                          kit which was a terrible decision, but I ended up using their powder foundation which actually isn't that bad. That was the first foundation I ever wore since
+                                          he couple times I had tried liquid foundation I thought it felt weird on my skin.",
+                                          text3: "That was my routine for about nine months until I found this subreddit, and subsequently the YouTube makeup community, and decided I wanted to start
+                                          learning more about makeup. I really started getting into it in February of this year and even though it hasn't been that long, I think I've come really far.
+                                          I've spent way too much money trying out tons of products and spent a lot of nights practicing makeup, wiping it off, and then practicing again.",
+                                          text4: "I've completely immersed myself in learning about makeup and it's given me so much more confidence. I've always been self conscious about my appearance
+                                          but it's better now than it ever has been. People in my life are surprised that I've suddenly become so into something I had never shown interest in, and at
+                                          times criticized, but I've received a ton of positive feedback and compliments on my makeup since I've started getting better. Obviously there's still a ton
+                                          of stuff I can learn, but I feel like practicing as much as I have has made me pretty skilled in a relatively short period of time.",
+                                          cover_alt_text: "breeny cover",
+                                          photo1_alt_text: "breeny photo one",
+                                          photo2_alt_text: "breeny photo two",
+                                          photo3_alt_text: "breeny photo three",
+                                          published: true
+                                          )
+
+  breeny_article_cover = File.join(Rails.root,'app/assets/images/breeny_article_cover.png')
+  breeny_article.cover_photo.attach(io: File.open(breeny_article_cover) , filename: 'breeny_article_cover.png')
+
+  breeny_photo_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.png')
+  breeny_article.photo1.attach(io: File.open(breeny_photo_one) , filename: 'breeny_photo_one.png')
+
+  breeny_photo_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.png')
+  breeny_article.photo2.attach(io: File.open(breeny_photo_two) , filename: 'breeny_photo_two.png')
+
+  breeny_photo_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.png')
+  breeny_article.photo3.attach(io: File.open(breeny_photo_three) , filename: 'breeny_photo_three.png')
+
+
+  nikki_article = InsiderArticle.create!(
+                                          by: "Nikki Patel",
+                                          category: "Ask the expert",
+                                          title: "Your Everyday Makeup Questions, Answered",
+                                          user: admin,
+                                          text1: "A big night out may be a good excuse for a fun new makeup look, but most of us need our makeup to work Monday through Friday, and we count on a few
+                                          reliable products to get the job done. Unless you’re ready to risk a faux pas — your smoky eye gone singed, let’s say — the workweek isn’t the best time to
+                                          go experimental. Instead, we offer advice from experts on the best ways to apply your daily makeup and, along the way, clear up a few confounding makeup
+                                          questions.",
+                                          text2: "How do I determine which foundation is best for me?\n\n
+                                          Skin type plays a key role, but Ms. Greenberg would argue that most people already know their skin type. The issue, she says, is more nuanced. 'You have to
+                                          think, ‘Is your foundation compatible with your moisturizer?’ As you know, water and oil don’t mix, so if you’re using, say, an oil-based moisturizer and
+                                          water-based foundation, you might have an unwanted pilling effect.' This remains true throughout the seasons, she points out, so you may want to pair a
+                                          water-based foundation with a water-based moisturizer during the summer but switch to oil-based products in the winter.",
+                                          text3: "Why do some base products look more natural than others?\n\n
+                                          Whether or not a base looks natural hinges on texture and consistency. Generally, matte or thicker foundations will have a more artificial-looking finish.
+                                          Natural skin tends to reflect a bit of light. Ms. Greenberg also finds that color plays an outsize role. 'The No. 1 issue I see is that the color is off,'
+                                          she says. She suggests that it might be worth it to buy two foundations, one light and one dark. Then practice mixing them and adjusting as needed. 'Don’t
+                                          forget that skin color can change every day depending on the season or exposure to sun,' she says. Another tip for a flawless finish: 'It sounds crazy,
+                                          but I have combination skin, and I’ll often use two different foundations in the same shade,' Ms. Greenberg says. 'I’ll use one that is more oil-absorbing
+                                          for my T-zone and one that is dewier for the rest of my face.'",
+                                          text4: "Should I wear a primer underneath my makeup?\n\n
+                                          Primer can be a controversial topic, and even professionals are divided. Well-known makeup artists hail its effectiveness in creating a smoother surface
+                                          for makeup, evening out skin texture and providing longer-lasting wear. Others insist that primer serves only a minimal purpose for the general population.
+                                            Jamie Greenberg, a makeup artist who often works with the actress Rashida Jones, suggests thinking of primer as a problem solver. 'If you find yourself
+                                            having trouble keeping your makeup in place, and you’ve already tried different foundation formulas, you might want to try a primer,' she says. 'It will
+                                            make your makeup last longer, so if you have a special meeting or aren’t able to touch up during the day, it helps.' Generally, Ms. Greenberg finds that
+                                            a good primer can get you “four hours where your makeup will look top-notch.' Apply it all over with a flat foundation brush. It adds a few minutes to
+                                            your morning makeup routine, but it can save you time on touchups.",
+                                          cover_alt_text: "",
+                                          photo1_alt_text: "",
+                                          photo2_alt_text: "",
+                                          photo3_alt_text: "",
+                                          published: true
+                                          )
+
+  nikki_article_cover = File.join(Rails.root,'app/assets/images/nikki_article_cover.png')
+  nikki_article.cover_photo.attach(io: File.open(nikki_article_cover) , filename: 'nikki_article_cover.png')
+
+  nikki_photo_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.png')
+  nikki_article.photo1.attach(io: File.open(nikki_photo_one) , filename: 'nikki_photo_one.png')
+
+  nikki_photo_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.png')
+  nikki_article.photo2.attach(io: File.open(nikki_photo_two) , filename: 'nikki_photo_two.png')
+
+  nikki_photo_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.png')
+  nikki_article.photo3.attach(io: File.open(nikki_photo_three) , filename: 'nikki_photo_three.png')
+
+
+  shantania_article = InsiderArticle.create!(
+                                          by: "Shantania Beckford",
+                                          category: "Lifestyle",
+                                          title: "Look flawless every day with super-easy makeup tips",
+                                          user: admin,
+                                          text1: "First, you should use your fingers to dab the foundation in 4 spots on your face: Forehead, both the cheeks, and the chin. Then use the brush to
+                                          blend it. On your forehead and chin, brush back and forth. On your cheeks, brush down and away from the centre of your face.",
+                                          text2: "Add a drop of moisturizer to your brush before adding the concealer. Then dab the product about 4 times under your eyes. Smoothen with the brush,
+                                          then use your middle finger to lightly dab it underneath your eyes. The heat of your finger blends the concealer even more for a really natural finish.",
+                                          text3: "Forget shading and sculpting cheekbones with a brush and powder, and try a cream blush instead for that glow-from-within effect.  Apply to the
+                                          apples of your cheeks; the fast way to find yours: Smile! Then blend the colour up toward your temples with your fingers. Bright, bold hues like the
+                                          berry shade can look natural, but if you’re colour-shy, build the intensity by gradually layering it on.",
+                                          text4: "For a pro-looking eye makeup in no time, apply a wash of sheer, shimmery cream shadow from lash lines to brow bones using your pointer finger.
+                                          Bonus: Shimmer helps hide stray eyebrow hairs if you don’t have time to tweeze! If your skin is fair, try a silvery white shade. For medium to dark skin
+                                          tone, opt for a champagne colour. To get an extra bright-eyed effect, dot the colour onto the inner corners of your eyes too. Celebs use this trick on
+                                          the red carpet all the time.",
+                                          cover_alt_text: "shantania cover",
+                                          photo1_alt_text: "shantania photo one",
+                                          photo2_alt_text: "shantania photo two",
+                                          photo3_alt_text: "shantania photo three",
+                                          published: true
+                                          )
+
+  shantania_article_cover = File.join(Rails.root,'app/assets/images/shantania_article_cover.png')
+  shantania_article.cover_photo.attach(io: File.open(shantania_article_cover) , filename: 'shantania_article_cover.png')
+
+  shantania_photo_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.png')
+  shantania_article.photo1.attach(io: File.open(shantania_photo_one) , filename: 'shantania_photo_one.png')
+
+  shantania_photo_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.png')
+  shantania_article.photo2.attach(io: File.open(shantania_photo_two) , filename: 'shantania_photo_two.png')
+
+  shantania_photo_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.png')
+  shantania_article.photo3.attach(io: File.open(shantania_photo_three) , filename: 'shantania_photo_three.png')
+
+
+  bemi_article = InsiderArticle.create!(
+                                          by: "Bemi Akinde",
+                                          category: "Inspiration",
+                                          title: "From Covering Acne To Beginning To Love Makeup",
+                                          user: admin,
+                                          text1: "My parents are well-off, but I've always been money-conscious (they were immigrants and were not always well off) so I was strictly drugstore for a
+                                          long time. I started wearing foundation in middle school because I had really bad acne and scars and hyperpigmentation as a result. I didn't really wear any
+                                          other makeup, just heavy foundation and perhaps some powder to set it if needed. This continued through high school. I think I was popular in the sense that
+                                          I had friends across different groups and got along with almost everyone, but I wasn't one of the pretty, popular girls in high school. More like the nice girl.
+                                          My sister was (and is) very pretty and really got into makeup and hair starting in high school. I would hear her alarm go off very early in the morning and I
+                                          knew she had started her routine while I slept for another hour.",
+                                          text2: "My teenage years and even a lot of my twenties involved frequent dermatologist visits. I've been advised pretty much everything under the sun, including
+                                          sitting out in the sun (without sunscreen). Anything to do with my looks made me miserable and dermatologist visits usually left me crying later. I got sick of
+                                            the 'We'll have this cleared up before next year!' promises and a few doctors even did peels that were too strong and left me with more scars. I also was
+                                            prescribed Accutane at one point and did become depressed and suicidal, but that's a topic for another time!",
+                                          text3: "I'm basically going into this because for me, makeup and the quality of my skin has always been intertwined. It wasn't something fun, it was a chore that
+                                          I hated and it reminded me of how messed up the 'real me' looked. I didn't play around with blush, lipstick, eyeshadow, anything. I hated all of it. It didn't
+                                          help that I was a brown person living in a white area and had a very difficult time finding foundation that remotely matched me.",
+                                          text4: "I'm in my 30s now, got divorced and am getting married again. I decided to do my own makeup for the wedding and subscribed to all these makeup
+                                          subreddits. I'm trying to learn how to have fun with makeup, and you guys have really made that possible. I've spent a small fortune at Sephora, but I feel
+                                          good about all my purchases.",
+                                          cover_alt_text: "bemi cover",
+                                          photo1_alt_text: "bemi photo one",
+                                          photo2_alt_text: "bemi photo two",
+                                          photo3_alt_text: "bemi photo three",
+                                          published: true
+                                          )
+
+  bemi_article_cover = File.join(Rails.root,'app/assets/images/bemi_article_cover.png')
+  bemi_article.cover_photo.attach(io: File.open(bemi_article_cover) , filename: 'bemi_article_cover.png')
+
+  bemi_photo_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.png')
+  bemi_article.photo1.attach(io: File.open(bemi_photo_one) , filename: 'bemi_photo_one.png')
+
+  bemi_photo_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.png')
+  bemi_article.photo2.attach(io: File.open(bemi_photo_two) , filename: 'bemi_photo_two.png')
+
+  bemi_photo_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.png')
+  bemi_article.photo3.attach(io: File.open(bemi_photo_three) , filename: 'bemi_photo_three.png')
+
+end
+
+puts "Insider articles created!"
 
 
 
