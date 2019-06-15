@@ -8,66 +8,34 @@
 </div>
 <div class="insider-home-tabs-container">
   <div class="insider-home-tabs">
-    <p class="each-insider-home-tab">Inspiration</p>
-    <p class="each-insider-home-tab">Lifestyle</p>
-    <p class="each-insider-home-tab">Ask the expert</p>
-  </div>
-</div>
-<div class="insider-home-articles">
-  <div class="row">
-    <% @insider_articles.first(3).each do |article| %>
-      <div class="col-xs-12 col-md-4" style="padding: 0;">
-        <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
-          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
-            <div class="insider-home-articles-card-text">
-              <h6><%= article.category %></h6>
-              <p class="old-standard"><%= article.title %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
+    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
+      <%= hidden_field_tag :category, params[:category], value: "All" %>
+      <%= submit_tag "All articles", class: "each-insider-home-tab #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
+    <% end %>
+    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
+      <%= hidden_field_tag :category, params[:category], value: "Inspiration" %>
+      <%= submit_tag "Inspiration", class: "each-insider-home-tab #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
+    <% end %>
+    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
+      <%= hidden_field_tag :category, params[:category], value: "Lifestyle" %>
+      <%= submit_tag "Lifestyle", class: "each-insider-home-tab #{ params[:category] == 'Lifestyle' ? 'insider-home-tab-active' : '' }"  %>
+    <% end %>
+    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
+      <%= hidden_field_tag :category, params[:category], value: "Ask the expert" %>
+      <%= submit_tag "Ask the expert", class: "each-insider-home-tab #{ params[:category] == 'Ask the expert' ? 'insider-home-tab-active' : '' }"  %>
     <% end %>
   </div>
 </div>
-<div class="insider-home-articles-banner" style="background-image: url('https://99only.com/sites/default/files/2018-03/99c%20Web%20CategoryDetailPageBanner%20001%20Beauty%201280x560%402x.jpg')">
-  <div class="insider-home-banner-text-container">
-    <div class="insider-home-banner-text">
-      <h2 class="old-standard">This expert skin trick will transform your Makeup</h2>
-      <%= link_to 'Read more', '#' %>
-    </div>
-  </div>
-</div>
 <div class="insider-home-articles">
-  <div class="row">
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to '#', class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://www.gaystarnews.com/wp-content/uploads/2019/05/Shantania_Beckford.jpg');">
-          <div class="insider-home-articles-card-text">
-            <h6>Ask the expert</h6>
-            <p class="old-standard">Bella Michelle's friday night looks revealed</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to '#', class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://www.pupamilano.com/on/demandware.static/-/Sites-Storefront_catalog_EN/default/dwdc8cac65/fotoCategoria/Listing2019/BANNER-SEZIONE_MOBILE_COFANETTI_DEF.jpg');">
-          <div class="insider-home-articles-card-text">
-            <h6>Lifestyle</h6>
-            <p class="old-standard">Bella Michelle's friday night looks revealed</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to '#', class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/1197135/pexels-photo-1197135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
-          <div class="insider-home-articles-card-text">
-            <h6>Ask the expert</h6>
-            <p class="old-standard">Bella Michelle's friday night looks revealed</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'insider_cards', insider_articles: @insider_articles %>
 </div>
+
+<script>
+  tabs = document.querySelectorAll('.each-insider-home-tab');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('.each-insider-home-tab').forEach(function(tab) { tab.classList.remove('insider-home-tab-active') });
+      e.currentTarget.classList.add('insider-home-tab-active');
+    })
+  });
+</script>

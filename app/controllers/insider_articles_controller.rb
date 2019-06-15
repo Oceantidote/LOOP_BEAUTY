@@ -10,8 +10,22 @@ class InsiderArticlesController < ApplicationController
   end
 
   def index
-    @insider_articles = policy_scope(InsiderArticle)
-    @featured_article = @insider_articles.sample
-  end
+    if params[:category].present? && params[:category] == "All"
+      @insider_articles = policy_scope(InsiderArticle)
+    elsif params[:category].present? && params[:category] == "Inspiration"
+      @insider_articles = policy_scope(InsiderArticle).where(category: "Inspiration")
+    elsif params[:category].present? && params[:category] == "Lifestyle"
+      @insider_articles = policy_scope(InsiderArticle).where(category: "Lifestyle")
+    elsif params[:category].present? && params[:category] == "Ask the expert"
+      @insider_articles = policy_scope(InsiderArticle).where(category: "Ask the expert")
+    else
+      @insider_articles = policy_scope(InsiderArticle)
+    end
+      @featured_article = @insider_articles.sample
 
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 end
