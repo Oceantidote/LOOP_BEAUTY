@@ -3,7 +3,8 @@ class TutorialsController < ApplicationController
   before_action :set_tutorial, only: [:edit, :update, :destroy, :show]
 
   def index
-    @tutorials = policy_scope(Tutorial).where(user: params[:user_id])
+    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @tutorials = policy_scope(Tutorial).where(user: @user)
   end
 
   def show
