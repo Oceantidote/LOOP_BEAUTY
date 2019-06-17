@@ -378,7 +378,7 @@ puts "Creating users"
 esther = User.create!(influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "esther123", email: "esther@estareonline.com")
 ropo = User.create!(influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "ropo123", email: "ropo_demuren@gmail.com")
 breeny = User.create!(influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
-nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
+nikki = User.create!(influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikkissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
 shantania = User.create!(influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
 bemi = User.create!(influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
 
