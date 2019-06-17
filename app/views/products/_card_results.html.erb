@@ -14,14 +14,6 @@
         </div>
         <div class="card_price-heart">
           <%= humanized_money_with_symbol(product.price) %>
-          <% if user_signed_in? %>
-            <% if current_user.voted_for? product %>
-              <%= link_to '<i class="fas fa-minus-square plus_and_minus_button"></i>'.html_safe, item_unlike_path(product.id)%>
-            <% else %>
-              <%= link_to '<i class="fas fa-plus-square plus_and_minus_button"></i>'.html_safe, item_like_path(product.id)%>
-            <% end %>
-          <% end %>
-
         </div>
         <div class="card_ratings">
           <% if product.average_rating == 0 %>
