@@ -5,7 +5,7 @@
         <%= link_to product_path(product) do %>
           <div class="card_image">
             <%= link_to product_path(product) do %>
-              <%= image_tag product.shades.first.photos.first %>
+              <%= image_tag url_for(product.shades.first.photos.first) %>
             <% end %>
           </div>
         <% end %>
