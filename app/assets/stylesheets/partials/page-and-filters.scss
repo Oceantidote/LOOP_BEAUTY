@@ -82,38 +82,40 @@
 
 .partial-filters-two {
   display: flex;
+  width: 100%;
+  padding: 0 15px;
 }
 
 .partial-filters {
-  width: 25%;
+  width: 200px;
+  margin-right: 15px;
 
-  @include for-medium-devices-down {
-    width: 30%;
-  }
+  // @include for-medium-devices-down {
+  //   width: 30%;
+  // }
 
-  @include for-small-devices-down {
-    width: 0%;
-  }
+  // @include for-small-devices-down {
+  //   width: 0%;
+  // }
 
-  @include for-medium-devices-up {
-    width: 30%;
-  }
+  // @include for-medium-devices-up {
+  //   width: 30%;
+  // }
 
-  @include for-large-devices-up {
-    width: 25%;
-  }
+  // @include for-large-devices-up {
+  //   width: 25%;
+  // }
 
-  @include for-1500 {
-    width: 20%;
-  }
+  // @include for-1500 {
+  //   width: 20%;
+  // }
 
-  @include for-1800 {
-    width: 15%;
-  }
+  // @include for-1800 {
+  //   width: 15%;
+  // }
 }
 
 .partial-filters_collection {
-
   h6 {
     font-weight: bolder;
     background-color: #FAFAFA;
@@ -121,8 +123,13 @@
     padding: 10px 0 10px 10px;
   }
 
+  input {
+    width: 5%;
+  }
+
   label {
     width: 95%;
+    font-size: 14px;
     padding-left: 10px;
   }
 
