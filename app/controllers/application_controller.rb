@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_navbar_variables
   include Pundit
-  @influencers = User.where(influencer: true)
-
+  @influencers = User.where(influencer: true).where(published: true)
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?

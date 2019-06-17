@@ -14,7 +14,7 @@
     <%= link_to brands_path do %>
       <p id="navbar-brands" class="navbar-middle-item <%= params[:controller] == 'brands' && params[:action] == 'index' ? 'navbar-active' : '' %>">Brands</p>
     <% end %>
-    <%= link_to influencers_path do %>
+    <%= link_to users_path do %>
       <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'influencers' ? 'navbar-active' : '' %>">Influencers</p>
     <% end %>
     <%= link_to products_path do %>
@@ -157,10 +157,12 @@
         </li>
       <% end %>
     <% @influencers.each do |influencer| %>
-      <%= link_to user_path(influencer), class: "each-item" do %>
-        <li class="nav-item each-item-dropdown">
-          <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
-        </li>
+      <% if influencer.published %>
+        <%= link_to user_path(influencer), class: "each-item" do %>
+          <li class="nav-item each-item-dropdown">
+            <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
@@ -179,8 +181,10 @@
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
     <% @influencers.each do |influencer| %>
-      <%= link_to user_path(influencer), class: "each-item" do %>
-        <%= influencer.first_name %> <%= influencer.last_name %>
+      <% if influencer.published %>
+        <%= link_to user_path(influencer), class: "each-item" do %>
+          <%= influencer.first_name %> <%= influencer.last_name %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

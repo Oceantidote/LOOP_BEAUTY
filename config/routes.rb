@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage'
   get '/freebies', to: 'pages#freebies'
   # TEMP ROUTES FOR INSIDER
@@ -23,10 +23,16 @@ Rails.application.routes.draw do
   resources :lookbooks, except: [:index]
   resources :users, only: [], path: 'influencers' do
     resources :lookbooks, only: [:index]
-    resources :tutorials, only: [:index]
+    resources :tutorials, only: [:index, :show]
+    resources :question_answers
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index] do
+    member do
+      patch '/publish', to: 'users#publish'
+      patch '/unpublish', to: 'users#unpublish'
+    end
+  end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   namespace :admin do

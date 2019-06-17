@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_110926) do
+ActiveRecord::Schema.define(version: 2019_06_17_142443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -231,6 +231,21 @@ ActiveRecord::Schema.define(version: 2019_06_14_110926) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "question_one"
+    t.text "question_two"
+    t.text "question_three"
+    t.text "question_four"
+    t.text "question_five"
+    t.text "question_six"
+    t.text "answer_one"
+    t.text "answer_two"
+    t.text "answer_three"
+    t.text "answer_four"
+    t.text "answer_five"
+    t.text "answer_six"
+    t.string "photo_one_alt_text"
+    t.string "photo_two_alt_text"
+    t.string "photo_three_alt_text"
     t.index ["user_id"], name: "index_question_answers_on_user_id"
   end
 
@@ -319,6 +334,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_110926) do
     t.string "avatar_photo"
     t.string "cover_photo"
     t.text "description"
+    t.boolean "published"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

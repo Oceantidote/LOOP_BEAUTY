@@ -1,7 +1,11 @@
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user&.admin?
+        scope.all
+      else
+        scope.where(published: true).where(influencer: true)
+      end
     end
   end
 
@@ -15,6 +19,14 @@ class UserPolicy < ApplicationPolicy
 
   def q_and_a
     true
+  end
+
+  def publish?
+    user&.admin?
+  end
+
+  def unpublish?
+    publish?
   end
 
 end
