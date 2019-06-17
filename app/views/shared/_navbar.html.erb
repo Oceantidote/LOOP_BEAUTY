@@ -21,7 +21,7 @@
       <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Make Up</p>
     <% end %>
     <%= link_to insider_articles_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'insider' ? 'navbar-active' : '' %>">Insider</p>
+      <p class="navbar-middle-item <%= params[:controller] == 'insider_articles' ? 'navbar-active' : '' %>">Insider</p>
     <% end %>
     <%= link_to videos_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>

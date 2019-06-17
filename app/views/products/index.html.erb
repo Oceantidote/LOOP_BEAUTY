@@ -14,14 +14,14 @@
           <div class="partial-filters_collection">
             <h6>Category</h6>
             <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
-            <%= f.input :category, collection: Category.all, as: :check_boxes, required: false, label: "" %>
+            <%= f.input :category, collection: Category.all, as: :check_boxes, required: false, label: "", input_html: { onchange: "this.form.submit()" } %>
           </div>
           <div class="partial-filters_collection">
             <h6>Brand</h6>
             <%#= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
-            <%= f.input :brand, collection: Brand.all, as: :check_boxes, required: false, label: "" %>
+            <%= f.input :brand, collection: Brand.all, as: :check_boxes, required: false, label: "", input_html: { onchange: "this.form.submit()" } %>
           </div>
-          <%= f.button :submit, "Filter" %>
+          <%#= f.button :submit, "Filter", class: "primary-button" %>
         </div>
       <% end %>
     <!--   <div class="partial-products">

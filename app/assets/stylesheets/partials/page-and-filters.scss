@@ -1,5 +1,5 @@
 .partial-banner {
-  height: 600px;
+  height: 300px;
   width: 100%;
   background-color: gray;
 }
@@ -124,18 +124,15 @@
   }
 
   input {
-    width: 5%;
+    // width: 5%;
   }
 
   label {
     width: 95%;
     font-size: 14px;
     padding-left: 10px;
+    font-weight: 800;
   }
-
-  // input[type='checkbox'] {
-  //   margin-top: 40px;
-  // }
 
   // input[type='checkbox'] {
   //   -webkit-font-smoothing: antialiased;
@@ -167,7 +164,7 @@
   //   border: 1px solid gray;
   // }
 
-  // input[type='checkbox']:hover:after, input[type='checkbox']:checked:hover:after {
+  // input[type='checkbox']:after, input[type='checkbox']:checked:after {
   //   background: #ABABAB;
   //   content: '\2714';
   //   color: #ABABAB;
@@ -187,7 +184,6 @@
   flex-wrap: wrap;
   // justify-content: center;
   align-items: inherit;
-
 
 
   @include for-medium-devices-down {
