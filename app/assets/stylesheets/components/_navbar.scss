@@ -200,6 +200,7 @@
 }
 
 .mobile-dropdown-options-brands {
+  display: none;
   font-family: $title-font;
   font-weight: 900;
   color: black !important;
@@ -216,6 +217,7 @@
 }
 
 .mobile-dropdown-options-influencers {
+  display: none;
   font-family: $title-font;
   font-weight: 900;
   color: black !important;
@@ -288,4 +290,33 @@
 
 .show-underlay {
   display: block;
+}
+
+.dropdown-menu {
+  padding: 0;
+  margin-top: 0;
+  border-top: none;
+  border-right: none;
+  border-radius: 0 0 0 2px;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.web-dropdown {
+  list-style: none;
+  padding: 0;
+  border-bottom: none;
+  a {
+    @include absCenter;
+    color: black;
+    padding: 12px;
+    font-weight: 900;
+    &:hover {
+      text-decoration: none;
+      background: black;
+      color: white
+    }
+  }
 }
