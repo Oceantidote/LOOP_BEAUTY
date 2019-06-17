@@ -691,6 +691,19 @@ end
 
 puts "Insider articles created!"
 
+# CREATING TUTORIALS
+
+puts "Creating tutorials"
+
+shantania_tutorial = Tutorial.create!(
+                                      user: shantania,
+                                      title: "Lenny and Fanny",
+                                      )
+
+shantania_video = File.join(Rails.root,'app/assets/images/IMG_5842.MOV')
+shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'IMG_5842.MOV')
+
+
 
 
 
