@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if current_user&.admin? && @tutorial.status == "pending" %>
+  <%= link_to "Approve", approve_admin_tutorial_path(@tutorial) %>
+  <%= link_to "Reject", reject_admin_tutorial_path(@tutorial) %>
+<% end %>

@@ -55,6 +55,6 @@ class TutorialsController < ApplicationController
   end
 
   def tutorial_params
-    params.require(:tutorial).permit(:title, :video, product_ids: [])
+    params.require(:tutorial).permit(:cover_photo, :title, :status, :video, product_ids: [])
   end
 end
