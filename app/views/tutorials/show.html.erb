@@ -1,23 +1,26 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="tutorial-show-title-content">
+  <%= link_to 'See all tutorials', influencer_video_path %>
+  <h2 class="insider-info-title text-center">Lenny and Fanny</h2>
+  <div class="previous-next-tutorial">
+    <div class="previous">
+      <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)" %>
+      <%= link_to 'Previous', '#' %>
+    </div>
+    <strong style="margin: 0 5px;">|</strong>
+    <div class="next">
+      <%= link_to 'Next', '#' %>
+      <%= image_tag 'dropdown-forward.png', width: 10 %>
+    </div>
+  </div>
+</div>
+<div class="tutorial-show-video-banner">
+  <%= video_tag url_for(@tutorial.video), controls: true, style: "width: 100%" %>
+</div>
+<div class="featured-products-header">
+  <div></div>
+  <h2 class="insider-info-title text-center">Featured Products</h2>
+  <%= link_to 'Shop more products', products_path %>
+</div>
 
 
 <% if current_user&.admin? && @tutorial.status == "pending" %>
