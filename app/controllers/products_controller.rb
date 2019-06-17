@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
-    @products = Product.filter(params.slice(:category, :brand ))
+    @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     @categories = Category.all.map { |category| category.name }
     @brand_names = Brand.all.map { |brand| brand.name }
     respond_to do |format|
