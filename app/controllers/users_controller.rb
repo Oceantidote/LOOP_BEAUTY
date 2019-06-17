@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
-  skip_before_action :authenticate_user!, only: [:show, :index]
-  before_action :set_user, only: [:show, :publish, :unpublish]
+  skip_before_action :authenticate_user!, only: [:show, :index, :make_up]
+  before_action :set_user, only: [:show, :publish, :unpublish, :make_up]
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   def dashboard
@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @user.save!
     flash[:notice] = 'User unpublished!'
     redirect_to user_path(@user)
+  end
+
+  def make_up
+
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 

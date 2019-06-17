@@ -29,4 +29,8 @@ class UserPolicy < ApplicationPolicy
     publish?
   end
 
+  def make_up?
+    true
+  end
+
 end

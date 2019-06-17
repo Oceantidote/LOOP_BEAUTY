@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     resources :lookbooks, only: [:index]
     resources :tutorials, only: [:index, :show]
     resources :question_answers
+    member do
+      get '/make_up', to: 'users#make_up'
+    end
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   resources :users, only: [:show, :index] do
