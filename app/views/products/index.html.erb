@@ -9,16 +9,21 @@
       </div>
     </div>
     <div class="partial-filters-two">
-      <div class="partial-filters">
-        <div class="partial-filters_collection">
-          <h6>Category</h6>
-          <%= collection_check_boxes :catogory, :product_id, Category.all, :id, :name %>
+      <%= simple_form_for Product.new, url: products_path, method: :get do |f| %>
+        <div class="partial-filters">
+          <div class="partial-filters_collection">
+            <h6>Category</h6>
+            <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
+            <%= f.input :category, collection: Category.all, as: :check_boxes, required: false, label: "" %>
+          </div>
+          <div class="partial-filters_collection">
+            <h6>Brand</h6>
+            <%#= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
+            <%= f.input :brand, collection: Brand.all, as: :check_boxes, required: false, label: "" %>
+          </div>
+          <%= f.button :submit, "Filter" %>
         </div>
-        <div class="partial-filters_collection">
-          <h6>Brand</h6>
-          <%= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
-        </div>
-      </div>
+      <% end %>
     <!--   <div class="partial-products">
         <%# @products.each do |product| %>
           <div class="card">
