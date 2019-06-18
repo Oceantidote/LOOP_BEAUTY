@@ -1,6 +1,251 @@
-<%= @product.title %>
-<%= simple_form_for([@product, BasketProduct.new(product: @product)]) do |f| %>
-  <%= f.input :shade_id, collection: @product.shades, prompt: 'Shade?' %>
-  <%= f.input :quantity %>
-  <%= f.submit 'Add to bag' %>
-<% end %>
+<%#= @product.title %>
+<%#= simple_form_for([@product, BasketProduct.new(product: @product)]) do |f| %>
+  <%#= f.input :shade_id, collection: @product.shades, prompt: 'Shade?' %>
+  <%#= f.input :quantity %>
+  <%#= f.submit 'Add to bag' %>
+<%# end %>
+
+<div class="product-details-container">
+  <div class="product-details">
+    <div class="product-image-container">
+      <div class="product-carousel">
+        <% @product.shades.each do |shade| %>
+          <div class="product-shade-image">
+            <%= image_tag(url_for(shade.photos.first), onclick: "myFunction(this);", class: "item-image-thumbnail")  %>
+          </div>
+        <% end %>
+      </div>
+      <div class="product-main-image">
+        <%= image_tag url_for(@product.shades.first.photos.first), id: "expandedImg", class: "myImg" %>
+      </div>
+    </div>
+    <div class="product-info-container assistant">
+      <h3><%= @product.title %></h3>
+      <hr>
+      <p><strong>Title of shade</strong></p>
+      <% colors = ['https://media.istockphoto.com/photos/green-cosmetic-clay-powder-texture-close-up-selective-focus-abstract-picture-id884603174', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS78bHnt2gbcBbyeTBBqVde3suKnkxZMtWfj8R1-IIdsnUlcj2PDQ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81aMOdrVMLvvEWZUPHPdNyc1Vv-OPn-EUKC9dlJzJDnd900bprQ'] %>
+      <% num = 3 %>
+      <div class="shades-container">
+        <div class="row" style="margin: 0; width: 100%;">
+          <% @product.shades.each do |shade| %>
+              <div class="col-xs-12 col-sm-3" style="padding: 0 5px;">
+                <div class="shades-card" style="height: 40px; background-image: url( <%= colors[num - 1] %> )">
+
+                </div>
+              </div>
+            <% num -= 1 %>
+          <% end %>
+        </div>
+      </div>
+      <h4><%= humanized_money_with_symbol(@product.price) %></h4>
+      <div class="card_ratings">
+        <% if @product.average_rating == 0 %>
+         <% 5.times do %>
+          <p><i class="far fa-star"></i></p>
+          <% end %>
+         <p>(0) Reviews</p>
+        <% else  %>
+          <% @product.average_rating.times do %>
+            <p><i class="fas fa-star"></i></p>
+          <% end %>
+          <p>(<%= @product.total_reviews %>) Reviews</p>
+        <% end %>
+      </div>
+      <%= link_to 'ADD TO BAG', '#', class: "primary-button assistant" %>
+      <div class="product-details-section info-expand">
+        <div class="product-details-title">
+          <h5>Product details</h5>
+          <i class="fas fa-plus pd-expand"></i>
+        </div>
+        <p class="product-details-text"><%= @product.details %></p>
+      </div>
+      <div class="about-the-brand-section info-expand">
+        <div class="about-the-brand-title">
+          <h5>About the brand</h5>
+          <i class="fas fa-plus ab-expand"></i>
+        </div>
+        <p class="about-the-brand-text"><%= @product.brand.description %></p>
+      </div>
+      <div class="share-section">
+        <h5>Share</h5>
+        <div class="articles-link-icons">
+          <%= link_to '#' do %>
+            <i class="fab fa-facebook-f"></i>
+          <% end %>
+          <%= link_to '#' do %>
+            <i class="fab fa-twitter"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-insider-reviews-wrapper">
+  <h2 class="insider-info-title text-center">Insider Reviews</h2>
+  <div class="insider-review-container">
+    <div class="row">
+      <% @product.insider_reviews.each do |review| %>
+        <div class="col-sm-12 col-md-4">
+          <div class="insider-review-cards">
+            <div class="insider-review-left">
+              <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
+              <h6><%= review.user.instagram %></h6>
+            </div>
+            <div class="insider-review-right">
+              <div class="insider-review-text">
+                <% case review.rating %>
+                <% when 0 %>
+                  <div class="rating-container">
+                    <i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                  </div>
+                <% when 1 %>
+                  <div class="rating-container">
+                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                  </div>
+                <% when 2 %>
+                  <div class="rating-container">
+                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                  </div>
+                <% when 3 %>
+                  <div class="rating-container">
+                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                  </div>
+                <% when 4 %>
+                  <div class="rating-container">
+                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                  </div>
+                <% when 5 %>
+                  <div class="rating-container">
+                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i>
+                  </div>
+                <% end %>
+                <p><%= review.review %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="recommended-products-wrapper">
+  <div class="recommended-products-header">
+    <h2 class="insider-info-title text-center">Recommended Products</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% Product.all.sample(4).each do |product| %>
+        <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
+          <div class="card-image-results">
+            <div class="card">
+              <%= link_to product_path(product) do %>
+                <div class="card_image">
+                  <%= link_to product_path(product) do %>
+                    <%= image_tag url_for(product.shades.first.photos.first) %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="card_header">
+                <p><%= product.title %></p>
+              </div>
+              <div class="card_price-heart">
+                <%= humanized_money_with_symbol(product.price) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="product-insider-reviews-wrapper">
+  <h2 class="insider-info-title text-center">Customer Reviews</h2>
+  <div class="insider-review-container">
+    <div class="row">
+      <% @product.customer_reviews.each do |review| %>
+        <div class="col-sm-12 col-md-4">
+          <div class="insider-review-cards">
+            <div class="customer-review-left">
+              <h6><%= review.user.first_name.capitalize %></h6>
+              <p><%= review.user.country %></p>
+              <p>Age: 22-25</p>
+              <p>Gender: Female</p>
+              <p><%= review.created_at.strftime('%d.%m.%y') %></p>
+
+            </div>
+            <div class="customer-review-right">
+              <div class="insider-review-text">
+                <% case review.rating %>
+                  <% when 0 %>
+                    <div class="rating-container">
+                      <i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                    </div>
+                  <% when 1 %>
+                    <div class="rating-container">
+                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                    </div>
+                  <% when 2 %>
+                    <div class="rating-container">
+                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                    </div>
+                  <% when 3 %>
+                    <div class="rating-container">
+                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                    </div>
+                  <% when 4 %>
+                    <div class="rating-container">
+                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+                    </div>
+                  <% when 5 %>
+                    <div class="rating-container">
+                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i>
+                    </div>
+                <% end %>
+                <p><%= review.review %></p>
+                <p>Yes, I would recommend this product</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    function myFunction(imgs) {
+    // Get the expanded image
+    expandImg = document.getElementById("expandedImg");
+    // Get the image text
+    imgText = document.getElementById("imgtext");
+    // Use the same src in the expanded image as the image being clicked on from the grid
+    expandImg.src = imgs.src;
+    // Use the value of the alt attribute of the clickable image as text inside the expanded image
+    // imgText.innerHTML = imgs.alt;
+    // Show the container element (hidden with CSS)
+    // expandImg.parentElement.style.display = "block";
+  }
+
+  details = document.querySelector(".product-details-title");
+  detailsText = document.querySelector(".product-details-text");
+  aboutBrand = document.querySelector(".about-the-brand-title");
+  aboutBrandText = document.querySelector(".about-the-brand-text");
+  expandIconProduct = document.querySelector(".pd-expand");
+  expandIconBrand = document.querySelector(".ab-expand");
+
+  details.addEventListener('click', function() {
+    expandIconProduct.classList.toggle('fa-plus');
+    expandIconProduct.classList.toggle('fa-minus');
+    detailsText.classList.toggle('show-text');
+  });
+
+  aboutBrand.addEventListener('click', function() {
+    expandIconBrand.classList.toggle('fa-plus');
+    expandIconBrand.classList.toggle('fa-minus');
+    aboutBrandText.classList.toggle('show-text');
+
+  });
+</script>
