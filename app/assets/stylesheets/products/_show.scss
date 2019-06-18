@@ -1,0 +1,217 @@
+.product-details-container {
+  width: 100%;
+  margin: 100px 0;
+  @include absCenter;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.product-image-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  @include for-small-devices-down {
+    flex-direction: column-reverse;
+  }
+}
+
+.product-carousel {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 30px;
+  @include for-small-devices-down {
+    flex-direction: row;
+    margin: 30px 0 0 0;
+    width: 100%;
+  }
+}
+
+.product-shade-image {
+  margin: 5px 0;
+  img {
+    width: 100%;
+  }
+}
+
+.product-main-image {
+  width: 500px;
+  margin-right: 30px;
+  img {
+    width: 100%;
+  }
+  @include for-large-devices-down {
+    width: 400px;
+  }
+  @include for-medium-devices-down {
+    width: 350px;
+  }
+}
+
+
+.product-info-container {
+  height: 100%;
+  width: 300px;
+  padding: 20px 0;
+  h3, h4 {
+    font-weight: 900;
+  }
+  @include for-large-devices-down {
+    width: 250px;
+  }
+  @include for-medium-devices-down {
+    width: 200px;
+    .primary-button {
+      padding: 6px 30px;
+      margin: 10px 0;
+    }
+  }
+}
+
+.shades-container {
+  img {
+    width: 100%;
+  }
+}
+
+.info-expand {
+  margin-bottom: 10px;
+  h5 {
+    font-weight: 900;
+    margin: 0;
+  }
+  border-bottom: 2px solid black;
+}
+
+.product-details-title, .about-the-brand-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.share-section {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  h5 {
+    font-weight: 900;
+    margin: 0;
+  }
+  border-bottom: 2px solid black;
+}
+
+.show-text {
+  display: block !important;
+}
+
+.product-details-text {
+  display: none;
+}
+
+.about-the-brand-text {
+  display: none;
+}
+
+.product-insider-reviews-wrapper {
+  background: #F5F5F5;
+  padding: 10px 0 20px 0;
+}
+
+.insider-review-cards {
+  padding: 20px 10px;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease;
+  // padding: 10px 30px;
+}
+
+.insider-review-container {
+  margin: 0 10%;
+  @include for-xlarge-devices-down {
+    margin: 0 5%;
+  }
+  @include for-large-devices-down {
+    margin: 0 4%;
+  }
+  @include for-medium-devices-down {
+    margin: 0 3%;
+  }
+  @include for-small-devices-down {
+    margin: 0 15%;
+  }
+  @include for-phone-only {
+    margin: 0 5%;
+  }
+}
+
+.insider-review-left {
+  width: 45%;
+  height: 100%;
+  @include absCenterColumn;
+  h6 {
+    font-weight: 900;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+  }
+}
+
+.insider-review-right {
+  width: 50%;
+  height: 100%;
+  @include absCenter;
+}
+
+.insider-review-image {
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  width: 80%;
+}
+
+.insider-review-image:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.insider-review-text {
+  width: 100%;
+  p {
+    margin: 0;
+  }
+}
+
+.customer-review-left {
+  width: 40%;
+  height: 100%;
+  h6 {
+    font-weight: 900;
+    font-size: 14px;
+  }
+  p {
+    margin: 0;
+  }
+
+}
+
+.customer-review-right {
+  width: 60%;
+  height: 100%;
+  @include absCenter;
+}
+
+.recommended-products-wrapper {
+  padding: 10px 0;
+}
