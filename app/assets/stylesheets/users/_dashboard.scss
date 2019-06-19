@@ -1,0 +1,48 @@
+.dashboard-wrapper {
+  background: #F5F5F5;
+  min-height: calc(100vh - 358px);
+}
+
+.dash-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.each-dash-link {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  padding: 10px 30px;
+  color: black;
+  font-weight: 900;
+  background: #FBFBFB;
+  &:hover {
+    text-decoration: none;
+    color: black;
+    background: #F1F1F1;
+  }
+}
+
+.dash-links-image {
+  width: 25px;
+  margin-right: 20px;
+}
+
+.dash-container {
+  width: 280px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: none;
+  background: white;
+}
+
+.mlb-title {
+  padding: 30px 20px;
+}
+
+.each-dash-link-title {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  padding: 10px 30px;
+  color: black;
+  font-weight: 900;
+  background: white;
+}

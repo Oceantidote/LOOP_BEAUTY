@@ -1,8 +1,11 @@
-<% if current_user.influencer? %>
-  <%= link_to 'New Lookbook', new_lookbook_path %>
-  <%= link_to 'New Tutorial', new_tutorial_path %>
-<% end %>
-<div class="dash-container">
-  <%= render 'shared/dash' %>
+<div class="dashboard-wrapper">
+  <% if current_user.influencer? %>
+    <%= link_to 'New Lookbook', new_lookbook_path %>
+    <%= link_to 'New Tutorial', new_tutorial_path %>
+  <% end %>
+  <div class="dash-container">
+    <h2 class="insider-info-title mlb-title text-center">My Loop Beauty</h2>
+    <%= render 'shared/dash' %>
 
+  </div>
 </div>
