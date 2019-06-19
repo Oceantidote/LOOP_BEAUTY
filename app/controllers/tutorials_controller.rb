@@ -3,7 +3,8 @@ class TutorialsController < ApplicationController
   before_action :set_tutorial, only: [:edit, :update, :destroy, :show]
 
   def index
-    @tutorials = policy_scope(Tutorial).where(user: params[:user_id])
+    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @tutorials = policy_scope(Tutorial).where(user: @user)
   end
 
   def show
@@ -55,6 +56,6 @@ class TutorialsController < ApplicationController
   end
 
   def tutorial_params
-    params.require(:tutorial).permit(:title, :video, product_ids: [])
+    params.require(:tutorial).permit(:cover_photo, :title, :status, :video, product_ids: [])
   end
 end

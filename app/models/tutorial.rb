@@ -4,7 +4,8 @@ class Tutorial < ApplicationRecord
   friendly_id :title, use: :slugged
   belongs_to :user
   has_one_attached :video
-  has_many :tutorial_products
+  has_one_attached :cover_photo
+  has_many :tutorial_products, dependent: :destroy
   has_many :products, through: :tutorial_products
 
   def approve!

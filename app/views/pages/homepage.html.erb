@@ -32,7 +32,7 @@
     </div>
   </div>
 </div>
-<!-- <div class="holding-page-image-banner" style="background-image: url('<%= asset_path 'homepage-header.jpg' %>')">
+<!-- <div class="holding-page-image-banner" style="background-image: url('<%#= asset_path 'homepage-header.jpg' %>')">
   <div class="holding-page-banner-text-container">
     <div class="holding-page-banner-text">
       <h2>Introducting Glossier's new eye pallette..</h2>
@@ -44,109 +44,45 @@
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container">
     <div class="row">
-      <div class="col-sm-12 col-md-4">
-        <%= link_to '#', class: "card-link insider-info-card-link" do %>
-          <div class="insider-info-cards">
-            <div class="insider-info-left">
-              <div class="insider-info-text">
-                <p class="insider-info-title">Ask the expert</p>
-                <p class="old-standard">Girlie talk with influencer Shantania Beckford</p>
+      <% @insider_articles.each do |article| %>
+        <div class="col-sm-12 col-md-4">
+          <%= link_to insider_article_path(article), class: "card-link insider-info-card-link" do %>
+            <div class="insider-info-cards">
+              <div class="insider-info-left">
+                <div class="insider-info-text">
+                  <p class="insider-info-title"><%= article.category %></p>
+                  <p class="old-standard"><%= article.title %></p>
+                </div>
+              </div>
+              <div class="insider-info-right">
+                <% user = User.select { |u| u.first_name == article.by.split(" ")[0] } %>
+                <div class="insider-info-image" style="background-image: url(<%= url_for(user.first.avatar_photo) %>)"></div>
               </div>
             </div>
-            <div class="insider-info-right">
-              <div class="insider-info-image" style="background-image: url('https://images.pexels.com/photos/457701/pexels-photo-457701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')"></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-sm-12 col-md-4">
-        <%= link_to '#', class: "card-link insider-info-card-link" do %>
-          <div class="insider-info-cards">
-            <div class="insider-info-left">
-              <div class="insider-info-text">
-                <p class="insider-info-title">Ask the expert</p>
-                <p class="old-standard">Girlie talk with influencer Shantania Beckford</p>
-              </div>
-            </div>
-            <div class="insider-info-right">
-              <div class="insider-info-image" style="background-image: url('https://images.pexels.com/photos/457701/pexels-photo-457701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')"></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-sm-12 col-md-4">
-        <%= link_to '#', class: "card-link insider-info-card-link" do %>
-          <div class="insider-info-cards">
-            <div class="insider-info-left">
-              <div class="insider-info-text">
-                <p class="insider-info-title">Ask the expert</p>
-                <p class="old-standard">Girlie talk with influencer Shantania Beckford</p>
-              </div>
-            </div>
-            <div class="insider-info-right">
-              <div class="insider-info-image" style="background-image: url('https://images.pexels.com/photos/457701/pexels-photo-457701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')"></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 <div class="latest-videos-wrapper">
   <h2 class="insider-info-title text-center">Latest Videos</h2>
   <div class="row" style="margin: 30px 0;">
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/765191/pexels-photo-765191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+    <% @tutorials.each do |tutorial| %>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
+          <div class="homepage-video-card">
+            <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
+              <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+            </div>
+            <div class="homepage-video-card-text">
+              <p class="video-card-text-title">by <%= tutorial.user.instagram %></p>
+              <p class="video-card-text-content"><%= tutorial.title %></p>
+            </div>
           </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/157920/woman-face-curly-hair-157920.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/2305857/pexels-photo-2305857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/458639/pexels-photo-458639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="homepage-pop-up"></div>

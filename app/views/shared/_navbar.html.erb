@@ -14,22 +14,17 @@
     <%= link_to brands_path do %>
       <p id="navbar-brands" class="navbar-middle-item <%= params[:controller] == 'brands' && params[:action] == 'index' ? 'navbar-active' : '' %>">Brands</p>
     <% end %>
-    <%= link_to influencers_path do %>
+    <%= link_to users_path do %>
       <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'influencers' ? 'navbar-active' : '' %>">Influencers</p>
     <% end %>
     <%= link_to products_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Make Up</p>
     <% end %>
     <%= link_to insider_articles_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'insider' ? 'navbar-active' : '' %>">Insider</p>
+      <p class="navbar-middle-item <%= params[:controller] == 'insider_articles' ? 'navbar-active' : '' %>">Insider</p>
     <% end %>
     <%= link_to videos_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>
-    <% end %>
-    <% if user_signed_in? %>
-      <%= link_to 'log out', destroy_user_session_path, method: :delete %>
-    <% else %>
-        <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
     <% end %>
   </div>
   <ul class="navbar-nav">
@@ -48,73 +43,83 @@
       <% end %>
     </li>
     <li class="nav-item mobile-hidden">
-      <%= link_to '#', class: "nav-link" do %>
-        <%= image_tag 'navbar-user.png' %>
+      <% if user_signed_in? %>
+        <div class="nav-link">
+          <%= image_tag 'navbar-user.png', class: "dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="padding: 0; margin-top: 0;">
+            <ul class="web-dropdown">
+              <li style="border-bottom: 1px solid rgba(0,0,0,0.2);"><%= link_to 'My Profile', user_dashboard_path(current_user) %></li>
+              <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to new_user_session_path, class: "nav-link" do %>
+          <%= image_tag 'navbar-user.png' %>
+        <% end %>
       <% end %>
     </li>
     <li class="nav-item basket-icon-container mobile-hidden">
       <%= link_to bag_path, class: "nav-link" do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count basket-web"><%#= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
     </li>
   </ul>
   <div class="mobile-nav-links-container">
     <div class="mobile-left-links">
-      <%= link_to '#', class: "" do %>
-        <%= image_tag 'navbar-user.png' %>
+      <% if user_signed_in? %>
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag 'navbar-user.png' %>
+          <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag 'navbar-user.png' %>
+        <% end %>
       <% end %>
     </div>
     <div class="mobile-left-links" style="margin-left: 5px;">
-      <%= link_to '#', class: "" do %>
+      <%= link_to bag_path do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count basket-mobile"><%#= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
     </div>
   </div>
 </div>
 <div class="collapse navbar-collapse main-nav-dropdown" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
+    <!-- SHOWING ON MOBILE -->
+    <li class="nav-item position-relative">
+      <div class="dropdown-forward-container">
+        <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow" %>
+      </div>
+      <%= link_to "Brands", "#", id: "mobile-nav-brands", class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item position-relative">
+      <div class="dropdown-forward-container">
+        <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow" %>
+      </div>
+      <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Make Up", products_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Insider", insider_articles_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Video", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
     <% if user_signed_in? %>
-      <li class="nav-item ">
-        <%= link_to "Home", "#", class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Messages", "#", class: "nav-link" %>
-      </li>
-      <li class="dropdown">
-        <%= image_tag 'navbar-user.png', class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Action", "#", class: "dropdown-item" %>
-          <%= link_to "Another action", "#", class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item" style="border-top: 1px solid black;">
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
     <% else %>
-      <!-- SHOWING ON MOBILE -->
-      <li class="nav-item position-relative">
-        <div class="dropdown-forward-container">
-          <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow" %>
-        </div>
-        <%= link_to "Brands", "#", id: "mobile-nav-brands", class: "nav-link mobile-dropdown-options each-item" %>
+      <li class="nav-item" style="border-top: 1px solid black;">
+        <%= link_to 'Log In', new_user_session_path, class: "nav-link mobile-dropdown-options each-item" %>
       </li>
-      <li class="nav-item position-relative">
-        <div class="dropdown-forward-container">
-          <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow" %>
-        </div>
-        <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Make Up", products_path, class: "nav-link mobile-dropdown-options each-item" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Insider", insider_articles_path, class: "nav-link mobile-dropdown-options each-item" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Video", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
-      </li>
-      <!-- SHOWING ON MOBILE -->
     <% end %>
+    <!-- SHOWING ON MOBILE -->
   </ul>
 </div>
 
@@ -157,10 +162,12 @@
         </li>
       <% end %>
     <% @influencers.each do |influencer| %>
-      <%= link_to user_path(influencer), class: "each-item" do %>
-        <li class="nav-item each-item-dropdown">
-          <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
-        </li>
+      <% if influencer.published %>
+        <%= link_to user_path(influencer), class: "each-item" do %>
+          <li class="nav-item each-item-dropdown">
+            <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
@@ -179,8 +186,10 @@
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
     <% @influencers.each do |influencer| %>
-      <%= link_to user_path(influencer), class: "each-item" do %>
-        <%= influencer.first_name %> <%= influencer.last_name %>
+      <% if influencer.published %>
+        <%= link_to user_path(influencer), class: "each-item" do %>
+          <%= influencer.first_name %> <%= influencer.last_name %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -246,23 +255,35 @@
   nav = document.getElementById('navbarSupportedContent');
 
   mobileNavBrands.addEventListener('click', function() {
-    mobileNavBrandsMenu.style.left = 0;
-    // nav.style.right = "100%";
+    mobileNavBrandsMenu.style.display = "block";
+    setTimeout(function() {
+      mobileNavBrandsMenu.style.left = 0;
+      }, 1
+    );
   });
 
   mobileNavInfluencers.addEventListener('click', function() {
-    mobileNavInfluencersMenu.style.left = 0;
-    // nav.style.right = "100%";
+    mobileNavInfluencersMenu.style.display = "block";
+    setTimeout(function() {
+      mobileNavInfluencersMenu.style.left = 0;
+      }, 1
+    );
   });
 
   backToMenuBrands.addEventListener('click', function() {
     mobileNavBrandsMenu.style.left = "100%";
-    // nav.style.right = 0;
+    setTimeout(function() {
+      mobileNavBrandsMenu.style.display = "none";
+      }, 300
+    );
   });
 
   backToMenuInfluencers.addEventListener('click', function() {
     mobileNavInfluencersMenu.style.left = "100%";
-    // nav.style.right = 0;
+    setTimeout(function() {
+      mobileNavInfluencersMenu.style.display = "none";
+      }, 300
+    );
   });
 
   navbarToggler = document.getElementById('navbar-toggler');
@@ -280,6 +301,8 @@
       //   }, 1
       // );
     setTimeout(function() {
+      mobileNavBrandsMenu.style.display = "none";
+      mobileNavInfluencersMenu.style.display = "none";
       mobileNavBrandsMenu.style.left = "100%";
       mobileNavInfluencersMenu.style.left = "100%";
       // navbarToggler.disabled = false;

@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   end
 
   def homepage
+    @tutorials = Tutorial.all.order(created_at: :DESC).first(4)
+    @insider_articles = InsiderArticle.all.order(created_at: :DESC).first(3)
   end
 
   def freebies

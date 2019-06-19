@@ -1,0 +1,61 @@
+<div class="container">
+  <%= form_for [@user, @question_answer] do |f| %>
+    <%= f.label :photo_one, 'First Photo', class:"form-control-label" %>
+    <%= f.file_field :photo_one %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo_one_alt_text, 'First Photo Alt Text', class:"form-control-label" %>
+    <%= f.text_field :photo_one_alt_text, class:"form-control", id: :photo_one_alt_text%>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :question_one, 'First question', class:"form-control-label" %>
+    <%= f.text_field :question_one, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :answer_one, 'First answer', class:"form-control-label" %>
+    <%= f.text_field :answer_one, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :question_two, 'Second question', class:"form-control-label" %>
+    <%= f.text_field :question_two, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :answer_two, 'Second answer', class:"form-control-label" %>
+    <%= f.text_field :answer_two, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo_two, 'Second Photo', class:"form-control-label" %>
+    <%= f.file_field :photo_two %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo_two_alt_text, 'Second photo alt text', class:"form-control-label" %>
+    <%= f.text_field :photo_two_alt_text, class:"form-control", id: :photo_two_alt_text%>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :question_three, 'Third question', class:"form-control-label" %>
+    <%= f.text_field :question_three, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :answer_three, 'Third answer', class:"form-control-label" %>
+    <%= f.text_field :answer_three, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :question_four, 'Fourth question', class:"form-control-label" %>
+    <%= f.text_field :question_four, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :answer_four, 'Fourth answer', class:"form-control-label" %>
+    <%= f.text_field :answer_four, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo_three, 'Third Photo', class:"form-control-label" %>
+    <%= f.file_field :photo_three %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :photo_three_alt_text, 'Third photo alt text', class:"form-control-label" %>
+    <%= f.text_field :photo_three_alt_text, class:"form-control", id: :photo_two_alt_text%>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :question_five, 'Fifth question', class:"form-control-label" %>
+    <%= f.text_field :question_five, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :answer_five, 'Fifth answer', class:"form-control-label" %>
+    <%= f.text_field :answer_five, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :question_six, 'Sixth question', class:"form-control-label" %>
+    <%= f.text_field :question_six, class:"form-control" %>
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.label :answer_six, 'Sixth answer', class:"form-control-label" %>
+    <%= f.text_field :answer_six, class:"form-control" %>
+
+    <div class="spacer" style="height: 50px;"></div>
+    <%= f.submit class: "btn btn-primary btn-lg" %>
+  <% end %>
+
+</div>

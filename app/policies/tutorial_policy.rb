@@ -1,7 +1,7 @@
 class TutorialPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all.where(status: "approved")
     end
   end
 

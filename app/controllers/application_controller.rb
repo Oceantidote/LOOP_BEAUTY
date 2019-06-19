@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_navbar_variables
   include Pundit
-  @influencers = User.where(influencer: true)
-
+  @influencers = User.where(influencer: true).where(published: true)
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
@@ -75,6 +74,6 @@ class ApplicationController < ActionController::Base
   def set_navbar_variables
     @brands = Brand.all.order(name: :ASC)
     @influencers = User.where(influencer: true).order(first_name: :ASC)
-    # @basket = find_basket
+    @basket = find_basket
   end
 end
