@@ -38,11 +38,11 @@
       width: 25%;
     }
 
-    @include for-1500 {
+    @include for-xxlarge-devices-up {
       width: 20%;
     }
 
-    @include for-1800 {
+    @include for-xxxlarge-devices-up {
       width: 15%;
     }
   }
@@ -69,12 +69,12 @@
       margin-left: -10px;
     }
 
-    @include for-1500 {
+    @include for-xxlarge-devices-up {
       width: 80%;
       margin-left: 20px;
     }
 
-    @include for-1800 {
+    @include for-xxxlarge-devices-up {
       width: 85%;
     }
   }
@@ -202,11 +202,11 @@
     width: 85%;
   }
 
-  @include for-1500 {
+  @include for-xxlarge-devices-up {
     width: 80%;
   }
 
-  @include for-1800 {
+  @include for-xxxlarge-devices-up {
     width: 85%;
   }
 }
