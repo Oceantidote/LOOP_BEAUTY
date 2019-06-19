@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
   extend FriendlyId
   friendly_id :title, use: :slugged
-  acts_as_votable
   belongs_to :category
   belongs_to :sub_category
   belongs_to :brand
