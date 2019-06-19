@@ -1,6 +1,14 @@
 <%= @product.title %>
 <%= simple_form_for([@product, BasketProduct.new(product: @product)]) do |f| %>
-  <%= f.input :shade_id, collection: @product.shades, prompt: 'Shade?' %>
+  <div class="product-shade-cards-holder">
+    <% @product.shades.each_with_index do |shade, i| %>
+      <div class="product-shade-card <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>">
+        <p>Picture goes here</p>
+        <h6><%= shade.name %></h6>
+      </div>
+    <% end %>
+  </div>
+  <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
   <%= f.input :quantity %>
   <%= f.submit 'Add to bag' %>
 <% end %>
