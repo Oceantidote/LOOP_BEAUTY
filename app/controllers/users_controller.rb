@@ -8,6 +8,30 @@ class UsersController < ApplicationController
     authorize current_user
   end
 
+  def my_orders
+    authorize current_user
+  end
+
+  def my_products
+    authorize current_user
+  end
+
+  def refer_a_friend
+    authorize current_user
+  end
+
+  def wishlist
+    authorize current_user
+  end
+
+  def account_details
+    authorize current_user
+  end
+
+  def preference_centre
+    authorize current_user
+  end
+
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   def show
     @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)

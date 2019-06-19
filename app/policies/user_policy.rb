@@ -13,6 +13,30 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def my_orders?
+    true
+  end
+
+  def my_products?
+    true
+  end
+
+  def refer_a_friend?
+    true
+  end
+
+  def wishlist?
+    true
+  end
+
+  def account_details?
+    true
+  end
+
+  def preference_centre?
+    true
+  end
+
   def show?
     true
   end
