@@ -436,7 +436,7 @@ bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpe
 
 puts "Creating insider articles"
 
-9.times do
+5.times do
 
   esther_article = InsiderArticle.create!(
                                           by: "Esther Areola",
