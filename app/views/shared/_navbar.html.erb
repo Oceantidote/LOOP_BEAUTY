@@ -63,7 +63,7 @@
       <%= link_to bag_path, class: "nav-link" do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count basket-web"><%#= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
     </li>
   </ul>
   <div class="mobile-nav-links-container">
@@ -79,10 +79,10 @@
       <% end %>
     </div>
     <div class="mobile-left-links" style="margin-left: 5px;">
-      <%= link_to '#', class: "" do %>
+      <%= link_to bag_path do %>
         <%= image_tag 'navbar-basket.png' %>
       <% end %>
-      <p class="basket-item-count basket-mobile"><%#= @basket.basket_products.count %></p>
+      <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
     </div>
   </div>
 </div>
