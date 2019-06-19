@@ -1,11 +1,24 @@
 .dashboard-wrapper {
   background: #F5F5F5;
   min-height: calc(100vh - 358px);
+  padding: 50px;
+  @include for-phone-only {
+    padding: 0;
+  }
+}
+
+.dashboard-container {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .dash-links {
   display: flex;
   flex-direction: column;
+  @include for-phone-only {
+    padding-top: 40px;
+  }
 }
 
 .each-dash-link {
@@ -27,11 +40,18 @@
   margin-right: 20px;
 }
 
-.dash-container {
-  width: 280px;
+.dash-menu-container {
+  width: 250px;
   border: 1px solid rgba(0,0,0,0.2);
   border-bottom: none;
   background: white;
+  margin: 50px 10px 50px 0;
+  @include for-small-devices-down {
+    width: 100%;
+  }
+  @include for-phone-only {
+    margin: 0;
+  }
 }
 
 .mlb-title {
@@ -45,4 +65,74 @@
   color: black;
   font-weight: 900;
   background: white;
+}
+
+.dash-content-container {
+  flex: 1;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: white;
+  margin: 50px 0;
+  @include for-small-devices-down {
+    display: none;
+  }
+}
+
+.dash-home-options {
+  display: flex;
+  justify-content: space-evenly;
+  background: #F5F5F5;
+  border: 1px solid rgba(0,0,0,0.1);
+  margin: 100px 30px;
+  padding: 40px 0;
+  @include for-medium-devices-down {
+    flex-direction: column;
+  }
+}
+
+.each-dash-home-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 100px;
+    margin-bottom: 20px;
+    @include for-medium-devices-down {
+      width: 70px;
+    }
+  }
+  h5 {
+    font-weight: 900;
+    margin: 0;
+  }
+}
+
+.dash-home-option-links {
+  color: black;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.dash-home-options-line-break {
+  border-left: 1px solid rgba(0,0,0,0.1);
+  @include for-medium-devices-down {
+    border-left: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin: 25px 0;
+  }
+}
+
+.dash-mobile-title {
+  @include for-phone-only {
+    margin: 0;
+    padding-bottom: 0;
+  }
+}
+
+.dash-mobile-name {
+  @include for-small-devices-up {
+    display: none;
+  }
 }
