@@ -14,7 +14,7 @@
     </div>
     <div class="product-info-container assistant">
     <%= simple_form_for([@product, BasketProduct.new(product: @product)]) do |f| %>
-        <%#= f.input :shade_id, collection: @product.shades, prompt: 'Shade?' %>
+    <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
 
       <h5><%= @product.title %></h5>
       <hr>
@@ -23,14 +23,14 @@
       <% num = 3 %>
       <div class="shades-container">
         <div class="row" style="margin: 0; width: 100%;">
-          <% @product.shades.each do |shade| %>
-              <div class="col-xs-6 col-sm-3" style="padding: 0 5px;">
-                <div class="shades-card shade_<%= shade.id %>" style="height: 30px; background-image: url( <%= colors[num - 1] %> )">
-
+            <div class="product-shade-cards-holder">
+              <% @product.shades.each_with_index do |shade, i| %>
+                <div class="product-shade-card <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>">
+                  <p>Picture goes here</p>
+                  <h6><%= shade.name %></h6>
                 </div>
-              </div>
-            <% num -= 1 %>
-          <% end %>
+              <% end %>
+            </div>
         </div>
       </div>
       <h5><%= humanized_money_with_symbol(@product.price) %></h5>
