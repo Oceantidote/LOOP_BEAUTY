@@ -14,6 +14,7 @@ Benefit.destroy_all
 RecommendedProduct.destroy_all
 Product.destroy_all
 User.destroy_all
+Tutorial.destroy_all
 # CREATING DEPARTMENTS
 
 makeup = Department.create!(name: "Makeup")
