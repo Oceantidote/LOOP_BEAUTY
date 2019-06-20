@@ -1,6 +1,6 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900|Old+Standard+TT:400,700&display=swap");
-
+// @import url('https://fonts.googleapis.com/css?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap');
 // Importing didot font face
 
 @font-face {
@@ -8,11 +8,18 @@
   src: asset-url('Didot.woff'), format('truetype');
 }
 
+// Importing archivo black font
+
+// @font-face {
+//   font-family: "Archivo Black";
+//   src: asset-url('Archivo-Black.ttf'), format('truetype');
+// }
+
 // Define fonts for body and headers
-$body-font: "Didot", "Helvetica", "sans-serif";
-$headers-font: "Muli", "Helvetica", "sans-serif";
-$menu-font: "Muli", "Helvetica", "sans-serif";
-$title-font: "Muli", "Helvetica", "sans-serif";
+$body-font: 'Didot' serif;
+$headers-font: 'Muli', sans-serif;
+$menu-font: 'Muli', sans-serif;
+$title-font: 'Muli', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
