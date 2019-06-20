@@ -18,6 +18,7 @@ gem 'webpacker'
 gem 'money-rails'
 gem 'friendly_id', '~> 5.2.4'
 gem "aws-sdk-s3", require: false
+gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 gem 'mini_magick'
 gem 'trix'
 gem 'stripe'
@@ -27,6 +28,7 @@ gem 'stripe'
 group :development do
   gem 'web-console', '>= 3.3.0'
   # gem 'hotloader'
+  gem 'letter_opener'
 end
 
 group :development, :test do

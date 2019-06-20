@@ -1,0 +1,9 @@
+<% @order.order_products.each do |item| %>
+  <div style="display: flex; justify-content: space-between;">
+    <p><%= item.product.title %></p>
+    <p><%= item.shade.name %></p>
+    <p><%= item.quantity %></p>
+    <p><%= humanized_money_with_symbol item.product.price * item.quantity %></p>
+  </div>
+<% end %>
+<div><h2><%= humanized_money_with_symbol @order.total_price %></h2></div>
