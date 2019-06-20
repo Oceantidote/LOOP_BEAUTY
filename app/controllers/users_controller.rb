@@ -1,43 +1,35 @@
 class UsersController < ApplicationController
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   skip_before_action :authenticate_user!, only: [:show, :index, :make_up]
-  before_action :set_user, only: [:show, :publish, :unpublish, :make_up]
+  before_action :set_nested_user, only: [:share, :dashboard, :my_orders, :my_products, :refer_a_friend, :wishlist, :account_details, :preference_centre, :analytics, :showroom]
+  before_action :set_user, only: [:show, :make_up, :q_and_a]
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   def dashboard
-    authorize current_user
   end
 
   def my_orders
-    authorize current_user
   end
 
   def my_products
-    authorize current_user
   end
 
   def refer_a_friend
-    authorize current_user
   end
 
   def wishlist
-    authorize current_user
   end
 
   def account_details
-    authorize current_user
   end
 
   def preference_centre
-    authorize current_user
   end
 
   def analytics
-    authorize current_user
   end
 
   def showroom
-    authorize current_user
   end
 
   def uploads
@@ -47,15 +39,13 @@ class UsersController < ApplicationController
     @pending + current_user.lookbooks.where(status: 'rejected').to_a
     @approved = current_user.tutorials.where(status: 'approved').to_a
     @pending + current_user.lookbooks.where(status: 'approved').to_a
-    authorize current_user
+    authorize @user
   end
 
   def dashboard
-    authorize current_user
   end
 
   def share
-    authorize current_user
   end
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
@@ -93,6 +83,15 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
+    authorize @user
+  end
+
+  def set_nested_user
+    if current_user.influencer?
+      @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    else
+      @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
+    end
     authorize @user
   end
 
