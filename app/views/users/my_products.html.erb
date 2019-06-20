@@ -1,4 +1,34 @@
-<div class="dash-container">
-  <%= render 'shared/dash' %>
-
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <h2 class="insider-info-title mlb-title text-center dash-mobile-title">My Loop Beauty</h2>
+      <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
+      <%= render 'shared/dash' %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">My Products</h2>
+      <hr>
+      SEARCH WILL BE ADDED HERE
+      <div class="row" style="width: 100%; margin: 0; padding: 30px;">
+        <% Product.all.each do |product| %>
+          <div class="col-xs-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
+            <div class="my-products-card">
+              <div class="my-products-image">
+                <%= image_tag product.shades.first.photos.first %>
+              </div>
+              <div class="my-products-details text-center">
+                <p><%= product.title %></p>
+              </div>
+              <div class="my-products-price text-center">
+                <%= humanized_money_with_symbol(product.price) %>
+              </div>
+              <div class="my-products-purchase">
+                <%= link_to 'Add to bag', '#', class: "my-products-button" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

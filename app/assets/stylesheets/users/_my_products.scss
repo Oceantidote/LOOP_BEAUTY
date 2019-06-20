@@ -1,0 +1,22 @@
+.my-products-image {
+  img {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+.my-products-button {
+  color: black;
+  background: #E3E3E3;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-weight: 900;
+  @include absCenter;
+  width: fit-content;
+}
+
+.my-products-purchase {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}

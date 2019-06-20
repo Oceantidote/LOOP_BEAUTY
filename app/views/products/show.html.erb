@@ -23,14 +23,13 @@
       <% num = 3 %>
       <div class="shades-container">
         <div class="row" style="margin: 0; width: 100%;">
-            <div class="product-shade-cards-holder">
+            <!-- <div class="product-shade-cards-holder"> -->
               <% @product.shades.each_with_index do |shade, i| %>
-                <div class="product-shade-card <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>">
-                  <p>Picture goes here</p>
-                  <h6><%= shade.name %></h6>
+                <div class="col-xs-3 col-sm-3" style="padding: 0 3px 0 0;">
+                  <div class="product-shade-card <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.first) %>)"></div>
                 </div>
               <% end %>
-            </div>
+            <!-- </div> -->
         </div>
       </div>
       <h5><%= humanized_money_with_symbol(@product.price) %></h5>
