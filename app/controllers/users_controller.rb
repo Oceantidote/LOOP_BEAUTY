@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     authorize current_user
   end
 
+  def uploads
+    authorize current_user
+  end
+
   def dashboard
     authorize current_user
   end

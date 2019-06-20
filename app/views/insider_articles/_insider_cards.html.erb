@@ -1,23 +1,25 @@
 <div class="row" style="margin: 0; width: 100%;">
   <% insider_articles.each_with_index do |article, index| %>
-    <div class="col-xs-12 col-md-4" style="padding: 0;">
-      <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
-          <div class="insider-home-articles-card-text">
-            <h6><%= article.category %></h6>
-            <p class="didot"><%= article.title %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <% if index == 2 %>
-      <div class="insider-home-articles-banner" style="background-image:url('https://99only.com/sites/default/files/2018-03/99c%20Web%20CategoryDetailPageBanner%20001%20Beauty%201280x560%402x.jpg')">
+
+    <% if (index + 1) % 4  == 0 %>
+      <div class="insider-home-articles-banner" style="background-image:url(<%= url_for(article.cover_photo) %>)">
         <div class="insider-home-banner-text-container">
           <div class="insider-home-banner-text">
-            <h2 class="didot">This expert skin trick will transform your Makeup</h2>
-            <%= link_to 'Read more', '#' %>
+            <h2 class="didot"><%= article.title %></h2>
+            <%= link_to 'Read more', insider_article_path(article) %>
           </div>
         </div>
+      </div>
+    <% else %>
+      <div class="col-xs-12 col-md-4" style="padding: 0;">
+        <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
+          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
+            <div class="insider-home-articles-card-text">
+              <h6><%= article.category %></h6>
+              <p class="didot"><%= article.title %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   <% end %>

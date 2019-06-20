@@ -24,7 +24,10 @@ class PagesController < ApplicationController
   def about_us
   end
 
-  def questions_and_answers
+  def frequently_asked_questions
+  end
+
+  def careers
   end
 
   def influencers

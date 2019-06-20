@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get '/videos', to: 'pages#videos'
   get '/influencer_video', to: 'pages#influencer_video'
   get '/influencers', to: 'pages#influencers'
-  get '/about_us', to: 'pages#about_us'
-  get '/questions_and_answers', to: 'pages#questions_and_answers'
+  get '/about_us', to: 'pages#about_us', as: :about_us
+  get '/careers', to: 'pages#careers', as: :careers
+  get '/frequently_asked_questions', to: 'pages#frequently_asked_questions'
   get '/terms_and_conditions', to: 'pages#terms_and_conditions', as: :terms_and_conditions
   get '/shipping', to: 'pages#shipping', as: :shipping
   get '/sale_terms', to: 'pages#sale_terms', as: :sale_terms
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   resources :users, only: [:show, :index] do
+    get 'uploads', to: 'users#uploads'
     get 'dashboard', to: 'users#dashboard'
     get 'share', to: 'users#share'
     get 'showroom', to: 'users#showroom'

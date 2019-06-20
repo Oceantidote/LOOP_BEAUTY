@@ -41,6 +41,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def uploads?
+    true
+  end
+
   def analytics?
     true
   end
