@@ -1,0 +1,41 @@
+.account-details-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  p {
+    padding: 5px 30px;
+    margin: 0;
+    cursor: pointer;
+  }
+}
+
+.account-active-tab {
+  color: black !important;
+  text-decoration: underline !important;
+}
+
+.account-content-one {
+  height: 500px;
+  width: 100%;
+  background: red;
+  display: none;
+}
+
+.account-content-two {
+  height: 600px;
+  width: 100%;
+  background: blue;
+  display: none;
+}
+
+.account-content-three {
+  height: 700px;
+  width: 100%;
+  background: green;
+  display: none;
+}
+
+.account-content-show {
+  display: flex !important;
+}

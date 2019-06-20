@@ -1,8 +1,15 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900|Old+Standard+TT:400,700&display=swap");
 
+// Importing didot font face
+
+@font-face {
+  font-family: "Didot";
+  src: asset-url('Didot.woff'), format('truetype');
+}
+
 // Define fonts for body and headers
-$body-font: "Old Standard TT", "Helvetica", "sans-serif";
+$body-font: "Didot", "Helvetica", "sans-serif";
 $headers-font: "Muli", "Helvetica", "sans-serif";
 $menu-font: "Muli", "Helvetica", "sans-serif";
 $title-font: "Muli", "Helvetica", "sans-serif";
@@ -17,6 +24,6 @@ $title-font: "Muli", "Helvetica", "sans-serif";
 // }
 // $my-font: "Font Name";
 
-.old-standard {
-  font-family: 'Old Standard TT', serif !important;
+.didot {
+  font-family: 'Didot', serif !important;
 }

@@ -4,11 +4,11 @@
     <div class="selected-article">
       <div class="article-header">
         <h6><%= @insider_article.category %>:</h6>
-        <h2 class="old-standard"><%= @insider_article.title %></h2>
+        <h2 class="didot"><%= @insider_article.title %></h2>
         <p>by <%= @insider_article.by %></p>
       </div>
       <div class="article-content">
-        <p class="old-standard"><%= simple_format(@insider_article.text1) %></p>
+        <p class="didot"><%= simple_format(@insider_article.text1) %></p>
         <% if @insider_article.photo1.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
             <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
@@ -16,7 +16,7 @@
             <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
           <% end %>
         <% end %>
-        <p class="old-standard"><%= simple_format(@insider_article.text2) %></p>
+        <p class="didot"><%= simple_format(@insider_article.text2) %></p>
         <% if @insider_article.photo2.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
             <h1>ITS A MOVIE</h1>
@@ -24,7 +24,7 @@
             <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
           <% end %>
         <% end %>
-        <p class="old-standard"><%= simple_format(@insider_article.text3) %></p>
+        <p class="didot"><%= simple_format(@insider_article.text3) %></p>
         <% if @insider_article.photo3.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
             <h1>ITS A MOVIE</h1>
@@ -32,7 +32,7 @@
             <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
           <% end %>
         <% end %>
-        <p class="old-standard"> <%= simple_format(@insider_article.text4) %></p>
+        <p class="didot"> <%= simple_format(@insider_article.text4) %></p>
         <% if policy([:admin, @insider_article]).publish? %>
           <% if @insider_article.published %>
             <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch %>
@@ -71,7 +71,7 @@
           <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
             <div class="insider-home-articles-card-text">
               <h6><%= article.category %></h6>
-              <p class="old-standard"><%= article.title %></p>
+              <p class="didot"><%= article.title %></p>
             </div>
           </div>
         <% end %>
