@@ -20,6 +20,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'trix'
+gem 'stripe'
 # gem 'image_processing', '~> 1.2'
 
 

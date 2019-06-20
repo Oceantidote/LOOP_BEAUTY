@@ -73,7 +73,7 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
             <div class="homepage-video-card">
-              <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
+              <div class="video-holder" style="background-image: url(<%#= url_for(tutorial.cover_photo) %>)">
                 <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
               </div>
               <div class="homepage-video-card-text">

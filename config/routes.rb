@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/cookies_policy', to: 'pages#cookies_policy', as: :cookies_policy
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
+  get '/checkout', to: 'orders#new'
   resources :products, only: [:index, :show]
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
       get '/make_up', to: 'users#make_up'
     end
   end
+  resources :orders, only: [:create, :show]
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   resources :users, only: [:show, :index] do
