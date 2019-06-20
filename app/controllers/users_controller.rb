@@ -41,6 +41,12 @@ class UsersController < ApplicationController
   end
 
   def uploads
+    @pending = current_user.tutorials.where(status: 'pending').to_a
+    @pending + current_user.lookbooks.where(status: 'pending').to_a
+    @rejected = current_user.tutorials.where(status: 'rejected').to_a
+    @pending + current_user.lookbooks.where(status: 'rejected').to_a
+    @approved = current_user.tutorials.where(status: 'approved').to_a
+    @pending + current_user.lookbooks.where(status: 'approved').to_a
     authorize current_user
   end
 
