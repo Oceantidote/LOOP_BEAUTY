@@ -1,0 +1,32 @@
+.refer-friend-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.refer-friend-section {
+  padding: 40px 0;
+  p {
+    margin: 0;
+  }
+}
+
+.referral-code-section {
+  padding: 40px 100px;
+  border: 1px dashed black;
+  @include for-medium-devices-down {
+    padding: 40px;
+  }
+}
+
+.refer-share-section {
+  h6 {
+    display: flex;
+    align-items: center;
+  }
+  padding: 40px 0;
+  i {
+    font-size: 25px;
+    width: 30px;
+  }
+}
