@@ -45,7 +45,8 @@ class ApplicationController < ActionController::Base
       elsif session[:basket_id]
         basket = Basket.find(session[:basket_id])
         session[:basket_id] = nil
-        Basket.update(user: current_user)
+        basket.update(user: current_user)
+        basket
       else
         Basket.create(user: current_user)
       end
