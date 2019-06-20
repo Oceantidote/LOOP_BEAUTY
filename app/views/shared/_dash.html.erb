@@ -1,4 +1,6 @@
 <div class="dash-links">
+  <h2 class="insider-info-title mlb-title text-center dash-mobile-title">My Loop Beauty</h2>
+  <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
   <div class="each-dash-link-title">ORDERS</div>
   <%= link_to user_my_orders_path(current_user), class: "each-dash-link" do %>
     <%= image_tag "basket.png", class: "dash-links-image" %>My Orders

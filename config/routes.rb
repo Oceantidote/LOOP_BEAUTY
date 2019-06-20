@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index] do
     get 'dashboard', to: 'users#dashboard'
+    get 'share', to: 'users#share'
+    get 'showroom', to: 'users#showroom'
+    get 'analytics', to: 'users#analytics'
     get 'my_orders', to: 'users#my_orders'
     get 'my_products', to: 'users#my_products'
     get 'refer_a_friend', to: 'users#refer_a_friend'

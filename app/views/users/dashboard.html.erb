@@ -1,9 +1,12 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
     <div class="dash-menu-container">
-      <h2 class="insider-info-title mlb-title text-center dash-mobile-title">My Loop Beauty</h2>
-      <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
-      <%= render 'shared/dash' %>
+
+      <% if current_user.influencer? %>
+        <%= render 'shared/influencer_dash' %>
+      <% else %>
+        <%= render 'shared/dash' %>
+      <% end %>
     </div>
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
