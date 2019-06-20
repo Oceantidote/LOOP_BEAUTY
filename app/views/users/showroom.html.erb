@@ -1,3 +1,42 @@
-<div class="dash-container">
-  <%= render 'shared/influencer_dash' %>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'shared/influencer_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Showroom</h2>
+      <hr>
+      <div class="dash-home-options">
+        <%= link_to user_showroom_path(current_user), class: "dash-home-option-links" do %>
+          <div class="each-dash-home-option">
+            <%= image_tag 'basket.png' %>
+            <h5>Showroom</h5>
+          </div>
+        <% end %>
+
+        <div class="dash-home-options-line-break"></div>
+        <%= link_to user_analytics_path(current_user), class: "dash-home-option-links" do %>
+          <div class="each-dash-home-option">
+            <%= image_tag 'dash-wish.png' %>
+            <h5>Analytics</h5>
+          </div>
+        <% end %>
+        <div class="dash-home-options-line-break"></div>
+        <%= link_to user_share_path(current_user), class: "dash-home-option-links" do %>
+          <div class="each-dash-home-option">
+            <%= image_tag 'default-user.png' %>
+            <h5>Share</h5>
+          </div>
+        <% end %>
+        <div class="dash-home-options-line-break"></div>
+        <%= link_to user_account_details_path(current_user), class: "dash-home-option-links" do %>
+          <div class="each-dash-home-option">
+            <%= image_tag 'default-user.png' %>
+            <h5>Account Details</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 </div>
