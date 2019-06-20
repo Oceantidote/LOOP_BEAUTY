@@ -32,6 +32,22 @@ class UsersController < ApplicationController
     authorize current_user
   end
 
+  def analytics
+    authorize current_user
+  end
+
+  def showroom
+    authorize current_user
+  end
+
+  def dashboard
+    authorize current_user
+  end
+
+  def share
+    authorize current_user
+  end
+
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   def show
     @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)

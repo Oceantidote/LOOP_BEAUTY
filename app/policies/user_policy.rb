@@ -25,11 +25,23 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def showroom?
+    true
+  end
+
   def wishlist?
     true
   end
 
   def account_details?
+    true
+  end
+
+  def share?
+    true
+  end
+
+  def analytics?
     true
   end
 

@@ -1,0 +1,8 @@
+<div class="dash-container">
+  <% if current_user.influencer? %>
+    <%= render 'shared/influencer_dash' %>
+  <% else %>
+    <%= render 'shared/dash' %>
+  <% end %>
+
+</div>

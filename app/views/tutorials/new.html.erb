@@ -1,7 +1,11 @@
-<%= simple_form_for @tutorial do |f| %>
-  <%= f.input :title %>
-  <%= f.input :video %>
-  <%= f.input :cover_photo %>
-  <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
-  <%= f.submit %>
-<% end %>
+<div class="dash-container">
+  <%= render 'shared/influencer_dash' %>
+  <%= simple_form_for @tutorial do |f| %>
+    <%= f.input :title %>
+    <%= f.input :video %>
+    <%= f.input :cover_photo %>
+    <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
+    <%= f.submit %>
+  <% end %>
+</div>
+

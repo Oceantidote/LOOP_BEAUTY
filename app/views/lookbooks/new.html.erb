@@ -1,6 +1,9 @@
-<%= simple_form_for @lookbook do |f| %>
-  <%= f.input :title %>
-  <%= f.input :photo %>
-  <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
-  <%= f.submit %>
-<% end %>
+<div class="dash-container">
+  <%= render 'shared/influencer_dash' %>
+  <%= simple_form_for @lookbook do |f| %>
+    <%= f.input :title %>
+    <%= f.input :photo %>
+    <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -438,38 +438,38 @@ puts "Creating insider articles"
 9.times do
 
   esther_article = InsiderArticle.create!(
-                                          by: "Esther Areola",
-                                          category: "Ask the expert",
-                                          title: "3 BEAUTY TRICKS WE LEARNT BACKSTAGE AT AUSTRALIAN FASHION WEEK",
-                                          user: admin,
-                                          text1: "Fashion Week is a huge week for anyone - between witnessing expert hair and makeup artists work their magic (while under a serious time crunch),
-                                          previewing new season collections from our favourite brands AND taking note of the incredible street style outfits and beauty looks, it’s all a lot to take in.
-                                          And while it may all seem completely overwhelming (or for me, anyway), there are always a few tidbits worth mentioning; straight from the hair and makeup artists
-                                          themselves, these are the beauty lessons and tips we learnt backstage that we will be swearing by from now on.  ",
-                                          text2: "1. Prepping skin is the single most important step.\n\nIt’s so easy to get lazy, but creating a flawless makeup look really starts with good skincare.
-                                          Making sure you cleanse properly is one thing, but following with an exfoliation treatment is the key to a smooth, fresh complexion that will serve as a
-                                          perfect base for makeup. Emma Hobson, the Education Manager for the International Dermal Institute and Dermalogica explains backstage at Hansen & Gretel;
-                                          exfoliation is what 'gives that really smooth, healthy glow and smooth palette, particularly if [the models] aren’t putting foundation on'. She recommends
-                                          Dermalogica Daily Resurfacer. Makeup artist and director at Lee Mathews, Claire Thompson agrees; 'I feel that’s where makeup and skin is headed now - it’s
-                                          elevated and the quality is going into skin care, rather than making an impact with the base.'",
-                                          text3: "2. Manipulating your foundation is the key to the perfect dewy finish.\n\n
-                                          Glowing skin is in, and we have it from good authority that a dewy, radiant foundation finish isn’t going anywhere, anytime soon. So when we chatted to
-                                          Lara Srokowski, Lancome’s National Makeup Artist, we were super excited to learn her trick for achieving the perfect textured makeup base. 'We’ve used our
-                                          Lancome Absolue Precious Oil, so the oil has given that really beautiful dewy base before we even apply makeup. We’ve [then] used Ultra Wear Foundation, which
-                                          s actually a medium to full coverage foundation but we’ve manipulated the texture by adding a few drops of the oil into the foundation. [This] then gives it that
-                                          ‘second skin’ finish, and because we do the models makeup so many hours before, we wanted that long-wearing effect where we don’t need to do any retouches,'' but
-                                            still be able to maintain that gorgeous, dewy finish, explains Lara about the makeup for the AJE opening show.",
-                                          text4: "3. Blush is back in a big way.\n\n
-                                          Lee Mathews and Karla Spetic proved that blush is back and we couldn’t be more excited about it. Moving away from the overpowering and over-powdered look we
-                                          grew up terrified of, the hero products of Australian Fashion Week were cream and liquid blush formulas, specifically The Body Shop Lip and Cheek Stain in Deep
-                                          Berry and Pink Hibiscus and Westman Atelier Baby Cheek Blush Stick (find it at mecca.com.au, $76) . 'We applied with fingers, dabbing high on the cheek bones,
-                                          under the eye bone and across the nose to give [a] fresh, flushed look,' explained The Body Shop makeup artist at Karla Spetic.",
-                                          cover_alt_text: "esther cover",
-                                          photo1_alt_text: "esther photo one",
-                                          photo2_alt_text: "esther photo two",
-                                          photo3_alt_text: "esther photo three",
-                                          published: true
-                                          )
+    by: "Esther Areola",
+    category: "Ask the expert",
+    title: "3 BEAUTY TRICKS WE LEARNT BACKSTAGE AT AUSTRALIAN FASHION WEEK",
+    user: admin,
+    text1: "Fashion Week is a huge week for anyone - between witnessing expert hair and makeup artists work their magic (while under a serious time crunch),
+    previewing new season collections from our favourite brands AND taking note of the incredible street style outfits and beauty looks, it’s all a lot to take in.
+    And while it may all seem completely overwhelming (or for me, anyway), there are always a few tidbits worth mentioning; straight from the hair and makeup artists
+    themselves, these are the beauty lessons and tips we learnt backstage that we will be swearing by from now on.  ",
+    text2: "1. Prepping skin is the single most important step.\n\nIt’s so easy to get lazy, but creating a flawless makeup look really starts with good skincare.
+    Making sure you cleanse properly is one thing, but following with an exfoliation treatment is the key to a smooth, fresh complexion that will serve as a
+    perfect base for makeup. Emma Hobson, the Education Manager for the International Dermal Institute and Dermalogica explains backstage at Hansen & Gretel;
+    exfoliation is what 'gives that really smooth, healthy glow and smooth palette, particularly if [the models] aren’t putting foundation on'. She recommends
+    Dermalogica Daily Resurfacer. Makeup artist and director at Lee Mathews, Claire Thompson agrees; 'I feel that’s where makeup and skin is headed now - it’s
+    elevated and the quality is going into skin care, rather than making an impact with the base.'",
+    text3: "2. Manipulating your foundation is the key to the perfect dewy finish.\n\n
+    Glowing skin is in, and we have it from good authority that a dewy, radiant foundation finish isn’t going anywhere, anytime soon. So when we chatted to
+    Lara Srokowski, Lancome’s National Makeup Artist, we were super excited to learn her trick for achieving the perfect textured makeup base. 'We’ve used our
+    Lancome Absolue Precious Oil, so the oil has given that really beautiful dewy base before we even apply makeup. We’ve [then] used Ultra Wear Foundation, which
+    s actually a medium to full coverage foundation but we’ve manipulated the texture by adding a few drops of the oil into the foundation. [This] then gives it that
+    ‘second skin’ finish, and because we do the models makeup so many hours before, we wanted that long-wearing effect where we don’t need to do any retouches,'' but
+      still be able to maintain that gorgeous, dewy finish, explains Lara about the makeup for the AJE opening show.",
+    text4: "3. Blush is back in a big way.\n\n
+    Lee Mathews and Karla Spetic proved that blush is back and we couldn’t be more excited about it. Moving away from the overpowering and over-powdered look we
+    grew up terrified of, the hero products of Australian Fashion Week were cream and liquid blush formulas, specifically The Body Shop Lip and Cheek Stain in Deep
+    Berry and Pink Hibiscus and Westman Atelier Baby Cheek Blush Stick (find it at mecca.com.au, $76) . 'We applied with fingers, dabbing high on the cheek bones,
+    under the eye bone and across the nose to give [a] fresh, flushed look,' explained The Body Shop makeup artist at Karla Spetic.",
+    cover_alt_text: "esther cover",
+    photo1_alt_text: "esther photo one",
+    photo2_alt_text: "esther photo two",
+    photo3_alt_text: "esther photo three",
+    published: true
+  )
 
   esther_article_cover = File.join(Rails.root,'app/assets/images/esther_article_cover.png')
   esther_article.cover_photo.attach(io: File.open(esther_article_cover) , filename: 'esther_article_cover.png')

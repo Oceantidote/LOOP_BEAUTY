@@ -1,0 +1,9 @@
+<div class="dash-links">
+  <%= link_to "Account Overview", dashboard_path %>
+  <%= link_to "My Products", user_my_products_path(current_user) %>
+  <%= link_to "Refer a Friend", user_refer_a_friend_path(current_user) %>
+  <%= link_to "Wishlist", user_wishlist_path(current_user) %>
+  <%= link_to "Account Details", user_account_details_path(current_user) %>
+  <%= link_to "Preference Centre", user_preference_centre_path(current_user) %>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+</div>
