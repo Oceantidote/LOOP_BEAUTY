@@ -1,8 +1,74 @@
-<div class="dash-container">
-  <% if current_user.influencer? %>
-    <%= render 'shared/influencer_dash' %>
-  <% else %>
-    <%= render 'shared/dash' %>
-  <% end %>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <h2 class="insider-info-title mlb-title text-center dash-mobile-title">My Loop Beauty</h2>
+      <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
+      <% if current_user.influencer? %>
+        <%= render 'shared/influencer_dash' %>
+      <% else %>
+        <%= render 'shared/dash' %>
+      <% end %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Account Details</h2>
+      <hr>
+      <div class="account-details-tabs">
+        <p class="boldest grey-font account-tab-one all-tabs account-active-tab">Personal Details</p>
+        <span>|</span>
+        <p class="boldest grey-font account-tab-two all-tabs">Addresses</p>
+        <span>|</span>
+        <p class="boldest grey-font account-tab-three all-tabs">Change Password</p>
+      </div>
+      <div class="account-details-content">
+        <div class="account-content-one account-content-show">
 
+        </div>
+        <div class="account-content-two">
+
+        </div>
+        <div class="account-content-three">
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  tabOne = document.querySelector('.account-tab-one');
+  tabTwo = document.querySelector('.account-tab-two');
+  tabThree = document.querySelector('.account-tab-three');
+  contentOne = document.querySelector('.account-content-one');
+  contentTwo = document.querySelector('.account-content-two');
+  contentThree = document.querySelector('.account-content-three');
+
+  tabs = document.querySelectorAll('.all-tabs');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('.all-tabs').forEach(function(tab) { tab.classList.remove('account-active-tab') });
+      e.currentTarget.classList.add('account-active-tab');
+    })
+  });
+
+  tabOne.addEventListener('click', function() {
+    contentOne.classList.add('account-content-show');
+    contentTwo.classList.remove('account-content-show');
+    contentThree.classList.remove('account-content-show');
+  });
+
+  tabTwo.addEventListener('click', function() {
+    contentTwo.classList.add('account-content-show');
+    contentOne.classList.remove('account-content-show');
+    contentThree.classList.remove('account-content-show');
+  });
+
+  tabThree.addEventListener('click', function() {
+    contentThree.classList.add('account-content-show');
+    contentOne.classList.remove('account-content-show');
+    contentTwo.classList.remove('account-content-show');
+  });
+
+
+</script>
+
+>>>>>>> 07a8e0d11e2ec5b7bc55598485e76e1862fd8b4b

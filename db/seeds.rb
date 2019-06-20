@@ -14,6 +14,7 @@ Benefit.destroy_all
 RecommendedProduct.destroy_all
 Product.destroy_all
 User.destroy_all
+Tutorial.destroy_all
 # CREATING DEPARTMENTS
 
 makeup = Department.create!(name: "Makeup")
@@ -435,7 +436,7 @@ bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpe
 
 puts "Creating insider articles"
 
-9.times do
+5.times do
 
   esther_article = InsiderArticle.create!(
     by: "Esther Areola",

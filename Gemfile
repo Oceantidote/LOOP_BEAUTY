@@ -19,13 +19,13 @@ gem 'money-rails'
 gem 'friendly_id', '~> 5.2.4'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
-gem 'acts_as_votable'
 gem 'trix'
 # gem 'image_processing', '~> 1.2'
 
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  # gem 'hotloader'
 end
 
 group :development, :test do

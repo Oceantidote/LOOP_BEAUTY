@@ -17,7 +17,7 @@
             <ul>
               <% @brands.each do |brand| %>
                 <% if brand.name.first.capitalize == letter %>
-                  <li><%= link_to brand.name, brand_path(brand), class: "old-standard each-brand" %></li>
+                  <li><%= link_to brand.name, brand_path(brand), class: "didot each-brand" %></li>
                 <% end %>
               <% end %>
             </ul>
