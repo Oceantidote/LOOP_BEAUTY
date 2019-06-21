@@ -2,5 +2,6 @@ cards = document.querySelectorAll('.card-image-results');
 cards.forEach(function(card) {
   card.remove();
 });
-results = document.getElementById('results')
-results.innerHTML = "<%= j render 'card_results', products: @products %>";
+results = document.querySelector('.partial-banner')
+results.nextElementSibling.remove()
+results.insertAdjacentHTML('afterend', "<%= j render 'card_results', products: @products %>")
