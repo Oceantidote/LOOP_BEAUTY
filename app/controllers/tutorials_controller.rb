@@ -22,7 +22,7 @@ class TutorialsController < ApplicationController
     authorize @tutorial
     if @tutorial.save
       flash[:notice] = 'Tutorial pending approval'
-      redirect_to root_path
+      redirect_to user_uploads_path(current_user)
     else
       flash[:error] = 'Please review problems'
       render :new

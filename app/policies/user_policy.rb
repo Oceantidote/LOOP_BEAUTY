@@ -4,53 +4,53 @@ class UserPolicy < ApplicationPolicy
       if user&.admin?
         scope.all
       else
-        scope.where(published: true).where(influencer: true)
+        scope.where(published: record == user).where(influencer: record == user)
       end
     end
   end
 
   def dashboard?
-    true
+    record == user || user.admin?
   end
 
   def my_orders?
-    true
+    dashboard?
   end
 
   def my_products?
-    true
+    dashboard?
   end
 
   def refer_a_friend?
-    true
+    dashboard?
   end
 
   def showroom?
-    true
+    dashboard?
   end
 
   def wishlist?
-    true
+    dashboard?
   end
 
   def account_details?
-    true
+    dashboard?
   end
 
   def share?
-    true
+    dashboard?
   end
 
   def uploads?
-    true
+    dashboard?
   end
 
   def analytics?
-    true
+    dashboard?
   end
 
   def preference_centre?
-    true
+    dashboard?
   end
 
   def show?

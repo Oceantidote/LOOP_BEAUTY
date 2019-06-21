@@ -7,9 +7,9 @@ class Tutorial < ApplicationRecord
   has_one_attached :cover_photo
   has_many :tutorial_products, dependent: :destroy
   has_many :products, through: :tutorial_products
-
+  validates :title, uniqueness: true
   def approve!
-    update(status: 'approved')
+    update(status: 'approved', rejection_message: nil)
   end
 
   def reject!

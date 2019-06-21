@@ -1,0 +1,22 @@
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'shared/influencer_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Update Tutorial</h2>
+      <hr>
+      <h4><%= @tutorial.rejection_message %></h4>
+      <hr>
+      <%= simple_form_for @tutorial do |f| %>
+        <%= f.input :title %>
+        <%= f.input :video %>
+        <%= f.input :cover_photo %>
+        <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
