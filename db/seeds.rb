@@ -4,6 +4,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+CustomerReview.destroy_all
+InsiderReview.destroy_all
+InsiderArticle.destroy_all
 Department.destroy_all
 Brand.destroy_all
 Category.destroy_all
@@ -12,9 +15,10 @@ Shade.destroy_all
 ProductBenefit.destroy_all
 Benefit.destroy_all
 RecommendedProduct.destroy_all
+TutorialProduct.destroy_all
 Product.destroy_all
-User.destroy_all
 Tutorial.destroy_all
+User.destroy_all
 # CREATING DEPARTMENTS
 
 makeup = Department.create!(name: "Makeup")
@@ -373,7 +377,7 @@ highlighter_brush_rec_4 = RecommendedProduct.create!(recommender: highlighter_br
 
 
 # CREATING INFLUENCERS
-puts "Creating users"
+puts "Creating influencers"
 
 
 esther = User.create!(published: true, influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "esther123", email: "esther@estareonline.com")
@@ -383,6 +387,16 @@ nikki = User.create!(published: true, influencer: true, first_name: "Nikki", las
 shantania = User.create!(published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
 bemi = User.create!(published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
 
+insiders = [esther, ropo, breeny, nikki, shantania, bemi]
+
+# CREATING CUSTOMER USER
+
+puts "Creating customers"
+
+ariel = User.create!(published: true, influencer: false, first_name: "Ariel", last_name: "Roberts", country: "Bristol, UK",password: "123456", email: "ariel@gmail.com")
+lenny = User.create!(published: true, influencer: false, first_name: "Leonard", last_name: "Percival", country: "Oxford, UK",password: "123456", email: "lenny@gmail.com")
+ife = User.create!(published: true, influencer: false, first_name: "Ife", last_name: "Odugbesan", country: "London, UK",password: "123456", email: "ife@gmail.com")
+customers = [ariel, lenny, ife]
 # CREATING ADMIN USER
 
 puts "Creating admin user"
@@ -419,11 +433,11 @@ nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpeg')
 nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpeg')
 
 
-shatania_cover = File.join(Rails.root,'app/assets/images/shatania_cover.jpeg')
-shantania.cover_photo.attach(io: File.open(shatania_cover) , filename: 'shatania_cover.jpeg')
+shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
+shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpeg')
 
-shatania_avatar = File.join(Rails.root,'app/assets/images/shatania_avatar.jpeg')
-shantania.avatar_photo.attach(io: File.open(shatania_avatar) , filename: 'shatania_avatar.jpeg')
+shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpeg')
+shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpeg')
 
 bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
 bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
@@ -436,7 +450,7 @@ bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpe
 
 puts "Creating insider articles"
 
-5.times do
+# 5.times do
 
   esther_article = InsiderArticle.create!(
     by: "Esther Areola",
@@ -688,7 +702,7 @@ puts "Creating insider articles"
   bemi_photo_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.png')
   bemi_article.photo3.attach(io: File.open(bemi_photo_three) , filename: 'bemi_photo_three.png')
 
-end
+# end
 
 puts "Insider articles created!"
 
@@ -696,18 +710,229 @@ puts "Insider articles created!"
 
 puts "Creating tutorials"
 
-shantania_tutorial = Tutorial.create!(
-                                      user: shantania,
-                                      title: "Lenny and Fanny",
+esther_tutorial = Tutorial.create!(
+                                      user: esther,
+                                      status: "approved",
+                                      title: "Make Up Tips",
                                       )
 
-shantania_video = File.join(Rails.root,'app/assets/images/IMG_5842.MOV')
-shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'IMG_5842.MOV')
+esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
+esther_tutorial.cover_photo.attach(io: File.open(esther_video_cover) , filename: 'esther_cover.jpeg')
+esther_video = File.join(Rails.root,'app/assets/images/esther-vid.mp4')
+esther_tutorial.video.attach(io: File.open(esther_video) , filename: 'esther-vid.mp4')
+
+breeny_tutorial = Tutorial.create!(
+                                      user: breeny,
+                                      status: "approved",
+                                      title: "Best Ways To Apply Foundation",
+                                      )
+
+breeny_video_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
+breeny_tutorial.cover_photo.attach(io: File.open(breeny_video_cover) , filename: 'breeny_cover.jpg')
+breeny_video = File.join(Rails.root,'app/assets/images/breeny-vid.mp4')
+breeny_tutorial.video.attach(io: File.open(breeny_video) , filename: 'breeny-vid.mp4')
 
 
+nikki_tutorial = Tutorial.create!(
+                                      user: nikki,
+                                      status: "approved",
+                                      title: "My Top Tips",
+                                      )
+
+nikki_video_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
+nikki_tutorial.cover_photo.attach(io: File.open(nikki_video_cover) , filename: 'nikki_cover.jpeg')
+nikki_video = File.join(Rails.root,'app/assets/images/nikki-vid.mp4')
+nikki_tutorial.video.attach(io: File.open(nikki_video) , filename: 'nikki-vid.mp4')
 
 
+shantania_tutorial = Tutorial.create!(
+                                      user: shantania,
+                                      status: "approved",
+                                      title: "My Favourite Blushers",
+                                      )
 
+shantania_video_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
+shantania_tutorial.cover_photo.attach(io: File.open(shantania_video_cover) , filename: 'shantania_cover.jpeg')
+shantania_video = File.join(Rails.root,'app/assets/images/shantania-vid.mp4')
+shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'shantania-vid.mp4')
+
+
+bemi_tutorial = Tutorial.create!(
+                                      user: bemi,
+                                      status: "approved",
+                                      title: "Golden Hour Skin Tutorial",
+                                      )
+
+bemi_video_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
+bemi_tutorial.cover_photo.attach(io: File.open(bemi_video_cover) , filename: 'bemi_cover.jpeg')
+bemi_video = File.join(Rails.root,'app/assets/images/bemi-vid.mp4')
+bemi_tutorial.video.attach(io: File.open(bemi_video) , filename: 'bemi-vid.mp4')
+
+
+ropo_tutorial = Tutorial.create!(
+                                      user: ropo,
+                                      status: "approved",
+                                      title: "Drugstore Prom Make Up Tutorial",
+                                      )
+
+ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
+ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ropo_cover.jpeg')
+ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
+ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
+
+# CREATING TUTORIAL PRODUCTS
+
+puts "Creating tutorial products"
+
+TutorialProduct.create!(
+                        tutorial: esther_tutorial,
+                        product: disco_fluid_lipstick
+                        )
+
+TutorialProduct.create!(
+                        tutorial: esther_tutorial,
+                        product: disco_topper_lip_topper
+                        )
+
+TutorialProduct.create!(
+                        tutorial: esther_tutorial,
+                        product: brow_lift
+                        )
+
+TutorialProduct.create!(
+                        tutorial: esther_tutorial,
+                        product: brow_filler
+                        )
+
+TutorialProduct.create!(
+                        tutorial: breeny_tutorial,
+                        product: disco_fluid_lipstick
+                        )
+
+TutorialProduct.create!(
+                        tutorial: breeny_tutorial,
+                        product: disco_topper_lip_topper
+                        )
+
+TutorialProduct.create!(
+                        tutorial: breeny_tutorial,
+                        product: brow_lift
+                        )
+
+TutorialProduct.create!(
+                        tutorial: breeny_tutorial,
+                        product: brow_filler
+                        )
+
+TutorialProduct.create!(
+                        tutorial: nikki_tutorial,
+                        product: disco_fluid_lipstick
+                        )
+
+TutorialProduct.create!(
+                        tutorial: nikki_tutorial,
+                        product: disco_topper_lip_topper
+                        )
+
+TutorialProduct.create!(
+                        tutorial: nikki_tutorial,
+                        product: brow_lift
+                        )
+
+TutorialProduct.create!(
+                        tutorial: nikki_tutorial,
+                        product: brow_filler
+                        )
+
+TutorialProduct.create!(
+                        tutorial: shantania_tutorial,
+                        product: disco_fluid_lipstick
+                        )
+
+TutorialProduct.create!(
+                        tutorial: shantania_tutorial,
+                        product: disco_topper_lip_topper
+                        )
+
+TutorialProduct.create!(
+                        tutorial: shantania_tutorial,
+                        product: brow_lift
+                        )
+
+TutorialProduct.create!(
+                        tutorial: shantania_tutorial,
+                        product: brow_filler
+                        )
+
+TutorialProduct.create!(
+                        tutorial: bemi_tutorial,
+                        product: disco_fluid_lipstick
+                        )
+
+TutorialProduct.create!(
+                        tutorial: bemi_tutorial,
+                        product: disco_topper_lip_topper
+                        )
+
+TutorialProduct.create!(
+                        tutorial: bemi_tutorial,
+                        product: brow_lift
+                        )
+
+TutorialProduct.create!(
+                        tutorial: bemi_tutorial,
+                        product: brow_filler
+                        )
+
+TutorialProduct.create!(
+                        tutorial: ropo_tutorial,
+                        product: disco_fluid_lipstick
+                        )
+
+TutorialProduct.create!(
+                        tutorial: ropo_tutorial,
+                        product: disco_topper_lip_topper
+                        )
+
+TutorialProduct.create!(
+                        tutorial: ropo_tutorial,
+                        product: brow_lift
+                        )
+
+TutorialProduct.create!(
+                        tutorial: ropo_tutorial,
+                        product: brow_filler
+                        )
+
+# CREATING CUSTOMER REVIEWS
+
+puts "Creating customer reviews"
+
+6.times do
+
+CustomerReview.create!(
+                      user: customers.sample,
+                      rating: [0, 1, 2, 3, 4, 5].sample,
+                      product: disco_fluid_lipstick,
+                      review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
+                      )
+
+end
+
+# CREATING INFLUENCER REVIEWS
+
+puts "Creating insider reviews"
+
+3.times do
+
+InsiderReview.create!(
+                      user: insiders.sample,
+                      rating: [0, 1, 2, 3, 4, 5].sample,
+                      product: disco_fluid_lipstick,
+                      review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
+                      )
+
+end
 
 
 

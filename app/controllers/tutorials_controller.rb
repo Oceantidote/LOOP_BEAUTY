@@ -8,6 +8,7 @@ class TutorialsController < ApplicationController
   end
 
   def show
+    @tutorials = policy_scope(Tutorial)
   end
 
   def new

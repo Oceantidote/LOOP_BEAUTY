@@ -16,6 +16,7 @@ class PagesController < ApplicationController
   end
 
   def videos
+    @tutorials = Tutorial.all
   end
 
   def influencer_video

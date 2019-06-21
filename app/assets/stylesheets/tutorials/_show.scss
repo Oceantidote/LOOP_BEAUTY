@@ -21,6 +21,12 @@
 
 .tutorial-show-video-banner {
   width: 100vw;
+  position: relative;
+  &:hover {
+    .video-home-play-button {
+      transform: scale(1.5);
+    }
+  }
 }
 
 .featured-products-wrapper {
@@ -62,4 +68,17 @@
 .similar-tutorials-wrapper {
   background: #F5F5F5;
   padding-bottom: 30px;
+}
+
+.video-overlay {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
