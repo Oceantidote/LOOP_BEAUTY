@@ -59,11 +59,11 @@
         <% end %>
       <% end %>
     </li>
-    <li class="nav-item basket-icon-container mobile-hidden">
-      <%= link_to bag_path, class: "nav-link" do %>
+    <li class="nav-item mobile-hidden">
+      <%= link_to bag_path, class: "nav-link basket-icon-container" do %>
         <%= image_tag 'basket.png' %>
+        <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
       <% end %>
-      <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
     </li>
   </ul>
   <div class="mobile-nav-links-container">
@@ -79,10 +79,10 @@
       <% end %>
     </div>
     <div class="mobile-left-links" style="margin-left: 5px;">
-      <%= link_to bag_path do %>
+      <%= link_to bag_path, class: "basket-icon-container" do %>
         <%= image_tag 'basket.png' %>
+        <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
       <% end %>
-      <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
     </div>
   </div>
 </div>

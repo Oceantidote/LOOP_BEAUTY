@@ -134,6 +134,10 @@
 
 .basket-icon-container {
   position: relative;
+  display: block;
+  p {
+    color: black !important;
+  }
 }
 
 .basket-item-count {
