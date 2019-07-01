@@ -1,4 +1,4 @@
 class Showroom < ApplicationRecord
   belongs_to :user
-  has_many :products, through: :showroom_products
+  has_many :showroom_products
 end

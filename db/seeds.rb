@@ -4,6 +4,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ShowroomProduct.destroy_all
+Showroom.destroy_all
 CustomerReview.destroy_all
 InsiderReview.destroy_all
 InsiderArticle.destroy_all
@@ -188,6 +190,7 @@ brow_lift = Product.create!(
   lb_id: "LB00003",
   measurement: "grams",
   department: makeup,
+  demoable: true,
   category: eyes,
   sub_category: brow,
   brand: beauty_edit_mayfair,
@@ -265,6 +268,7 @@ brow_setter = Product.create!(
   sub_category: brow,
   brand: beauty_edit_mayfair,
   weight: 8.8,
+  demoable: true,
   price_cents: 2500,
   details: "Sets, defines and holds.
 A clear brow gel that sets and holds brows and can be worn alone or with an eyebrow pencil. There is no product build-up, and the gel contains vitamins B5 and E as well as castor oil to strengthen and condition hair brows."
@@ -323,6 +327,7 @@ highlighter_brush = Product.create!(
   sub_category: sub_tools,
   brand: beauty_edit_mayfair,
   price_cents: 1800,
+  demoable: true,
   details: "Ensures perfect precision.
 This brush effortlessly blends a brow highlighter pencil which helps to define the brow bone and create a sought-after shape. It is also handy for applying concealer on delicate areas."
 )
@@ -386,6 +391,19 @@ breeny = User.create!(published: true, influencer: true, first_name: "Breeny", l
 nikki = User.create!(published: true, influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikkissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
 shantania = User.create!(published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
 bemi = User.create!(published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
+
+estherShowroom = Showroom.create!(user: esther)
+ropoShowroom = Showroom.create!(user: ropo)
+breenyShowroom = Showroom.create!(user: breeny)
+shantaniaShowroom = Showroom.create!(user: shantania)
+bemiShowroom = Showroom.create!(user: bemi)
+
+estherProd = ShowroomProduct.create!(showroom: estherShowroom, product: brow_lift)
+ropoProd = ShowroomProduct.create!(showroom: ropoShowroom, product: brow_setter)
+breenyProd = ShowroomProduct.create!(showroom: breenyShowroom, product: brow_setter)
+shantaniaProd = ShowroomProduct.create!(showroom: shantaniaShowroom, product: brow_setter)
+bemiProd = ShowroomProduct.create!(showroom: bemiShowroom, product: brow_setter)
+
 
 insiders = [esther, ropo, breeny, nikki, shantania, bemi]
 

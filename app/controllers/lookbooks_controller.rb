@@ -48,6 +48,17 @@ class LookbooksController < ApplicationController
     end
   end
 
+  def approve
+    @lookbook.approve!
+    redirect_to admin_lookbooks_path
+  end
+
+  def reject
+    @lookbook.update(lookbook_params)
+    @lookbook.reject!
+    redirect_to admin_lookbooks_path
+  end
+
   private
 
   def set_lookbook
@@ -56,6 +67,6 @@ class LookbooksController < ApplicationController
   end
 
   def lookbook_params
-    params.require(:lookbook).permit(:title, :photo, product_ids: [])
+    params.require(:lookbook).permit(:title, :photo, :rejection_message, product_ids: [])
   end
 end
