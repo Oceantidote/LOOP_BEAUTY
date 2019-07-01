@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_144308) do
+ActiveRecord::Schema.define(version: 2019_07_01_142753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,8 @@ ActiveRecord::Schema.define(version: 2019_06_20_144308) do
     t.string "title"
     t.string "slug"
     t.text "rejection_message"
+    t.string "affiliate_code"
+    t.index ["affiliate_code"], name: "index_lookbooks_on_affiliate_code"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
   end
 
@@ -310,6 +312,8 @@ ActiveRecord::Schema.define(version: 2019_06_20_144308) do
     t.string "title"
     t.string "slug"
     t.text "rejection_message"
+    t.string "affiliate_code"
+    t.index ["affiliate_code"], name: "index_tutorials_on_affiliate_code"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end
 
@@ -334,6 +338,8 @@ ActiveRecord::Schema.define(version: 2019_06_20_144308) do
     t.date "dob"
     t.string "slug"
     t.boolean "admin", default: false
+    t.string "avatar_photo"
+    t.string "cover_photo"
     t.text "description"
     t.boolean "published", default: false
     t.string "stripe_id"
