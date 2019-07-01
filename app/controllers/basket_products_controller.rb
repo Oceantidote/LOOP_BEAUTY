@@ -8,7 +8,7 @@ class BasketProductsController < ApplicationController
     @item.basket = find_basket
     @item.product = @product
     @item.shade = @product.shades.first if @item.shade.nil?
-    add_add_code
+    add_aff_code
     authorize @item
     if @item.save
       flash[:notice] = 'Item added to bag'
