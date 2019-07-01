@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def showroom
+    @products = Product.where(demoable: true)
   end
 
   def uploads
@@ -72,7 +73,7 @@ class UsersController < ApplicationController
   end
 
   def make_up
-    @products = @user.showroom.showroom_products.map{|r| r.product}
+    @products = @user.showroom.showroom_products.map{ |r| r.product }
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
