@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_141654) do
+ActiveRecord::Schema.define(version: 2019_07_01_150132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_141654) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.string "affiliate_code"
     t.index ["basket_id"], name: "index_basket_products_on_basket_id"
     t.index ["product_id"], name: "index_basket_products_on_product_id"
     t.index ["shade_id"], name: "index_basket_products_on_shade_id"
@@ -171,6 +172,8 @@ ActiveRecord::Schema.define(version: 2019_07_01_141654) do
     t.string "title"
     t.string "slug"
     t.text "rejection_message"
+    t.string "affiliate_code"
+    t.index ["affiliate_code"], name: "index_lookbooks_on_affiliate_code"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
   end
 
@@ -182,6 +185,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_141654) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.string "affiliate_code"
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["shade_id"], name: "index_order_products_on_shade_id"
@@ -311,6 +315,8 @@ ActiveRecord::Schema.define(version: 2019_07_01_141654) do
     t.string "title"
     t.string "slug"
     t.text "rejection_message"
+    t.string "affiliate_code"
+    t.index ["affiliate_code"], name: "index_tutorials_on_affiliate_code"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end
 

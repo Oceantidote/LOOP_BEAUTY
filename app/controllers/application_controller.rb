@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :set_navbar_variables
+  before_action :store_aff_code
   include Pundit
   @influencers = User.where(influencer: true).where(published: true)
   # Pundit: white-list approach.
@@ -76,5 +77,11 @@ class ApplicationController < ActionController::Base
     @brands = Brand.all.order(name: :ASC)
     @influencers = User.where(influencer: true).order(first_name: :ASC)
     @basket = find_basket
+  end
+
+  def store_aff_code
+    if params[:aff_code]
+      session[:aff_code] = params[:aff_code]
+    end
   end
 end

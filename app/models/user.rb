@@ -29,6 +29,10 @@ class User < ApplicationRecord
     influencer
   end
 
+  def sales
+    lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
