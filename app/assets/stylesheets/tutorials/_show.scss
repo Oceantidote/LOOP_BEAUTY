@@ -12,12 +12,56 @@
       text-decoration: none;
     }
   }
+  @include for-small-devices-down {
+    flex-direction: column-reverse;
+  }
+}
+
+.web-tutorials-link {
+  @include for-small-devices-down {
+    display: none;
+  }
 }
 
 .previous-next-tutorial {
   display: flex;
+  @include for-small-devices-down {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
+.previous-next-seperator {
+  @include for-small-devices-down {
+    display: none;
+  }
+}
+
+.mobile-tutorials-link {
+  color: black;
+  font-weight: 900;
+  border-bottom: 1px solid black;
+  margin-left: 16px;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+  @include for-medium-devices-up {
+    display: none;
+  }
+}
+
+.featured-products-header, .similar-tutorials-header {
+  @include for-small-devices-down {
+    justify-content: center !important;
+  }
+}
+
+.tutorial-spacer {
+  @include for-small-devices-down {
+    display: none;
+  }
+}
 
 .tutorial-show-video-banner {
   width: 100vw;

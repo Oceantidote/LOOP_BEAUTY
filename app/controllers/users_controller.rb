@@ -80,7 +80,9 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
+    if current_user.influencer?
+      @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
+    end
     authorize @user
   end
 

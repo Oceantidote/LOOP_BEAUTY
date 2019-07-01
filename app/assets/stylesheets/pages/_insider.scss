@@ -26,7 +26,7 @@
   margin: auto;
   width: 35%;
   @include for-phone-only {
-    width: 70%;
+    width: 80%;
   }
 }
 
@@ -56,6 +56,7 @@
 
 .insider-home-tabs-container {
   height: 60px;
+  width: 100%;
   background: white;
   @include absCenter;
 }
@@ -63,6 +64,9 @@
 .insider-home-tabs {
   display: flex;
   height: 100%;
+  form {
+    flex: 1;
+  }
 }
 
 .each-insider-home-tab {
@@ -70,6 +74,7 @@
   margin: 0;
   height: 100%;
   border: none;
+  border-radius: 0;
   @include absCenter;
   color: black;
   font-size: 14px;
@@ -82,6 +87,9 @@
   }
   &:focus {
     outline: none;
+  }
+  @include for-phone-only {
+    font-size: 12px;
   }
 }
 

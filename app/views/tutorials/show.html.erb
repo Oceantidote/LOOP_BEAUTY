@@ -1,12 +1,12 @@
 <div class="tutorial-show-title-content">
-  <%= link_to 'See all tutorials', influencer_video_path %>
+  <%= link_to 'See all tutorials', influencer_video_path, class: "web-tutorials-link" %>
   <h2 class="insider-info-title text-center"><%= @tutorial.title %></h2>
   <div class="previous-next-tutorial">
     <div class="previous">
       <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)" %>
       <%= link_to 'Previous', '#' %>
     </div>
-    <strong style="margin: 0 5px;">|</strong>
+    <span class="previous-next-seperator"><strong style="margin: 0 5px;">|</strong></span>
     <div class="next">
       <%= link_to 'Next', '#' %>
       <%= image_tag 'dropdown-forward.png', width: 10 %>
@@ -19,11 +19,13 @@
     <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80 %>
   </div>
 </div>
+<%= link_to 'See all tutorials', influencer_video_path, class: "mobile-tutorials-link" %>
+
 <div class="featured-products-wrapper">
   <div class="featured-products-header">
-    <div style="width: 150px;"></div>
+    <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">Featured Products</h2>
-    <%= link_to 'Shop more products', products_path %>
+    <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
   </div>
   <div class="container">
     <div class="row">
@@ -63,12 +65,13 @@
       <% end %>
     </div>
   </div>
+  <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
 </div>
 <div class="similar-tutorials-wrapper">
   <div class="similar-tutorials-header">
-    <div style="width: 150px;"></div>
+    <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">You'll also love</h2>
-    <%= link_to 'View more tutorials', '#' %>
+    <%= link_to 'View more tutorials', '#', class: "web-tutorials-link" %>
   </div>
   <div class="container">
     <div class="row">
@@ -89,6 +92,7 @@
       <% end %>
     </div>
   </div>
+  <%= link_to 'View more tutorials', '#', class: "mobile-tutorials-link" %>
 </div>
 
 <% if current_user&.admin? && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
