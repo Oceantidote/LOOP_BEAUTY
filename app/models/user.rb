@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :tutorials
   has_one :showroom
 
+
   def admin?
     admin
   end

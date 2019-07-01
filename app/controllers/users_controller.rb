@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def make_up
-
+    @products = @user.showroom.showroom_products.map{|r| r.product}
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
@@ -80,9 +80,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    if current_user.influencer?
-      @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
-    end
+    @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
     authorize @user
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_144308) do
+ActiveRecord::Schema.define(version: 2019_07_01_141654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 2019_06_20_144308) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "slug"
+    t.boolean "demoable", default: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["department_id"], name: "index_products_on_department_id"
@@ -334,8 +335,10 @@ ActiveRecord::Schema.define(version: 2019_06_20_144308) do
     t.date "dob"
     t.string "slug"
     t.boolean "admin", default: false
+    t.string "avatar_photo"
+    t.string "cover_photo"
     t.text "description"
-    t.boolean "published", default: false
+    t.boolean "published"
     t.string "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
