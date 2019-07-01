@@ -8,6 +8,7 @@ class BasketProductsController < ApplicationController
     @item.basket = find_basket
     @item.product = @product
     @item.shade = @product.shades.first if @item.shade.nil?
+    add_add_code
     authorize @item
     if @item.save
       flash[:notice] = 'Item added to bag'
@@ -48,5 +49,11 @@ class BasketProductsController < ApplicationController
   def set_basket_product
     @item = BasketProduct.find(params[:id])
     authorize @item
+  end
+
+  def add_aff_code
+    return unless session[:aff_code]
+    @referrer = Lookbook.find_by_affiliate_code(session[:aff_code]) || Tutorial.find_by_affiliate_code(session[:aff_code])
+    @item.affiliate_code = session[:aff_code] if @referrer.products.include?(@product)
   end
 end

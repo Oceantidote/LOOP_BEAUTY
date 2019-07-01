@@ -19,6 +19,10 @@ class Lookbook < ApplicationRecord
     update(status: 'pending')
   end
 
+  def sales
+    OrderProduct.where(affiliate_code: affiliate_code).size
+  end
+
   private
 
   def gen_aff_code

@@ -7,7 +7,8 @@ class BasketProduct < ApplicationRecord
     OrderProduct.new(
       product: product,
       shade: shade,
-      quantity: quantity
+      quantity: quantity,
+      affiliate_code: affiliate_code
     )
   end
 end
