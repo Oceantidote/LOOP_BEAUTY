@@ -1,182 +1,74 @@
-<div class="video-home-image-banner" style="background-image:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://collegelifemadeeasy.com/wp-content/uploads/2019/05/Smooth-Liquid-Camo-Foundation.jpg')">
-  <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80 %>
-  <div class="video-home-banner-text-container">
-    <div class="video-home-banner-text">
-      <h2 class="didot">A fresh look for 2019 with your favourite influencer</h2>
+<% featured = @tutorials.sample %>
+<%= link_to tutorial_path(featured), class: "featured-tutorial" do %>
+  <div class="video-home-image-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(featured.cover_photo) %>)">
+    <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80 %>
+    <div class="video-home-banner-text-container">
+      <div class="video-home-banner-text">
+        <h2 class="didot"><%= featured.title %></h2>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 <div class="latest-videos-wrapper">
   <%= link_to 'See all', '#', class: "see-all-videos-link" %>
   <h2 class="insider-info-title text-center">Latest Videos</h2>
   <div class="row" style="margin: 30px 0;">
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/765191/pexels-photo-765191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+    <% @tutorials.order(created_at: :DESC).first(4).each do |tutorial| %>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
+          <div class="homepage-video-card">
+            <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
+              <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+            </div>
+            <div class="homepage-video-card-text">
+              <p class="video-card-text-title">by <%= tutorial.user.instagram %></p>
+              <p class="video-card-text-content"><%= tutorial.title %></p>
+            </div>
           </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/157920/woman-face-curly-hair-157920.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/2305857/pexels-photo-2305857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://images.pexels.com/photos/458639/pexels-photo-458639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="latest-videos-wrapper">
   <%= link_to 'See all', '#', class: "see-all-videos-link" %>
   <h2 class="insider-info-title text-center">Tutorials</h2>
   <div class="row" style="margin: 30px 0;">
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://i0.wp.com/shesomajor.com/wp-content/uploads/2018/02/C683E353-B58C-4ECA-8690-9EC91129A2AC.jpg?fit=1616%2C1080&ssl=1')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+    <% @tutorials.first(4).each do |tutorial| %>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
+          <div class="homepage-video-card">
+            <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
+              <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+            </div>
+            <div class="homepage-video-card-text">
+              <p class="video-card-text-title">by <%= tutorial.user.instagram %></p>
+              <p class="video-card-text-content"><%= tutorial.title %></p>
+            </div>
           </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://i.ytimg.com/vi/wBJ_JMao3Cc/maxresdefault.jpg')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://theskincareedit.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTY0MDE4MTgwMDczNzI3ODI1/alicia-keys-skincare-routine-2.jpg')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-img.instyle.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F684xflex%2Fpublic%2Fimages%2F2019%2F01%2F012319-skin-lead.jpg%3Fitok%3DQ7N23pl_&w=400&c=sc&poi=face&q=85')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="latest-videos-wrapper">
   <%= link_to 'See all', '#', class: "see-all-videos-link" %>
   <h2 class="insider-info-title text-center">Ask the experts</h2>
   <div class="row" style="margin: 30px 0;">
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://www.skincare.com/-/media/images/loreal/skincare/articles/featured-images/970_how_to_double_cleanse_face.jpg')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+    <% @tutorials.first(4).each do |tutorial| %>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
+          <div class="homepage-video-card">
+            <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
+              <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+            </div>
+            <div class="homepage-video-card-text">
+              <p class="video-card-text-title">by <%= tutorial.user.instagram %></p>
+              <p class="video-card-text-content"><%= tutorial.title %></p>
+            </div>
           </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://pixel.nymag.com/imgs/fashion/daily/2018/08/29/no-makeup/8.w700.h467.jpg')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://assets.teenvogue.com/photos/55829d85a28d9d4e0540e166/3:2/w_300,h_200,c_limit/beauty-makeup-2014-04-jourdan-dunn-new-face-maybelline-th.jpg')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-3">
-      <%= link_to '#', class: "video-card-link card-link" do %>
-        <div class="homepage-video-card">
-          <div class="video-holder" style="background-image: url('https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fwp-content%2Fblogs.dir%2F6%2Ffiles%2F2018%2F02%2Fhow-to-model-makeup-1.jpg?q=75&w=1000&cbr=1&fit=max')">
-            <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
-          </div>
-          <div class="homepage-video-card-text">
-            <p class="video-card-text-title">by @only_bells</p>
-            <p class="video-card-text-content">A fresh look for 2018 with Bella Michelle</p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

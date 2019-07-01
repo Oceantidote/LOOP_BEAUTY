@@ -118,6 +118,7 @@
 }
 
 .homepage-video-card {
+  transition: box-shadow 0.3s ease;
   @include for-medium-devices-down {
     margin: 15px 0;
   }
@@ -166,6 +167,9 @@
 .video-card-link:hover {
   .play-button {
     transform: scale(1.1);
+  }
+  .homepage-video-card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
 }
 
