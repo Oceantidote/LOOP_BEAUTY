@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       currency: @basket.total_price.currency
     )
     @order.stripe_id = charge.id
+    @order.affiliate_code = session[:aff_code]
     if @order.save
       Stripe::Charge.update(
         charge.id,

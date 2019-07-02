@@ -8,7 +8,8 @@ class Lookbook < ApplicationRecord
   has_many :products, through: :lookbook_products
   validates :title, uniqueness: true
   def approve!
-    update(status: 'approved', affiliate_code: gen_aff_code)
+    code = gen_aff_code
+    update(status: 'approved', affiliate_code: code, affiliate_link: Rails.application.routes.url_helpers.lookbook_path(self, aff_code: code))
   end
 
   def reject!
