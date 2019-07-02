@@ -22,7 +22,7 @@ class Lookbook < ApplicationRecord
   end
 
   def sales
-    OrderProduct.where(affiliate_code: affiliate_code).size
+    Order.where(affiliate_code: affiliate_code).size
   end
 
   private
