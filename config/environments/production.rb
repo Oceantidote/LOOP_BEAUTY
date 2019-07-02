@@ -1,5 +1,7 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: "https://www.loopbeauty.co.uk" }
+  config.action_controller.default_url_options = { host: 'https://www.loopbeauty.co.uk' }
+
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :ses
   # Code is not reloaded between requests.

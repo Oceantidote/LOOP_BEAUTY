@@ -9,7 +9,8 @@ class Tutorial < ApplicationRecord
   has_many :products, through: :tutorial_products
   validates :title, uniqueness: true
   def approve!
-    update(status: 'approved', rejection_message: nil, affiliate_code: gen_aff_code)
+    code = gen_aff_code
+    update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: Rails.application.routes.url_helpers.tutorial_path(self, aff_code: code))
   end
 
   def reject!
@@ -21,7 +22,7 @@ class Tutorial < ApplicationRecord
   end
 
   def sales
-    OrderProduct.where(affiliate_code: affiliate_code).size
+    Order.where(affiliate_code: affiliate_code).size
   end
 
 
