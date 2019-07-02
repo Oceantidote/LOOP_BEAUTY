@@ -344,7 +344,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_150132) do
     t.string "avatar_photo"
     t.string "cover_photo"
     t.text "description"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.string "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

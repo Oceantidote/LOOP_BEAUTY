@@ -1,0 +1,10 @@
+<%= simple_form_for @influencer, url: admin_influencers_path do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :instagram %>
+  <%= f.input :youtube %>
+  <%= f.input :avatar_photo %>
+  <%= f.input :password %>
+  <%= f.submit 'Create Influencer Account' %>
+<% end %>

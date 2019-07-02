@@ -73,11 +73,11 @@
   </div>
 </div>
 
-<% if policy(@user).publish? %>
+<% if policy([:admin, @user]).publish? %>
   <% if @user.published %>
-    <%= link_to "Unpublish", unpublish_user_path(@user), method: :patch %>
+    <%= link_to "Unpublish", unpublish_admin_influencer_path(@user), method: :patch %>
   <% else %>
-    <%= link_to "Publish", publish_user_path(@user), method: :patch %>
+    <%= link_to "Publish", publish_admin_influencer_path(@user), method: :patch %>
   <% end %>
 <% end %>
 
