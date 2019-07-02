@@ -61,14 +61,6 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
-  def publish?
-    user&.admin?
-  end
-
-  def unpublish?
-    publish?
-  end
-
   def make_up?
     true
   end

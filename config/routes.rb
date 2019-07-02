@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'influencers/new'
+  end
   devise_for :users
   root to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage'
@@ -46,10 +49,6 @@ Rails.application.routes.draw do
     get 'wishlist', to: 'users#wishlist'
     get 'account_details', to: 'users#account_details'
     get 'preference_centre', to: 'users#preference_centre'
-    member do
-      patch '/publish', to: 'users#publish'
-      patch '/unpublish', to: 'users#unpublish'
-    end
   end
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
@@ -72,6 +71,12 @@ Rails.application.routes.draw do
       member do
         patch '/publish', to: 'insider_articles#publish'
         patch '/unpublish', to: 'insider_articles#unpublish'
+      end
+    end
+    resources :influencers, only: [:new, :create] do
+      member do
+        patch '/publish', to: 'users#publish'
+        patch '/unpublish', to: 'users#unpublish'
       end
     end
   end
