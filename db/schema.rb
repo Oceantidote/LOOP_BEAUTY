@@ -340,8 +340,6 @@ ActiveRecord::Schema.define(version: 2019_07_02_105740) do
     t.date "dob"
     t.string "slug"
     t.boolean "admin", default: false
-    t.string "avatar_photo"
-    t.string "cover_photo"
     t.text "description"
     t.boolean "published", default: false
     t.string "stripe_id"
