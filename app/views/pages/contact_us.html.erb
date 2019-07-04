@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="contact-us-container">
+    <h2 class="insider-info-title text-center">Contact Us</h2>
+    <p class="didot">Our Customer Care & Beauty Advice Team are here to help if you need assistance. Just drop us a note.</p>
+
+    <!-- CODE FOR STYLING.. MAILER IS NOT SET UP!!! -->
+
+    <%= simple_form_for :send_email, url: contact_us_path, method: :get do |f| %>
+      <div class="contact-form-name">
+        <div class="row">
+          <div class="col-sm-6">
+            <%= f.input :first_name, label: false, placeholder:'First Name', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :last_name, label: false, placeholder:'Last Name', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :address_line_1, label: false, placeholder:'Address Line 1', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :address_line_2, label: false, placeholder:'Address Line 2', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :city, label: false, placeholder:'City', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :postcode, label: false, placeholder:'Postcode', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <!-- COUNTY FOR NOW INSTEAD OF COUNTRY DUE TO country_select ERROR!!! -->
+            <%= f.input :county, label: false, placeholder:'Country', input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :phone_number, label: false, placeholder:'Phone Number', input_html: { class: "contact-form-input" } %>
+          </div>
+        </div>
+      </div>
+        <%= f.input :subject, label: false, placeholder:'email', input_html: { class: "contact-form-input" } %>
+      <%= f.input :message, as: :text, label: false, placeholder:'type your message here', input_html: { class: "contact-form-input" } %>
+      <%= f.submit 'SUBMIT', class: "contact-form-button contact-us-button" %>
+    <% end %>
+
+    <!-- CODE FOR STYLING.. MAILER IS NOT SET UP!!! -->
+
+  </div>
+</div>
