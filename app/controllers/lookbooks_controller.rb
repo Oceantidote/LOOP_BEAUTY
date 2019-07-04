@@ -16,6 +16,8 @@ class LookbooksController < ApplicationController
     @lookbook = Lookbook.find((Lookbook.select{ |r| r.slug == params[:id]}).first.id)
     @lookbooks = Lookbook.where(user: user)
     authorize @lookbook
+    @previous_lookbook = @lookbooks[@lookbook == @lookbooks.first ? @lookbooks.last.id - 1 : @lookbook.id - 2]
+    @next_lookbook = @lookbooks[@lookbook == @lookbooks.last ? @lookbooks.first.id - 1 : @lookbook.id]
   end
 
   def new

@@ -1,0 +1,128 @@
+.lookbook-card-small-image {
+  height: 300px;
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.lookbook-card-small-text-container {
+  position: relative;
+  background: white;
+  @include absCenter;
+}
+
+.lookbook-card-small-text {
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 900;
+}
+
+.lookbook-card-small-basket {
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 15px);
+}
+
+.youll-also-love-wrapper {
+  padding-bottom: 30px;
+}
+
+.main-lookbook-card {
+  width: 350px;
+  margin: 10px;
+  @include for-medium-devices-down {
+    width: 320px;
+  }
+  @include for-phone-only {
+    width: 100%;
+  }
+}
+
+.main-lookbook-cards-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: auto;
+  max-width: 1260px;
+  position: relative;
+  // width: 100%;
+}
+
+.main-lookbook-card-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  @include for-medium-devices-down {
+    height: 350px;
+  }
+}
+
+.main-lookbook-card-text {
+  width: 100%;
+  padding: 15px;
+  @include absCenter;
+  p {
+    width: 90%;
+    margin: 0;
+    @include for-medium-devices-down {
+      font-size: 14px;
+    }
+  }
+}
+
+.lookbook-card-opacity {
+  opacity: 0.3;
+}
+
+.left-lookbook-card {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  @include for-large-devices-down {
+    left: -100px;
+  }
+  @include for-medium-devices-down {
+    left: -180px;
+  }
+  @include for-small-devices-down {
+    left: -265px;
+  }
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.right-lookbook-card {
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  @include for-large-devices-down {
+    right: -100px;
+  }
+  @include for-medium-devices-down {
+    right: -180px;
+  }
+  @include for-small-devices-down {
+    right: -265px;
+  }
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.main-card-container {
+  @include absCenter;
+}
+
+.lookbook-previous-next-buttons {
+  width: 30px;
+  margin: 20px;
+  @include for-phone-only {
+    margin: 10px;
+  }
+}
