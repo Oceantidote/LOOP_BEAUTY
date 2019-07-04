@@ -8,6 +8,23 @@
   }
 }
 
+.lookbook-small-card {
+  transition: box-shadow 0.3s ease;
+  @include for-medium-devices-down {
+    margin: 15px 0;
+  }
+  @include for-phone-only {
+    width: 80%;
+    margin: 15px auto;
+  }
+}
+
+.lookbook-small-card-link:hover {
+  .lookbook-small-card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+}
+
 .lookbook-card-small-text-container {
   position: relative;
   background: white;
