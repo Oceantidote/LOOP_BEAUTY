@@ -1,0 +1,47 @@
+<div class="lookbooks-show-banner" style="background-image: url('https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+  <div class="lookbook-show-banner-text-container">
+    <div class="lookbook-show-banner-text">
+      <div style="width:250px;"></div>
+      <div class="lookbook-index-avatar">
+        <%= image_tag url_for(@lookbooks.first.user.avatar_photo), class: "lookbook-avatar" %>
+        <h4><%= @lookbooks.first.user.instagram %></h4>
+      </div>
+      <div class="lookbook-social-data">
+        <% if @lookbooks.first.user.instagram %>
+          <%= link_to "https://www.instagram.com/#{@lookbooks.first.user.instagram.remove('@')}", target: "_blank", class: "each-social-data" do %>
+              <i class="fab fa-instagram social-instagram"></i>
+              <h6>274k</h6>
+          <% end %>
+        <% end %>
+        <% if @lookbooks.first.user.youtube %>
+          <%= link_to @lookbooks.first.user.youtube, target: "_blank", class: "each-social-data" do %>
+              <i class="fab fa-youtube social-youtube"></i>
+              <h6>400k</h6>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="shop-lookbook-bar">
+  <div style="width: 200px;"></div>
+  <p class="shop-look-text">Click the image to shop the look</p>
+  <div class="filters-container">
+    <p>Sort by: New in</p>
+    <%= image_tag 'dropdown-down.png', class: "dropdown-arrow" %>
+  </div>
+</div>
+<div class="lookbooks-container">
+  <div class="row" style="width: 100%; margin: 0;">
+    <% @lookbooks.each do |lookbook| %>
+      <div class="col-xs-12 col-sm-6 col-md-4" style="padding: 10px;">
+        <%= link_to lookbook_path(lookbook, user_id: @user.id) do %>
+          <div class="lookbook-index-card">
+            <%= image_tag url_for(lookbook.photo) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

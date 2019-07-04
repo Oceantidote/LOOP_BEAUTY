@@ -1,12 +1,21 @@
 class LookbooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
-  before_action :set_lookbook, only: [:edit, :update, :destroy, :show]
+  before_action :set_lookbook, only: [:edit, :update, :destroy]
 
   def index
-    @lookbooks = policy_scope(Lookbook).where(user: params[:user_id])
+    # @lookbooks = policy_scope(Lookbook).where(user: params[:user_id])
+
+    @user = User.find((User.select { |u| u.slug == params[:user_id] }).first.id)
+    @lookbooks = policy_scope(Lookbook).where(user: User.select { |u| u.slug == params[:user_id] })
   end
 
   def show
+
+    # NOT SURE IF CORRECT BUT WORKS
+    user = User.find(params[:user_id])
+    @lookbook = Lookbook.find((Lookbook.select{ |r| r.slug == params[:id]}).first.id)
+    @lookbooks = Lookbook.where(user: user)
+    authorize @lookbook
   end
 
   def new
@@ -62,7 +71,11 @@ class LookbooksController < ApplicationController
   private
 
   def set_lookbook
-    @lookbook = Lookbook.friendly.find(params[:id])
+    # @lookbook = Lookbook.friendly.find(params[:id])
+
+    # NOT SURE IF CORRECT BUT WORKS
+    user = User.select { |u| u.slug == params[:id] }.first
+    @lookbook = Lookbook.find(user.id)
     authorize @lookbook
   end
 
