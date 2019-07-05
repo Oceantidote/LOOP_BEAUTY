@@ -34,33 +34,8 @@
       </div>
       <h5><%= humanized_money_with_symbol(@product.price) %></h5>
       <div class="card_ratings">
-        <% case @product.average_rating %>
-          <% when 0 %>
-            <div class="rating-container">
-              <i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-            </div>
-          <% when 1 %>
-            <div class="rating-container">
-              <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-            </div>
-          <% when 2 %>
-            <div class="rating-container">
-              <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-            </div>
-          <% when 3 %>
-            <div class="rating-container">
-              <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-            </div>
-          <% when 4 %>
-            <div class="rating-container">
-              <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-            </div>
-          <% when 5 %>
-            <div class="rating-container">
-              <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i>
-            </div>
-        <% end %>
-        <p> <%= @product.average_rating %> (<%= @product.total_reviews %>) Reviews</p>
+        <%= render 'shared/ratings', rating: @product.average_rating %>
+        <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <%#= link_to 'ADD TO BAG', '#', class: "primary-button" %>
       <%= f.submit 'ADD TO BAG', class: "primary-button" %>
@@ -106,32 +81,7 @@
             </div>
             <div class="insider-review-right">
               <div class="insider-review-text">
-                <% case review.rating %>
-                <% when 0 %>
-                  <div class="rating-container">
-                    <i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                  </div>
-                <% when 1 %>
-                  <div class="rating-container">
-                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                  </div>
-                <% when 2 %>
-                  <div class="rating-container">
-                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                  </div>
-                <% when 3 %>
-                  <div class="rating-container">
-                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                  </div>
-                <% when 4 %>
-                  <div class="rating-container">
-                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                  </div>
-                <% when 5 %>
-                  <div class="rating-container">
-                    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i>
-                  </div>
-                <% end %>
+                <%= render 'shared/ratings', rating: review.rating %>
                 <p class="didot"><%= review.review %></p>
               </div>
             </div>
@@ -191,32 +141,7 @@
             </div>
             <div class="customer-review-right">
               <div class="customer-review-text">
-                <% case review.rating %>
-                  <% when 0 %>
-                    <div class="rating-container">
-                      <i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                    </div>
-                  <% when 1 %>
-                    <div class="rating-container">
-                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                    </div>
-                  <% when 2 %>
-                    <div class="rating-container">
-                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                    </div>
-                  <% when 3 %>
-                    <div class="rating-container">
-                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                    </div>
-                  <% when 4 %>
-                    <div class="rating-container">
-                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-                    </div>
-                  <% when 5 %>
-                    <div class="rating-container">
-                      <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i>
-                    </div>
-                <% end %>
+                <%= render 'shared/ratings', rating: review.rating %>
                 <p class="didot">"<%= review.review %>"</p>
                 <p class="boldest">Yes,<span class="grey-font"> I would recommend this product</span></p>
               </div>
