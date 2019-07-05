@@ -4,4 +4,5 @@ cards.forEach(function(card) {
 });
 results = document.querySelector('.partial-banner')
 results.nextElementSibling.remove()
-results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: products_path %>")
+console.log('<%= @sort_method %>')
+results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>")
