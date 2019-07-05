@@ -38,6 +38,7 @@ class Product < ApplicationRecord
     customer_reviews.count
   end
 
-
-
+  def self.filter_sort(attr, direction)
+    order(attr => direction.to_sym)
+  end
 end
