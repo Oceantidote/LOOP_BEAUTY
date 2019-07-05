@@ -73,7 +73,7 @@ Rails.application.configure do
       password: ENV['AWS_SMTP_SECRET_ACCESS_KEY'],
       address: 'email-smtp.eu-west-1.amazonaws.com',
       port: 587,
-      authentication: login,
+      authentication: 'login',
       enable_starttls_auto: 'true'
   }
 
