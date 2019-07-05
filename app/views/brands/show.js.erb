@@ -4,4 +4,4 @@ cards.forEach(function(card) {
 });
 results = document.querySelector('.brand-header-section-container')
 results.nextElementSibling.remove()
-results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products %>")
+results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: brand_path(@brand) %>")
