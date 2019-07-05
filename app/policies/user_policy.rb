@@ -4,7 +4,8 @@ class UserPolicy < ApplicationPolicy
       if user&.admin?
         scope.all
       else
-        scope.where(published: record == user).where(influencer: record == user)
+        # scope.where(published: record == user).where(influencer: record == user)
+        scope.where(published: true).where(influencer: true)
       end
     end
   end
