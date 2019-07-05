@@ -2,6 +2,7 @@ class Basket < ApplicationRecord
   belongs_to :user, optional: true
   has_many :basket_products
   has_many :products, through: :basket_products
+  has_many :shades, through: :products
 
   def empty?
     basket_products.empty?
