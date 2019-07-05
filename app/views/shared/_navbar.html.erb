@@ -195,6 +195,46 @@
   </div>
 </div>
 <div class="navbar-submenu-underlay"></div>
+<div class="navbar-hover-container">
+  <div class="navbar-basket-title">
+    <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.count %> items</h6>
+    <%= image_tag 'close.png' %>
+  </div>
+  <hr>
+  <div class="navbar-basket-items-container">
+    <% if @basket.products.count == 0 %>
+      <p class="medium-margin text-center boldest">Your basket is empty</p>
+    <% end %>
+    <% @basket.products.each do |product| %>
+      <%= link_to product_path(product), class: 'no-decoration' do %>
+        <div class="basket-items-card">
+          <div class="basket-items-card-image">
+            <%= image_tag url_for(product.shades.first.photos.first) %>
+          </div>
+          <div class="basket-items-card-info">
+            <div class="basket-items-card-info-top">
+              <p class="no-margin boldest small-text"><%= product.title %></p>
+              <p class="no-margin small-text">Product dot selected shade</p>
+            </div>
+            <div class="basket-items-card-info-bottom">
+              <p class="no-margin small-text">Quantity: 1</p>
+              <p class="no-margin small-text"><%= humanized_money_with_symbol(product.price) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% unless @basket.products.last == product %>
+        <hr>
+      <% end %>
+    <% end %>
+  </div>
+  <hr>
+  <div class="subtotal-container">
+    <p class="s-medium-text">Subtotal:</p>
+    <p class="s-medium-text">£75.00</p>
+  </div>
+  <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
+</div>
 
 <script>
   // WEB NAV
@@ -290,32 +330,34 @@
 
   navbarToggler.addEventListener('click', function() {
     subnavUnderlay.classList.toggle('show-underlay');
-    // setTimeout(function() {
-    //   subnavUnderlay.classList.toggle('show-underlay');
-    //   }, 300
-    // );
-
-    // subnavUnderlay.classList.toggle('show-underlay');
-      // setTimeout(function() {
-      //   navbarToggler.disabled = true;
-      //   }, 1
-      // );
     setTimeout(function() {
       mobileNavBrandsMenu.style.display = "none";
       mobileNavInfluencersMenu.style.display = "none";
       mobileNavBrandsMenu.style.left = "100%";
       mobileNavInfluencersMenu.style.left = "100%";
-      // navbarToggler.disabled = false;
       }, 300
     );
   });
-
-  // subnavUnderlay.addEventListener('click', function() {
-  //   subnavUnderlay.classList.toggle('show-underlay');
-  //   navbarToggler.classList.toggle('collapsed');
-  //   nav.classList.toggle('show');
-  //   mobileNavBrands.classList.toggle('show');
-  //   mobileNavInfluencers.classList.toggle('show');
-  // });
   // MOBILE NAV
+
+  // NAV BASKET DROPDOWN
+
+  // navBasketDrop = document.querySelector('.navbar-hover-container');
+  // basketIcon = document.querySelector('.basket-icon-container');
+
+  // basketIcon.addEventListener('mouseover', function() {
+  //   navBasketDrop.classList.add('navbar-hover-container-top')
+  // })
+  // basketIcon.addEventListener('mouseleave', function() {
+  //   navBasketDrop.classList.remove('navbar-hover-container-top')
+  // })
+  // navBasketDrop.addEventListener('mouseover', function() {
+  //   navBasketDrop.classList.add('navbar-hover-container-top')
+  // })
+  // navBasketDrop.addEventListener('mouseleave', function() {
+  //   navBasketDrop.classList.remove('navbar-hover-container-top')
+  // })
+
+  // NAV BASKET DROPDOWN
+
 </script>

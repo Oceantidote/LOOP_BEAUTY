@@ -72,6 +72,9 @@
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
   <div class="insider-review-container">
     <div class="row">
+      <% if @product.insider_reviews.count == 0 %>
+        <p class="text-center medium-margin width-100">There are no insider reviews yet</p>
+      <% end %>
       <% @product.insider_reviews.each do |review| %>
         <div class="col-sm-12 col-md-4">
           <div class="insider-review-cards">
@@ -127,6 +130,9 @@
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
   <div class="insider-review-container">
     <div class="row">
+      <% if @product.customer_reviews.count == 0 %>
+        <p class="text-center medium-margin width-100">There are no customer reviews yet</p>
+      <% end %>
       <% @product.customer_reviews.each do |review| %>
         <div class="col-xs-12 col-sm-6">
           <div class="customer-review-cards">

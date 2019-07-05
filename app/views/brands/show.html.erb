@@ -1,16 +1,16 @@
-<h2 class="insider-info-title text-center"><%= @brand.name %></h2>
+<!-- <h2 class="insider-info-title text-center"><%#= @brand.name %></h2> -->
 <div class="brand-header-section-container">
-  <div class="brand-header-section brand-description" style="width: 33%;">
+  <div class="brand-header-section brand-description">
     <% if @brand.description %>
       <p class="didot"><%= @brand.description %></p>
     <% end %>
   </div>
-  <div class="brand-header-section brand-logo" style="width: 33%;">
+  <div class="brand-header-section brand-logo">
     <% if @brand.logo.attached? %>
       <%= image_tag @brand.logo %>
     <% end %>
   </div>
-  <div class="brand-header-section brand-photo" style="width: 33%;">
+  <div class="brand-header-section brand-photo">
     <% if @brand.photo.attached? %>
       <%= image_tag @brand.photo %>
     <% end %>
