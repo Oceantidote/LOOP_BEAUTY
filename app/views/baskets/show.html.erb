@@ -1,5 +1,5 @@
 <% @basket.basket_products.each do |item| %>
-  <div id="item-<%= item.id %>">
+  <div class="item-<%= item.id %>">
     <%= render 'shared/basket_product_card', item: item %>
   </div>
 <% end %>

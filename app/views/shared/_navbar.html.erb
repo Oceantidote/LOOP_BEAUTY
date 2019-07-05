@@ -62,7 +62,7 @@
     <li class="nav-item mobile-hidden">
       <%= link_to bag_path, class: "nav-link basket-icon-container" do %>
         <%= image_tag 'basket.png' %>
-        <p class="basket-item-count basket-web"><%= @basket.basket_products.count %></p>
+        <p class="basket-item-count basket-web"><%= @basket.basket_products.size %></p>
       <% end %>
     </li>
   </ul>
@@ -197,7 +197,7 @@
 <div class="navbar-submenu-underlay"></div>
 <div class="navbar-hover-container">
   <div class="navbar-basket-title">
-    <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.count %> items</h6>
+    <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %></h6>
     <%= image_tag 'close.png' %>
   </div>
   <hr>
@@ -205,33 +205,38 @@
     <% if @basket.products.count == 0 %>
       <p class="medium-margin text-center boldest">Your basket is empty</p>
     <% end %>
-    <% @basket.products.each do |product| %>
-      <%= link_to product_path(product), class: 'no-decoration' do %>
-        <div class="basket-items-card">
-          <div class="basket-items-card-image">
-            <%= image_tag url_for(product.shades.first.photos.first) %>
-          </div>
-          <div class="basket-items-card-info">
-            <div class="basket-items-card-info-top">
-              <p class="no-margin boldest small-text"><%= product.title %></p>
-              <p class="no-margin small-text">Product dot selected shade</p>
+    <% @basket.basket_products.each do |item| %>
+      <div class="item-<%= item.id %>">
+        <%= link_to product_path(item.product), class: 'no-decoration' do %>
+          <div class="basket-items-card">
+            <div class="basket-items-card-image">
+              <%= image_tag url_for(item.product.shades.first.photos.first) %>
             </div>
-            <div class="basket-items-card-info-bottom">
-              <p class="no-margin small-text">Quantity: 1</p>
-              <p class="no-margin small-text"><%= humanized_money_with_symbol(product.price) %></p>
+            <div class="basket-items-card-info">
+              <div class="basket-items-card-info-top">
+                <p class="no-margin boldest small-text"><%= item.product.title %></p>
+                <p class="no-margin small-text"><%= item.shade.name %></p>
+              </div>
+              <div class="basket-items-card-info-bottom">
+                <p class="no-margin small-text">Quantity: <%= item.quantity %></p>
+                <p class="no-margin small-text"><%= humanized_money_with_symbol(item.product.price) %></p>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-      <% unless @basket.products.last == product %>
-        <hr>
-      <% end %>
+        <% end %>
+        <%= link_to basket_product_path(item), method: :delete, remote: true do %>
+          <h6>Delete</h6>
+        <% end %>
+        <% unless @basket.basket_products.last == item %>
+          <hr>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <hr>
   <div class="subtotal-container">
     <p class="s-medium-text">Subtotal:</p>
-    <p class="s-medium-text">£75.00</p>
+    <p class="s-medium-text basket-total-price"><%= humanized_money_with_symbol @basket.total_price %></p>
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
 </div>
