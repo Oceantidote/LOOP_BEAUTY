@@ -17,6 +17,14 @@ body {
   font-weight: lighter;
 }
 
+.boldest {
+  font-weight: 900;
+}
+
+.italic {
+  font-style: italic;
+}
+
 // FONT SIXES
 .xl-text {
   font-size: 36px;
@@ -66,6 +74,9 @@ body {
 }
 .margin-bottom {
   margin-bottom: 20px;
+}
+.large-margin-bottom {
+  margin-bottom: 40px;
 }
 .large-margin-top {
   margin-top: 40px;
