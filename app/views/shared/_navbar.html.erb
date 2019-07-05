@@ -206,7 +206,7 @@
       <p class="medium-margin text-center boldest">Your basket is empty</p>
     <% end %>
     <% @basket.basket_products.each do |item| %>
-      <div class="item-<%= item.id %>">
+      <div class="item-<%= item.id %> each-nav-basket-item">
         <%= link_to product_path(item.product), class: 'no-decoration' do %>
           <div class="basket-items-card">
             <div class="basket-items-card-image">
@@ -223,17 +223,14 @@
               </div>
             </div>
           </div>
-        <% end %>
-        <%= link_to basket_product_path(item), method: :delete, remote: true do %>
-          <h6>Delete</h6>
-        <% end %>
-        <% unless @basket.basket_products.last == item %>
           <hr>
+        <% end %>
+        <%= link_to basket_product_path(item), method: :delete, remote: true, class: "nav-basket-trash no-decoration" do %>
+          <i class="far fa-trash-alt"></i>
         <% end %>
       </div>
     <% end %>
   </div>
-  <hr>
   <div class="subtotal-container">
     <p class="s-medium-text">Subtotal:</p>
     <p class="s-medium-text basket-total-price"><%= humanized_money_with_symbol @basket.total_price %></p>
@@ -347,21 +344,21 @@
 
   // NAV BASKET DROPDOWN
 
-  // navBasketDrop = document.querySelector('.navbar-hover-container');
-  // basketIcon = document.querySelector('.basket-icon-container');
+  navBasketDrop = document.querySelector('.navbar-hover-container');
+  basketIcon = document.querySelector('.basket-icon-container');
 
-  // basketIcon.addEventListener('mouseover', function() {
-  //   navBasketDrop.classList.add('navbar-hover-container-top')
-  // })
-  // basketIcon.addEventListener('mouseleave', function() {
-  //   navBasketDrop.classList.remove('navbar-hover-container-top')
-  // })
-  // navBasketDrop.addEventListener('mouseover', function() {
-  //   navBasketDrop.classList.add('navbar-hover-container-top')
-  // })
-  // navBasketDrop.addEventListener('mouseleave', function() {
-  //   navBasketDrop.classList.remove('navbar-hover-container-top')
-  // })
+  basketIcon.addEventListener('mouseover', function() {
+    navBasketDrop.classList.add('navbar-hover-container-top')
+  })
+  basketIcon.addEventListener('mouseleave', function() {
+    navBasketDrop.classList.remove('navbar-hover-container-top')
+  })
+  navBasketDrop.addEventListener('mouseover', function() {
+    navBasketDrop.classList.add('navbar-hover-container-top')
+  })
+  navBasketDrop.addEventListener('mouseleave', function() {
+    navBasketDrop.classList.remove('navbar-hover-container-top')
+  })
 
   // NAV BASKET DROPDOWN
 
