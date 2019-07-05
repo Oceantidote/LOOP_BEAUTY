@@ -2,6 +2,6 @@ cards = document.querySelectorAll('.card-image-results');
 cards.forEach(function(card) {
   card.remove();
 });
-results = document.querySelector('.partial-banner')
+results = document.querySelector('.brand-header-section-container')
 results.nextElementSibling.remove()
 results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products %>")

@@ -2,7 +2,7 @@
 <div class="brand-header-section-container">
   <div class="brand-header-section brand-description" style="width: 33%;">
     <% if @brand.description %>
-      <p><%= @brand.description %></p>
+      <p class="didot"><%= @brand.description %></p>
     <% end %>
   </div>
   <div class="brand-header-section brand-logo" style="width: 33%;">
@@ -16,6 +16,6 @@
     <% end %>
   </div>
 </div>
-<% @products.each do |product| %>
-  <%= link_to product.title, product_path(product) %>
-<% end %>
+<div class="brands-results">
+  <%= render 'shared/card_results', products: @products %>
+</div>
