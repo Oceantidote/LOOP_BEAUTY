@@ -1,12 +1,19 @@
 .brand-header-section-container {
   display: flex;
   align-items: center;
+  @include for-medium-devices-down {
+    flex-direction: column-reverse;
+  }
 }
 
 .brand-header-section {
   padding: 15px;
+  width: 33%;
   img {
     width: 100%;
+  }
+  @include for-medium-devices-down {
+    width: 50%;
   }
 }
 

@@ -12,26 +12,30 @@
         </div>
       </div>
     </div>
-    <div class="partial-filters-two">
-        <div class="partial-filters">
-          <div class="partial-filters_collection">
-            <h6>Category</h6>
-            <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
-            <%= f.input :category, collection: Category.all, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:category] : [] %>
-          </div>
+  </div>
+  <div class="partial-filters-two">
+    <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
+      <div class="partial-filters">
+        <div class="partial-filters_collection">
+          <h6>Category</h6>
+          <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
+          <%= f.input :category, collection: Category.all, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:category] : [] %>
+        </div>
+        <% unless params[:controller] == 'brands' %>
           <div class="partial-filters_collection">
             <h6>Brand</h6>
             <%#= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
             <%= f.input :brand, collection: Brand.all, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [] %>
           </div>
-        </div>
-    <!--   <div class="partial-products">
-        <%# @products.each do |product| %>
-          <div class="card">
-            <%#= link_to product_path(product) do %>
-              <div class="card_image">
-                <%#= image_tag product.shades.first.photos.first.variant(resize: "100x100") %>
-
+        <% end %>
+      </div>
+    <% end %>
+  <!--   <div class="partial-products">
+      <%# @products.each do |product| %>
+        <div class="card">
+          <%#= link_to product_path(product) do %>
+            <div class="card_image">
+              <%#= image_tag product.shades.first.photos.first.variant(resize: "100x100") %>
               </div>
             <%# end %>
             <div class="card_header">
