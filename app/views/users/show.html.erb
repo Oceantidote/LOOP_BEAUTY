@@ -39,7 +39,22 @@
       </div>
       <div class="col-xs-12 col-sm-6">
         <% if @user.question_answer.nil? %>
-          <%= link_to "Create QA Page", new_user_question_answer_path(user_id: @user.instagram) %>
+          <% if current_user&.admin %>
+            <%= link_to new_user_question_answer_path(user_id: @user.instagram), class: "influencer-card-link" do %>
+              <div class="influencer-show-card">
+                <h5 class="text-center">Create Q & A</h5>
+                <div class="influencer-show-card-image" style="background-image: url('https://images.unsplash.com/photo-1520612450758-39ccdb9be5c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+                  <%= image_tag 'plus-circle.png', class: 'plus-circle' %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="influencer-show-card">
+              <h5 class="text-center">No Q & A</h5>
+              <div class="influencer-show-card-image" style="background-image: url('https://images.unsplash.com/photo-1520612450758-39ccdb9be5c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+              </div>
+            </div>
+          <% end %>
         <% else %>
           <%= link_to user_question_answer_path [@user, @user.question_answer], class: "influencer-card-link" do %>
             <div class="influencer-show-card">

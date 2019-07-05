@@ -121,7 +121,17 @@
   }
 }
 
+.plus-circle {
+    width: 120px;
+    position: absolute;
+    left: calc(50% - 60px);
+    top: calc(50% - 60px);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
 .influencer-show-card-image {
+  position: relative;
   border: 1px solid #ACABAB;
   background-size: cover;
   background-position: center;
@@ -141,6 +151,9 @@
     }
     .influencer-show-card-image {
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    .plus-circle {
+      opacity: 0.6;
     }
   }
 }
