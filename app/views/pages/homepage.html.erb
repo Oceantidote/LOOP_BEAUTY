@@ -94,7 +94,9 @@
   <h6 class="grey-font">CODE: WELCOME2LOOP</h6>
   <%#= link_to 'SHOP NOW', homepage_path, class: "primary-button pop-up-content-button" %>
   <p class="primary-button pop-up-content-button">SHOP NOW</p>
-  <h6 class="grey-font" style="border-bottom: 1px solid #676767;">Learn more</h6>
+  <%= link_to about_us_path, class: "no-decoration" do %>
+    <h6 class="grey-font no-margin" style="border-bottom: 1px solid #676767;">Learn more</h6>
+  <% end %>
 </div>
 
 <script>
