@@ -60,10 +60,12 @@
       <% end %>
     </li>
     <li class="nav-item mobile-hidden">
-      <%= link_to bag_path, class: "nav-link basket-icon-container" do %>
+      <%#= link_to bag_path, class: "nav-link basket-icon-container" do %>
+      <div class="nav-link basket-icon-container">
         <%= image_tag 'basket.png' %>
         <p class="basket-item-count basket-web"><%= @basket.basket_products.size %></p>
-      <% end %>
+      </div>
+      <%# end %>
     </li>
   </ul>
   <div class="mobile-nav-links-container">
@@ -195,41 +197,20 @@
   </div>
 </div>
 <div class="navbar-submenu-underlay"></div>
+
+<!-- HIDDEN BASKET CONTENT -->
+
 <div class="navbar-hover-container">
   <div class="navbar-basket-title">
     <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %></h6>
-    <%= image_tag 'close.png' %>
+    <%= image_tag 'close.png', class: "nav-basket-close" %>
   </div>
   <hr>
   <div class="navbar-basket-items-container">
     <% if @basket.products.count == 0 %>
       <p class="medium-margin text-center boldest">Your basket is empty</p>
     <% end %>
-    <% @basket.basket_products.each do |item| %>
-      <div class="item-<%= item.id %> each-nav-basket-item">
-        <%= link_to product_path(item.product), class: 'no-decoration' do %>
-          <div class="basket-items-card">
-            <div class="basket-items-card-image">
-              <%= image_tag url_for(item.product.shades.first.photos.first) %>
-            </div>
-            <div class="basket-items-card-info">
-              <div class="basket-items-card-info-top">
-                <p class="no-margin boldest small-text"><%= item.product.title %></p>
-                <p class="no-margin small-text"><%= item.shade.name %></p>
-              </div>
-              <div class="basket-items-card-info-bottom">
-                <p class="no-margin small-text">Quantity: <%= item.quantity %></p>
-                <p class="no-margin small-text"><%= humanized_money_with_symbol(item.product.price) %></p>
-              </div>
-            </div>
-          </div>
-          <hr>
-        <% end %>
-        <%= link_to basket_product_path(item), method: :delete, remote: true, class: "nav-basket-trash no-decoration" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'shared/navbar_basket_product_card', item: @item %>
   </div>
   <div class="subtotal-container">
     <p class="s-medium-text">Subtotal:</p>
@@ -237,6 +218,9 @@
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
 </div>
+
+<!-- HIDDEN BASKET CONTENT -->
+
 
 <script>
   // WEB NAV
@@ -346,6 +330,7 @@
 
   navBasketDrop = document.querySelector('.navbar-hover-container');
   basketIcon = document.querySelector('.basket-icon-container');
+  navBasketClose = document.querySelector('.nav-basket-close');
 
   basketIcon.addEventListener('mouseover', function() {
     navBasketDrop.classList.add('navbar-hover-container-top')
@@ -357,6 +342,10 @@
     navBasketDrop.classList.add('navbar-hover-container-top')
   })
   navBasketDrop.addEventListener('mouseleave', function() {
+    navBasketDrop.classList.remove('navbar-hover-container-top')
+  })
+
+  navBasketClose.addEventListener('click', function() {
     navBasketDrop.classList.remove('navbar-hover-container-top')
   })
 
