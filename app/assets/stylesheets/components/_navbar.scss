@@ -337,6 +337,7 @@
   border: 2px solid #000;
   padding: 10px 10px 0 10px;
   transition: all 1s ease;
+  transition-delay: .25s;
   @include for-phone-only {
     display: none;
   }
@@ -408,4 +409,12 @@
   position: absolute;
   bottom: 2px;
   right: 2px;
+}
+
+.nav-basket-close {
+  cursor: pointer;
+}
+
+.basket-icon-container {
+  cursor: pointer;
 }

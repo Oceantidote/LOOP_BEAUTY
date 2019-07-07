@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="product-info-container assistant">
-    <%= simple_form_for([@product, BasketProduct.new(product: @product)]) do |f| %>
-    <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
+    <%= simple_form_for(([@product, BasketProduct.new(product: @product)]), remote: :true) do |f| %>
+      <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
 
       <h5><%= @product.title %></h5>
       <hr>
@@ -38,7 +38,7 @@
         <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <%#= link_to 'ADD TO BAG', '#', class: "primary-button" %>
-      <%= f.submit 'ADD TO BAG', class: "primary-button" %>
+      <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
     <% end %>
       <div class="product-details-section info-expand">
         <div class="product-details-title">
@@ -158,7 +158,6 @@
     </div>
   </div>
 </div>
-
 <script>
 
     function myFunction(imgs) {
@@ -191,6 +190,6 @@
     expandIconBrand.classList.toggle('fa-plus');
     expandIconBrand.classList.toggle('fa-minus');
     aboutBrandText.classList.toggle('show-text');
-
   });
+
 </script>

@@ -9,7 +9,8 @@ class BasketProductsController < ApplicationController
     @item.product = @product
     @item.shade = @product.shades.first if @item.shade.nil?
     authorize @item
-    if @basket.shades.include?(@item.shade)
+    if @basket.products.any? && @basket.basket_products.where(product: @item.product).where(shade: @item.shade).any? # IFE FIX TO BE APPROVED BY THE MIGHTY BEN WRIGHT
+    # if @basket.shades.include?(@item.shade)
       @old_item = @basket.basket_products.where(shade: @item.shade).first
       @old_item.update(quantity: @old_item.quantity + 1)
       flash[:notice] = 'Item added to bag'
@@ -18,7 +19,11 @@ class BasketProductsController < ApplicationController
     else
       flash[:error] = 'Item not added due to error'
     end
-    redirect_to product_path(@product)
+    respond_to do |format|
+      format.html { redirect_to product_path(@product) }
+      format.js
+    end
+    # redirect_to product_path(@product)
   end
 
   def update
