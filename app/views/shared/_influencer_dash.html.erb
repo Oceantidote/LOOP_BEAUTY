@@ -1,19 +1,19 @@
 <div class="dash-links">
-  <%= image_tag url_for(current_user.avatar_photo), class: "dash-links-avatar" %>
-  <div class="each-dash-link-title">Hello <%= current_user.first_name %></div>
-  <%= link_to user_dashboard_path(current_user), class: "each-dash-link" do %>
+  <%= image_tag url_for(@user.avatar_photo), class: "dash-links-avatar" %>
+  <div class="each-dash-link-title">Hello <%= @user.first_name %></div>
+  <%= link_to user_dashboard_path(@user), class: "each-dash-link" do %>
     <%= image_tag "basket.png", class: "dash-links-image" %>Account Overview
   <% end %>
-  <%= link_to  user_share_path(current_user), class: "each-dash-link" do %>
+  <%= link_to  user_share_path(@user), class: "each-dash-link" do %>
     <%= image_tag "share.png", class: "dash-links-image" %>Share
   <% end %>
-  <%= link_to user_analytics_path(current_user), class: "each-dash-link" do %>
+  <%= link_to user_analytics_path(@user), class: "each-dash-link" do %>
     <%= image_tag "analytics.png", class: "dash-links-image" %>Analytics
   <% end %>
-  <%= link_to user_showroom_path(current_user), class: "each-dash-link" do %>
+  <%= link_to user_showroom_path(@user), class: "each-dash-link" do %>
     <%= image_tag "lipstick.png", class: "dash-links-image" %>Showroom
   <% end %>
-  <%= link_to user_account_details_path(current_user), class: "each-dash-link" do %>
+  <%= link_to user_account_details_path(@user), class: "each-dash-link" do %>
     <%= image_tag "default-user.png", class: "dash-links-image" %>Account Details
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>

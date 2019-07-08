@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   end
 
   def set_nested_user
-    if current_user.influencer?
+    if params[:user_id]
       @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
     else
       @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
