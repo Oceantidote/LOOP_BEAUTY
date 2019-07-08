@@ -1,13 +1,22 @@
-<%= simple_form_for @influencer, url: admin_influencers_path do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :instagram %>
-  <%= f.input :youtube %>
-  <%= f.input :avatar_photo %>
-  <%= f.input :cover_photo %>
-  <%= f.input :qa_photo %>
-  <%= f.input :description %>
-  <%= f.input :password %>
-  <%= f.submit 'Create Influencer Account' %>
-<% end %>
+<div class="container">
+  <h1 class="form-title">Influencer Creation</h1>
+  <div class="row mb50">
+    <div class="col-sx-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <%= simple_form_for @influencer, url: admin_influencers_path do |f| %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email %>
+        <%= f.input :instagram %>
+        <%= f.input :youtube %>
+        <%= f.input :avatar_photo %>
+        <%= f.input :cover_photo %>
+        <%= f.input :qa_photo %>
+        <%= f.input :lookbook_photo %>
+        <%= f.input :tutorial_photo %>
+        <%= f.input :description %>
+        <%= f.input :password %>
+        <%= f.submit 'Create Influencer Account' %>
+      <% end %>
+    </div>
+  </div>
+</div>

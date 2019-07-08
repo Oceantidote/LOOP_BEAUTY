@@ -1,6 +1,6 @@
 class Admin::InfluencersController < ApplicationController
   def new
-    @influencer = User.new
+    @influencer = User.new(influencer: true)
     authorize [:admin, @influencer]
   end
 
@@ -17,9 +17,12 @@ class Admin::InfluencersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   private
 
   def influencer_params
-    params.require(:user).permit(:first_name, :last_name, :email, :instagram, :youtube, :password, :avatar_photo, :cover_photo, :qa_photo, :description)
+    params.require(:user).permit(:first_name, :last_name, :email, :instagram, :youtube, :password, :lookbook_photo, :tutorial_photo, :avatar_photo, :cover_photo, :qa_photo, :description)
   end
 end

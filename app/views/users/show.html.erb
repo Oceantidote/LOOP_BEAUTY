@@ -59,7 +59,7 @@
           <%= link_to user_question_answer_path [@user, @user.question_answer], class: "influencer-card-link" do %>
             <div class="influencer-show-card">
               <h5 class="text-center">Q & A</h5>
-              <div class="influencer-show-card-image" style="background-image: url('https://images.unsplash.com/photo-1520612450758-39ccdb9be5c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+              <div class="influencer-show-card-image" style="background-image: url('<%= @user.qa_photo.attached? ?  (rails_blob_url @user.qa_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               </div>
             </div>
           <% end %>
@@ -69,7 +69,7 @@
         <%= link_to user_tutorials_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Videos</h5>
-            <div class="influencer-show-card-image" style="background-image: url('https://images.pexels.com/photos/1445467/pexels-photo-1445467.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+            <div class="influencer-show-card-image" style="background-image: url('<%= @user.tutorial_photo.attached? ?  (rails_blob_url @user.tutorial_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
             </div>
         <% end %>
@@ -79,7 +79,7 @@
         <%= link_to user_lookbooks_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Lookbook</h5>
-            <div class="influencer-show-card-image" style="background-image: url('https://images.pexels.com/photos/935985/pexels-photo-935985.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+            <div class="influencer-show-card-image" style="background-image: url('<%= @user.lookbook_photo.attached? ?  (rails_blob_url @user.lookbook_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
             </div>
           </div>
         <% end %>

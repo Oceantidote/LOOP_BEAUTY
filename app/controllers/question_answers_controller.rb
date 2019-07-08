@@ -27,6 +27,9 @@ class QuestionAnswersController < ApplicationController
   end
 
   def edit
+    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @question_answer.user = @user
+    authorize @question_answer
   end
 
   def update
