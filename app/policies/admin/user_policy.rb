@@ -10,6 +10,15 @@ class Admin::UserPolicy < ApplicationPolicy
   end
 
   def create?
+    raise
+    new?
+  end
+
+  def edit?
+    new?
+  end
+
+  def update?
     new?
   end
 
