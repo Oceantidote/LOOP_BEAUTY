@@ -3,18 +3,20 @@
     <h2 class="shopping-bag-title text-center">Shopping Bag</h2>
     <hr style="border-color: #CFCFCF;">
     <% @basket.basket_products.each do |item| %>
-      <%= render 'shopping_bag_product_card', item: item %>
+      <div class="item-<%= item.id %> item-bag-<%= item.id %> %>">
+        <%= render 'shopping_bag_product_card', item: item %>
+      </div>
     <% end %>
     <div class="shopping-bag-checkout">
       <div class="shopping-bag-code">
         <p class="boldest small-text tiny-margin-bottom">Promotional code</p>
         <%= simple_form_for @basket, url: bag_path do |f| %>
-          <%= f.input :user, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input' } %>
+          <%= f.input :user, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: '' } %>
           <%= f.submit 'APPLY', class: "primary-button discount-code-button"  %>
         <% end %>
       </div>
       <div class="shopping-bag-continue-checkout">
-        <p class="boldest grey-font text-right small-text no-margin">Subtotal: <%= humanized_money_with_symbol @basket.total_price %></p>
+        <p class="boldest grey-font text-right small-text no-margin">Subtotal: <span class="basket-total-price" ><%= humanized_money_with_symbol @basket.total_price %></span></p>
         <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%= humanized_money_with_symbol 5 %></p>
         <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: £89.99</p>
         <%= link_to 'CONTINUE TO CHECKOUT', '#', class: 'primary-button discount-code-button' %>

@@ -385,12 +385,133 @@ highlighter_brush_rec_4 = RecommendedProduct.create!(recommender: highlighter_br
 puts "Creating influencers"
 
 
-esther = User.create!(published: true, influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "esther123", email: "esther@estareonline.com")
-ropo = User.create!(published: true, influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "ropo123", email: "ropo_demuren@gmail.com")
-breeny = User.create!(published: true, influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
-nikki = User.create!(published: true, influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikkissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
-shantania = User.create!(published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
-bemi = User.create!(published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii", password: "bemi123", email: "beautybybemi@gmail.com")
+esther = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "esther123", email: "esther@estareonline.com")
+ropo = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "ropo123", email: "ropo_demuren@gmail.com")
+breeny = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
+nikki = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikkissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
+shantania = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
+bemi = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii",youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "bemi123", email: "beautybybemi@gmail.com")
+
+esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
+esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
+
+esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpeg')
+esther.avatar_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpeg')
+
+esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
+esther.qa_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
+
+esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpeg')
+esther.lookbook_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpeg')
+
+
+esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpeg')
+esther.tutorial_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpeg')
+
+
+ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
+ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
+
+ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpeg')
+ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpeg')
+
+ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
+ropo.lookbook_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
+
+ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpeg')
+ropo.qa_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpeg')
+
+ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpeg')
+ropo.tutorial_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpeg')
+
+
+breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
+breeny.cover_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
+
+breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+breeny.avatar_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
+
+breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
+breeny.qa_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
+
+breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+breeny.lookbook_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
+
+breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+breeny.tutorial_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
+
+nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
+nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpeg')
+
+nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpeg')
+nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpeg')
+
+
+nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
+nikki.qa_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpeg')
+
+nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpeg')
+nikki.lookbook_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpeg')
+
+nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpeg')
+nikki.tutorial_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpeg')
+
+
+shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
+shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpeg')
+
+shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpeg')
+shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpeg')
+
+
+
+shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
+shantania.qa_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpeg')
+
+shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpeg')
+shantania.lookbook_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpeg')
+
+shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpeg')
+shantania.tutorial_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpeg')
+
+
+
+bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
+bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
+
+bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpeg')
+bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpeg')
+
+bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
+bemi.qa_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
+
+bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpeg')
+bemi.lookbook_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpeg')
+
+bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpeg')
+bemi.tutorial_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpeg')
+
+
+puts "XXXXXXXXXXXXXXXX"
+puts bemi.tutorial_photo.attached?
+
+
+esther.save
+ropo.save
+breeny.save
+nikki.save
+shantania.save
+bemi.save
+
+
+
+
+
+
+
+
+
+
 
 estherShowroom = Showroom.create!(user: esther)
 ropoShowroom = Showroom.create!(user: ropo)
@@ -425,43 +546,7 @@ puts "Email: admin@gmail.com"
 puts "Password: 123456"
 
 
-esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
-esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
 
-esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpeg')
-esther.avatar_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpeg')
-
-ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
-ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
-
-ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpeg')
-ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpeg')
-
-breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
-breeny.cover_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
-
-breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
-breeny.avatar_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
-
-
-nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
-nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpeg')
-
-nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpeg')
-nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpeg')
-
-
-shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
-shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpeg')
-
-shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpeg')
-shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpeg')
-
-bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
-bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
-
-bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpeg')
-bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpeg')
 
 
 # CREATING INSIDER ARTICLES
