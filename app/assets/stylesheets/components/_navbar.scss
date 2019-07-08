@@ -328,8 +328,6 @@
 .navbar-hover-container {
   position: absolute;
   right: 15px;
-  // top: -160px;
-  // top: 100px;
   top: -570px;
   z-index: 99;
   background: white;
@@ -417,4 +415,21 @@
 
 .basket-icon-container {
   cursor: pointer;
+}
+
+.item-added {
+  position: absolute;
+  z-index: 10;
+  background: #E0FFE0;
+  width: 100%;
+  padding: 5px 5px;
+  display: none;
+  p {
+    color: #009000;
+    margin: 0;
+  }
+}
+
+.item-added-show {
+  display: block !important;
 }
