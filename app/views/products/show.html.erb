@@ -179,6 +179,9 @@
   aboutBrandText = document.querySelector(".about-the-brand-text");
   expandIconProduct = document.querySelector(".pd-expand");
   expandIconBrand = document.querySelector(".ab-expand");
+  expandIconBrand = document.querySelector(".ab-expand");
+  addToBag = document.getElementById('add-to-bag');
+  itemAdded = document.querySelector('.item-added');
 
   details.addEventListener('click', function() {
     expandIconProduct.classList.toggle('fa-plus');
@@ -190,6 +193,11 @@
     expandIconBrand.classList.toggle('fa-plus');
     expandIconBrand.classList.toggle('fa-minus');
     aboutBrandText.classList.toggle('show-text');
+  });
+
+  addToBag.addEventListener('click', function() {
+    itemAdded.classList.add('item-added-show');
+    setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
   });
 
 </script>

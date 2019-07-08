@@ -202,6 +202,9 @@
 
 <div class="navbar-hover-container">
   <div class="navbar-basket-title">
+    <div class="item-added">
+      <p><i class="far fa-check-circle"></i> Item added to bag!</p>
+    </div>
     <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %></h6>
     <%= image_tag 'close.png', class: "nav-basket-close" %>
   </div>
@@ -219,11 +222,9 @@
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
 </div>
 
-<!-- HIDDEN BASKET CONTENT -->
-
-
 <script>
-  // WEB NAV
+
+    // WEB NAV
   navbarBrands = document.getElementById('navbar-brands');
   menuBrands = document.querySelector('.navbar-submenu-brands');
   navbarInfluencers = document.getElementById('navbar-influencers');
@@ -331,6 +332,8 @@
   navBasketDrop = document.querySelector('.navbar-hover-container');
   basketIcon = document.querySelector('.basket-icon-container');
   navBasketClose = document.querySelector('.nav-basket-close');
+  itemAdded = document.querySelector('.item-added');
+
 
   basketIcon.addEventListener('mouseover', function() {
     navBasketDrop.classList.add('navbar-hover-container-top')
