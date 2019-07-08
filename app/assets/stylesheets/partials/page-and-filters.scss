@@ -10,41 +10,20 @@
   align-items: center;
   height: 70px;
 
-.transparent-filter {
-  padding: 10px 30px;
-  border: 1px solid black;
-  width: 200px;
-}
+  .transparent-filter {
+    padding: 10px 30px;
+    border: 1px solid black;
+    width: 200px;
+  }
 
-  h4 {
+  h5 {
     text-align: left;
-    padding: 20px;
+    padding: 15px;
     font-weight: bolder;
-
-    @include for-medium-devices-down {
-      width: 30%;
-
-    }
-
+    margin-right: 15px;
+    width: 200px;
     @include for-small-devices-down {
-      width: 0%;
       display: none;
-    }
-
-    @include for-medium-devices-up {
-      width: 30%;
-    }
-
-    @include for-large-devices-up {
-      width: 25%;
-    }
-
-    @include for-xxlarge-devices-up {
-      width: 20%;
-    }
-
-    @include for-xxxlarge-devices-up {
-      width: 15%;
     }
   }
 
