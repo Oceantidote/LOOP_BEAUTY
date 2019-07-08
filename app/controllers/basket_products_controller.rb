@@ -13,9 +13,9 @@ class BasketProductsController < ApplicationController
     # if @basket.shades.include?(@item.shade)
       @old_item = @basket.basket_products.where(shade: @item.shade).first
       @old_item.update(quantity: @old_item.quantity + 1)
-      flash[:notice] = 'Item added to bag'
+      # flash[:notice] = 'Item added to bag'
     elsif @item.save
-      flash[:notice] = 'Item added to bag'
+      # flash[:notice] = 'Item added to bag'
     else
       flash[:error] = 'Item not added due to error'
     end

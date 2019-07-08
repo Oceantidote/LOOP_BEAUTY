@@ -1,7 +1,6 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
     <div class="dash-menu-container">
-
       <% if current_user.influencer? %>
         <%= render 'shared/influencer_dash' %>
       <% else %>
@@ -19,7 +18,6 @@
               <h5>Showroom</h5>
             </div>
           <% end %>
-
           <div class="dash-home-options-line-break"></div>
           <%= link_to user_analytics_path(current_user), class: "dash-home-option-links" do %>
             <div class="each-dash-home-option">
@@ -54,7 +52,6 @@
               <h5>My Orders</h5>
             </div>
           <% end %>
-
           <div class="dash-home-options-line-break"></div>
           <%= link_to user_my_orders_path(current_user), class: "dash-home-option-links" do %>
             <div class="each-dash-home-option">
