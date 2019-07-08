@@ -8,4 +8,8 @@ class BasketPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def add_discount_code?
+    show?
+  end
 end
