@@ -22,6 +22,7 @@ class LookbooksController < ApplicationController
 
   def new
     @lookbook = Lookbook.new
+    @user = current_user
     authorize @lookbook
   end
 

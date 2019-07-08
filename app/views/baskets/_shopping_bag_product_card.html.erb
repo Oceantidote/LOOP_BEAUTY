@@ -1,0 +1,29 @@
+<div class="item-<%= item.id %>">
+  <div class="shopping-bag-card">
+    <div class="shopping-bag-card-content">
+      <%= image_tag item.shade.photos.first, class: 'shopping-bag-card-image' %>
+      <div class="shopping-bag-card-title">
+        <p class="small-text boldest no-margin shopping-bag-card-title"><%= item.product.title %></p>
+        <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text underline grey-font boldest text-right shopping-bag-card-title" %>
+      </div>
+      <p class="small-text boldest text-right shopping-bag-card-price"><%= humanized_money_with_symbol(item.product.price) %></p>
+      <div class="shopping-bag-card-quantity">
+        <% if item.quantity > 1 %>
+          <%= simple_form_for item do |f| %>
+            <%= f.input :quantity, as: :hidden, input_html: {value: item.quantity - 1} %>
+            <%= f.submit '-', class: "shopping-bag-quantity-controls"  %>
+          <% end %>
+        <% else %>
+          <p class="boldest no-margin no-quantity">-</p>
+        <% end %>
+        <p class="boldest no-margin small-text"><%= item.quantity %></p>
+        <%= simple_form_for item do |f| %>
+          <%= f.input :quantity, as: :hidden, input_html: {value: item.quantity + 1} %>
+          <%= f.submit '+', class: "shopping-bag-quantity-controls" %>
+        <% end %>
+      </div>
+      <p class="small-text boldest text-right shopping-bag-card-total"><%= humanized_money_with_symbol((item.product.price * item.quantity)) %></p>
+    </div>
+    <hr style="border-color: #CFCFCF;">
+  </div>
+</div>
