@@ -50,8 +50,6 @@ class UsersController < ApplicationController
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   def show
-    @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
-    authorize @user
   end
 
   def index
@@ -81,18 +79,16 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
+    @user = User.friendly.find(params[:id])
     authorize @user
   end
 
   def set_nested_user
     if params[:user_id]
-      @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+      @user = User.friendly.find(params[:user_id])
     else
-      @user = User.find(User.select { |user| user.slug == params[:id] }.first.id)
+      @user = User.friendly.find(params[:id])
     end
     authorize @user
   end
-
-
 end

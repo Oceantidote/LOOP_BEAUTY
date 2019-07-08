@@ -45,7 +45,7 @@ class QuestionAnswersController < ApplicationController
   def destroy
     @user = @question_answer.user
     @question_answer.destroy
-    redirect_to user_path(id: @user.instagram[1..-1])
+    redirect_to user_path(id: @user.id)
   end
 
   private
