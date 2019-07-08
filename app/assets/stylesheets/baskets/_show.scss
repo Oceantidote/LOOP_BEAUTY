@@ -1,0 +1,95 @@
+.shopping-bag-wrapper {
+  height: 100%;
+  width: 100%;
+  background: #F5F5F5;
+  padding: 50px 0;
+}
+
+.shopping-bag-container {
+  background: white;
+  border: 1px solid #CFCFCF;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.shopping-bag-title {
+  font-weight: 900;
+  margin: 40px 0;
+}
+
+.shopping-bag-card {
+  width: 70%;
+  margin: auto;
+}
+
+.shopping-bag-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopping-bag-card-image {
+  width: 150px;
+}
+
+.shopping-bag-card-quantity {
+  display: flex;
+  align-items: center;
+  background: #F2F2F2;
+  .form-group {
+    margin: 0;
+  }
+}
+
+.shopping-bag-quantity-controls {
+  background: #F2F2F2;
+  border: none;
+  font-weight: 900;
+  color: #6C6C6C;
+  padding: 5px 10px;
+}
+
+.no-quantity {
+  color: #D0D0D0;
+  padding: 5px 10px;
+}
+
+.shopping-bag-checkout {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.discount-code-button {
+  font-size: 12px !important;
+  height: 40px !important;
+  padding: 0 25px !important;
+  margin: auto 0 auto auto !important;
+}
+
+.shopping-bag-continue-checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.shopping-bag-card-title {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.shopping-bag-card-price {
+  margin: 0 70px;
+}
+
+.powered-by-stripe {
+  height: 35px;
+  margin: 15px 0;
+}
+
+.width-70-px {
+  width: 70px;
+  margin-left: 20px;
+}
