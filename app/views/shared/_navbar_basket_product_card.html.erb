@@ -11,7 +11,7 @@
             <p class="no-margin small-text"><%= item.shade.name %></p>
           </div>
           <div class="basket-items-card-info-bottom">
-            <p class="no-margin small-text">Quantity: <%= item.quantity %></p>
+            <p class="no-margin small-text item-<%= item.id %>-quantity">Quantity: <%= item.quantity %></p>
             <p class="no-margin small-text"><%= humanized_money_with_symbol(item.product.price) %></p>
           </div>
         </div>

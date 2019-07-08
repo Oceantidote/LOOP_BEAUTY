@@ -1,2 +1,8 @@
-container = document.getElementById(`item-<%= @item.id %>`)
-container.innerHTML = "<%= j render 'shared/basket_product_card', item: @item %>"
+totals = document.querySelectorAll('.basket-total-price')
+totals.forEach(total => {
+  total.innerHTML = "<%= humanized_money_with_symbol @item.basket.total_price %>"
+})
+form = document.querySelector('.item-form-<%= @item.id %>')
+form.innerHTML = "<%= j render 'baskets/shopping_bag_form_controls', item: @item %>"
+quantity = document.querySelector('.item-<%= @item.id %>-quantity')
+quantity.innerHTML = 'Quantity: <%= @item.quantity %>'
