@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # TEMP ROUTES FOR INSIDER
   get '/videos', to: 'pages#videos'
   get '/influencer_video', to: 'pages#influencer_video'
-  get '/influencers', to: 'pages#influencers'
   get '/about_us', to: 'pages#about_us', as: :about_us
   get '/careers', to: 'pages#careers', as: :careers
   get '/frequently_asked_questions', to: 'pages#frequently_asked_questions'
@@ -38,7 +37,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
-  resources :users, only: [:show, :index] do
+  resources :users, only: [:show, :index], path: 'influencers' do
     get 'uploads', to: 'users#uploads'
     get 'dashboard', to: 'users#dashboard'
     get 'share', to: 'users#share'

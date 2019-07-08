@@ -71,7 +71,7 @@
   <div class="mobile-nav-links-container">
     <div class="mobile-left-links">
       <% if user_signed_in? %>
-          <%= link_to user_path(current_user) do %>
+          <%= link_to user_dashboard_path(current_user) do %>
             <%= image_tag 'navbar-user.png' %>
           <% end %>
       <% else %>
@@ -158,7 +158,7 @@
         <%= image_tag 'dropdown-back.png', class: "dropdown-arrow" %>
       </div>
       Influencers</li>
-      <%= link_to influencers_path, class: "each-item" do %>
+      <%= link_to users_path, class: "each-item" do %>
         <li class="nav-item each-item-dropdown">
           SEE ALL INFLUENCERS
         </li>

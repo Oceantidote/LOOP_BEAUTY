@@ -2,8 +2,6 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @products = policy_scope(Product)
-    @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
       @sort_method = params[:product][:sort][:method]

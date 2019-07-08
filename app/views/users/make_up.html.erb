@@ -6,4 +6,4 @@
     </div>
   </div>
 </div>
-<%= render 'products/card_results', products: @products %>
+<%= render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>
