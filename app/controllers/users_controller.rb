@@ -56,20 +56,6 @@ class UsersController < ApplicationController
     @users = policy_scope(User)
   end
 
-  def publish
-    @user.published = true
-    @user.save!
-    flash[:notice] = 'User Published!'
-    redirect_to influencers_path(@user)
-  end
-
-  def unpublish
-    @user.published = false
-    @user.save!
-    flash[:notice] = 'User unpublished!'
-    redirect_to influencers_path(@user)
-  end
-
   def make_up
     @products = @user.showroom.showroom_products.map{ |r| r.product }
     @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?

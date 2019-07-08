@@ -75,8 +75,8 @@ Rails.application.routes.draw do
     end
     resources :influencers, only: [:new, :create, :edit, :update] do
       member do
-        patch '/publish', to: 'users#publish'
-        patch '/unpublish', to: 'users#unpublish'
+        patch '/publish', to: 'influencers#publish'
+        patch '/unpublish', to: 'influencers#unpublish'
       end
     end
   end

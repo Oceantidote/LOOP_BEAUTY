@@ -1,5 +1,5 @@
 class Admin::InfluencersController < ApplicationController
-  before_action :set_influencer, only: [:edit, :update]
+  before_action :set_influencer, only: [:edit, :update, :publish, :unpublish]
 
   def new
     @influencer = User.new(influencer: true)
@@ -31,6 +31,20 @@ class Admin::InfluencersController < ApplicationController
       flash[:error] = 'Please review the problems'
       render :edit
     end
+  end
+
+  def publish
+    @influencer.published = true
+    @influencer.save!
+    flash[:notice] = 'User Published!'
+    redirect_to user_path(@influencer)
+  end
+
+  def unpublish
+    @influencer.published = false
+    @influencer.save!
+    flash[:notice] = 'User unpublished!'
+    redirect_to user_path(@influencer)
   end
 
   private
