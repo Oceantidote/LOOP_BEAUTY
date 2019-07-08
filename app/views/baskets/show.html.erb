@@ -9,14 +9,14 @@
       <div class="shopping-bag-code">
         <p class="boldest small-text tiny-margin-bottom">Promotional code</p>
         <%= simple_form_for @basket, url: bag_path do |f| %>
-          <%= f.input :user, label: false %>
+          <%= f.input :user, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input' } %>
           <%= f.submit 'APPLY', class: "primary-button discount-code-button"  %>
         <% end %>
       </div>
       <div class="shopping-bag-continue-checkout">
         <p class="boldest grey-font text-right small-text no-margin">Subtotal: <%= humanized_money_with_symbol @basket.total_price %></p>
-        <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: £5.00</p>
-        <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: £107.00</p>
+        <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%= humanized_money_with_symbol 5 %></p>
+        <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: £89.99</p>
         <%= link_to 'CONTINUE TO CHECKOUT', '#', class: 'primary-button discount-code-button' %>
         <%= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe' %>
       </div>
