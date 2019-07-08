@@ -74,7 +74,7 @@ Rails.application.routes.draw do
         patch '/unpublish', to: 'insider_articles#unpublish'
       end
     end
-    resources :influencers, only: [:new, :create] do
+    resources :influencers, only: [:new, :create, :edit, :update] do
       member do
         patch '/publish', to: 'users#publish'
         patch '/unpublish', to: 'users#unpublish'
