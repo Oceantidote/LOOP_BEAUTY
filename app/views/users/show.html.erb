@@ -7,7 +7,7 @@
   <div class="influencer-show-banner-text-container">
     <div class="influencer-show-banner-text">
       <h4><%= @user.instagram %></h4>
-      <h5 class="didot">I am all about makeup and fashion. I love expressing myself, having fun and helping people by sharing my beauty and fashion knowledge</h5>
+      <h5 class="didot"><%= @user.description %></h5>
       <div class="influencer-social-data">
         <% if @user.instagram %>
           <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", class: "each-social-data" do %>
