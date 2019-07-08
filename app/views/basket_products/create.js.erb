@@ -6,3 +6,4 @@ container.innerHTML = "<%= j render 'shared/navbar_basket_product_card', item: @
 
 navBasketDrop = document.querySelector('.navbar-hover-container');
 navBasketDrop.classList.add('navbar-hover-container-top')
+setTimeout(() => navBasketDrop.classList.remove('navbar-hover-container-top'), 3000)
