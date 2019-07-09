@@ -1,7 +1,7 @@
 <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
   <div class="products-index-filters-container">
     <div class="partial-filters-one">
-      <h5>Refine By</h5>
+      <h5 class="medium-text">Refine By</h5>
       <div>
           <%#= image_tag 'dropdown-down.png', class: "dropdown-arrow" %>
           <%= f.fields_for :sort do |s| %>
@@ -49,7 +49,7 @@
           <!--   <div class="partial-products" id="results">
                 <%#= render 'card_results', products: @products %>
             </div> -->
-        <div class="row" style="flex: 1;">
+        <div class="row" style="flex: 1; margin: 0;">
           <% products.each do |product| %>
             <div class="col-xs-12 col-sm-6 col-md-4 d-flex justify-content-center" style="padding: 5px;">
               <div class="card-image-results">
