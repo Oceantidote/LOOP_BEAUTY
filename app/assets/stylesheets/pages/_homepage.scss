@@ -40,8 +40,7 @@
 }
 
 .insider-info-container {
-  padding-bottom: 20px;
-  margin: 0 10%;
+  padding: 0 20px 20px 20px;
   @include for-xlarge-devices-down {
     margin: 0 5%;
   }

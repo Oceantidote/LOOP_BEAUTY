@@ -10,29 +10,35 @@
   </div>
 <% end %>
 <div class="latest-videos-wrapper">
-  <%= link_to 'See all', '#', class: "see-all-videos-link" %>
-  <h2 class="insider-info-title text-center">Latest Videos</h2>
-  <div class="row" style="margin: 30px 0;">
-    <% @tutorials.order(created_at: :DESC).first(4).each do |tutorial| %>
-      <%= render 'shared/tutorials_card', tutorial: tutorial %>
-    <% end %>
+  <div class="max-width" style="position: relative;">
+    <%= link_to 'See all', '#', class: "see-all-videos-link" %>
+    <h2 class="insider-info-title text-center">Latest Videos</h2>
+    <div class="row" style="margin: 30px 0;">
+      <% @tutorials.order(created_at: :DESC).first(4).each do |tutorial| %>
+        <%= render 'shared/tutorials_card', tutorial: tutorial %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="latest-videos-wrapper">
-  <%= link_to 'See all', '#', class: "see-all-videos-link" %>
-  <h2 class="insider-info-title text-center">Tutorials</h2>
-  <div class="row" style="margin: 30px 0;">
-    <% @tutorials.first(4).each do |tutorial| %>
-      <%= render 'shared/tutorials_card', tutorial: tutorial %>
-    <% end %>
+  <div class="max-width" style="position: relative;">
+    <%= link_to 'See all', '#', class: "see-all-videos-link" %>
+    <h2 class="insider-info-title text-center">Tutorials</h2>
+    <div class="row" style="margin: 30px 0;">
+      <% @tutorials.first(4).each do |tutorial| %>
+        <%= render 'shared/tutorials_card', tutorial: tutorial %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="latest-videos-wrapper">
-  <%= link_to 'See all', '#', class: "see-all-videos-link" %>
-  <h2 class="insider-info-title text-center">Ask the experts</h2>
-  <div class="row" style="margin: 30px 0;">
-    <% @tutorials.first(4).each do |tutorial| %>
-      <%= render 'shared/tutorials_card', tutorial: tutorial %>
-    <% end %>
+  <div class="max-width" style="position: relative;">
+    <%= link_to 'See all', '#', class: "see-all-videos-link" %>
+    <h2 class="insider-info-title text-center">Ask the experts</h2>
+    <div class="row" style="margin: 30px 0;">
+      <% @tutorials.first(4).each do |tutorial| %>
+        <%= render 'shared/tutorials_card', tutorial: tutorial %>
+      <% end %>
+    </div>
   </div>
 </div>

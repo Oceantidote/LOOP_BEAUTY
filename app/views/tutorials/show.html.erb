@@ -22,13 +22,13 @@
 <%= link_to 'See all tutorials', influencer_video_path, class: "mobile-tutorials-link" %>
 
 <div class="featured-products-wrapper">
-  <div class="featured-products-header">
+  <div class="featured-products-header max-width">
     <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">Featured Products</h2>
     <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
   </div>
   <div class="container">
-    <div class="row">
+    <div class="row row-style">
       <% @tutorial.products.first(4).each do |product| %>
         <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
           <div class="card-image-results">
@@ -68,7 +68,7 @@
   <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
 </div>
 <div class="similar-tutorials-wrapper">
-  <div class="similar-tutorials-header">
+  <div class="similar-tutorials-header max-width">
     <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">You'll also love</h2>
     <%= link_to 'View more tutorials', '#', class: "web-tutorials-link" %>

@@ -147,6 +147,12 @@ body {
 }
 
 // Dimensions
+
+.max-width {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
 .full-screen-width {
   width: 100vw;
 }
@@ -251,4 +257,11 @@ body {
 
   .form-control.input.flatpickr-input {
     background-color: white;
+  }
+
+  // row styling
+
+  .row-style {
+    margin: 0;
+    width: 100%;
   }

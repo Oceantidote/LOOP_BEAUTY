@@ -1,4 +1,4 @@
-<div class="tutorial-show-title-content">
+<div class="tutorial-show-title-content lookbook-max-width">
   <div style="width: 120px;">
     <%= link_to 'See all looks', influencer_video_path, class: "web-tutorials-link" %>
   </div>
@@ -42,15 +42,15 @@
   </div>
 </div>
 <div class="featured-products-wrapper">
-  <div class="featured-products-header">
+  <div class="featured-products-header lookbook-max-width">
     <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">Shop the look</h2>
     <div class="tutorial-spacer text-right" style="width: 150px;">
       <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
+  <div class="max-width">
+    <div class="row row-style">
       <% @lookbook.products.first(4).each do |product| %>
         <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
           <div class="card-image-results">
@@ -90,15 +90,15 @@
   <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
 </div>
 <div class="youll-also-love-wrapper">
-  <div class="similar-tutorials-header">
+  <div class="similar-tutorials-header lookbook-max-width">
     <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">You'll also love</h2>
     <div class="tutorial-spacer text-right" style="width: 150px;">
       <%= link_to 'See more looks', '#', class: "web-tutorials-link" %>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
+  <div class="max-width">
+    <div class="row row-style">
       <% @all_lookbooks.sample(4).each do |lookbook| %>
         <div class="col-xs-12 col-md-6 col-lg-3">
           <%= link_to lookbook_path(lookbook, user_id: lookbook.user.id), class: "lookbook-small-card-link card-link" do %>
