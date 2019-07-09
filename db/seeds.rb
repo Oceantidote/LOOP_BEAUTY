@@ -1148,6 +1148,13 @@ InsiderReview.create!(
 
 end
 
+# CREATING DISCOUNT CODE
+
+puts "Creating discount code"
+
+DiscountCode.create!(code: 'WELCOME2LOOP', discount: 10)
+
+puts "Dicount code: WELCOME2LOOP"
 
 
 
