@@ -2,6 +2,10 @@
   <div class="shopping-bag-container">
     <h2 class="shopping-bag-title text-center">Shopping Bag</h2>
     <hr style="border-color: #CFCFCF;">
+    <% if @basket.products.count == 0 %>
+      <p class="large-margin text-center boldest">Your basket is empty</p>
+      <hr style="border-color: #CFCFCF;">
+    <% end %>
     <% @basket.basket_products.each do |item| %>
       <div class="item-<%= item.id %> item-bag-<%= item.id %> %>">
         <%= render 'shopping_bag_product_card', item: item %>

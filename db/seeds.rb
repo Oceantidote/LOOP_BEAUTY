@@ -21,6 +21,7 @@ TutorialProduct.destroy_all
 Product.destroy_all
 Tutorial.destroy_all
 User.destroy_all
+
 # CREATING DEPARTMENTS
 
 makeup = Department.create!(name: "Makeup")
@@ -545,10 +546,6 @@ admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxto
 puts "Email: admin@gmail.com"
 puts "Password: 123456"
 
-
-
-
-
 # CREATING INSIDER ARTICLES
 
 puts "Creating insider articles"
@@ -883,6 +880,120 @@ ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ro
 ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
 ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
 
+# CREATING LOOKBOOKS
+
+puts "Creating lookbooks"
+[esther, ropo, breeny, nikki, shantania, bemi]
+
+
+esther_lookbook_one = Lookbook.new(user: esther, title: 'Esther First Lookbook', status: 'approved')
+esther_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
+esther_lookbook_image_one = File.join(Rails.root,'app/assets/images/esther_photo_one.png')
+esther_lookbook_one.photo.attach(io: File.open(esther_lookbook_image_one) , filename: 'esther_photo_one.png')
+esther_lookbook_one.save
+
+esther_lookbook_two = Lookbook.new(user: esther, title: 'Esther Second Lookbook', status: 'approved')
+esther_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
+esther_lookbook_image_two = File.join(Rails.root,'app/assets/images/esther_photo_two.png')
+esther_lookbook_two.photo.attach(io: File.open(esther_lookbook_image_two) , filename: 'esther_photo_two.png')
+esther_lookbook_two.save
+
+esther_lookbook_three = Lookbook.new(user: esther, title: 'Esther Third Lookbook', status: 'approved')
+esther_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
+esther_lookbook_image_three = File.join(Rails.root,'app/assets/images/esther_photo_three.png')
+esther_lookbook_three.photo.attach(io: File.open(esther_lookbook_image_three) , filename: 'esther_photo_three.png')
+esther_lookbook_three.save
+
+ropo_lookbook_one = Lookbook.new(user: ropo, title: 'Ropo First Lookbook', status: 'approved')
+ropo_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
+ropo_lookbook_image_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.png')
+ropo_lookbook_one.photo.attach(io: File.open(ropo_lookbook_image_one) , filename: 'ropo_photo_one.png')
+ropo_lookbook_one.save
+
+ropo_lookbook_two = Lookbook.new(user: ropo, title: 'Ropo Second Lookbook', status: 'approved')
+ropo_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
+ropo_lookbook_image_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.png')
+ropo_lookbook_two.photo.attach(io: File.open(ropo_lookbook_image_two) , filename: 'ropo_photo_two.png')
+ropo_lookbook_two.save
+
+ropo_lookbook_three = Lookbook.new(user: ropo, title: 'Ropo Third Lookbook', status: 'approved')
+ropo_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
+ropo_lookbook_image_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.png')
+ropo_lookbook_three.photo.attach(io: File.open(ropo_lookbook_image_three) , filename: 'ropo_photo_three.png')
+ropo_lookbook_three.save
+
+breeny_lookbook_one = Lookbook.new(user: breeny, title: 'Breeny First Lookbook', status: 'approved')
+breeny_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
+breeny_lookbook_image_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.png')
+breeny_lookbook_one.photo.attach(io: File.open(breeny_lookbook_image_one) , filename: 'breeny_photo_one.png')
+breeny_lookbook_one.save
+
+breeny_lookbook_two = Lookbook.new(user: breeny, title: 'Breeny Second Lookbook', status: 'approved')
+breeny_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
+breeny_lookbook_image_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.png')
+breeny_lookbook_two.photo.attach(io: File.open(breeny_lookbook_image_two) , filename: 'breeny_photo_two.png')
+breeny_lookbook_two.save
+
+breeny_lookbook_three = Lookbook.new(user: breeny, title: 'Breeny Third Lookbook', status: 'approved')
+breeny_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
+breeny_lookbook_image_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.png')
+breeny_lookbook_three.photo.attach(io: File.open(breeny_lookbook_image_three) , filename: 'breeny_photo_three.png')
+breeny_lookbook_three.save
+
+nikki_lookbook_one = Lookbook.new(user: nikki, title: 'Nikki First Lookbook', status: 'approved')
+nikki_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
+nikki_lookbook_image_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.png')
+nikki_lookbook_one.photo.attach(io: File.open(nikki_lookbook_image_one) , filename: 'nikki_photo_one.png')
+nikki_lookbook_one.save
+
+nikki_lookbook_two = Lookbook.new(user: nikki, title: 'Nikki Second Lookbook', status: 'approved')
+nikki_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
+nikki_lookbook_image_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.png')
+nikki_lookbook_two.photo.attach(io: File.open(nikki_lookbook_image_two) , filename: 'nikki_photo_two.png')
+nikki_lookbook_two.save
+
+nikki_lookbook_three = Lookbook.new(user: nikki, title: 'Nikki Third Lookbook', status: 'approved')
+nikki_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
+nikki_lookbook_image_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.png')
+nikki_lookbook_three.photo.attach(io: File.open(nikki_lookbook_image_three) , filename: 'nikki_photo_three.png')
+nikki_lookbook_three.save
+
+shantania_lookbook_one = Lookbook.new(user: shantania, title: 'Shantania First Lookbook', status: 'approved')
+shantania_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
+shantania_lookbook_image_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.png')
+shantania_lookbook_one.photo.attach(io: File.open(shantania_lookbook_image_one) , filename: 'shantania_photo_one.png')
+shantania_lookbook_one.save
+
+shantania_lookbook_two = Lookbook.new(user: shantania, title: 'Shantania Second Lookbook', status: 'approved')
+shantania_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
+shantania_lookbook_image_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.png')
+shantania_lookbook_two.photo.attach(io: File.open(shantania_lookbook_image_two) , filename: 'shantania_photo_two.png')
+shantania_lookbook_two.save
+
+shantania_lookbook_three = Lookbook.new(user: shantania, title: 'Shantania Third Lookbook', status: 'approved')
+shantania_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
+shantania_lookbook_image_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.png')
+shantania_lookbook_three.photo.attach(io: File.open(shantania_lookbook_image_three) , filename: 'shantania_photo_three.png')
+shantania_lookbook_three.save
+
+bemi_lookbook_one = Lookbook.new(user: bemi, title: 'Bemi First Lookbook', status: 'approved')
+bemi_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
+bemi_lookbook_image_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.png')
+bemi_lookbook_one.photo.attach(io: File.open(bemi_lookbook_image_one) , filename: 'bemi_photo_one.png')
+bemi_lookbook_one.save
+
+bemi_lookbook_two = Lookbook.new(user: bemi, title: 'Bemi Second Lookbook', status: 'approved')
+bemi_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
+bemi_lookbook_image_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.png')
+bemi_lookbook_two.photo.attach(io: File.open(bemi_lookbook_image_two) , filename: 'bemi_photo_two.png')
+bemi_lookbook_two.save
+
+bemi_lookbook_three = Lookbook.new(user: bemi, title: 'Bemi Third Lookbook', status: 'approved')
+bemi_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
+bemi_lookbook_image_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.png')
+bemi_lookbook_three.photo.attach(io: File.open(bemi_lookbook_image_three) , filename: 'bemi_photo_three.png')
+bemi_lookbook_three.save
+
 # CREATING TUTORIAL PRODUCTS
 
 puts "Creating tutorial products"
@@ -1011,12 +1122,12 @@ TutorialProduct.create!(
 
 puts "Creating customer reviews"
 
-6.times do
+100.times do
 
 CustomerReview.create!(
                       user: customers.sample,
-                      rating: [0, 1, 2, 3, 4, 5].sample,
-                      product: disco_fluid_lipstick,
+                      rating: [1, 2, 3, 4, 5].sample,
+                      product: Product.all.sample,
                       review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
                       )
 
@@ -1026,12 +1137,12 @@ end
 
 puts "Creating insider reviews"
 
-3.times do
+30.times do
 
 InsiderReview.create!(
                       user: insiders.sample,
-                      rating: [0, 1, 2, 3, 4, 5].sample,
-                      product: disco_fluid_lipstick,
+                      rating: [1, 2, 3, 4, 5].sample,
+                      product: Product.all.sample,
                       review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
                       )
 

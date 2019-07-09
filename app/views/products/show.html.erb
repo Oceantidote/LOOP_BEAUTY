@@ -75,7 +75,7 @@
       <% if @product.insider_reviews.count == 0 %>
         <p class="text-center medium-margin width-100">There are no insider reviews yet</p>
       <% end %>
-      <% @product.insider_reviews.each do |review| %>
+      <% @product.insider_reviews.sample(3).each do |review| %>
         <div class="col-sm-12 col-md-4">
           <div class="insider-review-cards">
             <div class="insider-review-left">
@@ -133,7 +133,7 @@
       <% if @product.customer_reviews.count == 0 %>
         <p class="text-center medium-margin width-100">There are no customer reviews yet</p>
       <% end %>
-      <% @product.customer_reviews.each do |review| %>
+      <% @product.customer_reviews.sample(6).each do |review| %>
         <div class="col-xs-12 col-sm-6">
           <div class="customer-review-cards">
             <div class="customer-review-left">
