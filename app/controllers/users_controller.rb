@@ -18,6 +18,9 @@ class UsersController < ApplicationController
   end
 
   def wishlist
+    # WISHLIST TEST
+    @wishlist = Wishlist.find_by(user: @user)
+    # WISHLIST TEST
   end
 
   def account_details

@@ -53,14 +53,14 @@
             </div>
           <% end %>
           <div class="dash-home-options-line-break"></div>
-          <%= link_to user_my_orders_path(current_user), class: "dash-home-option-links" do %>
+          <%= link_to user_wishlist_path(current_user), class: "dash-home-option-links" do %>
             <div class="each-dash-home-option">
               <%= image_tag 'dash-wish.png' %>
               <h5>Wishlist</h5>
             </div>
           <% end %>
           <div class="dash-home-options-line-break"></div>
-          <%= link_to user_my_orders_path(current_user), class: "dash-home-option-links" do %>
+          <%= link_to user_account_details_path(current_user), class: "dash-home-option-links" do %>
             <div class="each-dash-home-option">
               <%= image_tag 'default-user.png' %>
               <h5>Account Details</h5>

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
   resources :products, only: [:index, :show]
+  # WISHLIST TEST
+  # WISHLIST TEST
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
   resources :users, only: [], path: 'influencers' do

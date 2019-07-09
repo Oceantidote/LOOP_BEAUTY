@@ -62,15 +62,20 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="card_header">
-                  <p><%= product.title %></p>
-                </div>
-                <div class="card_price-heart">
-                  <%= humanized_money_with_symbol(product.price) %>
-                </div>
-                <div class="card_ratings">
-                  <%= render 'shared/ratings', rating: product.average_rating %>
-                  <p class="small-text"><%= product.average_rating %> (<%= product.total_reviews %> Reviews)</p>
+                <div class="card-info">
+                  <div class="card_header">
+                    <p><%= product.title %></p>
+                  </div>
+                  <div class="card_price-heart">
+                    <%= humanized_money_with_symbol(product.price) %>
+                  </div>
+                  <div class="card_ratings">
+                    <%= render 'shared/ratings', rating: product.average_rating %>
+                    <p class="small-text"><%= product.average_rating %> (<%= product.total_reviews %> Reviews)</p>
+                  </div>
+                  <% if user_signed_in? %>
+                    <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>
+                  <% end %>
                 </div>
               </div>
             </div>
