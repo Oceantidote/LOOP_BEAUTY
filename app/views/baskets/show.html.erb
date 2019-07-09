@@ -19,7 +19,7 @@
         <p class="boldest grey-font text-right small-text no-margin">Subtotal: <span class="basket-total-price" ><%= humanized_money_with_symbol @basket.total_price %></span></p>
         <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%= humanized_money_with_symbol 5 %></p>
         <div class="shopping-bag-continue-checkout-total">
-          <%= render 'shopping-bag-price', basket: @basket %>
+          <%= render 'shared/shopping_bag_price', basket: @basket %>
         </div>
         <%= link_to 'CONTINUE TO CHECKOUT', '#', class: 'primary-button discount-code-button' %>
         <%= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe' %>
