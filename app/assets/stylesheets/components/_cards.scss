@@ -48,3 +48,14 @@
     }
   }
 }
+
+.card-info {
+  position: relative;
+}
+
+.wishlist-heart-icon {
+  position: absolute;
+  font-size: 22px;
+  top: calc(50% - 11px);
+  right: 10px;
+}

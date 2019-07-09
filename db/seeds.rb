@@ -512,6 +512,9 @@ bemi.save
 
 
 
+# CREATING SHOWROOM
+
+puts "Creating showroom"
 
 
 estherShowroom = Showroom.create!(user: esther)
@@ -519,13 +522,61 @@ ropoShowroom = Showroom.create!(user: ropo)
 breenyShowroom = Showroom.create!(user: breeny)
 shantaniaShowroom = Showroom.create!(user: shantania)
 bemiShowroom = Showroom.create!(user: bemi)
+nikkiShowroom = Showroom.create!(user: nikki)
 
 estherProd = ShowroomProduct.create!(showroom: estherShowroom, product: brow_lift)
 ropoProd = ShowroomProduct.create!(showroom: ropoShowroom, product: brow_setter)
 breenyProd = ShowroomProduct.create!(showroom: breenyShowroom, product: brow_setter)
 shantaniaProd = ShowroomProduct.create!(showroom: shantaniaShowroom, product: brow_setter)
 bemiProd = ShowroomProduct.create!(showroom: bemiShowroom, product: brow_setter)
+nikkiProd = ShowroomProduct.create!(showroom: nikkiShowroom, product: brow_setter)
 
+#CREATING WISHLIST
+
+puts "Creating influencer wishlist"
+
+estherWishlist = Wishlist.create!(user: esther)
+ropoWishlist = Wishlist.create!(user: ropo)
+breenyWishlist = Wishlist.create!(user: breeny)
+shantaniaWishlist = Wishlist.create!(user: shantania)
+bemiWishlist = Wishlist.create!(user: bemi)
+nikkiWishlist = Wishlist.create!(user: nikki)
+
+4.times do
+estherProd = WishlistProduct.new(wishlist: estherWishlist, product: Product.all.sample)
+estherProd.shade = estherProd.product.shades.first
+estherProd.save
+end
+
+4.times do
+ropoProd = WishlistProduct.new(wishlist: ropoWishlist, product: Product.all.sample)
+ropoProd.shade = ropoProd.product.shades.first
+ropoProd.save
+end
+
+4.times do
+breenyProd = WishlistProduct.new(wishlist: breenyWishlist, product: Product.all.sample)
+breenyProd.shade = breenyProd.product.shades.first
+breenyProd.save
+end
+
+4.times do
+shantaniaProd = WishlistProduct.new(wishlist: shantaniaWishlist, product: Product.all.sample)
+shantaniaProd.shade = shantaniaProd.product.shades.first
+shantaniaProd.save
+end
+
+4.times do
+bemiProd = WishlistProduct.new(wishlist: bemiWishlist, product: Product.all.sample)
+bemiProd.shade = bemiProd.product.shades.first
+bemiProd.save
+end
+
+4.times do
+nikkiProd = WishlistProduct.new(wishlist: nikkiWishlist, product: Product.all.sample)
+nikkiProd.shade = nikkiProd.product.shades.first
+nikkiProd.save
+end
 
 insiders = [esther, ropo, breeny, nikki, shantania, bemi]
 
@@ -536,8 +587,40 @@ puts "Creating customers"
 ariel = User.create!(published: true, influencer: false, first_name: "Ariel", last_name: "Roberts", country: "Bristol, UK",password: "123456", email: "ariel@gmail.com")
 lenny = User.create!(published: true, influencer: false, first_name: "Leonard", last_name: "Percival", country: "Oxford, UK",password: "123456", email: "lenny@gmail.com")
 ife = User.create!(published: true, influencer: false, first_name: "Ife", last_name: "Odugbesan", country: "London, UK",password: "123456", email: "ife@gmail.com")
+wrighty = User.create!(published: true, influencer: false, first_name: "Ben", last_name: "Wright", country: "London, UK",password: "123456", email: "wrighty@gmail.com")
 customers = [ariel, lenny, ife]
 # CREATING ADMIN USER
+
+puts "Creating customer wishlist"
+
+arielWishlist = Wishlist.create!(user: ariel)
+lennyWishlist = Wishlist.create!(user: lenny)
+ifeWishlist = Wishlist.create!(user: ife)
+wrightyWishlist = Wishlist.create!(user: wrighty)
+
+4.times do
+arielProd = WishlistProduct.new(wishlist: arielWishlist, product: Product.all.sample)
+arielProd.shade = arielProd.product.shades.first
+arielProd.save
+end
+
+4.times do
+lennyProd = WishlistProduct.new(wishlist: lennyWishlist, product: Product.all.sample)
+lennyProd.shade = lennyProd.product.shades.first
+lennyProd.save
+end
+
+4.times do
+ifeProd = WishlistProduct.new(wishlist: ifeWishlist, product: Product.all.sample)
+ifeProd.shade = ifeProd.product.shades.first
+ifeProd.save
+end
+
+4.times do
+wrightyProd = WishlistProduct.new(wishlist: wrightyWishlist, product: Product.all.sample)
+wrightyProd.shade = wrightyProd.product.shades.first
+wrightyProd.save
+end
 
 puts "Creating admin user"
 

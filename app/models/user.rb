@@ -57,7 +57,10 @@ class User < ApplicationRecord
   has_many :shades, through: :order_products
   has_many :tutorials
   has_one :showroom
-
+  # WISHLIST TEST
+  has_one :wishlist
+  has_many :wishlist_products, through: :wishlist
+  # WISHLIST TEST
 
   def admin?
     admin
