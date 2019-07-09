@@ -1,0 +1,8 @@
+<div class="shopping-bag-continue-checkout-total">
+  <% if basket.discount_code %>
+    <p class="boldest text-right small-text grey-font tiny-margin-bottom">Savings: -<%= humanized_money_with_symbol basket.money_off %></p>
+    <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.discounted_price %></p>
+  <% else %>
+    <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol 99 %></p>
+  <% end %>
+</div>

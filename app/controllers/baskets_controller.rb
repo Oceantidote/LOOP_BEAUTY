@@ -15,19 +15,19 @@ class BasketsController < ApplicationController
       @basket.discount_code = discount
       @basket.save
       respond_to do |format|
-        format.js
         format.html do
           flash[:notice] = 'Discount applied'
           redirect_to bag_path
         end
+        format.js
       end
     else
       respond_to do |format|
-        format.js
         format.html do
           flash[:notice] = 'Discount not found'
           redirect_to bag_path
         end
+        format.js
       end
     end
   end
