@@ -3,7 +3,7 @@
     <p class="medium-margin text-center boldest" style="width: 100%;">Your wishlist is empty</p>
   <% end %>
   <% @wishlist.wishlist_products.each do |wishlist_product| %>
-    <div class="col-xs-12 col-lg-4" style="margin-bottom: 15px;">
+    <div class="col-xs-12 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
       <div class="my-products-card">
         <div class="my-products-image">
           <%= image_tag wishlist_product.shade.photos.first %>
@@ -17,7 +17,7 @@
           <%= humanized_money_with_symbol(wishlist_product.product.price) %>
         </div>
         <div class="my-products-purchase">
-          <%= link_to 'Add to bag', '#', class: "my-products-button" %>
+          <%= link_to 'Add to bag', add_to_bag_wishlist_product_path(wishlist_product), method: :post, remote: true, class: "my-products-button" %>
             <%= link_to wishlist_product_path(wishlist_product), method: :delete, remote: :true, class: 'no-decoration' do %>
               <i class="<%= current_user.wishlist.products.include?(wishlist_product.product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
             <% end %>
