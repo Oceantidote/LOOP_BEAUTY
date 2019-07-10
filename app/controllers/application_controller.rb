@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_basket
+    begin
     if current_user
       if current_user.basket && session[:basket_id]
         combine_baskets
@@ -58,6 +59,11 @@ class ApplicationController < ActionController::Base
         session[:basket_id] = basket.id
         basket
       end
+    end
+    rescue ActiveRecord::RecordNotFound
+      basket = Basket.create
+      session[:basket_id] = basket.id
+      basket
     end
   end
 

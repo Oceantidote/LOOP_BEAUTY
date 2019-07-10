@@ -3,9 +3,17 @@ class WishlistProductPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def create?
-      user
-    end
+  def create?
+    true
+  end
+
+  def destroy?
+    record.wishlist.user == user
+  end
+
+  def add_to_bag?
+    destroy?
   end
 end

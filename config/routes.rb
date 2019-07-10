@@ -27,7 +27,11 @@ Rails.application.routes.draw do
   # WISHLIST TEST
     resources :wishlist_products, only: [:new, :create]
   end
-  resources :wishlist_products, except: [:new, :create]
+  resources :wishlist_products, except: [:new, :create] do
+    member do
+      post '/add_to_bag', to: 'wishlist_products#add_to_bag'
+    end
+  end
   # WISHLIST TEST
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]

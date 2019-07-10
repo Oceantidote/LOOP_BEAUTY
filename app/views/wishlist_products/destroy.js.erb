@@ -9,11 +9,8 @@ else if (myProductsCards) {
   myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', wishlist_product: @wishlist_product %>"
 }
 else if (cards) {
-  cards.forEach(function(card) {
-    card.remove();
-  });
-  results = document.querySelector('.partial-banner')
-  results.nextElementSibling.remove()
-  console.log('<%= @sort_method %>')
-  results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>")
+  toReplace = document.getElementById(`item-<%= @product.id %>-wishlist`)
+  toReplace.innerHTML = '<%= link_to product_wishlist_products_path(@product), method: :post, remote: :true, class: 'no-decoration' do %>\
+                          <i class="<%= current_user.wishlist.products.include?(@product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>\
+                        <% end %>'
 }
