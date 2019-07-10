@@ -1,0 +1,19 @@
+wishlistCards = document.querySelector('.wishlist-product-cards-container')
+cards = document.querySelectorAll('.card-image-results')
+myProductsCards = document.querySelector('.my-product-cards-container')
+
+if (wishlistCards) {
+  wishlistCards.innerHTML = "<%= j render 'shared/wishlist_product_card', wishlist_product: @wishlist_product %>"
+}
+else if (myProductsCards) {
+  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', wishlist_product: @wishlist_product %>"
+}
+else if (cards) {
+  cards.forEach(function(card) {
+    card.remove();
+  });
+  results = document.querySelector('.partial-banner')
+  results.nextElementSibling.remove()
+  console.log('<%= @sort_method %>')
+  results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>")
+}

@@ -1,0 +1,32 @@
+<div class="row" style="width: 100%; margin: 0; padding: 30px;">
+  <% if Product.all.count == 0 %>
+    <p class="medium-margin text-center boldest" style="width: 100%;">Your products are empty</p>
+  <% end %>
+  <% Product.all.each do |product| %>
+    <div class="col-xs-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
+      <div class="my-products-card">
+        <div class="my-products-image">
+          <%= image_tag product.shades.first.photos.first %>
+        </div>
+        <div class="my-products-details text-center">
+          <p><%= product.title %></p>
+        </div>
+        <div class="my-products-price text-center">
+          <%= humanized_money_with_symbol(product.price) %>
+        </div>
+        <div class="my-products-purchase">
+          <%= link_to 'Add to bag', '#', class: "my-products-button" %>
+          <% if Wishlist.where(user: current_user).first.products.include?(product) %>
+            <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
+              <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+            <% end %>
+          <% else %>
+            <%= link_to product_wishlist_products_path(product), method: :post, remote: :true, class: 'no-decoration' do %>
+              <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

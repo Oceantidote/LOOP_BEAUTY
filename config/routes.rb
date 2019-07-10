@@ -23,8 +23,11 @@ Rails.application.routes.draw do
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
   # WISHLIST TEST
+    resources :wishlist_products, only: [:new, :create]
+  end
+  resources :wishlist_products, except: [:new, :create]
   # WISHLIST TEST
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
