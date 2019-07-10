@@ -33,14 +33,16 @@
           <% end %>
         <% end %>
         <p class="didot"> <%= simple_format(@insider_article.text4) %></p>
-        <% if policy([:admin, @insider_article]).publish? %>
-          <% if @insider_article.published %>
-            <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch %>
-          <% else %>
-            <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch %>
+        <% if user_signed_in? && current_user.admin %>
+          <% if policy([:admin, @insider_article]).publish? %>
+            <% if @insider_article.published %>
+              <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch %>
+            <% else %>
+              <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch %>
+            <% end %>
+            <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article) %>
+            <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete %>
           <% end %>
-          <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article) %>
-          <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete %>
         <% end %>
       </div>
       <div class="share-articles-links">
