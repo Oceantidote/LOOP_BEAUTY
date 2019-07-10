@@ -9,7 +9,7 @@
             <%= link_to user_path(influencer), class: "influencer-card-link" do %>
               <div class="each-influencer-avatar-card text-center">
 
-                  <%= image_tag (influencer.avatar_photo.attached? ? influencer.avatar_photo : 'https://cdn.shopify.com/s/files/1/0912/3996/products/AFB-closeup-final_2048x.jpg?v=1548689204'), class: "influencer-large-avatar" %>
+                  <%= image_tag (influencer.avatar_photo.attached? ? url_for(influencer.avatar_photo) : 'https://cdn.shopify.com/s/files/1/0912/3996/products/AFB-closeup-final_2048x.jpg?v=1548689204'), class: "influencer-large-avatar" %>
 
                 <h6><%= influencer.instagram %></h6>
                 <% if !influencer.published %>

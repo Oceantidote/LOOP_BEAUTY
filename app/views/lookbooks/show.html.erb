@@ -53,36 +53,7 @@
     <div class="row row-style">
       <% @lookbook.products.first(4).each do |product| %>
         <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
-          <div class="card-image-results">
-            <div class="card">
-              <%= link_to product_path(product) do %>
-                <div class="card_image">
-                  <%= link_to product_path(product) do %>
-                    <%= image_tag url_for(product.shades.first.photos.first) %>
-                  <% end %>
-                </div>
-              <% end %>
-              <div class="card_header">
-                <p><%= product.title %></p>
-              </div>
-              <div class="card_price-heart">
-                <%= humanized_money_with_symbol(product.price) %>
-              </div>
-              <div class="card_ratings">
-                <% if product.average_rating == 0 %>
-                 <% 5.times do %>
-                  <p><i class="far fa-star"></i></p>
-                  <% end %>
-                 <p>(0) Reviews</p>
-                <% else  %>
-                  <% product.average_rating.times do %>
-                    <p><i class="fas fa-star"></i></p>
-                  <% end %>
-                  <p><%= product.total_reviews %></p>
-                <% end %>
-              </div>
-            </div>
-          </div>
+          <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
     </div>
