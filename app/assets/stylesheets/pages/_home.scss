@@ -63,11 +63,11 @@
   font-family: $menu-font;
   margin: 0;
   text-align: right;
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 10px;
   font-weight: bold;
   @include for-phone-only {
-    font-size: 14px;
+    font-size: 10px;
     margin-right: 5px;
     display: none;
   }

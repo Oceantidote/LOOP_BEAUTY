@@ -1,19 +1,50 @@
 .privacy-and-terms-container {
-  width: 40%;
+  max-width: 800px;
+  // width: 50%;
   margin: 50px auto;
   @include for-xlarge-devices-down {
-    width: 45%;
+    width: 65%;
   }
   @include for-large-devices-down {
-    width: 50%;
+    width: 60%;
   }
   @include for-medium-devices-down {
-    width: 55%;
+    width: 70%;
   }
   @include for-small-devices-down {
-    width: 65%;
+    width: 80%;
   }
   @include for-phone-only {
     width: 80%;
   }
+}
+
+.shipping-table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shipping-table {
+  margin: 0 10px;
+  max-width: 900px;
+  font-size: 12px;
+  padding: 0 10px;
+  th {
+    font-weight: 900;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 10px 5px;
+  }
+  td {
+    padding: 10px 5px;
+    border: 1px solid #000;
+    text-align: center;
+
+  }
+}
+
+.shipping-table-left {
+  width: 30%;
 }

@@ -113,18 +113,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 225px;
+  @include for-small-devices-down {
+    width: 200px;
+  }
+  @include for-phone-only {
+    width: 170px;
+  }
 }
 
 .lookbook-avatar {
   border-radius: 50%;
   margin-bottom: 10px;
   width: 100%;
-  @include for-small-devices-down {
-    width: 80%;
-  }
-  @include for-phone-only {
-    width: 100%;
-  }
 }
 
 .lookbooks-container {
