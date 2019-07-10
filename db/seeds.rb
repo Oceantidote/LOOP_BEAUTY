@@ -393,14 +393,14 @@ nikki = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrit
 shantania = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
 bemi = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii",youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "bemi123", email: "beautybybemi@gmail.com")
 
-esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
-esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
+esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
+esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
 
 esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
 esther.avatar_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
-esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
-esther.qa_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpeg')
+esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
+esther.qa_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
 
 esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
 esther.lookbook_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
@@ -410,14 +410,14 @@ esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
 esther.tutorial_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
 
-ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
-ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
+ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
+ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
 
 ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
 ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
 
-ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
-ropo.lookbook_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpeg')
+ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
+ropo.lookbook_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
 
 ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
 ropo.qa_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
@@ -441,15 +441,15 @@ breeny.lookbook_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_av
 breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
 breeny.tutorial_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
 
-nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
-nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpeg')
+nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
+nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
 
 nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
 nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
 
 
-nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
-nikki.qa_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpeg')
+nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
+nikki.qa_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
 
 nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
 nikki.lookbook_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
@@ -458,16 +458,16 @@ nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
 nikki.tutorial_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
 
 
-shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
-shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpeg')
+shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
+shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
 
 shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
 shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
 
 
 
-shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
-shantania.qa_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpeg')
+shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
+shantania.qa_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
 
 shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
 shantania.lookbook_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
@@ -477,14 +477,14 @@ shantania.tutorial_photo.attach(io: File.open(shantania_avatar) , filename: 'sha
 
 
 
-bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
-bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
+bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
+bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpg')
 
 bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
 bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
 
-bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
-bemi.qa_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpeg')
+bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
+bemi.qa_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpg')
 
 bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
 bemi.lookbook_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
@@ -899,8 +899,8 @@ esther_tutorial = Tutorial.create!(
                                       title: "Make Up Tips",
                                       )
 
-esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpeg')
-esther_tutorial.cover_photo.attach(io: File.open(esther_video_cover) , filename: 'esther_cover.jpeg')
+esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
+esther_tutorial.cover_photo.attach(io: File.open(esther_video_cover) , filename: 'esther_cover.jpg')
 esther_video = File.join(Rails.root,'app/assets/images/esther-vid.mp4')
 esther_tutorial.video.attach(io: File.open(esther_video) , filename: 'esther-vid.mp4')
 
@@ -922,8 +922,8 @@ nikki_tutorial = Tutorial.create!(
                                       title: "My Top Tips",
                                       )
 
-nikki_video_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpeg')
-nikki_tutorial.cover_photo.attach(io: File.open(nikki_video_cover) , filename: 'nikki_cover.jpeg')
+nikki_video_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
+nikki_tutorial.cover_photo.attach(io: File.open(nikki_video_cover) , filename: 'nikki_cover.jpg')
 nikki_video = File.join(Rails.root,'app/assets/images/nikki-vid.mp4')
 nikki_tutorial.video.attach(io: File.open(nikki_video) , filename: 'nikki-vid.mp4')
 
@@ -934,8 +934,8 @@ shantania_tutorial = Tutorial.create!(
                                       title: "My Favourite Blushers",
                                       )
 
-shantania_video_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpeg')
-shantania_tutorial.cover_photo.attach(io: File.open(shantania_video_cover) , filename: 'shantania_cover.jpeg')
+shantania_video_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
+shantania_tutorial.cover_photo.attach(io: File.open(shantania_video_cover) , filename: 'shantania_cover.jpg')
 shantania_video = File.join(Rails.root,'app/assets/images/shantania-vid.mp4')
 shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'shantania-vid.mp4')
 
@@ -946,8 +946,8 @@ bemi_tutorial = Tutorial.create!(
                                       title: "Golden Hour Skin Tutorial",
                                       )
 
-bemi_video_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpeg')
-bemi_tutorial.cover_photo.attach(io: File.open(bemi_video_cover) , filename: 'bemi_cover.jpeg')
+bemi_video_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
+bemi_tutorial.cover_photo.attach(io: File.open(bemi_video_cover) , filename: 'bemi_cover.jpg')
 bemi_video = File.join(Rails.root,'app/assets/images/bemi-vid.mp4')
 bemi_tutorial.video.attach(io: File.open(bemi_video) , filename: 'bemi-vid.mp4')
 
@@ -958,8 +958,8 @@ ropo_tutorial = Tutorial.create!(
                                       title: "Drugstore Prom Make Up Tutorial",
                                       )
 
-ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpeg')
-ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ropo_cover.jpeg')
+ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
+ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ropo_cover.jpg')
 ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
 ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
 
