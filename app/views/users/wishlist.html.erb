@@ -6,28 +6,8 @@
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
       <hr>
-      <div class="row" style="width: 100%; margin: 0; padding: 30px;">
-        <% @wishlist.products.each do |wishlist_product| %>
-          <div class="col-xs-12 col-lg-4" style="margin-bottom: 15px;">
-            <div class="my-products-card">
-              <div class="my-products-image">
-                <%= image_tag wishlist_product.shades.first.photos.first %>
-              </div>
-              <div class="my-products-details text-center">
-                <p class="no-margin boldest"><%= wishlist_product.title %></p>
-                <p class="no-margin small-text"><%= wishlist_product.shades.first.name %></p>
-
-              </div>
-              <div class="my-products-price text-center boldest">
-                <%= humanized_money_with_symbol(wishlist_product.price) %>
-              </div>
-              <div class="my-products-purchase">
-                <%= link_to 'Add to bag', '#', class: "my-products-button" %>
-                <i class="<%= current_user.wishlist.products.include?(wishlist_product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div class="wishlist-product-cards-container">
+        <%= render 'shared/wishlist_product_card', wishlist_product: @wishlist_product %>
       </div>
     </div>
   </div>

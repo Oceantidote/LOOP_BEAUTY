@@ -3,5 +3,9 @@ class WishlistProductPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def create?
+      user
+    end
   end
 end

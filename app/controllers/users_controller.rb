@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   skip_before_action :authenticate_user!, only: [:show, :index, :make_up]
   before_action :set_nested_user, only: [:uploads, :share, :dashboard, :my_orders, :my_products, :refer_a_friend, :wishlist, :account_details, :preference_centre, :analytics, :showroom]
   before_action :set_user, only: [:show, :make_up, :q_and_a]
-  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
+  before_action :set_wishlist, only: [:wishlist, :my_products]
 
   def dashboard
   end
@@ -18,9 +17,6 @@ class UsersController < ApplicationController
   end
 
   def wishlist
-    # WISHLIST TEST
-    @wishlist = Wishlist.find_by(user: @user)
-    # WISHLIST TEST
   end
 
   def account_details
@@ -78,6 +74,12 @@ class UsersController < ApplicationController
   def set_user
     @user = User.friendly.find(params[:id])
     authorize @user
+  end
+
+  def set_wishlist
+    # WISHLIST TEST
+    @wishlist = Wishlist.find_by(user: @user)
+    # WISHLIST TEST
   end
 
   def set_nested_user

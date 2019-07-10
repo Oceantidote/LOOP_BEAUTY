@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   has_many :showroom_products
   has_many :product_benefits, dependent: :destroy
   has_many :tutorial_products, dependent: :destroy
+  has_many :wishlist_product, dependent: :destroy
   has_many :benefits, through: :product_benefits
   has_many :sent_recommended_products, class_name: "RecommendedProduct", foreign_key: 'recommender_id', dependent: :destroy
   has_many :received_recommended_products, class_name: "RecommendedProduct", foreign_key: 'recommended_id', dependent: :destroy
