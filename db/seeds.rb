@@ -533,50 +533,50 @@ nikkiProd = ShowroomProduct.create!(showroom: nikkiShowroom, product: brow_sette
 
 #CREATING WISHLIST
 
-puts "Creating influencer wishlist"
+# puts "Creating influencer wishlist"
 
-estherWishlist = Wishlist.create!(user: esther)
-ropoWishlist = Wishlist.create!(user: ropo)
-breenyWishlist = Wishlist.create!(user: breeny)
-shantaniaWishlist = Wishlist.create!(user: shantania)
-bemiWishlist = Wishlist.create!(user: bemi)
-nikkiWishlist = Wishlist.create!(user: nikki)
+# estherWishlist = Wishlist.create!(user: esther)
+# ropoWishlist = Wishlist.create!(user: ropo)
+# breenyWishlist = Wishlist.create!(user: breeny)
+# shantaniaWishlist = Wishlist.create!(user: shantania)
+# bemiWishlist = Wishlist.create!(user: bemi)
+# nikkiWishlist = Wishlist.create!(user: nikki)
 
-4.times do
-estherProd = WishlistProduct.new(wishlist: estherWishlist, product: Product.all.sample)
-estherProd.shade = estherProd.product.shades.first
-estherProd.save
-end
+# 4.times do
+# estherProd = WishlistProduct.new(wishlist: estherWishlist, product: Product.all.sample)
+# estherProd.shade = estherProd.product.shades.first
+# estherProd.save
+# end
 
-4.times do
-ropoProd = WishlistProduct.new(wishlist: ropoWishlist, product: Product.all.sample)
-ropoProd.shade = ropoProd.product.shades.first
-ropoProd.save
-end
+# 4.times do
+# ropoProd = WishlistProduct.new(wishlist: ropoWishlist, product: Product.all.sample)
+# ropoProd.shade = ropoProd.product.shades.first
+# ropoProd.save
+# end
 
-4.times do
-breenyProd = WishlistProduct.new(wishlist: breenyWishlist, product: Product.all.sample)
-breenyProd.shade = breenyProd.product.shades.first
-breenyProd.save
-end
+# 4.times do
+# breenyProd = WishlistProduct.new(wishlist: breenyWishlist, product: Product.all.sample)
+# breenyProd.shade = breenyProd.product.shades.first
+# breenyProd.save
+# end
 
-4.times do
-shantaniaProd = WishlistProduct.new(wishlist: shantaniaWishlist, product: Product.all.sample)
-shantaniaProd.shade = shantaniaProd.product.shades.first
-shantaniaProd.save
-end
+# 4.times do
+# shantaniaProd = WishlistProduct.new(wishlist: shantaniaWishlist, product: Product.all.sample)
+# shantaniaProd.shade = shantaniaProd.product.shades.first
+# shantaniaProd.save
+# end
 
-4.times do
-bemiProd = WishlistProduct.new(wishlist: bemiWishlist, product: Product.all.sample)
-bemiProd.shade = bemiProd.product.shades.first
-bemiProd.save
-end
+# 4.times do
+# bemiProd = WishlistProduct.new(wishlist: bemiWishlist, product: Product.all.sample)
+# bemiProd.shade = bemiProd.product.shades.first
+# bemiProd.save
+# end
 
-4.times do
-nikkiProd = WishlistProduct.new(wishlist: nikkiWishlist, product: Product.all.sample)
-nikkiProd.shade = nikkiProd.product.shades.first
-nikkiProd.save
-end
+# 4.times do
+# nikkiProd = WishlistProduct.new(wishlist: nikkiWishlist, product: Product.all.sample)
+# nikkiProd.shade = nikkiProd.product.shades.first
+# nikkiProd.save
+# end
 
 insiders = [esther, ropo, breeny, nikki, shantania, bemi]
 

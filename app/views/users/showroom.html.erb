@@ -7,7 +7,7 @@
       <h2 class="insider-info-title mlb-title text-center">Showroom</h2>
       <hr>
       <div class="dash-home-options">
-        <%= render 'shared/card_results', products: @products %>
+        <%= render 'shared/card_results', products: @products, form_url: user_showroom_path(@user) %>
       </div>
     </div>
 

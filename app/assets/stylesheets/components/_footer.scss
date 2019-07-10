@@ -37,7 +37,7 @@
   @include absCenter;
   border-bottom: 3px solid transparent;
   color: black;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 900;
   &:hover {
     color: black;
@@ -51,7 +51,7 @@
   display: flex;
   align-items: center;
   i {
-    font-size: 35px;
+    font-size: 25px;
     @include for-phone-only {
       font-size: 30px;
     }
@@ -60,7 +60,6 @@
 
 .footer-last-section {
   justify-content: flex-end;
-  width: 180px;
   padding-right: 20px;
   a {
     color: black;
@@ -75,7 +74,7 @@
 }
 
 .footer-first-section, .footer-last-section {
-  width: 180px;
+  width: 130px;
 }
 
 .footer-bottom-content {
