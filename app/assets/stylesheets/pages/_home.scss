@@ -153,6 +153,7 @@
   border-radius: 0;
   width: 275px;
   padding-left: 5px;
+  font-family: 'Muli', sans-serif;
   @include for-phone-only {
     width: auto;
   }

@@ -7,12 +7,12 @@
   </div>
   <div class="brand-header-section brand-logo">
     <% if @brand.logo.attached? %>
-      <%= image_tag @brand.logo %>
+      <%= image_tag url_for(@brand.logo) %>
     <% end %>
   </div>
   <div class="brand-header-section brand-photo">
     <% if @brand.photo.attached? %>
-      <%= image_tag @brand.photo %>
+      <%= image_tag url_for(@brand.photo) %>
     <% end %>
   </div>
 </div>
