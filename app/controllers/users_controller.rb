@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).where(influencer: true)
   end
 
   def make_up

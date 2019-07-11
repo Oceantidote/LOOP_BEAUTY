@@ -182,6 +182,7 @@
   expandIconBrand = document.querySelector(".ab-expand");
   addToBag = document.getElementById('add-to-bag');
   itemAdded = document.querySelector('.item-added');
+  basketIcon = document.querySelector('.basket-icon-container');
 
   details.addEventListener('click', function() {
     expandIconProduct.classList.toggle('fa-plus');
@@ -199,6 +200,8 @@
     // addToBag.value = 'ITEM ADDED';
     // setTimeout(() => addToBag.value = 'ADD TO BAG', 3500)
     itemAdded.classList.add('item-added-show');
+    basketIcon.style.animation = 'basket-bounce 2s ease'
+    setTimeout(() => basketIcon.style.animation = '', 2000)
     setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
   });
 
