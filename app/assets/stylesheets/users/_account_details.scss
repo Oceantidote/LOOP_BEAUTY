@@ -14,28 +14,138 @@
   color: black !important;
   text-decoration: underline !important;
 }
-
-.account-content-one {
-  height: 500px;
+//
+.account-content-one, .account-content-three, .account-content-two-add-address {
+  min-height: 500px;
   width: 100%;
   // background: red;
   display: none;
+  justify-content: center;
+  align-items: center;
+  .form-group {
+    display: flex;
+    margin: 0;
+  }
 }
 
 .account-content-two {
-  height: 600px;
+  min-height: 500px;
   width: 100%;
-  background: blue;
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.account-content-three {
-  height: 700px;
-  width: 100%;
-  background: green;
-  display: none;
+.account-content-two-add-address {
+  @include for-large-devices-down {
+    flex-direction: column;
+  }
 }
 
 .account-content-show {
   display: flex !important;
+}
+
+.personal-details-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  p {
+    width: 85px;
+  }
+  input {
+    width: 288px !important;
+    margin-left: 4px;
+  }
+}
+
+.account-password-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  p {
+    width: 130px;
+  }
+  input {
+    width: 288px !important;
+    margin-left: 4px;
+  }
+}
+
+#user_old_password {
+  background-color: #FCFCFC;
+}
+
+.personal-details-button {
+  margin: 15px 0 0 auto;
+  padding: 3px 25px;
+  height: 40px !important;
+}
+
+.dob-container {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  // min-width: 200px;
+  // height: 35px;
+  background-image: asset_url('dropdown-down-small.png');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  border: 1px solid #F0F0F0;
+  background-color: #FCFCFC;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  color: black;
+  @include for-phone-only {
+    height: 30px;
+    margin: 3px 0;
+  }
+}
+
+#user_dob_3i {
+  width: 65px !important;
+  margin: 0 0 0 4px !important;
+
+}
+
+#user_dob_2i {
+  width: 125px !important;
+  margin: 0 0 0 4px !important;
+
+}
+
+#user_dob_1i {
+  width: 90px !important;
+  margin: 0 0 0 4px !important;
+}
+
+.address-card {
+  background: #F5F5F5;
+  min-width: 500px;
+  padding: 20px 30px;
+  margin-bottom: 10px;
+}
+
+.address-button {
+  width: fit-content;
+  cursor: pointer;
+  padding: 3px 25px;
+  height: 40px !important;
+  margin: 15px 0 15px auto;
+
+}
+
+.address-form-container {
+  padding-left: 15px;
+  @include for-large-devices-down {
+    margin: 30px 0;
+  }
+  .form_control {
+    border: 1px solid #F0F0F0;
+    background: #FCFCFC
+  }
 }

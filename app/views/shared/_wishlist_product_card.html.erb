@@ -7,7 +7,7 @@
       <div class="col-xs-12 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
         <div class="my-products-card">
           <div class="my-products-image">
-            <%= image_tag wishlist_product.shade.photos.first %>
+            <%= image_tag url_for(wishlist_product.shade.photos.first) %>
           </div>
           <div class="my-products-details text-center">
             <p class="no-margin boldest"><%= wishlist_product.product.title %></p>
