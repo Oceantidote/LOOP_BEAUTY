@@ -104,8 +104,8 @@ red_jerry.photos.attach(io: File.open(rj2) , filename: 'red_jerry2.jpg')
 rj3 = File.join(Rails.root,'app/assets/images/red_jerry3.jpg')
 red_jerry.photos.attach(io: File.open(rj3) , filename: 'red_jerry3.jpg')
 
-rj4 = File.join(Rails.root,'app/assets/images/red_jerry4.png')
-red_jerry.photos.attach(io: File.open(rj4) , filename: 'red_jerry4.png')
+rj4 = File.join(Rails.root,'app/assets/images/red_jerry4.jpg')
+red_jerry.photos.attach(io: File.open(rj4) , filename: 'red_jerry4.jpg')
 
 pink_ross1 = File.join(Rails.root,'app/assets/images/pink_ross1.jpg')
 pink_ross.photos.attach(io: File.open(pink_ross1) , filename: 'pink_ross1.jpg')
@@ -116,8 +116,8 @@ pink_ross.photos.attach(io: File.open(pink_ross2) , filename: 'pink_ross2.jpg')
 pink_ross3 = File.join(Rails.root,'app/assets/images/pink_ross3.jpg')
 pink_ross.photos.attach(io: File.open(pink_ross3) , filename: 'pink_ross3.jpg')
 
-pink_ross4 = File.join(Rails.root,'app/assets/images/pink_ross4.png')
-pink_ross.photos.attach(io: File.open(pink_ross4) , filename: 'pink_ross4.png')
+pink_ross4 = File.join(Rails.root,'app/assets/images/pink_ross4.jpg')
+pink_ross.photos.attach(io: File.open(pink_ross4) , filename: 'pink_ross4.jpg')
 
 nude_gaynor1 = File.join(Rails.root,'app/assets/images/nude_gaynor1.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor1) , filename: 'nude_gaynor1.jpg')
@@ -125,8 +125,8 @@ nude_gaynor.photos.attach(io: File.open(nude_gaynor1) , filename: 'nude_gaynor1.
 nude_gaynor2 = File.join(Rails.root,'app/assets/images/nude_gaynor2.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor2) , filename: 'nude_gaynor2.jpg')
 
-nude_gaynor3 = File.join(Rails.root,'app/assets/images/nude_gaynor3.png')
-nude_gaynor.photos.attach(io: File.open(nude_gaynor3) , filename: 'nude_gaynor3.png')
+nude_gaynor3 = File.join(Rails.root,'app/assets/images/nude_gaynor3.jpg')
+nude_gaynor.photos.attach(io: File.open(nude_gaynor3) , filename: 'nude_gaynor3.jpg')
 
 nude_gaynor4 = File.join(Rails.root,'app/assets/images/nude_gaynor4.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor4) , filename: 'nude_gaynor4.jpg')
@@ -158,8 +158,8 @@ glitterball.photos.attach(io: File.open(glitterball2) , filename: 'glitterball2.
 glitterball3 = File.join(Rails.root,'app/assets/images/glitterball3.jpg')
 glitterball.photos.attach(io: File.open(glitterball3) , filename: 'glitterball3.jpg')
 
-glitterball4 = File.join(Rails.root,'app/assets/images/glitterball4.png')
-glitterball.photos.attach(io: File.open(glitterball4) , filename: 'glitterball4.png')
+glitterball4 = File.join(Rails.root,'app/assets/images/glitterball4.jpg')
+glitterball.photos.attach(io: File.open(glitterball4) , filename: 'glitterball4.jpg')
 
 
 v_disco_topper = ProductBenefit.create!(product: disco_topper_lip_topper, benefit: vegan)
@@ -209,8 +209,8 @@ pick_me_up.photos.attach(io: File.open(pick_me_up1) , filename: 'pick_me_up1.png
 pick_me_up2 = File.join(Rails.root,'app/assets/images/pick_me_up2.tif')
 pick_me_up.photos.attach(io: File.open(pick_me_up2) , filename: 'pick_me_up2.tif')
 
-pick_me_up3 = File.join(Rails.root,'app/assets/images/pick_me_up3.png')
-pick_me_up.photos.attach(io: File.open(pick_me_up3) , filename: 'pick_me_up3.png')
+pick_me_up3 = File.join(Rails.root,'app/assets/images/pick_me_up3.jpg')
+pick_me_up.photos.attach(io: File.open(pick_me_up3) , filename: 'pick_me_up3.jpg')
 
 v_brow_lift = ProductBenefit.create!(product: brow_lift, benefit: vegan)
 cruelty_brow_lift = ProductBenefit.create!(product: brow_lift, benefit: cruelty_free)
@@ -244,8 +244,8 @@ dark_dahlia.photos.attach(io: File.open(dark_dahlia1) , filename: 'dark_dahlia1.
 dark_dahlia2 = File.join(Rails.root,'app/assets/images/dark_dahlia2.tif')
 dark_dahlia.photos.attach(io: File.open(dark_dahlia2) , filename: 'dark_dahlia2.tif')
 
-dark_dahlia3 = File.join(Rails.root,'app/assets/images/dark_dahlia3.png')
-dark_dahlia.photos.attach(io: File.open(dark_dahlia3) , filename: 'dark_dahlia3.png')
+dark_dahlia3 = File.join(Rails.root,'app/assets/images/dark_dahlia3.jpg')
+dark_dahlia.photos.attach(io: File.open(dark_dahlia3) , filename: 'dark_dahlia3.jpg')
 
 v_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: vegan)
 cruelty_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: cruelty_free)
@@ -280,8 +280,8 @@ clear = Shade.create!(name: "Clear", sku: "BR01", product: brow_setter)
 clear1 = File.join(Rails.root,'app/assets/images/clear1.png')
 clear.photos.attach(io: File.open(clear1) , filename: 'clear1.png')
 
-clear2 = File.join(Rails.root,'app/assets/images/clear2.png')
-clear.photos.attach(io: File.open(clear2) , filename: 'clear2.png')
+clear2 = File.join(Rails.root,'app/assets/images/clear2.jpg')
+clear.photos.attach(io: File.open(clear2) , filename: 'clear2.jpg')
 
 v_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: vegan)
 cruelty_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: cruelty_free)
@@ -311,8 +311,8 @@ brush = Shade.create!(name: "", sku: "BS01", product: brow_styler)
 brush1 = File.join(Rails.root,'app/assets/images/brush1.png')
 brush.photos.attach(io: File.open(brush1) , filename: 'brush1.png')
 
-brush2 = File.join(Rails.root,'app/assets/images/brush2.png')
-brush.photos.attach(io: File.open(brush2) , filename: 'brush2.png')
+brush2 = File.join(Rails.root,'app/assets/images/brush2.jpg')
+brush.photos.attach(io: File.open(brush2) , filename: 'brush2.jpg')
 
 v_brow_styler = ProductBenefit.create!(product: brow_styler, benefit: vegan)
 cruelty_brow_styler = ProductBenefit.create!(product: brow_styler, benefit: cruelty_free)
@@ -338,8 +338,8 @@ highlighter_brush_shade = Shade.create!(name: "", sku: "HB01", product: highligh
 highlighter_brush1 = File.join(Rails.root,'app/assets/images/highlighter_brush1.png')
 highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush1) , filename: 'highlighter_brush1.png')
 
-highlighter_brush2 = File.join(Rails.root,'app/assets/images/highlighter_brush2.png')
-highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush2) , filename: 'brush2.png')
+highlighter_brush2 = File.join(Rails.root,'app/assets/images/highlighter_brush2.jpg')
+highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush2) , filename: 'brush2.jpg')
 
 v_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: vegan)
 cruelty_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: cruelty_free)
@@ -669,17 +669,17 @@ puts "Creating insider articles"
     published: true
   )
 
-  esther_article_cover = File.join(Rails.root,'app/assets/images/esther_article_cover.png')
-  esther_article.cover_photo.attach(io: File.open(esther_article_cover) , filename: 'esther_article_cover.png')
+  esther_article_cover = File.join(Rails.root,'app/assets/images/esther_article_cover.jpg')
+  esther_article.cover_photo.attach(io: File.open(esther_article_cover) , filename: 'esther_article_cover.jpg')
 
-  esther_photo_one = File.join(Rails.root,'app/assets/images/esther_photo_one.png')
-  esther_article.photo1.attach(io: File.open(esther_photo_one) , filename: 'esther_photo_one.png')
+  esther_photo_one = File.join(Rails.root,'app/assets/images/esther_photo_one.jpg')
+  esther_article.photo1.attach(io: File.open(esther_photo_one) , filename: 'esther_photo_one.jpg')
 
-  esther_photo_two = File.join(Rails.root,'app/assets/images/esther_photo_two.png')
-  esther_article.photo2.attach(io: File.open(esther_photo_two) , filename: 'esther_photo_two.png')
+  esther_photo_two = File.join(Rails.root,'app/assets/images/esther_photo_two.jpg')
+  esther_article.photo2.attach(io: File.open(esther_photo_two) , filename: 'esther_photo_two.jpg')
 
-  esther_photo_three = File.join(Rails.root,'app/assets/images/esther_photo_three.png')
-  esther_article.photo3.attach(io: File.open(esther_photo_three) , filename: 'esther_photo_three.png')
+  esther_photo_three = File.join(Rails.root,'app/assets/images/esther_photo_three.jpg')
+  esther_article.photo3.attach(io: File.open(esther_photo_three) , filename: 'esther_photo_three.jpg')
 
 
   ropo_article = InsiderArticle.create!(
@@ -708,17 +708,17 @@ puts "Creating insider articles"
                                           published: true
                                           )
 
-  ropo_article_cover = File.join(Rails.root,'app/assets/images/ropo_article_cover.png')
-  ropo_article.cover_photo.attach(io: File.open(ropo_article_cover) , filename: 'ropo_article_cover.png')
+  ropo_article_cover = File.join(Rails.root,'app/assets/images/ropo_article_cover.jpg')
+  ropo_article.cover_photo.attach(io: File.open(ropo_article_cover) , filename: 'ropo_article_cover.jpg')
 
-  ropo_photo_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.png')
-  ropo_article.photo1.attach(io: File.open(ropo_photo_one) , filename: 'ropo_photo_one.png')
+  ropo_photo_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.jpg')
+  ropo_article.photo1.attach(io: File.open(ropo_photo_one) , filename: 'ropo_photo_one.jpg')
 
-  ropo_photo_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.png')
-  ropo_article.photo2.attach(io: File.open(ropo_photo_two) , filename: 'ropo_photo_two.png')
+  ropo_photo_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.jpg')
+  ropo_article.photo2.attach(io: File.open(ropo_photo_two) , filename: 'ropo_photo_two.jpg')
 
-  ropo_photo_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.png')
-  ropo_article.photo3.attach(io: File.open(ropo_photo_three) , filename: 'ropo_photo_three.png')
+  ropo_photo_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.jpg')
+  ropo_article.photo3.attach(io: File.open(ropo_photo_three) , filename: 'ropo_photo_three.jpg')
 
 
   breeny_article = InsiderArticle.create!(
@@ -747,17 +747,17 @@ puts "Creating insider articles"
                                           published: true
                                           )
 
-  breeny_article_cover = File.join(Rails.root,'app/assets/images/breeny_article_cover.png')
-  breeny_article.cover_photo.attach(io: File.open(breeny_article_cover) , filename: 'breeny_article_cover.png')
+  breeny_article_cover = File.join(Rails.root,'app/assets/images/breeny_article_cover.jpg')
+  breeny_article.cover_photo.attach(io: File.open(breeny_article_cover) , filename: 'breeny_article_cover.jpg')
 
-  breeny_photo_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.png')
-  breeny_article.photo1.attach(io: File.open(breeny_photo_one) , filename: 'breeny_photo_one.png')
+  breeny_photo_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.jpg')
+  breeny_article.photo1.attach(io: File.open(breeny_photo_one) , filename: 'breeny_photo_one.jpg')
 
-  breeny_photo_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.png')
-  breeny_article.photo2.attach(io: File.open(breeny_photo_two) , filename: 'breeny_photo_two.png')
+  breeny_photo_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.jpg')
+  breeny_article.photo2.attach(io: File.open(breeny_photo_two) , filename: 'breeny_photo_two.jpg')
 
-  breeny_photo_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.png')
-  breeny_article.photo3.attach(io: File.open(breeny_photo_three) , filename: 'breeny_photo_three.png')
+  breeny_photo_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.jpg')
+  breeny_article.photo3.attach(io: File.open(breeny_photo_three) , filename: 'breeny_photo_three.jpg')
 
 
   nikki_article = InsiderArticle.create!(
@@ -796,17 +796,17 @@ puts "Creating insider articles"
                                           published: true
                                           )
 
-  nikki_article_cover = File.join(Rails.root,'app/assets/images/nikki_article_cover.png')
-  nikki_article.cover_photo.attach(io: File.open(nikki_article_cover) , filename: 'nikki_article_cover.png')
+  nikki_article_cover = File.join(Rails.root,'app/assets/images/nikki_article_cover.jpg')
+  nikki_article.cover_photo.attach(io: File.open(nikki_article_cover) , filename: 'nikki_article_cover.jpg')
 
-  nikki_photo_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.png')
-  nikki_article.photo1.attach(io: File.open(nikki_photo_one) , filename: 'nikki_photo_one.png')
+  nikki_photo_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.jpg')
+  nikki_article.photo1.attach(io: File.open(nikki_photo_one) , filename: 'nikki_photo_one.jpg')
 
-  nikki_photo_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.png')
-  nikki_article.photo2.attach(io: File.open(nikki_photo_two) , filename: 'nikki_photo_two.png')
+  nikki_photo_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.jpg')
+  nikki_article.photo2.attach(io: File.open(nikki_photo_two) , filename: 'nikki_photo_two.jpg')
 
-  nikki_photo_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.png')
-  nikki_article.photo3.attach(io: File.open(nikki_photo_three) , filename: 'nikki_photo_three.png')
+  nikki_photo_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.jpg')
+  nikki_article.photo3.attach(io: File.open(nikki_photo_three) , filename: 'nikki_photo_three.jpg')
 
 
   shantania_article = InsiderArticle.create!(
@@ -832,17 +832,17 @@ puts "Creating insider articles"
                                           published: true
                                           )
 
-  shantania_article_cover = File.join(Rails.root,'app/assets/images/shantania_article_cover.png')
-  shantania_article.cover_photo.attach(io: File.open(shantania_article_cover) , filename: 'shantania_article_cover.png')
+  shantania_article_cover = File.join(Rails.root,'app/assets/images/shantania_article_cover.jpg')
+  shantania_article.cover_photo.attach(io: File.open(shantania_article_cover) , filename: 'shantania_article_cover.jpg')
 
-  shantania_photo_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.png')
-  shantania_article.photo1.attach(io: File.open(shantania_photo_one) , filename: 'shantania_photo_one.png')
+  shantania_photo_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.jpg')
+  shantania_article.photo1.attach(io: File.open(shantania_photo_one) , filename: 'shantania_photo_one.jpg')
 
-  shantania_photo_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.png')
-  shantania_article.photo2.attach(io: File.open(shantania_photo_two) , filename: 'shantania_photo_two.png')
+  shantania_photo_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.jpg')
+  shantania_article.photo2.attach(io: File.open(shantania_photo_two) , filename: 'shantania_photo_two.jpg')
 
-  shantania_photo_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.png')
-  shantania_article.photo3.attach(io: File.open(shantania_photo_three) , filename: 'shantania_photo_three.png')
+  shantania_photo_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.jpg')
+  shantania_article.photo3.attach(io: File.open(shantania_photo_three) , filename: 'shantania_photo_three.jpg')
 
 
   bemi_article = InsiderArticle.create!(
@@ -873,17 +873,17 @@ puts "Creating insider articles"
                                           published: true
                                           )
 
-  bemi_article_cover = File.join(Rails.root,'app/assets/images/bemi_article_cover.png')
-  bemi_article.cover_photo.attach(io: File.open(bemi_article_cover) , filename: 'bemi_article_cover.png')
+  bemi_article_cover = File.join(Rails.root,'app/assets/images/bemi_article_cover.jpg')
+  bemi_article.cover_photo.attach(io: File.open(bemi_article_cover) , filename: 'bemi_article_cover.jpg')
 
-  bemi_photo_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.png')
-  bemi_article.photo1.attach(io: File.open(bemi_photo_one) , filename: 'bemi_photo_one.png')
+  bemi_photo_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.jpg')
+  bemi_article.photo1.attach(io: File.open(bemi_photo_one) , filename: 'bemi_photo_one.jpg')
 
-  bemi_photo_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.png')
-  bemi_article.photo2.attach(io: File.open(bemi_photo_two) , filename: 'bemi_photo_two.png')
+  bemi_photo_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.jpg')
+  bemi_article.photo2.attach(io: File.open(bemi_photo_two) , filename: 'bemi_photo_two.jpg')
 
-  bemi_photo_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.png')
-  bemi_article.photo3.attach(io: File.open(bemi_photo_three) , filename: 'bemi_photo_three.png')
+  bemi_photo_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.jpg')
+  bemi_article.photo3.attach(io: File.open(bemi_photo_three) , filename: 'bemi_photo_three.jpg')
 
 # end
 
@@ -971,110 +971,110 @@ puts "Creating lookbooks"
 
 esther_lookbook_one = Lookbook.new(user: esther, title: 'Esther First Lookbook', status: 'approved')
 esther_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
-esther_lookbook_image_one = File.join(Rails.root,'app/assets/images/esther_photo_one.png')
-esther_lookbook_one.photo.attach(io: File.open(esther_lookbook_image_one) , filename: 'esther_photo_one.png')
+esther_lookbook_image_one = File.join(Rails.root,'app/assets/images/esther_photo_one.jpg')
+esther_lookbook_one.photo.attach(io: File.open(esther_lookbook_image_one) , filename: 'esther_photo_one.jpg')
 esther_lookbook_one.save
 
 esther_lookbook_two = Lookbook.new(user: esther, title: 'Esther Second Lookbook', status: 'approved')
 esther_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
-esther_lookbook_image_two = File.join(Rails.root,'app/assets/images/esther_photo_two.png')
-esther_lookbook_two.photo.attach(io: File.open(esther_lookbook_image_two) , filename: 'esther_photo_two.png')
+esther_lookbook_image_two = File.join(Rails.root,'app/assets/images/esther_photo_two.jpg')
+esther_lookbook_two.photo.attach(io: File.open(esther_lookbook_image_two) , filename: 'esther_photo_two.jpg')
 esther_lookbook_two.save
 
 esther_lookbook_three = Lookbook.new(user: esther, title: 'Esther Third Lookbook', status: 'approved')
 esther_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
-esther_lookbook_image_three = File.join(Rails.root,'app/assets/images/esther_photo_three.png')
-esther_lookbook_three.photo.attach(io: File.open(esther_lookbook_image_three) , filename: 'esther_photo_three.png')
+esther_lookbook_image_three = File.join(Rails.root,'app/assets/images/esther_photo_three.jpg')
+esther_lookbook_three.photo.attach(io: File.open(esther_lookbook_image_three) , filename: 'esther_photo_three.jpg')
 esther_lookbook_three.save
 
 ropo_lookbook_one = Lookbook.new(user: ropo, title: 'Ropo First Lookbook', status: 'approved')
 ropo_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
-ropo_lookbook_image_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.png')
-ropo_lookbook_one.photo.attach(io: File.open(ropo_lookbook_image_one) , filename: 'ropo_photo_one.png')
+ropo_lookbook_image_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.jpg')
+ropo_lookbook_one.photo.attach(io: File.open(ropo_lookbook_image_one) , filename: 'ropo_photo_one.jpg')
 ropo_lookbook_one.save
 
 ropo_lookbook_two = Lookbook.new(user: ropo, title: 'Ropo Second Lookbook', status: 'approved')
 ropo_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
-ropo_lookbook_image_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.png')
-ropo_lookbook_two.photo.attach(io: File.open(ropo_lookbook_image_two) , filename: 'ropo_photo_two.png')
+ropo_lookbook_image_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.jpg')
+ropo_lookbook_two.photo.attach(io: File.open(ropo_lookbook_image_two) , filename: 'ropo_photo_two.jpg')
 ropo_lookbook_two.save
 
 ropo_lookbook_three = Lookbook.new(user: ropo, title: 'Ropo Third Lookbook', status: 'approved')
 ropo_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
-ropo_lookbook_image_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.png')
-ropo_lookbook_three.photo.attach(io: File.open(ropo_lookbook_image_three) , filename: 'ropo_photo_three.png')
+ropo_lookbook_image_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.jpg')
+ropo_lookbook_three.photo.attach(io: File.open(ropo_lookbook_image_three) , filename: 'ropo_photo_three.jpg')
 ropo_lookbook_three.save
 
 breeny_lookbook_one = Lookbook.new(user: breeny, title: 'Breeny First Lookbook', status: 'approved')
 breeny_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
-breeny_lookbook_image_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.png')
-breeny_lookbook_one.photo.attach(io: File.open(breeny_lookbook_image_one) , filename: 'breeny_photo_one.png')
+breeny_lookbook_image_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.jpg')
+breeny_lookbook_one.photo.attach(io: File.open(breeny_lookbook_image_one) , filename: 'breeny_photo_one.jpg')
 breeny_lookbook_one.save
 
 breeny_lookbook_two = Lookbook.new(user: breeny, title: 'Breeny Second Lookbook', status: 'approved')
 breeny_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
-breeny_lookbook_image_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.png')
-breeny_lookbook_two.photo.attach(io: File.open(breeny_lookbook_image_two) , filename: 'breeny_photo_two.png')
+breeny_lookbook_image_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.jpg')
+breeny_lookbook_two.photo.attach(io: File.open(breeny_lookbook_image_two) , filename: 'breeny_photo_two.jpg')
 breeny_lookbook_two.save
 
 breeny_lookbook_three = Lookbook.new(user: breeny, title: 'Breeny Third Lookbook', status: 'approved')
 breeny_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
-breeny_lookbook_image_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.png')
-breeny_lookbook_three.photo.attach(io: File.open(breeny_lookbook_image_three) , filename: 'breeny_photo_three.png')
+breeny_lookbook_image_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.jpg')
+breeny_lookbook_three.photo.attach(io: File.open(breeny_lookbook_image_three) , filename: 'breeny_photo_three.jpg')
 breeny_lookbook_three.save
 
 nikki_lookbook_one = Lookbook.new(user: nikki, title: 'Nikki First Lookbook', status: 'approved')
 nikki_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
-nikki_lookbook_image_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.png')
-nikki_lookbook_one.photo.attach(io: File.open(nikki_lookbook_image_one) , filename: 'nikki_photo_one.png')
+nikki_lookbook_image_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.jpg')
+nikki_lookbook_one.photo.attach(io: File.open(nikki_lookbook_image_one) , filename: 'nikki_photo_one.jpg')
 nikki_lookbook_one.save
 
 nikki_lookbook_two = Lookbook.new(user: nikki, title: 'Nikki Second Lookbook', status: 'approved')
 nikki_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
-nikki_lookbook_image_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.png')
-nikki_lookbook_two.photo.attach(io: File.open(nikki_lookbook_image_two) , filename: 'nikki_photo_two.png')
+nikki_lookbook_image_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.jpg')
+nikki_lookbook_two.photo.attach(io: File.open(nikki_lookbook_image_two) , filename: 'nikki_photo_two.jpg')
 nikki_lookbook_two.save
 
 nikki_lookbook_three = Lookbook.new(user: nikki, title: 'Nikki Third Lookbook', status: 'approved')
 nikki_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
-nikki_lookbook_image_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.png')
-nikki_lookbook_three.photo.attach(io: File.open(nikki_lookbook_image_three) , filename: 'nikki_photo_three.png')
+nikki_lookbook_image_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.jpg')
+nikki_lookbook_three.photo.attach(io: File.open(nikki_lookbook_image_three) , filename: 'nikki_photo_three.jpg')
 nikki_lookbook_three.save
 
 shantania_lookbook_one = Lookbook.new(user: shantania, title: 'Shantania First Lookbook', status: 'approved')
 shantania_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
-shantania_lookbook_image_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.png')
-shantania_lookbook_one.photo.attach(io: File.open(shantania_lookbook_image_one) , filename: 'shantania_photo_one.png')
+shantania_lookbook_image_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.jpg')
+shantania_lookbook_one.photo.attach(io: File.open(shantania_lookbook_image_one) , filename: 'shantania_photo_one.jpg')
 shantania_lookbook_one.save
 
 shantania_lookbook_two = Lookbook.new(user: shantania, title: 'Shantania Second Lookbook', status: 'approved')
 shantania_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
-shantania_lookbook_image_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.png')
-shantania_lookbook_two.photo.attach(io: File.open(shantania_lookbook_image_two) , filename: 'shantania_photo_two.png')
+shantania_lookbook_image_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.jpg')
+shantania_lookbook_two.photo.attach(io: File.open(shantania_lookbook_image_two) , filename: 'shantania_photo_two.jpg')
 shantania_lookbook_two.save
 
 shantania_lookbook_three = Lookbook.new(user: shantania, title: 'Shantania Third Lookbook', status: 'approved')
 shantania_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
-shantania_lookbook_image_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.png')
-shantania_lookbook_three.photo.attach(io: File.open(shantania_lookbook_image_three) , filename: 'shantania_photo_three.png')
+shantania_lookbook_image_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.jpg')
+shantania_lookbook_three.photo.attach(io: File.open(shantania_lookbook_image_three) , filename: 'shantania_photo_three.jpg')
 shantania_lookbook_three.save
 
 bemi_lookbook_one = Lookbook.new(user: bemi, title: 'Bemi First Lookbook', status: 'approved')
 bemi_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
-bemi_lookbook_image_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.png')
-bemi_lookbook_one.photo.attach(io: File.open(bemi_lookbook_image_one) , filename: 'bemi_photo_one.png')
+bemi_lookbook_image_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.jpg')
+bemi_lookbook_one.photo.attach(io: File.open(bemi_lookbook_image_one) , filename: 'bemi_photo_one.jpg')
 bemi_lookbook_one.save
 
 bemi_lookbook_two = Lookbook.new(user: bemi, title: 'Bemi Second Lookbook', status: 'approved')
 bemi_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
-bemi_lookbook_image_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.png')
-bemi_lookbook_two.photo.attach(io: File.open(bemi_lookbook_image_two) , filename: 'bemi_photo_two.png')
+bemi_lookbook_image_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.jpg')
+bemi_lookbook_two.photo.attach(io: File.open(bemi_lookbook_image_two) , filename: 'bemi_photo_two.jpg')
 bemi_lookbook_two.save
 
 bemi_lookbook_three = Lookbook.new(user: bemi, title: 'Bemi Third Lookbook', status: 'approved')
 bemi_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
-bemi_lookbook_image_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.png')
-bemi_lookbook_three.photo.attach(io: File.open(bemi_lookbook_image_three) , filename: 'bemi_photo_three.png')
+bemi_lookbook_image_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.jpg')
+bemi_lookbook_three.photo.attach(io: File.open(bemi_lookbook_image_three) , filename: 'bemi_photo_three.jpg')
 bemi_lookbook_three.save
 
 # CREATING TUTORIAL PRODUCTS
