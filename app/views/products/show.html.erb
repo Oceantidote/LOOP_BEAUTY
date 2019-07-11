@@ -15,7 +15,6 @@
     <div class="product-info-container assistant">
     <%= simple_form_for(([@product, BasketProduct.new(product: @product)]), remote: :true) do |f| %>
       <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
-
       <h5><%= @product.title %></h5>
       <hr>
       <p><strong>Title of shade</strong></p>
