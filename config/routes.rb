@@ -92,6 +92,9 @@ Rails.application.routes.draw do
   end
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
+    member do
+      post 'my_product', to: 'products#my_product'
+    end
     resources :basket_products, only: [:create]
   end
   resources :basket_products, only: [:update, :destroy]
