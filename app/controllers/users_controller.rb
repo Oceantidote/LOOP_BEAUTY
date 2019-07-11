@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   end
 
   def account_details
+    @delivery_address = Address.new(delivery_address: true)
+    @billing_address = Address.new(delivery_address: false)
   end
 
   def preference_centre
@@ -39,6 +41,33 @@ class UsersController < ApplicationController
     @pending + current_user.lookbooks.where(status: 'rejected').to_a
     @approved = current_user.tutorials.where(status: 'approved').to_a
     @pending + current_user.lookbooks.where(status: 'approved').to_a
+  end
+
+  def update
+    authorize current_user
+    if current_user.update(user_params)
+      redirect_to user_account_details_path(current_user)
+    else
+      render :account_details
+    end
+  end
+
+  def change_password
+    authorize current_user
+    if current_user.valid_password?(password_params[:old_password])
+      if password_params[:password] == password_params[:password_confirmation]
+        current_user.update(password: password_params[:password])
+        bypass_sign_in current_user
+        redirect_to user_account_details_path(current_user)
+        flash[:notice] = 'Password changed'
+      else
+        flash[:error] = 'Passwords do not match'
+        render :account_details
+      end
+    else
+      flash[:error] = 'Password was incorrect'
+      render :account_details
+    end
   end
 
   def dashboard
@@ -89,5 +118,13 @@ class UsersController < ApplicationController
       @user = User.friendly.find(params[:id])
     end
     authorize @user
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :dob)
+  end
+
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation, :old_password)
   end
 end

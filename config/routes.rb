@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
-  resources :users, only: [:show, :index], path: 'influencers' do
+  resources :users, only: [:show, :index, :update], path: 'influencers' do
     get 'uploads', to: 'users#uploads'
     get 'dashboard', to: 'users#dashboard'
     get 'share', to: 'users#share'
@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     get 'wishlist', to: 'users#wishlist'
     get 'account_details', to: 'users#account_details'
     get 'preference_centre', to: 'users#preference_centre'
+    patch 'change_password', to: 'users#change_password'
   end
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
@@ -95,6 +96,7 @@ Rails.application.routes.draw do
   end
   resources :basket_products, only: [:update, :destroy]
   resources :brands, only: [:index, :show]
+  resources :addresses, only: [:create, :destroy]
 
   get '/bag', to: 'baskets#show'
   patch '/discount', to: 'baskets#add_discount_code'

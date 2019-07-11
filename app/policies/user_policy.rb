@@ -66,4 +66,12 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    dashboard?
+  end
+
+  def change_password?
+    dashboard?
+  end
+
 end
