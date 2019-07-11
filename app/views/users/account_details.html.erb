@@ -19,13 +19,49 @@
       </div>
       <div class="account-details-content">
         <div class="account-content-one account-content-show">
-
+          <%= simple_form_for current_user, url: user_path(current_user), method: :patch do |f| %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :email %>
+              <%= f.input :dob, start_year: Date.today.year - 100, end_year: Date.today.year - 10, order: [:day, :month, :year] %>
+              <%= f.submit %>
+          <% end %>
         </div>
         <div class="account-content-two">
-
+          <div>
+            <h4>Delivery Addresses</h4>
+            <% current_user.delivery_addresses.each do |add| %>
+              <h6><%= "#{current_user.full_name}, #{add.street}, #{add.city}, #{add.postcode}" %></h6>
+            <% end %>
+            <%= simple_form_for @delivery_address || Address.new(delivery_address: true) do |f| %>
+              <%= f.input :street %>
+              <%= f.input :city %>
+              <%= f.input :postcode %>
+              <%= f.input :delivery_address, as: :hidden %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+          <div>
+            <h4>Billing Addresses</h4>
+            <% current_user.billing_addresses.each do |add| %>
+              <h6><%= "#{current_user.full_name}, #{add.street}, #{add.city}, #{add.postcode}" %></h6>
+            <% end %>
+            <%= simple_form_for @billing_address || Address.new(delivery_address: false) do |f| %>
+              <%= f.input :street %>
+              <%= f.input :city %>
+              <%= f.input :postcode %>
+              <%= f.input :delivery_address, as: :hidden %>
+              <%= f.submit %>
+            <% end %>
+          </div>
         </div>
         <div class="account-content-three">
-
+          <%= simple_form_for current_user, url: user_change_password_path(current_user) do |f| %>
+              <%= f.input :password %>
+              <%= f.input :password_confirmation %>
+              <%= f.input :old_password %>
+              <%= f.submit %>
+          <% end %>
         </div>
       </div>
     </div>

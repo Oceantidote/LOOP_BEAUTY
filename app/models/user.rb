@@ -57,6 +57,7 @@ class User < ApplicationRecord
   has_many :shades, through: :order_products
   has_many :tutorials, dependent: :destroy
   has_one :showroom, dependent: :destroy
+  has_many :addresses
   # WISHLIST TEST
   has_one :wishlist, dependent: :destroy
   has_many :wishlist_products, through: :wishlist
@@ -78,9 +79,11 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def delivery_addresses
+    addresses.where(delivery_address: true)
+  end
 
-
-
-
-
+  def billing_addresses
+    addresses.where(delivery_address: false)
+  end
 end
