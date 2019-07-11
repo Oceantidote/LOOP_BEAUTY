@@ -6,6 +6,9 @@
   @include for-phone-only {
     padding: 0;
   }
+  @include for-xxlarge-devices-up {
+    padding: 40px 0 200px 0
+  }
 }
 
 .about-us-banner {
