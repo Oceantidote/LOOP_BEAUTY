@@ -20,47 +20,112 @@
       <div class="account-details-content">
         <div class="account-content-one account-content-show">
           <%= simple_form_for current_user, url: user_path(current_user), method: :patch do |f| %>
-              <%= f.input :first_name %>
-              <%= f.input :last_name %>
-              <%= f.input :email %>
-              <%= f.input :dob, start_year: Date.today.year - 100, end_year: Date.today.year - 10, order: [:day, :month, :year] %>
-              <%= f.submit %>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">First Name</p>
+              <%= f.input :first_name, label: false %>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Last Name</p>
+              <%= f.input :last_name, label: false %>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Email</p>
+              <%= f.input :email, label: false %>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">D.O.B</p>
+              <%= f.input :dob, label: false, start_year: Date.today.year - 100, end_year: Date.today.year - 10, order: [:day, :month, :year], input_html: { class: 'dob-container' } %>
+            </div>
+            <%= f.submit 'SAVE CHANGES', class: 'primary-button personal-details-button small-text' %>
           <% end %>
         </div>
         <div class="account-content-two">
-          <div>
-            <h4>Delivery Addresses</h4>
-            <% current_user.delivery_addresses.each do |add| %>
-              <h6><%= "#{current_user.full_name}, #{add.street}, #{add.city}, #{add.postcode}" %></h6>
-            <% end %>
+          <div class="address-container">
+            <h6 class="boldest">Delivery Address</h6>
+            <div>
+              <% current_user.delivery_addresses.each do |add| %>
+                <div class="row row-style">
+                  <div class="col-xs-12">
+                    <div class="address-card">
+                      <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.street}" %></p>
+                      <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <!-- <p class="primary-button address-button">ADD NEW ADDRESS</p> -->
+            </div>
+            <h6 class="boldest">Billing Address</h6>
+            <div>
+              <% current_user.billing_addresses.each do |add| %>
+                <div class="row row-style">
+                  <div class="col-xs-12">
+                    <div class="address-card">
+                      <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.street}" %></p>
+                      <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <p class="primary-button address-button small-text">ADD NEW ADDRESS</p>
+          </div>
+        </div>
+        <div class="account-content-two-add-address">
+          <div class="address-form-container">
+            <h6 class="boldest text-center margin-bottom">Add Delivery Address</h6>
             <%= simple_form_for @delivery_address || Address.new(delivery_address: true) do |f| %>
-              <%= f.input :street %>
-              <%= f.input :city %>
-              <%= f.input :postcode %>
+              <div class="personal-details-input">
+                <p class="boldest muli s-medium-text text-right no-margin">Street</p>
+                <%= f.input :street, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
+              <div class="personal-details-input">
+                <p class="boldest muli s-medium-text text-right no-margin">City</p>
+                <%= f.input :city, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
+              <div class="personal-details-input">
+                <p class="boldest muli s-medium-text text-right no-margin">Postcode</p>
+                <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
               <%= f.input :delivery_address, as: :hidden %>
-              <%= f.submit %>
+              <%= f.submit 'ADD DELIVERY ADDRESS', class: 'primary-button address-button small-text' %>
             <% end %>
           </div>
-          <div>
-            <h4>Billing Addresses</h4>
-            <% current_user.billing_addresses.each do |add| %>
-              <h6><%= "#{current_user.full_name}, #{add.street}, #{add.city}, #{add.postcode}" %></h6>
-            <% end %>
+          <div class="address-form-container">
+            <h6 class="boldest text-center margin-bottom">Add Billing Address</h6>
             <%= simple_form_for @billing_address || Address.new(delivery_address: false) do |f| %>
-              <%= f.input :street %>
-              <%= f.input :city %>
-              <%= f.input :postcode %>
+              <div class="personal-details-input">
+                <p class="boldest muli s-medium-text text-right no-margin">Street</p>
+                <%= f.input :street, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
+              <div class="personal-details-input">
+                <p class="boldest muli s-medium-text text-right no-margin">City</p>
+                <%= f.input :city, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
+              <div class="personal-details-input">
+                <p class="boldest muli s-medium-text text-right no-margin">Postcode</p>
+                <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
               <%= f.input :delivery_address, as: :hidden %>
-              <%= f.submit %>
+              <%= f.submit 'ADD BILLING ADDRESS', class: 'primary-button address-button small-text' %>
             <% end %>
           </div>
         </div>
         <div class="account-content-three">
           <%= simple_form_for current_user, url: user_change_password_path(current_user) do |f| %>
-              <%= f.input :password %>
-              <%= f.input :password_confirmation %>
-              <%= f.input :old_password %>
-              <%= f.submit %>
+            <div class="account-password-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Old Password</p>
+              <%= f.input :old_password, label: false %>
+            </div>
+            <div class="account-password-input">
+              <p class="boldest muli s-medium-text text-right no-margin">New Password</p>
+                <%= f.input :password, label: false %>
+              </div>
+            <div class="account-password-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Confirm Password</p>
+              <%= f.input :password_confirmation, label: false %>
+            </div>
+            <%= f.submit 'SAVE CHANGES', class: 'primary-button personal-details-button small-text' %>
           <% end %>
         </div>
       </div>
@@ -74,7 +139,9 @@
   tabThree = document.querySelector('.account-tab-three');
   contentOne = document.querySelector('.account-content-one');
   contentTwo = document.querySelector('.account-content-two');
+  contentTwoAddress = document.querySelector('.account-content-two-add-address');
   contentThree = document.querySelector('.account-content-three');
+  addressButton = document.querySelector('.address-button');
 
   tabs = document.querySelectorAll('.all-tabs');
   tabs.forEach(function(tab) {
@@ -88,20 +155,31 @@
     contentOne.classList.add('account-content-show');
     contentTwo.classList.remove('account-content-show');
     contentThree.classList.remove('account-content-show');
+    contentTwoAddress.classList.remove('account-content-show');
+
   });
 
   tabTwo.addEventListener('click', function() {
     contentTwo.classList.add('account-content-show');
     contentOne.classList.remove('account-content-show');
     contentThree.classList.remove('account-content-show');
+    contentTwoAddress.classList.remove('account-content-show');
+
   });
 
   tabThree.addEventListener('click', function() {
     contentThree.classList.add('account-content-show');
     contentOne.classList.remove('account-content-show');
     contentTwo.classList.remove('account-content-show');
+    contentTwoAddress.classList.remove('account-content-show');
+
   });
 
+  addressButton.addEventListener('click', function() {
+    contentTwoAddress.classList.add('account-content-show');
+    contentTwo.classList.remove('account-content-show');
+
+  });
 
 </script>
 
