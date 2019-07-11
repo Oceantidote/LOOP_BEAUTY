@@ -16,13 +16,15 @@
         </div>
         <div class="my-products-purchase">
           <%= link_to 'Add to bag', '#', class: "my-products-button" %>
-          <% if Wishlist.where(user: current_user).first.products.include?(product) %>
-            <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
-              <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
-            <% end %>
-          <% else %>
-            <%= link_to product_wishlist_products_path(product), method: :post, remote: :true, class: 'no-decoration' do %>
-              <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+          <% if user_signed_in? && current_user.wishlist %>
+            <% if Wishlist.where(user: current_user).first.products.include?(product) %>
+              <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
+                <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+              <% end %>
+            <% else %>
+              <%= link_to product_wishlist_products_path(product), method: :post, remote: :true, class: 'no-decoration' do %>
+                <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+              <% end %>
             <% end %>
           <% end %>
         </div>

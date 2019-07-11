@@ -46,7 +46,7 @@
 @import "insider_articles/index";
 
 .minimum-height {
-  min-height: calc(100vh - 358px);
+  min-height: calc(100vh - 338px);
   @include for-phone-only {
     min-height: calc(100vh - 278px);
   }

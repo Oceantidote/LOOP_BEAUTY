@@ -38,9 +38,9 @@
       </li>
     </div>
     <li class="nav-item mobile-hidden">
-      <%= link_to '#', class: "nav-link" do %>
+      <div class="nav-link search-icon-container">
         <%= image_tag 'navbar-search.png' %>
-      <% end %>
+      </div>
     </li>
     <li class="nav-item mobile-hidden">
       <% if user_signed_in? %>
@@ -60,12 +60,10 @@
       <% end %>
     </li>
     <li class="nav-item mobile-hidden">
-      <%#= link_to bag_path, class: "nav-link basket-icon-container" do %>
       <div class="nav-link basket-icon-container">
         <%= image_tag 'basket.png' %>
         <p class="basket-item-count basket-web"><%= @basket.basket_products.size %></p>
       </div>
-      <%# end %>
     </li>
   </ul>
   <div class="mobile-nav-links-container">
@@ -222,6 +220,17 @@
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
 </div>
 
+<div class="navbar-search-container">
+  <%= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
+    <div style="display: flex; justify-content: center;">
+      <%= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'navbar-search-input', value: @basket.discount_code&.code } %>
+      <%= button_tag(type: :submit, class: "button search-form-button") do %>
+        <%= image_tag 'navbar-search-white.png' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <script>
 
     // WEB NAV
@@ -353,5 +362,25 @@
   })
 
   // NAV BASKET DROPDOWN
+
+  // NAV SEARCH DROPDOWN
+
+  navSearchDrop = document.querySelector('.navbar-search-container');
+  searchIcon = document.querySelector('.search-icon-container');
+
+  searchIcon.addEventListener('mouseover', function() {
+    navSearchDrop.classList.add('navbar-hover-container-top')
+  })
+  searchIcon.addEventListener('mouseleave', function() {
+    navSearchDrop.classList.remove('navbar-hover-container-top')
+  })
+  navSearchDrop.addEventListener('mouseover', function() {
+    navSearchDrop.classList.add('navbar-hover-container-top')
+  })
+  navSearchDrop.addEventListener('mouseleave', function() {
+    navSearchDrop.classList.remove('navbar-hover-container-top')
+  })
+
+  // NAV SEARCH DROPDOWN
 
 </script>
