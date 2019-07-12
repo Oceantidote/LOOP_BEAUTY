@@ -12,6 +12,7 @@ class TutorialsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @tutorial = Tutorial.new
     authorize @tutorial
   end
