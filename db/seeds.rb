@@ -206,8 +206,8 @@ pick_me_up = Shade.create!(name: "Pick-Me-Up", sku: "BL03", product: brow_lift)
 pick_me_up1 = File.join(Rails.root,'app/assets/images/pick_me_up1.png')
 pick_me_up.photos.attach(io: File.open(pick_me_up1) , filename: 'pick_me_up1.png')
 
-pick_me_up2 = File.join(Rails.root,'app/assets/images/pick_me_up2.tif')
-pick_me_up.photos.attach(io: File.open(pick_me_up2) , filename: 'pick_me_up2.tif')
+pick_me_up2 = File.join(Rails.root,'app/assets/images/pick_me_up2.jpg')
+pick_me_up.photos.attach(io: File.open(pick_me_up2) , filename: 'pick_me_up2.jpg')
 
 pick_me_up3 = File.join(Rails.root,'app/assets/images/pick_me_up3.jpg')
 pick_me_up.photos.attach(io: File.open(pick_me_up3) , filename: 'pick_me_up3.jpg')
@@ -241,8 +241,8 @@ dark_dahlia = Shade.create!(name: "Dark Dahlia", sku: "BF03", product: brow_fill
 dark_dahlia1 = File.join(Rails.root,'app/assets/images/dark_dahlia1.png')
 dark_dahlia.photos.attach(io: File.open(dark_dahlia1) , filename: 'dark_dahlia1.png')
 
-dark_dahlia2 = File.join(Rails.root,'app/assets/images/dark_dahlia2.tif')
-dark_dahlia.photos.attach(io: File.open(dark_dahlia2) , filename: 'dark_dahlia2.tif')
+dark_dahlia2 = File.join(Rails.root,'app/assets/images/dark_dahlia2.jpg')
+dark_dahlia.photos.attach(io: File.open(dark_dahlia2) , filename: 'dark_dahlia2.jpg')
 
 dark_dahlia3 = File.join(Rails.root,'app/assets/images/dark_dahlia3.jpg')
 dark_dahlia.photos.attach(io: File.open(dark_dahlia3) , filename: 'dark_dahlia3.jpg')
