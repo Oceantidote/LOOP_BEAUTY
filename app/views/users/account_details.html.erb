@@ -43,6 +43,11 @@
           <div class="address-container">
             <h6 class="boldest">Delivery Address</h6>
             <div>
+              <% if current_user.delivery_addresses.count == 0 %>
+                  <div class="address-card">
+                    <p class="grey-font small-text muli boldest tiny-margin-bottom">You don't have any delivery addresses</p>
+                  </div>
+              <% end %>
               <% current_user.delivery_addresses.each do |add| %>
                 <div class="row row-style">
                   <div class="col-xs-12">
@@ -57,6 +62,11 @@
             </div>
             <h6 class="boldest">Billing Address</h6>
             <div>
+              <% if current_user.billing_addresses.count == 0 %>
+                <div class="address-card">
+                  <p class="grey-font small-text muli boldest tiny-margin-bottom">You don't have any billing addresses</p>
+                </div>
+              <% end %>
               <% current_user.billing_addresses.each do |add| %>
                 <div class="row row-style">
                   <div class="col-xs-12">
