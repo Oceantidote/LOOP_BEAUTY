@@ -13,6 +13,10 @@ class Basket < ApplicationRecord
     basket_products.destroy_all
   end
 
+  def total_number_of_products
+    basket_products.map(&:quantity).sum
+  end
+
   def total_price
     basket_products.map { |item| item.product.price * item.quantity  }.sum
   end
