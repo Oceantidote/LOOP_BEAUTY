@@ -73,6 +73,30 @@ class LookbooksController < ApplicationController
     redirect_to admin_lookbooks_path
   end
 
+  def add_to_bag
+    @lookbook = Lookbook.friendly.find(params[:id])
+    authorize @lookbook
+    @basket = find_basket
+    @lookbook.products.each do |product|
+      @item = BasketProduct.new(product: product, basket: @basket, shade: product.shades.first)
+      if @basket.products.any? && @basket.basket_products.where(product: @item.product).where(shade: @item.shade).any? # IFE FIX TO BE APPROVED BY THE MIGHTY BEN WRIGHT
+      # if @basket.shades.include?(@item.shade)
+        @old_item = @basket.basket_products.where(shade: @item.shade).first
+        @old_item.update(quantity: @old_item.quantity + 1)
+        # flash[:notice] = 'Item added to bag'
+      elsif @item.save
+        # flash[:notice] = 'Item added to bag'
+      end
+    end
+    respond_to do |format|
+      format.js
+      format.html do
+        flash[:notice] = 'Products added to bag'
+        redirect_to products_path
+      end
+    end
+  end
+
   private
 
   def set_lookbook

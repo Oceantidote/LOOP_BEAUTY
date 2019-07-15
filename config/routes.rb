@@ -36,7 +36,11 @@ Rails.application.routes.draw do
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
   resources :users, only: [], path: 'influencers' do
-    resources :lookbooks, only: [:index]
+    resources :lookbooks, only: [:index] do
+      member do
+        post '/add_to_bag', to: 'lookbooks#add_to_bag'
+      end
+    end
     resources :tutorials, only: [:index, :show]
     resources :question_answers
     member do

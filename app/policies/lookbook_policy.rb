@@ -28,4 +28,8 @@ class LookbookPolicy < ApplicationPolicy
   def destroy?
     new?
   end
+
+  def add_to_bag?
+    show?
+  end
 end

@@ -1,15 +1,12 @@
-card = document.getElementById('wishlist-<%= @wishlist_product.id %>-card')
-card.remove()
-
 basketIcon = document.querySelector('.basket-icon-container')
 
-document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
+document.querySelector('.basket-item-count').innerText = '<%= @basket.products.size %>'
 document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.total_price %>'
 document.querySelector('.navbar-basket-title > h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %>'
 // document.querySelector('.navbar-basket-title').innerHTML = '<div class="item-added"><p><i class="far fa-check-circle"></i> Item added to bag!</p></div><h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %></h6>'
 // document.querySelector('item-added').innerHTML = ''
 container = document.querySelector('.navbar-basket-items-container')
-container.innerHTML = "<%= j render 'shared/navbar_basket_product_card', item: @item %>"
+container.innerHTML = "<%= j render 'shared/navbar_basket_product_card' %>"
 
 navBasketDrop = document.querySelector('.navbar-hover-container');
 navBasketDrop.classList.add('navbar-hover-container-top')
