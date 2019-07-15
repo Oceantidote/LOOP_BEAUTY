@@ -3,8 +3,10 @@ class TutorialsController < ApplicationController
   before_action :set_tutorial, only: [:edit, :update, :destroy, :show]
 
   def index
-    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @user = User.friendly.find(params[:user_id])
     @tutorials = policy_scope(Tutorial).where(user: @user)
+    @sort_method = params[:sort].present? ? params[:sort][:sort_method] : 'created_at,desc'
+    @tutorials = @tutorials.filter_sort(*@sort_method.split(','))
   end
 
   def show

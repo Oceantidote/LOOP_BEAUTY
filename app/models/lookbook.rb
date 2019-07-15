@@ -13,7 +13,6 @@ class Lookbook < ApplicationRecord
   end
 
   def reject!
-
     update(status: 'rejected')
   end
 
@@ -23,6 +22,10 @@ class Lookbook < ApplicationRecord
 
   def sales
     Order.where(affiliate_code: affiliate_code).size
+  end
+
+  def self.filter_sort(attr, direction)
+    order(attr => direction.to_sym)
   end
 
   private
