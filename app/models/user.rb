@@ -38,6 +38,8 @@ class User < ApplicationRecord
   validates_with MyValidator
   include FriendlyId
   validates :first_name, :last_name, presence: true
+  validates :password, format: { with: /\S*([A-Z]+\S*(\d|[^\w\s])+|(\d|[^\w\s])+\S*[A-Z]+)\S*/,
+                                 message: 'must contain one capital letter and one non-letter character' }
   friendly_id :instagram, use: :slugged
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

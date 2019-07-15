@@ -54,5 +54,8 @@ class PagesController < ApplicationController
   end
 
   def contact_us
+    if params[:send_email]
+      ContactMailer.with(details: params[:send_email]).contact.deliver_now
+    end
   end
 end
