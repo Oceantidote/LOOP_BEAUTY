@@ -25,6 +25,9 @@ class Tutorial < ApplicationRecord
     Order.where(affiliate_code: affiliate_code).size
   end
 
+  def self.filter_sort(attr, direction)
+    order(attr => direction.to_sym)
+  end
 
   private
 
