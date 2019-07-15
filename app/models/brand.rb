@@ -11,4 +11,10 @@ class Brand < ApplicationRecord
     return all if ids.empty?
     where(id: ids)
   end
+
+  def self.product_filter_labels_and_values(products)
+    all.map do |brand|
+      [ brand.id, "#{brand.name} (#{products.where(brand: brand).size})" ]
+    end
+  end
 end
