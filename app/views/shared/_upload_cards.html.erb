@@ -1,0 +1,35 @@
+<% if item.class == Lookbook %>
+  <div class="col-xs-12 col-md-6 col-lg-4" style="margin-bottom: 10px;">
+    <%= link_to lookbook_path(item, user_id: item.user.id), class: "lookbook-small-card-link card-link" do %>
+      <div class="lookbook-small-card uploads-lookbook-card">
+        <div class="uploads-card-image">
+          <%= image_tag url_for(item.photo) %>
+        </div>
+        <div class="uploads-lookbook-text">
+          <p class="truncate-text muli no-margin s-medium-text boldest"><%= item.title %></p>
+          <p class="truncate-text didot no-margin">An extraterrestrial glow. I recommend this to everyone. Lorem ipsum di amet.</p>
+        </div>
+      </div>
+    <% end %>
+    <p class="no-margin boldest"><%= item.class %></p>
+    <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
+    <p class="no-margin small-text"><%= item.affiliate_link %></p>
+  </div>
+<% else %>
+  <div class="col-xs-12 col-md-6 col-lg-4" style="margin-bottom: 10px;">
+    <%= link_to tutorial_path(item), class: "video-card-link card-link" do %>
+      <div class="homepage-video-card">
+        <div class="video-holder" style="background-image: url(<%= url_for(item.cover_photo) %>)">
+          <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+        </div>
+        <div class="homepage-video-card-text">
+          <p class="video-card-text-title small-text tiny-margin-bottom">by <%= item.user.instagram %></p>
+          <p class="video-card-text-content no-margin didot"><%= item.title %></p>
+        </div>
+      </div>
+    <% end %>
+    <p class="no-margin boldest"><%= item.class %></p>
+    <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
+    <p class="no-margin small-text"><%= item.affiliate_link %></p>
+  </div>
+<% end %>

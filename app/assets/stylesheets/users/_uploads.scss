@@ -7,3 +7,33 @@
   display: flex;
   flex-direction: row;
 }
+
+.uploads-content-one, .uploads-content-two, .uploads-content-three {
+  min-height: 319px;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploads-lookbook-card {
+  height: 255px;
+}
+
+.uploads-card-image {
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.uploads-lookbook-text {
+  background: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 20px;
+}
