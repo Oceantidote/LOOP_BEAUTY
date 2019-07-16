@@ -1,5 +1,5 @@
-<% if Wishlist.where(user: current_user).first.products.include?(product) %>
-  <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
+<% if current_user.wishlist.products.include?(product) %>
+  <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product, shade: shade).first), method: :delete, remote: :true, class: 'no-decoration' do %>
     <%= image_tag 'heart-after.png' %>
   <% end %>
 <% else %>
