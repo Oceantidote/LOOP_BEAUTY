@@ -64,6 +64,7 @@ class User < ApplicationRecord
   has_one :wishlist, dependent: :destroy
   has_many :wishlist_products, through: :wishlist
   # WISHLIST TEST
+  before_save :set_referral_code
 
   def admin?
     admin
@@ -87,5 +88,19 @@ class User < ApplicationRecord
 
   def billing_addresses
     addresses.where(delivery_address: false)
+  end
+
+  private
+
+  def set_referral_code
+    if referral_code.nil?
+      code = "#{first_name}#{[*0..9].sample(4).join('')}"
+      if User.find_by_referral_code(code)
+        set_referral_code
+      else
+        self.referral_code = code
+        DiscountCode.create(code: code, discount: 15)
+      end
+    end
   end
 end
