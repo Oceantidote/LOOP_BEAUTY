@@ -27,7 +27,7 @@
                 <div class="col-xs-3 col-sm-3" style="padding: 0 3px 0 0;">
                   <div class="product-shade-card <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.first) %>)">
                     <% if user_signed_in? && current_user.wishlist %>
-                      <div class="shade-wishlist-heart">
+                      <div class="shade-wishlist-heart shade-<%= shade.id %>">
                         <%= render 'shared/shade-wishlist', product: @product, shade: shade %>
                       </div>
                     <% end %>

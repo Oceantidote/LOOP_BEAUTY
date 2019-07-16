@@ -7,7 +7,7 @@ class WishlistProductsController < ApplicationController
   def create
     @wishlist_product = WishlistProduct.new(wishlist: current_user.wishlist, product: @product)
     @wishlist = @wishlist_product.wishlist
-    @wishlist_product.shade = @wishlist_product.product.shades.first
+    @wishlist_product.shade = Shade.find_by_id(params[:shade]) || @wishlist_product.product.shades.first
     authorize @wishlist_product
     if @wishlist_product.save
       respond_to do |format|
