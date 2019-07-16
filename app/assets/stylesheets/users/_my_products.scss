@@ -13,11 +13,21 @@
   font-weight: 900;
   @include absCenter;
   width: fit-content;
+  transition: all 0.3s ease;
+  &:hover {
+    text-decoration: none;
+    background: #D5D5D5;
+    color: inherit;
+
+  }
 }
 
 .my-products-purchase {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  margin: 10px 0;
+}
+
+.my-products-details p {
+  margin: 0;
 }

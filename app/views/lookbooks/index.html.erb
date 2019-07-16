@@ -26,11 +26,9 @@
 <div class="shop-lookbook-bar">
   <div style="width: 200px;"></div>
   <p class="shop-look-text">Click the image to shop the look</p>
-  <div class="filters-container">
-    <%= simple_form_for :sort, url: user_lookbooks_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
-      <%= f.input :sort_method, collection: [['New in', 'created_at,desc'], ['Old', 'created_at,asc']], label: 'Sort by:', required: false, selected: @sort_method %>
-    <% end %>
-  </div>
+  <%= simple_form_for :sort, url: user_lookbooks_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
+    <%= f.input :sort_method, collection: [['New in', 'created_at,desc'], ['Old', 'created_at,asc']], label: false, required: false, selected: @sort_method, input_html: { class: 'filters-container boldest s-medium-text' } %>
+  <% end %>
 </div>
 <div class="lookbooks-container">
   <div class="row" style="width: 100%; margin: 0;">
