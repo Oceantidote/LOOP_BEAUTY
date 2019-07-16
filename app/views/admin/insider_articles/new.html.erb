@@ -1,51 +1,98 @@
-<div class="container">
+<h2 class="insider-info-title text-center">Create Insider Article</h2>
+
+<div class="new-question-answers-form insider-form">
   <%= form_for [:admin, @insider_article] do |f| %>
-    <%= f.label :title, 'Article title', class:"form-control-label" %>
-    <%= f.text_field :title, class:"form-control" %>
-    <%= f.label :category, 'Category', class:"form-control-label" %>
-    <%= f.select :category, ["Inspiration", "Ask the Expert", "Beauty News"], class:"form-control" %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :cover_photo, 'Project Photos', class:"form-control-label" %>
-    <%= f.file_field :cover_photo %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :cover_alt_text, 'Cover photo alt text', class:"form-control-label" %>
-    <%= f.text_field :cover_alt_text, class:"form-control" %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :text1, 'Text block one', class:"form-control-label" %>
-    <%= f.text_field :text1, class:"form-control", id: :text1%>
-    <trix-editor input="text1"></trix-editor>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :photo1, 'Photo/Video 1', class:"form-control-label" %>
-    <%= f.file_field :photo1 %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :photo1_alt_text, 'Photo 1 alt text', class:"form-control-label" %>
-    <%= f.text_field :photo1_alt_text, class:"form-control" %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :text2, 'Text block two', class:"form-control-label" %>
-    <%= f.text_field :text2, class:"form-control", id: :text2%>
-    <trix-editor input="text2"></trix-editor>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :photo2, 'Photo/Video 2', class:"form-control-label" %>
-    <%= f.file_field :photo2 %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :photo2_alt_text, 'Photo 2 alt text', class:"form-control-label" %>
-    <%= f.text_field :photo2_alt_text, class:"form-control" %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :text3, 'Text block three', class:"form-control-label" %>
-    <%= f.text_field :text3, class:"form-control", id: :text3%>
-    <trix-editor input="text3"></trix-editor>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :photo3, 'Photo/Video 3', class:"form-control-label" %>
-    <%= f.file_field :photo3 %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :photo3_alt_text, 'Photo 3 alt text', class:"form-control-label" %>
-    <%= f.text_field :photo3_alt_text, class:"form-control" %>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.label :text4, 'Text block four', class:"form-control-label" %>
-    <%= f.text_field :text4, class:"form-control", id: :text4%>
-    <trix-editor input="text4"></trix-editor>
-    <div class="spacer" style="height: 50px;"></div>
-    <%= f.submit class: "btn btn-primary btn-lg" %>
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Article title</p>
+      <%= f.text_field :title, class:"form-control" %>
+    </div>
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+      <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
+    </div>
+
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Cover photo</p>
+      <%= f.file_field :cover_photo %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Cover photo alt text</p>
+      <%= f.text_field :cover_alt_text, class:"form-control" %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <hr>
+    <div class="insider-articles-input align-items-start">
+      <p class="boldest muli s-medium-text text-right no-margin">Text one</p>
+      <div>
+        <%= f.text_field :text1, class:"form-control", id: :text1%>
+        <trix-editor input="text1" placeholder="Type here to generate HTML above..."></trix-editor>
+      </div>
+    </div>
+    <hr>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo one</p>
+      <%= f.file_field :photo1 %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo one alt text</p>
+      <%= f.text_field :photo1_alt_text, class:"form-control" %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <hr>
+    <div class="insider-articles-input align-items-start">
+      <p class="boldest muli s-medium-text text-right no-margin">Text two</p>
+      <div>
+        <%= f.text_field :text2, class:"form-control", id: :text2%>
+        <trix-editor input="text2" placeholder="Type here to generate HTML above..."></trix-editor>
+      </div>
+    </div>
+    <hr>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo two</p>
+      <%= f.file_field :photo2 %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo two alt text</p>
+      <%= f.text_field :photo2_alt_text, class:"form-control" %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <hr>
+    <div class="insider-articles-input align-items-start">
+      <p class="boldest muli s-medium-text text-right no-margin">Text three</p>
+      <div>
+        <%= f.text_field :text3, class:"form-control", id: :text3%>
+        <trix-editor input="text3" placeholder="Type here to generate HTML above..."></trix-editor>
+      </div>
+    </div>
+    <hr>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo three</p>
+      <%= f.file_field :photo3 %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo three alt text</p>
+      <%= f.text_field :photo3_alt_text, class:"form-control" %>
+    </div>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <hr>
+    <div class="insider-articles-input align-items-start">
+      <p class="boldest muli s-medium-text text-right no-margin">Text four</p>
+      <div>
+        <%= f.text_field :text4, class:"form-control", id: :text4%>
+        <trix-editor input="text4" placeholder="Type here to generate HTML above..."></trix-editor>
+      </div>
+    </div>
+    <hr>
+    <!-- <div class="spacer" style="height: 50px;"></div> -->
+    <%= f.submit 'CREATE INSIDER ARTICLE', class: 'primary-button personal-details-button small-text' %>
   <% end %>
 
 </div>
