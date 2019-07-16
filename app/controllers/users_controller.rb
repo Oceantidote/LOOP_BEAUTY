@@ -35,12 +35,25 @@ class UsersController < ApplicationController
   end
 
   def uploads
+    # @pending = current_user.tutorials.where(status: 'pending').to_a
+    # @pending + current_user.lookbooks.where(status: 'pending').to_a
+    # @rejected = current_user.tutorials.where(status: 'rejected').to_a
+    # @rejected + current_user.lookbooks.where(status: 'rejected').to_a
+    # @approved = current_user.tutorials.where(status: 'approved').to_a
+    # @approved + current_user.lookbooks.where(status: 'approved').to_a
+
     @pending = current_user.tutorials.where(status: 'pending').to_a
-    @pending + current_user.lookbooks.where(status: 'pending').to_a
+    current_user.lookbooks.where(status: 'pending').to_a.each do |lookbook|
+      @pending << lookbook
+    end
     @rejected = current_user.tutorials.where(status: 'rejected').to_a
-    @pending + current_user.lookbooks.where(status: 'rejected').to_a
+    current_user.lookbooks.where(status: 'rejected').to_a.each do |lookbook|
+      @rejected << lookbook
+    end
     @approved = current_user.tutorials.where(status: 'approved').to_a
-    @pending + current_user.lookbooks.where(status: 'approved').to_a
+    current_user.lookbooks.where(status: 'approved').to_a.each do |lookbook|
+      @approved << lookbook
+    end
   end
 
   def update

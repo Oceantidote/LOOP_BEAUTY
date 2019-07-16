@@ -18,59 +18,37 @@
         <p class="boldest grey-font account-tab-three all-tabs">Approved (<%= @approved.count %>)</p>
       </div>
       <div class="account-details-content">
-        <div class="account-content-one account-content-show">
-          <% @pending.each do |item| %>
-            <% if item.class == "Lookbook" %>
-              <div class="rejected_row">
-                <p><%= item.title %></p>
-                <p><%= item.updated_at %></p>
-                <%= link_to "View Lookbook", lookbook_path(item) %>
-              </div>
-            <% else %>
-              <div class="rejected_row">
-                <p><%= item.title %></p>
-                <p><%= item.updated_at %></p>
-                <%= link_to "View Tutorial", tutorial_path(item) %>
-              </div>
-            <% end %>
+        <div class="uploads-content-one account-content-show">
+          <% if @pending.count == 0 %>
+            <p class="large-margin text-center boldest">You have no pending uploads</p>
+          <% else %>
+            <div class="row row-style">
+              <% @pending.each do |item| %>
+                <%= render 'shared/upload_cards', item: item %>
+              <% end %>
+            </div>
           <% end %>
         </div>
-        <div class="account-content-two">
-          <% @rejected.each do |item| %>
-            <% if item.class == "Lookbook" %>
-              <div class="rejected_row">
-                <p><%= item.title %></p>
-                <p><%= item.updated_at %></p>
-                <%= link_to edit_lookbook_path(item) %>
-              </div>
-            <% else %>
-              <div class="rejected_row">
-                <p><%= item.title %></p>
-                <p><%= item.updated_at %></p>
-                <%= link_to "Edit Tutorial", edit_tutorial_path(item) %>
-              </div>
-            <% end %>
+        <div class="uploads-content-two">
+          <% if @rejected.count == 0 %>
+            <p class="large-margin text-center boldest">You have no rejected uploads</p>
+          <% else %>
+            <div class="row row-style">
+              <% @rejected.each do |item| %>
+                <%= render 'shared/upload_cards', item: item %>
+              <% end %>
+            </div>
           <% end %>
         </div>
-        <div class="account-content-three">
-          <% @approved.each do |item| %>
-            <% if item.class == "Lookbook" %>
-              <div class="rejected_row">
-                <p>Lookbook</p>
-                <p><%= item.title %></p>
-                <p><%= item.updated_at %></p>
-                <p><%= item.affiliate_link %></p>
-                <%= link_to "View Lookbook", lookbook_path(item) %>
-              </div>
-            <% else %>
-              <div class="rejected_row">
-                <p>Tutorial</p>
-                <p><%= item.title %></p>
-                <p><%= item.updated_at %></p>
-                <p><%= item.affiliate_link %></p>
-                <%= link_to "View Tutorial", tutorial_path(item) %>
-              </div>
-            <% end %>
+        <div class="uploads-content-three">
+          <% if @approved.count == 0 %>
+            <p class="large-margin text-center boldest">You have no approved uploads</p>
+          <% else %>
+            <div class="row row-style">
+              <% @approved.each do |item| %>
+                <%= render 'shared/upload_cards', item: item %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -82,9 +60,9 @@
   tabOne = document.querySelector('.account-tab-one');
   tabTwo = document.querySelector('.account-tab-two');
   tabThree = document.querySelector('.account-tab-three');
-  contentOne = document.querySelector('.account-content-one');
-  contentTwo = document.querySelector('.account-content-two');
-  contentThree = document.querySelector('.account-content-three');
+  contentOne = document.querySelector('.uploads-content-one');
+  contentTwo = document.querySelector('.uploads-content-two');
+  contentThree = document.querySelector('.uploads-content-three');
 
   tabs = document.querySelectorAll('.all-tabs');
   tabs.forEach(function(tab) {
