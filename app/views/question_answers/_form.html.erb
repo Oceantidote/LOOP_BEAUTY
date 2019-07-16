@@ -1,43 +1,77 @@
-<div class="container">
+<div class="new-question-answers-form">
   <%= simple_form_for [user, question_answer] do |f| %>
-    <%= f.label :photo_one, 'First Photo', class:"form-control-label" %>
-    <%= f.input :photo_one, label: false, class:"form-control" %>
-    <%= f.label :photo_one_alt_text, 'First Photo Alt Text', class:"form-control-label" %>
-    <%= f.input :photo_one_alt_text, class:"form-control", label: false, id: :photo_one_alt_text%>
-    <%= f.label :question_one, 'First question', class:"form-control-label" %>
-    <%= f.input :question_one, class:"form-control", label: false %>
-    <%= f.label :answer_one, 'First answer', class:"form-control-label" %>
-    <%= f.input :answer_one, class:"form-control", label: false %>
-    <%= f.label :question_two, 'Second question', class:"form-control-label" %>
-    <%= f.input :question_two, class:"form-control", label: false %>
-    <%= f.label :answer_two, 'Second answer', class:"form-control-label" %>
-    <%= f.input :answer_two, class:"form-control", label: false %>
-    <%= f.label :photo_two, 'Second Photo', class:"form-control-label" %>
-    <%= f.input :photo_two %>
-    <%= f.label :photo_two_alt_text, 'Second photo alt text', class:"form-control-label" %>
-    <%= f.input :photo_two_alt_text, class:"form-control", label: false, id: :photo_two_alt_text%>
-    <%= f.label :question_three, 'Third question', class:"form-control-label" %>
-    <%= f.input :question_three, class:"form-control", label: false %>
-    <%= f.label :answer_three, 'Third answer', class:"form-control-label" %>
-    <%= f.input :answer_three, class:"form-control", label: false %>
-    <%= f.label :question_four, 'Fourth question', class:"form-control-label" %>
-    <%= f.input :question_four, class:"form-control", label: false %>
-    <%= f.label :answer_four, 'Fourth answer', class:"form-control-label" %>
-    <%= f.input :answer_four, class:"form-control", label: false %>
-    <%= f.label :photo_three, 'Third Photo', class:"form-control-label" %>
-    <%= f.input :photo_three %>
-    <%= f.label :photo_three_alt_text, 'Third photo alt text', class:"form-control-label" %>
-    <%= f.input :photo_three_alt_text, class:"form-control", label: false, id: :photo_two_alt_text%>
-    <%= f.label :question_five, 'Fifth question', class:"form-control-label" %>
-    <%= f.input :question_five, class:"form-control", label: false %>
-    <%= f.label :answer_five, 'Fifth answer', class:"form-control-label" %>
-    <%= f.input :answer_five, class:"form-control", label: false %>
-    <%= f.label :question_six, 'Sixth question', class:"form-control-label" %>
-    <%= f.input :question_six, class:"form-control", label: false %>
-    <%= f.label :answer_six, 'Sixth answer', class:"form-control-label" %>
-    <%= f.input :answer_six, class:"form-control", label: false %>
-
-    <%= f.submit class: "btn btn-primary btn-lg" %>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo one</p>
+      <%= f.input :photo_one, label: false, class:"form-control" %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo one alt text</p>
+      <%= f.input :photo_one_alt_text, class:"form-control", label: false, id: :photo_one_alt_text %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Question one</p>
+      <%= f.input :question_one, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Answer one</p>
+      <%= f.input :answer_one, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Question two</p>
+      <%= f.input :question_two, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Answer two</p>
+      <%= f.input :answer_two, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo two</p>
+      <%= f.input :photo_two, label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo two alt text</p>
+      <%= f.input :photo_two_alt_text, class:"form-control", label: false, id: :photo_two_alt_text%>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Question three</p>
+      <%= f.input :question_three, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Answer three</p>
+      <%= f.input :answer_three, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Question four</p>
+      <%= f.input :question_four, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Answer four</p>
+      <%= f.input :answer_four, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo three</p>
+      <%= f.input :photo_three, label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Photo three alt text</p>
+      <%= f.input :photo_three_alt_text, class:"form-control", label: false, id: :photo_two_alt_text%>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Question five</p>
+      <%= f.input :question_five, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Answer five</p>
+      <%= f.input :answer_five, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Quesiton six</p>
+      <%= f.input :question_six, class:"form-control", label: false %>
+    </div>
+    <div class="questions-answers-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Answer six</p>
+      <%= f.input :answer_six, class:"form-control", label: false %>
+    </div>
+    <%= f.submit "#{ params[:action] == 'new' ? 'CREATE Q&A' : 'UPDATE Q&A' }", class: 'primary-button personal-details-button small-text' %>
   <% end %>
-
 </div>
