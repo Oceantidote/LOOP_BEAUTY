@@ -47,20 +47,31 @@
     <% end %>
       <div class="product-details-section info-expand">
         <div class="product-details-title">
-          <h6>Product details</h6>
+          <h6 class="small-text">Product details</h6>
           <i class="fas fa-plus pd-expand"></i>
         </div>
-        <p class="product-details-text didot"><%= @product.details %></p>
+        <p class="product-details-text didot small-text"><%= @product.details %></p>
+      </div>
+      <div class="benefits-section info-expand">
+        <div class="benefits-title">
+          <h6 class="small-text">Benefits</h6>
+          <i class="fas fa-plus be-expand"></i>
+        </div>
+        <div class="benefits-text small-margin-bottom">
+          <% @product.benefits.each do |benefit| %>
+            <p class="didot no-margin small-text">- <%= benefit.name %></p>
+          <% end %>
+        </div>
       </div>
       <div class="about-the-brand-section info-expand">
         <div class="about-the-brand-title">
-          <h6>About the brand</h6>
+          <h6 class="small-text">About the brand</h6>
           <i class="fas fa-plus ab-expand"></i>
         </div>
-        <p class="about-the-brand-text didot"><%= @product.brand.description %></p>
+        <p class="about-the-brand-text didot small-text"><%= @product.brand.description %></p>
       </div>
       <div class="share-section">
-        <h6>Share</h6>
+        <h6 class="small-text">Share</h6>
         <div class="articles-link-icons">
           <%= link_to '#' do %>
             <i class="fab fa-facebook-f"></i>
@@ -123,6 +134,9 @@
               <div class="card_price-heart">
                 <%= humanized_money_with_symbol(product.price) %>
               </div>
+              <div class="my-products-purchase">
+                <%= link_to 'Add to bag', my_product_product_path(product), remote: true, method: :post, class: "my-products-button" %>
+              </div>
             </div>
           </div>
         </div>
@@ -182,8 +196,10 @@
   detailsText = document.querySelector(".product-details-text");
   aboutBrand = document.querySelector(".about-the-brand-title");
   aboutBrandText = document.querySelector(".about-the-brand-text");
+  benefit = document.querySelector(".benefits-title");
+  benefitsText = document.querySelector(".benefits-text");
   expandIconProduct = document.querySelector(".pd-expand");
-  expandIconBrand = document.querySelector(".ab-expand");
+  expandIconBenefit = document.querySelector(".be-expand");
   expandIconBrand = document.querySelector(".ab-expand");
   addToBag = document.getElementById('add-to-bag');
   itemAdded = document.querySelector('.item-added');
@@ -193,6 +209,12 @@
     expandIconProduct.classList.toggle('fa-plus');
     expandIconProduct.classList.toggle('fa-minus');
     detailsText.classList.toggle('show-text');
+  });
+
+  benefit.addEventListener('click', function() {
+    expandIconBenefit.classList.toggle('fa-plus');
+    expandIconBenefit.classList.toggle('fa-minus');
+    benefitsText.classList.toggle('show-text');
   });
 
   aboutBrand.addEventListener('click', function() {

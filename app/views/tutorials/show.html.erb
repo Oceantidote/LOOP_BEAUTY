@@ -4,11 +4,11 @@
   <div class="previous-next-tutorial">
     <div class="previous">
       <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)" %>
-      <%= link_to 'Previous', '#' %>
+      <%= link_to 'Previous', tutorial_path(@previous_tutorial) %>
     </div>
     <span class="previous-next-seperator"><strong style="margin: 0 5px;">|</strong></span>
     <div class="next">
-      <%= link_to 'Next', '#' %>
+      <%= link_to 'Next', tutorial_path(@next_tutorial) %>
       <%= image_tag 'dropdown-forward.png', width: 10 %>
     </div>
   </div>

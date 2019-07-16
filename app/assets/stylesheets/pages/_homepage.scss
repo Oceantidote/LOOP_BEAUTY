@@ -145,6 +145,12 @@
   font-weight: 900;
 }
 
+.video-card-text-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .play-button {
   transition: transform 0.3s ease;
 }

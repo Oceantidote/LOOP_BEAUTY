@@ -101,7 +101,7 @@
   border-bottom: 2px solid black;
 }
 
-.product-details-title, .about-the-brand-title {
+.product-details-title, .about-the-brand-title, .benefits-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -112,6 +112,7 @@
 .share-section {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 5px;
   h6 {
     font-weight: 900;
@@ -125,6 +126,10 @@
 }
 
 .product-details-text {
+  display: none;
+}
+
+.benefits-text {
   display: none;
 }
 
