@@ -94,7 +94,7 @@ class User < ApplicationRecord
 
   def set_referral_code
     if referral_code.nil?
-      code = "#{first_name}#{[*0..9].sample(4).join('')}"
+      code = "#{first_name.downcase}#{[*0..9].sample(4).join('')}"
       if User.find_by_referral_code(code)
         set_referral_code
       else

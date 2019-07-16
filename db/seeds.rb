@@ -386,12 +386,12 @@ highlighter_brush_rec_4 = RecommendedProduct.create!(recommender: highlighter_br
 puts "Creating influencers"
 
 
-esther = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "esther123", email: "esther@estareonline.com")
-ropo = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "ropo123", email: "ropo_demuren@gmail.com")
-breeny = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "breeny123", email: "info.breenylee@gmail.com")
-nikki = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikkissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "nikki123", email: "nicky.o.patel@gmail.com")
-shantania = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "shantania123", email: "shantaniabeckford@gmail.com")
-bemi = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii",youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "bemi123", email: "beautybybemi@gmail.com")
+esther = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "Esther123", email: "esther@estareonline.com")
+ropo = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "Ropo123", email: "ropo_demuren@gmail.com")
+breeny = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Breeny", last_name: "Lee", instagram: "@breenylee", youtube: 'https://www.youtube.com/user/BreenyLee', password: "Breeny123", email: "info.breenylee@gmail.com")
+nikki = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Nikki", last_name: "Patel", instagram: "@nikkissecretx", youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', password: "Nikki123", email: "nicky.o.patel@gmail.com")
+shantania = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", instagram: "@shantaniabeckford", youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "Shantania123", email: "shantaniabeckford@gmail.com")
+bemi = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", instagram: "@beautybybemii",youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', password: "Bemi123", email: "beautybybemi@gmail.com")
 
 esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
 esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
@@ -584,10 +584,10 @@ insiders = [esther, ropo, breeny, nikki, shantania, bemi]
 
 puts "Creating customers"
 
-ariel = User.create!(published: true, influencer: false, first_name: "Ariel", last_name: "Roberts", country: "Bristol, UK",password: "123456", email: "ariel@gmail.com")
-lenny = User.create!(published: true, influencer: false, first_name: "Leonard", last_name: "Percival", country: "Oxford, UK",password: "123456", email: "lenny@gmail.com")
-ife = User.create!(published: true, influencer: false, first_name: "Ife", last_name: "Odugbesan", country: "London, UK",password: "123456", email: "ife@gmail.com")
-wrighty = User.create!(published: true, influencer: false, first_name: "Ben", last_name: "Wright", country: "London, UK",password: "123456", email: "wrighty@gmail.com")
+ariel = User.create!(published: true, influencer: false, first_name: "Ariel", last_name: "Roberts", country: "Bristol, UK",password: "Ariel123", email: "ariel@gmail.com")
+lenny = User.create!(published: true, influencer: false, first_name: "Leonard", last_name: "Percival", country: "Oxford, UK",password: "Lenny123", email: "lenny@gmail.com")
+ife = User.create!(published: true, influencer: false, first_name: "Ife", last_name: "Odugbesan", country: "London, UK",password: "Ife123", email: "ife@gmail.com")
+wrighty = User.create!(published: true, influencer: false, first_name: "Ben", last_name: "Wright", country: "London, UK",password: "Wrighty123", email: "wrighty@gmail.com")
 customers = [ariel, lenny, ife]
 # CREATING ADMIN USER
 
@@ -624,10 +624,10 @@ end
 
 puts "Creating admin user"
 
-admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxton", password: "123456", email: "admin@gmail.com", admin: true)
+admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxton", password: "Admin123", email: "admin@gmail.com", admin: true)
 
 puts "Email: admin@gmail.com"
-puts "Password: 123456"
+puts "Password: Admin123"
 
 # CREATING INSIDER ARTICLES
 
