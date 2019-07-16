@@ -251,3 +251,21 @@
 .recommended-products-wrapper {
   padding: 10px 0;
 }
+
+.shade-wishlist-heart {
+  background: #FFF;
+  height: 18px;
+  width: 18px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 14px;
+  }
+}
+
+.product-shade-card:hover {
+  .shade-wishlist-heart {
+    display: flex;
+  }
+}

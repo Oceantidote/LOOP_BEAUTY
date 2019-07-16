@@ -5,7 +5,9 @@
   // border-bottom: 1px solid #ececec;
   padding: 0 16px;
   height: 60px;
-  position: relative;
+  // position: relative;
+  position: sticky;
+  top: 0;
   z-index: 100;
 }
 

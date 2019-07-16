@@ -1,8 +1,13 @@
 myProductsCards = document.querySelector('.my-product-cards-container')
-cards = document.querySelectorAll('.card-image-results');
+cards = document.querySelectorAll('.card-image-results')
+shadeWishlist = document.querySelector('.shade-wishlist-heart')
+
 
 if (myProductsCards) {
   myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', wishlist_product: @wishlist_product %>"
+}
+else if (shadeWishlist) {
+  shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product %>"
 }
 else if (cards) {
   toReplace = document.getElementById(`item-<%= @product.id %>-wishlist`)
@@ -10,4 +15,3 @@ else if (cards) {
                           <i class="<%= current_user.wishlist.products.include?(@product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>\
                         <% end %>'
 }
-
