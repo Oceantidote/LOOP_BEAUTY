@@ -1,17 +1,17 @@
 myProductsCards = document.querySelector('.my-product-cards-container')
 cards = document.querySelectorAll('.card-image-results')
-shadeWishlist = document.querySelector('.shade-wishlist-heart')
+shadeWishlist = document.querySelector('.shade-wishlist-heart.shade-<%= @wishlist_product.shade.id %>')
 
 
 if (myProductsCards) {
   myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', wishlist_product: @wishlist_product %>"
 }
 else if (shadeWishlist) {
-  shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product %>"
+  shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product, shade: @wishlist_product.shade %>"
 }
 else if (cards) {
   toReplace = document.getElementById(`item-<%= @product.id %>-wishlist`)
-  toReplace.innerHTML = '<%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: @product).first), method: :delete, remote: :true, class: 'no-decoration' do %>\
+  toReplace.innerHTML = '<%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: @product, shade: @wishlist_product.shade).first), method: :delete, remote: :true, class: 'no-decoration' do %>\
                           <i class="<%= current_user.wishlist.products.include?(@product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>\
                         <% end %>'
 }
