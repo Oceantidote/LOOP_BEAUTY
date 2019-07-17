@@ -2,7 +2,7 @@
   <h2 class="insider-info-title text-center influencer-videos-title-mobile"><%= @user.first_name %> <%= @user.last_name %>'s tutorials</h2>
   <div class="influencer-videos-title-section">
     <%= simple_form_for :sort, url: user_tutorials_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
-      <%= f.input :sort_method, collection: [['Newest', 'created_at,desc'], ['Old', 'created_at,asc']], label: 'Sort by:', required: false, selected: @sort_method, input_html: { class: "filters-container boldest s-medium-text" } %>
+      <%= f.input :sort_method, collection: [['Newest', 'created_at,desc'], ['Old', 'created_at,asc']], label: false, required: false, selected: @sort_method, input_html: { class: "filters-container boldest s-medium-text" } %>
     <% end %>
     <h2 class="insider-info-title text-center influencer-videos-title-web"><%= @user.first_name %> <%= @user.last_name %><%= @user.last_name.last == 's' ? "'" : "'s" %> tutorials</h2>
     <div class="filters-container">
@@ -11,11 +11,11 @@
     </div>
   </div>
 
-<div class="max-width">
-  <div class="row-carousel" style="margin: 30px auto 0 auto;">
-    <% @tutorials.each do |tutorial| %>
-      <%= render 'shared/tutorials_card', tutorial: tutorial %>
-    <% end %>
+  <div class="max-width">
+    <div class="row-carousel" style="margin: 30px auto 0 auto;">
+      <% @tutorials.each do |tutorial| %>
+        <%= render 'shared/tutorials_card', tutorial: tutorial %>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
