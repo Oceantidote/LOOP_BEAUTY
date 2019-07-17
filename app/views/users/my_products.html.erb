@@ -12,3 +12,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  itemAdded = document.querySelector('.item-added');
+  addToBag = document.querySelectorAll('.add-to-bag-grey');
+
+  addToBag.forEach(function(button) {
+    button.addEventListener('click', function() {
+      itemAdded.classList.add('item-added-show');
+      setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
+    });
+  });
+</script>
