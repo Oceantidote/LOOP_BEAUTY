@@ -1,5 +1,5 @@
 <div class="tutorial-show-title-content">
-  <%= link_to 'See all tutorials', influencer_video_path, class: "web-tutorials-link" %>
+  <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
   <h2 class="insider-info-title text-center"><%= @tutorial.title %></h2>
   <div class="previous-next-tutorial">
     <div class="previous">
