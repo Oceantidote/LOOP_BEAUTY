@@ -81,7 +81,7 @@
     <div class="mobile-left-links" style="margin-left: 5px;">
       <%= link_to bag_path, class: "basket-icon-container" do %>
         <%= image_tag 'basket.png' %>
-        <p class="basket-item-count basket-mobile"><%= @basket.basket_products.count %></p>
+        <p class="basket-item-count basket-mobile"><%= @basket.total_number_of_products %></p>
       <% end %>
     </div>
   </div>
@@ -356,7 +356,6 @@
   navBasketDrop.addEventListener('mouseleave', function() {
     navBasketDrop.classList.remove('navbar-hover-container-top')
   })
-
   navBasketClose.addEventListener('click', function() {
     navBasketDrop.classList.remove('navbar-hover-container-top')
   })

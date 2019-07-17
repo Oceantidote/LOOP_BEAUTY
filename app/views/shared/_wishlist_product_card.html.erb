@@ -18,7 +18,7 @@
             <%= humanized_money_with_symbol(wishlist_product.product.price) %>
           </div>
           <div class="my-products-purchase">
-            <%= link_to 'Add to bag', add_to_bag_wishlist_product_path(wishlist_product), method: :post, remote: true, class: "my-products-button" %>
+            <%= link_to 'Add to bag', add_to_bag_wishlist_product_path(wishlist_product), method: :post, remote: true, class: "my-products-button add-to-bag-grey" %>
             <%= link_to wishlist_product_path(wishlist_product), method: :delete, remote: :true, class: 'no-decoration' do %>
               <i class="<%= current_user.wishlist.products.include?(wishlist_product.product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
             <% end %>

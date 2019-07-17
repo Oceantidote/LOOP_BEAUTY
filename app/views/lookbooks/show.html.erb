@@ -44,7 +44,7 @@
 <div class="featured-products-wrapper">
   <div class="featured-products-header lookbook-max-width">
     <div class="tutorial-spacer" style="width: 150px;">
-      <%= link_to 'Add all to bag', add_to_bag_user_lookbook_path([@user, @lookbook]), method: :post, remote: true %>
+      <%= link_to 'Add all to bag', add_to_bag_user_lookbook_path([@user, @lookbook]), method: :post, remote: true, class: "add-all-to-bag" %>
     </div>
     <h2 class="insider-info-title text-center">Shop the look</h2>
     <div class="tutorial-spacer text-right" style="width: 150px;">
@@ -52,9 +52,12 @@
     </div>
   </div>
   <div class="max-width">
-    <div class="row row-style">
-      <% @lookbook.products.first(4).each do |product| %>
-        <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
+    <% if @lookbook.products.count > 4 %>
+      <p class="shop-look-text text-center">Scroll across to see more products</p>
+    <% end %>
+    <div class="row row-style" style="flex-wrap: nowrap; overflow: scroll;">
+      <% @lookbook.products.each do |product| %>
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
           <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
@@ -71,9 +74,9 @@
     </div>
   </div>
   <div class="max-width">
-    <div class="row row-style">
+    <div class="row row-style" style="flex-wrap: nowrap; overflow: scroll;">
       <% @all_lookbooks.sample(4).each do |lookbook| %>
-        <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3">
           <%= link_to lookbook_path(lookbook, user_id: lookbook.user.id), class: "lookbook-small-card-link card-link" do %>
             <div class="lookbook-small-card">
               <div class="lookbook-card-small-image">
@@ -91,3 +94,17 @@
   </div>
   <%= link_to 'See more looks', '#', class: "mobile-tutorials-link" %>
 </div>
+
+<script>
+  itemAdded = document.querySelector('.item-added');
+  addToBag = document.querySelector('.add-all-to-bag');
+
+  addToBag.addEventListener('click', function() {
+    itemAdded.classList.add('item-added-show');
+    // basketIcon.style.animation = 'basket-bounce 2s ease'
+    // setTimeout(() => basketIcon.style.animation = '', 2000)
+    setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
+    setTimeout(() => addToBag.disabled = true, 100)
+    setTimeout(() => addToBag.disabled = false, 4000)
+  });
+</script>
