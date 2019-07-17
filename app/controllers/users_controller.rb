@@ -36,11 +36,14 @@ class UsersController < ApplicationController
 
   def uploads
     @pending = current_user.tutorials.where(status: 'pending').to_a
-    @pending + current_user.lookbooks.where(status: 'pending').to_a
+    @pending = @pending + current_user.lookbooks.where(status: 'pending').to_a
+    @pending = @pending.sort_by { |content| content.updated_at.to_i * -1 }
     @rejected = current_user.tutorials.where(status: 'rejected').to_a
-    @pending + current_user.lookbooks.where(status: 'rejected').to_a
+    @rejected = @rejected + current_user.lookbooks.where(status: 'rejected').to_a
+    @rejected = @rejected.sort_by { |content| content.updated_at.to_i * -1 }
     @approved = current_user.tutorials.where(status: 'approved').to_a
-    @pending + current_user.lookbooks.where(status: 'approved').to_a
+    @approved = @approved + current_user.lookbooks.where(status: 'approved').to_a
+    @approved = @approved.sort_by { |content| content.updated_at.to_i * -1 }
   end
 
   def update
