@@ -22,6 +22,8 @@ gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 gem 'mini_magick'
 gem 'trix'
 gem 'stripe'
+gem 'country_select'
+gem 'gibbon'
 # gem 'image_processing', '~> 1.2'
 
 

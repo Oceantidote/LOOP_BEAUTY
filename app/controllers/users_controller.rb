@@ -35,25 +35,14 @@ class UsersController < ApplicationController
   end
 
   def uploads
-    # @pending = current_user.tutorials.where(status: 'pending').to_a
-    # @pending + current_user.lookbooks.where(status: 'pending').to_a
-    # @rejected = current_user.tutorials.where(status: 'rejected').to_a
-    # @rejected + current_user.lookbooks.where(status: 'rejected').to_a
-    # @approved = current_user.tutorials.where(status: 'approved').to_a
-    # @approved + current_user.lookbooks.where(status: 'approved').to_a
-
-    @pending = current_user.tutorials.where(status: 'pending').to_a
-    current_user.lookbooks.where(status: 'pending').to_a.each do |lookbook|
-      @pending << lookbook
-    end
+    @pending = @pending + current_user.lookbooks.where(status: 'pending').to_a
+    @pending = @pending.sort_by { |content| content.updated_at.to_i * -1 }
     @rejected = current_user.tutorials.where(status: 'rejected').to_a
-    current_user.lookbooks.where(status: 'rejected').to_a.each do |lookbook|
-      @rejected << lookbook
-    end
+    @rejected = @rejected + current_user.lookbooks.where(status: 'rejected').to_a
+    @rejected = @rejected.sort_by { |content| content.updated_at.to_i * -1 }
     @approved = current_user.tutorials.where(status: 'approved').to_a
-    current_user.lookbooks.where(status: 'approved').to_a.each do |lookbook|
-      @approved << lookbook
-    end
+    @approved = @approved + current_user.lookbooks.where(status: 'approved').to_a
+    @approved = @approved.sort_by { |content| content.updated_at.to_i * -1 }
   end
 
   def update
@@ -80,6 +69,15 @@ class UsersController < ApplicationController
     else
       flash[:error] = 'Password was incorrect'
       render :account_details
+    end
+  end
+
+  def newsletter
+    authorize current_user
+    current_user.update(newsletter: params[:user][:newsletter])
+    respond_to do |format|
+      format.js
+      format.html { redirect_to user_preference_centre_path(current_user), notice: params[:user][:newsletter] == '1' ? 'Subscribed' : 'Unsubscribed' }
     end
   end
 

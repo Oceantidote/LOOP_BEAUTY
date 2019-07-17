@@ -38,8 +38,7 @@ class User < ApplicationRecord
   validates_with MyValidator
   include FriendlyId
   validates :first_name, :last_name, presence: true
-  validates :password, format: { with: /\S*([A-Z]+\S*(\d|[^\w\s])+|(\d|[^\w\s])+\S*[A-Z]+)\S*/,
-                                 message: 'must contain one capital letter and one non-letter character' }
+  validate :password_complexity
   friendly_id :instagram, use: :slugged
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -64,7 +63,7 @@ class User < ApplicationRecord
   has_one :wishlist, dependent: :destroy
   has_many :wishlist_products, through: :wishlist
   # WISHLIST TEST
-  before_save :set_referral_code
+  before_save :set_referral_code, :check_newsletter
 
   def admin?
     admin
@@ -92,6 +91,12 @@ class User < ApplicationRecord
 
   private
 
+  def password_complexity
+    if password.present? and not password.match(/\S*([A-Z]+\S*(\d|[^\w\s])+|(\d|[^\w\s])+\S*[A-Z]+)\S*/)
+      errors.add :password, 'must contain one capital letter and one non-letter character'
+    end
+  end
+
   def set_referral_code
     if referral_code.nil?
       code = "#{first_name.downcase}#{[*0..9].sample(4).join('')}"
@@ -101,6 +106,54 @@ class User < ApplicationRecord
         self.referral_code = code
         DiscountCode.create(code: code, discount: 15)
       end
+    end
+  end
+
+  def check_newsletter
+    return
+    # list_id = "I need a list id"
+    # gibbon = Gibbon::Request.new
+    # results = gibbon.lists(list_id).members.retrieve(params: {email: email})
+    # # Need to check what results actually comes back as
+    # if newsletter && results.length < 1
+    #   newsletter_subscribe(gibbon, list_id)
+    # elsif newsletter && results.length >= 1
+    #   newsletter_resubscribe(gibbon, list_id)
+    # elsif !newsletter && results.length >= 1
+    #   newsletter_unsubscribe(gibbon, list_id)
+    # end
+  end
+
+  def newsletter_subscribe(client, id)
+    begin
+      client.lists(id).members.create({
+        body: {
+          email: email,
+          status: 'subscribed',
+          merge_fields: {
+            FNAME: first_name,
+            LNAME: last_name
+          }
+        }
+      })
+    rescue Gibbon::MailChimpError => e
+      puts "HEEEEEEEEEEEEEEEEEEEEEEEEELP!!!!!"
+    end
+  end
+
+  def newsletter_unsubscribe(client, id)
+    begin
+      client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "unsubscribed"})
+    rescue Gibbon::MailChimpError => e
+      puts "HEEEEEEEEEEEEEEEEEEEEEEEEELP!!!!!"
+    end
+  end
+
+  def newsletter_resubscribe(client, id)
+    begin
+      client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "subscribed"})
+    rescue Gibbon::MailChimpError => e
+      puts "HEEEEEEEEEEEEEEEEEEEEEEEEELP!!!!!"
     end
   end
 end
