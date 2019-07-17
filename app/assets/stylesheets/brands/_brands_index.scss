@@ -51,3 +51,10 @@
     text-decoration: none;
   }
 }
+
+.brands-row {
+  width: 80%;
+  @include for-phone-only {
+    width: 95%;
+  }
+}

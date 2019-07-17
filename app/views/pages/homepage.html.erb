@@ -43,9 +43,9 @@
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
-    <div class="row">
+    <div class="row-carousel">
       <% @insider_articles.each do |article| %>
-        <div class="col-sm-12 col-md-4" style="padding: 0 10px;">
+        <div class="col-12 col-sm-12 col-md-4" style="padding: 0 10px;">
           <%= link_to insider_article_path(article), class: "card-link insider-info-card-link" do %>
             <div class="insider-info-cards">
               <div class="insider-info-left">
@@ -69,7 +69,7 @@
   <div class="latest-videos-wrapper">
     <div class="latest-videos-container lookbook-max-width">
       <h2 class="insider-info-title text-center">Latest Videos</h2>
-      <div class="row" style="margin: 30px 0;">
+      <div class="row-carousel" style="margin: 30px 0;">
         <% @tutorials.each do |tutorial| %>
           <%= render 'shared/tutorials_card', tutorial: tutorial %>
         <% end %>

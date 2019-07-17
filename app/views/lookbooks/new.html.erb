@@ -6,13 +6,24 @@
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Share Lookbook</h2>
       <hr>
-      <%= simple_form_for @lookbook do |f| %>
-        <%= f.input :title %>
-        <%= f.input :photo %>
-        <%= f.input :description %>
-        <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
-        <%= f.submit %>
-      <% end %>
+      <div class="dash-upload-content-container">
+        <%= simple_form_for @lookbook do |f| %>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Title</p>
+            <%= f.input :title, label: false, input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Photo</p>
+            <%= f.input :photo, label: false %>
+          </div>
+          <%= f.input :description %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right no-margin">Products</p>
+            <%= f.input :product_ids, label: false, collection: Product.all, input_html: { multiple: true } %>
+          </div>
+          <%= f.submit 'SHARE LOOKBOOK', class: 'primary-button personal-details-button small-text' %>
+        <% end %>
+      </div>
     </div>
 
   </div>

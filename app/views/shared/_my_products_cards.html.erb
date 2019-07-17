@@ -8,14 +8,14 @@
         <div class="my-products-image">
           <%= image_tag url_for(product.shades.first.photos.first) %>
         </div>
-        <div class="my-products-details text-center">
+        <div class="my-products-details text-center no-margin">
           <p><%= product.title %></p>
         </div>
-        <div class="my-products-price text-center">
+        <div class="my-products-price text-center boldest no-margin">
           <%= humanized_money_with_symbol(product.price) %>
         </div>
         <div class="my-products-purchase">
-          <%= link_to 'Add to bag', my_product_product_path(product), remote: true, method: :post, class: "my-products-button" %>
+          <%= link_to 'Add to bag', my_product_product_path(product), remote: true, method: :post, class: "my-products-button add-to-bag-grey" %>
           <% if user_signed_in? && current_user.wishlist %>
             <% if Wishlist.where(user: current_user).first.products.include?(product) %>
               <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
