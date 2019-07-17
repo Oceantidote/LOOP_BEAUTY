@@ -73,6 +73,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def newsletter
+    authorize current_user
+    current_user.update(newsletter: params[:user][:newsletter])
+    respond_to do |format|
+      format.js
+      format.html { redirect_to user_preference_centre_path(current_user), notice: params[:user][:newsletter] == '1' ? 'Subscribed' : 'Unsubscribed' }
+    end
+  end
+
   def dashboard
   end
 

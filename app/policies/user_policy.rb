@@ -74,4 +74,8 @@ class UserPolicy < ApplicationPolicy
     dashboard?
   end
 
+  def newsletter?
+    dashboard?
+  end
+
 end
