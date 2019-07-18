@@ -1,5 +1,5 @@
 <div class="tutorial-show-title-content">
-  <% if request.referrer.include?('videos') %>
+  <% if request&.referrer&.include?('videos') %>
     <%= link_to 'See all tutorials', videos_path, class: "web-tutorials-link" %>
   <% else %>
     <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
@@ -23,7 +23,11 @@
     <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80 %>
   </div>
 </div>
-<%= link_to 'See all tutorials', influencer_video_path, class: "mobile-tutorials-link" %>
+<% if request&.referrer&.include?('videos') %>
+  <%= link_to 'See all tutorials', videos_path, class: "mobile-tutorials-link" %>
+<% else %>
+  <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "mobile-tutorials-link" %>
+<% end %>
 
 <div class="featured-products-wrapper">
   <div class="featured-products-header max-width">
@@ -31,7 +35,7 @@
     <h2 class="insider-info-title text-center">Featured Products</h2>
     <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
   </div>
-  <div class="container">
+  <div class="max-width">
     <div class="row-carousel">
       <% @tutorial.products.first(4).each do |product| %>
         <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
@@ -46,9 +50,9 @@
   <div class="similar-tutorials-header max-width">
     <div class="tutorial-spacer" style="width: 150px;"></div>
     <h2 class="insider-info-title text-center">You'll also love</h2>
-    <%= link_to 'View more tutorials', '#', class: "web-tutorials-link" %>
+    <%= link_to 'View more tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
   </div>
-  <div class="container">
+  <div class="max-width">
     <div class="row-carousel">
       <% @tutorials.sample(4).each do |tutorial| %>
         <div class="col-12 col-md-6 col-lg-3">
@@ -67,7 +71,7 @@
       <% end %>
     </div>
   </div>
-  <%= link_to 'View more tutorials', '#', class: "mobile-tutorials-link" %>
+  <%= link_to 'View more tutorials', user_tutorials_path(@tutorial.user), class: "mobile-tutorials-link" %>
 </div>
 
 <% if current_user&.admin? && @tutorial.status == "pending" || @tutorial.status == "rejected" %>

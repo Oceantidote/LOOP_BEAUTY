@@ -12,7 +12,7 @@
       <%= image_tag url_for(@previous_lookbook.photo), class: "main-lookbook-card-image" %>
     </div>
     <div class="main-lookbook-card-text">
-      <p class="didot">An extraterrestrial glow. I recommend this to everyone. Lorem ipsum di amet.</p>
+      <p class="didot"><%= @previous_lookbook.description %></p>
     </div>
   </div>
   <div class="main-card-container">
@@ -24,20 +24,19 @@
           <%= image_tag url_for(@lookbook.photo), class: "main-lookbook-card-image" %>
       </div>
       <div class="main-lookbook-card-text">
-        <p class="didot">An extraterrestrial glow. I recommend this to everyone. Lorem ipsum di amet.</p>
+        <p class="didot"><%= @lookbook.description %></p>
       </div>
     </div>
     <%= link_to lookbook_path(@next_lookbook, user_id: @next_lookbook.user.id) do %>
       <%= image_tag 'next.png', class: "lookbook-previous-next-buttons" %>
     <% end %>
-
   </div>
   <div class="main-lookbook-card lookbook-card-opacity right-lookbook-card">
     <div class="main-lookbook-card-image-container">
       <%= image_tag url_for(@next_lookbook.photo), class: "main-lookbook-card-image" %>
     </div>
     <div class="main-lookbook-card-text">
-      <p class="didot">An extraterrestrial glow. I recommend this to everyone. Lorem ipsum di amet.</p>
+      <p class="didot"><%= @next_lookbook.description %></p>
     </div>
   </div>
 </div>
