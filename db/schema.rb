@@ -360,10 +360,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_132923) do
     t.date "dob"
     t.string "slug"
     t.boolean "admin", default: false
-    t.string "avatar_photo"
-    t.string "cover_photo"
     t.text "description"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.string "stripe_id"
     t.string "referral_code"
     t.index ["email"], name: "index_users_on_email", unique: true
