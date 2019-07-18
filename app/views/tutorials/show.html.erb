@@ -1,5 +1,9 @@
 <div class="tutorial-show-title-content">
-  <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
+  <% if request.referrer.include?('videos') %>
+    <%= link_to 'See all tutorials', videos_path, class: "web-tutorials-link" %>
+  <% else %>
+    <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
+  <% end %>
   <h2 class="insider-info-title text-center"><%= @tutorial.title %></h2>
   <div class="previous-next-tutorial">
     <div class="previous">
@@ -74,7 +78,6 @@
     <%= f.submit "Reject" %>
   <% end %>
 <% end %>
-
 <script>
   videoOverlay = document.querySelector('.video-overlay');
   video = document.getElementById('tutorial-show-video');

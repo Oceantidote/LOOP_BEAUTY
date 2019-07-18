@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # TEMP ROUTES FOR INSIDER
   get '/videos', to: 'pages#videos'
   get '/influencer_video', to: 'pages#influencer_video'
+  get '/all_videos', to: 'tutorials#all_videos'
   get '/about_us', to: 'pages#about_us', as: :about_us
   get '/careers', to: 'pages#careers', as: :careers
   get '/frequently_asked_questions', to: 'pages#frequently_asked_questions'

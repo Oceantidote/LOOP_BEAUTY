@@ -5,6 +5,10 @@ class TutorialPolicy < ApplicationPolicy
     end
   end
 
+  def all_videos?
+    true
+  end
+
   def new?
     user.influencer?
   end
