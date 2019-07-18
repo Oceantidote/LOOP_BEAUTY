@@ -110,25 +110,27 @@ class User < ApplicationRecord
   end
 
   def check_newsletter
-    return
-    # list_id = "I need a list id"
-    # gibbon = Gibbon::Request.new
-    # results = gibbon.lists(list_id).members.retrieve(params: {email: email})
-    # # Need to check what results actually comes back as
-    # if newsletter && results.length < 1
-    #   newsletter_subscribe(gibbon, list_id)
-    # elsif newsletter && results.length >= 1
-    #   newsletter_resubscribe(gibbon, list_id)
-    # elsif !newsletter && results.length >= 1
-    #   newsletter_unsubscribe(gibbon, list_id)
-    # end
+    return unless valid?
+    list_id = ENV['MAILCHIMP_LIST_ID']
+    gibbon = Gibbon::Request.new(symbolize_keys: true)
+    member = gibbon.lists(list_id).members(Digest::MD5.hexdigest(email))
+    begin
+      status = member.retrieve.body[:status]
+      if status == 'subscribed' && !newsletter
+        newsletter_unsubscribe(gibbon, list_id)
+      elsif status == 'unsubscribed' && newsletter
+        newsletter_resubscribe(gibbon, list_id)
+      end
+    rescue Gibbon::MailChimpError => e
+      newsletter_subscribe(gibbon, list_id) if e.body[:status] == 404 && newsletter
+    end
   end
 
   def newsletter_subscribe(client, id)
     begin
       client.lists(id).members.create({
         body: {
-          email: email,
+          email_address: email,
           status: 'subscribed',
           merge_fields: {
             FNAME: first_name,
@@ -136,24 +138,24 @@ class User < ApplicationRecord
           }
         }
       })
-    rescue Gibbon::MailChimpError => e
-      puts "HEEEEEEEEEEEEEEEEEEEEEEEEELP!!!!!"
+    rescue Gibbon::MailChimpError
+      flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
 
   def newsletter_unsubscribe(client, id)
     begin
       client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "unsubscribed"})
-    rescue Gibbon::MailChimpError => e
-      puts "HEEEEEEEEEEEEEEEEEEEEEEEEELP!!!!!"
+    rescue Gibbon::MailChimpError
+      flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
 
   def newsletter_resubscribe(client, id)
     begin
       client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "subscribed"})
-    rescue Gibbon::MailChimpError => e
-      puts "HEEEEEEEEEEEEEEEEEEEEEEEEELP!!!!!"
+    rescue Gibbon::MailChimpError
+      flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
 end
