@@ -17,13 +17,16 @@
                         required: true,
                         label: false,
                         placeholder: "Last name",
-                        autofocus: true,
                         input_html: { autocomplete: "last_name" }%>
             <%= f.input :email,
                         required: true,
                         label: false,
                         placeholder: "Email address",
-                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :country,
+                        required: true,
+                        label: false,
+                        prompt: "Country",
                         input_html: { autocomplete: "email" } %>
             <%= f.input :password,
                         label: false,
@@ -40,9 +43,11 @@
       </div>
       <div class="sign-up-extras-container">
           <h6>How did you hear about us?</h6>
+          <%= f.input :origin, label: false, collection: ["Lenny", "Gonzalo"], include_blank: false %>
           <h6>Find out about the latest offers, new products and beauty news.</h6>
-
+          <%= f.input :newsletter, label: false %>
           <h6 class="grey-font">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
+          <%= f.input :accepts_terms, label: false %>
           <div class="form-actions">
             <%= f.button :submit, "SUBMIT", class: "primary-button" %>
           </div>

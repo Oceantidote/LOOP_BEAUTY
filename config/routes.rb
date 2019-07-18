@@ -63,11 +63,14 @@ Rails.application.routes.draw do
     get 'account_details', to: 'users#account_details'
     get 'preference_centre', to: 'users#preference_centre'
     patch 'change_password', to: 'users#change_password'
+    patch 'newsletter', to: 'users#newsletter'
   end
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   namespace :admin do
+    get 'change_banner', to: 'banners#change_banner'
+    post 'change_banner', to: 'banners#change'
     resources :lookbooks, only: [:index] do
       member do
         patch '/approve', to: 'lookbooks#approve'

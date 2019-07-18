@@ -16,6 +16,7 @@
             <p class="boldest muli s-medium-text text-right no-margin">Photo</p>
             <%= f.input :photo, label: false %>
           </div>
+          <%= f.input :description %>
           <div class="personal-details-input align-items-start">
             <p class="boldest muli s-medium-text text-right no-margin">Products</p>
             <%= f.input :product_ids, label: false, collection: Product.all, input_html: { multiple: true } %>

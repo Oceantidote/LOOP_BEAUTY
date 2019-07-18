@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_091651) do
+ActiveRecord::Schema.define(version: 2019_07_18_101158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(version: 2019_07_16_091651) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "basket_products", force: :cascade do |t|
@@ -185,6 +190,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_091651) do
     t.string "slug"
     t.text "rejection_message"
     t.string "affiliate_code"
+    t.text "description"
     t.index ["affiliate_code"], name: "index_lookbooks_on_affiliate_code"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
   end

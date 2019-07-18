@@ -10,6 +10,9 @@
         <h5 class="text-center">Control how you want to hear from us and how we use your data</h5>
         <p class="boldest">Email: Newsletter</p>
         <p>We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
+        <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
+          <%= f.input :newsletter, label: false %>
+        <% end %>
       </div>
         <hr>
         <div class="preference-terms">
