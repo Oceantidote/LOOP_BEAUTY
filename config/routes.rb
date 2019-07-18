@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   namespace :admin do
+    get 'change_banner', to: 'banners#change_banner'
+    post 'change_banner', to: 'banners#change'
     resources :lookbooks, only: [:index] do
       member do
         patch '/approve', to: 'lookbooks#approve'
