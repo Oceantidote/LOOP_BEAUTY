@@ -2,8 +2,8 @@
   <div class="shopping-bag-card-content">
     <%= image_tag url_for(item.shade.photos.first), class: 'shopping-bag-card-image' %>
     <div class="shopping-bag-card-title">
-      <p class="small-text boldest no-margin shopping-bag-card-title"><%= item.product.title %></p>
-      <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text underline grey-font boldest text-right shopping-bag-card-title" %>
+      <p class="small-text boldest no-margin"><%= item.product.title %></p>
+      <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text underline grey-font boldest text-right" %>
     </div>
     <p class="small-text boldest text-right shopping-bag-card-price"><%= humanized_money_with_symbol(item.product.price) %></p>
     <span class="item-form-<%= item.id %>" style="display: contents;">

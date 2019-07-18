@@ -13,19 +13,24 @@
   <div class="products-index-container">
     <div class="partial-filters-two">
       <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
-        <div class="partial-filters">
-          <div class="partial-filters_collection">
-            <h6>Category</h6>
-            <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
-            <%= f.input :category, collection: Category.product_filter_labels_and_values(products), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:category] : [], value_method: :first, label_method: :last %>
+        <div class="partial-filters-container ">
+          <div class="mobile-filters">
+            <p class="boldest no-margin">Filter</p>
           </div>
-          <% unless params[:controller] == 'brands' %>
+          <div class="partial-filters">
             <div class="partial-filters_collection">
-              <h6>Brand</h6>
-              <%#= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
-              <%= f.input :brand, collection: Brand.product_filter_labels_and_values(products), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
+              <h6>Category</h6>
+              <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
+              <%= f.input :category, collection: Category.product_filter_labels_and_values(products), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:category] : [], value_method: :first, label_method: :last %>
             </div>
-          <% end %>
+            <% unless params[:controller] == 'brands' %>
+              <div class="partial-filters_collection">
+                <h6>Brand</h6>
+                <%#= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
+                <%= f.input :brand, collection: Brand.product_filter_labels_and_values(products), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
         <!--   <div class="partial-products">
@@ -51,7 +56,7 @@
             </div> -->
         <div class="row" style="flex: 1; margin: 0;">
           <% products.each do |product| %>
-            <div class="col-xs-12 col-sm-6 col-md-4 d-flex justify-content-center" style="padding: 5px;">
+            <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center" style="padding: 5px;">
               <%= render 'shared/product_cards', product: product %>
             </div>
           <% end %>
