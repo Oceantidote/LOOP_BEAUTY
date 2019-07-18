@@ -1,7 +1,7 @@
 <div class="partial-banner" style="background-image: url(<%= Banner.any? ? url_for(Banner.first.photo) : 'https://images.pexels.com/photos/1377034/pexels-photo-1377034.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260' %>;)">
     <!-- IMAGE HERE -->
 </div>
-<% if policy([:admin, Banner.new]).change_banner? %>
+<% if current_user&.admin %>
   <%= link_to 'Change Banner', admin_change_banner_path %>
 <% end %>
 
