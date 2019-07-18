@@ -48,16 +48,16 @@
       <div class="share-articles-links">
         <h6>Share</h6>
         <div class="articles-link-icons">
-          <%= link_to '#' do %>
+          <%= link_to "http://www.facebook.com/sharer/sharer.php?u=#{insider_article_url(@insider_article)}&t=#{@insider_article.title}", target: "_blank" do %>
             <i class="fab fa-facebook-f"></i>
           <% end %>
-          <%= link_to '#' do %>
+          <%= link_to "https://twitter.com/intent/tweet?text=#{@insider_article.title}&url=#{insider_article_url(@insider_article)}", target: "_blank" do %>
             <i class="fab fa-twitter"></i>
           <% end %>
-          <%= link_to '#' do %>
+          <%= link_to "http://pinterest.com/pin/create/button/?url=#{insider_article_url(@insider_article)}&media=#{url_for(@insider_article.cover_photo)}&description=#{@insider_article.title}", target: "_blank" do %>
             <i class="fab fa-pinterest-p"></i>
           <% end %>
-          <%= link_to '#' do %>
+          <%= mail_to '', subject: @insider_article.title, body: insider_article_url(@insider_article) do %>
             <i class="far fa-envelope"></i>
           <% end %>
         </div>
