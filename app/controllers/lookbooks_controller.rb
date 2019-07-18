@@ -109,6 +109,6 @@ class LookbooksController < ApplicationController
   end
 
   def lookbook_params
-    params.require(:lookbook).permit(:title, :photo, :rejection_message, product_ids: [])
+    params.require(:lookbook).permit(:title, :photo, :rejection_message, :description, product_ids: [])
   end
 end

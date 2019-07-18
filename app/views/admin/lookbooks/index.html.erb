@@ -1,5 +1,12 @@
-<% @lookbooks.each do |lookbook| %>
-  <p><%= lookbook.title %></p>
-  <%= link_to 'Approve', approve_admin_lookbook_path(lookbook), method: :patch %>
-  <%= link_to 'Reject', reject_admin_lookbook_path(lookbook), method: :patch %>
-<% end %>
+<div class="latest-videos-wrapper">
+  <h2 class="insider-info-title text-center">Pending Approval</h2>
+  <div class="row" style="margin: 30px 0;">
+    <% @lookbooks.each do |lookbook| %>
+    <div class="">
+      <%= render 'shared/upload_cards', item: lookbook %>
+      <%= link_to 'Approve', approve_admin_lookbook_path(lookbook), method: :patch %>
+      <%= link_to 'Reject', reject_admin_lookbook_path(lookbook), method: :patch %>
+    </div>
+    <% end %>
+  </div>
+</div>
