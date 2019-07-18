@@ -73,10 +73,10 @@
       <div class="share-section">
         <h6 class="small-text">Share</h6>
         <div class="articles-link-icons">
-          <%= link_to '#' do %>
+          <%= link_to "http://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}&t=#{@product.title}", target: "_blank" do %>
             <i class="fab fa-facebook-f"></i>
           <% end %>
-          <%= link_to '#' do %>
+          <%= link_to "https://twitter.com/intent/tweet?text=#{@product.title}&url=#{product_url(@product)}", target: "_blank" do %>
             <i class="fab fa-twitter"></i>
           <% end %>
         </div>
