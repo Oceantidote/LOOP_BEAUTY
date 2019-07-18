@@ -1,5 +1,5 @@
 class TutorialsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index, :all_videos]
   before_action :set_tutorial, only: [:edit, :update, :destroy, :show]
 
   def index
@@ -7,6 +7,20 @@ class TutorialsController < ApplicationController
     @tutorials = policy_scope(Tutorial).where(user: @user)
     @sort_method = params[:sort].present? ? params[:sort][:sort_method] : 'created_at,desc'
     @tutorials = @tutorials.filter_sort(*@sort_method.split(','))
+  end
+
+  def all_videos
+    if params[:link] == 'all'
+      @videos = Tutorial.all
+      @title = 'All Videos'
+    elsif params[:link] == 'toturial'
+      @videos = Tutorial.where(category: 'tutorial')
+      @title = 'Tutorials'
+    elsif params[:link] = 'Ask the expert'
+      @videos = Tutorial.where(category: 'ask the expert')
+      @title = 'Ask the experts'
+    end
+    authorize @videos
   end
 
   def show

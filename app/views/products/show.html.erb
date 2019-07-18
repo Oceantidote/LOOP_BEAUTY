@@ -87,12 +87,12 @@
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
   <div class="insider-review-container">
-    <div class="row">
+    <div class="row-carousel">
       <% if @product.insider_reviews.count == 0 %>
         <p class="text-center medium-margin width-100">There are no insider reviews yet</p>
       <% end %>
       <% @product.insider_reviews.sample(3).each do |review| %>
-        <div class="col-sm-12 col-md-4">
+        <div class="col-12 col-md-4">
           <div class="insider-review-cards">
             <div class="insider-review-left">
               <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
@@ -116,9 +116,9 @@
     <h2 class="insider-info-title text-center">Recommended Products</h2>
   </div>
   <div class="container">
-    <div class="row">
+    <div class="row-carousel">
       <% Product.all.sample(4).each do |product| %>
-        <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
+        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
           <div class="card-image-results">
             <div class="card">
               <%= link_to product_path(product) do %>
@@ -148,12 +148,12 @@
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
   <div class="insider-review-container">
-    <div class="row">
+    <div class="row-carousel">
       <% if @product.customer_reviews.count == 0 %>
         <p class="text-center medium-margin width-100">There are no customer reviews yet</p>
       <% end %>
       <% @product.customer_reviews.sample(6).each do |review| %>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-12 col-md-6">
           <div class="customer-review-cards">
             <div class="customer-review-left">
               <h6><%= review.user.first_name.capitalize %></h6>

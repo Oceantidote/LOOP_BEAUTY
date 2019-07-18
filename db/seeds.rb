@@ -906,6 +906,7 @@ esther_tutorial = Tutorial.create!(
                                       user: esther,
                                       status: "approved",
                                       title: "Make Up Tips",
+                                      category: 'ask the expert'
                                       )
 
 esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
@@ -917,6 +918,7 @@ breeny_tutorial = Tutorial.create!(
                                       user: breeny,
                                       status: "approved",
                                       title: "Best Ways To Apply Foundation",
+                                      category: 'tutorial'
                                       )
 
 breeny_video_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
@@ -929,6 +931,7 @@ nikki_tutorial = Tutorial.create!(
                                       user: nikki,
                                       status: "approved",
                                       title: "My Top Tips",
+                                      category: 'ask the expert'
                                       )
 
 nikki_video_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
@@ -941,6 +944,7 @@ shantania_tutorial = Tutorial.create!(
                                       user: shantania,
                                       status: "approved",
                                       title: "My Favourite Blushers",
+                                      category: 'tutorial'
                                       )
 
 shantania_video_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
@@ -953,6 +957,7 @@ bemi_tutorial = Tutorial.create!(
                                       user: bemi,
                                       status: "approved",
                                       title: "Golden Hour Skin Tutorial",
+                                      category: 'tutorial'
                                       )
 
 bemi_video_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
@@ -965,6 +970,7 @@ ropo_tutorial = Tutorial.create!(
                                       user: ropo,
                                       status: "approved",
                                       title: "Drugstore Prom Make Up Tutorial",
+                                      category: 'tutorial'
                                       )
 
 ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
@@ -1218,7 +1224,7 @@ puts "Creating customer reviews"
 
 CustomerReview.create!(
                       user: customers.sample,
-                      rating: [1, 2, 3, 4, 5].sample,
+                      rating: [3, 4, 5].sample,
                       product: Product.all.sample,
                       review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
                       )
@@ -1233,7 +1239,7 @@ puts "Creating insider reviews"
 
 InsiderReview.create!(
                       user: insiders.sample,
-                      rating: [1, 2, 3, 4, 5].sample,
+                      rating: [3, 4, 5].sample,
                       product: Product.all.sample,
                       review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
                       )

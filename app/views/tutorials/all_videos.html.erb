@@ -1,0 +1,23 @@
+<div class="tutorials-index-wrapper">
+    <h2 class="insider-info-title text-center influencer-videos-title-mobile"><%= @title %></h2>
+  <div class="influencer-videos-title-section">
+    <div class="filters-container">
+      <p class="no-margin small-text boldest">Sort By: Newest</p>
+    </div>
+    <%#= simple_form_for :sort, url: user_tutorials_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
+      <%#= f.input :sort_method, collection: [['Newest', 'created_at,desc'], ['Old', 'created_at,asc']], label: false, required: false, selected: @sort_method, input_html: { class: "filters-container boldest s-medium-text" } %>
+    <%# end %>
+    <h2 class="insider-info-title text-center influencer-videos-title-web"><%= @title %></h2>
+    <div class="filters-container">
+      <p class="no-margin small-text boldest">Filter by: tutorials</p>
+    </div>
+  </div>
+
+  <div class="max-width">
+    <div class="row-carousel" style="margin: 30px auto 0 auto;">
+      <% @videos.each do |video| %>
+        <%= render 'shared/tutorials_card', tutorial: video %>
+      <% end %>
+    </div>
+  </div>
+</div>
