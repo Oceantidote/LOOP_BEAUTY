@@ -1,5 +1,6 @@
 containers = document.querySelectorAll('.item-<%= @item.id %>')
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
+document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.total_price %>'
 document.querySelector('.navbar-basket-title > h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %>'
 if (<%= @basket.empty? %>) {

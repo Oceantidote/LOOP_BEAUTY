@@ -2,9 +2,9 @@
   <div class="product-details">
     <div class="product-image-container">
       <div class="product-carousel">
-        <% @product.shades.each do |shade| %>
+        <% @product.shades.first.photos.first(4).each do |shade_photo| %>
           <div class="product-shade-image">
-            <%= image_tag(url_for(shade.photos.first), onclick: "myFunction(this);", class: "item-image-thumbnail")  %>
+            <%= image_tag(url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail")  %>
           </div>
         <% end %>
       </div>
@@ -17,15 +17,15 @@
       <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
       <h5><%= @product.title %></h5>
       <hr>
-      <p><strong>Title of shade</strong></p>
+      <p class="product-shade-title small-margin-bottom"><strong><%= @product.shades.first.name %></strong></p>
       <% colors = ['https://media.istockphoto.com/photos/green-cosmetic-clay-powder-texture-close-up-selective-focus-abstract-picture-id884603174', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS78bHnt2gbcBbyeTBBqVde3suKnkxZMtWfj8R1-IIdsnUlcj2PDQ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81aMOdrVMLvvEWZUPHPdNyc1Vv-OPn-EUKC9dlJzJDnd900bprQ'] %>
       <% num = 3 %>
       <div class="shades-container">
         <div class="row" style="margin: 0; width: 100%;">
             <!-- <div class="product-shade-cards-holder"> -->
               <% @product.shades.each_with_index do |shade, i| %>
-                <div class="col-xs-3 col-sm-3" style="padding: 0 3px 0 0;">
-                  <div class="product-shade-card <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.first) %>)">
+                <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
+                  <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)">
                     <% if user_signed_in? && current_user.wishlist %>
                       <div class="shade-wishlist-heart shade-<%= shade.id %>">
                         <%= render 'shared/shade-wishlist', product: @product, shade: shade %>
@@ -179,17 +179,17 @@
 </div>
 <script>
 
-    function myFunction(imgs) {
-    // Get the expanded image
-    expandImg = document.getElementById("expandedImg");
-    // Get the image text
-    imgText = document.getElementById("imgtext");
-    // Use the same src in the expanded image as the image being clicked on from the grid
-    expandImg.src = imgs.src;
-    // Use the value of the alt attribute of the clickable image as text inside the expanded image
-    // imgText.innerHTML = imgs.alt;
-    // Show the container element (hidden with CSS)
-    // expandImg.parentElement.style.display = "block";
+  function myFunction(imgs) {
+  // Get the expanded image
+  expandImg = document.getElementById("expandedImg");
+  // Get the image text
+  imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  // imgText.innerHTML = imgs.alt;
+  // Show the container element (hidden with CSS)
+  // expandImg.parentElement.style.display = "block";
   }
 
   details = document.querySelector(".product-details-title");

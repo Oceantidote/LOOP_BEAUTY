@@ -30,6 +30,7 @@ gem 'gibbon'
 group :development do
   gem 'web-console', '>= 3.3.0'
   # gem 'hotloader'
+  gem 'bullet'
   gem 'letter_opener'
 end
 

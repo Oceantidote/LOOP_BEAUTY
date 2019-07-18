@@ -107,6 +107,9 @@ red_jerry.photos.attach(io: File.open(rj3) , filename: 'red_jerry3.jpg')
 rj4 = File.join(Rails.root,'app/assets/images/red_jerry4.jpg')
 red_jerry.photos.attach(io: File.open(rj4) , filename: 'red_jerry4.jpg')
 
+rj5 = File.join(Rails.root,'app/assets/images/red_jerry5.jpg')
+red_jerry.photos.attach(io: File.open(rj5) , filename: 'red_jerry5.jpg')
+
 pink_ross1 = File.join(Rails.root,'app/assets/images/pink_ross1.jpg')
 pink_ross.photos.attach(io: File.open(pink_ross1) , filename: 'pink_ross1.jpg')
 
@@ -119,6 +122,9 @@ pink_ross.photos.attach(io: File.open(pink_ross3) , filename: 'pink_ross3.jpg')
 pink_ross4 = File.join(Rails.root,'app/assets/images/pink_ross4.jpg')
 pink_ross.photos.attach(io: File.open(pink_ross4) , filename: 'pink_ross4.jpg')
 
+pink_ross5 = File.join(Rails.root,'app/assets/images/pink_ross5.jpg')
+pink_ross.photos.attach(io: File.open(pink_ross5) , filename: 'pink_ross5.jpg')
+
 nude_gaynor1 = File.join(Rails.root,'app/assets/images/nude_gaynor1.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor1) , filename: 'nude_gaynor1.jpg')
 
@@ -130,6 +136,9 @@ nude_gaynor.photos.attach(io: File.open(nude_gaynor3) , filename: 'nude_gaynor3.
 
 nude_gaynor4 = File.join(Rails.root,'app/assets/images/nude_gaynor4.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor4) , filename: 'nude_gaynor4.jpg')
+
+nude_gaynor5 = File.join(Rails.root,'app/assets/images/nude_gaynor5.jpg')
+nude_gaynor.photos.attach(io: File.open(nude_gaynor5) , filename: 'nude_gaynor5.jpg')
 
 v_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: vegan)
 long_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: longwearing)

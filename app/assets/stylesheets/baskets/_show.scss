@@ -29,6 +29,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include for-phone-only {
+    flex-direction: column;
+  }
 }
 
 .shopping-bag-card-image {
@@ -75,6 +78,13 @@
   margin: auto 0 auto auto !important;
 }
 
+.bag-checkout-button {
+  font-size: 12px !important;
+  height: 40px !important;
+  padding: 0 25px !important;
+  margin: auto 0 auto 10px !important;
+}
+
 .shopping-bag-continue-checkout {
   display: flex;
   flex-direction: column;
@@ -84,14 +94,23 @@
 .shopping-bag-card-title {
   flex: 1;
   padding: 0 10px;
+  @include for-phone-only {
+    @include absCenterColumn;
+  }
 }
 
 .shopping-bag-card-price {
   margin: 0 50px 0 0;
+  @include for-phone-only {
+    margin: 10px 0;
+  }
 }
 
 .shopping-bag-card-total {
   margin: 0 0 0 50px;
+  @include for-phone-only {
+    margin: 10px 0;
+  }
 }
 
 .powered-by-stripe {
