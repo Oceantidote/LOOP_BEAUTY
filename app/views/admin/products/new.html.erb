@@ -1,0 +1,14 @@
+<%= simple_form_for @product do |f| %>
+  <%= f.input :weight %>
+  <%= f.input :measurement %>
+  <%= f.input :title %>
+  <%= f.input :details %>
+  <%= f.input :lb_id %>
+  <%= f.input :category_id, collection: Category.all %>
+  <%= f.input :sub_category_id, collection: SubCategory.all %>
+  <%= f.input :brand_id, collection: Brand.all %>
+  <%= f.input :department_id, collection: Department.all %>
+  <%= f.input :price %>
+  <%= f.input :demoable %>
+  <%= f.submit %>
+<% end %>
