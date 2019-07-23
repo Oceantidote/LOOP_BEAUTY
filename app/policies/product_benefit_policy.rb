@@ -4,4 +4,12 @@ class ProductBenefitPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    user.admin?
+  end
+
+  def destroy?
+    user.admin?
+  end
 end

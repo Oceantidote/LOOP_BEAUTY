@@ -97,6 +97,12 @@ Rails.application.routes.draw do
         patch '/unpublish', to: 'influencers#unpublish'
       end
     end
+    resources :products, except: [:show] do
+      resources :product_benefits, only: [:create]
+      resources :shades, only: [:create]
+    end
+    resources :product_benefits, only: [:destroy]
+    resources :shades, only: [:update, :destroy]
   end
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
