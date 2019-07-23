@@ -1,48 +1,124 @@
-<h4><%= @product.title %></h4>
-
-<%= simple_form_for @product do |f| %>
-  <%= f.input :weight %>
-  <%= f.input :measurement %>
-  <%= f.input :title %>
-  <%= f.input :details %>
-  <%= f.input :lb_id %>
-  <%= f.input :category_id, collection: Category.all %>
-  <%= f.input :sub_category_id, collection: SubCategory.all %>
-  <%= f.input :brand_id, collection: Brand.all %>
-  <%= f.input :department_id, collection: Department.all %>
-  <%= f.input :price %>
-  <%= f.input :demoable %>
-  <%= f.submit %>
-<% end %>
-
-<h4>Shades</h4>
-<% @product.shades.each do |shade| %>
-    <%= simple_form_for [:admin, shade] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :sku %>
-        <%= f.input :photos %>
-        <%= f.submit %>
-    <% end %>
-    <%= link_to 'Destroy', admin_shade_path(shade), method: :delete %>
-<% end %>
-<h5>New Shade</h5>
-<%= simple_form_for [:admin, @product, Shade.new] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :sku %>
-    <%= f.input :photos %>
-    <%= f.submit %>
-<% end %>
-
-<h4>Benefits</h4>
-<% @product.product_benefits.each do |product_benefit| %>
-  <div>
-    <h6><%= product_benefit.benefit.name %></h6>
-    <%= link_to 'Destroy', admin_product_benefit_path(product_benefit), method: :delete %>
+<div class="admin-products-wrapper minimum-height">
+  <div class="admin-container" style="max-width: 800px;">
+    <h2 class="insider-info-title mlb-title text-center"><%= @product.title %></h2>
+    <hr>
+    <div class="admin-products-container">
+      <%= simple_form_for @product do |f| %>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Weight</p>
+          <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Measurement</p>
+          <%= f.input :measurement, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Title</p>
+          <%= f.input :title, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Details</p>
+          <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+          <%= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+          <%= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Sub category</p>
+          <%= f.input :sub_category_id, collection: SubCategory.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Brand</p>
+          <%= f.input :brand_id, collection: Brand.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Department</p>
+          <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Price</p>
+          <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin ">Demoable</p>
+          <%= f.input :demoable, label: false %>
+        </div>
+        <%= f.submit 'UPDATE PRODUCT', class: 'primary-button personal-details-button small-text' %>
+      <% end %>
+    </div>
   </div>
-<% end %>
-<h5>New Benefit</h5>
-<%= simple_form_for [:admin, @product, ProductBenefit.new] do |f| %>
-  <%= f.input :benefit_id, collection: Benefit.all %>
-  <%= f.submit %>
-<% end %>
+  <div class="admin-wrapper minimum-height">
+    <div class="admin-container" style="max-width: 800px;">
+      <h4 class="insider-info-title mlb-title text-center">Shades</h4>
+      <hr>
+      <div class="admin-products-container">
+        <% @product.shades.each do |shade| %>
+            <%= simple_form_for [:admin, shade] do |f| %>
+                <div class="personal-details-input">
+                  <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+                  <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
+                </div>
+                <div class="personal-details-input">
+                  <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
+                  <%= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
+                </div>
+                <div class="personal-details-input">
+                  <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
+                  <%= f.input :photos, label: false %>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <%= link_to 'DESTROY', admin_shade_path(shade), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
+                  <%= f.submit 'UPDATE SHADE', class: 'primary-button small-text admin-product-shade-primary-button' %>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+      <h6 class="insider-info-title mlb-title text-center">New Shade</h6>
+        <div class="admin-products-container">
+          <%= simple_form_for [:admin, @product, Shade.new] do |f| %>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+              <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
+              <%= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
+              <%= f.input :photos, label: false %>
+            </div>
+            <%= f.submit 'CREATE SHADE', class: 'primary-button small-text personal-details-button' %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="admin-wrapper minimum-height">
+    <div class="admin-container" style="max-width: 800px;">
+      <h4 class="insider-info-title mlb-title text-center">Benefits</h4>
+      <hr>
+      <div class="admin-products-container">
+        <% @product.product_benefits.each do |product_benefit| %>
+          <div class="d-flex align-items-center">
+            <h6 class="boldest" style="width: 220px;"><%= product_benefit.benefit.name %></h6>
+            <%= link_to 'DESTROY', admin_product_benefit_path(product_benefit), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
+          </div>
+        <% end %>
+        <hr>
+      <h6 class="insider-info-title mlb-title text-center">New Benefit</h6>
+        <%= simple_form_for [:admin, @product, ProductBenefit.new] do |f| %>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Benefit</p>
+            <%= f.input :benefit_id, collection: Benefit.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+          </div>
+          <%= f.submit 'CREATE PRODUCT BENEFIT', class: 'primary-button small-text personal-details-button' %>
+        <% end %>
+    </div>
+  </div>
+</div>
 

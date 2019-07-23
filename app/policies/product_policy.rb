@@ -5,6 +5,10 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    user.admin?
+  end
+
   def show?
     true
   end
@@ -13,3 +17,4 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 end
+
