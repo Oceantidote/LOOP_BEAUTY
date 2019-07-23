@@ -1,0 +1,19 @@
+.admin-products-wrapper {
+  height: 100%;
+  width: 100vw;
+  background: #F5F5F5;
+  @include absCenterColumn;
+  padding: 20px;
+}
+
+.admin-products-container {
+  padding: 20px;
+  @include absCenterColumn;
+  .form-group {
+    margin: 0;
+  }
+}
+
+.filters-container-admin-products {
+  width: 288px !important;
+}

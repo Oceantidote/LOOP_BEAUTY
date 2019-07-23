@@ -1,14 +1,55 @@
-<%= simple_form_for @product do |f| %>
-  <%= f.input :weight %>
-  <%= f.input :measurement %>
-  <%= f.input :title %>
-  <%= f.input :details %>
-  <%= f.input :lb_id %>
-  <%= f.input :category_id, collection: Category.all %>
-  <%= f.input :sub_category_id, collection: SubCategory.all %>
-  <%= f.input :brand_id, collection: Brand.all %>
-  <%= f.input :department_id, collection: Department.all %>
-  <%= f.input :price %>
-  <%= f.input :demoable %>
-  <%= f.submit %>
-<% end %>
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container">
+    <h2 class="insider-info-title mlb-title text-center">Create a Product</h2>
+    <hr>
+    <div class="admin-form-container">
+      <%= simple_form_for @product do |f| %>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Weight</p>
+          <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Measurement</p>
+          <%= f.input :measurement, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Title</p>
+          <%= f.input :title, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Details</p>
+          <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+          <%= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+          <%= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Sub category</p>
+          <%= f.input :sub_category_id, collection: SubCategory.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Brand</p>
+          <%= f.input :brand_id, collection: Brand.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Department</p>
+          <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Price</p>
+          <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin ">Demoable</p>
+          <%= f.input :demoable, label: false %>
+        </div>
+        <%= f.submit 'CREATE PRODUCT', class: 'primary-button personal-details-button small-text'%>
+      <% end %>
+    </div>
+  </div>
+</div>
