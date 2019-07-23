@@ -2,7 +2,14 @@
     <!-- IMAGE HERE -->
 </div>
 <% if current_user&.admin %>
-  <%= link_to 'Change Banner', admin_change_banner_path %>
+  <div class="admin-options">
+      <div class="container">
+        <hr>
+        <h6 class="boldest">Admin options</h6>
+        <%= link_to 'CHANGE BANNER', admin_change_banner_path, class: 'secondary-button' %>
+        <hr>
+      </div>
+    </div>
 <% end %>
 
 <%= render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>

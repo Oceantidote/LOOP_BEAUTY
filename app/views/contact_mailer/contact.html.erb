@@ -1,16 +1,24 @@
-<div class="user-details">
-  <h3 class="muli boldest">User details</h3>
-  <p class="didot">First Name: <%= @details[:first_name] %></p>
-  <p class="didot">Last Name: <%= @details[:last_name] %></p>
-  <p class="didot">Address Line 1: <%= @details[:address_line_1] %></p>
-  <p class="didot">Address line 2: <%= @details[:address_line_2] %></p>
-  <p class="didot">City: <%= @details[:city] %></p>
-  <p class="didot">Postcode: <%= @details[:postcode] %></p>
-  <p class="didot">County: <%= @details[:county] %></p>
-  <p class="didot">Phone Number: <%= @details[:phone_number] %></p>
-</div>
+<div class="black-bar" style="height: 50px; background: black; width: 100vw;"></div>
+<div style="width: 100vw; display: flex; flex-direction: column; align-items: center;">
+  <div style="margin: 50px 0; max-width: 500px;">
+    <div>
+      <h3 style="font-weight: 900; font-family: 'Muli', sans-serif; margin: 0;">User details</h3>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">First Name:</strong> <%= @details[:first_name] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">Last Name:</strong> <%= @details[:last_name] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">Address Line 1:</strong> <%= @details[:address_line_1] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">Address line 2:</strong> <%= @details[:address_line_2] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">City:</strong> <%= @details[:city] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">Postcode:</strong> <%= @details[:postcode] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">County:</strong> <%= @details[:county] %></p>
+      <p style="margin: 0;"><strong style="font-family: 'Muli', sans-serif;">Phone Number:</strong> <%= @details[:phone_number] %></p>
+    </div>
+  </div>
 
-<div class="user-message">
-  <p class="didot">Subject: <%= @details[:subject] %></p>
-  <p class="didot">Message: <%= @details[:message] %></p>
+  <div style="max-width: 500px;">
+    <h3 style="font-weight: 900; font-family: 'Muli', sans-serif; margin: 5px 0;">Subject</h3>
+    <p  style="margin: 0;"><%= @details[:subject] %></p>
+    <h3 style="font-weight: 900; font-family: 'Muli', sans-serif; margin: 5px 0;">Message</h3>
+    <p  style="margin: 0;"><%= @details[:message] %></p>
+  </div>
+
 </div>

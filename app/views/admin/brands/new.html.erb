@@ -1,8 +1,27 @@
-<%= simple_form_for [:admin, @brand] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo %>
-  <%= f.input :logo %>
-  <%= f.input :description %>
-  <%= f.submit %>
-<% end %>
-
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container" style="max-width: 800px;">
+    <h2 class="insider-info-title mlb-title text-center">Create a brand</h2>
+    <hr>
+    <div class="admin-form-container">
+      <%= simple_form_for [:admin, @brand] do |f| %>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+          <%= f.input :name, label: false, placeholder:'Makeup 54...', input_html: { class: "contact-form-input" } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Photo</p>
+          <%= f.input :photo, label: false %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Logo</p>
+          <%= f.input :logo, label: false %>
+        </div>
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right no-margin">Description</p>
+          <%= f.input :description, label: false, placeholder:'The brand was created...', input_html: { class: "contact-form-input" } %>
+        </div>
+        <%= f.submit 'CREATE BRAND', class: 'primary-button personal-details-button small-text' %>
+      <% end %>
+    </div>
+  </div>
+</div>

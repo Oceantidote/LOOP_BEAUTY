@@ -4,7 +4,7 @@ class LookbooksController < ApplicationController
 
   def index
     @user = User.friendly.find(params[:user_id])
-    @lookbooks = policy_scope(Lookbook).where(user: @user)
+    @lookbooks = policy_scope(Lookbook).where(user: @user).where(status: 'approved')
     @sort_method = params[:sort].present? ? params[:sort][:sort_method] : 'created_at,desc'
     @lookbooks = @lookbooks.filter_sort(*@sort_method.split(','))
   end
@@ -15,7 +15,7 @@ class LookbooksController < ApplicationController
     user = User.find(params[:user_id])
     @lookbook = Lookbook.find((Lookbook.select{ |r| r.slug == params[:id]}).first.id)
     @lookbooks = Lookbook.where(user: user)
-    @all_lookbooks = Lookbook.all
+    @all_lookbooks = Lookbook.where(status: 'approved')
     authorize @lookbook
     current_lookbook = @lookbooks.index(@lookbook)
     @previous_lookbook = @lookbooks[@lookbook == @lookbooks.first ? @lookbooks.index(@lookbooks.last) : current_lookbook - 1]

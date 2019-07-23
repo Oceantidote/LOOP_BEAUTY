@@ -1,0 +1,20 @@
+.secondary-button {
+  height: 40px;
+  text-decoration: none;
+  border-radius: 0;
+  letter-spacing: 2px;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-weight: bold;
+  box-shadow: inset 0 0 0 4px #000;
+  color: #000;
+  &:hover {
+    text-decoration: none;
+    background: #000;
+    color: #FFF;
+  }
+}
+
