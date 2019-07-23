@@ -1,6 +1,9 @@
-<div class="latest-videos-wrapper">
+<div class="latest-videos-wrapper minimum-height">
   <h2 class="insider-info-title text-center">Pending Approval</h2>
   <div class="row" style="margin: 30px 0;">
+    <% if @tutorials.count == 0 %>
+      <p class="medium-margin text-center boldest" style="width: 100%;">There are no pending tutorials</p>
+    <% end %>
     <% @tutorials.each do |tutorial| %>
       <div class="col-xs-12 col-md-6 col-lg-3">
         <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>

@@ -1,6 +1,9 @@
-<div class="latest-videos-wrapper">
+<div class="latest-videos-wrapper minimum-height">
   <h2 class="insider-info-title text-center">Pending Approval</h2>
   <div class="row" style="margin: 30px 0;">
+    <% if @lookbooks.count == 0 %>
+      <p class="medium-margin text-center boldest" style="width: 100%;">There are no pending lookbooks</p>
+    <% end %>
     <% @lookbooks.each do |lookbook| %>
     <div class="">
       <%= render 'shared/upload_cards', item: lookbook %>

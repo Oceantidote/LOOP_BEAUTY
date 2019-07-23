@@ -6,3 +6,13 @@
 .mb50 {
   margin-bottom: 50px;
 }
+
+.admin-form-input {
+    border: 1px solid #F0F0F0;
+    background: #FCFCFC;
+}
+
+.admin-form-input::placeholder {
+  color: #BCBCBC;
+  font-size: 14px;
+}

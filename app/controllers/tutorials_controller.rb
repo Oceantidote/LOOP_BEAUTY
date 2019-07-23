@@ -4,27 +4,27 @@ class TutorialsController < ApplicationController
 
   def index
     @user = User.friendly.find(params[:user_id])
-    @tutorials = policy_scope(Tutorial).where(user: @user)
+    @tutorials = policy_scope(Tutorial).where(user: @user).where(status: 'approved')
     @sort_method = params[:sort].present? ? params[:sort][:sort_method] : 'created_at,desc'
     @tutorials = @tutorials.filter_sort(*@sort_method.split(','))
   end
 
   def all_videos
     if params[:link] == 'all'
-      @videos = Tutorial.all
+      @videos = Tutorial.where(status: 'approved')
       @title = 'All Videos'
-    elsif params[:link] == 'toturial'
-      @videos = Tutorial.where(category: 'tutorial')
+    elsif params[:link] == 'tutorial'
+      @videos = Tutorial.where(category: 'tutorial').where(status: 'approved')
       @title = 'Tutorials'
     elsif params[:link] = 'Ask the expert'
-      @videos = Tutorial.where(category: 'ask the expert')
+      @videos = Tutorial.where(category: 'ask the expert').where(status: 'approved')
       @title = 'Ask the experts'
     end
     authorize @videos
   end
 
   def show
-    @tutorials = policy_scope(Tutorial)
+    @tutorials = policy_scope(Tutorial).where(status: 'approved')
     current_tutorial = @tutorials.index(@tutorial)
     @previous_tutorial = @tutorials[@tutorial == @tutorials.first ? @tutorials.index(@tutorials.last) : current_tutorial - 1]
     @next_tutorial = @tutorials[@tutorial == @tutorials.last ? @tutorials.index(@tutorials.first) : current_tutorial + 1]
