@@ -1,6 +1,6 @@
 class BasketProductsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_basket_product, only: [:update, :destroy]
+  before_action :set_basket_product, only: [:update, :destroy, :set_credit_purchase]
 
   def create
     @product = Product.friendly.find(params[:product_id])
@@ -45,6 +45,14 @@ class BasketProductsController < ApplicationController
    respond_to do |format|
       format.html { redirect_to bag_path }
       format.js
+    end
+  end
+
+  def set_credit_purchase
+    @item.update(purchase_with_credit: params[:basket_product][:purchase_with_credit])
+    respond_to do |format|
+      format.js { render :update }
+      format.html { redirect_to bag_path }
     end
   end
 

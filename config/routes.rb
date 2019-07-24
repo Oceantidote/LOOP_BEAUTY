@@ -112,7 +112,11 @@ Rails.application.routes.draw do
     end
     resources :basket_products, only: [:create]
   end
-  resources :basket_products, only: [:update, :destroy]
+  resources :basket_products, only: [:update, :destroy] do
+    member do
+      patch '/set_credit_purchase', to: 'basket_products#set_credit_purchase'
+    end
+  end
   resources :brands, only: [:index, :show]
   resources :addresses, only: [:create, :destroy]
 

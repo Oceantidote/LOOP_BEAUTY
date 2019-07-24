@@ -17,32 +17,46 @@ class Basket < ApplicationRecord
     basket_products.map(&:quantity).sum
   end
 
+  def subtotal
+    Money.new subtotal_cents
+  end
+
+  def subtotal_cents
+    basket_products.map(&:price_cents).sum
+  end
+
   def total_price
-    basket_products.map { |item| item.product.price * item.quantity  }.sum
+    Money.new total_price_cents
   end
 
   def total_price_cents
-    price = basket_products.map { |item| item.product.price_cents * item.quantity  }.sum
-    discount_code.present? ? price * (discount_code.discount / 100.to_f) : price
+    credit_spent = money_off_from_credit_cents
+    credit_spent > 0 ? subtotal_cents - credit_spent : subtotal_cents
   end
 
   def money_off
-    price = basket_products.map { |item| item.product.price * item.quantity  }.sum
-    price * (discount_code.discount / 100.to_f)
+    Money.new money_off_cents
   end
 
   def money_off_cents
-    price = basket_products.map { |item| item.product.price_cents * item.quantity  }.sum
-    price * (discount_code.discount / 100.to_f)
+    total_price_cents * (discount_code.discount / 100.to_f)
   end
 
   def discounted_price
-    price = basket_products.map { |item| item.product.price * item.quantity  }.sum
-    price - (price * (discount_code.discount / 100.to_f))
+    Money.new discounted_price_cents
   end
 
   def discounted_price_cents
-    price = basket_products.map { |item| item.product.price_cents * item.quantity  }.sum
-    price - (price * (discount_code.discount / 100.to_f))
+    total_price_cents - money_off_cents
+  end
+
+  def money_off_from_credit
+    Money.new money_off_from_credit_cents
+  end
+
+  def money_off_from_credit_cents
+    return 0 unless user&.influencer?
+    total = basket_products.where(purchase_with_credit: true).map(&:price_cents).sum
+    return user.remaining_credit_cents > total ? total : user.remaining_credit_cents
   end
 end

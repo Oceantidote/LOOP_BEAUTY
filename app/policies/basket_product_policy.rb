@@ -16,4 +16,8 @@ class BasketProductPolicy < ApplicationPolicy
   def destroy?
     create?
   end
+
+  def set_credit_purchase?
+    record.product.demoable && user.influencer?
+  end
 end

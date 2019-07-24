@@ -1,17 +1,26 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :discount_code, optional: true
-  has_many :order_products
+  has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
   has_many :shades, through: :order_products
   validate :discount_uses
+  monetize :credit_spent_cents
+
+  def subtotal
+    Money.new total_price_cents
+  end
+
+  def subtotal_cents
+    order_products.map(&:price_cents).sum
+  end
 
   def total_price
-    order_products.map { |item| item.product.price * item.quantity  }.sum
+    Money.new total_price_cents
   end
 
   def total_price_cents
-    order_products.map { |item| item.product.price_cents * item.quantity  }.sum
+    subtotal_cents - credit_spent_cents
   end
 
   def discount_uses
