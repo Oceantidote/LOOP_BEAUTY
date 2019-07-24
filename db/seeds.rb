@@ -4,6 +4,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+DiscountCode.destroy_all
+Freebie.destroy_all
 ShowroomProduct.destroy_all
 Showroom.destroy_all
 CustomerReview.destroy_all
@@ -21,6 +23,25 @@ TutorialProduct.destroy_all
 Product.destroy_all
 Tutorial.destroy_all
 User.destroy_all
+
+# CREATING DISCOUNT CODE
+
+puts "Creating discount code"
+
+code = DiscountCode.create!(code: 'WELCOME2LOOP', discount: 10, uses: 10000000 , user_uses: 1)
+
+puts "Dicount code: WELCOME2LOOP"
+
+# CREATING FREEBIE
+
+puts "creating freebie"
+
+freebie = Freebie.new(heading: 'First time with us?', blurb: 'Get 10% off your first order', display: true, discount_code: code)
+
+freebie_banner = File.join(Rails.root,'app/assets/images/freebie-banner.jpg')
+freebie.banner.attach(io: File.open(freebie_banner), filename: 'freebie-banner.jpg')
+
+freebie.save
 
 # CREATING DEPARTMENTS
 
@@ -1245,14 +1266,5 @@ InsiderReview.create!(
                       )
 
 end
-
-# CREATING DISCOUNT CODE
-
-puts "Creating discount code"
-
-DiscountCode.create!(code: 'WELCOME2LOOP', discount: 10)
-
-puts "Dicount code: WELCOME2LOOP"
-
 
 

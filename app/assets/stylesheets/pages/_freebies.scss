@@ -16,7 +16,8 @@
 
 .freebies-first-time-banner {
   height: calc(100vw * 0.3);
-  background: #DDDEE2;
+  background-size: cover;
+  background-position: center;
   @include absCenterColumn;
   h1 {
     font-weight: 900;

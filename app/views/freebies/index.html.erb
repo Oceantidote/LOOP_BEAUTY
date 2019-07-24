@@ -4,23 +4,17 @@
   <h4 class="no-margin didot">Take a look below at what we have to offer</h4>
 </div>
 <% @freebies.each do |freebie| %>
-  <div class="freebies-first-time-banner">
-  <h1><%= freebie.heading %></h1>
-  <h5><%= freebie.blurb %></h5>
-  <h5 class="grey-font">CODE: <%= freebie.discount_code.code %></h5>
-  <%= link_to 'SHOP NOW', homepage_path, class: "primary-button" %>
-  <h5 class="grey-font" style="border-bottom: 1px solid #676767;">Learn more</h5>
-</div>
+  <div class="freebies-first-time-banner" style="background-image: url(<%= url_for(freebie.banner) %>">
+    <h1><%= freebie.heading %></h1>
+    <h5><%= freebie.blurb %></h5>
+    <h5 class="grey-font">CODE: <%= freebie.discount_code.code %></h5>
+    <%= link_to 'SHOP NOW', products_path, class: "primary-button" %>
+    <%= link_to about_us_path, class: 'no-decoration' do %>
+      <h5 class="grey-font" style="border-bottom: 1px solid #676767;">Learn more</h5>
+    <% end %>
+  </div>
 <% end %>
-<div class="freebies-first-time-banner">
-  <h1>First time with us</h1>
-  <h5>Get 10% off your first order</h5>
-  <h5 class="grey-font">CODE: WELCOME2LOOP</h5>
-  <%= link_to 'SHOP NOW', homepage_path, class: "primary-button" %>
-  <h5 class="grey-font" style="border-bottom: 1px solid #676767;">Learn more</h5>
-</div>
 <div class="freebies-newsletter-banner">
-
   <h1>Stay in the loop</h1>
   <h5>We're spilling the deets on new products and promos - oh, and giving away 15% off</h5>
   <h5>Sign up for our newsletter</h5>
