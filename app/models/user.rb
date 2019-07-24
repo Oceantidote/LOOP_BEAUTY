@@ -89,6 +89,15 @@ class User < ApplicationRecord
     addresses.where(delivery_address: false)
   end
 
+  def remaining_credit
+    Money.new remaining_credit_cents
+  end
+
+  def remaining_credit_cents
+    return 0 unless influencer?
+    orders_with_credit_total = Order.where(created_at: Time.now.beginning_of_month..Time.now).map(&:credit_spent_cents).sum
+    10000 - orders_with_credit_total
+  end
   private
 
   def password_complexity
@@ -142,6 +151,7 @@ class User < ApplicationRecord
       flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
+
 
   def newsletter_unsubscribe(client, id)
     begin

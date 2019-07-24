@@ -7,7 +7,12 @@ class BasketProduct < ApplicationRecord
     OrderProduct.new(
       product: product,
       shade: shade,
-      quantity: quantity
+      quantity: quantity,
+      purchase_with_credit: purchase_with_credit
     )
+  end
+
+  def price_cents
+    product.price_cents * quantity
   end
 end

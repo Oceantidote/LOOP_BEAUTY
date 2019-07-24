@@ -12,14 +12,17 @@
     <% end %>
     <div class="basket-price"><h5><%= humanized_money_with_symbol @basket.total_price %></h5></div>
     <%= simple_form_for @order do |f| %>
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-         data-name="My Order"
-         data-email="<%= current_user.email %>"
-         data-description="<%= current_user.first_name %>'s order from Loop Beauty"
-         data-amount="<%= @basket.total_price_cents %>"
-         data-currency="<%= @basket.total_price.currency %>"></script>
+      <% if @basket.total_price <= 0 %>
+        <%= f.submit 'Complete Purchase' %>
+      <% else %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="My Order"
+          data-email="<%= current_user.email %>"
+          data-description="<%= current_user.first_name %>'s order from Loop Beauty"
+          data-amount="<%= @basket.total_price_cents %>"
+          data-currency="<%= @basket.total_price.currency %>"></script>
+      <% end %>
     <% end %>
-
   </div>
 <% end %>
