@@ -97,7 +97,7 @@ class UsersController < ApplicationController
   end
 
   def make_up
-    @products = @user.showroom.showroom_products.map{ |r| r.product }
+    @products = @user.showroom.products
     @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
