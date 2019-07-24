@@ -264,10 +264,12 @@ body {
 
 .row-carousel {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   @include for-phone-only {
     flex-wrap: nowrap;
     overflow: scroll;
+    position: relative;
   }
 }
 

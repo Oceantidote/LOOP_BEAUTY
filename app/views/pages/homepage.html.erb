@@ -43,6 +43,7 @@
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
     <div class="row-carousel">
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-left' %>
       <% @insider_articles.each do |article| %>
         <div class="col-12 col-sm-12 col-md-4" style="padding: 0 10px;">
           <%= link_to insider_article_path(article), class: "card-link insider-info-card-link" do %>
@@ -61,6 +62,7 @@
           <% end %>
         </div>
       <% end %>
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
     </div>
   </div>
 </div>
