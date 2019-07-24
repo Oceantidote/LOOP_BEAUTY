@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage'
-  get '/freebies', to: 'pages#freebies'
   get '/contact_us', to: 'pages#contact_us'
   # TEMP ROUTES FOR INSIDER
   get '/dashboard', to: 'pages#dashboard'
@@ -34,6 +33,7 @@ Rails.application.routes.draw do
     end
   end
   # WISHLIST TEST
+  resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
   resources :users, only: [], path: 'influencers' do
@@ -103,6 +103,7 @@ Rails.application.routes.draw do
     end
     resources :product_benefits, only: [:destroy]
     resources :shades, only: [:update, :destroy]
+    resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
