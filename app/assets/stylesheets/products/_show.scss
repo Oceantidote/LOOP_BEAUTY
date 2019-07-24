@@ -67,6 +67,10 @@
   }
 }
 
+.item-image-thumbnail {
+  cursor: pointer;
+}
+
 
 .product-info-container {
   height: 100%;
@@ -127,19 +131,13 @@
 }
 
 .show-text {
-  display: block !important;
+  max-height: 200px !important;
 }
 
-.product-details-text {
-  display: none;
-}
-
-.benefits-text {
-  display: none;
-}
-
-.about-the-brand-text {
-  display: none;
+.product-details-text, .benefits-text, .about-the-brand-text {
+  transition: max-height 0.6s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
 }
 
 .product-insider-reviews-wrapper {

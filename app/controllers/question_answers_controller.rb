@@ -6,14 +6,14 @@ class QuestionAnswersController < ApplicationController
   end
 
   def new
-    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @user = User.friendly.find(params[:user_id])
     @question_answer = QuestionAnswer.new
     authorize @question_answer
   end
 
   def create
     @question_answer = QuestionAnswer.new(question_answer_params)
-    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @user = User.friendly.find(params[:user_id])
     @question_answer.user = @user
     authorize @question_answer
     if @question_answer.save
@@ -27,7 +27,7 @@ class QuestionAnswersController < ApplicationController
   end
 
   def edit
-    @user = User.find(User.select { |user| user.slug == params[:user_id] }.first.id)
+    @user = User.friendly.find(params[:user_id])
     @question_answer.user = @user
     authorize @question_answer
   end
