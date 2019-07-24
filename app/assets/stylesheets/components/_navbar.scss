@@ -332,7 +332,7 @@
 }
 
 .navbar-hover-container {
-  position: absolute;
+  position: fixed;
   right: 15px;
   top: -570px;
   z-index: 99;
@@ -348,7 +348,7 @@
 }
 
 .navbar-hover-container-top {
-  top: 100px !important;
+  top: 60px !important;
 }
 
 .navbar-basket-button {

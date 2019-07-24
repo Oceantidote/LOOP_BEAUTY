@@ -51,14 +51,14 @@
           <h6 class="small-text">Product details</h6>
           <i class="fas fa-plus pd-expand"></i>
         </div>
-        <p class="product-details-text didot small-text"><%= @product.details %></p>
+        <p class="product-details-text didot small-text no-margin"><%= @product.details %></p>
       </div>
       <div class="benefits-section info-expand">
         <div class="benefits-title">
           <h6 class="small-text">Benefits</h6>
           <i class="fas fa-plus be-expand"></i>
         </div>
-        <div class="benefits-text small-margin-bottom">
+        <div class="benefits-text">
           <% @product.benefits.each do |benefit| %>
             <p class="didot no-margin small-text">- <%= benefit.name %></p>
           <% end %>
@@ -69,7 +69,7 @@
           <h6 class="small-text">About the brand</h6>
           <i class="fas fa-plus ab-expand"></i>
         </div>
-        <p class="about-the-brand-text didot small-text"><%= @product.brand.description %></p>
+        <p class="about-the-brand-text didot small-text no-margin"><%= @product.brand.description %></p>
       </div>
       <div class="share-section">
         <h6 class="small-text">Share</h6>
