@@ -1,6 +1,24 @@
-<% @freebies.each do |freebie| %>
-  <h4><%= freebie.heading %></h4>
-  <%= link_to 'Edit', edit_admin_freebie_path(freebie) %>
-  <%= link_to 'Destroy', admin_freebie_path(freebie), method: :delete %>
-<% end %>
-<%= link_to 'New Freebie', new_admin_freebie_path %>
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container" style="max-width: 800px;">
+    <h2 class="insider-info-title mlb-title text-center">Freebies</h2>
+    <hr>
+    <div class="row" style="width: 100%; margin: 0; padding: 30px;">
+      <% @freebies.each do |freebie| %>
+        <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
+          <div class="freebies-card">
+            <%= image_tag url_for(freebie.banner) %>
+            <p class="small-text text-center boldest no-margin"><%= freebie.heading %></p>
+            <p class="small-text text-center no-margin"><%= freebie.blurb %></p>
+
+          </div>
+          <div class="products-admin-options d-flex justify-content-around">
+            <%= link_to 'Edit', edit_admin_freebie_path(freebie), class: 'secondary-button products-admin-buttons' %>
+            <%= link_to 'Destroy', admin_freebie_path(freebie), method: :delete, class: 'secondary-button products-admin-buttons' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'New Freebie', new_admin_freebie_path, class: 'primary-button products-admin-primary' %>
+  </div>
+</div>
+
