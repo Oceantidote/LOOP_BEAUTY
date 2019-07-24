@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_132923) do
+ActiveRecord::Schema.define(version: 2019_07_24_103248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,18 @@ ActiveRecord::Schema.define(version: 2019_07_18_132923) do
     t.integer "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "uses", default: 1
+    t.integer "user_uses", default: 1
+  end
+
+  create_table "freebies", force: :cascade do |t|
+    t.bigint "discount_code_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "display", default: false
+    t.string "blurb"
+    t.string "heading"
+    t.index ["discount_code_id"], name: "index_freebies_on_discount_code_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -396,6 +408,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_132923) do
   add_foreign_key "baskets", "users"
   add_foreign_key "customer_reviews", "products"
   add_foreign_key "customer_reviews", "users"
+  add_foreign_key "freebies", "discount_codes"
   add_foreign_key "insider_articles", "users"
   add_foreign_key "insider_reviews", "products"
   add_foreign_key "insider_reviews", "users"

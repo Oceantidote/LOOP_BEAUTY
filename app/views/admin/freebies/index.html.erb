@@ -1,0 +1,6 @@
+<% @freebies.each do |freebie| %>
+  <h4><%= freebie.heading %></h4>
+  <%= link_to 'Edit', edit_admin_freebie_path(freebie) %>
+  <%= link_to 'Destroy', admin_freebie_path(freebie), method: :delete %>
+<% end %>
+<%= link_to 'New Freebie', new_admin_freebie_path %>

@@ -1,0 +1,13 @@
+<%= simple_form_for [:admin, @freebie] do |f| %>
+    <%= f.input :heading %>
+    <%= f.input :blurb %>
+    <%= f.input :banner %>
+    <%= f.input :display %>
+    <%= simple_fields_for @freebie.discount_code  do |a| %>
+      <%= a.input :code %>
+      <%= a.input :discount %>
+      <%= a.input :uses %>
+      <%= a.input :user_uses %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
