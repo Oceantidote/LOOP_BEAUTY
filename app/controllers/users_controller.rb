@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def my_orders
+    @orders = Order.where(user: @user)
   end
 
   def my_products

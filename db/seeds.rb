@@ -1267,4 +1267,11 @@ InsiderReview.create!(
 
 end
 
+5.times do
+  products = Product.all.sample(3)
+  order = Order.create(user: User.last)
+  products.each do |product|
+    OrderProduct.create(product: product, shade: product.shades.first, quantity: (1..4).to_a.sample, order: order)
+  end
+end
 
