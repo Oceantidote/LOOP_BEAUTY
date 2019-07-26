@@ -1,4 +1,10 @@
 class OrdersController < ApplicationController
+
+  def index
+    @orders = policy_scope(Order).where(user: current_user)
+    authorize @orders
+  end
+
   def new
     @basket = find_basket
     @order = Order.new

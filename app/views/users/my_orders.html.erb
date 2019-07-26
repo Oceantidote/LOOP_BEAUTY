@@ -7,74 +7,33 @@
       <h2 class="insider-info-title mlb-title text-center">My Orders</h2>
       <hr>
       <div class="my-orders-container">
-        SEARCH BAR TO BE ADDED HERE
-        <div class="each-order-card">
-          <div class="each-order-container">
-            <% order_first_product = Product.find(3) %>
-            <div class="my-order-details">
-              <%= image_tag url_for(order_first_product.shades.first.photos.first), class: "order-image" %>
-              <div class="order-details-text">
-                <p><%= order_first_product.title %></p>
-                <p>(and 3 more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                <p class="boldest">17/08/2017, FN26822124</p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
-                <%= link_to 'Track this order', '#'  %>
+        <p>Displaying <span class="boldest"> <%= @orders.count %></span> orders</p>
+        <div class="row">
+          <% @orders.each do |order| %>
+            <div class="col-12">
+              <div class="each-order-card">
+                <div class="each-order-container">
+                  <div class="my-order-details">
+                    <%= image_tag url_for(order.products.first.shades.first.photos.first), class: "order-image" %>
+                    <div class="order-details-text">
+                      <p><%= order.products.first.title %></p>
+                      <p class="small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
+                      <p class="boldest"><%= order.created_at.strftime('%d/%m/%Y') %>, FN26822124</p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
+                      <%= link_to 'Track this order', '#', class: "small-text"  %>
+                    </div>
+                  </div>
+                  <div class="order-status">
+                    <p><%= order.status %></p> <!-- STATUS OF THE ORDER -->
+                  </div>
+                  <div class="order-price">
+                    <p><%= humanized_money_with_symbol order.total_price %></p> <!-- PRICE OF THE ORDER -->
+                  </div>
+                </div>
+                <%= link_to order_path(order), class: "primary-button orders-button small-text" do %>
+                  VIEW ALL PRODUCTS (<%= order.products.count %>)
+                <% end %>
               </div>
             </div>
-            <div class="order-status">
-              <p>Despatched</p> <!-- STATUS OF THE ORDER -->
-            </div>
-            <div class="order-price">
-              <p>£80.95</p> <!-- PRICE OF THE ORDER -->
-            </div>
-          </div>
-          <%= link_to '#', class: "primary-button orders-button" do %>
-            View All Products (4)
-          <% end %>
-        </div>
-        <div class="each-order-card">
-          <div class="each-order-container">
-            <% order_second_product = Product.find(1) %>
-            <div class="my-order-details">
-              <%= image_tag url_for(order_second_product.shades.first.photos.first), class: "order-image" %>
-              <div class="order-details-text">
-                <p><%= order_second_product.title %></p>
-                <p>(and 4 more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                <p class="boldest">17/08/2017, FN26822124</p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
-                <%= link_to 'Track this order', '#'  %>
-              </div>
-            </div>
-            <div class="order-status">
-              <p>Delivered</p> <!-- STATUS OF THE ORDER -->
-            </div>
-            <div class="order-price">
-              <p>£154.72</p> <!-- PRICE OF THE ORDER -->
-            </div>
-          </div>
-          <%= link_to '#', class: "primary-button orders-button" do %>
-            View All Products (5)
-          <% end %>
-        </div>
-        <div class="each-order-card">
-          <div class="each-order-container">
-            <% order_third_product = Product.find(5) %>
-            <div class="my-order-details">
-              <%= image_tag url_for(order_third_product.shades.first.photos.first), class: "order-image" %>
-              <div class="order-details-text">
-                <p><%= order_third_product.title %></p>
-                <p>(and 1 more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                <p class="boldest">17/08/2017, FN26822124</p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
-                <%= link_to 'Track this order', '#'  %>
-              </div>
-            </div>
-            <div class="order-status">
-              <p>Delivered</p> <!-- STATUS OF THE ORDER -->
-            </div>
-            <div class="order-price">
-              <p>£35.98</p> <!-- PRICE OF THE ORDER -->
-            </div>
-          </div>
-          <%= link_to '#', class: "primary-button orders-button" do %>
-            View All Products (2)
           <% end %>
         </div>
       </div>
