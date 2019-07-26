@@ -12,6 +12,9 @@
   margin: 20px 0;
   transition: box-shadow 0.3s ease;
   // padding: 10px 30px;
+  @include for-phone-only {
+    width: 80vw;
+  }
 }
 
 .insider-info-left {
@@ -55,6 +58,7 @@
   }
   @include for-phone-only {
     margin: 0 5%;
+    padding: 0;
   }
 }
 
@@ -114,6 +118,9 @@
   // @include for-phone-only {
   //   padding: 15px 0;
   // }
+  @include for-phone-only {
+    padding: 15px 0;
+  }
 }
 
 .homepage-video-card {
@@ -221,4 +228,18 @@
 
 .pop-up-content-button {
   cursor: pointer;
+}
+
+.ia-cols {
+  padding: 0 10px;
+  @include for-phone-only {
+    @include absCenter;
+    padding: 0;
+  }
+}
+
+.lv-cols {
+  @include for-phone-only {
+    padding: 0 5px;
+  }
 }
