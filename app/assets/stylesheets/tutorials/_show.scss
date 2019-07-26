@@ -75,7 +75,10 @@
 }
 
 .featured-products-wrapper {
-  padding-bottom: 30px;
+  padding: 15px;
+  @include for-phone-only {
+    padding: 15px 0;
+  }
 }
 
 .featured-products-header {

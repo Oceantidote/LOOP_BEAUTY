@@ -37,11 +37,13 @@
   </div>
   <div class="max-width">
     <div class="row-carousel">
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
       <% @tutorial.products.first(4).each do |product| %>
-        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
+        <div class="col-8 col-sm-6 col-md-3 d-flex justify-content-center tp-cols">
           <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
   <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
@@ -54,8 +56,9 @@
   </div>
   <div class="max-width">
     <div class="row-carousel">
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
       <% @tutorials.sample(4).each do |tutorial| %>
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-10 col-md-6 col-lg-3 lv-cols">
           <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
             <div class="homepage-video-card">
               <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
@@ -69,6 +72,7 @@
           <% end %>
         </div>
       <% end %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
   <%= link_to 'View more tutorials', user_tutorials_path(@tutorial.user), class: "mobile-tutorials-link" %>

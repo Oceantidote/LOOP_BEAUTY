@@ -15,7 +15,7 @@
     height: calc(100vw * 0.5);
   }
   @include for-phone-only {
-    min-height: 320px;
+    min-height: 220px;
   }
 }
 
@@ -48,7 +48,7 @@
   margin: auto;
   width: 55%;
   @include for-phone-only {
-    width: 70%;
+    width: 85%;
   }
 }
 
@@ -73,7 +73,32 @@
     }
   }
   @include for-phone-only {
-    width: 100%;
+    display: none;
+  }
+}
+
+.influencer-show-banner-text-mobile-container {
+  padding: 10px 0;
+  background: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    letter-spacing: 1px;
+  }
+  a {
+    font-family: $title-font;
+    color: black;
+    font-weight: 900;
+    border-bottom: 1px solid black;
+    line-height: 15px;
+    width: fit-content;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @include for-small-devices-up {
+    display: none;
   }
 }
 
@@ -112,6 +137,9 @@
 
 .influencer-show-options {
   margin: 40px 0 80px 0;
+  @include for-phone-only {
+    margin: 0;
+  }
 }
 
 .influencer-show-card {

@@ -19,4 +19,11 @@
 
 .brand-description {
   padding: 50px;
+  @include for-phone-only {
+    padding: 10px;
+    width: 100% !important;
+    p {
+      margin: 0;
+    }
+  }
 }
