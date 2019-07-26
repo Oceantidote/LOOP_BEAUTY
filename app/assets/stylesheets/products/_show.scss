@@ -156,25 +156,6 @@
   // padding: 10px 30px;
 }
 
-.insider-review-container {
-  margin: 0 10%;
-  @include for-xlarge-devices-down {
-    margin: 0 5%;
-  }
-  @include for-large-devices-down {
-    margin: 0 4%;
-  }
-  @include for-medium-devices-down {
-    margin: 0 3%;
-  }
-  @include for-small-devices-down {
-    margin: 0 15%;
-  }
-  @include for-phone-only {
-    margin: 0 5%;
-  }
-}
-
 .insider-review-left {
   width: 45%;
   height: 100%;
@@ -221,6 +202,15 @@
   margin: 20px 0;
   transition: box-shadow 0.3s ease;
   // padding: 10px 30px;
+  @include for-phone-only {
+    padding: 25px;
+    p {
+      font-size: 10px !important;
+    }
+    h6 {
+      font-size: 12px;
+    }
+  }
 }
 
 .customer-review-left {

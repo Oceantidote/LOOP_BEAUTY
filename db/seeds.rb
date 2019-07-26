@@ -1267,11 +1267,16 @@ InsiderReview.create!(
 
 end
 
+# CREATING ORDERS AND ORDER PRODUCTS
+
+puts "Creating orders and order products"
+status = ["Processing", "Delivered", "Refunded", "Dispatched"]
+num = (2..7).to_a
 5.times do
-  products = Product.all.sample(3)
-  order = Order.create(user: User.last)
+  products = Product.all.sample(num.sample)
+  order = Order.create!(user: User.last, status: status.sample)
   products.each do |product|
-    OrderProduct.create(product: product, shade: product.shades.first, quantity: (1..4).to_a.sample, order: order)
+    OrderProduct.create!(product: product, shade: product.shades.first, quantity: (1..2).to_a.sample, order: order)
   end
 end
 

@@ -6,6 +6,7 @@
 
 .each-order-card {
   width: 80%;
+  margin: auto;
 }
 
 .each-order-container {
@@ -46,4 +47,36 @@
 .orders-button {
   width: fit-content;
   margin: 20px auto;
+  height: 40px !important;
+  padding: 3px 25px;
+  letter-spacing: 1px;
 }
+
+.order-show-info {
+  display: flex;
+  width: 80%;
+  padding: 10px 30px;
+}
+
+.order-show-info-left, .order-show-info-left {
+  width: 50%;
+}
+
+.order-show-each-order {
+  border: none !important;
+  padding: 15px !important;
+}
+
+.order-show-product-card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  margin: 10px auto;
+  width: 100% !important;
+}
+
+.order-show-card-link:hover {
+  .order-show-product-card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+}
+
