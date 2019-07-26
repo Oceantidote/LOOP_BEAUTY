@@ -11,7 +11,7 @@
         <p class="didot"><%= simple_format(@insider_article.text1) %></p>
         <% if @insider_article.photo1.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
-            <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
+            <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@tutorial.cover_photo), class: "insider_article_photo") %>
           <% else %>
             <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
           <% end %>
