@@ -14,8 +14,7 @@
     margin: 15px 0;
   }
   @include for-phone-only {
-    width: 80%;
-    margin: 15px auto;
+    margin: 0;
   }
 }
 
@@ -56,6 +55,7 @@
   }
   @include for-phone-only {
     width: 100%;
+    margin: 0;
   }
 }
 
@@ -77,6 +77,9 @@
   @include for-medium-devices-down {
     height: 350px;
   }
+  @include for-phone-only {
+    height: 300px;
+  }
 }
 
 .main-lookbook-card-text {
@@ -88,6 +91,10 @@
     margin: 0;
     @include for-medium-devices-down {
       font-size: 14px;
+    }
+    @include for-phone-only {
+      font-size: 12px;
+      width: 100%;
     }
   }
 }
@@ -140,7 +147,7 @@
   width: 30px;
   margin: 20px;
   @include for-phone-only {
-    margin: 10px;
+    margin: 5px;
   }
 }
 

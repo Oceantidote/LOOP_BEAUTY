@@ -1,4 +1,8 @@
 .insider-info-wrapper {
+  padding: 15px;
+  @include for-phone-only {
+    padding: 15px 0;
+  }
 }
 
 .insider-info-cards {
@@ -242,6 +246,13 @@
 }
 
 .lv-cols {
+  @include for-phone-only {
+    padding: 0 5px;
+  }
+}
+
+.tp-cols {
+  padding: 0 10px;
   @include for-phone-only {
     padding: 0 5px;
   }

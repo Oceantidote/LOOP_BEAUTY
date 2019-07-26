@@ -54,12 +54,14 @@
     <% if @lookbook.products.count > 4 %>
       <p class="shop-look-text text-center">Scroll across to see more products</p>
     <% end %>
-    <div class="row row-style" style="flex-wrap: nowrap; overflow: scroll;">
+    <div class="row-carousel">
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
       <% @lookbook.products.each do |product| %>
-        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center" style="padding: 5px;">
+        <div class="col-9 col-sm-6 col-md-3 tp-cols">
           <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
   <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
@@ -73,9 +75,10 @@
     </div>
   </div>
   <div class="max-width">
-    <div class="row row-style" style="flex-wrap: nowrap; overflow: scroll;">
+    <div class="row-carousel">
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
       <% @all_lookbooks.sample(4).each do |lookbook| %>
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-10 col-md-6 col-lg-3 lv-cols">
           <%= link_to lookbook_path(lookbook, user_id: lookbook.user.id), class: "lookbook-small-card-link card-link" do %>
             <div class="lookbook-small-card">
               <div class="lookbook-card-small-image">
@@ -89,6 +92,7 @@
           <% end %>
         </div>
       <% end %>
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
   <%= link_to 'See more looks', '#', class: "mobile-tutorials-link" %>
