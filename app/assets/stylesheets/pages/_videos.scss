@@ -52,6 +52,11 @@
   display: flex;
   justify-content: flex-end;
   position: relative;
+  @include for-small-devices-down {
+    .video-home-play-button {
+      left: calc(25% - 40px);
+    }
+  }
   @include for-phone-only {
     height: calc(100vw * 0.7);
   }
@@ -67,9 +72,6 @@
   top: calc(50% - 40px);
   left: calc(50% - 40px);
   transition: all 0.3s ease;
-  @include for-small-devices-down {
-    left: calc(25% - 40px);
-  }
 }
 
 // INFLUENCER VIDEO PAGE
