@@ -14,3 +14,6 @@ if (<%= @basket.empty? %>) {
   document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="medium-margin text-center boldest">Your basket is empty</p>'
 }
 containers.forEach(container => container.remove())
+
+priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
+priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"
