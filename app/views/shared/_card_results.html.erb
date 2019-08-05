@@ -4,9 +4,9 @@
       <h5 class="medium-text">Refine By</h5>
       <div>
           <%#= image_tag 'dropdown-down.png', class: "dropdown-arrow" %>
-          <%= f.fields_for :sort do |s| %>
-            <%= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
-          <% end %>
+          <%#= f.fields_for :sort do |s| %>
+            <%#= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
+          <%# end %>
       </div>
     </div>
   </div>
