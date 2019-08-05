@@ -22,6 +22,7 @@ RecommendedProduct.destroy_all
 TutorialProduct.destroy_all
 Product.destroy_all
 Tutorial.destroy_all
+QuestionAnswer.destroy_all
 User.destroy_all
 
 # CREATING DISCOUNT CODE
@@ -1264,8 +1265,67 @@ InsiderReview.create!(
                       product: Product.all.sample,
                       review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
                       )
-
 end
+
+# CREATING QUESTION ANSWERS
+
+puts "Creating question and answers for Shantania Beckford and Ropo Demure"
+
+shan_qa = QuestionAnswer.new(
+                      user: shantania,
+                      question_one: "How do you create a large social following while keeping it organic?",
+                      question_two: "Are you seeing any popular requests recently?",
+                      question_three: "Is being an influencer a full-time job or is it more of a hobby for you?",
+                      question_four: "Who is taking your pictures? Friends or photographers? How long does it take you to publish your content?",
+                      question_five: "How do you foster that sense of community with your social audience?",
+                      question_six: "Any advice for a budding influencer?",
+                      answer_one: "It’s really about engaging with my followers. I have certain followers who will comment on every single picture. I try to reply to them and really engage with them. It’s modern-day word-of-mouth. Also, hashtags have helped me a lot.",
+                      answer_two: "All beauty. Lipsticks, eyeshadows, brushes. Makeup sales are at their highest levels ever. I think they want to keep that train going.",
+                      answer_three: "It is a full-time passion! “Do something that you love, and you will never have to work a day in your life” No truer words were ever uttered. I love what I do and I am fulfilled because of all the challenges that I face and the rewards that come along with doing this efficiently and professionally.",
+                      answer_four: "Currently I have a photographer taking my pictures but when I started, I had friends taking my pictures for me. I always try to publish to IG within a day of having received the completed pictures. I follow on from that with a full story on my blog a day or two later (for the latest)",
+                      answer_five: "Social media is for building relationships and connecting with people. Personally, I try to respond to as many comments and replies on my posts as possible. Always look for ways to celebrate your customers. At our core, all we want is to know others and be known. If a brand can do that in a personal way, that’s awesome.",
+                      answer_six: "Be authentic. Stay true to yourself and stay consistent. Once you give up, it’s over. I know girls who started blogs and then never went back to them. Even if you have to take a week off or a month off, try to still post pictures. Stay in your routine. I shoot every Saturday morning. But if I don’t shoot for a week I’ll prepare accordingly. Also, never take a brand deal that doesn’t make you happy. If you’re killing yourself over this and you’re unhappy, it’s not worth it.",
+                      photo_one_alt_text: "shantania photo one",
+                      photo_two_alt_text: "shantania photo two",
+                      photo_three_alt_text: "shantania photo three",
+)
+
+shan_qa_photo_one = File.join(Rails.root,'app/assets/images/shan_qa_photo_one.jpg')
+shan_qa.photo_one.attach(io: File.open(shan_qa_photo_one) , filename: 'shan_qa_photo_one.jpg')
+shan_qa_photo_two = File.join(Rails.root,'app/assets/images/shan_qa_photo_two.jpg')
+shan_qa.photo_two.attach(io: File.open(shan_qa_photo_two) , filename: 'shan_qa_photo_two.jpg')
+shan_qa_photo_three = File.join(Rails.root,'app/assets/images/shan_qa_photo_three.jpg')
+shan_qa.photo_three.attach(io: File.open(shan_qa_photo_three) , filename: 'shan_qa_photo_three.jpg')
+
+shan_qa.save
+
+ropo_qa = QuestionAnswer.new(
+                      user: ropo,
+                      question_one: "How did you get started in makeup?",
+                      question_two: "What moment in your career are you most proud of?",
+                      question_three: "If you weren't doing makeup, what would you be doing and why?",
+                      question_four: "What does beauty mean to you?",
+                      question_five: "Aside from a wallet and phone, what do you keep in your bag at all times?",
+                      question_six: "What's your favorite product at the moment?",
+                      answer_one: "My start in makeup came from my interest in magazine editorials. My mom worked in fashion, and when I would visit her office there were always the best European and fashion magazines sitting around. I would skim through them and was always inspired by the looks created on the pages. I would try to recreate the looks and practice on friends and family. I always knew I wanted to be a makeup artist.",
+                      answer_two: "I was most proud of when MAC cosmetics hired me when I was 19 years old. I really wanted that job, and I admired how all the artists embodied what their brand stood for. I wanted to be part of the MAC culture so badly – and I felt that I accomplished that because of my persistence, not because of my prior experience. I consider MAC the start of my beauty career because I met so many industry veterans ever since.",
+                      answer_three: "If I wasn’t a makeup artist and beauty blogger, I would be a photographer. As a child I always loved taking pictures of people and events. As a photographer, I loved capturing candid moments. I really thought I would be a photographer doing weddings and other specials occasions – but now I am doing the makeup for weddings!",
+                      answer_four: "Beauty means happiness. When you are happy, there will always be beautiful energy around you, and you will always create your best work. It is important to remember the things that really matter in life, to be grateful and humble.",
+                      answer_five: "I always have my lipstick with me. If my lipstick is faded, I feel like my look is incomplete – lipstick is life!",
+                      answer_six: "My favorite product right now is my L’Oréal Paris Pro Glow Foundation. My skin is really dry, and it is the perfect texture and formula for my skin type. It gives me a glow without making me look oily. I recommended it to so many friends and now they are all wearing it!",
+                      photo_one_alt_text: "Ropo Demure photo one",
+                      photo_two_alt_text: "Ropo Demure photo two",
+                      photo_three_alt_text: "Ropo Demure photo three",
+)
+
+ropo_qa_photo_one = File.join(Rails.root,'app/assets/images/ropo_qa_photo_one.jpg')
+ropo_qa.photo_one.attach(io: File.open(ropo_qa_photo_one) , filename: 'ropo_qa_photo_one.jpg')
+ropo_qa_photo_two = File.join(Rails.root,'app/assets/images/ropo_qa_photo_two.jpg')
+ropo_qa.photo_two.attach(io: File.open(ropo_qa_photo_two) , filename: 'ropo_qa_photo_two.jpg')
+ropo_qa_photo_three = File.join(Rails.root,'app/assets/images/ropo_qa_photo_three.jpg')
+ropo_qa.photo_three.attach(io: File.open(ropo_qa_photo_three) , filename: 'ropo_qa_photo_three.jpg')
+
+ropo_qa.save
 
 # CREATING ORDERS AND ORDER PRODUCTS
 
