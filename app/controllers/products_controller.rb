@@ -47,5 +47,4 @@ class ProductsController < ApplicationController
   def sort_params
     params[:product][:sort][:method].split(',')
   end
-
 end
