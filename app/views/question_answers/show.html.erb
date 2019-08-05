@@ -35,9 +35,17 @@
       </div>
     </div>
   </div>
-
   <% if policy(@question_answer).edit? %>
-    <%= link_to "Edit Q&A", edit_user_question_answer_path(@question_answer.user, @question_answer) %>
-    <%= link_to "Delete Q&A", user_question_answer_path(@question_answer.user, @question_answer), method: :delete %>
+    <div class="admin-options">
+      <div class="container">
+        <hr>
+        <h6 class="boldest">Admin options</h6>
+        <div class="d-flex">
+          <%= link_to "Edit Q&A", edit_user_question_answer_path(@question_answer.user, @question_answer), class: 'secondary-button small-margin-right' %>
+          <%= link_to "Delete Q&A", user_question_answer_path(@question_answer.user, @question_answer), method: :delete, class: 'secondary-button' %>
+        </div>
+        <hr>
+      </div>
+    </div>
   <% end %>
 </div>
