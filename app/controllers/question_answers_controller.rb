@@ -1,8 +1,10 @@
 class QuestionAnswersController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_question_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_question_answer, only: [:edit, :update, :destroy]
 
   def show
+    @question_answer = QuestionAnswer.find_by(user: User.friendly.find(params[:id]))
+    authorize @question_answer
   end
 
   def new

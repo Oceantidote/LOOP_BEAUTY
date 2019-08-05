@@ -35,21 +35,21 @@
         <p class="didot"> <%= simple_format(@insider_article.text4) %></p>
         <% if user_signed_in? && current_user.admin %>
           <% if policy([:admin, @insider_article]).publish? %>
-              <div class="admin-options">
-                <hr>
-                <div class="container">
-                  <h6 class="boldest">Admin options</h6>
-                  <div class="d-flex">
-                    <% if @insider_article.published %>
-                      <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
-                    <% else %>
-                      <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
-                    <% end %>
-                    <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article), class: 'secondary-button small-margin-right' %>
-                    <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, class: 'secondary-button' %>
-                  </div>
+            <div class="admin-options">
+              <hr>
+              <div class="container">
+                <h6 class="boldest">Admin options</h6>
+                <div class="d-flex">
+                  <% if @insider_article.published %>
+                    <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
+                  <% else %>
+                    <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
+                  <% end %>
+                  <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article), class: 'secondary-button small-margin-right' %>
+                  <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, class: 'secondary-button' %>
                 </div>
               </div>
+            </div>
           <% end %>
         <% end %>
       </div>
