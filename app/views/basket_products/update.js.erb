@@ -12,3 +12,6 @@ form = document.querySelector('.item-form-<%= @item.id %>')
 form.innerHTML = "<%= j render 'baskets/shopping_bag_form_controls', item: @item %>"
 quantity = document.querySelector('.item-<%= @item.id %>-quantity')
 quantity.innerHTML = 'Quantity: <%= @item.quantity %>'
+
+priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
+priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"

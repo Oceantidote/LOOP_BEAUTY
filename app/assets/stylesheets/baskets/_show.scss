@@ -10,6 +10,13 @@
   border: 1px solid #CFCFCF;
   max-width: 900px;
   margin: auto;
+  position: relative;
+  .influencer-credit-container {
+    top: 15px !important;
+  }
+  label {
+    font-size: 12px;
+  }
 }
 
 .shopping-bag-title {
