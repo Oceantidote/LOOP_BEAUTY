@@ -7,3 +7,18 @@
   max-width: 1000px;
   margin: 20px auto auto auto;
 }
+
+.rating-container {
+  i {
+    @include for-phone-only {
+      font-size: 12px;
+    }
+  }
+}
+
+.all-reviews {
+  font-size: 12px;
+  @include for-phone-only {
+    font-size: 10px !important;
+  }
+}

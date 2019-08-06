@@ -17,7 +17,7 @@
     </div>
     <div class="card_ratings">
       <%= render 'shared/ratings', rating: product.average_rating %>
-      <p class="small-text"><%= product.average_rating %> (<%= product.total_reviews %> Reviews)</p>
+      <p class="all-reviews"><%= product.average_rating %> (<%= product.total_reviews %> Reviews)</p>
     </div>
     <% if user_signed_in? && current_user.wishlist %>
       <div id="item-<%= product.id %>-wishlist">
