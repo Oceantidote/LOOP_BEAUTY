@@ -99,6 +99,8 @@ class UsersController < ApplicationController
 
   def make_up
     @products = @user.showroom.products
+    @original = @user.showroom.products
+    @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
     @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
@@ -139,5 +141,9 @@ class UsersController < ApplicationController
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation, :old_password)
+  end
+
+  def sort_params
+    params[:product][:sort][:method].split(',')
   end
 end

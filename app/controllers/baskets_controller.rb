@@ -27,7 +27,6 @@ class BasketsController < ApplicationController
           flash[:notice] = 'Discount not found'
           redirect_to bag_path
         end
-        format.js
       end
     end
   end

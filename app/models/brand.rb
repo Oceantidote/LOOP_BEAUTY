@@ -12,9 +12,13 @@ class Brand < ApplicationRecord
     where(id: ids)
   end
 
-  def self.product_filter_labels_and_values(products)
+  def self.product_filter_labels_and_values(products, original, start)
     all.map do |brand|
-      [ brand.id, "#{brand.name} (#{products.where(brand: brand).size})" ]
+      if start
+        [ brand.id, "#{brand.name} (#{original.where(brand: brand).size})" ]
+      else
+        [ brand.id, "#{brand.name} (#{original.filter({brand: products.map(&:brand_id).uniq << brand.id}).size})" ]
+      end
     end
   end
 end
