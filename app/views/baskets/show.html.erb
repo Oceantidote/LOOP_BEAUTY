@@ -23,7 +23,11 @@
         <p class="boldest small-text tiny-margin-bottom">Promotional code</p>
         <%= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
           <%= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
-          <%= f.submit 'APPLY', class: "primary-button discount-code-button"  %>
+          <% if @basket.discount_code.nil? %>
+            <%= f.submit 'APPLY', class: "primary-button discount-code-button"  %>
+          <% else %>
+            <%= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>
+          <% end %>
         <% end %>
       </div>
       <div class="shopping-bag-continue-checkout">

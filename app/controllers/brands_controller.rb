@@ -9,6 +9,8 @@ class BrandsController < ApplicationController
     @brand = Brand.friendly.find(params[:id])
     authorize @brand
     @products = @brand.products
+    @original = @brand.products
+    @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
     @products = @products.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)

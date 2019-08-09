@@ -3,6 +3,7 @@ priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @b
 discountForm = document.querySelector('.shopping-bag-code > form')
 discountForm.lastElementChild.remove()
 input = discountForm.querySelector('.form-group')
-input.classList.add("form-group-valid")
-input.firstElementChild.classList.add("is-valid")
-discountForm.insertAdjacentHTML('beforeend', '<%= link_to "REMOVE", remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>')
+input.classList.remove("form-group-valid")
+input.firstElementChild.classList.remove("is-valid")
+input.firstElementChild.value = ''
+discountForm.insertAdjacentHTML('beforeend', '<input type="submit" name="commit" value="APPLY" class="primary-button discount-code-button" data-disable-with="APPLY">')

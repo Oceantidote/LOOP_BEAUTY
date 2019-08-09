@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
+    @original = policy_scope(Product)
     @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
+    @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
       @sort_method = params[:product][:sort][:method]

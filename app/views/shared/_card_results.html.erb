@@ -21,13 +21,13 @@
             <div class="partial-filters_collection">
               <h6>Category</h6>
               <%#= collection_check_boxes :category, :product_id, Category.all, :id, :name %>
-              <%= f.input :category, collection: Category.product_filter_labels_and_values(products), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:category] : [], value_method: :first, label_method: :last %>
+              <%= f.input :category, collection: Category.product_filter_labels_and_values(products, @original, @start), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:category] : [], value_method: :first, label_method: :last %>
             </div>
             <% unless params[:controller] == 'brands' %>
               <div class="partial-filters_collection">
                 <h6>Brand</h6>
                 <%#= collection_check_boxes :brand, :product_id, Brand.all, :id, :name %>
-                <%= f.input :brand, collection: Brand.product_filter_labels_and_values(products), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
+                <%= f.input :brand, collection: Brand.product_filter_labels_and_values(products, @original, @start), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
               </div>
             <% end %>
           </div>
