@@ -12,4 +12,8 @@ class BasketPolicy < ApplicationPolicy
   def add_discount_code?
     show?
   end
+
+  def remove_discount_code?
+    show?
+  end
 end

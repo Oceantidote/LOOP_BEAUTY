@@ -31,4 +31,14 @@ class BasketsController < ApplicationController
       end
     end
   end
+
+  def remove_discount_code
+    @basket = find_basket
+    authorize @basket
+    @basket.update(discount_code: nil)
+    respond_to do |format|
+      format.html { redirect_to bag_path, notice: "Discount code removed" }
+      format.js
+    end
+  end
 end
