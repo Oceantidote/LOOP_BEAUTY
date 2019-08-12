@@ -16,4 +16,9 @@ class OrderPolicy < ApplicationPolicy
   def show?
     record.user == user
   end
+
+  def order_success?
+    record.user == user
+  end
+
 end

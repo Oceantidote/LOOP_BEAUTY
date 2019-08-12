@@ -5,7 +5,7 @@
     </div>
     <p class="boldest no-margin">Sign in</p>
   </div>
-  <div class="checkout-process-steps checkout-active">
+  <div class="checkout-process-steps <%= (params[:controller] == 'orders' && params[:action] == 'new') ? 'checkout-active' : '' %>">
     <div class="checkout-number tiny-margin-bottom">
       <h4 class="no-margin boldest">2</h4>
     </div>
@@ -17,7 +17,7 @@
     </div>
     <p class="boldest no-margin">Payment</p>
   </div>
-  <div class="checkout-process-steps">
+  <div class="checkout-process-steps <%= (params[:controller] == 'orders' && params[:action] == 'order_success') ? 'checkout-active' : '' %>">
     <div class="checkout-number tiny-margin-bottom">
       <h4 class="no-margin boldest">4</h4>
     </div>

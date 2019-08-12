@@ -43,7 +43,8 @@ class OrdersController < ApplicationController
         order_product.save
       end
       @basket.empty!
-      redirect_to order_path(@order)
+      # redirect_to order_path(@order)
+      redirect_to order_order_success_path(@order)
     else
       flash[:error] = 'Error!'
       render :new
@@ -55,6 +56,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    authorize @order
+  end
+
+  def order_success
+    @order = Order.find(params[:order_id])
+    @user = @order.user
     authorize @order
   end
 
