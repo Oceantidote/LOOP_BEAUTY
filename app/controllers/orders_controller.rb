@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def new
     @basket = find_basket
+    @user = @basket.user
     @order = Order.new
     authorize @order
   end
@@ -39,7 +40,6 @@ class OrdersController < ApplicationController
       @basket.basket_products.each do |item|
         order_product = item.convert_to_order_product
         order_product.order = @order
-        order_product.user = current_user
         order_product.save
       end
       @basket.empty!
