@@ -4,12 +4,17 @@
       <%= render 'shared/dash' %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Order <%= @order.id %></h2>
+      <h2 class="insider-info-title mlb-title text-center">Order <%= @order.stripe_id ? @order.stripe_id.upcase : @order.id %></h2>
       <hr>
       <div class="my-orders-container">
         <div class="order-show-info">
           <div class="order-show-info-left">
-            <p class="boldest s-medium-text no-margin">Total: <%= @order.total_price %></p>
+            <% if @order.credit_spent_cents > 0 %>
+              <p class="boldest s-medium-text no-margin">Total credits spent: <%= humanized_money_with_symbol @order.credit_spent %></p>
+              <p class="boldest s-medium-text no-margin">Remaining credits: <%= humanized_money_with_symbol @order.user.remaining_credit %></p>
+            <% else %>
+              <p class="boldest s-medium-text no-margin">Total: <%= humanized_money_with_symbol @order.total_price %></p>
+            <% end %>
             <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p>
           </div>
           <div class="order-show-info-right">

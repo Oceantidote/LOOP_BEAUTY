@@ -1,28 +1,92 @@
-<% if @basket.empty? %>
-  <p>There are no items in your basket</p>
-<% else %>
-  <div class="checkout-basket-display">
-    <% @basket.basket_products.each do |item| %>
-      <div class="checkout-item-row" style="display: flex; justify-content: space-between;">
-        <h6><%= item.product.title %></h6>
-        <h6><%= item.shade.name %></h6>
-        <h6><%= item.quantity %></h6>
-        <h6><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <div class="dash-links">
+        <h4 class="insider-info-title mlb-title text-center dash-mobile-title">Order Summary</h4>
+        <% if @basket.empty? %>
+          <p>There are no items in your basket</p>
+        <% else %>
+          <div class="checkout-basket-display">
+            <div class="checkout-item-container">
+              <% @basket.basket_products.each do |item| %>
+                <div class="checkout-item">
+                  <div>
+                    <h6 class="boldest small-text"><%= item.product.title %></h6>
+                    <h6 class="small-text"><%= item.shade.name %></h6>
+                    <h6 class="small-text no-margin">Qty: <%= item.quantity %></h6>
+                  </div>
+                  <div>
+                    <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                  </div>
+                </div>
+              <% end %>
+              <%= link_to 'Edit Bag', bag_path, class: 'text-center grey underline boldest small-text checkout-edit-bag' %>
+            </div>
+            <div class="checkout-total-container">
+              <div class="basket-price">
+                <span class="small-text grey boldest">Subtotal: </span>
+                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+              </div>
+              <div class="basket-price small-margin-bottom">
+                <span class="small-text grey boldest no-margin">Delivery: </span>
+                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+              </div>
+              <div class="basket-price">
+                <span class="grey boldest medium-text">Total: </span>
+                <h5 class="grey boldest medium-text no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <div class="basket-price"><h5><%= humanized_money_with_symbol @basket.total_price %></h5></div>
-    <%= simple_form_for @order do |f| %>
-      <% if @basket.total_price <= 0 %>
-        <%= f.submit 'Complete Purchase' %>
-      <% else %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-name="My Order"
-          data-email="<%= current_user.email %>"
-          data-description="<%= current_user.first_name %>'s order from Loop Beauty"
-          data-amount="<%= @basket.total_price_cents %>"
-          data-currency="<%= @basket.total_price.currency %>"></script>
-      <% end %>
-    <% end %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Checkout</h2>
+      <hr>
+      <%= render 'checkout_process' %>
+      <hr>
+      <div class="order-summary-container">
+        <div class="order-summary">
+          <p class="medium-text boldest">Delivery Option</p>
+          <div class="checkout-delivery-option">
+            <p class="boldest small-text no-margin">Standard</p>
+            <p class="boldest small-text grey no-margin">2-5 working days from despatch</p>
+            <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
+          </div>
+          <div class="checkout-addresses-container">
+            <div class="checkout-address">
+              <p class="medium-text boldest">Delivery Address</p>
+              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+            </div>
+            <div class="checkout-address">
+              <p class="medium-text boldest">Billing Address</p>
+              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+            </div>
+          </div>
+        </div>
+        <div class="checkout-mobile">
+          <%= simple_form_for @user do |f| %>
+            <%= f.input :referral_code, input_html: { class: "contact-form-input checkout-mobile-input" }  %>
+          <% end %>
+        </div>
+        <%= simple_form_for @order do |f| %>
+          <% if @basket.total_price <= 0 %>
+            <%= f.submit 'Complete Purchase' %>
+          <% else %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="My Order"
+              data-email="<%= current_user.email %>"
+              data-description="<%= current_user.first_name %>'s order from Loop Beauty"
+              data-amount="<%= @basket.total_price_cents %>"
+              data-currency="<%= @basket.total_price.currency %>"></script>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
