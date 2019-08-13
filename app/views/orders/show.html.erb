@@ -4,7 +4,7 @@
       <%= render 'shared/dash' %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Order <%= @order.stripe_id ? @order.stripe_id.upcase : @order.id %></h2>
+      <h2 class="insider-info-title mlb-title text-center">Order No: <%= @order.id %></h2>
       <hr>
       <div class="my-orders-container">
         <div class="order-show-info">

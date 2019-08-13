@@ -927,7 +927,7 @@ puts "Creating tutorials"
 esther_tutorial = Tutorial.create!(
                                       user: esther,
                                       status: "approved",
-                                      title: "Make Up Tips",
+                                      title: "Perfect nude lip for dark skin",
                                       category: 'ask the expert'
                                       )
 
@@ -939,7 +939,7 @@ esther_tutorial.video.attach(io: File.open(esther_video) , filename: 'esther-vid
 breeny_tutorial = Tutorial.create!(
                                       user: breeny,
                                       status: "approved",
-                                      title: "Best Ways To Apply Foundation",
+                                      title: "Sleek cream contour kit in extra dark",
                                       category: 'tutorial'
                                       )
 
@@ -952,7 +952,7 @@ breeny_tutorial.video.attach(io: File.open(breeny_video) , filename: 'breeny-vid
 nikki_tutorial = Tutorial.create!(
                                       user: nikki,
                                       status: "approved",
-                                      title: "My Top Tips",
+                                      title: "Skincare prep before makeup",
                                       category: 'ask the expert'
                                       )
 
@@ -965,7 +965,7 @@ nikki_tutorial.video.attach(io: File.open(nikki_video) , filename: 'nikki-vid.mp
 shantania_tutorial = Tutorial.create!(
                                       user: shantania,
                                       status: "approved",
-                                      title: "My Favourite Blushers",
+                                      title: "Everyday drugstore £5 makeup tutorial",
                                       category: 'tutorial'
                                       )
 
@@ -978,7 +978,7 @@ shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'shan
 bemi_tutorial = Tutorial.create!(
                                       user: bemi,
                                       status: "approved",
-                                      title: "Golden Hour Skin Tutorial",
+                                      title: "Foundation review | Fenty beauty",
                                       category: 'tutorial'
                                       )
 
@@ -991,7 +991,7 @@ bemi_tutorial.video.attach(io: File.open(bemi_video) , filename: 'bemi-vid.mp4')
 ropo_tutorial = Tutorial.create!(
                                       user: ropo,
                                       status: "approved",
-                                      title: "Drugstore Prom Make Up Tutorial",
+                                      title: "Instagram 'Baddie' inspired makeup",
                                       category: 'tutorial'
                                       )
 
