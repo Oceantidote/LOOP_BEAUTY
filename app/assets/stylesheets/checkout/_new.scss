@@ -31,13 +31,19 @@
 
 .checkout-process {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .checkout-process-steps {
-  width: 20%;
+  padding: 0 10px;
   color: #BABABA;
-  @include absCenterColumn;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include for-phone-only {
+    width: auto;
+  }
 }
 
 .checkout-number {
@@ -49,6 +55,10 @@
   p {
   }
   @include absCenter;
+  @include for-phone-only {
+    height: 30px;
+    width: 30px;
+  }
 }
 
 .checkout-active {
@@ -84,13 +94,10 @@
   letter-spacing: 2px !important;
   font-weight: bold !important;
   @include absCenter;
-  margin: 20px 20px 20px auto !important;
+  margin: 20px 0 20px auto !important;
   &:hover {
     text-decoration: none !important;
     color: $light-gray !important;
-  }
-  @include for-medium-devices-down {
-    margin: 10px !important;
   }
 }
 
@@ -106,6 +113,7 @@
   padding: 40px 0;
   @include for-medium-devices-down {
     width: 95%;
+    padding: 10px 0;
   }
 }
 
@@ -147,5 +155,11 @@
     height: 100%;
     width: 100%;
     border-radius: 50%;
+  }
+}
+
+.order-summary-mobile {
+  @include for-medium-devices-up {
+    display: none;
   }
 }

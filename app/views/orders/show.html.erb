@@ -22,9 +22,9 @@
             <p class="boldest s-medium-text no-margin">No of items: <%= @order.products.count %></p>
           </div>
         </div>
-        <div class="row" style="width: 80%;">
+        <div class="row row-padding" style="width: 100%;">
           <% @order.order_products.each do |order_product| %>
-            <div class="col-6">
+            <div class="col-12 col-lg-6">
               <%= link_to product_path(order_product.product), class: "order-show-card-link no-decoration" do %>
                 <div class="each-order-card order-show-product-card">
                   <div class="each-order-container order-show-each-order">
