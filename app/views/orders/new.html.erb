@@ -47,8 +47,45 @@
       <hr>
       <div class="order-summary-container">
         <div class="order-summary">
-
-          <p class="medium-text boldest">Delivery Option</p>
+          <div class="order-summary-mobile">
+            <h4 class="boldest medium-text">Order Summary</h4>
+            <% if @basket.empty? %>
+              <p>There are no items in your basket</p>
+            <% else %>
+              <div class="checkout-basket-display">
+                <div class="checkout-item-container">
+                  <% @basket.basket_products.each do |item| %>
+                    <div class="checkout-item">
+                      <div>
+                        <h6 class="boldest small-text"><%= item.product.title %></h6>
+                        <h6 class="small-text"><%= item.shade.name %></h6>
+                        <h6 class="small-text no-margin">Qty: <%= item.quantity %></h6>
+                      </div>
+                      <div>
+                        <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                      </div>
+                    </div>
+                  <% end %>
+                  <%= link_to 'Edit Bag', bag_path, class: 'text-center grey underline boldest small-text checkout-edit-bag' %>
+                </div>
+                <div class="checkout-total-container">
+                  <div class="basket-price">
+                    <span class="small-text grey boldest">Subtotal: </span>
+                    <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                  </div>
+                  <div class="basket-price small-margin-bottom">
+                    <span class="small-text grey boldest no-margin">Delivery: </span>
+                    <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol 5.95 %></h5>
+                  </div>
+                  <div class="basket-price">
+                    <span class="grey boldest medium-text">Total: </span>
+                    <h5 class="grey boldest medium-text no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <p class="medium-text boldest small-margin-top">Delivery Option</p>
           <div class="checkout-delivery-option no-border-bottom">
             <div class="checkout-checkbox">
               <div class="checkout-checkbox-inner"></div>

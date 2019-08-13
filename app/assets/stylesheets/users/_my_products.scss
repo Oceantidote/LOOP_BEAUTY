@@ -31,3 +31,13 @@
 .my-products-details p {
   margin: 0;
 }
+
+.row-padding {
+  padding: 30px;
+  @include for-small-devices-down {
+    padding: 10px;
+  }
+  @include for-phone-only {
+    padding: 0;
+  }
+}

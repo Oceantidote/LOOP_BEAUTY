@@ -14,9 +14,16 @@
 .referral-code-section {
   padding: 40px 100px;
   border: 1px dashed black;
-  @include absCenter;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   @include for-medium-devices-down {
     padding: 40px;
+  }
+  @include for-small-devices-down {
+    margin: 0 10px;
+    padding: 40px 20px;
+    flex-direction: column;
   }
 }
 

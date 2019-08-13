@@ -27,3 +27,27 @@
     <%= image_tag "dash-sign-out.png", class: "dash-links-image" %>Sign Out
   <% end %>
 </div>
+
+<div class="dash-links-mobile">
+  <%= link_to user_my_orders_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "basket.png", class: "dash-links-mobile-image" %>
+  <% end %>
+  <%= link_to  user_my_products_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "lipstick.png", class: "dash-links-mobile-image" %>
+  <% end %>
+  <%= link_to user_refer_a_friend_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "dash-refer.png", class: "dash-links-mobile-image" %>
+  <% end %>
+  <%= link_to user_wishlist_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "dash-wish.png", class: "dash-links-mobile-image" %>
+  <% end %>
+    <%= link_to user_account_details_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "default-user.png", class: "dash-links-mobile-image" %>
+  <% end %>
+  <%= link_to user_preference_centre_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "dash-preferences.png", class: "dash-links-mobile-image" %>
+  <% end %>
+  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration" do %>
+    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image" %>
+  <% end %>
+</div>

@@ -1,10 +1,10 @@
-<div class="row" style="width: 100%; margin: 0; padding: 30px;">
+<div class="row row-padding" style="width: 100%; margin: 0;">
   <% if user_signed_in? && current_user.wishlist %>
     <% if @wishlist.wishlist_products.count == 0 %>
       <p class="medium-margin text-center boldest" style="width: 100%;">Your wishlist is empty</p>
     <% end %>
     <% @wishlist.wishlist_products.each do |wishlist_product| %>
-      <div class="col-xs-12 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
+      <div class="col-6 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
         <div class="my-products-card">
           <div class="my-products-image">
             <%= image_tag url_for(wishlist_product.shade.photos.first) %>
