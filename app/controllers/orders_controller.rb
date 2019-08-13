@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @basket = find_basket
     @user = @basket.user
     @order = Order.new
+    @address = Address.new
     authorize @order
   end
 

@@ -29,7 +29,7 @@
               </div>
               <div class="basket-price small-margin-bottom">
                 <span class="small-text grey boldest no-margin">Delivery: </span>
-                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol 5.95 %></h5>
               </div>
               <div class="basket-price">
                 <span class="grey boldest medium-text">Total: </span>
@@ -47,26 +47,57 @@
       <hr>
       <div class="order-summary-container">
         <div class="order-summary">
+
           <p class="medium-text boldest">Delivery Option</p>
-          <div class="checkout-delivery-option">
+          <div class="checkout-delivery-option no-border-bottom">
+            <div class="checkout-checkbox">
+              <div class="checkout-checkbox-inner"></div>
+            </div>
             <p class="boldest small-text no-margin">Standard</p>
             <p class="boldest small-text grey no-margin">2-5 working days from despatch</p>
             <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
           </div>
-          <div class="checkout-addresses-container">
-            <div class="checkout-address">
-              <p class="medium-text boldest">Delivery Address</p>
-              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+          <div class="checkout-delivery-option margin-bottom">
+            <div class="checkout-checkbox">
+              <div></div>
             </div>
-            <div class="checkout-address">
-              <p class="medium-text boldest">Billing Address</p>
-              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
-            </div>
+            <p class="boldest small-text no-margin">Express</p>
+            <p class="boldest small-text grey no-margin">Next working day from despatch</p>
+            <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
           </div>
+            <div class="checkout-addresses-container">
+              <div class="checkout-address">
+                <p class="medium-text boldest">Delivery Address</p>
+                <% if @user.addresses.any? %>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+                <% else %>
+                  <%= simple_form_for @address do |f| %>
+                    <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
+                    <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
+                    <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                    <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="checkout-address">
+                <p class="medium-text boldest">Billing Address</p>
+                <% if @user.addresses.any? %>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+                <% else %>
+                  <%= simple_form_for @address do |f| %>
+                    <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
+                    <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
+                    <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                    <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                    <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
         </div>
         <div class="checkout-mobile">
           <%= simple_form_for @user do |f| %>
@@ -75,7 +106,7 @@
         </div>
         <%= simple_form_for @order do |f| %>
           <% if @basket.total_price <= 0 %>
-            <%= f.submit 'Complete Purchase' %>
+            <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% else %>
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
