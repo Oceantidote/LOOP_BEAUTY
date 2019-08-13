@@ -1,4 +1,5 @@
 basketIcon = document.querySelector('.basket-icon-container')
+basketIconMobile = document.querySelector('.basket-icon-mobile')
 
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.total_price %>'
@@ -21,4 +22,6 @@ if (window.scrollY > 40) {
 setTimeout(() => navBasketDrop.style.top = '-620px', 3000)
 
 basketIcon.style.animation = 'basket-bounce 2s ease'
+basketIconMobile.style.animation = 'basket-bounce 2s ease'
 setTimeout(() => basketIcon.style.animation = '', 2000)
+setTimeout(() => basketIconMobile.style.animation = '', 2000)

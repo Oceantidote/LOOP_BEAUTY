@@ -1242,13 +1242,20 @@ TutorialProduct.create!(
 
 puts "Creating customer reviews"
 
+reviews = ["This product works very well with my sking tone and I'm am very happy I tried it. Will definitely be buying this again",
+          "I have this in the darkest shade which is my go-to on an everyday basis. It is beautiful, it makes an impact without looking glittery, chunky or unnatural.",
+          "Bought this a few weeks ago and I have to say it is amazing. The colour is intense and very long lasting. I was so impressed by it, i’ve since purchased another shade.",
+          "After using brow pencils for years, mainly for the brush side, this has been the best I've used so far!",
+          "I was looking for a product to help with my eye lashes, because for some reason I was losing them. This product is great. My eye lashes are coming back."]
+
+
 100.times do
 
 CustomerReview.create!(
                       user: customers.sample,
                       rating: [3, 4, 5].sample,
                       product: Product.all.sample,
-                      review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
+                      review: reviews.sample
                       )
 
 end
@@ -1263,7 +1270,7 @@ InsiderReview.create!(
                       user: insiders.sample,
                       rating: [3, 4, 5].sample,
                       product: Product.all.sample,
-                      review: "This is the best Disco lipstick yet. Absolutely beautiful and goes well with the skin"
+                      review: reviews.sample
                       )
 end
 

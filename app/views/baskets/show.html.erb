@@ -1,6 +1,6 @@
 <div class="shopping-bag-wrapper">
   <div class="shopping-bag-container">
-    <% if @basket.user.influencer %>
+    <% if @basket.user&.influencer %>
       <div class="influencer-credit-container">
         <p class="small-text boldest underline small-margin-bottom">Credit Remaining</p>
         <p class="boldest small-margin-bottom influencer-remaining-credit"><%= humanized_money_with_symbol @basket.user.remaining_credit %></p>
