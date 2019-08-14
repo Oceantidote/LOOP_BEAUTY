@@ -629,29 +629,29 @@ lennyWishlist = Wishlist.create!(user: lenny)
 ifeWishlist = Wishlist.create!(user: ife)
 wrightyWishlist = Wishlist.create!(user: wrighty)
 
-4.times do
-arielProd = WishlistProduct.new(wishlist: arielWishlist, product: Product.all.sample)
-arielProd.shade = arielProd.product.shades.first
-arielProd.save
-end
+# 4.times do
+# arielProd = WishlistProduct.new(wishlist: arielWishlist, product: Product.all.sample)
+# arielProd.shade = arielProd.product.shades.first
+# arielProd.save
+# end
 
-4.times do
-lennyProd = WishlistProduct.new(wishlist: lennyWishlist, product: Product.all.sample)
-lennyProd.shade = lennyProd.product.shades.first
-lennyProd.save
-end
+# 4.times do
+# lennyProd = WishlistProduct.new(wishlist: lennyWishlist, product: Product.all.sample)
+# lennyProd.shade = lennyProd.product.shades.first
+# lennyProd.save
+# end
 
-4.times do
-ifeProd = WishlistProduct.new(wishlist: ifeWishlist, product: Product.all.sample)
-ifeProd.shade = ifeProd.product.shades.first
-ifeProd.save
-end
+# 4.times do
+# ifeProd = WishlistProduct.new(wishlist: ifeWishlist, product: Product.all.sample)
+# ifeProd.shade = ifeProd.product.shades.first
+# ifeProd.save
+# end
 
-4.times do
-wrightyProd = WishlistProduct.new(wishlist: wrightyWishlist, product: Product.all.sample)
-wrightyProd.shade = wrightyProd.product.shades.first
-wrightyProd.save
-end
+# 4.times do
+# wrightyProd = WishlistProduct.new(wishlist: wrightyWishlist, product: Product.all.sample)
+# wrightyProd.shade = wrightyProd.product.shades.first
+# wrightyProd.save
+# end
 
 puts "Creating admin user"
 
