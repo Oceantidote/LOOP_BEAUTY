@@ -18,6 +18,6 @@ class BasketProductPolicy < ApplicationPolicy
   end
 
   def set_credit_purchase?
-    record.product.demoable && user.influencer?
+    record.product.demoable && user&.influencer? # TO BE REVEIWED BY WRIGHTY
   end
 end
