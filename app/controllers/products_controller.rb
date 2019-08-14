@@ -31,15 +31,20 @@ class ProductsController < ApplicationController
     authorize @product
     @basket = find_basket
     @basket_product = BasketProduct.new(product: @product, basket: @basket, shade: @product.shades.first)
-    if @basket_product.save
-      respond_to do |format|
-        format.js
-        format.html { redirect_to user_my_products_path(current_user), notice: 'Item added to bag' }
-      end
+    if @basket.products.any? && @basket.basket_products.where(product: @basket_product.product).where(shade: @basket_product.shade).any? # IFE FIX TO BE APPROVED BY THE MIGHTY BEN WRIGHT
+        @old_item = @basket.basket_products.where(shade: @basket_product.shade).first
+        @old_item.update(quantity: @old_item.quantity + 1)
     else
-      respond_to do |format|
-        format.js
-        format.html { redirect_to user_my_products_path(current_user), notice: 'Something went wrong' }
+      if @basket_product.save
+        respond_to do |format|
+          format.js
+          format.html { redirect_to user_my_products_path(current_user), notice: 'Item added to bag' }
+        end
+      else
+        respond_to do |format|
+          format.js
+          format.html { redirect_to user_my_products_path(current_user), notice: 'Something went wrong' }
+        end
       end
     end
   end
