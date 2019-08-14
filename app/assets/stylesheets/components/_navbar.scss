@@ -90,11 +90,11 @@
 
 .navbar-submenu {
   font-family: $title-font;
-  position: absolute;
+  position: sticky;
   z-index: 100;
   width: 100%;
   height: 150px;
-  top: 100px;
+  top: 60px;
   display: none;
   justify-content: center;
   background: white;

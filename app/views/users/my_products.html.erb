@@ -14,13 +14,23 @@
 </div>
 
 <script>
+  basketIcon = document.querySelector('.basket-icon-container');
+  basketIconMobile = document.querySelector('.basket-icon-mobile')
   itemAdded = document.querySelector('.item-added');
   addToBag = document.querySelectorAll('.add-to-bag-grey');
 
-  addToBag.forEach(function(button) {
+  addToBag.forEach((button) => {
     button.addEventListener('click', function() {
+      button.innerHTML = 'Item added';
       itemAdded.classList.add('item-added-show');
+      basketIcon.style.animation = 'basket-bounce 2s ease'
+      basketIconMobile.style.animation = 'basket-bounce 2s ease'
+      setTimeout(() => basketIcon.style.animation = '', 2000)
+      setTimeout(() => basketIconMobile.style.animation = '', 2000)
       setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
+      setTimeout(() => button.disabled = true, 100)
+      setTimeout(() => button.disabled = false, 4000)
+      setTimeout(() => button.innerHTML = 'Add to bag', 3500)
     });
-  });
+  })
 </script>
