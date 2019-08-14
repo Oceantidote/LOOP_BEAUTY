@@ -102,43 +102,43 @@
             <p class="boldest small-text grey no-margin">Next working day from despatch</p>
             <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
           </div>
-            <div class="checkout-addresses-container">
-              <div class="checkout-address">
-                <p class="medium-text boldest">Delivery Address</p>
-                <% if @user.addresses.any? %>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
-                <% else %>
-                  <%= simple_form_for @address do |f| %>
-                    <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
-                    <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
-                    <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
-                    <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
-                  <% end %>
+          <div class="checkout-addresses-container">
+            <div class="checkout-address">
+              <p class="medium-text boldest">Delivery Address</p>
+              <% if @user.addresses.any? %>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+              <% else %>
+                <%= simple_form_for @address do |f| %>
+                  <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
                 <% end %>
-              </div>
-              <div class="checkout-address">
-                <p class="medium-text boldest">Billing Address</p>
-                <% if @user.addresses.any? %>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
-                <% else %>
-                  <%= simple_form_for @address do |f| %>
-                    <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
-                    <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
-                    <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
-                    <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
-                    <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
-                  <% end %>
-                <% end %>
-              </div>
+              <% end %>
             </div>
+            <div class="checkout-address">
+              <p class="medium-text boldest">Billing Address</p>
+              <% if @user.addresses.any? %>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+              <% else %>
+                <%= simple_form_for @address do |f| %>
+                  <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
         <div class="checkout-mobile">
-          <%= simple_form_for @user do |f| %>
-            <%= f.input :referral_code, input_html: { class: "contact-form-input checkout-mobile-input" }  %>
+          <%= simple_form_for @order do |f| %>
+            <%= f.input :phone_number, input_html: { value: "#{current_user&.phone_number ? current_user.phone_number : '' }", class: "contact-form-input checkout-mobile-input" }  %>
           <% end %>
         </div>
         <%= simple_form_for @order do |f| %>
