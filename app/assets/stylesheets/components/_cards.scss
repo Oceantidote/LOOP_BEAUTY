@@ -60,4 +60,7 @@
   font-size: 22px;
   top: calc(50% - 11px);
   right: 10px;
+  @include for-phone-only {
+    font-size: 17px;
+  }
 }

@@ -8,7 +8,7 @@
   // position: relative;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 105;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -291,7 +291,8 @@
 }
 
 .main-nav-dropdown {
-  position: absolute;
+  position: sticky;
+  top: 60px;
   z-index: 100;
   width: 100vw;
   right: 0;
