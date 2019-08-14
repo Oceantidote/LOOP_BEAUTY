@@ -1255,7 +1255,8 @@ CustomerReview.create!(
                       user: customers.sample,
                       rating: [3, 4, 5].sample,
                       product: Product.all.sample,
-                      review: reviews.sample
+                      review: reviews.sample,
+                      recommendation: ['Yes', 'Maybe'].sample
                       )
 
 end

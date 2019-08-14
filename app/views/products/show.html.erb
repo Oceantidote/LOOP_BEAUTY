@@ -173,7 +173,7 @@
               <div class="customer-review-text">
                 <%= render 'shared/ratings', rating: review.rating %>
                 <p class="didot">"<%= review.review.truncate(170) %>"</p>
-                <p class="boldest">Yes,<span class="grey-font"> I would recommend this product</span></p>
+                <p class="boldest"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
               </div>
             </div>
           </div>

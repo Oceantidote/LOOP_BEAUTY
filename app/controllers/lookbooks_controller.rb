@@ -1,5 +1,5 @@
 class LookbooksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index, :add_to_bag]
   before_action :set_lookbook, only: [:edit, :update, :destroy]
 
   def index
