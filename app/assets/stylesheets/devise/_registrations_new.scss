@@ -84,6 +84,34 @@
   }
 }
 
-.sign-up-dropdown::prompt {
-  color: red;
+.dropdown-input {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  min-width: 200px;
+  height: 35px;
+  background-image: asset_url('dropdown-down-small.png');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  border: 1px solid #F0F0F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  color: black;
 }
+
+#user_origin {
+  @include for-phone-only {
+    margin-top: 5px;
+  }
+}
+
+.mt-pp {
+  @include for-phone-only {
+    margin: 10px 0 0 0 !important;
+  }
+}
+
