@@ -22,7 +22,7 @@
             <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p>
           </div>
           <div class="order-show-info-right">
-            <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d\%m\%d') %></p>
+            <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d-%m-%d') %></p>
             <p class="boldest s-medium-text no-margin">No of items: <%= @order.products.count %></p>
           </div>
         </div>
@@ -41,7 +41,7 @@
                       </div>
                     </div>
                     <div class="order-price">
-                      <p class="boldest small-text"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
+                      <p class="boldest small-text small-padding-right"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
                     </div>
                   </div>
                 </div>

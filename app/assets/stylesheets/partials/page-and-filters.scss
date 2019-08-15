@@ -1,8 +1,12 @@
 .partial-banner {
-  height: 300px;
+  height: calc(100vw * 0.25);
+  max-height: 400px;
   width: 100%;
   background-size: cover;
   background-position: center;
+  @include for-phone-only {
+    height: calc(100vw * 0.5);
+  }
 }
 
 .partial-filters-one {
