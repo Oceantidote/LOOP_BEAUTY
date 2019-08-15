@@ -41,9 +41,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @include for-phone-only {
-    width: auto;
-  }
+  width: 33.33%;
 }
 
 .checkout-number {
