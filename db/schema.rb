@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_142404) do
     t.bigint "product_id"
     t.bigint "order_id"
     t.bigint "shade_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
@@ -220,6 +221,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_142404) do
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["shade_id"], name: "index_order_products_on_shade_id"
+    t.index ["user_id"], name: "index_order_products_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -422,6 +424,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_142404) do
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "order_products", "shades"
+  add_foreign_key "order_products", "users"
   add_foreign_key "orders", "discount_codes"
   add_foreign_key "orders", "users"
   add_foreign_key "product_benefits", "benefits"
