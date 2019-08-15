@@ -1,25 +1,4 @@
 // Specific CSS for your home-page
-.offers-banner {
-  height: 40px;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 100;
-}
-
-.offers-banner-text {
-  font-family: $menu-font;
-  margin: 0;
-  font-weight: 800;
-  color: white;
-  font-size: 14px;
-  @include for-phone-only {
-    font-size: 12px;
-  }
-}
-
 .logo-bar {
   display: flex;
   background: white;
