@@ -27,7 +27,7 @@
                         required: true,
                         label: false,
                         prompt: "Country",
-                        input_html: { autocomplete: "email", class: 'filters-container sign-up-dropdown' } %>
+                        input_html: { autocomplete: "email", class: 'dropdown-input sign-up-dropdown' } %>
             <%= f.input :password,
                         label: false,
                         placeholder: "Password",
@@ -43,10 +43,10 @@
       </div>
       <div class="sign-up-extras-container">
           <h6 class="no-margin">How did you hear about us?</h6>
-          <%= f.input :origin, label: false, prompt: "Choose option", collection: ["Lenny", "Gonzalo"], include_blank: false, input_html: { class: 'filters-container sign-up-dropdown' } %>
+          <%= f.input :origin, label: false, prompt: "Choose option", collection: ["Lenny", "Gonzalo"], include_blank: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
           <h6 class="no-margin s-medium-text">Find out about the latest offers, new products and beauty news.</h6>
           <%= f.input :newsletter, label: false %>
-          <h6 class="grey-font no-margin s-medium-text">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
+          <h6 class="grey-font s-medium-text mt-pp">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
           <%= f.input :accepts_terms, label: false %>
           <div class="form-actions">
             <%= f.button :submit, "SUBMIT", class: "primary-button" %>
