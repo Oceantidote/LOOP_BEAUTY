@@ -105,7 +105,7 @@
           <div class="checkout-addresses-container">
             <div class="checkout-address">
               <p class="medium-text boldest">Delivery Address</p>
-              <% if @user.addresses.any? %>
+              <% if @user.delivery_addresses.any? %>
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
@@ -120,7 +120,7 @@
             </div>
             <div class="checkout-address">
               <p class="medium-text boldest">Billing Address</p>
-              <% if @user.addresses.any? %>
+              <% if @user.billing_addresses.any? %>
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
@@ -136,22 +136,26 @@
             </div>
           </div>
         </div>
-        <div class="checkout-mobile">
-          <%= simple_form_for @order do |f| %>
-            <%= f.input :phone_number, input_html: { value: "#{current_user&.phone_number ? current_user.phone_number : '' }", class: "contact-form-input checkout-mobile-input" }  %>
-          <% end %>
-        </div>
-        <%= simple_form_for @order do |f| %>
+        <script src="https://checkout.stripe.com/checkout.js"></script>
+        <%= simple_form_for @order, html: {
+          'data-email': current_user.email,
+          'data-description': "#{current_user.first_name}'s order from Loop Beauty",
+          'data-amount': @basket.total_price_cents,
+          'data-currency': @basket.total_price.currency
+        } do |f| %>
+          <div class="checkout-mobile">
+              <%= f.input :delivery_address_id, as: :hidden, input_html: { value: current_user&.delivery_addresses&.first&.id } %>
+              <%= f.input :billing_address_id, as: :hidden, input_html: { value: current_user&.billing_addresses&.first&.id } %>
+              <%= f.fields_for :stripe do |s| %>
+                <%= s.input :stripe_email, as: :hidden %>
+                <%= s.input :stripe_token, as: :hidden %>
+              <% end %>
+              <%= f.input :phone_number, input_html: { value: "#{current_user&.phone_number ? current_user.phone_number : '' }", class: "contact-form-input checkout-mobile-input" }  %>
+          </div>
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% else %>
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-name="My Order"
-              data-email="<%= current_user.email %>"
-              data-description="<%= current_user.first_name %>'s order from Loop Beauty"
-              data-amount="<%= @basket.total_price_cents %>"
-              data-currency="<%= @basket.total_price.currency %>"></script>
+            <%= f.submit 'Pay with Card', class: 'stripe-button stripe-button-el' %>
           <% end %>
         <% end %>
       </div>

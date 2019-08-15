@@ -15,11 +15,11 @@ class OrdersController < ApplicationController
 
   def create
     @basket = find_basket
-    @order = Order.new
+    @order = Order.new(order_params.slice(:phone_number, :delivery_address_id, :billing_address_id))
     @order.user = current_user
     authorize @order
     unless @basket.total_price <= 0
-      stripe_user = find_stripe_user(params[:stripeEmail], params[:stripeToken])
+      stripe_user = find_stripe_user(order_params[:stripe][:stripe_email], order_params[:stripe][:stripe_token])
       charge = Stripe::Charge.create(
         customer: stripe_user.id,
         amount: @basket.total_price_cents,
@@ -64,6 +64,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:order_id])
     @user = @order.user
     authorize @order
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:delivery_address_id, :billing_address_id, :phone_number, stripe: [:stripe_email, :stripe_token] )
   end
 
   def find_stripe_user(email, token = nil)

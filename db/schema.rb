@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_142404) do
+ActiveRecord::Schema.define(version: 2019_08_15_130333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,6 +234,10 @@ ActiveRecord::Schema.define(version: 2019_08_14_142404) do
     t.string "affiliate_code"
     t.integer "credit_spent_cents", default: 0
     t.string "phone_number"
+    t.bigint "delivery_address_id"
+    t.bigint "billing_address_id"
+    t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
+    t.index ["delivery_address_id"], name: "index_orders_on_delivery_address_id"
     t.index ["discount_code_id"], name: "index_orders_on_discount_code_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -425,6 +429,8 @@ ActiveRecord::Schema.define(version: 2019_08_14_142404) do
   add_foreign_key "order_products", "products"
   add_foreign_key "order_products", "shades"
   add_foreign_key "order_products", "users"
+  add_foreign_key "orders", "addresses", column: "billing_address_id"
+  add_foreign_key "orders", "addresses", column: "delivery_address_id"
   add_foreign_key "orders", "discount_codes"
   add_foreign_key "orders", "users"
   add_foreign_key "product_benefits", "benefits"

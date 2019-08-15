@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
     authorize @address
     @address.user = current_user
     if @address.save
-      redirect_to user_account_details_path(current_user)
+      redirect_back fallback_location: user_account_details_path(current_user)
     elsif @address.delivery_address
       @delivery_address = @address
       @billing_address = Address.new(delivery_address: false)
