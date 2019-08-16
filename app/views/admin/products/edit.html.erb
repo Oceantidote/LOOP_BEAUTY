@@ -69,7 +69,7 @@
                 </div>
                 <div class="personal-details-input">
                   <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
-                  <%= f.input :photos, label: false %>
+                  <%= f.input :photos, label: false, input_html: { multiple: true } %>
                 </div>
                 <div class="d-flex justify-content-end">
                   <%= link_to 'DESTROY', admin_shade_path(shade), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
@@ -91,7 +91,7 @@
               </div>
             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
-              <%= f.input :photos, label: false %>
+              <%= f.input :photos, label: false, input_html: { multiple: true } %>
             </div>
             <%= f.submit 'CREATE SHADE', class: 'primary-button small-text personal-details-button' %>
           <% end %>
