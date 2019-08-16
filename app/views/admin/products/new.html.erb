@@ -3,7 +3,7 @@
     <h2 class="insider-info-title mlb-title text-center">Create a Product</h2>
     <hr>
     <div class="admin-form-container admin-products-new-container">
-      <%= simple_form_for @product do |f| %>
+      <%= simple_form_for [:admin, @product] do |f| %>
         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Weight</p>
           <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
