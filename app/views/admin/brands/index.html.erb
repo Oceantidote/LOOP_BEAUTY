@@ -1,0 +1,29 @@
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container" style="max-width: 800px;">
+    <h2 class="insider-info-title mlb-title text-center">All Brands</h2>
+    <hr>
+      <div class="row" style="width: 100%; margin: 0; padding: 30px;">
+        <% @brands.each do |brand| %>
+          <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
+            <div class="my-products-card">
+              <div class="my-products-details text-center no-margin">
+                <p><%= brand.name %></p>
+              </div>
+              <div class="my-products-image">
+                <% if brand.logo.attached? %>
+                  <%= image_tag url_for(brand.logo) %>
+                <% else %>
+                  <%= image_tag 'brand-default.png' %>
+                <% end %>
+              </div>
+              <div class="products-admin-options">
+                <%= link_to 'EDIT', edit_admin_brand_path(brand), class: 'secondary-button products-admin-buttons' %>
+                <%= link_to 'DESTROY', admin_brand_path(brand), method: :delete, class: 'secondary-button products-admin-buttons' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to 'NEW BRAND', new_admin_brand_path, class: 'primary-button products-admin-primary' %>
+  </div>
+</div>

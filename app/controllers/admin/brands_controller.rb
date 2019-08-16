@@ -1,6 +1,11 @@
 class Admin::BrandsController < ApplicationController
   before_action :set_brand, only: [:edit, :update, :destroy]
 
+  def index
+    @brands = policy_scope(Brand)
+  end
+
+
   def new
     @brand = Brand.new
     authorize [:admin, @brand]
@@ -28,12 +33,13 @@ class Admin::BrandsController < ApplicationController
 
   def destroy
     @brand.destroy
+    render :index
   end
 
   private
 
   def set_brand
-    @brand = Brand.find(params[:id])
+    @brand = Brand.friendly.find(params[:id])
     authorize [:admin, @brand]
   end
 

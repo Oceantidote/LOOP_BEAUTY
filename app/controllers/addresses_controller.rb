@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  before_action :set_address, only: [:destroy]
   def create
     @address = Address.new(address_params)
     authorize @address
@@ -17,9 +18,16 @@ class AddressesController < ApplicationController
   end
 
   def destroy
+    authorize @address
+    @address.destroy
+    redirect_back fallback_location: user_account_details_path(current_user)
   end
 
   def address_params
     params.require(:address).permit(:street, :city, :postcode, :delivery_address)
+  end
+
+  def set_address
+    @address = Address.find(params[:id])
   end
 end
