@@ -48,13 +48,14 @@ class User < ApplicationRecord
   has_one_attached :qa_photo
   has_one_attached :lookbook_photo
   has_one_attached :tutorial_photo
-  has_many :products, through: :order_products, as: :ordered_products
   has_many :lookbooks, dependent: :destroy
   has_many :insider_articles, dependent: :destroy
   has_one :question_answer, dependent: :destroy
   has_many :customer_reviews, dependent: :destroy
   has_many :insider_reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :order_products, through: :orders
+  has_many :ordered_products, through: :order_products, source: :product
   has_many :shades, through: :order_products
   has_many :tutorials, dependent: :destroy
   has_one :showroom, dependent: :destroy
