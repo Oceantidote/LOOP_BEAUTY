@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       @order.affiliate_code = session[:aff_code]
     end
     @order.credit_spent = @basket.money_off_from_credit
-    if @order.save
+    if @order.save!
       unless @basket.subtotal - @order.credit_spent <= 0
         Stripe::Charge.update(
           charge.id,

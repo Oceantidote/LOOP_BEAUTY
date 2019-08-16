@@ -90,25 +90,28 @@
             <div class="checkout-checkbox">
               <div class="checkout-checkbox-inner"></div>
             </div>
-            <p class="boldest small-text no-margin">Standard</p>
-            <p class="boldest small-text grey no-margin">2-5 working days from despatch</p>
-            <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
+            <p class="boldest delivery-option-text no-margin">Standard</p>
+            <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
+            <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
           </div>
           <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
             <div class="checkout-checkbox">
               <div></div>
             </div>
-            <p class="boldest small-text no-margin">Express</p>
-            <p class="boldest small-text grey no-margin">Next working day from despatch</p>
-            <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
+            <p class="boldest delivery-option-text no-margin">Express</p>
+            <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
+            <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
           </div>
           <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
             <div class="checkout-checkbox">
               <div></div>
             </div>
-            <p class="boldest small-text no-margin">International(Europe Only)</p>
-            <p class="boldest small-text grey no-margin">3-5 working days from despatch</p>
-            <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
+            <div>
+              <p class="boldest delivery-option-text no-margin">International</p>
+              <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
+            </div>
+            <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
+            <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address">

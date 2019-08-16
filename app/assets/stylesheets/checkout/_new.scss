@@ -32,6 +32,7 @@
 .checkout-process {
   display: flex;
   justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .checkout-process-steps {
@@ -41,6 +42,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 33.33%;
 }
 
@@ -76,6 +78,9 @@
   input {
     margin-bottom: 5px;
   }
+  @include for-phone-only {
+    flex-direction: column;
+  }
 }
 
 .checkout-address {
@@ -109,9 +114,15 @@
   width: 65%;
   margin: 0 auto;
   padding: 40px 0;
+  @include for-large-devices-down {
+    width: 75%;
+  }
   @include for-medium-devices-down {
-    width: 95%;
+    width: 85%;
     padding: 10px 0;
+  }
+  @include for-phone-only {
+    width: 98%;
   }
 }
 
@@ -137,6 +148,12 @@
   background: #FCFCFC;
   padding: 15px 30px;
   cursor: pointer;
+  @include for-phone-only {
+    padding: 15px;
+  }
+  @include for-xsmall-phone-only {
+    padding: 15px 4px;
+  }
 }
 
 .no-border-bottom {
@@ -160,5 +177,12 @@
 .order-summary-mobile {
   @include for-medium-devices-up {
     display: none;
+  }
+}
+
+.delivery-option-text {
+  font-size: 12px;
+  @include for-xsmall-phone-only {
+    font-size: 10px;
   }
 }
