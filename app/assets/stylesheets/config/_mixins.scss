@@ -70,6 +70,10 @@
   @media (max-width: 575.98px) { @content; }
 }
 
+@mixin for-xsmall-phone-only {
+  @media (max-width: 364.98px) { @content; }
+}
+
 // BOOTSTRAP MEDIA QUERIES MOBILE FIRST
 
 @mixin for-small-devices-up {
