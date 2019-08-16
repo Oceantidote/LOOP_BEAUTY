@@ -86,7 +86,7 @@ Rails.application.routes.draw do
         patch '/reject', to: 'tutorials#reject'
       end
     end
-    resources :brands, only: [:new, :edit, :create, :update, :destroy]
+    resources :brands, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :insider_articles, only: [:new, :edit, :create, :update, :destroy] do
       member do
         patch '/publish', to: 'insider_articles#publish'

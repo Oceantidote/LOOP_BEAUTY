@@ -114,6 +114,7 @@
                   <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
                   <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                   <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
                 <% end %>
               <% end %>

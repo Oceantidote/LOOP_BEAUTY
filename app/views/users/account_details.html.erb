@@ -54,6 +54,9 @@
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.street}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
+                      <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
+                        <p class="small-text underline grey-font boldest text-right no-margin">Remove</p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -73,6 +76,9 @@
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.street}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
+                      <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
+                        <p class="small-text underline grey-font boldest text-right no-margin">Remove</p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
