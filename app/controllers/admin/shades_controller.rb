@@ -32,7 +32,7 @@ class Admin::ShadesController < ApplicationController
   private
 
   def shade_params
-    params.require(:shade).permit(:name, :sku, :photos)
+    params.require(:shade).permit(:name, :sku, photos: [])
   end
 
   def set_shade
