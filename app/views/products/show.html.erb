@@ -179,6 +179,12 @@
           </div>
         </div>
       <% end %>
+      <%= simple_form_for [@product, CustomerReview.new] do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :review %>
+        <%= f.input :recommendation %>
+        <%= f.submit %>
+      <% end %>
       <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>

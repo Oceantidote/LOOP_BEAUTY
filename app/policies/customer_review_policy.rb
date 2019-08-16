@@ -4,4 +4,8 @@ class CustomerReviewPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    user.ordered_products.include?(record.product)
+  end
 end
