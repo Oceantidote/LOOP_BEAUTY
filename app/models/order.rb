@@ -4,8 +4,8 @@ class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
   has_many :shades, through: :order_products
-  belongs_to :delivery_address
-  belongs_to :billing_address
+  belongs_to :delivery_address, class_name: 'Address'
+  belongs_to :billing_address, class_name: 'Address'
   validate :discount_uses
   monetize :credit_spent_cents
   monetize :delivery_cost_cents
