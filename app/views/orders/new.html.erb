@@ -168,7 +168,7 @@
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% else %>
-            <%= f.submit 'Pay with Card', class: 'stripe-button stripe-button-el' %>
+            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el' %>
           <% end %>
         <% end %>
       </div>

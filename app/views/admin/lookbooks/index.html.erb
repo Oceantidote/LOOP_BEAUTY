@@ -1,15 +1,24 @@
-<div class="latest-videos-wrapper minimum-height">
-  <h2 class="insider-info-title text-center">Pending Approval</h2>
-  <div class="row" style="margin: 30px 0;">
-    <% if @lookbooks.count == 0 %>
-      <p class="medium-margin text-center boldest" style="width: 100%;">There are no pending lookbooks</p>
-    <% end %>
-    <% @lookbooks.each do |lookbook| %>
-    <div class="">
-      <%= render 'shared/upload_cards', item: lookbook %>
-      <%= link_to 'Approve', approve_admin_lookbook_path(lookbook), method: :patch %>
-      <%= link_to 'Reject', reject_admin_lookbook_path(lookbook), method: :patch %>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
     </div>
-    <% end %>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title text-center">Pending Approval</h2>
+      <div class="row" style="margin: 30px 0;">
+        <% if @lookbooks.count == 0 %>
+          <p class="medium-margin text-center boldest" style="width: 100%;">There are no pending lookbooks</p>
+        <% end %>
+        <% @lookbooks.each do |lookbook| %>
+          <div class="" style="margin-bottom: 15px;">
+            <%= render 'shared/upload_cards', item: lookbook %>
+            <div class="d-flex justify-content-around">
+              <%= link_to 'Approve', approve_admin_lookbook_path(lookbook), method: :patch, class: 'secondary-button products-admin-buttons' %>
+              <%= link_to 'Reject', reject_admin_lookbook_path(lookbook), method: :patch, class: 'secondary-button products-admin-buttons' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
