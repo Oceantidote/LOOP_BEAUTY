@@ -7,12 +7,13 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    authorize @product
+    authorize [:admin, @product]
+    # authorize @product
   end
 
   def create
     @product = Product.new(product_params)
-    authorize @product
+    # authorize @product
     if @product.save
       redirect_to edit_admin_product_path(@product), notice: "Product added"
     else
