@@ -29,11 +29,11 @@
               </div>
               <div class="basket-price small-margin-bottom">
                 <span class="small-text grey boldest no-margin">Delivery: </span>
-                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol 5.95 %></h5>
+                <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
               </div>
               <div class="basket-price">
                 <span class="grey boldest medium-text">Total: </span>
-                <h5 class="grey boldest medium-text no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                <h5 class="grey boldest medium-text no-margin total-cost"><%=humanized_money_with_symbol(@basket.total_price + Money.new(595)) %></h5>
               </div>
             </div>
           </div>
@@ -75,18 +75,18 @@
                   </div>
                   <div class="basket-price small-margin-bottom">
                     <span class="small-text grey boldest no-margin">Delivery: </span>
-                    <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol 5.95 %></h5>
+                    <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
                   </div>
                   <div class="basket-price">
                     <span class="grey boldest medium-text">Total: </span>
-                    <h5 class="grey boldest medium-text no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                    <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.total_price + Money.new(595)) %></h5>
                   </div>
                 </div>
               </div>
             <% end %>
           </div>
           <p class="medium-text boldest small-margin-top">Delivery Option</p>
-          <div class="checkout-delivery-option no-border-bottom">
+          <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
             <div class="checkout-checkbox">
               <div class="checkout-checkbox-inner"></div>
             </div>
@@ -94,13 +94,21 @@
             <p class="boldest small-text grey no-margin">2-5 working days from despatch</p>
             <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
           </div>
-          <div class="checkout-delivery-option margin-bottom">
+          <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
             <div class="checkout-checkbox">
               <div></div>
             </div>
             <p class="boldest small-text no-margin">Express</p>
             <p class="boldest small-text grey no-margin">Next working day from despatch</p>
             <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
+          </div>
+          <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
+            <div class="checkout-checkbox">
+              <div></div>
+            </div>
+            <p class="boldest small-text no-margin">International(Europe Only)</p>
+            <p class="boldest small-text grey no-margin">3-5 working days from despatch</p>
+            <p class="boldest small-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address">
@@ -141,12 +149,13 @@
         <%= simple_form_for @order, html: {
           'data-email': current_user.email,
           'data-description': "#{current_user.first_name}'s order from Loop Beauty",
-          'data-amount': @basket.total_price_cents,
+          'data-amount': @basket.total_price_cents + 595,
           'data-currency': @basket.total_price.currency
         } do |f| %>
           <div class="checkout-mobile">
               <%= f.input :delivery_address_id, as: :hidden, input_html: { value: current_user&.delivery_addresses&.first&.id } %>
               <%= f.input :billing_address_id, as: :hidden, input_html: { value: current_user&.billing_addresses&.first&.id } %>
+              <%= f.input :delivery_type, as: :hidden, input_html: { value: 'standard' } %>
               <%= f.fields_for :stripe do |s| %>
                 <%= s.input :stripe_email, as: :hidden %>
                 <%= s.input :stripe_token, as: :hidden %>
