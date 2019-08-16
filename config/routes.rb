@@ -106,7 +106,9 @@ Rails.application.routes.draw do
     resources :product_benefits, only: [:destroy]
     resources :shades, only: [:update, :destroy]
     resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
+    get ':id/portal', to: 'pages#portal'
   end
+
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
     resources :customer_reviews, only: [:create]
