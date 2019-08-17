@@ -16,13 +16,13 @@
 
             </div>
             <div class="products-admin-options d-flex justify-content-around">
-              <%= link_to 'Edit', edit_admin_freebie_path(freebie), class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'Destroy', admin_freebie_path(freebie), method: :delete, class: 'secondary-button products-admin-buttons' %>
+              <%= link_to 'EDIT', edit_admin_freebie_path(freebie), class: 'secondary-button products-admin-buttons' %>
+              <%= link_to 'DELETE', admin_freebie_path(freebie), method: :delete, class: 'secondary-button products-admin-buttons' %>
             </div>
           </div>
         <% end %>
       </div>
-      <%= link_to 'New Freebie', new_admin_freebie_path, class: 'primary-button products-admin-primary' %>
+      <%= link_to 'NEW FREEBIE', new_admin_freebie_path, class: 'primary-button products-admin-primary' %>
     </div>
   </div>
 </div>

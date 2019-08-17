@@ -1,5 +1,5 @@
 <% if item.class == Lookbook %>
-  <div class="col-xs-12 col-md-6 col-lg-4" style="margin-bottom: 10px;">
+  <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 10px;">
     <p class="no-margin boldest"><%= item.class %></p>
     <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
     <%= link_to lookbook_path(item, user_id: item.user.id), class: "lookbook-small-card-link card-link" do %>
@@ -14,9 +14,15 @@
       </div>
     <% end %>
     <p class="no-margin small-text"><%= item.affiliate_link %></p>
+    <% if current_user&.admin %>
+      <div class="d-flex justify-content-around">
+        <%= link_to 'APPROVE', approve_admin_lookbook_path(item), method: :patch, class: 'secondary-button products-admin-buttons' %>
+        <%= link_to 'REJECT', reject_admin_lookbook_path(item), method: :patch, class: 'secondary-button products-admin-buttons' %>
+      </div>
+    <% end %>
   </div>
 <% else %>
-  <div class="col-xs-12 col-md-6 col-lg-4" style="margin-bottom: 10px;">
+  <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 10px;">
     <p class="no-margin boldest"><%= item.class %></p>
     <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
     <%= link_to tutorial_path(item), class: "video-card-link card-link" do %>
@@ -31,5 +37,12 @@
       </div>
     <% end %>
     <p class="no-margin small-text"><%= item.affiliate_link %></p>
+    <% if current_user&.admin %>
+      <div class="d-flex justify-content-around">
+        <%= link_to 'APPROVE', approve_admin_lookbook_path(item), method: :patch, class: 'secondary-button products-admin-buttons' %>
+        <%= link_to 'REJECT', reject_admin_lookbook_path(item), method: :patch, class: 'secondary-button products-admin-buttons' %>
+      </div>
+    <% end %>
   </div>
 <% end %>
+
