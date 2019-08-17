@@ -9,9 +9,11 @@
 }
 
 .rating-container {
+  display: flex;
+  align-items: center;
   i {
     @include for-phone-only {
-      font-size: 12px;
+      font-size: 7px;
     }
   }
 }

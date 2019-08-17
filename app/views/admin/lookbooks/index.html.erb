@@ -10,12 +10,8 @@
           <p class="medium-margin text-center boldest" style="width: 100%;">There are no pending lookbooks</p>
         <% end %>
         <% @lookbooks.each do |lookbook| %>
-          <div class="" style="margin-bottom: 15px;">
+          <div class="" style="margin-bottom: 15px; width: 100%;">
             <%= render 'shared/upload_cards', item: lookbook %>
-            <div class="d-flex justify-content-around">
-              <%= link_to 'Approve', approve_admin_lookbook_path(lookbook), method: :patch, class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'Reject', reject_admin_lookbook_path(lookbook), method: :patch, class: 'secondary-button products-admin-buttons' %>
-            </div>
           </div>
         <% end %>
       </div>
