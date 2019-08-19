@@ -24,7 +24,7 @@ class TutorialsController < ApplicationController
   end
 
   def show
-    @tutorials = policy_scope(Tutorial).where(status: 'approved')
+    @tutorial.status != "approved" ? @tutorials = Tutorial.all : @tutorials = policy_scope(Tutorial).where(status: 'approved')
     current_tutorial = @tutorials.index(@tutorial)
     @previous_tutorial = @tutorials[@tutorial == @tutorials.first ? @tutorials.index(@tutorials.last) : current_tutorial - 1]
     @next_tutorial = @tutorials[@tutorial == @tutorials.last ? @tutorials.index(@tutorials.first) : current_tutorial + 1]

@@ -131,7 +131,8 @@
 }
 
 .show-text {
-  max-height: 200px !important;
+  max-height: 300px !important;
+  margin-bottom: 6px !important;
 }
 
 .product-details-text, .benefits-text, .about-the-brand-text {
@@ -265,5 +266,16 @@
 .product-shade-card:hover {
   .shade-wishlist-heart {
     display: flex;
+  }
+}
+
+.customer-review-form {
+  width: 500px;
+  margin: auto;
+  .form-group {
+    margin-bottom: 5px;
+  }
+  @include for-phone-only {
+    width: 100%;
   }
 }

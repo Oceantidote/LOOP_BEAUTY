@@ -79,12 +79,14 @@
 </div>
 
 <% if current_user&.admin? && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
-  <h3>Current Status: <%= @tutorial.status %></h3>
-  <%= link_to "Approve", approve_admin_tutorial_path(@tutorial), method: :patch %>
-  <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
-    <%= f.input :rejection_message%>
-    <%= f.submit "Reject" %>
-  <% end %>
+  <div class="container">
+    <h3 style="margin-top: 20px;" >Current Status: <%= @tutorial.status %></h3>
+    <%= link_to "Approve", approve_admin_tutorial_path(@tutorial), method: :patch %>
+    <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
+      <%= f.input :rejection_message%>
+      <%= f.submit "Reject" %>
+    <% end %>
+  </div>
 <% end %>
 <script>
   videoOverlay = document.querySelector('.video-overlay');
