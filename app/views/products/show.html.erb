@@ -181,20 +181,22 @@
       <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
-  <%= simple_form_for [@product, CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
-      <div class="customer-review-input">
-        <p class="boldest muli s-medium-text no-margin">Rating</p>
-        <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-      </div>
-      <div class="customer-review-input">
-        <p class="boldest muli s-medium-text no-margin">Review</p>
-        <%= f.input :review, label: false %>
-      </div>
-      <div class="customer-review-input">
-        <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
-        <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-      </div>
-      <%= f.submit 'CREATE REVIEW' , class: 'primary-button personal-details-button small-text' %>
+  <% if current_user.ordered_products.include?(@product) %>
+    <%= simple_form_for [@product, CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Rating</p>
+          <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+        </div>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Review</p>
+          <%= f.input :review, label: false %>
+        </div>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
+          <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+        </div>
+        <%= f.submit 'CREATE REVIEW' , class: 'primary-button personal-details-button small-text' %>
+    <% end %>
   <% end %>
 </div>
 <script>
