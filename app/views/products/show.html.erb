@@ -26,6 +26,7 @@
               <% @product.shades.each_with_index do |shade, i| %>
                 <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
                   <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)",
+                    data-name="<%= shade.name %>"
                     data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
                     <% if user_signed_in? && current_user.wishlist %>
                       <div class="shade-wishlist-heart shade-<%= shade.id %>">

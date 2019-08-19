@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
         order_product.save
       end
       @basket.empty!
-      submit_order
+      # submit_order
       # redirect_to order_path(@order)
       redirect_to order_order_success_path(@order)
     else
@@ -71,7 +71,6 @@ class OrdersController < ApplicationController
   private
 
   def submit_order
-    timestamp = Time.now.to_i
     items = @order.order_products.map do |item|
       if @order.discount_code.present?
         price = (item.product.price_cents * (1 - @order.discount_code.discount * 0.01)) / 100.to_f
@@ -92,6 +91,7 @@ class OrdersController < ApplicationController
   end
 
   def order_hash_builder
+    timestamp = Time.now.to_i
     {
       half_api_key: "key",
       message_timestamp: timestamp,
