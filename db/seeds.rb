@@ -1348,3 +1348,19 @@ num = (2..7).to_a
   end
 end
 
+# CREATING EXCHANGE RATES
+
+puts "Creating exchange rates"
+
+ExchangeRate.create(
+  currency: 'dollar',
+  currency_code: 'usd',
+  rate: 1.21
+)
+
+ExchangeRate.create(
+  currency: 'euro',
+  currency_code: 'eur',
+  rate: 1.09
+)
+

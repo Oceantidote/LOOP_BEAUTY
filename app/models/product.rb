@@ -40,6 +40,18 @@ class Product < ApplicationRecord
     customer_reviews.count
   end
 
+  def price_in(currency)
+    info = ExchangeRate.find_by_currency(currency)
+    return price unless info
+    Money.new price_in_cents(currency), info.currency_code
+  end
+
+  def price_in_cents(currency)
+    info = ExchangeRate.find_by_currency(currency)
+    return price_cents unless info
+    (price_cents * info.rate).round
+  end
+
   def self.filter_sort(attr, direction)
     order(attr => direction.to_sym)
   end
