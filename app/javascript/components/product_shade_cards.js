@@ -12,6 +12,7 @@ const initProductShadeCards = () => {
                                         <img onclick="myFunction(this);" class="item-image-thumbnail" src=${url}>
                                       </div>`)
       })
+      $('.product-shade-title').html(`<strong>${e.currentTarget.dataset.name}</strong>`)
     })
 }
 

@@ -41,6 +41,19 @@ class Order < ApplicationRecord
     end
   end
 
+  def delivery_to_num
+    case delivery_type
+    when 'standard'
+      return 2
+    when 'express'
+      return 1
+    when 'international'
+      return 0
+    else
+      return 2
+    end
+  end
+
   def set_delivery_costs_cents
     case delivery_type
     when 'standard'

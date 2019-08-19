@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_103707) do
+ActiveRecord::Schema.define(version: 2019_08_19_104321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_08_16_103707) do
     t.boolean "delivery_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
+    t.string "county"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -213,6 +215,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_103707) do
     t.bigint "product_id"
     t.bigint "order_id"
     t.bigint "shade_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
@@ -220,6 +223,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_103707) do
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["shade_id"], name: "index_order_products_on_shade_id"
+    t.index ["user_id"], name: "index_order_products_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -428,6 +432,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_103707) do
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "order_products", "shades"
+  add_foreign_key "order_products", "users"
   add_foreign_key "orders", "addresses", column: "billing_address_id"
   add_foreign_key "orders", "addresses", column: "delivery_address_id"
   add_foreign_key "orders", "discount_codes"

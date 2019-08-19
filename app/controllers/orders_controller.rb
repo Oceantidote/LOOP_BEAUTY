@@ -45,6 +45,7 @@ class OrdersController < ApplicationController
         order_product.save
       end
       @basket.empty!
+      # submit_order
       # redirect_to order_path(@order)
       redirect_to order_order_success_path(@order)
     else
@@ -68,6 +69,63 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def submit_order
+    items = @order.order_products.map do |item|
+      if @order.discount_code.present?
+        price = (item.product.price_cents * (1 - @order.discount_code.discount * 0.01)) / 100.to_f
+      elsif item.purchase_with_credit
+        price = 0
+      else
+        price = item.product.price_cents / 100.to_f
+      end
+      {
+        client_ref: item.product.sku,
+        quantity: item.quantity,
+        price: price
+      }
+    end
+    to_submit = order_hash_builder
+    to_submit[order][items] = items
+    response = RestClient.post("https://api.controlpost.co.uk/api/1/order", to_submit.to_json, {})
+  end
+
+  def order_hash_builder
+    timestamp = Time.now.to_i
+    {
+      half_api_key: "key",
+      message_timestamp: timestamp,
+      secure_hash: Digest::MD5.hexdigest(timestamp.to_s + "key_for_site"),
+      test: true,
+      order: {
+        client_ref: "%05d" % @order.id,
+        postage_speed: @order.delivery_to_num,
+        postage_cost: @order.delivery_cost_cents / 100.to_f,
+        total_value: @order.total_price_cents / 100.to_f,
+        currency_code: 'GBP',
+        ShippingContact: {
+          name: @order.user.full_name,
+          email: @order.user.email,
+          phone: @order.phone_number,
+          address: @order.delivery_address.street,
+          city: @order.delivery_address.city,
+          county: @order.delivery_address.county,
+          country: @order.delivery_address.country,
+          postcode: @order.delivery_address.postcode
+        },
+        BillingContact: {
+          name: @order.user.full_name,
+          email: @order.user.email,
+          phone: @order.phone_number,
+          address: @order.billing_address.street,
+          city: @order.billing_address.city,
+          county: @order.billing_address.county,
+          country: @order.billing_address.country,
+          postcode: @order.billing_address.postcode
+        }
+      }
+    }
+  end
 
   def order_params
     params.require(:order).permit(:delivery_address_id, :billing_address_id, :phone_number, :delivery_type, stripe: [:stripe_email, :stripe_token] )
