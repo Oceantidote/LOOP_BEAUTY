@@ -272,6 +272,9 @@
 .customer-review-form {
   width: 500px;
   margin: auto;
+  .form-group {
+    margin-bottom: 5px;
+  }
   @include for-phone-only {
     width: 100%;
   }

@@ -178,9 +178,9 @@
           </div>
         </div>
       <% end %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
-  <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
   <%= simple_form_for [@product, CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
       <div class="customer-review-input">
         <p class="boldest muli s-medium-text no-margin">Rating</p>

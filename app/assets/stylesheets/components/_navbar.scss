@@ -427,6 +427,10 @@
   overflow: scroll;
 }
 
+.navbar-basket-items-container::-webkit-scrollbar {
+  width: 0;
+}
+
 .each-nav-basket-item {
   position: relative;
 }
