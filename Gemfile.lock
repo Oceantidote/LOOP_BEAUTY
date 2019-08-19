@@ -93,6 +93,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.2)
     dotenv-rails (2.7.2)
       dotenv (= 2.7.2)
@@ -111,6 +113,8 @@ GEM
       multi_json (>= 1.11.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
@@ -154,6 +158,7 @@ GEM
     multipart-post (2.1.1)
     net-http-persistent (3.0.1)
       connection_pool (~> 2.2)
+    netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
@@ -205,6 +210,10 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -244,6 +253,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     unicode_utils (1.4.0)
     uniform_notifier (1.12.1)
     warden (1.2.8)
@@ -288,6 +300,7 @@ DEPENDENCIES
   pundit
   rails (= 5.2.3)
   redis
+  rest-client
   sassc-rails
   simple_form
   spring

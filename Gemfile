@@ -24,6 +24,7 @@ gem 'trix'
 gem 'stripe'
 gem 'country_select'
 gem 'gibbon'
+gem 'rest-client'
 # gem 'image_processing', '~> 1.2'
 
 
