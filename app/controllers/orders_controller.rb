@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
         order_product.save
       end
       @basket.empty!
-      # submit_order
+      submit_order
       # redirect_to order_path(@order)
       redirect_to order_order_success_path(@order)
     else
@@ -80,25 +80,25 @@ class OrdersController < ApplicationController
         price = item.product.price_cents / 100.to_f
       end
       {
-        client_ref: item.product.sku,
+        client_ref: item.shade.sku,
         quantity: item.quantity,
         price: price
       }
     end
     to_submit = order_hash_builder
-    to_submit[order][items] = items
-    response = RestClient.post("https://api.controlpost.co.uk/api/1/order", to_submit.to_json, {})
+    to_submit[:order][:items] = items
+    response = RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {})
   end
 
   def order_hash_builder
     timestamp = Time.now.to_i
     {
-      half_api_key: "key",
+      half_api_key: ENV['CONTROLPORT_API_KEY'][0..15],
       message_timestamp: timestamp,
-      secure_hash: Digest::MD5.hexdigest(timestamp.to_s + "key_for_site"),
+      security_hash: Digest::MD5.hexdigest(timestamp.to_s + ENV['CONTROLPORT_API_KEY']),
       test: true,
       order: {
-        client_ref: "%05d" % @order.id,
+        client_ref: "%05d" % (@order.id ? @order.id : 1),
         postage_speed: @order.delivery_to_num,
         postage_cost: @order.delivery_cost_cents / 100.to_f,
         total_value: @order.total_price_cents / 100.to_f,
