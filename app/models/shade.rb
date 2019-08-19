@@ -6,6 +6,7 @@ class Shade < ApplicationRecord
   has_many :wishlist_products, dependent: :destroy
   # WISHLIST TEST
   has_many_attached :photos
+  has_one_attached :card_photo
   after_create :set_sku
 
   def set_sku

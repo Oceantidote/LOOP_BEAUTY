@@ -68,6 +68,10 @@
                   <%= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
                 </div>
                 <div class="personal-details-input">
+                  <p class="boldest muli s-medium-text text-right no-margin">Card Photo</p>
+                  <%= f.input :card_photo, label: false, input_html: { multiple: true } %>
+                </div>
+                <div class="personal-details-input">
                   <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
                   <%= f.input :photos, label: false, input_html: { multiple: true } %>
                 </div>
@@ -88,7 +92,11 @@
             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
               <%= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
-              </div>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Card Photo</p>
+              <%= f.input :card_photo, label: false, input_html: { multiple: true } %>
+            </div>
             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
               <%= f.input :photos, label: false, input_html: { multiple: true } %>
