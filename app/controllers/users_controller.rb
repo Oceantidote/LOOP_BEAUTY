@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index, :make_up]
   before_action :set_nested_user, only: [:uploads, :share, :dashboard, :my_orders, :my_products, :refer_a_friend, :wishlist, :account_details, :preference_centre, :analytics, :showroom]
   before_action :set_user, only: [:show, :make_up, :q_and_a]
-  before_action :set_wishlist, only: [:wishlist, :my_products]
+  before_action :set_wishlist, only: [:wishlist]
 
   def dashboard
   end
@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def my_products
+    # @orders = Order.where(user: @user)
+    @products = Order.where(user: @user).order(created_at: :DESC).map { |order| order.products }.flatten
   end
 
   def refer_a_friend
@@ -33,6 +35,14 @@ class UsersController < ApplicationController
 
   def showroom
     @products = Product.where(demoable: true)
+    @original = Product.where(demoable: true)
+    if params[:product].present? && params[:product][:sort].present?
+      @products = @products.filter_sort(*sort_params)
+      @sort_method = params[:product][:sort][:method]
+    else
+      # @products = @products.filter_sort(*'created_at,desc'.split(','))
+      @sort_method = 'created_at,desc'
+    end
   end
 
   def uploads
@@ -121,7 +131,6 @@ class UsersController < ApplicationController
   end
 
   def set_wishlist
-    # WISHLIST TEST
     @wishlist = Wishlist.find_by(user: @user)
     # WISHLIST TEST
   end

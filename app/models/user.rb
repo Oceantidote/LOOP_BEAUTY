@@ -65,6 +65,7 @@ class User < ApplicationRecord
   has_many :wishlist_products, through: :wishlist
   # WISHLIST TEST
   before_save :set_referral_code, :check_newsletter
+  after_save :create_wishlist
 
   def admin?
     admin
@@ -153,6 +154,9 @@ class User < ApplicationRecord
     end
   end
 
+  def create_wishlist
+    Wishlist.create(user: @user)
+  end
 
   def newsletter_unsubscribe(client, id)
     begin

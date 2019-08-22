@@ -8,6 +8,7 @@ class CustomerReviewsController < ApplicationController
     authorize @review
     if @review.save
       redirect_to product_path(@product), notice: 'Review saved'
+      flash[:alert] = "Thankyou for leaving a review."
     else
       redirect_to product_path(@product), notice: 'Something went wrong'
     end

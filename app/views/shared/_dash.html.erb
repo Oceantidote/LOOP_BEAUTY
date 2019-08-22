@@ -8,11 +8,9 @@
   <%= link_to  user_my_products_path(current_user), class: "each-dash-link" do %>
     <%= image_tag "lipstick.png", class: "dash-links-image" %>My Products
   <% end %>
-  <div class="each-dash-link-title">OFFERS</div>
   <%= link_to user_refer_a_friend_path(current_user), class: "each-dash-link" do %>
     <%= image_tag "dash-refer.png", class: "dash-links-image" %>Refer a Friend
   <% end %>
-  <div class="each-dash-link-title">SAVE FOR LATER</div>
   <%= link_to user_wishlist_path(current_user), class: "each-dash-link" do %>
     <%= image_tag "dash-wish.png", class: "dash-links-image" %>Wishlist
   <% end %>

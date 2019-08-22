@@ -17,7 +17,12 @@
     color: #FFF;
   }
 }
-
+.disabled {
+  opacity: 0.2;
+}
+.m10 {
+  margin: 10px;
+}
 .admin-button {
   position: absolute;
   top: 0;
