@@ -26,7 +26,7 @@
           <% if @basket.basket_products.count == 0 %>
             <div class="primary-button discount-code-button disabled" style="width: 98px;">APPLY</div>
           <% elsif @basket.discount_code.nil? %>
-            <%= f.submit 'APPLY', class: "primary-button discount-code-button"  %>
+            <%= f.submit 'APPLY', class: "primary-button discount-code-button", id: "discount-apply"  %>
           <% else %>
             <%= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>
           <% end %>
@@ -40,7 +40,7 @@
         <% if @basket.basket_products.count == 0 %>
           <div class="primary-button bag-checkout-button disabled">CHECKOUT</div>
         <% else %>
-          <%= link_to 'CHECKOUT', checkout_path, disabled, class: 'primary-button bag-checkout-button' %>
+          <%= link_to 'CHECKOUT', checkout_path, id: "pos-checkout", class: 'primary-button bag-checkout-button' %>
         <% end %>
         <%= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe' %>
       </div>
