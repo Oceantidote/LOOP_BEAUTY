@@ -88,7 +88,7 @@
       <div class="col-xs-12 col-sm-6">
         <%= link_to user_tutorials_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
-            <h5 class="text-center">Videos</h5>
+            <h5 class="text-center">Tutorials</h5>
             <div class="influencer-show-card-image" style="background-image: url('<%= @user.tutorial_photo.attached? ?  (rails_blob_path @user.tutorial_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
             </div>

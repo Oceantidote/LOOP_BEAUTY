@@ -130,3 +130,28 @@
   align-items: center;
   cursor: pointer;
 }
+
+.tutorial-show-admin-options {
+  width: 50%;
+  .personal-details-button {
+    width: max-content;
+  }
+  label {
+    font-weight: 900;
+    font-size: 14px;
+  }
+  @include for-small-devices-down {
+    width: 80%;
+  }
+  @include for-phone-only {
+    width: 95%;
+  }
+}
+
+.tutorials-index-wrapper {
+  .homepage-video-card {
+    @include for-small-devices-down {
+      width: 100%;
+    }
+  }
+}

@@ -20,6 +20,7 @@ class LookbooksController < ApplicationController
     current_lookbook = @lookbooks.index(@lookbook)
     @previous_lookbook = @lookbooks[@lookbook == @lookbooks.first ? @lookbooks.index(@lookbooks.last) : current_lookbook - 1]
     @next_lookbook = @lookbooks[@lookbook == @lookbooks.last ? @lookbooks.index(@lookbooks.first) : current_lookbook + 1]
+    @users_lookbooks = Lookbook.where(user: @lookbook.user).where(status: 'approved').where.not(id: @lookbook.id)
   end
 
   def new
@@ -34,7 +35,7 @@ class LookbooksController < ApplicationController
     authorize @lookbook
     if @lookbook.save
       flash[:notice] = 'Lookbook pending approval'
-      redirect_to root_path
+      redirect_to lookbook_path(@lookbook)
     else
       raise
       flash[:error] = 'Please review problems'
@@ -48,7 +49,7 @@ class LookbooksController < ApplicationController
   def update
     if @lookbook.update(lookbook_params)
       flash[:notice] = 'Lookbook updated'
-      redirect_to root_path
+      redirect_to lookbook_path(@lookbook)
     else
       flash[:error] = 'Please review problems'
       render :edit

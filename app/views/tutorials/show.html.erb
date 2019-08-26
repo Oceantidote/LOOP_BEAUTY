@@ -57,7 +57,7 @@
   <div class="max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
-      <% @tutorials.sample(4).each do |tutorial| %>
+      <% @users_tutorials.each do |tutorial| %>
         <div class="col-10 col-md-6 col-lg-3 lv-cols">
           <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
             <div class="homepage-video-card">
@@ -79,12 +79,12 @@
 </div>
 
 <% if current_user&.admin? && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
-  <div class="container">
-    <h3 style="margin-top: 20px;" >Current Status: <%= @tutorial.status %></h3>
-    <%= link_to "Approve", approve_admin_tutorial_path(@tutorial), method: :patch %>
+  <div class="container tutorial-show-admin-options">
+    <h5 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h5>
+    <%= link_to "Approve", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'primary-button personal-details-button small-text' %>
     <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
-      <%= f.input :rejection_message%>
-      <%= f.submit "Reject" %>
+      <%= f.input :rejection_message, input_html: { class: 'contact-form-input' } %>
+      <%= f.submit "Reject", class: 'secondary-button personal-details-button small-text' %>
     <% end %>
   </div>
 <% end %>

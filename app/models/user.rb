@@ -59,7 +59,7 @@ class User < ApplicationRecord
   has_many :shades, through: :order_products
   has_many :tutorials, dependent: :destroy
   has_one :showroom, dependent: :destroy
-  has_many :addresses
+  has_many :addresses, dependent: :destroy
   # WISHLIST TEST
   has_one :wishlist, dependent: :destroy
   has_many :wishlist_products, through: :wishlist

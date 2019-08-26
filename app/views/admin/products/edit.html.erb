@@ -20,10 +20,10 @@
           <p class="boldest muli s-medium-text text-right no-margin">Details</p>
           <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
-        <div class="personal-details-input">
+<!--         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Name</p>
-          <%= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
+          <%#= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
+        </div> -->
         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Category</p>
           <%= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
@@ -63,10 +63,10 @@
                   <p class="boldest muli s-medium-text text-right no-margin">Name</p>
                   <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
                 </div>
-                <div class="personal-details-input">
+<!--                 <div class="personal-details-input">
                   <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
-                  <%= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
-                </div>
+                  <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
+                </div> -->
                 <div class="personal-details-input">
                   <p class="boldest muli s-medium-text text-right no-margin">Card Photo</p>
                   <%= f.input :card_photo, label: false, input_html: { multiple: true } %>
@@ -89,10 +89,10 @@
               <p class="boldest muli s-medium-text text-right no-margin">Name</p>
               <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
             </div>
-            <div class="personal-details-input">
+<!--             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
-              <%= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
-            </div>
+              <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
+            </div> -->
             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">Card Photo</p>
               <%= f.input :card_photo, label: false, input_html: { multiple: true } %>
