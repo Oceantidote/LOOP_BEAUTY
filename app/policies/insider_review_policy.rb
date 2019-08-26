@@ -4,4 +4,8 @@ class InsiderReviewPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    user.influencer
+  end
 end

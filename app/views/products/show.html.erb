@@ -84,8 +84,8 @@
     </div>
   </div>
 </div>
-<% if current_user&.ordered_products&.include?(@product) && !@product.customer_reviews.any?{|review| review.user == current_user} %>
-    <%= simple_form_for [@product, CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
+<% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
+    <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
         <h5 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h5>
         <div class="customer-review-input">
           <p class="boldest muli s-medium-text no-margin">Rating</p>
@@ -95,10 +95,12 @@
           <p class="boldest muli s-medium-text no-margin">Review</p>
           <%= f.input :review, label: false %>
         </div>
-        <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
-          <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-        </div>
+        <% unless current_user.influencer %>
+          <div class="customer-review-input">
+            <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
+            <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+          </div>
+        <% end %>
         <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
     <% end %>
   <% end %>

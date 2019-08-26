@@ -74,6 +74,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'change_banner', to: 'banners#change_banner'
     post 'change_banner', to: 'banners#change'
+    get 'change_offer_banner', to: 'offer_banners#change_offer_banner'
+    post 'change_offer_banner', to: 'offer_banners#change'
     resources :lookbooks, only: [:index] do
       member do
         patch '/approve', to: 'lookbooks#approve'
@@ -112,6 +114,7 @@ Rails.application.routes.draw do
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
     resources :customer_reviews, only: [:create]
+    resources :insider_reviews, only: [:create]
     member do
       post 'my_product', to: 'products#my_product'
     end
