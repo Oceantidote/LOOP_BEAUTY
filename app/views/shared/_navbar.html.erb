@@ -27,7 +27,7 @@
       <p class="navbar-middle-item <%= params[:controller] == 'insider_articles' ? 'navbar-active' : '' %>">Insider</p>
     <% end %>
     <%= link_to videos_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Video</p>
+      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Videos</p>
     <% end %>
   </div>
   <ul class="navbar-nav">
@@ -111,7 +111,7 @@
       <%= link_to "Insider", insider_articles_path, class: "nav-link mobile-dropdown-options each-item" %>
     </li>
     <li class="nav-item">
-      <%= link_to "Video", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
+      <%= link_to "Videos", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
     </li>
     <% if user_signed_in? %>
       <li class="nav-item" style="border-top: 1px solid black;">

@@ -1,6 +1,6 @@
 .freebies-title-banner {
   background: $light-gray;
-  height: 200px;
+  height: calc(100vw * 0.3);
   @include absCenterColumn;
   h1 {
     font-weight: 900;
@@ -9,8 +9,14 @@
   p {
     margin: 0;
   }
+  @include for-large-devices-down {
+    height: calc(100vw * 0.4);
+  }
+  @include for-small-devices-down {
+    height: calc(100vw * 0.5);
+  }
   @include for-phone-only {
-    height: 150px;
+    min-height: 320px;
   }
 }
 

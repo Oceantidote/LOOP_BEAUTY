@@ -1,6 +1,6 @@
 <% if item.class == Lookbook %>
   <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 10px;">
-    <p class="no-margin boldest"><%= item.class %></p>
+    <p class="no-margin boldest"><%= item.class %> submitted by <%= item.user.first_name %> <%= item.user.last_name %></p>
     <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
     <%= link_to lookbook_path(item, user_id: item.user.id), class: "lookbook-small-card-link card-link" do %>
       <div class="lookbook-small-card uploads-lookbook-card">
@@ -23,7 +23,7 @@
   </div>
 <% else %>
   <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 10px;">
-    <p class="no-margin boldest"><%= item.class %></p>
+    <p class="no-margin boldest"><%= item.class %> submitted by <%= item.user.first_name %> <%= item.user.last_name %></p>
     <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
     <%= link_to tutorial_path(item), class: "video-card-link card-link" do %>
       <div class="homepage-video-card">

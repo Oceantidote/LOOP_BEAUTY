@@ -13,9 +13,14 @@
   align-items: center;
   i {
     @include for-phone-only {
-      font-size: 7px;
+      font-size: 12px;
     }
   }
+}
+
+.rating-stars {
+  display: flex;
+  margin-right: 5px;
 }
 
 .all-reviews {

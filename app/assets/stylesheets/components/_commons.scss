@@ -286,6 +286,14 @@ body {
   }
 }
 
+.mobile-row {
+  @include for-phone-only {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .row-carousel-all {
   display: flex;
   overflow: scroll;

@@ -1,8 +1,15 @@
 .brand-header-section-container {
   display: flex;
   align-items: center;
+  padding: 50px 0;
   @include for-medium-devices-down {
-    flex-direction: column-reverse;
+    display: none;
+  }
+}
+
+.mobile-brand-header-section-container {
+  @include for-large-devices-up {
+    display: none;
   }
 }
 
@@ -13,12 +20,14 @@
     width: 100%;
   }
   @include for-medium-devices-down {
-    width: 50%;
+    // width: 50%;
   }
 }
 
 .brand-description {
-  padding: 50px;
+  padding: 0 15px;
+  border-left: 1px solid #E2E2E2;
+  border-right: 1px solid #E2E2E2;
   @include for-phone-only {
     padding: 10px;
     width: 100% !important;
@@ -26,4 +35,47 @@
       margin: 0;
     }
   }
+}
+
+.mobile-brand-info {
+  display: flex;
+  align-items: center;
+  @include for-small-devices-down {
+    flex-direction: column;
+  }
+}
+
+.mobile-brand-logo {
+  padding-top: 50px;
+  @include absCenter;
+  img {
+    width: 70%;
+  }
+}
+
+.mobile-brand-description, .mobile-brand-photo {
+  flex: 1;
+  margin: 15px 0;
+  padding: 0 15px;
+  img {
+    width: 100%;
+    @include for-phone-only {
+      width: 70%;
+    }
+  }
+  @include for-medium-devices-down {
+    text-align: justify;
+  }
+}
+
+.mobile-brand-description {
+  border-right: 1px solid #E2E2E2;
+  @include for-small-devices-down {
+    border: none;
+  }
+}
+
+.mobile-brand-photo {
+  height: 100%;
+  @include absCenter;
 }

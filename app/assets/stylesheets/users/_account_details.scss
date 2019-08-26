@@ -19,7 +19,7 @@
 }
 //
 .account-content-one, .account-content-three, .account-content-two-add-address {
-  min-height: 500px;
+  min-height: 300px;
   width: 100%;
   // background: red;
   display: none;
@@ -36,7 +36,7 @@
 }
 
 .account-content-two {
-  min-height: 500px;
+  min-height: 300px;
   width: 100%;
   display: none;
   flex-direction: column;
@@ -172,6 +172,10 @@
   @include for-phone-only {
     min-width: 80%;
   }
+}
+
+.address-container {
+  padding: 30px;
 }
 
 .address-button {

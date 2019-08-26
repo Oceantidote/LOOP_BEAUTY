@@ -1,21 +1,44 @@
 <!-- <h2 class="insider-info-title text-center"><%#= @brand.name %></h2> -->
-<div class="brand-header-section-container">
-  <div class="brand-header-section brand-description">
-    <% if @brand.description %>
-      <p class="didot"><%= @brand.description %></p>
-    <% end %>
+<div class="container">
+  <div class="brand-header-section-container">
+    <div class="brand-header-section brand-logo">
+      <% if @brand.logo.attached? %>
+        <%= image_tag url_for(@brand.logo) %>
+      <% end %>
+    </div>
+    <div class="brand-header-section brand-description">
+      <% if @brand.description %>
+        <p class="didot no-margin"><%= @brand.description %></p>
+      <% end %>
+    </div>
+    <hr>
+    <div class="brand-header-section brand-photo">
+      <% if @brand.photo.attached? %>
+        <%= image_tag url_for(@brand.photo) %>
+      <% end %>
+    </div>
   </div>
-  <div class="brand-header-section brand-logo">
-    <% if @brand.logo.attached? %>
-      <%= image_tag url_for(@brand.logo) %>
-    <% end %>
-  </div>
-  <div class="brand-header-section brand-photo">
-    <% if @brand.photo.attached? %>
-      <%= image_tag url_for(@brand.photo) %>
-    <% end %>
+  <div class="mobile-brand-header-section-container">
+    <div class="mobile-brand-logo">
+      <% if @brand.logo.attached? %>
+        <%= image_tag url_for(@brand.logo) %>
+      <% end %>
+    </div>
+    <div class="mobile-brand-info">
+      <div class="mobile-brand-description">
+        <% if @brand.description %>
+          <p class="didot no-margin"><%= @brand.description %></p>
+        <% end %>
+      </div>
+      <div class="mobile-brand-photo">
+        <% if @brand.photo.attached? %>
+          <%= image_tag url_for(@brand.photo) %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
 <div class="brands-results">
   <%= render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>
 </div>
