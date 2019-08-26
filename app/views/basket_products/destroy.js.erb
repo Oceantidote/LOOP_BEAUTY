@@ -1,3 +1,5 @@
+checkout = document.getElementById("pos-checkout")
+discount = document.getElementById("discount-apply")
 containers = document.querySelectorAll('.item-<%= @item.id %>')
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
@@ -11,6 +13,8 @@ if (total) {
   total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
 }
 if (<%= @basket.empty? %>) {
+  checkout.classList.add("disabled")
+  discount.classList.add("disabled")
   document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="medium-margin text-center boldest">Your basket is empty</p>'
 }
 containers.forEach(container => container.remove())

@@ -87,7 +87,7 @@ Rails.application.routes.draw do
       end
     end
     resources :brands, only: [:index, :new, :edit, :create, :update, :destroy]
-    resources :insider_articles, only: [:new, :edit, :create, :update, :destroy] do
+    resources :insider_articles, only: [:new, :edit, :create, :update, :destroy, :index] do
       member do
         patch '/publish', to: 'insider_articles#publish'
         patch '/unpublish', to: 'insider_articles#unpublish'

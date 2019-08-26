@@ -8,7 +8,7 @@ if (wishlistCards) {
   wishlistCards.innerHTML = "<%= j render 'shared/wishlist_product_card', wishlist_product: @wishlist_product %>"
 }
 else if (myProductsCards) {
-  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', wishlist_product: @wishlist_product %>"
+  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', products: current_user.ordered_products, wishlist_product: @wishlist_product %>"
 }
 else if (shadeWishlist) {
   shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product, shade: @wishlist_product.shade %>"

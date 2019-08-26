@@ -7,7 +7,7 @@
       <h2 class="insider-info-title mlb-title text-center">My Products</h2>
       <hr>
       <div class="my-product-cards-container">
-        <%= render 'shared/my_products_cards', wishlist_product: @wishlist_product %>
+        <%= render 'shared/my_products_cards', products: @products, wishlist_product: @wishlist_product %>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@
       setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
       setTimeout(() => button.disabled = true, 100)
       setTimeout(() => button.disabled = false, 4000)
-      setTimeout(() => button.innerHTML = 'Add to bag', 3500)
+      setTimeout(() => button.innerHTML = 'Reorder', 3500)
     });
   })
 </script>

@@ -5,6 +5,10 @@ class Admin::InsiderArticlesController < ApplicationController
     @insider_article = InsiderArticle.new
   end
 
+  def index
+    @insider_articles = InsiderArticle.all
+  end
+
   def create
     @insider_article = InsiderArticle.new(insider_article_params)
     @insider_article.user = current_user

@@ -4,7 +4,7 @@ shadeWishlist = document.querySelector('.shade-wishlist-heart.shade-<%= @wishlis
 
 
 if (myProductsCards) {
-  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', wishlist_product: @wishlist_product %>"
+  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', products: current_user.ordered_products, wishlist_product: @wishlist_product %>"
 }
 else if (shadeWishlist) {
   shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product, shade: @wishlist_product.shade %>"
@@ -15,3 +15,4 @@ else if (cards) {
                           <i class="<%= current_user.wishlist.products.include?(@product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>\
                         <% end %>'
 }
+

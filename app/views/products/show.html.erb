@@ -22,21 +22,19 @@
       <% num = 3 %>
       <div class="shades-container">
         <div class="row" style="margin: 0; width: 100%;">
-            <!-- <div class="product-shade-cards-holder"> -->
-              <% @product.shades.each_with_index do |shade, i| %>
-                <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
-                  <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)",
-                    data-name="<%= shade.name %>"
-                    data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
-                    <% if user_signed_in? && current_user.wishlist %>
-                      <div class="shade-wishlist-heart shade-<%= shade.id %>">
-                        <%= render 'shared/shade-wishlist', product: @product, shade: shade %>
-                      </div>
-                    <% end %>
-                  </div>
+          <% @product.shades.each_with_index do |shade, i| %>
+            <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
+              <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)",
+                data-name="<%= shade.name %>"
+                data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
+              </div>
+              <% if user_signed_in? && current_user.wishlist %>
+                <div class="shade-wishlist-heart shade-<%= shade.id %>">
+                  <%= render 'shared/shade-wishlist', product: @product, shade: shade %>
                 </div>
               <% end %>
-            <!-- </div> -->
+            </div>
+          <% end %>
         </div>
       </div>
       <h5><%= humanized_money_with_symbol(@product.price) %></h5>
@@ -86,6 +84,24 @@
     </div>
   </div>
 </div>
+<% if current_user&.ordered_products&.include?(@product) && !@product.customer_reviews.any?{|review| review.user == current_user} %>
+    <%= simple_form_for [@product, CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
+        <h5 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h5>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Rating</p>
+          <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+        </div>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Review</p>
+          <%= f.input :review, label: false %>
+        </div>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
+          <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+        </div>
+        <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
+    <% end %>
+  <% end %>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
   <div class="insider-review-container max-width">
@@ -182,23 +198,6 @@
       <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
     </div>
   </div>
-  <% if current_user&.ordered_products&.include?(@product) %>
-    <%= simple_form_for [@product, CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
-        <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Rating</p>
-          <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-        </div>
-        <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Review</p>
-          <%= f.input :review, label: false %>
-        </div>
-        <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
-          <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-        </div>
-        <%= f.submit 'CREATE REVIEW' , class: 'primary-button personal-details-button small-text' %>
-    <% end %>
-  <% end %>
 </div>
 <script>
 

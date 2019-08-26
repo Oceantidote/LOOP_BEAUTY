@@ -25,6 +25,7 @@ gem 'stripe'
 gem 'country_select'
 gem 'gibbon'
 gem 'rest-client'
+gem 'rb-readline'
 # gem 'image_processing', '~> 1.2'
 
 
