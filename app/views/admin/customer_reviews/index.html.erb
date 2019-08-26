@@ -1,0 +1,47 @@
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Customer Reviews</h2>
+      <hr>
+      <div class="review-product-container">
+        <div class="review-product-image">
+          <%= image_tag url_for(@product.shades.first.photos.first) %>
+        </div>
+        <h5 class="boldest"><%= @product.title %></h5>
+      </div>
+      <div class="row" style="margin: 30px 0;">
+        <% if @customer_reviews.count == 0 %>
+          <p class="medium-margin text-center boldest" style="width: 100%;">There are no customer reviewss yet</p>
+        <% end %>
+        <% @customer_reviews.each do |review| %>
+          <div class="col-10 col-md-6 ir-cols">
+            <div class="admin-customer-review-cards">
+              <div class="customer-review-left">
+                <h6><%= review.user.first_name.capitalize %></h6>
+                <div class="boldest grey-font">
+                  <p><%= review.user.country %></p>
+                  <p>Age: 22-25</p>
+                  <p>Gender: Female</p>
+                </div>
+                <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
+              </div>
+              <div class="customer-review-right">
+                <div class="customer-review-text">
+                  <%= render 'shared/ratings', rating: review.rating %>
+                  <p class="didot">"<%= review.review.truncate(170) %>"</p>
+                  <p class="boldest"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end">
+              <%= link_to "Remove",  admin_product_customer_review_path(@product, review), method: :delete, class: "small-text underline grey-font boldest text-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
