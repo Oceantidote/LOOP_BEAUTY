@@ -1,0 +1,50 @@
+.admin-customer-review-cards {
+  border: 1px solid #E8E8E8;
+  border-radius: 2px;
+  padding: 30px 40px;
+  height: 200px;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+  // padding: 10px 30px;
+  margin: 10px 0;
+  padding: 15px;
+  p {
+    font-size: 12px !important;
+  }
+  h6 {
+    font-size: 12px;
+  }
+  i {
+    font-size: 12px;
+  }
+}
+
+.review-product-container {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-product-image {
+  img {
+    height: 150px;
+    padding: 10px;
+  }
+}
+
+.admin-insider-review-cards {
+  border: 1px solid #E8E8E8;
+  border-radius: 2px;
+  padding: 20px 10px;
+  width: 100%;
+  background: white;
+  display: flex;
+  margin: 10px 0 5px 0;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+  // padding: 10px 30px;
+}

@@ -1,0 +1,41 @@
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Insider Reviews</h2>
+      <hr>
+      <div class="review-product-container">
+        <div class="review-product-image">
+          <%= image_tag url_for(@product.shades.first.photos.first) %>
+        </div>
+        <h5 class="boldest"><%= @product.title %></h5>
+      </div>
+      <div class="row" style="margin: 30px 0;">
+        <% if @insider_reviews.count == 0 %>
+          <p class="medium-margin text-center boldest" style="width: 100%;">There are no insider reviewss yet</p>
+        <% end %>
+        <% @insider_reviews.each do |review| %>
+          <div class="col-10 col-md-6 ir-cols">
+            <div class="admin-insider-review-cards">
+              <div class="insider-review-left">
+                <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
+                <h6><%= review.user.instagram %></h6>
+              </div>
+              <div class="insider-review-right">
+                <div class="insider-review-text">
+                  <%= render 'shared/ratings', rating: review.rating %>
+                  <p class="didot"><%= review.review.truncate(150) %></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end">
+              <%= link_to "Remove",  admin_product_insider_review_path(@product, review), method: :delete, class: "small-text underline grey-font boldest text-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
