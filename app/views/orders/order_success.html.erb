@@ -20,6 +20,10 @@
               <p class="boldest s-medium-text no-margin">Total: <%= humanized_money_with_symbol @order.total_price %></p>
             <% end %>
             <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p>
+             <p class="boldest s-medium-text no-margin">Delivery address:</p>
+             <p class="small-text grey boldest tiny-margin-bottom"><%= @order.user.first_name %> <%= @order.user.last_name %></p>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.street %></p>
+                <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.city %>, <%= @order.delivery_address.postcode %></p>
           </div>
           <div class="order-show-info-right">
             <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d-%m-%d') %></p>

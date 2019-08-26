@@ -6,6 +6,8 @@ class Order < ApplicationRecord
   has_many :shades, through: :order_products
   belongs_to :delivery_address, class_name: 'Address'
   belongs_to :billing_address, class_name: 'Address'
+  validates_presence_of :delivery_address, class_name: 'Address'
+  validates_presence_of :billing_address, class_name: 'Address'
   validate :discount_uses
   monetize :credit_spent_cents
   monetize :delivery_cost_cents

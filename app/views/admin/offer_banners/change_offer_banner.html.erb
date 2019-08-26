@@ -1,0 +1,15 @@
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container">
+    <h2 class="insider-info-title mlb-title text-center">Change Offer Banner</h2>
+    <hr>
+    <div class="admin-form-container">
+      <%= simple_form_for @offer_banner, url: admin_change_offer_banner_path, method: :post do |f| %>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Content</p>
+          <%= f.input :content, label: false %>
+        </div>
+        <%= f.submit 'CHANGE OFFER BANNER', class: 'primary-button personal-details-button small-text' %>
+      <% end %>
+    </div>
+  </div>
+</div>

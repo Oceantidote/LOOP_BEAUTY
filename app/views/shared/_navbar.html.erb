@@ -1,5 +1,5 @@
 <div class="offers-banner">
-  <p class="offers-banner-text">FREE SAMPLES WITH EVERY ORDER</p>
+  <p class="offers-banner-text"><%= OfferBanner.any? ? OfferBanner.last.content : "" %></p>
 </div>
 <% if current_user&.admin %>
   <%= link_to 'PORTAL', admin_path(current_user), class: 'admin-button' %>

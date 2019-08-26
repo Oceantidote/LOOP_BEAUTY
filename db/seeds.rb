@@ -25,6 +25,12 @@ Tutorial.destroy_all
 QuestionAnswer.destroy_all
 User.destroy_all
 
+# CREATING OFFER BANNER
+
+puts "creating offer banner"
+
+OfferBanner.create!(content: "FREE SAMPLES WITH EVERY ORDER")
+
 # CREATING DISCOUNT CODE
 
 puts "Creating discount code"
