@@ -18,6 +18,9 @@
           </div>
           <% @num += 1 %>
         <% end %>
+        <% if current_user&.admin? %>
+          <%= link_to 'Add Influencer', new_admin_influencer_path %>
+        <% end %>
       </div>
     </div>
   </div>
