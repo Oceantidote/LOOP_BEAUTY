@@ -1,29 +1,50 @@
-<div class="brands-wrapper">
+<!-- <div class="brands-wrapper">
   <h2 class="insider-info-title text-center">Brand Directory</h2>
   <div class="container">
     <div class="brand-letter-container">
-      <% @brands_index.each do |letter| %>
-        <a href="#letter_<%= letter %>"><%= letter %></a>
-      <% end %>
+      <%# @brands_index.each do |letter| %>
+        <a href="#letter_<%#= letter %>"><%#= letter %></a>
+      <%# end %>
     </div>
     <hr>
   </div>
   <div class="container brands-index-container">
     <div class="row brands-row">
-      <% @brands_index.each do |letter| %>
+      <%# @brands_index.each do |letter| %>
         <div class="col-6 col-md-3">
           <div class="brands-letter-list">
-            <h5 id="letter_<%= letter %>"><%= letter %></h5>
+            <h5 id="letter_<%#= letter %>"><%#= letter %></h5>
             <ul>
-              <% @brands.each do |brand| %>
-                <% if brand.name.first.capitalize == letter %>
-                  <li><%= link_to brand.name, brand_path(brand), class: "didot each-brand" %></li>
-                <% end %>
-              <% end %>
+              <%# @brands.each do |brand| %>
+                <%# if brand.name.first.capitalize == letter %>
+                  <li><%#= link_to brand.name, brand_path(brand), class: "didot each-brand" %></li>
+                <%# end %>
+              <%# end %>
             </ul>
           </div>
         </div>
-      <% end %>
+      <%# end %>
+    </div>
+  </div>
+</div> -->
+
+<div class="influencers-wrapper">
+  <h2 class="insider-info-title text-center">Shop by Brand</h2>
+  <div class="container d-flex justify-content-center">
+    <div class="influencers-container">
+      <div class="row">
+        <% @brands.each do |brand| %>
+          <div class="col-6 col-sm-4 col-lg-3">
+            <%= link_to brand_path(brand), class: "influencer-card-link" do %>
+              <div class="each-influencer-avatar-card text-center">
+                <%= image_tag (brand.logo.attached? ? url_for(brand.logo) : 'brand-default.jpg'), class: "influencer-large-avatar" %>
+                <h6><%= brand.name %></h6>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
