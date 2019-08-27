@@ -16,9 +16,17 @@ class TutorialsController < ApplicationController
     elsif params[:link] == 'tutorial'
       @videos = Tutorial.where(category: 'tutorial').where(status: 'approved')
       @title = 'Tutorials'
-    elsif params[:link] = 'Ask the expert'
+    elsif params[:link] = 'ask the expert'
       @videos = Tutorial.where(category: 'ask the expert').where(status: 'approved')
       @title = 'Ask the experts'
+    else
+      @videos = Tutorial.where(status: 'approved')
+      @title = 'All Videos'
+    end
+    if params[:sort].present?
+      @videos = @videos.filter_sort(*params[:sort].split(','))
+    else
+      @videos = @videos.order(created_at: :desc)
     end
     authorize @videos
   end
