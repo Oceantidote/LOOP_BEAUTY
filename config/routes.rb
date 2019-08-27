@@ -23,10 +23,7 @@ Rails.application.routes.draw do
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
-  resources :products, only: [:index, :show] do
-  # WISHLIST TEST
-    resources :wishlist_products, only: [:new, :create]
-  end
+
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
@@ -120,6 +117,7 @@ Rails.application.routes.draw do
 
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
+    resources :wishlist_products, only: [:new, :create]
     resources :customer_reviews, only: [:create]
     resources :insider_reviews, only: [:create]
     member do

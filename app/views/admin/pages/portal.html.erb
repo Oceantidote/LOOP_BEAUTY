@@ -24,14 +24,14 @@
         <%= link_to admin_lookbooks_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
             <%= image_tag "lookbook-icon.png" %>
-            <h5>Pending Lookbooks</h5>
+            <h5>Pending Lookbooks - <%= Lookbook.where(status: 'pending').size %></h5>
           </div>
         <% end %>
         <div class="dash-home-options-line-break"></div>
         <%= link_to admin_tutorials_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
             <%= image_tag "tutorial-icon.png" %>
-            <h5>Pending Tutorials</h5>
+            <h5>Pending Tutorials - <%= Tutorial.where(status: 'pending').size %></h5>
           </div>
         <% end %>
       </div>

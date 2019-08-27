@@ -24,7 +24,9 @@ class Admin::InfluencersController < ApplicationController
   end
 
   def update
-    if @influencer.update(influencer_params)
+    new_params = influencer_params
+    new_params.delete(:password) if influencer_params[:password].blank?
+    if @influencer.update(new_params)
       flash[:notice] = 'Influencer Updated'
       redirect_to user_path(@influencer)
     else
