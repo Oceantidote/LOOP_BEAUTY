@@ -29,7 +29,7 @@ User.destroy_all
 
 # CREATING HOME BANNERS
 
-puts "creating home banners"
+puts "CREATING HOME BANNERS"
 
 hb1 = HomeBanner.new( content: "Introducing Glossier’s new eye pallette..", link: "/insider_articles", link_text: "See more articles", display: true )
 
@@ -59,23 +59,33 @@ hb4.banner.attach(io: File.open(hb4_banner), filename: 'shantania_cover.jpg')
 
 hb4.save
 
+puts "-"
+
 # CREATING OFFER BANNER
 
-puts "creating offer banner"
+puts "CREATING OFFER BANNERS"
 
 OfferBanner.create!(content: "FREE SAMPLES WITH EVERY ORDER")
 
+puts "-"
+
 # CREATING DISCOUNT CODE
 
-puts "Creating discount code"
+puts "CREATING DISCOUNT CODE"
 
 code = DiscountCode.create!(code: 'WELCOME2LOOP', discount: 10, uses: 10000000 , user_uses: 1)
 
-puts "Dicount code: WELCOME2LOOP"
+puts "-"
+
+puts "*****************************"
+puts "DISCOUNT CODE: WELCOME2LOOP"
+puts "*****************************"
+
+puts "-"
 
 # CREATING FREEBIE
 
-puts "creating freebie"
+puts "CREATING FREEBIE"
 
 freebie = Freebie.new(heading: 'First time with us?', blurb: 'Get 10% off your first order', display: true, discount_code: code)
 
@@ -84,11 +94,20 @@ freebie.banner.attach(io: File.open(freebie_banner), filename: 'freebie-banner.j
 
 freebie.save
 
+puts "-"
+
 # CREATING DEPARTMENTS
+
+puts "CREATING DEPARTMENT"
+
 
 makeup = Department.create!(name: "Makeup")
 
+puts "-"
+
 # CREATING BRANDS
+
+puts "CREATING BRANDS"
 
 black_opal = Brand.create!(name: "Black Opal", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
 juvias_place = Brand.create!(name: "Juvia's Place", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
@@ -98,13 +117,21 @@ sacha_cosmetics = Brand.create!(name: "Sacha Cosmetics", description: "Beauty Ed
 black_up = Brand.create!(name: "Black Up", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
 mdm_flow = Brand.create!(name: "MDM Flow", description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.")
 
-mp = File.join(Rails.root,'app/assets/images/makeup_54_logo.png')
-bp = File.join(Rails.root,'app/assets/images/beauty_edit_mayfair_logo.png')
-makeup_54.photo.attach(io: File.open(mp) , filename: 'makeup_54_logo.png')
-beauty_edit_mayfair.photo.attach(io: File.open(bp), filename: 'beauty_edit_mayfair_logo.png')
-makeup_54.logo.attach(io: File.open(mp) , filename: 'makeup_54_logo.png')
-beauty_edit_mayfair.logo.attach(io: File.open(bp), filename: 'beauty_edit_mayfair_logo.png')
+mp = File.join(Rails.root,'app/assets/images/makeup_54_logo.jpg')
+makeup_54.logo.attach(io: File.open(mp) , filename: 'makeup_54_logo.jpg')
+mp2 = File.join(Rails.root,'app/assets/images/makeup_54_photo.jpg')
+makeup_54.photo.attach(io: File.open(mp2) , filename: 'makeup_54_photo.jpg')
+
+bp = File.join(Rails.root,'app/assets/images/beauty_edit_mayfair_logo.jpg')
+beauty_edit_mayfair.logo.attach(io: File.open(bp), filename: 'beauty_edit_mayfair_logo.jpg')
+bp2 = File.join(Rails.root,'app/assets/images/beauty_edit_mayfair_photo.jpg')
+beauty_edit_mayfair.photo.attach(io: File.open(bp2), filename: 'beauty_edit_mayfair_photo.jpg')
+
+puts "-"
+
 # CREATING CATEGORIES
+
+puts "CREATING CATEGORIES"
 
 face = Category.create!(name: "Face")
 tools = Category.create!(name: "Tools")
@@ -112,7 +139,11 @@ lips = Category.create!(name: "Lips")
 eyes = Category.create!(name: "Eyes")
 gifts_sets = Category.create!(name: "Gift Sets")
 
+puts "-"
+
 # CREATING SUB_CATEGORIES
+
+puts "CREATING SUB CATEGORIES"
 
 blush = SubCategory.create!(name: "Blush")
 powder = SubCategory.create!(name: "Powder")
@@ -130,7 +161,11 @@ mascara = SubCategory.create!(name: "Mascara")
 sub_tools = SubCategory.create!(name: "Tools")
 sub_gift_sets = SubCategory.create!(name: "Gift Sets")
 
+puts "-"
+
 # CREATING BENEFITS
+
+puts "CREATING BENEFITS"
 
 vegan = Benefit.create!(name: "Vegan")
 cruelty_free = Benefit.create!(name: "Cruelty Free")
@@ -146,8 +181,11 @@ transfer_resistant = Benefit.create!(name: "Transfer Resistant")
 creamy_fluid_formula = Benefit.create!(name: "Creamy Fluid Formula")
 non_drying = Benefit.create!(name: "Non Drying")
 
+puts "-"
+
 # CREATING PRODUCTS FOR MAKEUP 54
 
+puts "CREATING PRODUCTS"
 
 # DISCO FLUID LIPSTICK
 disco_fluid_lipstick = Product.create!(
@@ -220,11 +258,6 @@ transfer_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, ben
 creamy_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: creamy_fluid_formula)
 non_dry_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: non_drying)
 
-
-
-
-
-
 # DISCO TOPPER
 
 disco_topper_lip_topper = Product.create!(
@@ -267,13 +300,6 @@ non_dry_disco_topper = ProductBenefit.create!(product: disco_topper_lip_topper, 
 
 disco_fluid_recom = RecommendedProduct.create!(recommender: disco_fluid_lipstick, recommended: disco_topper_lip_topper)
 disco_top_recom = RecommendedProduct.create!(recommender: disco_topper_lip_topper, recommended: disco_fluid_lipstick)
-
-
-
-
-
-
-
 
 
 # CREATING PRODUCTS FOR BEAUTY EDIT MAYFAIR
@@ -350,9 +376,6 @@ mineral_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: mine
 derma_brow_filler = ProductBenefit.create!(product: brow_filler, benefit: derma_tested)
 
 
-
-
-
 # BROW SETTER
 
 brow_setter = Product.create!(
@@ -383,7 +406,6 @@ cruelty_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: crue
 fragrance_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: fragrance_free)
 mineral_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: mineral_oil_free)
 derma_brow_setter = ProductBenefit.create!(product: brow_setter, benefit: derma_tested)
-
 
 
 # BROW styler
@@ -440,7 +462,6 @@ v_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit
 cruelty_highlighter_brush = ProductBenefit.create!(product: highlighter_brush, benefit: cruelty_free)
 
 
-
 # BROW LIFT RECOMMENDED
 
 brow_lift_rec_1 = RecommendedProduct.create!(recommender: brow_lift, recommended: brow_filler)
@@ -476,10 +497,11 @@ highlighter_brush_rec_2 = RecommendedProduct.create!(recommender: highlighter_br
 highlighter_brush_rec_3 = RecommendedProduct.create!(recommender: highlighter_brush, recommended: brow_setter)
 highlighter_brush_rec_4 = RecommendedProduct.create!(recommender: highlighter_brush, recommended: brow_styler)
 
+puts "-"
 
 # CREATING INFLUENCERS
-puts "Creating influencers"
 
+puts "CREATING INFLUENCERS"
 
 esther = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Esther", last_name: "Areola", instagram: "@estaregrams", youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', password: "Esther123", email: "esther@estareonline.com")
 ropo = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Ropo", last_name: "Demure", instagram: "@ropo.demure", youtube: 'https://www.youtube.com/user/22ropoable', password: "Ropo123", email: "ropo_demuren@gmail.com")
@@ -588,10 +610,6 @@ bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
 bemi.tutorial_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
 
 
-puts "XXXXXXXXXXXXXXXX"
-puts bemi.tutorial_photo.attached?
-
-
 esther.save
 ropo.save
 breeny.save
@@ -599,17 +617,11 @@ nikki.save
 shantania.save
 bemi.save
 
-
-
-
-
-
-
-
+puts "-"
 
 # CREATING SHOWROOM
 
-puts "Creating showroom"
+puts "CREATING SHOWROOM"
 
 
 estherShowroom = Showroom.create!(user: esther)
@@ -673,11 +685,13 @@ nikkiProd = ShowroomProduct.create!(showroom: nikkiShowroom, product: brow_sette
 # nikkiProd.save
 # end
 
+puts "-"
+
 insiders = [esther, ropo, breeny, nikki, shantania, bemi]
 
 # CREATING CUSTOMER USER
 
-puts "Creating customers"
+puts "CREATING CUSTOMERS"
 
 ariel = User.create!(published: true, influencer: false, first_name: "Ariel", last_name: "Roberts", country: "Bristol, UK",password: "Ariel123", email: "ariel@gmail.com")
 lenny = User.create!(published: true, influencer: false, first_name: "Leonard", last_name: "Percival", country: "Oxford, UK",password: "Lenny123", email: "lenny@gmail.com")
@@ -686,7 +700,9 @@ wrighty = User.create!(published: true, influencer: false, first_name: "Ben", la
 customers = [ariel, lenny, ife]
 # CREATING ADMIN USER
 
-puts "Creating customer wishlist"
+puts "-"
+
+puts "CREATING CUSTOMER WISHLIST"
 
 arielWishlist = Wishlist.create!(user: ariel)
 lennyWishlist = Wishlist.create!(user: lenny)
@@ -717,16 +733,22 @@ wrightyWishlist = Wishlist.create!(user: wrighty)
 # wrightyProd.save
 # end
 
-puts "Creating admin user"
+puts "-"
+
+puts "CREATING ADMIN USER"
 
 admin = User.create!(influencer: false, first_name: "contact", last_name: "hoxton", password: "Admin123", email: "admin@gmail.com", admin: true)
 
-puts "Email: admin@gmail.com"
-puts "Password: Admin123"
+puts "-"
+puts "***********************"
+puts "EMAIL: admin@gmail.com"
+puts "PASSWORD: Admin123"
+puts "***********************"
+puts "-"
 
 # CREATING INSIDER ARTICLES
 
-puts "Creating insider articles"
+puts "CREATING INSIDER ARTICLES"
 
 # 5.times do
 
@@ -982,11 +1004,11 @@ puts "Creating insider articles"
 
 # end
 
-puts "Insider articles created!"
+puts "-"
 
 # CREATING TUTORIALS
 
-puts "Creating tutorials"
+puts "CREATING TUTORIALS"
 
 esther_tutorial = Tutorial.create!(
                                       user: esther,
@@ -1064,9 +1086,12 @@ ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ro
 ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
 ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
 
+puts "-"
+
 # CREATING LOOKBOOKS
 
-puts "Creating lookbooks"
+puts "CREATING LOOKBOOKS"
+
 [esther, ropo, breeny, nikki, shantania, bemi]
 
 
@@ -1178,9 +1203,11 @@ bemi_lookbook_image_three = File.join(Rails.root,'app/assets/images/bemi_photo_t
 bemi_lookbook_three.photo.attach(io: File.open(bemi_lookbook_image_three) , filename: 'bemi_photo_three.jpg')
 bemi_lookbook_three.save
 
+puts "-"
+
 # CREATING TUTORIAL PRODUCTS
 
-puts "Creating tutorial products"
+puts "CREATING TUTORIAL PRODUCTS"
 
 TutorialProduct.create!(
                         tutorial: esther_tutorial,
@@ -1301,10 +1328,12 @@ TutorialProduct.create!(
                         tutorial: ropo_tutorial,
                         product: brow_filler
                         )
+
+puts "-"
 
 # CREATING CUSTOMER REVIEWS
 
-puts "Creating customer reviews"
+puts "CREATING CUSTOMER REVIEWS"
 
 reviews = ["This product works very well with my sking tone and I'm am very happy I tried it. Will definitely be buying this again",
           "I have this in the darkest shade which is my go-to on an everyday basis. It is beautiful, it makes an impact without looking glittery, chunky or unnatural.",
@@ -1325,9 +1354,11 @@ CustomerReview.create!(
 
 end
 
+puts "-"
+
 # CREATING INFLUENCER REVIEWS
 
-puts "Creating insider reviews"
+puts "CREATING INSIDER REVIEWS"
 
 30.times do
 
@@ -1339,9 +1370,11 @@ InsiderReview.create!(
                       )
 end
 
+puts "-"
+
 # CREATING QUESTION ANSWERS
 
-puts "Creating question and answers for Shantania Beckford and Ropo Demure"
+puts "CREATING Q&A FOR SHANTANIA BECKFORD & ROPO DEMURE"
 
 shan_qa = QuestionAnswer.new(
                       user: shantania,
@@ -1412,9 +1445,11 @@ ropo_qa.save
 #   end
 # end
 
+puts "-"
+
 # CREATING EXCHANGE RATES
 
-puts "Creating exchange rates"
+puts "CREATING EXCHANGE RATES"
 
 ExchangeRate.create(
   currency: 'dollar',
@@ -1427,4 +1462,12 @@ ExchangeRate.create(
   currency_code: 'eur',
   rate: 1.09
 )
+
+puts "-"
+
+puts "***************"
+puts "SEED COMPLETE"
+puts "***************"
+
+
 
