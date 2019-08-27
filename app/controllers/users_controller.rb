@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def my_products
     # @orders = Order.where(user: @user)
-    @products = Order.where(user: @user).order(created_at: :DESC).map { |order| order.products }.flatten
+    @products = Order.where(user: @user).order(created_at: :DESC).map { |order| order.products }.flatten.uniq
   end
 
   def refer_a_friend

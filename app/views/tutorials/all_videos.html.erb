@@ -1,16 +1,15 @@
 <div class="tutorials-index-wrapper">
     <h2 class="insider-info-title text-center influencer-videos-title-mobile"><%= @title %></h2>
   <div class="influencer-videos-title-section">
-    <div class="filters-container">
-      <p class="no-margin small-text boldest">Sort By: Newest</p>
-    </div>
-    <%#= simple_form_for :sort, url: user_tutorials_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
-      <%#= f.input :sort_method, collection: [['Newest', 'created_at,desc'], ['Old', 'created_at,asc']], label: false, required: false, selected: @sort_method, input_html: { class: "filters-container boldest s-medium-text" } %>
-    <%# end %>
-    <h2 class="insider-info-title text-center influencer-videos-title-web"><%= @title %></h2>
-    <div class="filters-container">
-      <p class="no-margin small-text boldest">Filter by: tutorials</p>
-    </div>
+    <%= form_with(url: all_videos_path, method: :get, class: 'some-class') do %>
+      <div class="filters-container">
+        <%= select_tag(:sort, options_for_select([["Sort by: Newest", 'created_at,desc'], ["Sort by: Oldest", 'created_at,asc']], params[:sort]), onchange: 'this.form.submit()') %>
+      </div>
+      <h2 class="insider-info-title text-center influencer-videos-title-web"><%= @title %></h2>
+      <div class="filters-container">
+          <%= select_tag(:link, options_for_select([["Filter by: All", 'all'], ["Filter by: Tutorials", 'tutorial'], ["Filter by: Ask the Expert", "ask the expert"]], params[:link]), onchange: 'this.form.submit()') %>
+      </div>
+    <% end %>
   </div>
 
   <div class="max-width">
