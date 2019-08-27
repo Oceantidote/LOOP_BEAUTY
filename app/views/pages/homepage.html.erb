@@ -1,11 +1,28 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
   <div class="carousel-inner">
+    <% @home_banners.each_with_index do |home_banner, index| %>
+      <div class="carousel-item <%= index == 0 ? 'active' : '' %> ">
+        <div class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+          <div class="holding-page-banner-text-container">
+            <div class="holding-page-banner-text">
+              <h2 class="didot"><%= home_banner.content %></h2>
+              <%#= link_to 'See more articles', insider_articles_path %>
+              <a href="<%= home_banner.link %>"><%= home_banner.link_text %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!-- <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
+  <div class="carousel-inner">
     <div class="carousel-item active">
-      <div class="holding-page-image-banner" style="background-image: url('<%= asset_path 'homepage-header.jpg' %>')">
+      <div class="holding-page-image-banner" style="background-image: url('<%#= asset_path 'homepage-header.jpg' %>')">
         <div class="holding-page-banner-text-container">
           <div class="holding-page-banner-text">
             <h2 class="didot">Introducing Glossier’s new eye pallette..</h2>
-            <%= link_to 'See more articles', insider_articles_path %>
+            <%#= link_to 'See more articles', insider_articles_path %>
           </div>
         </div>
       </div>
@@ -15,7 +32,7 @@
         <div class="holding-page-banner-text-container">
           <div class="holding-page-banner-text">
             <h2 class="didot">Shop the new look here..</h2>
-            <%= link_to 'Shop now', products_path %>
+            <%#= link_to 'Shop now', products_path %>
           </div>
         </div>
       </div>
@@ -25,12 +42,12 @@
       <div class="holding-page-banner-text-container">
         <div class="holding-page-banner-text">
           <h2 class="didot">Get the look from your favourite influencers..</h2>
-          <%= link_to 'See all influencers', users_path %>
+          <%#= link_to 'See all influencers', users_path %>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">

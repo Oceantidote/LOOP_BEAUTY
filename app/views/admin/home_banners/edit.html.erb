@@ -1,0 +1,31 @@
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container" style="max-width: 800px;">
+    <h2 class="insider-info-title mlb-title text-center">Create a home banner</h2>
+    <hr>
+    <div class="admin-form-container freebies-form-container">
+      <%= simple_form_for [:admin, @home_banner] do |f| %>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Content</p>
+          <%= f.input :content, label: false, input_html: { class: "contact-form-input" } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Link</p>
+          <%= f.input :link, label: false, placeholder: 'e.g. /products', input_html: { class: "contact-form-input" } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Link text</p>
+          <%= f.input :link_text, label: false, input_html: { class: "contact-form-input" } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Banner</p>
+          <%= f.input :banner, label: false %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Display?</p>
+          <%= f.input :display, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
+        </div>
+        <%= f.submit 'UPDATE HOME BANNER', class: 'primary-button personal-details-button small-text' %>
+      <% end %>
+    </div>
+  </div>
+</div>

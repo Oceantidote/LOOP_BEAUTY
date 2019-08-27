@@ -71,6 +71,8 @@ Rails.application.routes.draw do
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
+  # ADMIN ROUTES
+
   namespace :admin do
     get 'change_banner', to: 'banners#change_banner'
     post 'change_banner', to: 'banners#change'
@@ -110,8 +112,11 @@ Rails.application.routes.draw do
     resources :product_benefits, only: [:destroy]
     resources :shades, only: [:update, :destroy]
     resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :home_banners
     get ':id/portal', to: 'pages#portal'
   end
+
+  # ADMIN ROUTES
 
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do

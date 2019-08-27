@@ -4,6 +4,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+HomeBanner.destroy_all
+OfferBanner.destroy_all
 DiscountCode.destroy_all
 Freebie.destroy_all
 ShowroomProduct.destroy_all
@@ -24,6 +26,38 @@ Product.destroy_all
 Tutorial.destroy_all
 QuestionAnswer.destroy_all
 User.destroy_all
+
+# CREATING HOME BANNERS
+
+puts "creating home banners"
+
+hb1 = HomeBanner.new( content: "Introducing Glossier’s new eye pallette..", link: "/insider_articles", link_text: "See more articles", display: true )
+
+hb1_banner = File.join(Rails.root,'app/assets/images/homepage-header.jpg')
+hb1.banner.attach(io: File.open(hb1_banner), filename: 'homepage-header.jpg')
+
+hb1.save
+
+hb2 = HomeBanner.new( content: "Shop the new look here..", link: "/products", link_text: "Shop now", display: true )
+
+hb2_banner = File.join(Rails.root,'app/assets/images/home-banner2.jpg')
+hb2.banner.attach(io: File.open(hb2_banner), filename: 'home-banner2.jpg')
+
+hb2.save
+
+hb3 = HomeBanner.new( content: "Get the look from your favourite influencers..", link: "/influencers", link_text: "See all influencers", display: true )
+
+hb3_banner = File.join(Rails.root,'app/assets/images/home-banner3.jpg')
+hb3.banner.attach(io: File.open(hb3_banner), filename: 'home-banner3.jpg')
+
+hb3.save
+
+hb4 = HomeBanner.new( content: "Watch Shantania's latest tutorial..", link: "/tutorials/everyday-drugstore-5-makeup-tutorial", link_text: "Watch tutorial here", display: false )
+
+hb4_banner = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
+hb4.banner.attach(io: File.open(hb4_banner), filename: 'shantania_cover.jpg')
+
+hb4.save
 
 # CREATING OFFER BANNER
 
