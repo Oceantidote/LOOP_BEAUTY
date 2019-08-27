@@ -67,3 +67,12 @@
     font-size: 17px;
   }
 }
+
+.wishlist-heart-icon-product-show {
+  font-size: 22px;
+  @include for-phone-only {
+    font-size: 17px;
+  }
+}
+
+

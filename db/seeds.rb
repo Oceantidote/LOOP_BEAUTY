@@ -116,8 +116,19 @@ non_drying = Benefit.create!(name: "Non Drying")
 
 
 # DISCO FLUID LIPSTICK
-disco_fluid_lipstick = Product.create!(measurement: "grams", title: "Disco Fluid Lipstick", lb_id: "LB00001", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1700, details: "Take your lips to the dancefloor for velvet smooth, kissable lips that will last all night long.
-This unique texture changes continuously, creamy and enveloping in application, it transforms itself from velvety to absolute matte for impeccable perfection. A special mix of emollient oils give a creamy texture and smooth finish, with a silky touch. Optimal hold and no transfer for impeccable colour that lasts over time.")
+disco_fluid_lipstick = Product.create!(
+    measurement: "grams",
+    title: "Disco Fluid Lipstick",
+    lb_id: "LB00001",
+    department: makeup,
+    category: lips,
+    sub_category: lipstick,
+    brand: makeup_54,
+    weight: 53,
+    price_cents: 1700,
+    details: "Take your lips to the dancefloor for velvet smooth, kissable lips that will last all night long. This unique texture changes continuously, creamy and enveloping in application, it transforms itself from velvety to absolute matte for impeccable perfection. A special mix of emollient oils give a creamy texture and smooth finish, with a silky touch. Optimal hold and no transfer for impeccable colour that lasts over time.",
+    published: true
+  )
 
 red_jerry = Shade.create!(name: "Red - Jerry", sku: "M5400001", product: disco_fluid_lipstick)
 pink_ross = Shade.create!(name: "Pink - Ross", sku: "M5400002", product: disco_fluid_lipstick)
@@ -182,7 +193,19 @@ non_dry_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, bene
 
 # DISCO TOPPER
 
-disco_topper_lip_topper = Product.create!(measurement: "grams", title: "Disco Topper Lip Topper", lb_id: "LB0002", department: makeup, category: lips, sub_category: lipstick, brand: makeup_54, weight: 53, price_cents: 1800, details: "The only accessory to be seen with on the dancefloor. Transform your lips before you hit the dancefloor and see the stars from the sky light up your lips with one swipe of this dazzling glitter topcoat. A special water infused gel texture, with moonstone extract gives a multidimensional, glittered effect when applied on lips. Once set it gives a long, locked in finish. Use with your favourite Makeup54 disco lipstick for the ultimate lip colour that is sure to get you seen.")
+disco_topper_lip_topper = Product.create!(
+  measurement: "grams",
+  title: "Disco Topper Lip Topper",
+  lb_id: "LB0002",
+  department: makeup,
+  category: lips,
+  sub_category: lipstick,
+  brand: makeup_54,
+  weight: 53,
+  price_cents: 1800,
+  details: "The only accessory to be seen with on the dancefloor. Transform your lips before you hit the dancefloor and see the stars from the sky light up your lips with one swipe of this dazzling glitter topcoat. A special water infused gel texture, with moonstone extract gives a multidimensional, glittered effect when applied on lips. Once set it gives a long, locked in finish. Use with your favourite Makeup54 disco lipstick for the ultimate lip colour that is sure to get you seen.",
+  published: true
+  )
 
 glitterball = Shade.create!(name: "Glitterball", sku: "M5400005", product: disco_topper_lip_topper)
 
@@ -234,8 +257,8 @@ brow_lift = Product.create!(
   brand: beauty_edit_mayfair,
   weight: 1.41,
   price_cents: 2400,
-  details: "Achieve an instant eye lift.
-This lightweight, silky highlighter defines brows with a matte finish to raise and accentuate the brow bone. Its creamy formula means it is applied easily to achieve a softly defined finish. This pencil, formulated with dry emollients, is also an effective concealer, disguising eyebrow tattoos or imperfections."
+  details: "Achieve an instant eye lift. This lightweight, silky highlighter defines brows with a matte finish to raise and accentuate the brow bone. Its creamy formula means it is applied easily to achieve a softly defined finish. This pencil, formulated with dry emollients, is also an effective concealer, disguising eyebrow tattoos or imperfections.",
+  published: true
 )
 
 pick_me_up = Shade.create!(name: "Pick-Me-Up", sku: "BL03", product: brow_lift)
@@ -270,8 +293,9 @@ brow_filler = Product.create!(
   brand: beauty_edit_mayfair,
   weight: 1.41,
   price_cents: 2000,
-  details: "Essential for brow beauty.
-This creates beautifully defined brows with a non-waxy finish. The intensely pigmented lead delivers a precise line and perfectly mimics brow hairs. It lasts up to 12 hours.")
+  details: "Essential for brow beauty. This creates beautifully defined brows with a non-waxy finish. The intensely pigmented lead delivers a precise line and perfectly mimics brow hairs. It lasts up to 12 hours.",
+  published: true
+  )
 
 dark_dahlia = Shade.create!(name: "Dark Dahlia", sku: "BF03", product: brow_filler)
 
@@ -308,8 +332,8 @@ brow_setter = Product.create!(
   weight: 8.8,
   demoable: true,
   price_cents: 2500,
-  details: "Sets, defines and holds.
-A clear brow gel that sets and holds brows and can be worn alone or with an eyebrow pencil. There is no product build-up, and the gel contains vitamins B5 and E as well as castor oil to strengthen and condition hair brows."
+  details: "Sets, defines and holds. A clear brow gel that sets and holds brows and can be worn alone or with an eyebrow pencil. There is no product build-up, and the gel contains vitamins B5 and E as well as castor oil to strengthen and condition hair brows.",
+  published: true
 )
 
 clear = Shade.create!(name: "Clear", sku: "BR01", product: brow_setter)
@@ -339,8 +363,8 @@ brow_styler = Product.create!(
   sub_category: sub_tools,
   brand: beauty_edit_mayfair,
   price_cents: 1800,
-  details: "A multi-tasking brow brush.
-This nifty-sized spoolie brush is the perfect brow styling tool which also tames the brows while distributing brow pencil evenly to achieve a natural look."
+  details: "A multi-tasking brow brush. This nifty-sized spoolie brush is the perfect brow styling tool which also tames the brows while distributing brow pencil evenly to achieve a natural look.",
+  published: true
 )
 
 brush = Shade.create!(name: "", sku: "BS01", product: brow_styler)
@@ -366,8 +390,8 @@ highlighter_brush = Product.create!(
   brand: beauty_edit_mayfair,
   price_cents: 1800,
   demoable: true,
-  details: "Ensures perfect precision.
-This brush effortlessly blends a brow highlighter pencil which helps to define the brow bone and create a sought-after shape. It is also handy for applying concealer on delicate areas."
+  details: "Ensures perfect precision. This brush effortlessly blends a brow highlighter pencil which helps to define the brow bone and create a sought-after shape. It is also handy for applying concealer on delicate areas.",
+  published: true
 )
 
 highlighter_brush_shade = Shade.create!(name: "", sku: "HB01", product: highlighter_brush)
