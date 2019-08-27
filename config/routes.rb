@@ -48,7 +48,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show] do
     get 'order_success', to: 'orders#order_success'
   end
-  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
   resources :users, only: [:show, :index, :update], path: 'influencers' do
     get 'uploads', to: 'users#uploads'
@@ -68,7 +67,7 @@ Rails.application.routes.draw do
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
 
-  # ADMIN ROUTES
+  # ADMIN ROUTES BELOW
 
   namespace :admin do
     get 'change_banner', to: 'banners#change_banner'
@@ -113,7 +112,7 @@ Rails.application.routes.draw do
     get ':id/portal', to: 'pages#portal'
   end
 
-  # ADMIN ROUTES
+  # ADMIN ROUTES ABOVE
 
   resources :insider_articles, only: [:show, :index]
   resources :products, only: [:index, :show], path: 'make-up' do
