@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def homepage
+    @home_banners = HomeBanner.where(display: true)
     @tutorials = Tutorial.all.order(created_at: :DESC).first(4)
     @insider_articles = InsiderArticle.all.order(created_at: :DESC).first(3)
   end
