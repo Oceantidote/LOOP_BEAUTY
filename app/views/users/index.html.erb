@@ -3,7 +3,6 @@
   <div class="container d-flex justify-content-center">
     <div class="influencers-container">
       <div class="row">
-        <% @num = 0 %>
         <% @users.each do |influencer| %>
           <div class="col-6 col-sm-4 col-lg-3">
             <%= link_to user_path(influencer), class: "influencer-card-link" do %>
@@ -16,13 +15,21 @@
               </div>
             <% end %>
           </div>
-          <% @num += 1 %>
-        <% end %>
-        <% if current_user&.admin? %>
-          <%= link_to 'Add Influencer', new_admin_influencer_path %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
+<% if policy([:admin, User]).create? %>
+  <div class="admin-options">
+    <hr>
+    <div class="container">
+      <h6 class="boldest">Admin options</h6>
+      <div class="d-flex">
+        <%= link_to 'ADD INFLUENCER', new_admin_influencer_path, class: 'secondary-button' %>
+      </div>
+    </div>
+    <hr>
+  </div>
+<% end %>

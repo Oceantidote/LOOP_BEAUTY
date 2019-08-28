@@ -93,6 +93,10 @@
             </div>
           </div>
           <hr>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
+            <%= f.check_box :featured, class:"form-control lb-checkbox" %>
+          </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <%= f.submit 'CREATE INSIDER ARTICLE', class: 'primary-button personal-details-button small-text' %>
         <% end %>

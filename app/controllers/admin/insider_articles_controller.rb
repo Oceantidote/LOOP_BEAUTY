@@ -68,7 +68,8 @@ class Admin::InsiderArticlesController < ApplicationController
       :photo2_alt_text,
       :photo3_alt_text,
       :by,
-      :published
+      :published,
+      :featured
     )
   end
 

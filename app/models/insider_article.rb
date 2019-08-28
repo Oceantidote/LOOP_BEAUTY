@@ -10,6 +10,10 @@ class InsiderArticle < ApplicationRecord
   validates :title, presence: true
   validates :cover_photo, presence: true
   validates :text1, presence: true
+  after_save :update_featured
 
-
+  def update_featured
+    @insider_articles = InsiderArticle.where(featured: true).where.not(id: self.id)
+    @insider_articles.update_all(featured: false)
+  end
 end

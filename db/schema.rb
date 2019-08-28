@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_144931) do
+ActiveRecord::Schema.define(version: 2019_08_28_124828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_144931) do
     t.string "photo2_alt_text"
     t.string "photo3_alt_text"
     t.boolean "published", default: false
+    t.boolean "featured", default: false
+    t.boolean "homepage", default: false
     t.index ["user_id"], name: "index_insider_articles_on_user_id"
   end
 
