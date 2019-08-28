@@ -26,6 +26,7 @@ gem 'country_select'
 gem 'gibbon'
 gem 'rest-client'
 gem 'rb-readline'
+gem 'pg_search', '~> 2.3.0'
 # gem 'image_processing', '~> 1.2'
 
 

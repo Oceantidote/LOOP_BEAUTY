@@ -369,9 +369,9 @@
   }
 }
 
-// .navbar-hover-container-top {
-//   top: 60px !important;
-// }
+.navbar-hover-container-top {
+  top: 60px !important;
+}
 
 .navbar-basket-button {
   padding: 6px 10px !important;
@@ -467,7 +467,7 @@
 }
 
 .navbar-search-container {
-  position: absolute;
+  position: fixed;
   right: 105px;
   top: 0px;
   z-index: 99;

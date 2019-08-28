@@ -2,8 +2,13 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @products = policy_scope(Product).where(published: true)
-    @original = policy_scope(Product)
+    if params[:query].present?
+      @products = policy_scope(Product).where(published: true).global_search(params[:query])
+      @original = policy_scope(Product).global_search(params[:query])
+    else
+      @products = policy_scope(Product).where(published: true)
+      @original = policy_scope(Product)
+    end
     @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
     if params[:product].present? && params[:product][:sort].present?

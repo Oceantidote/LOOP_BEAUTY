@@ -224,9 +224,9 @@
 </div>
 
 <div class="navbar-search-container">
-  <%= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
+  <%= form_tag products_path, method: :get do |f| %>
     <div style="display: flex; justify-content: center;">
-      <%= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'navbar-search-input', value: @basket.discount_code&.code } %>
+      <%= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..' %>
       <%= button_tag(type: :submit, class: "button search-form-button") do %>
         <%= image_tag 'navbar-search-white.png' %>
       <% end %>
@@ -383,16 +383,24 @@
   searchIcon = document.querySelector('.search-icon-container');
 
   searchIcon.addEventListener('mouseover', function() {
-    navSearchDrop.classList.add('navbar-hover-container-top')
+    if (window.scrollY > 40) {
+      navSearchDrop.style.top = '60px'
+    } else {
+      navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
+    }
   })
   searchIcon.addEventListener('mouseleave', function() {
-    navSearchDrop.classList.remove('navbar-hover-container-top')
+    navSearchDrop.style.top = 0
   })
   navSearchDrop.addEventListener('mouseover', function() {
-    navSearchDrop.classList.add('navbar-hover-container-top')
+    if (window.scrollY > 40) {
+      navSearchDrop.style.top = '60px'
+    } else {
+      navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
+    }
   })
   navSearchDrop.addEventListener('mouseleave', function() {
-    navSearchDrop.classList.remove('navbar-hover-container-top')
+    navSearchDrop.style.top = 0
   })
 
   // NAV SEARCH DROPDOWN
