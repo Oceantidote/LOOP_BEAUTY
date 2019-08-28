@@ -3,5 +3,27 @@
   padding-bottom: 39%;
   padding-left: 4%;
   padding-top: 4%;
+}
 
+.showroom-product-form {
+  width: 500px;
+  margin: auto;
+  padding: 5px;
+  .personal-details-input {
+    justify-content: center;
+  }
+  .form-group {
+    margin-bottom: 5px;
+  }
+  @include for-phone-only {
+    width: 100%;
+  }
+  select {
+    min-width: 350px !important;
+    margin-left: 5px;
+    @include for-phone-only {
+      min-width: auto !important;
+      width: 100% !important;
+    }
+  }
 }
