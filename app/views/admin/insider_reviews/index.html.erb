@@ -12,12 +12,12 @@
         </div>
         <h5 class="boldest"><%= @product.title %></h5>
       </div>
-      <div class="row" style="margin: 30px 0;">
+      <div class="row admin-review-row" style="margin: 30px 0;">
         <% if @insider_reviews.count == 0 %>
           <p class="medium-margin text-center boldest" style="width: 100%;">There are no insider reviewss yet</p>
         <% end %>
         <% @insider_reviews.each do |review| %>
-          <div class="col-10 col-md-6 ir-cols">
+          <div class="col-12 col-sm-10 col-md-6 ir-cols flex-column">
             <div class="admin-insider-review-cards">
               <div class="insider-review-left">
                 <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>

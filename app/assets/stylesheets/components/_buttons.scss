@@ -23,10 +23,18 @@
 .m10 {
   margin: 10px;
 }
-.admin-button {
+
+.admin-button-container {
   position: absolute;
   top: 0;
   right: 5px;
+  z-index: 1000;
+
+}
+.admin-button {
+  // position: absolute;
+  // top: 0;
+  // right: 5px;
   z-index: 110;
   background: white;
   color: #000;

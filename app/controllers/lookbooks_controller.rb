@@ -12,9 +12,9 @@ class LookbooksController < ApplicationController
   def show
 
     # NOT SURE IF CORRECT BUT WORKS
-    user = User.find(params[:user_id])
+    # user = User.find(params[:user_id])
     @lookbook = Lookbook.find((Lookbook.select{ |r| r.slug == params[:id]}).first.id)
-    @lookbooks = Lookbook.where(user: user)
+    @lookbooks = Lookbook.where(user: @lookbook.user)
     @all_lookbooks = Lookbook.where(status: 'approved')
     authorize @lookbook
     current_lookbook = @lookbooks.index(@lookbook)

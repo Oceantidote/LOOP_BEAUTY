@@ -12,9 +12,15 @@
   <% end %>
   <%= link_to admin_lookbooks_path, class: "each-dash-link" do %>
     <%= image_tag "lookbook-icon.png", class: "dash-links-image" %>Pending Lookbooks
+    <% if Lookbook.where(status: 'pending').any? %>
+      <p class="admin-notification"><%= Lookbook.where(status: 'pending').size %></p>
+    <% end %>
   <% end %>
   <%= link_to admin_tutorials_path, class: "each-dash-link" do %>
     <%= image_tag "tutorial-icon.png", class: "dash-links-image" %>Pending Tutorials
+    <% if Tutorial.where(status: 'pending').any? %>
+      <p class="admin-notification"><%= Tutorial.where(status: 'pending').size %></p>
+    <% end %>
   <% end %>
   <%= link_to admin_insider_articles_path, class: "each-dash-link" do %>
     <%= image_tag "article.png", class: "dash-links-image" %>Insider Articles

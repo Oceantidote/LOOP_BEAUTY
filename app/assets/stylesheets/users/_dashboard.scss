@@ -37,6 +37,7 @@
   color: black;
   font-weight: 900;
   background: #FBFBFB;
+  position: relative;
   display: flex;
   align-items: center;
   &:hover {
@@ -189,4 +190,19 @@
 
 .dash-links-mobile-image {
   width: 25px;
+}
+
+.admin-notification {
+  font-size: 9px;
+  font-weight: bold;
+  background: #F40000;
+  border-radius: 50%;
+  height: 14px;
+  width: 14px;
+  color: white;
+  @include absCenter;
+  position: absolute;
+  z-index: 1000;
+  top: -2px;
+  right: -2px;
 }
