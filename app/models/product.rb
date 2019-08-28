@@ -23,6 +23,15 @@ class Product < ApplicationRecord
   has_many :benefits, through: :product_benefits
   has_many :sent_recommended_products, class_name: "RecommendedProduct", foreign_key: 'recommender_id', dependent: :destroy
   has_many :received_recommended_products, class_name: "RecommendedProduct", foreign_key: 'recommended_id', dependent: :destroy
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :title ],
+    associated_against: {
+      brand: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def average_rating
     if customer_reviews.count == 0
