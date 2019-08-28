@@ -947,7 +947,8 @@ puts "CREATING INSIDER ARTICLES"
                                           photo1_alt_text: "shantania photo one",
                                           photo2_alt_text: "shantania photo two",
                                           photo3_alt_text: "shantania photo three",
-                                          published: true
+                                          published: true,
+                                          featured: true
                                           )
 
   shantania_article_cover = File.join(Rails.root,'app/assets/images/shantania_article_cover.jpg')

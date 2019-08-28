@@ -118,6 +118,9 @@
     color: white;
     width: 40%;
     margin-bottom: 0;
+    @include for-large-devices-down {
+      width: 60%;
+    }
   }
 }
 
