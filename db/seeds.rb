@@ -28,7 +28,8 @@ QuestionAnswer.destroy_all
 User.destroy_all
 
 # CREATING HOME BANNERS
-
+puts ""
+puts ""
 puts "CREATING HOME BANNERS"
 
 hb1 = HomeBanner.new( content: "Introducing Glossier’s new eye pallette..", link: "/insider_articles", link_text: "See more articles", display: true )

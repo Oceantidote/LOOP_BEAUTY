@@ -63,6 +63,9 @@ Rails.application.routes.draw do
     get 'preference_centre', to: 'users#preference_centre'
     patch 'change_password', to: 'users#change_password'
     patch 'newsletter', to: 'users#newsletter'
+
+    resources :showroom_products, only: [:create, :destroy]
+
   end
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
