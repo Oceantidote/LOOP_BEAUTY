@@ -1,5 +1,5 @@
 class Admin::TutorialsController < ApplicationController
-  before_action :set_tutorial, only: [:approve, :reject]
+  before_action :set_tutorial, only: [:approve, :reject, :featured]
 
   def index
     @tutorials = policy_scope([:admin, Tutorial])
@@ -14,6 +14,11 @@ class Admin::TutorialsController < ApplicationController
     @tutorial.update(tutorial_params)
     @tutorial.reject!
     redirect_to admin_tutorials_path
+  end
+
+  def featured
+    @tutorial.update(featured: true)
+    redirect_to videos_path
   end
 
   private

@@ -78,6 +78,22 @@
   <%= link_to 'View more tutorials', user_tutorials_path(@tutorial.user), class: "mobile-tutorials-link" %>
 </div>
 
+<% if policy([:admin, Tutorial]).featured? %>
+  <div class="admin-options">
+    <hr>
+    <div class="container">
+      <h6 class="boldest">Admin options</h6>
+      <div class="d-flex">
+        <% if @tutorial.featured %>
+          <p class="primary-button" style="width: max-content; height: 40px; padding: 6px 25px">FEATURED</p>
+        <% else %>
+          <%= link_to 'SET AS FEATURED', featured_admin_tutorial_path(@tutorial), method: :patch, class: 'secondary-button' %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+  </div>
+<% end %>
 <% if current_user&.admin? && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
   <div class="container tutorial-show-admin-options">
     <h5 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h5>
