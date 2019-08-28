@@ -92,3 +92,10 @@
     }
   }
 }
+
+.featured-check-box {
+  width: auto !important;
+  &:focus {
+    box-shadow: none !important;
+  }
+}

@@ -12,12 +12,12 @@
         </div>
         <h5 class="boldest"><%= @product.title %></h5>
       </div>
-      <div class="row" style="margin: 30px 0;">
+      <div class="row admin-review-row" style="margin: 30px 0;">
         <% if @customer_reviews.count == 0 %>
           <p class="medium-margin text-center boldest" style="width: 100%;">There are no customer reviewss yet</p>
         <% end %>
         <% @customer_reviews.each do |review| %>
-          <div class="col-10 col-md-6 ir-cols">
+          <div class="col-12 col-sm-10 col-md-12 col-lg-6 ir-cols flex-column">
             <div class="admin-customer-review-cards">
               <div class="customer-review-left">
                 <h6><%= review.user.first_name.capitalize %></h6>
