@@ -24,6 +24,10 @@
             <p class="boldest muli s-medium-text text-right no-margin">Products</p>
             <%= f.input :product_ids, label: false, collection: Product.all, input_html: { multiple: true } %>
           </div>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
+            <%= f.input :featured, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
+          </div>
           <%= f.submit 'SHARE TUTORIAL', class: 'primary-button personal-details-button small-text' %>
         <% end %>
       </div>

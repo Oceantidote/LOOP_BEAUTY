@@ -18,6 +18,7 @@ class PagesController < ApplicationController
 
   def videos
     @tutorials = Tutorial.all
+    @featured_tutorial = Tutorial.where(featured: true).first
   end
 
   def influencer_video

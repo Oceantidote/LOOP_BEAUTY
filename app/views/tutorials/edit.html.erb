@@ -6,17 +6,31 @@
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Update Tutorial</h2>
       <hr>
-      <h4><%= @tutorial.rejection_message %></h4>
-      <hr>
-      <%= simple_form_for @tutorial do |f| %>
-        <%= f.input :title %>
-        <%= f.input :video %>
-        <%= f.input :cover_photo %>
-        <%= f.input :product_ids, collection: Product.all, input_html: { multiple: true } %>
-        <%= f.submit %>
-      <% end %>
+      <div class="dash-upload-content-container">
+        <%= simple_form_for @tutorial do |f| %>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Title</p>
+            <%= f.input :title, label: false, input_html: { class: "contact-form-input" } %>
+          </div>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Video</p>
+            <%= f.input :video, label: false %>
+          </div>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Cover Photo</p>
+            <%= f.input :cover_photo, label: false %>
+          </div>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right no-margin">Products</p>
+            <%= f.input :product_ids, label: false, collection: Product.all, input_html: { multiple: true } %>
+          </div>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
+            <%= f.input :featured, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
+          </div>
+          <%= f.submit 'UPDATE TUTORIAL', class: 'primary-button personal-details-button small-text' %>
+        <% end %>
+      </div>
     </div>
-
   </div>
 </div>
-

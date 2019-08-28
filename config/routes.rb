@@ -87,6 +87,7 @@ Rails.application.routes.draw do
       member do
         patch '/approve', to: 'tutorials#approve'
         patch '/reject', to: 'tutorials#reject'
+        patch '/featured', to: 'tutorials#featured'
       end
     end
     resources :brands, only: [:index, :new, :edit, :create, :update, :destroy]

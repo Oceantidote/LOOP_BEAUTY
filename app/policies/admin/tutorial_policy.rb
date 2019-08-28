@@ -17,4 +17,7 @@ class Admin::TutorialPolicy < ApplicationPolicy
     approve?
   end
 
+  def featured?
+    approve?
+  end
 end
