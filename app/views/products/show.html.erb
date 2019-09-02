@@ -28,16 +28,23 @@
                 data-name="<%= shade.name %>"
                 data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
               </div>
-              <% if user_signed_in? && current_user.wishlist %>
+<!--               <%# if user_signed_in? && current_user.wishlist %>
                 <div class="shade-wishlist-heart shade-<%= shade.id %>">
-                  <%= render 'shared/shade-wishlist', product: @product, shade: shade %>
+                  <%#= render 'shared/shade-wishlist', product: @product, shade: shade %>
                 </div>
-              <% end %>
+              <%# end %> -->
             </div>
           <% end %>
         </div>
       </div>
-      <h5><%= humanized_money_with_symbol(@product.price) %></h5>
+      <div class="d-flex justify-content-between">
+        <h5><%= humanized_money_with_symbol(@product.price) %></h5>
+        <% if user_signed_in? && current_user.wishlist %>
+          <div id="item-<%= @product.id %>-wishlist" class="product-show-wishlist">
+            <%= render 'shared/product_show_wishlist', product: @product %>
+          </div>
+        <% end %>
+      </div>
       <div class="card_ratings">
         <%= render 'shared/ratings', rating: @product.average_rating %>
         <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
