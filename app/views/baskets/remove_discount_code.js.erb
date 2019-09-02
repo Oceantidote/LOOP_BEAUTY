@@ -4,6 +4,10 @@ discountForm = document.querySelector('.shopping-bag-code > form')
 discountForm.lastElementChild.remove()
 input = discountForm.querySelector('.form-group')
 input.classList.remove("form-group-valid")
+input.classList.remove("form-group-invalid")
 input.firstElementChild.classList.remove("is-valid")
+input.firstElementChild.classList.remove("is-invalid")
+input.style.marginBottom = '1rem'
+document.querySelector('.discount-message').innerHTML = ''
 input.firstElementChild.value = ''
 discountForm.insertAdjacentHTML('beforeend', '<input type="submit" name="commit" value="APPLY" class="primary-button discount-code-button" data-disable-with="APPLY">')

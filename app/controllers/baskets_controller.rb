@@ -10,9 +10,9 @@ class BasketsController < ApplicationController
     @basket = find_basket
     authorize @basket
     code = params[:basket][:discount_code]
-    discount = DiscountCode.find_by_code(code)
-    if discount.present?
-      @basket.discount_code = discount
+    @discount = DiscountCode.find_by_code(code)
+    if @discount.present?
+      @basket.discount_code = @discount
       @basket.save
       respond_to do |format|
         format.html do

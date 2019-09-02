@@ -23,6 +23,7 @@
         <p class="boldest small-text tiny-margin-bottom">Promotional code</p>
         <%= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
           <%= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
+          <div class="discount-message"></div>
           <% if @basket.basket_products.count == 0 %>
             <div class="primary-button discount-code-button disabled" style="width: 98px;">APPLY</div>
           <% elsif @basket.discount_code.nil? %>
