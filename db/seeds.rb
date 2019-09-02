@@ -1016,7 +1016,8 @@ esther_tutorial = Tutorial.create!(
                                       user: esther,
                                       status: "approved",
                                       title: "Perfect nude lip for dark skin",
-                                      category: 'ask the expert'
+                                      category: 'ask the expert',
+                                      featured: true
                                       )
 
 esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
