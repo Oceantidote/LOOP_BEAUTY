@@ -12,13 +12,13 @@
         <% if @user.instagram %>
           <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", class: "each-social-data" do %>
               <i class="fab fa-instagram social-instagram"></i>
-              <h6>274k</h6>
+              <h6><%= @user.instagram_followers %></h6>
           <% end %>
         <% end %>
         <% if @user.youtube %>
           <%= link_to @user.youtube, target: "_blank", class: "each-social-data" do %>
               <i class="fab fa-youtube social-youtube"></i>
-              <h6>400k</h6>
+              <h6><%= @user.youtube_subscribers %></h6>
           <% end %>
         <% end %>
       </div>
