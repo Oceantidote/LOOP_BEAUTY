@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def videos
-    @tutorials = Tutorial.all
+    @tutorials = Tutorial.where(status: 'approved')
     @featured_tutorial = Tutorial.where(featured: true).first
   end
 
