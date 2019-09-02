@@ -278,3 +278,10 @@
     width: 100%;
   }
 }
+
+.product-show-wishlist-heart {
+  font-size: 22px;
+  @include for-phone-only {
+    font-size: 17px;
+  }
+}

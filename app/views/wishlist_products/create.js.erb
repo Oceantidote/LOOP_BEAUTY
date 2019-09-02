@@ -1,10 +1,14 @@
 myProductsCards = document.querySelector('.my-product-cards-container')
 cards = document.querySelectorAll('.card-image-results')
 shadeWishlist = document.querySelector('.shade-wishlist-heart.shade-<%= @wishlist_product.shade.id %>')
+productShowWishlist = document.querySelector('.product-show-wishlist')
 
 
 if (myProductsCards) {
   myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', products: current_user.ordered_products, wishlist_product: @wishlist_product %>"
+}
+else if (productShowWishlist) {
+  productShowWishlist.innerHTML = "<%= j render 'shared/product_show_wishlist', product: @product %>"
 }
 else if (shadeWishlist) {
   shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product, shade: @wishlist_product.shade %>"
