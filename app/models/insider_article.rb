@@ -13,7 +13,9 @@ class InsiderArticle < ApplicationRecord
   after_save :update_featured
 
   def update_featured
-    @insider_articles = InsiderArticle.where(featured: true).where.not(id: self.id)
-    @insider_articles.update_all(featured: false)
+    if self.featured == true
+      @insider_articles = InsiderArticle.where(featured: true).where.not(id: self.id)
+      @insider_articles.update_all(featured: false)
+    end
   end
 end

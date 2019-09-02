@@ -1020,6 +1020,8 @@ esther_tutorial = Tutorial.create!(
                                       featured: true
                                       )
 
+puts "#{esther_tutorial.featured}"
+
 esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
 esther_tutorial.cover_photo.attach(io: File.open(esther_video_cover) , filename: 'esther_cover.jpg')
 esther_video = File.join(Rails.root,'app/assets/images/esther-vid.mp4')
@@ -1088,6 +1090,8 @@ ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
 ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ropo_cover.jpg')
 ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
 ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
+
+
 
 puts "-"
 

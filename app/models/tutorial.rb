@@ -32,8 +32,10 @@ class Tutorial < ApplicationRecord
   end
 
   def update_featured
-    @tutorials = Tutorial.where(featured: true).where.not(id: self.id)
-    @tutorials.update_all(featured: false)
+    if self.featured == true
+      @tutorials = Tutorial.where(featured: true).where.not(id: self.id)
+      @tutorials.update_all(featured: false)
+    end
   end
 
   private
