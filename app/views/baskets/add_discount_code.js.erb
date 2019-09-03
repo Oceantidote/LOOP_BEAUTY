@@ -1,7 +1,6 @@
 priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
 priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"
 discountForm = document.querySelector('.shopping-bag-code > form')
-discountForm.lastElementChild.remove()
 input = discountForm.querySelector('.form-group')
 if ('<%= @discount.present? %>' === 'true') {
   // input.classList.add("form-group-valid")
@@ -9,11 +8,16 @@ if ('<%= @discount.present? %>' === 'true') {
   input.firstElementChild.classList.add("is-valid")
   input.style.margin = 'auto'
   document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #1EDD88; margin-bottom: 1px;'>Discount code applied.</p>`
+  discountForm.lastElementChild.remove()
+  discountForm.insertAdjacentHTML('beforeend', '<%= link_to "REMOVE", remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button width-max-content" %>')
 } else {
   // input.classList.add("form-group-invalid")
   input.firstElementChild.classList.remove("is-valid")
   input.firstElementChild.classList.add("is-invalid")
   input.style.marginBottom = '0'
-  document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #FD1015; margin-bottom: 1px;'>Discount code is invalid</p>`
+  if ('<%= @code.length %>' === '0') {
+    document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #FD1015; margin-bottom: 1px;'>You didn't enter a discount code. Please try again</p>`
+  } else {
+    document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #FD1015; margin-bottom: 1px;'>Discount code is invalid</p>`
+  }
 }
-discountForm.insertAdjacentHTML('beforeend', '<%= link_to "REMOVE", remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button width-max-content" %>')

@@ -9,8 +9,8 @@ class BasketsController < ApplicationController
   def add_discount_code
     @basket = find_basket
     authorize @basket
-    code = params[:basket][:discount_code]
-    @discount = DiscountCode.find_by_code(code)
+    @code = params[:basket][:discount_code]
+    @discount = DiscountCode.find_by_code(@code)
     if @discount.present?
       @basket.discount_code = @discount
       @basket.save
