@@ -31,6 +31,30 @@ class UsersController < ApplicationController
   end
 
   def analytics
+    @number_of_content_shared = Lookbook.where(user: @user).count + Tutorial.where(user: @user).count
+    @top_brands_count = []
+    @top_brands = []
+    @user.orders.each do |order|
+      order.products.each do |product|
+        @top_brands << product.brand.name
+      end
+    end
+    Brand.all.each do |brand|
+      @top_brands_count << [brand.name, @top_brands.count(brand.name)]
+    end
+    @top_brands_count = @top_brands_count.sort_by {|i| i[1]}.reverse
+
+    @top_items_count = []
+    @top_items = []
+    @user.orders.each do |order|
+      order.products.each do |product|
+        @top_items << product.category.name
+      end
+    end
+    Category.all.each do |category|
+      @top_items_count << [category.name, @top_items.count(category.name)]
+    end
+    @top_items_count = @top_items_count.sort_by {|i| i[1]}.reverse
   end
 
   def showroom
