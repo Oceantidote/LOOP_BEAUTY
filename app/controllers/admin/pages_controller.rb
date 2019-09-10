@@ -15,9 +15,9 @@ class Admin::PagesController < ApplicationController
       id = filter_params[:influencer_id]
       @orders = @orders.joins("LEFT JOIN tutorials ON orders.affiliation_type = 'Tutorial' AND 
                                             orders.affiliation_id = tutorials.id").
-              joins("LEFT JOIN lookbooks ON orders.affiliation_type = 'Lookbook' AND
+                        joins("LEFT JOIN lookbooks ON orders.affiliation_type = 'Lookbook' AND
                                              orders.affiliation_id = lookbooks.id").
-              where('tutorials.user_id = ? OR lookbooks.user_id = ?', id, id)
+                        where('tutorials.user_id = ? OR lookbooks.user_id = ?', id, id)
     end
   end
 
