@@ -16,6 +16,9 @@ class MyValidator < ActiveModel::Validator
       unless record.tutorial_photo.attached?
         record.errors[:tutorial_photo] << 'must be provided'
       end
+      unless record.makeup_photo.attached?
+        record.errors[:makeup_photo] << 'must be provided'
+      end
       if record.description.empty?
         record.errors[:description] << 'must be provided'
       end
@@ -28,7 +31,6 @@ class MyValidator < ActiveModel::Validator
     end
   end
 end
-
 
 
 class User < ApplicationRecord
@@ -48,6 +50,7 @@ class User < ApplicationRecord
   has_one_attached :qa_photo
   has_one_attached :lookbook_photo
   has_one_attached :tutorial_photo
+  has_one_attached :makeup_photo
   has_many :lookbooks, dependent: :destroy
   has_many :insider_articles, dependent: :destroy
   has_one :question_answer, dependent: :destroy
