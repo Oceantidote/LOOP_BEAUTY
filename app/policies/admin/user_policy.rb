@@ -6,7 +6,7 @@ class Admin::UserPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin?
+    user&.admin?
   end
 
   def create?
