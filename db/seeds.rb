@@ -523,7 +523,6 @@ esther.qa_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg
 esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
 esther.lookbook_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
-
 esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
 esther.tutorial_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
