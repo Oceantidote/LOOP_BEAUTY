@@ -57,6 +57,6 @@ class Admin::InfluencersController < ApplicationController
   end
 
   def influencer_params
-    params.require(:user).permit(:first_name, :last_name, :email, :instagram, :youtube, :password, :lookbook_photo, :tutorial_photo, :avatar_photo, :cover_photo, :qa_photo, :description)
+    params.require(:user).permit(:first_name, :last_name, :email, :instagram, :youtube, :password, :lookbook_photo, :tutorial_photo, :avatar_photo, :cover_photo, :qa_photo, :description, :instagram_followers, :youtube_subscribers)
   end
 end

@@ -117,7 +117,7 @@
         <% if @user.published %>
           <%= link_to "UNPUBLISH", unpublish_admin_influencer_path(@user), method: :patch, class: 'secondary-button small-margin-right' %>
         <% else %>
-          <%= link_to "PUBLISH", publish_admin_influencer_path(@user), method: :patch, class: 'secondary-button' %>
+          <%= link_to "PUBLISH", publish_admin_influencer_path(@user), method: :patch, class: 'secondary-button small-margin-right' %>
         <% end %>
         <%= link_to "EDIT", edit_admin_influencer_path(@user), class: 'secondary-button' %>
       </div>
