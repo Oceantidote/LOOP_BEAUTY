@@ -1,9 +1,9 @@
 <div class="admin-wrapper minimum-height">
   <div class="admin-container">
-    <h2 class="insider-info-title mlb-title text-center">Create an Influencer</h2>
+    <h2 class="insider-info-title mlb-title text-center">Update an Influencer</h2>
     <hr>
     <div class="admin-form-container">
-      <%= simple_form_for @influencer, url: admin_influencers_path do |f| %>
+      <%= simple_form_for [:admin, @influencer], url: admin_influencer_path do |f| %>
         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">First name</p>
           <%= f.input :first_name, label: false, placeholder:'First name...', input_html: { class: "admin-form-input" } %>
@@ -60,7 +60,7 @@
             <p class="boldest muli s-medium-text text-right no-margin">Password</p>
             <%= f.input :password, label: false, placeholder:'Password', input_html: { class: "admin-form-input" } %>
           </div>
-          <%= f.submit 'CREATE INFLUENCER ACCOUNT', class: 'primary-button personal-details-button small-text' %>
+          <%= f.submit 'UPDATE INFLUENCER ACCOUNT', class: 'primary-button personal-details-button small-text' %>
       <% end %>
     </div>
   </div>
