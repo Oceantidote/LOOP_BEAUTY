@@ -1,5 +1,6 @@
 class Lookbook < ApplicationRecord
   include FriendlyId
+  include Affiliation
 
   friendly_id :title, use: :slugged
   belongs_to :user
@@ -7,6 +8,8 @@ class Lookbook < ApplicationRecord
   has_many :lookbook_products
   has_many :products, through: :lookbook_products
   validates :title, uniqueness: true
+  before_save :gen_aff_code
+
   def approve!
     code = gen_aff_code
     update(status: 'approved', affiliate_code: code, affiliate_link: Rails.application.routes.url_helpers.lookbook_path(self, aff_code: code))

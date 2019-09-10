@@ -1,5 +1,6 @@
 class Tutorial < ApplicationRecord
   include FriendlyId
+  include Affiliation
 
   friendly_id :title, use: :slugged
   belongs_to :user

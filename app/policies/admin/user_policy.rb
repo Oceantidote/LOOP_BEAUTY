@@ -6,7 +6,7 @@ class Admin::UserPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin?
+    user&.admin?
   end
 
   def create?
@@ -22,10 +22,18 @@ class Admin::UserPolicy < ApplicationPolicy
   end
 
   def publish?
-    user&.admin?
+    new?
   end
 
   def unpublish?
     publish?
+  end
+
+  def portal?
+    new?
+  end
+
+  def analytics?
+    new?
   end
 end

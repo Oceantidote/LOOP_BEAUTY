@@ -19,15 +19,19 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.set_delivery_costs_cents
     authorize @order
+    if session[:aff_code]
+      affiliation = Tutorial.find_by_affiliate_code(session[:aff_code]).present? ? Tutorial.find_by_affiliate_code(session[:aff_code]) : Lookbook.find_by_affiliate_code(session[:aff_code])
+      @order.affiliation = affiliation
+      session[:aff_code] = nil
+    end
     unless @basket.total_price <= 0
       stripe_user = find_stripe_user(order_params[:stripe][:stripe_email], order_params[:stripe][:stripe_token])
       charge = Stripe::Charge.create(
         customer: stripe_user.id,
         amount: @basket.total_price_cents + @order.delivery_cost_cents,
         currency: @basket.total_price.currency
-      )
+        )
       @order.stripe_id = charge.id
-      @order.affiliate_code = session[:aff_code]
     end
     @order.credit_spent = @basket.money_off_from_credit
     if @order.save
@@ -87,7 +91,7 @@ class OrdersController < ApplicationController
     end
     to_submit = order_hash_builder
     to_submit[:order][:items] = items
-    response = RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {})
+    RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {})
   end
 
   def order_hash_builder
