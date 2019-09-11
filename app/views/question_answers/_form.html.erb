@@ -1,6 +1,6 @@
 <div class="new-question-answers-form">
   <%= simple_form_for [user, question_answer] do |f| %>
-    <div class="personal-details-input align-items-start">
+    <div class="questions-answers-input align-items-start">
       <p class="boldest muli s-medium-text text-right photo-input-text">Photo one</p>
       <div>
         <%= f.input :photo_one, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-one', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
@@ -31,7 +31,7 @@
       <p class="boldest muli s-medium-text text-right no-margin">Answer two</p>
       <%= f.input :answer_two, class:"form-control", label: false %>
     </div>
-    <div class="personal-details-input align-items-start">
+    <div class="questions-answers-input align-items-start">
       <p class="boldest muli s-medium-text text-right photo-input-text">Photo two</p>
       <div>
         <%= f.input :photo_two, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-two', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
@@ -62,7 +62,7 @@
       <p class="boldest muli s-medium-text text-right no-margin">Answer four</p>
       <%= f.input :answer_four, class:"form-control", label: false %>
     </div>
-    <div class="personal-details-input align-items-start">
+    <div class="questions-answers-input align-items-start">
       <p class="boldest muli s-medium-text text-right photo-input-text">Photo two</p>
       <div>
         <%= f.input :photo_three, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-three', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
