@@ -22,10 +22,22 @@ class Admin::UserPolicy < ApplicationPolicy
   end
 
   def publish?
-    user&.admin?
+    new?
   end
 
   def unpublish?
     publish?
+  end
+
+  def portal?
+    new?
+  end
+
+  def sales_report?
+    new?
+  end
+  
+  def activity_report?
+    new?
   end
 end

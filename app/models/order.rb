@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :discount_code, optional: true
+  belongs_to :affiliation, polymorphic: true, optional: true
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
   has_many :shades, through: :order_products

@@ -1,5 +1,6 @@
 class Tutorial < ApplicationRecord
   include FriendlyId
+  include Affiliation
 
   friendly_id :title, use: :slugged
   belongs_to :user
@@ -12,7 +13,7 @@ class Tutorial < ApplicationRecord
 
   def approve!
     code = gen_aff_code
-    update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: Rails.application.routes.url_helpers.tutorial_path(self, aff_code: code))
+    update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: Rails.application.routes.url_helpers.tutorial_path(self, aff_code: code), publish_date: DateTime.now)
   end
 
   def reject!
@@ -24,7 +25,7 @@ class Tutorial < ApplicationRecord
   end
 
   def sales
-    Order.where(affiliate_code: affiliate_code).size
+    orders.size
   end
 
   def self.filter_sort(attr, direction)
@@ -36,6 +37,14 @@ class Tutorial < ApplicationRecord
       @tutorials = Tutorial.where(featured: true).where.not(id: self.id)
       @tutorials.update_all(featured: false)
     end
+  end
+
+  def sales_total
+    Money.new sales_total_cents
+  end
+
+  def sales_total_cents
+    orders.sum(&:total_price_cents)
   end
 
   private

@@ -65,7 +65,6 @@ Rails.application.routes.draw do
     patch 'newsletter', to: 'users#newsletter'
 
     resources :showroom_products, only: [:create, :destroy]
-
   end
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
@@ -113,7 +112,9 @@ Rails.application.routes.draw do
     resources :shades, only: [:update, :destroy]
     resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :home_banners
-    get ':id/portal', to: 'pages#portal'
+    get '/portal', to: 'pages#portal'
+    get '/sales_report', to: 'pages#sales_report'
+    get '/activity_report', to: 'pages#activity_report'
   end
 
   # ADMIN ROUTES ABOVE
