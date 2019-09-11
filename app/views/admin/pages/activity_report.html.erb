@@ -1,0 +1,45 @@
+<%= simple_form_for :filter, url: admin_activity_report_path, method: :get do |f| %>
+    <%= f.input :from %>
+    <%= f.input :to %>
+    <%= f.input :influencer_id, collection: User.where(influencer: true), label_method: :full_name, value_method: :id %>
+    <%= f.submit 'Filter' %>
+<% end %>
+<div class="influencer-orders-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Influencer ID</th>
+                <th>Influencer Name</th>
+                <th>Commission Rate</th>
+                <th>Content Publish Date</th>
+                <th>Content Name</th>
+                <th>Content Type</th>
+                <th>Number of Visits</th>
+                <th>Number of Transactions</th>
+                <th>Transaction Value</th>
+                <th>VAT</th>
+                <th>Transaction Total</th>
+                <th>Commission Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @results.each do |result| %>
+                <% user = result.user %>
+                <tr class="influencer-order">
+                    <td><%= user.id %></td>
+                    <td><%= user.full_name %></td>
+                    <td><%= user.commission_rate %></td>
+                    <td><%= result.publish_date.strftime('%d/%m/%Y') %></td>
+                    <td><%= result.title %></td>
+                    <td><%= result.class == Lookbook ? 'Image' : 'Video' %></td>
+                    <td><%= result.visits %></td>
+                    <td><%= result.sales %></td>
+                    <td><%= humanized_money_with_symbol (result.sales_total / 12.to_f) * 10 %></td>
+                    <td><%= humanized_money_with_symbol result.sales_total - (result.sales_total / 12.to_f) * 10 %></td>
+                    <td><%= humanized_money_with_symbol result.sales_total %></td>
+                    <td><%= humanized_money_with_symbol ((result.sales_total / 12.to_f) * 10) * ((user.commission_rate || 0) / 100)  %></td>
+                </tr> 
+            <% end %>
+        </tbody>
+    </table>
+</div>

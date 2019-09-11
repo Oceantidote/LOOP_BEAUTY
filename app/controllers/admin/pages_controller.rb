@@ -3,7 +3,7 @@ class Admin::PagesController < ApplicationController
     authorize [:admin, current_user]
   end
 
-  def analytics
+  def sales_report
     authorize [:admin, current_user]
     @orders = Order.all
     if params[:filter] && filter_params[:from].present?
@@ -19,6 +19,24 @@ class Admin::PagesController < ApplicationController
                                              orders.affiliation_id = lookbooks.id").
                         where('tutorials.user_id = ? OR lookbooks.user_id = ?', id, id)
     end
+  end
+
+  def activity_report
+    authorize [:admin, current_user]
+    lookbooks = Lookbook.where(status: 'approved')
+    tutorials = Tutorial.where(status: 'approved')
+    if params[:filter] && filter_params[:from].present?
+      from  = Date.parse(filter_params[:from]).beginning_of_day
+      to = Date.parse(filter_params[:to]).end_of_day
+      lookbooks = lookbooks.where(publish_date: from..to) 
+      tutorials = tutorials.where(publish_date: from..to) 
+    end
+    if params[:filter] && filter_params[:influencer_id].present?
+      id = filter_params[:influencer_id]
+      lookbooks = lookbooks.where(user_id: id)
+      tutorials = tutorials.where(user_id: id)
+    end
+    @results = (lookbooks + tutorials).sort { |model| -model.updated_at.to_i }
   end
 
   private

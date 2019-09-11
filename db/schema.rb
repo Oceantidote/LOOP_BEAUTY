@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_140333) do
+ActiveRecord::Schema.define(version: 2019_09_11_120047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_140333) do
     t.text "rejection_message"
     t.string "affiliate_code"
     t.text "description"
+    t.datetime "publish_date"
+    t.integer "visits", default: 0
     t.index ["affiliate_code"], name: "index_lookbooks_on_affiliate_code"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
   end
@@ -389,6 +391,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_140333) do
     t.string "affiliate_code"
     t.string "category"
     t.boolean "featured", default: false
+    t.datetime "publish_date"
+    t.integer "visits", default: 0
     t.index ["affiliate_code"], name: "index_tutorials_on_affiliate_code"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end

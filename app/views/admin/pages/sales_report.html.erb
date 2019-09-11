@@ -1,4 +1,4 @@
-<%= simple_form_for :filter, url: admin_analytics_path, method: :get do |f| %>
+<%= simple_form_for :filter, url: admin_sales_report_path, method: :get do |f| %>
     <%= f.input :from %>
     <%= f.input :to %>
     <%= f.input :influencer_id, collection: User.where(influencer: true), label_method: :full_name, value_method: :id %>

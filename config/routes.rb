@@ -113,7 +113,8 @@ Rails.application.routes.draw do
     resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :home_banners
     get '/portal', to: 'pages#portal'
-    get '/analytics', to: 'pages#analytics'
+    get '/sales_report', to: 'pages#sales_report'
+    get '/activity_report', to: 'pages#activity_report'
   end
 
   # ADMIN ROUTES ABOVE

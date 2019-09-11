@@ -33,7 +33,11 @@ class Admin::UserPolicy < ApplicationPolicy
     new?
   end
 
-  def analytics?
+  def sales_report?
+    new?
+  end
+  
+  def activity_report?
     new?
   end
 end
