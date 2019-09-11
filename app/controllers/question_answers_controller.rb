@@ -3,7 +3,7 @@ class QuestionAnswersController < ApplicationController
   before_action :set_question_answer, only: [:edit, :update, :destroy]
 
   def show
-    @question_answer = QuestionAnswer.find_by(user: User.friendly.find(params[:user_id]))
+    @question_answer = QuestionAnswer.find_by(user: User.friendly.find(params[:id]))
     authorize @question_answer
   end
 
