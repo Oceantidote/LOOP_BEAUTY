@@ -8,13 +8,27 @@
           <p class="boldest muli s-medium-text text-right no-margin">Name</p>
           <%= f.input :name, label: false, placeholder:'Makeup 54...', input_html: { class: "contact-form-input" } %>
         </div>
-        <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Photo</p>
-          <%= f.input :photo, label: false %>
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Photo</p>
+          <div>
+            <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @brand.photo.attached? %>
+              <%= image_tag @brand.photo, height: 100, class: "photo-preview", 'data-name': 'brand-photo' %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-photo' %>
+            <% end %>
+          </div>
         </div>
-        <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Logo</p>
-          <%= f.input :logo, label: false %>
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Logo</p>
+          <div>
+            <%= f.input :logo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-logo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @brand.logo.attached? %>
+              <%= image_tag @brand.logo, height: 100, class: "photo-preview", 'data-name': 'brand-logo' %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-logo' %>
+            <% end %>
+          </div>
         </div>
         <div class="personal-details-input align-items-start">
           <p class="boldest muli s-medium-text text-right no-margin">Description</p>
@@ -25,3 +39,7 @@
     </div>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>

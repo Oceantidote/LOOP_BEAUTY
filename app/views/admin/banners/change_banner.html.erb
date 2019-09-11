@@ -4,12 +4,23 @@
     <hr>
     <div class="admin-form-container">
       <%= simple_form_for @banner, url: admin_change_banner_path, method: :post do |f| %>
-        <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Banner Photo</p>
-          <%= f.input :photo, label: false %>
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Banner Photo</p>
+          <div>
+            <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup_banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @banner.photo.attached? %>
+              <%= image_tag @banner.photo, height: 100, class: "photo-preview", 'data-name': 'makeup_banner' %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup_banner' %>
+            <% end %>
+          </div>
         </div>
         <%= f.submit 'CHANGE BANNER', class: 'primary-button personal-details-button small-text' %>
       <% end %>
     </div>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>

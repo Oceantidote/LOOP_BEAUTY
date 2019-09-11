@@ -32,29 +32,71 @@
             <p class="boldest muli s-medium-text text-right no-margin">Youtube Subscribers</p>
             <%= f.input :youtube_subscribers, label: false, placeholder:'e.g. 200k', input_html: { class: "admin-form-input" } %>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Avatar photo</p>
-            <%= f.input :avatar_photo, label: false %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Avatar photo</p>
+            <div>
+              <%= f.input :avatar_photo, input_html: { class: 'd-none photo-input', 'data-name': 'avatar', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.avatar_photo.attached? %>
+                <%= image_tag @influencer.avatar_photo, height: 100, class: "photo-preview", 'data-name': 'avatar' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'avatar' %>
+              <% end %>
+            </div>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Cover Photo</p>
-            <%= f.input :cover_photo, label: false %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Cover Photo</p>
+            <div>
+              <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.cover_photo.attached? %>
+                <%= image_tag @influencer.cover_photo, height: 100, class: "photo-preview", 'data-name': 'cover' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover' %>
+              <% end %>
+            </div>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Q&A photo</p>
-            <%= f.input :qa_photo, label: false %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Q&A photo</p>
+            <div>
+              <%= f.input :qa_photo, input_html: { class: 'd-none photo-input', 'data-name': 'qa', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.qa_photo.attached? %>
+                <%= image_tag @influencer.qa_photo, height: 100, class: "photo-preview", 'data-name': 'qa' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa' %>
+              <% end %>
+            </div>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Lookbook photo</p>
-            <%= f.input :lookbook_photo, label: false %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Lookbook photo</p>
+            <div>
+              <%= f.input :lookbook_photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.lookbook_photo.attached? %>
+                <%= image_tag @influencer.lookbook_photo, height: 100, class: "photo-preview", 'data-name': 'lookbook' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'lookbook' %>
+              <% end %>
+            </div>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Tutorial photo</p>
-            <%= f.input :tutorial_photo, label: false %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Tutorial photo</p>
+            <div>
+              <%= f.input :tutorial_photo, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.tutorial_photo.attached? %>
+                <%= image_tag @influencer.tutorial_photo, height: 100, class: "photo-preview", 'data-name': 'tutorial' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'tutorial' %>
+              <% end %>
+            </div>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Makeup photo</p>
-            <%= f.input :makeup_photo, label: false %>
+          <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Makeup photo</p>
+            <div>
+              <%= f.input :makeup_photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.makeup_photo.attached? %>
+                <%= image_tag @influencer.makeup_photo, height: 100, class: "photo-preview", 'data-name': 'makeup' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup' %>
+              <% end %>
+            </div>
           </div>
           <div class="personal-details-input align-items-start">
             <p class="boldest muli s-medium-text text-right no-margin">Description</p>
@@ -69,3 +111,7 @@
     </div>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>
