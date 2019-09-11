@@ -1,7 +1,7 @@
 <%= simple_form_for :filter, url: admin_sales_report_path, method: :get do |f| %>
-    <%= f.input :from %>
-    <%= f.input :to %>
-    <%= f.input :influencer_id, collection: User.where(influencer: true), label_method: :full_name, value_method: :id %>
+    <%= f.input :from, input_html: { value: params[:filter].nil? ? '' : params[:filter][:from] } %>
+    <%= f.input :to, input_html: { value: params[:filter].nil? ? '' : params[:filter][:to] } %>
+    <%= f.input :influencer_id, collection: User.where(influencer: true), label_method: :full_name, value_method: :id, selected: params[:filter].nil? ? '' : params[:filter][:influencer_id], include_blank: true %>
     <%= f.submit 'Filter' %>
 <% end %>
 <div class="influencer-orders-container">
@@ -28,12 +28,25 @@
                     <td><%= user&.commission_rate %></td>
                     <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
                     <td><%= order.id %></td>
-                    <td><%= humanized_money_with_symbol (order.total_price / 12.to_f) * 10 %></td>
-                    <td><%= humanized_money_with_symbol order.total_price - (order.total_price / 12.to_f) * 10 %></td>
+                    <td><%= humanized_money_with_symbol Money.new (order.total_price_cents / 12.to_f) * 10 %></td>
+                    <td><%= humanized_money_with_symbol Money.new order.total_price_cents - (order.total_price_cents / 12.to_f) * 10 %></td>
                     <td><%= humanized_money_with_symbol order.total_price %></td>
-                    <td><%= humanized_money_with_symbol ((order.total_price / 12.to_f) * 10) * ((user&.commission_rate || 0) / 100)  %></td>
+                    <td><%= humanized_money_with_symbol Money.new ((order.total_price_cents / 12.to_f) * 10) * ((user&.commission_rate || 0) / 100)  %></td>
                 </tr> 
             <% end %>
         </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><strong>TOTAL</strong></td>
+                <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| (order.total_price_cents / 12.to_f) * 10 } %></strong></td>                
+                <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| order.total_price_cents - (order.total_price_cents / 12.to_f) * 10 } %></strong></td>                
+                <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| order.total_price } %></strong></td>                
+                <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| ((order.total_price_cents / 12.to_f) * 10) * ((order.affiliation&.user&.commission_rate || 0) / 100) } %></strong></td>                
+            </tr>
+        </tfoot>
     </table>
 </div>
