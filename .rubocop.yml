@@ -19,5 +19,5 @@ Lint/UselessAssignment:
   Enabled: false
 Naming/VariableNumber:
   Enabled: false
-Nameing/VariableName:
+Naming/VariableName:
   Enabled: false
