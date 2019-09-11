@@ -14,9 +14,17 @@
           </div>
 
           <!-- <div class="spacer" style="height: 50px;"></div> -->
-          <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Cover photo</p>
-            <%= f.file_field :cover_photo %>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Cover photo</p>
+            <div>
+              <%= f.label :cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
+              <% if @insider_article.cover_photo.attached? %>
+                <%= image_tag @insider_article.cover_photo, height: 100, class: "photo-preview", 'data-name': 'insider-cover-photo' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-cover-photo' %>
+              <% end %>
+            </div>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
@@ -34,9 +42,17 @@
           </div>
           <hr>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
-          <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Media one</p>
-            <%= f.file_field :photo1 %>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Media one</p>
+            <div>
+              <%= f.label :photo1, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :photo1, class: 'd-none photo-input', 'data-name': 'insider-photo-one', onchange: "displayPreview(this)" %>
+              <% if @insider_article.photo1.attached? %>
+                <%= image_tag @insider_article.photo1, height: 100, class: "photo-preview", 'data-name': 'insider-photo-one' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-one' %>
+              <% end %>
+            </div>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
@@ -54,9 +70,17 @@
           </div>
           <hr>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
-          <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Media two</p>
-            <%= f.file_field :photo2 %>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Media two</p>
+            <div>
+              <%= f.label :photo2, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :photo2, class: 'd-none photo-input', 'data-name': 'insider-photo-two', onchange: "displayPreview(this)" %>
+              <% if @insider_article.photo2.attached? %>
+                <%= image_tag @insider_article.photo2, height: 100, class: "photo-preview", 'data-name': 'insider-photo-two' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-two' %>
+              <% end %>
+            </div>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
@@ -74,9 +98,17 @@
           </div>
           <hr>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
-          <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Media three</p>
-            <%= f.file_field :photo3 %>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Media three</p>
+            <div>
+              <%= f.label :photo3, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :photo3, class: 'd-none photo-input', 'data-name': 'insider-photo-three', onchange: "displayPreview(this)" %>
+              <% if @insider_article.photo3.attached? %>
+                <%= image_tag @insider_article.photo3, height: 100, class: "photo-preview", 'data-name': 'insider-photo-three' %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-three' %>
+              <% end %>
+            </div>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
@@ -103,3 +135,7 @@
       </div>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>

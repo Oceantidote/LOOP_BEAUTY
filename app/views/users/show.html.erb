@@ -79,7 +79,7 @@
           <%= link_to user_question_answer_path([@user, @user.question_answer]), class: "influencer-card-link" do %>
             <div class="influencer-show-card">
               <h5 class="text-center">Q & A</h5>
-              <div class="influencer-show-card-image" style="background-image: url('<%= @user.question_answer.photo_one.attached? ?  (rails_blob_path @user.question_answer.photo_one) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+              <div class="influencer-show-card-image" style="background-image: url('<%= @user.qa_photo.attached? ?  (rails_blob_path @user.qa_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               </div>
             </div>
           <% end %>

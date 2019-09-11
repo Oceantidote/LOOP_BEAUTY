@@ -16,9 +16,16 @@
           <p class="boldest muli s-medium-text text-right no-margin">Link text</p>
           <%= f.input :link_text, label: false, input_html: { class: "contact-form-input" } %>
         </div>
-        <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Banner</p>
-          <%= f.input :banner, label: false %>
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Banner</p>
+          <div>
+            <%= f.input :banner, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.banner.attached? %>
+              <%= image_tag @home_banner.banner, height: 100, class: "photo-preview", 'data-name': 'home-banner' %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner' %>
+            <% end %>
+          </div>
         </div>
         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Display?</p>
@@ -29,3 +36,7 @@
     </div>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>

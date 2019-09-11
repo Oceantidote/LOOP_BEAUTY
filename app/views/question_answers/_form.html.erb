@@ -1,8 +1,15 @@
 <div class="new-question-answers-form">
   <%= simple_form_for [user, question_answer] do |f| %>
-    <div class="questions-answers-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Photo one</p>
-      <%= f.input :photo_one, label: false, class:"form-control" %>
+    <div class="personal-details-input align-items-start">
+      <p class="boldest muli s-medium-text text-right photo-input-text">Photo one</p>
+      <div>
+        <%= f.input :photo_one, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-one', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+        <% if question_answer.photo_one.attached? %>
+          <%= image_tag question_answer.photo_one, height: 100, class: "photo-preview", 'data-name': 'qa-photo-one' %>
+        <% else %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-one' %>
+        <% end %>
+      </div>
     </div>
     <div class="questions-answers-input">
       <p class="boldest muli s-medium-text text-right no-margin">Photo one alt text</p>
@@ -24,9 +31,16 @@
       <p class="boldest muli s-medium-text text-right no-margin">Answer two</p>
       <%= f.input :answer_two, class:"form-control", label: false %>
     </div>
-    <div class="questions-answers-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Photo two</p>
-      <%= f.input :photo_two, label: false %>
+    <div class="personal-details-input align-items-start">
+      <p class="boldest muli s-medium-text text-right photo-input-text">Photo two</p>
+      <div>
+        <%= f.input :photo_two, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-two', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+        <% if question_answer.photo_two.attached? %>
+          <%= image_tag question_answer.photo_two, height: 100, class: "photo-preview", 'data-name': 'qa-photo-two' %>
+        <% else %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-two' %>
+        <% end %>
+      </div>
     </div>
     <div class="questions-answers-input">
       <p class="boldest muli s-medium-text text-right no-margin">Photo two alt text</p>
@@ -48,9 +62,16 @@
       <p class="boldest muli s-medium-text text-right no-margin">Answer four</p>
       <%= f.input :answer_four, class:"form-control", label: false %>
     </div>
-    <div class="questions-answers-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Photo three</p>
-      <%= f.input :photo_three, label: false %>
+    <div class="personal-details-input align-items-start">
+      <p class="boldest muli s-medium-text text-right photo-input-text">Photo two</p>
+      <div>
+        <%= f.input :photo_three, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-three', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+        <% if question_answer.photo_three.attached? %>
+          <%= image_tag question_answer.photo_three, height: 100, class: "photo-preview", 'data-name': 'qa-photo-three' %>
+        <% else %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-three' %>
+        <% end %>
+      </div>
     </div>
     <div class="questions-answers-input">
       <p class="boldest muli s-medium-text text-right no-margin">Photo three alt text</p>
@@ -75,3 +96,7 @@
     <%= f.submit "#{ params[:action] == 'new' ? 'CREATE Q&A' : 'UPDATE Q&A' }", class: 'primary-button personal-details-button small-text' %>
   <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>

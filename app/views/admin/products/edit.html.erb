@@ -71,13 +71,29 @@
                   <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
                   <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
                 </div> -->
-                <div class="personal-details-input">
-                  <p class="boldest muli s-medium-text text-right no-margin">Card Photo</p>
-                  <%= f.input :card_photo, label: false, input_html: { multiple: true } %>
+                <div class="personal-details-input align-items-start">
+                  <p class="boldest muli s-medium-text text-right photo-input-text">Card Photo</p>
+                  <div>
+                    <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                    <% if shade.card_photo.attached? %>
+                      <%= image_tag shade.card_photo, height: 100, class: "photo-preview", 'data-name': 'shade-card-photo' %>
+                    <% else %>
+                      <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo' %>
+                    <% end %>
+                  </div>
                 </div>
-                <div class="personal-details-input">
-                  <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
-                  <%= f.input :photos, label: false, input_html: { multiple: true } %>
+                <div class="personal-details-input align-items-start">
+                  <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
+                  <div style="max-width: 288px;">
+                    <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                    <% if shade.photos.attached? %>
+                      <% shade.photos.each do |photo| %>
+                        <%= image_tag photo, height: 100, class: "photo-preview", 'data-name': 'shade-photos' %>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos' %>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="d-flex justify-content-end">
                   <%= link_to 'DESTROY', admin_shade_path(shade), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
@@ -97,13 +113,19 @@
               <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
               <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
             </div> -->
-            <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Card Photo</p>
-              <%= f.input :card_photo, label: false, input_html: { multiple: true } %>
+            <div class="personal-details-input align-items-start">
+              <p class="boldest muli s-medium-text text-right photo-input-text">Card Photo</p>
+              <div>
+                <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo' %>
+              </div>
             </div>
-            <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Photos</p>
-              <%= f.input :photos, label: false, input_html: { multiple: true } %>
+            <div class="personal-details-input align-items-start">
+              <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
+              <div style="max-width: 288px;">
+                <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos' %>
+              </div>
             </div>
             <%= f.submit 'CREATE SHADE', class: 'primary-button small-text personal-details-button' %>
           <% end %>
@@ -134,3 +156,6 @@
   </div>
 </div>
 
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>
