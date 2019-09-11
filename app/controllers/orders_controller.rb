@@ -91,7 +91,8 @@ class OrdersController < ApplicationController
     end
     to_submit = order_hash_builder
     to_submit[:order][:items] = items
-    RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {})
+    response = JSON.parse(RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {}).body)
+    response['stock_changes'].each { |k,v| Shade.find_by_sku(k)&.update(number_in_stock: v) }
   end
 
   def order_hash_builder
@@ -101,6 +102,7 @@ class OrdersController < ApplicationController
       message_timestamp: timestamp,
       security_hash: Digest::MD5.hexdigest(timestamp.to_s + ENV['CONTROLPORT_API_KEY']),
       test: true,
+      update_stock: true,
       order: {
         client_ref: "%05d" % (@order.id ? @order.id : 1),
         postage_speed: @order.delivery_to_num,
