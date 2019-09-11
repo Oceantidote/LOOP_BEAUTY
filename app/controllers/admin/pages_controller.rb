@@ -36,7 +36,7 @@ class Admin::PagesController < ApplicationController
       lookbooks = lookbooks.where(user_id: id)
       tutorials = tutorials.where(user_id: id)
     end
-    @results = (lookbooks + tutorials).sort { |model| -model.updated_at.to_i }
+    @results = (lookbooks + tutorials).sort { |model| -model.publish_date.to_i }
   end
 
   private
