@@ -526,6 +526,10 @@ esther.lookbook_photo.attach(io: File.open(esther_avatar) , filename: 'esther_av
 esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
 esther.tutorial_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
+esther_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+esther.makeup_photo.attach(io: File.open(esther_makeup) , filename: 'makeup_photo.jpg')
+
+
 
 ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
 ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
@@ -541,6 +545,10 @@ ropo.qa_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
 
 ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
 ropo.tutorial_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
+
+ropo_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+ropo.makeup_photo.attach(io: File.open(ropo_makeup) , filename: 'makeup_photo.jpg')
+
 
 
 breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
@@ -558,12 +566,17 @@ breeny.lookbook_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_av
 breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
 breeny.tutorial_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
 
+breeny_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+breeny.makeup_photo.attach(io: File.open(breeny_makeup) , filename: 'makeup_photo.jpg')
+
+
+
+
 nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
 nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
 
 nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
 nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
-
 
 nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
 nikki.qa_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
@@ -574,14 +587,16 @@ nikki.lookbook_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avata
 nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
 nikki.tutorial_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
 
+nikki_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+nikki.makeup_photo.attach(io: File.open(nikki_makeup) , filename: 'makeup_photo.jpg')
+
+
 
 shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
 shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
 
 shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
 shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
-
-
 
 shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
 shantania.qa_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
@@ -591,6 +606,9 @@ shantania.lookbook_photo.attach(io: File.open(shantania_avatar) , filename: 'sha
 
 shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
 shantania.tutorial_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+
+shantania_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+shantania.makeup_photo.attach(io: File.open(shantania_makeup) , filename: 'makeup_photo.jpg')
 
 
 
@@ -608,6 +626,10 @@ bemi.lookbook_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.j
 
 bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
 bemi.tutorial_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
+
+bemi_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+bemi.makeup_photo.attach(io: File.open(bemi_makeup) , filename: 'makeup_photo.jpg')
+
 
 
 esther.save
