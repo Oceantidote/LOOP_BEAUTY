@@ -1025,6 +1025,7 @@ esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
 esther_tutorial.cover_photo.attach(io: File.open(esther_video_cover) , filename: 'esther_cover.jpg')
 esther_video = File.join(Rails.root,'app/assets/images/esther-vid.mp4')
 esther_tutorial.video.attach(io: File.open(esther_video) , filename: 'esther-vid.mp4')
+esther_tutorial.approve!
 
 breeny_tutorial = Tutorial.create!(
                                       user: breeny,
@@ -1037,6 +1038,7 @@ breeny_video_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
 breeny_tutorial.cover_photo.attach(io: File.open(breeny_video_cover) , filename: 'breeny_cover.jpg')
 breeny_video = File.join(Rails.root,'app/assets/images/breeny-vid.mp4')
 breeny_tutorial.video.attach(io: File.open(breeny_video) , filename: 'breeny-vid.mp4')
+breeny_tutorial.approve!
 
 
 nikki_tutorial = Tutorial.create!(
@@ -1050,6 +1052,7 @@ nikki_video_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
 nikki_tutorial.cover_photo.attach(io: File.open(nikki_video_cover) , filename: 'nikki_cover.jpg')
 nikki_video = File.join(Rails.root,'app/assets/images/nikki-vid.mp4')
 nikki_tutorial.video.attach(io: File.open(nikki_video) , filename: 'nikki-vid.mp4')
+nikki_tutorial.approve!
 
 
 shantania_tutorial = Tutorial.create!(
@@ -1063,7 +1066,7 @@ shantania_video_cover = File.join(Rails.root,'app/assets/images/shantania_cover.
 shantania_tutorial.cover_photo.attach(io: File.open(shantania_video_cover) , filename: 'shantania_cover.jpg')
 shantania_video = File.join(Rails.root,'app/assets/images/shantania-vid.mp4')
 shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'shantania-vid.mp4')
-
+shantania_tutorial.approve!
 
 bemi_tutorial = Tutorial.create!(
                                       user: bemi,
@@ -1076,6 +1079,7 @@ bemi_video_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
 bemi_tutorial.cover_photo.attach(io: File.open(bemi_video_cover) , filename: 'bemi_cover.jpg')
 bemi_video = File.join(Rails.root,'app/assets/images/bemi-vid.mp4')
 bemi_tutorial.video.attach(io: File.open(bemi_video) , filename: 'bemi-vid.mp4')
+bemi_tutorial.approve!
 
 
 ropo_tutorial = Tutorial.create!(
@@ -1089,6 +1093,7 @@ ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
 ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ropo_cover.jpg')
 ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
 ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
+ropo_tutorial.approve!
 
 
 
@@ -1098,7 +1103,7 @@ puts "-"
 
 puts "CREATING LOOKBOOKS"
 
-[esther, ropo, breeny, nikki, shantania, bemi]
+# [esther, ropo, breeny, nikki, shantania, bemi]
 
 
 esther_lookbook_one = Lookbook.new(user: esther, title: 'Esther First Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
@@ -1106,108 +1111,126 @@ esther_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
 esther_lookbook_image_one = File.join(Rails.root,'app/assets/images/esther_photo_one.jpg')
 esther_lookbook_one.photo.attach(io: File.open(esther_lookbook_image_one) , filename: 'esther_photo_one.jpg')
 esther_lookbook_one.save
+esther_lookbook_one.approve!
 
 esther_lookbook_two = Lookbook.new(user: esther, title: 'Esther Second Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 esther_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
 esther_lookbook_image_two = File.join(Rails.root,'app/assets/images/esther_photo_two.jpg')
 esther_lookbook_two.photo.attach(io: File.open(esther_lookbook_image_two) , filename: 'esther_photo_two.jpg')
 esther_lookbook_two.save
+esther_lookbook_two.approve!
 
 esther_lookbook_three = Lookbook.new(user: esther, title: 'Esther Third Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 esther_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
 esther_lookbook_image_three = File.join(Rails.root,'app/assets/images/esther_photo_three.jpg')
 esther_lookbook_three.photo.attach(io: File.open(esther_lookbook_image_three) , filename: 'esther_photo_three.jpg')
 esther_lookbook_three.save
+esther_lookbook_three.approve!
 
 ropo_lookbook_one = Lookbook.new(user: ropo, title: 'Ropo First Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 ropo_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
 ropo_lookbook_image_one = File.join(Rails.root,'app/assets/images/ropo_photo_one.jpg')
 ropo_lookbook_one.photo.attach(io: File.open(ropo_lookbook_image_one) , filename: 'ropo_photo_one.jpg')
 ropo_lookbook_one.save
+ropo_lookbook_one.approve!
 
 ropo_lookbook_two = Lookbook.new(user: ropo, title: 'Ropo Second Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 ropo_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
 ropo_lookbook_image_two = File.join(Rails.root,'app/assets/images/ropo_photo_two.jpg')
 ropo_lookbook_two.photo.attach(io: File.open(ropo_lookbook_image_two) , filename: 'ropo_photo_two.jpg')
 ropo_lookbook_two.save
+ropo_lookbook_two.approve!
 
 ropo_lookbook_three = Lookbook.new(user: ropo, title: 'Ropo Third Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 ropo_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
 ropo_lookbook_image_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.jpg')
 ropo_lookbook_three.photo.attach(io: File.open(ropo_lookbook_image_three) , filename: 'ropo_photo_three.jpg')
 ropo_lookbook_three.save
+ropo_lookbook_three.approve!
 
 breeny_lookbook_one = Lookbook.new(user: breeny, title: 'Breeny First Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 breeny_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
 breeny_lookbook_image_one = File.join(Rails.root,'app/assets/images/breeny_photo_one.jpg')
 breeny_lookbook_one.photo.attach(io: File.open(breeny_lookbook_image_one) , filename: 'breeny_photo_one.jpg')
 breeny_lookbook_one.save
+breeny_lookbook_one.approve!
 
 breeny_lookbook_two = Lookbook.new(user: breeny, title: 'Breeny Second Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 breeny_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
 breeny_lookbook_image_two = File.join(Rails.root,'app/assets/images/breeny_photo_two.jpg')
 breeny_lookbook_two.photo.attach(io: File.open(breeny_lookbook_image_two) , filename: 'breeny_photo_two.jpg')
 breeny_lookbook_two.save
+breeny_lookbook_two.approve!
 
 breeny_lookbook_three = Lookbook.new(user: breeny, title: 'Breeny Third Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 breeny_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
 breeny_lookbook_image_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.jpg')
 breeny_lookbook_three.photo.attach(io: File.open(breeny_lookbook_image_three) , filename: 'breeny_photo_three.jpg')
 breeny_lookbook_three.save
+breeny_lookbook_three.approve!
 
 nikki_lookbook_one = Lookbook.new(user: nikki, title: 'Nikki First Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 nikki_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
 nikki_lookbook_image_one = File.join(Rails.root,'app/assets/images/nikki_photo_one.jpg')
 nikki_lookbook_one.photo.attach(io: File.open(nikki_lookbook_image_one) , filename: 'nikki_photo_one.jpg')
 nikki_lookbook_one.save
+nikki_lookbook_one.approve!
 
 nikki_lookbook_two = Lookbook.new(user: nikki, title: 'Nikki Second Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 nikki_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
 nikki_lookbook_image_two = File.join(Rails.root,'app/assets/images/nikki_photo_two.jpg')
 nikki_lookbook_two.photo.attach(io: File.open(nikki_lookbook_image_two) , filename: 'nikki_photo_two.jpg')
 nikki_lookbook_two.save
+nikki_lookbook_two.approve!
 
 nikki_lookbook_three = Lookbook.new(user: nikki, title: 'Nikki Third Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 nikki_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
 nikki_lookbook_image_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.jpg')
 nikki_lookbook_three.photo.attach(io: File.open(nikki_lookbook_image_three) , filename: 'nikki_photo_three.jpg')
 nikki_lookbook_three.save
+nikki_lookbook_three.approve!
 
 shantania_lookbook_one = Lookbook.new(user: shantania, title: 'Shantania First Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 shantania_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
 shantania_lookbook_image_one = File.join(Rails.root,'app/assets/images/shantania_photo_one.jpg')
 shantania_lookbook_one.photo.attach(io: File.open(shantania_lookbook_image_one) , filename: 'shantania_photo_one.jpg')
 shantania_lookbook_one.save
+shantania_lookbook_one.approve!
 
 shantania_lookbook_two = Lookbook.new(user: shantania, title: 'Shantania Second Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 shantania_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
 shantania_lookbook_image_two = File.join(Rails.root,'app/assets/images/shantania_photo_two.jpg')
 shantania_lookbook_two.photo.attach(io: File.open(shantania_lookbook_image_two) , filename: 'shantania_photo_two.jpg')
 shantania_lookbook_two.save
+shantania_lookbook_two.approve!
 
 shantania_lookbook_three = Lookbook.new(user: shantania, title: 'Shantania Third Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 shantania_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
 shantania_lookbook_image_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.jpg')
 shantania_lookbook_three.photo.attach(io: File.open(shantania_lookbook_image_three) , filename: 'shantania_photo_three.jpg')
 shantania_lookbook_three.save
+shantania_lookbook_three.approve!
 
 bemi_lookbook_one = Lookbook.new(user: bemi, title: 'Bemi First Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 bemi_lookbook_one.product_ids = [1,2,3,4,5,6,7].sample(4)
 bemi_lookbook_image_one = File.join(Rails.root,'app/assets/images/bemi_photo_one.jpg')
 bemi_lookbook_one.photo.attach(io: File.open(bemi_lookbook_image_one) , filename: 'bemi_photo_one.jpg')
 bemi_lookbook_one.save
+bemi_lookbook_one.approve!
 
 bemi_lookbook_two = Lookbook.new(user: bemi, title: 'Bemi Second Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 bemi_lookbook_two.product_ids = [1,2,3,4,5,6,7].sample(4)
 bemi_lookbook_image_two = File.join(Rails.root,'app/assets/images/bemi_photo_two.jpg')
 bemi_lookbook_two.photo.attach(io: File.open(bemi_lookbook_image_two) , filename: 'bemi_photo_two.jpg')
 bemi_lookbook_two.save
+bemi_lookbook_two.approve!
 
 bemi_lookbook_three = Lookbook.new(user: bemi, title: 'Bemi Third Lookbook', description: 'This is my everyday go to look. Go on, you know you want to add all products to your basket', status: 'approved')
 bemi_lookbook_three.product_ids = [1,2,3,4,5,6,7].sample(4)
 bemi_lookbook_image_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.jpg')
 bemi_lookbook_three.photo.attach(io: File.open(bemi_lookbook_image_three) , filename: 'bemi_photo_three.jpg')
 bemi_lookbook_three.save
+bemi_lookbook_three.approve!
 
 puts "-"
 

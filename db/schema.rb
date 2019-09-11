@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_171423) do
+ActiveRecord::Schema.define(version: 2019_09_11_120047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_171423) do
     t.text "rejection_message"
     t.string "affiliate_code"
     t.text "description"
+    t.datetime "publish_date"
+    t.integer "visits", default: 0
     t.index ["affiliate_code"], name: "index_lookbooks_on_affiliate_code"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
   end
@@ -264,6 +266,9 @@ ActiveRecord::Schema.define(version: 2019_09_02_171423) do
     t.bigint "billing_address_id"
     t.string "delivery_type"
     t.integer "delivery_cost_cents"
+    t.string "affiliation_type"
+    t.bigint "affiliation_id"
+    t.index ["affiliation_type", "affiliation_id"], name: "index_orders_on_affiliation_type_and_affiliation_id"
     t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
     t.index ["delivery_address_id"], name: "index_orders_on_delivery_address_id"
     t.index ["discount_code_id"], name: "index_orders_on_discount_code_id"
@@ -386,6 +391,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_171423) do
     t.string "affiliate_code"
     t.string "category"
     t.boolean "featured", default: false
+    t.datetime "publish_date"
+    t.integer "visits", default: 0
     t.index ["affiliate_code"], name: "index_tutorials_on_affiliate_code"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end
