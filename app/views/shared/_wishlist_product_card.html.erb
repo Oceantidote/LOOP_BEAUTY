@@ -11,8 +11,11 @@
           </div>
           <div class="my-products-details text-center">
             <p class="no-margin boldest"><%= wishlist_product.product.title %></p>
-            <p class="no-margin small-text"><%= wishlist_product.shade.name %></p>
-
+            <% if wishlist_product.shade.name != "" %>
+              <p class="no-margin small-text"><%= wishlist_product.shade.name %></p>
+            <% else %>
+              <p class="no-margin small-text"> - </p>
+            <% end %>
           </div>
           <div class="my-products-price text-center boldest">
             <%= humanized_money_with_symbol(wishlist_product.product.price) %>
