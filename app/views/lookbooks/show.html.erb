@@ -101,11 +101,13 @@
     <div class="container tutorial-show-admin-options">
       <hr>
         <h6 class="boldest margin-top" >Current Status: <%= @lookbook.status.capitalize %></h6>
+        <% if @lookbook.rejection_message %>
+          <p class="boldest">Message: <span class="didot lighter"><%= @lookbook.rejection_message %></span></p>
+        <% end %>
         <%= link_to "EDIT", edit_lookbook_path(@lookbook), class: 'secondary-button small-margin-right' %>
       <hr>
     </div>
 <% end %>
-
 
 <script>
   itemAdded = document.querySelector('.item-added');

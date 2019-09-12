@@ -107,7 +107,7 @@
       <hr>
         <h6 class="boldest margin-top" >Current Status: <%= @tutorial.status.capitalize %></h6>
         <% if @tutorial.rejection_message %>
-          <p class="boldest">Message: <span class="didot"><%= @tutorial.rejection_message %></span></p>
+          <p class="boldest">Message: <span class="didot lighter"><%= @tutorial.rejection_message %></span></p>
         <% end %>
         <%= link_to "EDIT", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
       <hr>
