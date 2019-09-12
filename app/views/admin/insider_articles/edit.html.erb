@@ -10,6 +10,10 @@
       <p class="boldest muli s-medium-text text-right no-margin">Category</p>
       <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
     </div>
+    <div class="insider-articles-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Influencer</p>
+      <%= f.collection_select :by, User.where(influencer: true).order(:last_name), :id, :full_name, {}, { class: 'filters-container boldest s-medium-text insider-article-category' }  %>
+    </div>
 
     <!-- <div class="spacer" style="height: 50px;"></div> -->
     <div class="insider-articles-input align-items-start">

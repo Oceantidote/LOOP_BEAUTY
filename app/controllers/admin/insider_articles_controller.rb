@@ -3,6 +3,7 @@ class Admin::InsiderArticlesController < ApplicationController
 
   def new
     @insider_article = InsiderArticle.new
+    @influencers = User.where(influencer: true)
   end
 
   def index
@@ -11,9 +12,8 @@ class Admin::InsiderArticlesController < ApplicationController
 
   def create
     @insider_article = InsiderArticle.new(insider_article_params)
-    @insider_article.user = current_user
-    # VALIDATION ON SAVE WAS SAYING BY CANT BE BLANK
-    @insider_article.by = "#{current_user.first_name} #{current_user.last_name}"
+    @insider_article.user = User.find(params['insider_article']['by'].to_i)
+    @insider_article.by = params['insider_article']['by']
     if @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
@@ -26,6 +26,9 @@ class Admin::InsiderArticlesController < ApplicationController
 
   def update
     if @insider_article.update(insider_article_params)
+      @insider_article.user = User.find(params['insider_article']['by'].to_i)
+      @insider_article.by = params['insider_article']['by']
+      @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
       render :edit
@@ -67,7 +70,6 @@ class Admin::InsiderArticlesController < ApplicationController
       :photo1_alt_text,
       :photo2_alt_text,
       :photo3_alt_text,
-      :by,
       :published,
       :featured
     )
