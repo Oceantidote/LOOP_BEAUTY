@@ -11,3 +11,17 @@
   display: flex;
   margin-bottom: 5px;
 }
+
+.video-preview {
+  height: 100px;
+  background-image: asset_url('preview-background.png');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  @include absCenter;
+  padding: 0 20px;
+  margin: 5px;
+  p {
+    width: auto !important;
+  }
+}
