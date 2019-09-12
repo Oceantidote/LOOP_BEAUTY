@@ -11,6 +11,7 @@ class Admin::InsiderArticlesController < ApplicationController
   end
 
   def create
+    # raise
     @insider_article = InsiderArticle.new(insider_article_params)
     @insider_article.user = User.find(params['insider_article']['by'].to_i)
     @insider_article.by = params['insider_article']['by']
