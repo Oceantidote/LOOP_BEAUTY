@@ -4,6 +4,9 @@
     <hr>
       <div class="new-question-answers-form insider-form">
         <%= form_for [:admin, @insider_article] do |f| %>
+          <%if @insider_article.errors.any? %>
+            <p class="form-error"><%= @insider_article.errors.full_messages.first  %></p>
+          <% end %>
           <div class="insider-articles-input">
             <p class="boldest muli s-medium-text text-right no-margin">Article title</p>
             <%= f.text_field :title, class:"form-control" %>

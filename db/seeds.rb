@@ -774,7 +774,7 @@ puts "CREATING INSIDER ARTICLES"
 
 # 5.times do
 
-  esther_article = InsiderArticle.create!(
+  esther_article = InsiderArticle.new(
     by: "Esther Areola",
     category: "Ask the expert",
     title: "3 BEAUTY TRICKS WE LEARNT BACKSTAGE AT AUSTRALIAN FASHION WEEK",
@@ -820,8 +820,9 @@ puts "CREATING INSIDER ARTICLES"
   esther_photo_three = File.join(Rails.root,'app/assets/images/esther_photo_three.jpg')
   esther_article.photo3.attach(io: File.open(esther_photo_three) , filename: 'esther_photo_three.jpg')
 
+  esther_article.save
 
-  ropo_article = InsiderArticle.create!(
+  ropo_article = InsiderArticle.new(
     by: "Ropo Demure",
     category: "Lifestyle",
     title: "THE BEST CONCEALER FOR DRY SKIN",
@@ -859,8 +860,9 @@ puts "CREATING INSIDER ARTICLES"
   ropo_photo_three = File.join(Rails.root,'app/assets/images/ropo_photo_three.jpg')
   ropo_article.photo3.attach(io: File.open(ropo_photo_three) , filename: 'ropo_photo_three.jpg')
 
+  ropo_article.save
 
-  breeny_article = InsiderArticle.create!(
+  breeny_article = InsiderArticle.new(
     by: "Breeny Lee",
     category: "Inspiration",
     title: "It's Never Too Late To Get In The Makeup Game",
@@ -898,8 +900,9 @@ puts "CREATING INSIDER ARTICLES"
   breeny_photo_three = File.join(Rails.root,'app/assets/images/breeny_photo_three.jpg')
   breeny_article.photo3.attach(io: File.open(breeny_photo_three) , filename: 'breeny_photo_three.jpg')
 
+  breeny_article.save
 
-  nikki_article = InsiderArticle.create!(
+  nikki_article = InsiderArticle.new(
     by: "Nikki Patel",
     category: "Ask the expert",
     title: "Your Everyday Makeup Questions, Answered",
@@ -947,8 +950,9 @@ puts "CREATING INSIDER ARTICLES"
   nikki_photo_three = File.join(Rails.root,'app/assets/images/nikki_photo_three.jpg')
   nikki_article.photo3.attach(io: File.open(nikki_photo_three) , filename: 'nikki_photo_three.jpg')
 
+  nikki_article.save
 
-  shantania_article = InsiderArticle.create!(
+  shantania_article = InsiderArticle.new(
     by: "Shantania Beckford",
     category: "Lifestyle",
     title: "Look flawless every day with super-easy makeup tips",
@@ -984,8 +988,9 @@ puts "CREATING INSIDER ARTICLES"
   shantania_photo_three = File.join(Rails.root,'app/assets/images/shantania_photo_three.jpg')
   shantania_article.photo3.attach(io: File.open(shantania_photo_three) , filename: 'shantania_photo_three.jpg')
 
+  shantania_article.save
 
-  bemi_article = InsiderArticle.create!(
+  bemi_article = InsiderArticle.new(
     by: "Bemi Akinde",
     category: "Inspiration",
     title: "From Covering Acne To Beginning To Love Makeup",
@@ -1025,6 +1030,7 @@ puts "CREATING INSIDER ARTICLES"
   bemi_photo_three = File.join(Rails.root,'app/assets/images/bemi_photo_three.jpg')
   bemi_article.photo3.attach(io: File.open(bemi_photo_three) , filename: 'bemi_photo_three.jpg')
 
+  bemi_article.save
 # end
 
 puts "-"
