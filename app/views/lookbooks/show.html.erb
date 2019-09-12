@@ -97,6 +97,15 @@
   </div>
   <%= link_to 'See more looks', user_lookbooks_path(@lookbook.user), class: "mobile-tutorials-link" %>
 </div>
+<% if @lookbook.user == current_user && @lookbook.status == "pending" || @lookbook.status == "rejected" %>
+    <div class="container tutorial-show-admin-options">
+      <hr>
+        <h6 class="boldest margin-top" >Current Status: <%= @lookbook.status.capitalize %></h6>
+        <%= link_to "EDIT", edit_lookbook_path(@lookbook), class: 'secondary-button small-margin-right' %>
+      <hr>
+    </div>
+<% end %>
+
 
 <script>
   itemAdded = document.querySelector('.item-added');

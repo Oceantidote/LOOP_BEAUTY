@@ -22,14 +22,14 @@ class TutorialPolicy < ApplicationPolicy
   end
 
   def edit?
-    new?
+    (record.user == user || user.admin) && (record.status = "pending" || record.status = "rejected")
   end
 
   def update?
-    new?
+    edit?
   end
 
   def destroy?
-    new?
+    user.admin
   end
 end
