@@ -17,7 +17,7 @@
     </div>
     <div class="card_ratings">
       <div class="rating-stars">
-        <%= render 'shared/ratings', rating: product.average_rating %>
+        <%= render 'shared/ratings', rating: product.average_rating.to_i %>
         <p class="all-reviews"><%= product.average_rating %></p>
       </div>
       <p class="all-reviews">(<%= product.total_reviews %> <%= 'review'.pluralize(product.total_reviews) %>)</p>

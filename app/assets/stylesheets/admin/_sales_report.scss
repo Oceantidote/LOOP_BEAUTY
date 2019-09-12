@@ -1,0 +1,21 @@
+.admin-sales-report-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  min-height: 500px;
+  width: 100%;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 16px;
+  select {
+    margin-left: 5px;
+  }
+}
+
+.tablesorter-default .header, .tablesorter-default .tablesorter-header {
+  background: #000 !important;
+  color: #FFF;
+}
+
+.influencer-orders-container {
+  padding: 10px;
+}

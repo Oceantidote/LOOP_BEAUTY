@@ -20,10 +20,12 @@
 
 .rating-stars {
   display: flex;
+  align-items: center;
   margin-right: 5px;
 }
 
 .all-reviews {
+  margin: 0 0 0 3px !important;
   font-size: 12px;
   @include for-phone-only {
     font-size: 10px !important;
