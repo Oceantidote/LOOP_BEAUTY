@@ -45,7 +45,7 @@
 
 .nav-item {
   display: flex;
-  @include for-phone-only {
+  @include for-medium-devices-down {
     display: block;
   }
   img {
@@ -147,7 +147,7 @@
       background: #f7f7f7;
     }
   }
-  @include for-phone-only {
+  @include for-medium-devices-down {
     text-align: center;
     padding: 15px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -210,6 +210,12 @@
   }
 }
 
+.small-hidden {
+  @include for-medium-devices-down {
+    display: none;
+  }
+}
+
 .navbar-submenu-underlay {
   position: fixed;
   top: 0;
@@ -225,7 +231,7 @@
   font-family: $title-font;
   font-weight: 900;
   color: black !important;
-  @include for-small-devices-up {
+  @include for-large-devices-up {
     display: none;
   }
 }
