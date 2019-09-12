@@ -119,9 +119,9 @@
       <% if @product.insider_reviews.count == 0 %>
         <p class="text-center medium-margin width-100">There are no insider reviews yet</p>
       <% end %>
-      <% @product.insider_reviews.sample(3).each do |review| %>
+      <% @product.insider_reviews.first(3).each do |review| %>
         <div class="col-10 col-md-4 ir-cols">
-          <div class="insider-review-cards">
+          <div class="insider-review-cards" data-toggle="modal" data-target="#review_<%= review.id %>">
             <div class="insider-review-left">
               <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
               <h6><%= review.user.instagram %></h6>
@@ -130,6 +130,25 @@
               <div class="insider-review-text">
                 <%= render 'shared/ratings', rating: review.rating %>
                 <p class="didot"><%= review.review.truncate(150) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="review_<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <%= link_to user_path(review.user), class: "review-modal-header" do %>
+                <div class="modal-insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
+                <h6 class="review-modal-influencer"><%= review.user.instagram %></h6>
+              <% end %>
+              <div class="review-modal-body">
+                <%= review.review %>
+                <div class="d-flex justify-content-center py-3">
+                  <%= render 'shared/ratings', rating: review.rating %>
+                </div>
+              </div>
+              <div class="review-modal-footer">
+                <button type="button" class="primary-button" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
