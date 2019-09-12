@@ -41,7 +41,7 @@ class Product < ApplicationRecord
       customer_reviews.each do |r|
         sum += r.rating
       end
-      return sum / customer_reviews.count
+      return (sum.to_f / customer_reviews.count).round(1)
     end
   end
 

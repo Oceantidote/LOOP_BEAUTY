@@ -285,3 +285,20 @@
     font-size: 17px;
   }
 }
+
+.br-theme-css-stars .br-widget a.br-selected:after, .br-theme-css-stars .br-widget a.br-active:after {
+  color: #000 !important;
+}
+
+.ratings-star {
+  height: 20px;
+  margin-right: 1px;
+  @include for-phone-only {
+    height: 17px;
+  }
+}
+
+
+
+
+
