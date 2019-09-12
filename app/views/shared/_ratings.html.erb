@@ -1,26 +1,22 @@
 <% case rating %>
-<% when 0 %>
-  <div class="rating-container">
-    <i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
-  </div>
 <% when 1 %>
   <div class="rating-container">
-    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+    <%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %>
   </div>
 <% when 2 %>
   <div class="rating-container">
-    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+    <%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %>
   </div>
 <% when 3 %>
   <div class="rating-container">
-    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+    <%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %>
   </div>
 <% when 4 %>
   <div class="rating-container">
-    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: #D5D5D5"></i>
+    <%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'empty-star.png', class: 'ratings-star' %>
   </div>
 <% when 5 %>
   <div class="rating-container">
-    <i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i><i class="fas fa-star" style="color: black"></i>
+    <%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %><%= image_tag 'checked-star.png', class: 'ratings-star' %>
   </div>
 <% end %>
