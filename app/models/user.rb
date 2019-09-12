@@ -158,7 +158,7 @@ class User < ApplicationRecord
   end
 
   def create_wishlist
-    Wishlist.create(user: @user)
+    Wishlist.create(user: self)
   end
 
   def newsletter_unsubscribe(client, id)
