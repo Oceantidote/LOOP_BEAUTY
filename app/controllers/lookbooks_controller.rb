@@ -10,7 +10,6 @@ class LookbooksController < ApplicationController
   end
 
   def show
-
     # NOT SURE IF CORRECT BUT WORKS
     # user = User.find(params[:user_id])
     @lookbook = Lookbook.find((Lookbook.select{ |r| r.slug == params[:id]}).first.id)
@@ -44,6 +43,7 @@ class LookbooksController < ApplicationController
   end
 
   def edit
+    @user = @lookbook.user
   end
 
   def update
@@ -105,7 +105,8 @@ class LookbooksController < ApplicationController
 
     # NOT SURE IF CORRECT BUT WORKS
     user = User.select { |u| u.slug == params[:id] }.first
-    @lookbook = Lookbook.find(user.id)
+    # @lookbook = Lookbook.find(user.id)
+    @lookbook = Lookbook.friendly.find(params[:id])
     authorize @lookbook
   end
 

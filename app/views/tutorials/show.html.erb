@@ -93,15 +93,25 @@
     <hr>
   </div>
 <% end %>
-<% if current_user&.admin? && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
+<% if current_user&.admin? && (@tutorial.status == "pending" || @tutorial.status == "rejected") %>
   <div class="container tutorial-show-admin-options">
-    <h5 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h5>
-    <%= link_to "Approve", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'primary-button personal-details-button small-text' %>
+    <h6 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h6>
+    <%= link_to "APPROVE", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'primary-button personal-details-button small-text' %>
     <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
       <%= f.input :rejection_message, input_html: { class: 'contact-form-input' } %>
-      <%= f.submit "Reject", class: 'secondary-button personal-details-button small-text' %>
+      <%= f.submit "REJECT", class: 'secondary-button personal-details-button small-text' %>
     <% end %>
   </div>
+<% elsif @tutorial.user == current_user && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
+    <div class="container tutorial-show-admin-options">
+      <hr>
+        <h6 class="boldest margin-top" >Current Status: <%= @tutorial.status.capitalize %></h6>
+        <% if @tutorial.rejection_message %>
+          <p class="boldest">Message: <span class="didot"><%= @tutorial.rejection_message %></span></p>
+        <% end %>
+        <%= link_to "EDIT", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
+      <hr>
+    </div>
 <% end %>
 <script>
   videoOverlay = document.querySelector('.video-overlay');

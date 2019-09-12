@@ -16,6 +16,9 @@
             <p class="boldest muli s-medium-text text-right photo-input-text">Video</p>
             <div>
               <%= f.input :video, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial-video', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @tutorial.video.attached? %>
+                <div class="video-preview photo-preview" data-name="tutorial-video"><p class="boldest no-margin didot"><%= @tutorial.video.filename.to_s %></p></div>
+              <% end %>
             </div>
           </div>
           <div class="personal-details-input align-items-start">
@@ -33,10 +36,12 @@
             <p class="boldest muli s-medium-text text-right no-margin">Products</p>
             <%= f.input :product_ids, label: false, collection: Product.all, input_html: { multiple: true } %>
           </div>
-          <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
-            <%= f.input :featured, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
-          </div>
+          <% if current_user.admin %>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
+              <%= f.input :featured, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
+            </div>
+          <% end %>
           <%= f.submit 'UPDATE TUTORIAL', class: 'primary-button personal-details-button small-text' %>
         <% end %>
       </div>

@@ -59,6 +59,7 @@ class TutorialsController < ApplicationController
   end
 
   def edit
+    @user = @tutorial.user
   end
 
   def update
