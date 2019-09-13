@@ -117,32 +117,79 @@
             <div class="checkout-address">
               <p class="medium-text boldest">Delivery Address</p>
               <% if @user.delivery_addresses.any? %>
-                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+                <div id="deliveryAddress">
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.county %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.postcode %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.country %></p>
+                  <p>Input a different address</p>
+                  <button id="newDeliveryAddress">New</button>
+                </div>
+                <div class="d-none" id="newDeliveryInput">
+                  <%= simple_form_for @address do |f| %>
+                    <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                    <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
+                  <% end %>
+                </div>
+                <p>Or use a saved address</p>
+                <% @user.addresses.to_a.each do |a| %>
+                  <a href="#"><%= a.street %></a>
+                <% end %>
+
               <% else %>
                 <%= simple_form_for @address do |f| %>
-                  <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
-                  <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
-                  <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
-                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
+                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
                 <% end %>
               <% end %>
             </div>
             <div class="checkout-address">
               <p class="medium-text boldest">Billing Address</p>
               <% if @user.billing_addresses.any? %>
-                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-                <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.postcode %></p>
+                <div id="billingAddress">
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.county %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.postcode %></p>
+                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.country %></p>
+                  <p>Input a different address</p>
+                  <button id="newBillingAddress">New</button>
+                </div>
+                <div class="d-none" id="newBillingInput">
+                  <%= simple_form_for @address do |f| %>
+                    <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                    <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
+                  <% end %>
+                </div>
+                <p>Or use a saved address</p>
+                <% @user.addresses.to_a.each do |a| %>
+                  <a href="#"><%= a.street %></a>
+                <% end %>
               <% else %>
                 <%= simple_form_for @address do |f| %>
-                  <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input' } %>
-                  <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input' } %>
-                  <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input' } %>
+                  <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
-                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button' %>
+                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
                 <% end %>
               <% end %>
             </div>
@@ -167,6 +214,8 @@
           </div>
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
+          <% elsif @user.addresses.where(delivery_address: true).length == 0 || @user.addresses.where(delivery_address: false).length == 0 %>
+            <%= f.submit 'CONFRIM ADRESSES', class: 'stripe-button stripe-button-el', id: "addressBtn" %>
           <% else %>
             <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el' %>
           <% end %>
@@ -175,3 +224,39 @@
     </div>
   </div>
 </div>
+
+<script>
+  addressBtn = document.getElementById('addressBtn')
+  deliveryBtn = document.getElementById('deliveryBtn')
+  billingBtn = document.getElementById('billingBtn')
+  newBillingInput = document.getElementById('newBillingInput')
+  billingAddress = document.getElementById('billingAddress')
+  newBilling = document.getElementById('newBillingAddress')
+  newDeliveryInput = document.getElementById('newDeliveryInput')
+  deliveryAddress = document.getElementById('deliveryAddress')
+  newDelivery = document.getElementById('newDeliveryAddress')
+
+  if (addressBtn) {
+    addressBtn.addEventListener('click', (event) => {
+      deliveryBtn.click();
+      billingBtn.click();
+    })
+  }
+
+  newBilling.addEventListener('click', () => {
+    newBillingInput.classList.remove('d-none')
+    console.log('test')
+    billingAddress.classList.add('d-none')
+  })
+
+  newDelivery.addEventListener('click', () => {
+    newDeliveryInput.classList.remove('d-none')
+    console.log('test')
+    deliveryAddress.classList.add('d-none')
+  })
+
+  document.getElementById('test').addEventListener('click', () => {
+    console.log('hello')
+  })
+
+</script>
