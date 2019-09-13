@@ -13,6 +13,12 @@
   }
 }
 
+.all-tabs {
+  @include for-phone-only {
+    text-align: center;
+  }
+}
+
 .account-active-tab {
   color: black !important;
   text-decoration: underline !important;
@@ -49,8 +55,41 @@
 }
 
 .account-content-two-add-address {
+  padding: 20px;
   @include for-large-devices-down {
     flex-direction: column;
+  }
+}
+
+.account-content-one {
+  .form-group {
+    @include for-phone-only {
+      width: 100%;
+    }
+  }
+}
+
+.address-form-container {
+  padding-left: 15px;
+  .form_control {
+    border: 1px solid #F0F0F0;
+    background: #FCFCFC
+  }
+  select {
+    width: 288px !important;
+    margin-left: 5px;
+    @include for-phone-only {
+      width: 100% !important;
+    }
+  }
+  @include for-large-devices-down {
+    margin: 30px 0;
+  }
+  @include for-phone-only {
+    padding: 0;
+    .form-group {
+      width: 100%;
+    }
   }
 }
 
@@ -72,6 +111,9 @@
   input, textarea {
     width: 288px !important;
     margin-left: 4px;
+    @include for-phone-only {
+      width: 100% !important;
+    }
   }
   @include for-phone-only {
     flex-direction: column;
@@ -97,6 +139,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  width:100%;
   p {
     width: 130px;
     @include for-phone-only {
@@ -107,6 +150,14 @@
   input {
     width: 288px !important;
     margin-left: 4px;
+    @include for-phone-only {
+      width: 100% !important;
+    }
+  }
+  .form-group {
+    @include for-phone-only {
+      width: 100%;
+    }
   }
   @include for-phone-only {
     flex-direction: column;
@@ -150,18 +201,25 @@
 #user_dob_3i {
   width: 65px !important;
   margin: 0 0 0 4px !important;
-
+  @include for-phone-only {
+    width: inherit !important;
+  }
 }
 
 #user_dob_2i {
   width: 125px !important;
   margin: 0 0 0 4px !important;
-
+  @include for-phone-only {
+    width: inherit !important;
+  }
 }
 
 #user_dob_1i {
   width: 90px !important;
   margin: 0 0 0 4px !important;
+  @include for-phone-only {
+    width: inherit !important;
+  }
 }
 
 .address-card {
@@ -176,6 +234,9 @@
 
 .address-container {
   padding: 30px;
+  @include for-phone-only {
+    padding: 0;
+  }
 }
 
 .address-button {
@@ -184,16 +245,22 @@
   padding: 3px 25px;
   height: 40px !important;
   margin: 15px 0 15px auto;
-
 }
 
-.address-form-container {
-  padding-left: 15px;
-  @include for-large-devices-down {
-    margin: 30px 0;
-  }
-  .form_control {
-    border: 1px solid #F0F0F0;
-    background: #FCFCFC
+.edit_user {
+  @include for-phone-only {
+    width: 100%;
+    .form_group {
+      width: 100% !important;
+    }
   }
 }
+
+.user_dob {
+  div {
+    @include for-phone-only {
+      width: 100%;
+    }
+  }
+}
+

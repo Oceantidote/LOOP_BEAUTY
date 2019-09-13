@@ -3,7 +3,7 @@ discount = document.getElementById("discount-apply")
 containers = document.querySelectorAll('.item-<%= @item.id %>')
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
-document.querySelector('.navbar-basket-title > h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %>'
+document.querySelector('.navbar-basket-title > h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %>'
 subtotals = document.querySelectorAll('.basket-total-price')
 subtotals.forEach(total => {
   total.innerHTML = "<%= humanized_money_with_symbol @item.basket.subtotal %>"
