@@ -233,7 +233,7 @@
 <div class="navbar-search-container">
   <%= form_tag products_path, method: :get do |f| %>
     <div style="display: flex; justify-content: center;">
-      <%= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..' %>
+      <%= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..', autocomplete: 'off' %>
       <%= button_tag(type: :submit, class: "button search-form-button") do %>
         <%= image_tag 'navbar-search-white.png' %>
       <% end %>
