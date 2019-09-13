@@ -33,4 +33,3 @@ const fadeOut = (flash) => {
 if(alert) {
   fadeOut(alert)
 }
-
