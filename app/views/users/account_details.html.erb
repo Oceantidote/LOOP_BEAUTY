@@ -21,20 +21,20 @@
         <div class="account-content-one account-content-show">
           <%= simple_form_for current_user, url: user_path(current_user), method: :patch do |f| %>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">First Name</p>
+              <p class="boldest muli text-right no-margin">First Name</p>
               <%= f.input :first_name, label: false %>
             </div>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Last Name</p>
+              <p class="boldest muli text-right no-margin">Last Name</p>
               <%= f.input :last_name, label: false %>
             </div>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Email</p>
+              <p class="boldest muli text-right no-margin">Email</p>
               <%= f.input :email, label: false %>
             </div>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">D.O.B</p>
-              <%= f.input :dob, label: false, start_year: Date.today.year - 100, end_year: Date.today.year - 10, order: [:day, :month, :year], input_html: { class: 'dob-container' } %>
+              <p class="boldest muli text-right no-margin">D.O.B</p>
+              <%= f.input :dob, label: false, include_blank: true, start_year: Date.today.year - 100, end_year: Date.today.year - 10, order: [:day, :month, :year], input_html: { class: 'dob-container' } %>
             </div>
             <%= f.submit 'SAVE CHANGES', class: 'primary-button personal-details-button small-text' %>
           <% end %>
@@ -92,23 +92,23 @@
             <h6 class="boldest text-center margin-bottom">Add Delivery Address</h6>
             <%= simple_form_for @delivery_address || Address.new(delivery_address: true) do |f| %>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">Street</p>
+                <p class="boldest muli text-right no-margin">Street</p>
                 <%= f.input :street, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">City</p>
+                <p class="boldest muli text-right no-margin">City</p>
                 <%= f.input :city, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">County/State</p>
+                <p class="boldest muli text-right no-margin">County/State</p>
                 <%= f.input :county, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">Country</p>
-                <%= f.input :country, label: false, input_html: { class: 'contact-form-input' } %>
+                <p class="boldest muli text-right no-margin">Country</p>
+                <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">Postcode</p>
+                <p class="boldest muli text-right no-margin">Postcode</p>
                 <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <%= f.input :delivery_address, as: :hidden %>
@@ -119,23 +119,23 @@
             <h6 class="boldest text-center margin-bottom">Add Billing Address</h6>
             <%= simple_form_for @billing_address || Address.new(delivery_address: false) do |f| %>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">Street</p>
+                <p class="boldest muli text-right no-margin">Street</p>
                 <%= f.input :street, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">City</p>
+                <p class="boldest muli text-right no-margin">City</p>
                 <%= f.input :city, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">County/State</p>
+                <p class="boldest muli text-right no-margin">County/State</p>
                 <%= f.input :county, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">Country</p>
-                <%= f.input :country, label: false, input_html: { class: 'contact-form-input' } %>
+                <p class="boldest muli text-right no-margin">Country</p>
+                <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli s-medium-text text-right no-margin">Postcode</p>
+                <p class="boldest muli text-right no-margin">Postcode</p>
                 <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <%= f.input :delivery_address, as: :hidden %>
@@ -146,15 +146,15 @@
         <div class="account-content-three">
           <%= simple_form_for current_user, url: user_change_password_path(current_user) do |f| %>
             <div class="account-password-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Old Password</p>
+              <p class="boldest muli text-right no-margin">Old Password</p>
               <%= f.input :old_password, label: false %>
             </div>
             <div class="account-password-input">
-              <p class="boldest muli s-medium-text text-right no-margin">New Password</p>
+              <p class="boldest muli text-right no-margin">New Password</p>
                 <%= f.input :password, label: false %>
               </div>
             <div class="account-password-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Confirm Password</p>
+              <p class="boldest muli text-right no-margin">Confirm Password</p>
               <%= f.input :password_confirmation, label: false %>
             </div>
             <%= f.submit 'SAVE CHANGES', class: 'primary-button personal-details-button small-text' %>
