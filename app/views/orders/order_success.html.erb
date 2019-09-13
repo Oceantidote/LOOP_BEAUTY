@@ -26,7 +26,7 @@
                 <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.city %>, <%= @order.delivery_address.postcode %></p>
           </div>
           <div class="order-show-info-right">
-            <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d-%m-%d') %></p>
+            <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d-%m-%y') %></p>
             <p class="boldest s-medium-text no-margin">No of items: <%= @order.products.count %></p>
           </div>
         </div>

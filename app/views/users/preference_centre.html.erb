@@ -13,18 +13,23 @@
       <div class="preference-newsletter">
         <h5 class="text-center">Control how you want to hear from us and how we use your data</h5>
         <p class="boldest">Email: Newsletter</p>
-        <p>We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
+        <p class="didot">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
         <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
+        <div class="d-flex">
+          <p class="small-margin-right didot" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
           <%= f.input :newsletter, label: false %>
+        </div>
         <% end %>
       </div>
         <hr>
         <div class="preference-terms">
-          <p class="boldest">View Terms & Conditions</p>
-          <p>You agreed to our Terms & Privacy Policy on 24/04/2019</p>
+          <%= link_to terms_and_conditions_path, class: "underline-hover" do %>
+            <p class="boldest">View Terms & Conditions</p>
+          <% end %>
+          <p class="didot">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
         </div>
         <hr>
-        <p style="padding: 20px; font-style: italic;">Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.</p>
+        <p class="didot" style="padding: 20px; font-style: italic;">Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.</p>
     </div>
   </div>
 </div>
