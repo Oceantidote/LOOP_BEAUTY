@@ -19,7 +19,7 @@
                       <p><%= order.products.first.title %></p>
                       <p class="small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
                       <p class="boldest"><%= order.created_at.strftime('%d/%m/%Y') %>, FN26822124</p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
-                      <%= link_to 'Track this order', '#', class: "small-text"  %>
+                      <%#= link_to 'Track this order', '#', class: "small-text"  %>
                     </div>
                   </div>
                   <div class="order-status">
