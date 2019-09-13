@@ -66,6 +66,13 @@ body {
   }
 }
 
+.underline-hover {
+  color: inherit;
+  &:hover {
+    color: inherit;
+  }
+}
+
 // Colors
 .grey {
   color: #676767;

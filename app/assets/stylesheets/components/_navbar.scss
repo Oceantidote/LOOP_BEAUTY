@@ -458,18 +458,26 @@
 .item-added {
   position: absolute;
   z-index: 10;
-  background: #E0FFE0;
+  background: #FFF;
   width: 100%;
   padding: 5px 5px;
+  align-items: center;
   display: none;
   p {
-    color: #009000;
+    color: #000;
     margin: 0;
+    letter-spacing: 2px;
+    font-weight: 900;
+  }
+  i {
+    font-size: 30px;
+    color: #000;
+    margin-right: 5px;
   }
 }
 
 .item-added-show {
-  display: block !important;
+  display: flex !important;
 }
 
 .navbar-search-container {
@@ -483,6 +491,7 @@
   .form-group {
     margin: 0;
   }
+
 }
 
 .navbar-search-input {
@@ -498,6 +507,7 @@
     box-shadow: none;
     border-color: #000;
     color: #000;
+    outline: none;
   }
 }
 
