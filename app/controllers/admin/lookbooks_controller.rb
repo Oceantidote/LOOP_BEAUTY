@@ -11,6 +11,7 @@ class Admin::LookbooksController < ApplicationController
   end
 
   def reject
+    @lookbook.update(lookbook_params)
     @lookbook.reject!
     redirect_to admin_lookbooks_path
   end
@@ -21,6 +22,10 @@ class Admin::LookbooksController < ApplicationController
   end
 
   private
+
+  def lookbook_params
+    params.require(:lookbook).permit(:rejection_message)
+  end
 
   def set_lookbook
     @lookbook = Lookbook.friendly.find(params[:id])
