@@ -108,7 +108,7 @@
       margin-left: 4px !important;
     }
   }
-  input, textarea {
+  input, textarea, select {
     width: 288px !important;
     margin-left: 4px;
     @include for-phone-only {

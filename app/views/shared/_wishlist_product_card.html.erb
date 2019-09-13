@@ -3,7 +3,7 @@
     <% if @wishlist.wishlist_products.count == 0 %>
       <p class="medium-margin text-center boldest" style="width: 100%;">Your wishlist is empty</p>
       <div class="start-shopping-holder">
-        <%= link_to "START SHOPPING", products_path, class: "primary-button"  %>
+        <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
       </div>
     <% end %>
     <% @wishlist.wishlist_products.each do |wishlist_product| %>
