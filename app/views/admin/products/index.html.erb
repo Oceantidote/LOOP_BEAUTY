@@ -6,25 +6,10 @@
     <div class="dash-content-container">
     <h2 class="insider-info-title mlb-title text-center">All Products</h2>
     <hr>
-    <div class="row" style="width: 100%; margin: 0; padding: 30px;">
+    <%= render 'admin/products/admin_filter' %>
+    <div class="row" id="admin-cards-container" style="width: 100%; margin: 0; padding: 30px;">
       <% @products.each do |product| %>
-        <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
-          <div class="my-products-card">
-            <div class="my-products-image">
-              <%= image_tag url_for(product.shades.first.photos.first) %>
-            </div>
-            <div class="my-products-details text-center no-margin">
-              <p><%= product.title %></p>
-            </div>
-            <div class="my-products-price text-center boldest no-margin">
-              <%= humanized_money_with_symbol(product.price) %>
-            </div>
-            <div class="products-admin-options">
-              <%= link_to 'EDIT', edit_admin_product_path(product), class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'DELETE', admin_product_path(product), method: :delete, class: 'secondary-button products-admin-buttons' %>
-            </div>
-          </div>
-        </div>
+        <%= render 'admin/products/admin_product_card', product: product %>
       <% end %>
     </div>
     <%= link_to 'NEW PRODUCT', new_admin_product_path, class: 'primary-button products-admin-primary' %>
