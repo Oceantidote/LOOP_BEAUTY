@@ -5,12 +5,10 @@
     </div>
     <div class="dash-content-container">
       <h2 class="insider-info-title text-center">Insider Articles</h2>
-      <div class="row" style="margin: 30px 0;">
-        <% if @insider_articles.count == 0 %>
-          <p class="medium-margin text-center boldest" style="width: 100%;">There are no insider articles yet</p>
-        <% end %>
-        <%= render 'insider_articles', insider_articles: @insider_articles %>
-      </div>
+      <% if @insider_articles.count == 0 %>
+        <p class="medium-margin text-center boldest" style="width: 100%;">There are no insider articles yet</p>
+      <% end %>
+      <%= render 'insider_articles', insider_articles: @insider_articles %>
     </div>
   </div>
 </div>

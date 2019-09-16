@@ -125,9 +125,12 @@
 }
 
 .insider-home-articles-card-text {
-  margin-left: 10px;
-  @include for-small-devices-down {
-    margin-left: 70px;
+  margin-left: 50px;
+  @include for-medium-devices-up {
+    margin-left: 20px;
+  }
+  @include for-xlarge-devices-up {
+    margin-left: 40px;
   }
 }
 
