@@ -6,13 +6,9 @@ class Category < ApplicationRecord
     where(id: ids)
   end
 
-  def self.product_filter_labels_and_values(products, original, start)
+  def self.product_filter_labels_and_values(original)
     all.map do |category|
-      if start
-        [ category.id, "#{category.name} (#{original.where(category: category).size})" ]
-      else
-        [ category.id, "#{category.name} (#{original.filter({category: products.map(&:category_id).uniq << category.id}).size})" ]
-      end
+      [ category.id, "#{category.name} (#{original.where(category: category).size})" ]
     end
   end
 end
