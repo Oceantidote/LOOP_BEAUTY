@@ -10,11 +10,12 @@
   width: fit-content;
   font-weight: bold;
   box-shadow: inset 0 0 0 4px #000;
-  color: #000;
+  color: #000 !important;
+  cursor: pointer;
   &:hover {
     text-decoration: none;
     background: #000;
-    color: #FFF;
+    color: #FFF !important;
   }
 }
 .disabled {
