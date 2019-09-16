@@ -1,0 +1,17 @@
+<div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
+    <div class="my-products-card">
+    <div class="my-products-image">
+        <%= image_tag url_for(product.shades.first.photos.first) %>
+    </div>
+    <div class="my-products-details text-center no-margin">
+        <p><%= product.title %></p>
+    </div>
+    <div class="my-products-price text-center boldest no-margin">
+        <%= humanized_money_with_symbol(product.price) %>
+    </div>
+    <div class="products-admin-options">
+        <%= link_to 'EDIT', edit_admin_product_path(product), class: 'secondary-button products-admin-buttons' %>
+        <%= link_to 'DELETE', admin_product_path(product), method: :delete, class: 'secondary-button products-admin-buttons' %>
+    </div>
+    </div>
+</div>

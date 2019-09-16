@@ -1,0 +1,10 @@
+container = document.getElementById('admin-cards-container')
+
+while (container.firstChild) {
+    container.removeChild(container.firstChild)
+}
+
+<% @products.each do |product| %>
+    card = "<%= j render 'admin/products/admin_product_card', product: product %>" 
+    container.insertAdjacentHTML('beforeend', card)
+<% end %>

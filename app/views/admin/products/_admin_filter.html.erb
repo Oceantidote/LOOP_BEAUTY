@@ -1,0 +1,6 @@
+<div>
+    <%= simple_form_for :filter, method: :get, url: admin_products_path, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>
+        <%= f.input :category, collection: Category.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first, label_method: :last, checked: params[:filter] ? params[:filter][:category] : [] %>
+        <%= f.input :brand, collection: Brand.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
+    <% end %>
+</div>

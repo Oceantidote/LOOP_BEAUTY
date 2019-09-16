@@ -3,6 +3,11 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
+    @products = @products.filter(params[:filter].slice(:brand, :category)) if params[:filter].present?
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def new
