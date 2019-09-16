@@ -131,14 +131,17 @@
               <p class="medium-text boldest">Delivery Address</p>
               <% if @user.delivery_addresses.any? %>
                 <div id="deliveryAddress">
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.county %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.postcode %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.country %></p>
-                  <p>Input a different address</p>
-                  <button id="newDeliveryAddress">New</button>
+                  <% @user.addresses.where(delivery_address: true).to_a.each do |a| %>
+                    <div>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= a.street %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= a.country %></p>
+                    </div>
+                  <% end %>
                 </div>
+                <a class="secondary-button" id="newDeliveryAddress">Add a new address</a>
                 <div class="d-none" id="newDeliveryInput">
                   <%= simple_form_for @address do |f| %>
                     <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -150,11 +153,6 @@
                     <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
                   <% end %>
                 </div>
-                <p>Or use a saved address</p>
-                <% @user.addresses.to_a.each do |a| %>
-                  <a href="#"><%= a.street %></a>
-                <% end %>
-
               <% else %>
                 <%= simple_form_for @address do |f| %>
                   <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -176,8 +174,7 @@
                   <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.county %></p>
                   <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.postcode %></p>
                   <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.country %></p>
-                  <p>Input a different address</p>
-                  <button id="newBillingAddress">New</button>
+                  <a class="secondary-button" id="newBillingAddress">Add a new address</a>
                 </div>
                 <div class="d-none" id="newBillingInput">
                   <%= simple_form_for @address do |f| %>
@@ -190,10 +187,6 @@
                     <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
                   <% end %>
                 </div>
-                <p>Or use a saved address</p>
-                <% @user.addresses.to_a.each do |a| %>
-                  <a href="#"><%= a.street %></a>
-                <% end %>
               <% else %>
                 <%= simple_form_for @address do |f| %>
                   <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
