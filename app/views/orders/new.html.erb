@@ -131,7 +131,7 @@
               <p class="medium-text boldest">Delivery Address</p>
               <% if @user.delivery_addresses.any? %>
                 <div id="deliveryAddress">
-                  <% @user.addresses.where(delivery_address: true).to_a.each do |a| %>
+                  <% @user.delivery_addresses.each do |a| %>
                     <div>
                       <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
                       <p class="small-text grey boldest tiny-margin-bottom"><%= a.street %></p>
@@ -140,8 +140,8 @@
                       <p class="small-text grey boldest tiny-margin-bottom"><%= a.country %></p>
                     </div>
                   <% end %>
+                  <a class="secondary-button" id="newDeliveryAddress">Add a new address</a>
                 </div>
-                <a class="secondary-button" id="newDeliveryAddress">Add a new address</a>
                 <div class="d-none" id="newDeliveryInput">
                   <%= simple_form_for @address do |f| %>
                     <%= f.input :street, label: false, placeholder: 'Street', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -169,11 +169,15 @@
               <p class="medium-text boldest">Billing Address</p>
               <% if @user.billing_addresses.any? %>
                 <div id="billingAddress">
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.county %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.postcode %></p>
-                  <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.country %></p>
+                  <% @user.delivery_addresses.each do |a| %>
+                    <div>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.street %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.city %>, <%= @user.addresses.first.county %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.postcode %></p>
+                      <p class="small-text grey boldest tiny-margin-bottom"><%= @user.addresses.first.country %></p>
+                    </div>
+                  <% end %>
                   <a class="secondary-button" id="newBillingAddress">Add a new address</a>
                 </div>
                 <div class="d-none" id="newBillingInput">
