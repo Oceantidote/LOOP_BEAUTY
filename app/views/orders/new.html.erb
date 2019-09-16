@@ -29,7 +29,11 @@
               </div>
               <div class="basket-price small-margin-bottom">
                 <span class="small-text grey boldest no-margin">Delivery: </span>
-                <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                <% if @basket.basket_products.first.purchase_with_credit %>
+                  <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
+                <% else %>
+                  <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                <% end %>
               </div>
               <div class="basket-price">
                 <span class="grey boldest medium-text">Total: </span>
@@ -75,7 +79,11 @@
                   </div>
                   <div class="basket-price small-margin-bottom">
                     <span class="small-text grey boldest no-margin">Delivery: </span>
-                    <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                    <% if @basket.basket_products.first.purchase_with_credit %>
+                      <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
+                    <% else %>
+                      <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                    <% end %>
                   </div>
                   <div class="basket-price">
                     <span class="grey boldest medium-text">Total: </span>
@@ -86,32 +94,37 @@
             <% end %>
           </div>
           <p class="medium-text boldest small-margin-top">Delivery Option</p>
-          <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
-            <div class="checkout-checkbox">
-              <div class="checkout-checkbox-inner"></div>
+          <div class="delivery-container">
+            <% if @basket.basket_products.first.purchase_with_credit %>
+              <div class="delivery-disable"></div>
+            <% end %>
+            <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
+              <div class="checkout-checkbox">
+                <div class="checkout-checkbox-inner"></div>
+              </div>
+              <p class="boldest delivery-option-text no-margin">Standard</p>
+              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
+              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
             </div>
-            <p class="boldest delivery-option-text no-margin">Standard</p>
-            <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
-            <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
-          </div>
-          <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
-            <div class="checkout-checkbox">
-              <div></div>
+            <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
+              <div class="checkout-checkbox">
+                <div></div>
+              </div>
+              <p class="boldest delivery-option-text no-margin">Express</p>
+              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
+              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
             </div>
-            <p class="boldest delivery-option-text no-margin">Express</p>
-            <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
-            <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
-          </div>
-          <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
-            <div class="checkout-checkbox">
-              <div></div>
+            <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
+              <div class="checkout-checkbox">
+                <div></div>
+              </div>
+              <div>
+                <p class="boldest delivery-option-text no-margin">International</p>
+                <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
+              </div>
+              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
+              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
             </div>
-            <div>
-              <p class="boldest delivery-option-text no-margin">International</p>
-              <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
-            </div>
-            <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
-            <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address">
