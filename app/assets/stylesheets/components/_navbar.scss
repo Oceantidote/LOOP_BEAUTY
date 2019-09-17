@@ -346,6 +346,7 @@
   list-style: none;
   padding: 0;
   border-bottom: none;
+  border: 3px solid #000;
   a {
     @include absCenter;
     color: black;
