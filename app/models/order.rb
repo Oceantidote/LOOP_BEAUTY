@@ -13,6 +13,10 @@ class Order < ApplicationRecord
   monetize :credit_spent_cents
   monetize :delivery_cost_cents
 
+  def total_number_of_products
+    order_products.map(&:quantity).sum
+  end
+
   def subtotal
     Money.new total_price_cents
   end

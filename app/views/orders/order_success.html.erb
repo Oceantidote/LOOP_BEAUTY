@@ -9,25 +9,25 @@
       <%= render 'checkout_process' %>
       <hr>
       <div class="my-orders-container">
-        <p class="medium-text boldest">Your order has been completed successfully!</p>
-        <p class="medium-text boldest">Order details are listed below!</p>
+        <p class="medium-text boldest muli">Your order has been completed successfully!</p>
+        <p class="medium-text boldest muli">Order details are listed below!</p>
         <div class="order-show-info">
           <div class="order-show-info-left">
             <% if @order.credit_spent_cents > 0 %>
-              <p class="boldest s-medium-text no-margin">Total credits spent: <%= humanized_money_with_symbol @order.credit_spent %></p>
-              <p class="boldest s-medium-text no-margin">Remaining credits: <%= humanized_money_with_symbol @order.user.remaining_credit %></p>
+              <p class="boldest s-medium-text no-margin muli">Total credits spent: <%= humanized_money_with_symbol @order.credit_spent %></p>
+              <p class="boldest s-medium-text no-margin muli">Remaining credits: <%= humanized_money_with_symbol @order.user.remaining_credit %></p>
             <% else %>
-              <p class="boldest s-medium-text no-margin">Total: <%= humanized_money_with_symbol @order.total_price %></p>
+              <p class="boldest s-medium-text no-margin">Total: <%= humanized_money_with_symbol @order.total_with_delivery %></p>
             <% end %>
             <!-- <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p> -->
-             <p class="boldest s-medium-text no-margin">Delivery address:</p>
+             <p class="boldest s-medium-text no-margin muli">Delivery address:</p>
              <p class="small-text grey boldest tiny-margin-bottom"><%= @order.user.first_name %> <%= @order.user.last_name %></p>
              <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.street %></p>
              <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.city %>, <%= @order.delivery_address.postcode %></p>
           </div>
           <div class="order-show-info-right">
-            <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d-%m-%y') %></p>
-            <p class="boldest s-medium-text no-margin">No of items: <%= @order.products.count %></p>
+            <p class="boldest s-medium-text no-margin muli">Date: <%= @order.created_at.strftime('%d-%m-%y') %></p>
+            <p class="boldest s-medium-text no-margin muli">No of items: <%= @order.total_number_of_products %></p>
           </div>
         </div>
         <div class="row row-padding" style="width: 100%;">
@@ -39,7 +39,7 @@
                     <div class="my-order-details">
                       <%= image_tag url_for(order_product.product.shades.first.photos.first), class: "order-image" %>
                       <div class="order-details-text">
-                        <p class="boldest s-medium-text"><%= order_product.product.title %></p>
+                        <p class="boldest s-medium-text muli"><%= order_product.product.title %></p>
                         <p class="small-text"><%= order_product.shade.name %></p>
                         <p class="small-text">Quantity: <%= order_product.quantity %></p>
                       </div>
