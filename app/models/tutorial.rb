@@ -13,7 +13,8 @@ class Tutorial < ApplicationRecord
 
   def approve!
     code = gen_aff_code
-    update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: Rails.application.routes.url_helpers.tutorial_path(self, aff_code: code), publish_date: DateTime.now)
+    link =
+    update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: DateTime.now)
   end
 
   def reject!
@@ -55,6 +56,19 @@ class Tutorial < ApplicationRecord
       gen_aff_code
     else
       code
+    end
+  end
+
+  def gen_aff_link(code)
+    long_url = Rails.application.routes.url_helpers.tutorial_url(self, aff_code: code)
+    if Rails.env.development?
+      long_url
+    else
+      response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
+        title: title,
+        long_url: long_url
+      }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
+      JSON.parse(response.body)['link']
     end
   end
 end
