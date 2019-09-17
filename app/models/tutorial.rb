@@ -13,7 +13,6 @@ class Tutorial < ApplicationRecord
 
   def approve!
     code = gen_aff_code
-    link =
     update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: DateTime.now)
   end
 
