@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  before_action :set_user_and_address, only: [:create] # BEN WRIGHT CONFIRM PLEASE THANKS
   def index
     @orders = policy_scope(Order).where(user: current_user)
     authorize @orders
@@ -131,6 +131,11 @@ class OrdersController < ApplicationController
         }
       }
     }
+  end
+
+  def set_user_and_address # BEN WRIGHT CONFIRM PLEASE THANKS
+    @user = @basket.user
+    @address = Address.new
   end
 
   def order_params
