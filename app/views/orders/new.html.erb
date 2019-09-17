@@ -94,9 +94,13 @@
             <% end %>
           </div>
           <p class="medium-text boldest small-margin-top">Delivery Option</p>
+          <% if @basket.basket_products.first.purchase_with_credit %>
+            <h6 class="muli boldest s-medium-text">Free delivery on orders purchased with credit</h6>
+          <% end %>
           <div class="delivery-container">
             <% if @basket.basket_products.first.purchase_with_credit %>
-              <div class="delivery-disable"></div>
+              <div class="delivery-disable">
+              </div>
             <% end %>
             <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
               <div class="checkout-checkbox">

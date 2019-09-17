@@ -1,6 +1,17 @@
-<div>
-    <%= simple_form_for :filter, method: :get, url: admin_products_path, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>
-        <%= f.input :category, collection: Category.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first, label_method: :last, checked: params[:filter] ? params[:filter][:category] : [] %>
-        <%= f.input :brand, collection: Brand.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
-    <% end %>
-</div>
+<%= simple_form_for :filter, method: :get, url: admin_products_path, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>
+  <div class="partial-filters-container">
+    <div class="mobile-filters">
+      <p class="boldest no-margin">Filter</p>
+    </div>
+    <div class="partial-filters">
+      <div class="partial-filters_collection">
+        <h6>Category</h6>
+        <%= f.input :category, collection: Category.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:category] : [] %>
+        <div class="partial-filters_collection">
+          <h6>Brand</h6>
+          <%= f.input :brand, collection: Brand.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
