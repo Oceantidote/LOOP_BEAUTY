@@ -1,7 +1,7 @@
 cards = document.querySelectorAll('.card-image-results');
-cards.forEach(function(card) {
+cards.forEach((card) => {
   card.remove();
 });
-results = document.querySelector('.brand-header-section-container')
-results.nextElementSibling.remove()
-results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>")
+results = document.getElementById('brandsResults')
+document.getElementById('product-filter').remove()
+results.insertAdjacentHTML('beforeend', "<%= j render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>")
