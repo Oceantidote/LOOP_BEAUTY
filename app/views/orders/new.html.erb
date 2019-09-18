@@ -292,8 +292,6 @@
           </div>
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
-          <% elsif @user.addresses.where(delivery_address: true).length == 0 || @user.addresses.where(delivery_address: false).length == 0 %>
-            <%= f.submit 'CONFIRM ADRESSES', class: 'stripe-button stripe-button-el', id: "addressBtn" %>
           <% else %>
             <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el' %>
           <% end %>

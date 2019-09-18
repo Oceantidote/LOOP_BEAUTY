@@ -13,10 +13,12 @@ class AddressesController < ApplicationController
       @delivery_address = @address
       @billing_address = Address.new(delivery_address: false)
       render template: 'user/account_details'
-    else
+    elsif @address.billing_address
       @billing_address = @address
       @delivery_address = Address.new(delivery_address: true)
       render template: 'user/account_details'
+    else
+      flash[:error] = 'Please fill out all fields'
     end
   end
 
