@@ -83,6 +83,7 @@ class ApplicationController < ActionController::Base
     @brands = Brand.all.order(name: :ASC)
     @influencers = User.where(influencer: true).order(first_name: :ASC)
     @basket = find_basket
+    @products = Product.all
   end
 
   def store_aff_code

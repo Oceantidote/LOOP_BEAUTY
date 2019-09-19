@@ -136,7 +136,7 @@
         </div>
         <div class="modal fade" id="review_<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content loop-border">
               <%= link_to user_path(review.user), class: "review-modal-header" do %>
                 <div class="modal-insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
                 <h6 class="review-modal-influencer"><%= review.user.instagram %></h6>
@@ -247,6 +247,7 @@
     <% end %>
   </div>
 </div>
+
 <script>
 
   function myFunction(imgs) {

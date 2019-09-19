@@ -235,6 +235,13 @@
   padding: 6px 15px !important;
 }
 
+.full-width-phone {
+  @include for-small-devices-down {
+    width: auto;
+    margin: 0 10px;
+  }
+}
+
 .address-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -47,9 +47,22 @@
         <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
       </li>
     </div>
-    <li class="nav-item small-hidden">
-      <div class="nav-link search-icon-container">
-        <%= image_tag 'navbar-search.png' %>
+    <li class="nav-item small-hidden" style="position: relative;">
+      <div class="nav-link">
+        <%= image_tag 'navbar-search.png', id: 'navbar-search-close' %>
+        <div id="product_search" class="navbar-search-container">
+          <%= form_tag products_path, method: :get do |f| %>
+            <div style="display: flex; justify-content: center;">
+              <div>
+                <%= text_field_tag :query, params[:query], class: 'navbar-search-input didot', placeholder: 'Search for a product..', autocomplete: 'off' %>
+              </div>
+              <%#= button_tag(type: :submit, class: "button search-form-button") do %>
+                <%#= image_tag 'navbar-search-white.png' %>
+              <%# end %>
+            </div>
+            <div id="suggestions"></div>
+          <% end %>
+        </div>
       </div>
     </li>
     <li class="nav-item small-hidden">
@@ -231,16 +244,16 @@
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
 </div>
 
-<div class="navbar-search-container">
-  <%= form_tag products_path, method: :get do |f| %>
-    <div style="display: flex; justify-content: center;">
-      <%= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..', autocomplete: 'off' %>
-      <%= button_tag(type: :submit, class: "button search-form-button") do %>
-        <%= image_tag 'navbar-search-white.png' %>
-      <% end %>
+<!-- <div class="navbar-search-container">
+  <%#= form_tag products_path, method: :get do |f| %>
+    <div id= "search-data" style="display: flex; justify-content: center;" data-products="<%#= @products.to_json %>">
+      <%#= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..', autocomplete: 'off' %>
+      <%#= button_tag(type: :submit, class: "button search-form-button") do %>
+        <%#= image_tag 'navbar-search-white.png' %>
+      <%# end %>
     </div>
-  <% end %>
-</div>
+  <%# end %>
+</div> -->
 
 <script>
 
@@ -388,27 +401,51 @@
   // NAV SEARCH DROPDOWN
 
   navSearchDrop = document.querySelector('.navbar-search-container');
+  navSearchInput = document.querySelector('.navbar-search-input');
   searchIcon = document.querySelector('.search-icon-container');
+  suggestions = document.getElementById('suggestions');
+  navSearchClose = document.getElementById('navbar-search-close');
 
-  searchIcon.addEventListener('mouseover', function() {
-    if (window.scrollY > 40) {
-      navSearchDrop.style.top = '60px'
-    } else {
-      navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
-    }
+  // searchIcon.addEventListener('mouseover', function() {
+  //   if (window.scrollY > 40) {
+  //     navSearchDrop.style.top = '60px'
+  //   } else {
+  //     navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
+  //   }
+  // })
+  // searchIcon.addEventListener('mouseleave', function() {
+  //   navSearchDrop.style.top = '-40px'
+  // })
+  // navSearchDrop.addEventListener('mouseover', function() {
+  //   if (window.scrollY > 40) {
+  //     navSearchDrop.style.top = '60px'
+  //   } else {
+  //     navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
+  //   }
+  // })
+  // navSearchDrop.addEventListener('mouseleave', function() {
+  //   navSearchDrop.style.top = '-40px'
+  // })
+  // suggestions.addEventListener('mouseover', function() {
+  //   if (window.scrollY > 40) {
+  //     navSearchDrop.style.top = '60px'
+  //   } else {
+  //     navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
+  //   }
+  // })
+  // suggestions.addEventListener('mouseleave', function() {
+  //   navSearchDrop.style.top = '-40px'
+  // })
+
+  navSearchInput.addEventListener('focus', () => {
+    navSearchClose.style.zIndex = '110'
   })
-  searchIcon.addEventListener('mouseleave', function() {
-    navSearchDrop.style.top = '-40px'
-  })
-  navSearchDrop.addEventListener('mouseover', function() {
-    if (window.scrollY > 40) {
-      navSearchDrop.style.top = '60px'
-    } else {
-      navSearchDrop.style.top = `calc(100px - ${window.scrollY}px)`
-    }
-  })
-  navSearchDrop.addEventListener('mouseleave', function() {
-    navSearchDrop.style.top = '-40px'
+
+  navSearchInput.addEventListener('blur', () => {
+    navSearchClose.style.zIndex = '10'
+    setTimeout(function() {
+      suggestions.innerHTML = ''
+    }, 200)
   })
 
   // NAV SEARCH DROPDOWN

@@ -166,7 +166,7 @@
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.country %></p>
-                            <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-dismiss="modal">USE ADDRESS</button>
+                            <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-street="<%= a.street %>" data-dismiss="modal">USE ADDRESS</button>
                             </div>
                           </div>
                         <% end %>
@@ -180,12 +180,13 @@
               </div>
 
               <% if @user.delivery_addresses.any? %>
+                <p id="deliveryAddressShow" class="d-none"></p>
                 <div id="deliveryAddressButtons">
                   <a class="primary-checkout-button" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
-                  <a class="secondary-button" id="newDeliveryAddress">Add a new address</a>
+                  <a class="secondary-button full-width-phone" id="newDeliveryAddress">Add a new address</a>
                 </div>
                 <div class="d-none" id="newDeliveryInput">
-                  <%= simple_form_for @address do |f| %>
+                  <%= simple_form_for @address, remote: true do |f| %>
                     <%= f.input :street, label: false, placeholder: 'House Name/Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :street2, label: false, placeholder: 'Street Name', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -195,12 +196,12 @@
                     <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                     <div class="d-flex">
                       <a id="closeDeliveryInput" class="secondary-button secondary-checkout-button">Close</a>
-                      <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
+                      <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
                     </div>
                   <% end %>
                 </div>
               <% else %>
-                <%= simple_form_for @address do |f| %>
+                <%= simple_form_for @address, remote: true do |f| %>
                   <%= f.input :street, label: false, placeholder: 'House Name/Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :street2, label: false, placeholder: 'Street Name', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -235,7 +236,7 @@
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.country %></p>
-                              <button class="billing-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-dismiss="modal">USE ADDRESS</button>
+                              <button class="billing-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-street="<%= a.street %>" data-dismiss="modal">USE ADDRESS</button>
                             </div>
                           </div>
                         <% end %>
@@ -249,12 +250,13 @@
               </div>
 
               <% if @user.billing_addresses.any? %>
+                <p id="billingAddressShow" class="d-none"></p>
                 <div id="billingAddressButtons">
                   <a class="primary-checkout-button" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
-                  <a class="secondary-button" id="newBillingAddress">Add a new address</a>
+                  <a class="secondary-button full-width-phone" id="newBillingAddress">Add a new address</a>
                 </div>
                 <div class="d-none" id="newBillingInput">
-                  <%= simple_form_for @address do |f| %>
+                  <%= simple_form_for @address, remote: true do |f| %>
                     <%= f.input :street, label: false, placeholder: 'House Name/Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :street2, label: false, placeholder: 'Street Name', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -269,7 +271,7 @@
                   <% end %>
                 </div>
               <% else %>
-                <%= simple_form_for @address do |f| %>
+                <%= simple_form_for @address, remote: true do |f| %>
                   <%= f.input :street, label: false, placeholder: 'House Name/Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :street2, label: false, placeholder: 'Street Name', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -293,8 +295,6 @@
           <script src="https://js.stripe.com/v3/"></script>
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
-          <% elsif @user.addresses.where(delivery_address: true).length == 0 || @user.addresses.where(delivery_address: false).length == 0 %>
-            <%= f.submit 'CONFIRM ADDRESSES', class: 'stripe-button stripe-button-el', id: "addressBtn" %>
           <% else %>
             <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el' %>
           <% end %>
@@ -303,62 +303,3 @@
     </div>
   </div>
 </div>
-
-<script>
-const addressBtn = document.getElementById('addressBtn')
-const deliveryBtn = document.getElementById('deliveryBtn')
-const billingBtn = document.getElementById('billingBtn')
-
-const newBillingInput = document.getElementById('newBillingInput')
-const newBilling = document.getElementById('newBillingAddress')
-const newDeliveryInput = document.getElementById('newDeliveryInput')
-const newDelivery = document.getElementById('newDeliveryAddress')
-const billingButtons = document.getElementById('billingAddressButtons')
-const deliveryButtons = document.getElementById('deliveryAddressButtons')
-const closeDelivery = document.getElementById('closeDeliveryInput')
-const closeBilling = document.getElementById('closeBillingInput')
-
-const deliveryHolder = document.getElementById('deliveryHolder')
-const savedDeliveryAddresses = document.querySelectorAll('.delivery-address-selector')
-const billingHolder = document.getElementById('billingHolder')
-const savedBillingAddresses = document.querySelectorAll('.billing-address-selector')
-
-  savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
-    deliveryHolder.value = a.id;
-    console.log(deliveryHolder)
-  }))
-
-  savedBillingAddresses.forEach(a => a.addEventListener('click', () => {
-    billingHolder.value = a.id;
-    console.log(billingHolder)
-  }))
-
-  if (addressBtn) {
-    addressBtn.addEventListener('click', (event) => {
-      deliveryBtn.click();
-      billingBtn.click();
-    })
-  }
-
-  newDelivery.addEventListener('click', () => {
-    newDeliveryInput.classList.remove('d-none')
-    console.log('test')
-    deliveryButtons.classList.add('d-none')
-  })
-
-  closeDelivery.addEventListener('click', () => {
-    newDeliveryInput.classList.add('d-none')
-    deliveryButtons.classList.remove('d-none')
-  })
-
-  newBilling.addEventListener('click', () => {
-    newBillingInput.classList.remove('d-none')
-    console.log('test')
-    billingButtons.classList.add('d-none')
-  })
-
-  closeBilling.addEventListener('click', () => {
-    newBillingInput.classList.add('d-none')
-    billingButtons.classList.remove('d-none')
-  })
-</script>

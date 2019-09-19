@@ -22,7 +22,7 @@
 .navbar-lewagon {
   font-family: $menu-font;
   justify-content: space-between;
-  background: white;
+  background: #FFF;
   // border-bottom: 1px solid #ececec;
   padding: 0 16px;
   height: 60px;
@@ -336,6 +336,7 @@
   border-top: none;
   border-right: none;
   border-radius: 0 0 0 2px;
+  right: 15px;
 }
 
 .dropdown-toggle {
@@ -482,34 +483,58 @@
 }
 
 .navbar-search-container {
-  position: fixed;
-  right: 105px;
-  top: -40px;
+  position: absolute;
+  right: 7px;
+  top: 9px; // ALIGNS CORRECTLY ON HEROKU BUT NOT ON LOCALHOST
+  // top: -40px;
   z-index: 99;
-  background: white;
+  background: #FFF;
   transition: all 1s ease;
   transition-delay: .25s;
+  // width: 312px;
   .form-group {
     margin: 0;
   }
-
 }
 
 .navbar-search-input {
-  background: transparent;
-  border: 3px solid black;
-  height: 38px;
+  background: #FFF;
+  border: none;
+  border-bottom: 3px solid transparent;
+  height: 28px;
   border-radius: 0;
-  width: 275px;
+  // width: 275px;
+  width: 0;
   padding-left: 5px;
+  padding-right: 25px;
   font-family: 'Muli', sans-serif;
-  background: #FCFCFC;
+  // background: #FCFCFC;
+  background: asset_url("navbar-search.png");
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: right;
+  transition: all .5s ease;
+  transition-delay: 0.2s;
+  cursor: pointer;
   &:focus {
     box-shadow: none;
-    border-color: #000;
+    border-bottom: 3px solid #000;
     color: #000;
     outline: none;
+    cursor: inherit;
+    width: 312px;
   }
+}
+
+
+
+#navbar-search-close {
+  position: relative;
+  background: #FFF;
+  // top: -1px;
+  right: -1px;
+  cursor: pointer;
 }
 
 .navbar-search-input::placeholder {
@@ -533,6 +558,29 @@
   &:focus {
     outline: none;
   }
+}
+
+#suggestions-box {
+  border: 3px solid #000;
+  border-top: none;
+  max-height: 500px;
+  overflow: scroll;
+}
+
+.autocomplete_suggestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  &:hover {
+    background: rgba(0,0,0,0.05);
+  }
+}
+
+.autocomplete-image {
+  height: 80px !important;
+  width: auto !important;
 }
 
 @keyframes basket-bounce {

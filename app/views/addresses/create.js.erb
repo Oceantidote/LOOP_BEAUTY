@@ -1,0 +1,15 @@
+if(<%= @address.delivery_address %> == true) {
+  deliveryHolder.value = <%= @address.user.delivery_addresses.last.id %>
+  deliveryAddressShow.innerHTML = <%= @address.user.delivery_addresses.last.street %>
+  deliveryAddressShow.classList.remove('d-none')
+  newDeliveryInput.classList.add('d-none')
+  const deliveryButtons = document.getElementById('deliveryAddressButtons')
+  deliveryButtons.classList.remove('d-none')
+} else {
+  billingHolder.value = <%= @address.user.billing_addresses.last.id %>
+  billingAddressShow.innerHTML = <%= @address.user.billing_addresses.last.street %>
+  billingAddressShow.classList.remove('d-none')
+  newBillingInput.classList.add('d-none')
+  const billingButtons = document.getElementById('billingAddressButtons')
+  billingButtons.classList.remove('d-none')
+}

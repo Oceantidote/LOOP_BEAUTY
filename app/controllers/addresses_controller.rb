@@ -5,15 +5,20 @@ class AddressesController < ApplicationController
     authorize @address
     @address.user = current_user
     if @address.save
-      redirect_back fallback_location: user_account_details_path(current_user)
+      respond_to do |format|
+        format.html { redirect_back fallback_location: user_account_details_path(current_user) }
+        format.js
+      end
     elsif @address.delivery_address
       @delivery_address = @address
       @billing_address = Address.new(delivery_address: false)
       render template: 'user/account_details'
-    else
+    elsif @address.billing_address
       @billing_address = @address
       @delivery_address = Address.new(delivery_address: true)
       render template: 'user/account_details'
+    else
+      flash[:error] = 'Please fill out all fields'
     end
   end
 

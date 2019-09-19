@@ -13,6 +13,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def search_products?
+    true
+  end
+
   def my_product?
     true
   end

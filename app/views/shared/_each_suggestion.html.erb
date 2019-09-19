@@ -1,0 +1,15 @@
+<% if products.count > 0 %>
+  <div id="suggestions-box">
+    <% products.each do |product| %>
+      <%= link_to product_path(product), class: 'suggestion no-decoration' do %>
+        <div class="autocomplete_suggestion">
+          <%= image_tag url_for(product.shades.first.photos.first), class: "autocomplete-image" %>
+          <div style="flex: 1; margin-left: 10px;">
+            <p class="no-margin boldest small-text" style="max-width: 165px;"><%= product.title %></p>
+          </div>
+          <p class="no-margin boldest small-text"><%= humanized_money_with_symbol product.price %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

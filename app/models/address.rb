@@ -1,6 +1,12 @@
 class Address < ApplicationRecord
   belongs_to :user
   after_save :update_default_address
+  validates :street, presence: true
+  validates :street2, presence: true
+  validates :city, presence: true
+  validates :county, presence: true
+  validates :postcode, presence: true
+  validates :country, presence: true
 
   def update_default_address
     if self.default_address == true

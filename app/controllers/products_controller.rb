@@ -26,6 +26,19 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search_products
+    # if params[:input].present?
+      @search_products = policy_scope(Product).where(published: true).global_search(params[:input])
+    # else
+    #   @search_products = policy_scope(Product).where(published: true)
+    # end
+    @query = params[:input]
+    authorize @search_products
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @product = Product.friendly.find(params[:id])
     authorize @product
