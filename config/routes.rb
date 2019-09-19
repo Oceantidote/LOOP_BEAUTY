@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage'
   get '/contact_us', to: 'pages#contact_us'
+  get '/search_products', to: 'products#search_products'
   # TEMP ROUTES FOR INSIDER
   get '/dashboard', to: 'pages#dashboard'
   get '/insider', to: 'pages#insider'
