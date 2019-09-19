@@ -484,8 +484,8 @@
 
 .navbar-search-container {
   position: absolute;
-  right: 0;
-  top: 6px;
+  right: 7px;
+  top: 7px;
   // top: -40px;
   z-index: 99;
   background: #FFF;
@@ -501,7 +501,7 @@
   background: #FFF;
   border: none;
   border-bottom: 3px solid transparent;
-  height: 32px;
+  height: 28px;
   border-radius: 0;
   // width: 275px;
   width: 0;
@@ -516,13 +516,23 @@
   float: right;
   transition: all .5s ease;
   transition-delay: 0.2s;
+  cursor: pointer;
   &:focus {
     box-shadow: none;
     border-bottom: 3px solid #000;
     color: #000;
     outline: none;
     width: 312px;
+    cursor: inherit;
   }
+}
+
+#navbar-search-close {
+  position: relative;
+  background: #FFF;
+  top: -1px;
+  right: -1px;
+  cursor: pointer;
 }
 
 .navbar-search-input::placeholder {

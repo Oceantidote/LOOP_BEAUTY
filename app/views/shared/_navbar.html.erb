@@ -49,7 +49,7 @@
     </div>
     <li class="nav-item small-hidden" style="position: relative;">
       <div class="nav-link">
-        <div style="height: 25px; width: 25px;"></div>
+        <%= image_tag 'navbar-search.png', id: 'navbar-search-close' %>
         <div id="product_search" class="navbar-search-container">
           <%= form_tag products_path, method: :get do |f| %>
             <div style="display: flex; justify-content: center;">
@@ -404,6 +404,7 @@
   navSearchInput = document.querySelector('.navbar-search-input');
   searchIcon = document.querySelector('.search-icon-container');
   suggestions = document.getElementById('suggestions');
+  navSearchClose = document.getElementById('navbar-search-close');
 
   // searchIcon.addEventListener('mouseover', function() {
   //   if (window.scrollY > 40) {
@@ -436,7 +437,12 @@
   //   navSearchDrop.style.top = '-40px'
   // })
 
+  navSearchInput.addEventListener('focus', () => {
+    navSearchClose.style.zIndex = '110'
+  })
+
   navSearchInput.addEventListener('blur', () => {
+    navSearchClose.style.zIndex = '10'
     setTimeout(function() {
       suggestions.innerHTML = ''
     }, 200)
