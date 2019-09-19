@@ -25,8 +25,14 @@
             <div class="checkout-total-container">
               <div class="basket-price">
                 <span class="small-text grey boldest">Subtotal: </span>
-                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
               </div>
+              <% if @basket.discount_code.present? %>
+                <div class="basket-price">
+                  <span class="small-text grey boldest">Discount: </span>
+                  <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                </div>
+              <% end %>
               <div class="basket-price small-margin-bottom">
                 <span class="small-text grey boldest no-margin">Delivery: </span>
                 <% if @basket.basket_products.first.purchase_with_credit %>
@@ -75,8 +81,14 @@
                 <div class="checkout-total-container">
                   <div class="basket-price">
                     <span class="small-text grey boldest">Subtotal: </span>
-                    <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.total_price %></h5>
+                    <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
                   </div>
+                  <% if @basket.discount_code.present? %>
+                    <div class="basket-price">
+                      <span class="small-text grey boldest">Discount: </span>
+                      <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                    </div>
+                  <% end %>
                   <div class="basket-price small-margin-bottom">
                     <span class="small-text grey boldest no-margin">Delivery: </span>
                     <% if @basket.basket_products.first.purchase_with_credit %>
@@ -273,23 +285,14 @@
             </div>
           </div>
         </div>
-        <script src="https://checkout.stripe.com/checkout.js"></script>
-        <%= simple_form_for @order, html: {
-          'data-email': current_user.email,
-          'data-description': "#{current_user.first_name}'s order from Loop Beauty",
-          'data-amount': @basket.total_price_cents + 595,
-          'data-currency': @basket.total_price.currency
-        } do |f| %>
+        <%= simple_form_for @order, remote: true do |f| %>
           <div class="checkout-mobile">
-              <%= f.input :delivery_address_id, as: :hidden, input_html: { id: "deliveryHolder", value: current_user&.delivery_addresses&.last&.id } %>
-              <%= f.input :billing_address_id, as: :hidden, input_html: { id: "billingHolder", value: current_user&.billing_addresses&.last&.id } %>
-              <%= f.input :delivery_type, as: :hidden, input_html: { value: 'standard' } %>
-              <%= f.fields_for :stripe do |s| %>
-                <%= s.input :stripe_email, as: :hidden %>
-                <%= s.input :stripe_token, as: :hidden %>
-              <% end %>
-              <%= f.input :phone_number, input_html: { value: "#{current_user&.phone_number ? current_user.phone_number : '' }", class: "contact-form-input checkout-mobile-input" }  %>
+            <%= f.input :delivery_address_id, as: :hidden, input_html: { id: "deliveryHolder", value: current_user&.delivery_addresses&.last&.id } %>
+            <%= f.input :billing_address_id, as: :hidden, input_html: { id: "billingHolder", value: current_user&.billing_addresses&.last&.id } %>
+            <%= f.input :delivery_type, as: :hidden, input_html: { value: 'standard' } %>
+            <%= f.input :phone_number, input_html: { value: "#{current_user&.phone_number ? current_user.phone_number : '' }", class: "contact-form-input checkout-mobile-input" }  %>
           </div>
+          <script src="https://js.stripe.com/v3/"></script>
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% else %>

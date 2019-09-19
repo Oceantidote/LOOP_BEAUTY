@@ -55,12 +55,30 @@ class Basket < ApplicationRecord
     credit_spent > 0 ? subtotal_cents_in(currency) - credit_spent : subtotal_cents_in(currency)
   end
 
+  def unadjusted_price
+    Money.new unadjusted_price_cents
+  end
+  
+  def unadjusted_price_cents
+    basket_products.map(&:unadjusted_price_cents).sum
+  end
+
+  def unadjusted_price_in(currency)
+    info = ExchangeRate.find_by_currency(currency)
+    return unadjusted_price unless info
+    Money.new unadjusted_price_cents_in(currency), info.currency_code
+  end
+
+  def unadjusted_price_cents_in(currency)
+    basket_products.map { |item| item.unadjusted_price_cents_in(currency) }.sum
+  end
+
   def money_off
     Money.new money_off_cents
   end
 
   def money_off_cents
-    total_price_cents * (discount_code.discount / 100.to_f)
+    unadjusted_price_cents - total_price_cents
   end
 
   def money_off_in(currency)
@@ -70,25 +88,7 @@ class Basket < ApplicationRecord
   end
 
   def money_off_cents_in(currency)
-    total_price_cents_in(currency) * (discount_code.discount / 100.to_f)
-  end
-
-  def discounted_price
-    Money.new discounted_price_cents
-  end
-
-  def discounted_price_cents
-    total_price_cents - money_off_cents
-  end
-
-  def discounted_price_in(currency)
-    info = ExchangeRate.find_by_currency(currency)
-    return discounted_price unless info
-    Money.new discounted_price_cents_in(currency), info.currency_code
-  end
-
-  def discounted_price_cents_in(currency)
-    total_price_cents_in(currency) - money_off_cents_in(currency)
+    unadjusted_price_cents_in(currency) - total_price_cents_in(currency)
   end
 
   def money_off_from_credit
