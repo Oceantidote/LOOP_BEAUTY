@@ -3,7 +3,7 @@ $('#query').keyup(function() {
   let query = document.getElementById('query').value
   console.log("Hi, I'm in autocomplete")
   $.ajax({
-      url: "http://localhost:3000/search_products",
+      url: "https://infinite-journey-41892.herokuapp.com/search_products",
       type: "GET",
       data: { input : query }
   })
@@ -38,4 +38,3 @@ $('#query').keyup(function() {
 //     }
 //   });
 // }
-
