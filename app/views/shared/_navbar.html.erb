@@ -438,7 +438,9 @@
   // })
 
   navSearchInput.addEventListener('blur', () => {
-    suggestions.innerHTML = ''
+    setTimeout(function() {
+      suggestions.innerHTML = ''
+    }, 200)
   })
 
   // NAV SEARCH DROPDOWN
