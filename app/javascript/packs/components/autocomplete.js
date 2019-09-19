@@ -3,7 +3,7 @@ $('#query').keyup(function() {
   let query = document.getElementById('query').value
   console.log("Hi, I'm in autocomplete")
   $.ajax({
-      url: "search_products",
+      url: "http://localhost:3000/search_products",
       type: "GET",
       data: { input : query }
   })
