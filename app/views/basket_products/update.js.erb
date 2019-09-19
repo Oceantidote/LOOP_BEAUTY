@@ -2,7 +2,7 @@ document.querySelector('.basket-item-count').innerText = '<%= @basket.total_numb
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
 subtotals = document.querySelectorAll('.basket-total-price')
 subtotals.forEach(total => {
-  total.innerHTML = "<%= humanized_money_with_symbol @item.basket.subtotal %>"
+  total.innerHTML = "<%= humanized_money_with_symbol @item.basket.unadjusted_price %>"
 })
 total = document.querySelector('.shopping-bag-continue-checkout-total > p')
 if (total) {

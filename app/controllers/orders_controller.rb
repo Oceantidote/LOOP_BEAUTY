@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_user_and_address, only: [:create] # BEN WRIGHT CONFIRM PLEASE THANKS
+  skip_before_action :check_for_empty_orders, only: [:order_success]
   def index
     @orders = policy_scope(Order).where(user: current_user)
     authorize @orders
@@ -24,41 +25,32 @@ class OrdersController < ApplicationController
       @order.affiliation = affiliation
       session[:aff_code] = nil
     end
-    unless @basket.total_price <= 0
-      stripe_user = find_stripe_user(order_params[:stripe][:stripe_email], order_params[:stripe][:stripe_token])
-      charge = Stripe::Charge.create(
-        customer: stripe_user.id,
-        amount: @basket.total_price_cents + @order.delivery_cost_cents,
-        currency: @basket.total_price.currency
-        )
-      @order.stripe_id = charge.id
+    unless @order.save
+      flash[:notice] = 'ERROR!'
+      render :new and return
     end
-    @order.credit_spent = @basket.money_off_from_credit
-    if @order.save
-      unless @basket.subtotal - @order.credit_spent <= 0
-        Stripe::Charge.update(
-          charge.id,
-          {
-            description: "Payment for order #{@order.id} from #{current_user.email}"
-          }
-        )
+    if @basket.total_price > 0
+
+      items = @basket.basket_products.map do |item|
+        {
+          name: item.shade.name.present? ? item.shade.name : item.product.title,
+          amount: item.individual_price_cents,
+          currency: 'gbp',
+          quantity: item.quantity
+        }
       end
-      @basket.basket_products.each do |item|
-        order_product = item.convert_to_order_product
-        order_product.order = @order
-        order_product.save
-      end
-      @basket.empty!
-      submit_order
-      # redirect_to order_path(@order)
-      redirect_to order_order_success_path(@order)
+      items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: 'gbp', quantity: 1}
+      @session = Stripe::Checkout::Session.create({
+        payment_method_types: ['card'],
+        line_items: items,
+        success_url: order_order_success_url(@order),
+        cancel_url: checkout_url,
+        customer_email: current_user.email,
+
+      })
     else
-      flash[:error] = 'Error!'
-      render :new
+      redirect_to order_order_success_path(@order)
     end
-  rescue Stripe::CardError => e
-    flash[:alert] = e.message
-    redirect_to checkout_path
   end
 
   def show
@@ -68,6 +60,14 @@ class OrdersController < ApplicationController
 
   def order_success
     @order = Order.find(params[:order_id])
+    @order.credit_spent = @basket.money_off_from_credit
+    @basket.basket_products.each do |item|
+      order_product = item.convert_to_order_product
+      order_product.order = @order
+      order_product.save
+    end
+    @basket.empty!
+    submit_order
     @user = @order.user
     authorize @order
   end
@@ -76,9 +76,7 @@ class OrdersController < ApplicationController
 
   def submit_order
     items = @order.order_products.map do |item|
-      if @order.discount_code.present?
-        price = (item.product.price_cents * (1 - @order.discount_code.discount * 0.01)) / 100.to_f
-      elsif item.purchase_with_credit
+      if item.purchase_with_credit
         price = 0
       else
         price = item.product.price_cents / 100.to_f

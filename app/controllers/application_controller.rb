@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_navbar_variables
   before_action :store_aff_code
+  before_action :check_for_empty_orders
   include Pundit
   @influencers = User.where(influencer: true).where(published: true)
   # Pundit: white-list approach.
@@ -90,5 +91,10 @@ class ApplicationController < ActionController::Base
       model = Lookbook.find_by_affiliate_code(params[:aff_code]).nil? ? Tutorial.find_by_affiliate_code(params[:aff_code]) : Lookbook.find_by_affiliate_code(params[:aff_code])
       model.increment!(:visits)
     end
+  end
+
+  def check_for_empty_orders
+    return unless current_user.present?
+    current_user.orders.includes(:order_products).where(order_products: { order_id: nil }).destroy_all
   end
 end
