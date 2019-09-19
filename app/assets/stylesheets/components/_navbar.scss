@@ -485,7 +485,7 @@
 .navbar-search-container {
   position: absolute;
   right: 7px;
-  top: 7px;
+  top: 8px;
   // top: -40px;
   z-index: 99;
   background: #FFF;
@@ -522,15 +522,17 @@
     border-bottom: 3px solid #000;
     color: #000;
     outline: none;
-    width: 312px;
     cursor: inherit;
+    width: 312px;
   }
 }
+
+
 
 #navbar-search-close {
   position: relative;
   background: #FFF;
-  top: -1px;
+  // top: -1px;
   right: -1px;
   cursor: pointer;
 }
@@ -569,7 +571,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
+  padding-right: 10px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   &:hover {
     background: rgba(0,0,0,0.05);
