@@ -3,7 +3,7 @@
     <% products.each do |product| %>
       <%= link_to product_path(product), class: 'suggestion no-decoration' do %>
         <div class="autocomplete_suggestion">
-          <%= image_tag product.shades.first.photos.first, height: 80 %>
+          <%= image_tag product.shades.first.photos.first, class: "autocomplete-image" %>
           <div style="flex: 1; margin-left: 15px;">
             <p class="no-margin boldest small-text truncate-text"><%= product.title %></p>
           </div>
