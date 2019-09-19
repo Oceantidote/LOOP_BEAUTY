@@ -47,9 +47,22 @@
         <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
       </li>
     </div>
-    <li class="nav-item small-hidden">
-      <div class="nav-link search-icon-container">
-        <%= image_tag 'navbar-search.png' %>
+    <li class="nav-item small-hidden" style="position: relative;">
+      <div class="nav-link">
+        <div style="height: 25px; width: 25px;"></div>
+        <div id="product_search" class="navbar-search-container">
+          <%= form_tag products_path, method: :get do |f| %>
+            <div style="display: flex; justify-content: center;">
+              <div>
+                <%= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..', autocomplete: 'off' %>
+              </div>
+              <%#= button_tag(type: :submit, class: "button search-form-button") do %>
+                <%#= image_tag 'navbar-search-white.png' %>
+              <%# end %>
+            </div>
+            <div id="suggestions"></div>
+          <% end %>
+        </div>
       </div>
     </li>
     <li class="nav-item small-hidden">
@@ -229,20 +242,6 @@
     <p class="s-medium-text basket-total-price"><%= humanized_money_with_symbol @basket.total_price %></p>
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
-</div>
-
-<div id="product_search" class="navbar-search-container">
-  <%= form_tag products_path, method: :get do |f| %>
-    <div style="display: flex; justify-content: center;">
-      <div>
-        <%= text_field_tag :query, params[:query], class: 'navbar-search-input', placeholder: 'Search for a product..', autocomplete: 'off' %>
-      </div>
-      <%= button_tag(type: :submit, class: "button search-form-button") do %>
-        <%= image_tag 'navbar-search-white.png' %>
-      <% end %>
-    </div>
-    <div id="suggestions"></div>
-  <% end %>
 </div>
 
 <!-- <div class="navbar-search-container">
