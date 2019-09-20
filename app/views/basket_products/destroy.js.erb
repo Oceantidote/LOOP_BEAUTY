@@ -13,11 +13,11 @@ if (total) {
   total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
 }
 if (<%= @basket.empty? %>) {
+  document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="medium-margin text-center boldest">Your basket is empty</p>'
   if (<%= params[:controller] == 'baskets' && params[:action] == 'show' %>) {
     checkout.classList.add("disabled")
     discount.classList.add("disabled")
   }
-  document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="medium-margin text-center boldest">Your basket is empty</p>'
 }
 containers.forEach(container => container.remove())
 

@@ -145,23 +145,19 @@
           <div class="checkout-addresses-container">
             <div class="checkout-address">
               <p class="medium-text boldest">Delivery Address</p>
-
               <!-- Delivery Adress Modal -->
               <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
+                  <div class="modal-content loop-border">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Choose a delivery adress</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                      <h5 class="modal-title muli boldest" id="exampleModalLabel">Choose a delivery adress</h5>
                     </div>
                     <div class="modal-body">
                       <div class="address-grid">
                         <% @user.delivery_addresses.each do |a| %>
                           <div class="address-grid-card-holder">
                             <div class="address-grid-card">
-                            <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                            <p class="small-text boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.street %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
@@ -173,7 +169,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary small-text" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -182,8 +178,8 @@
               <% if @user.delivery_addresses.any? %>
                 <p id="deliveryAddressShow" class="d-none"></p>
                 <div id="deliveryAddressButtons">
-                  <a class="primary-checkout-button" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
-                  <a class="secondary-button full-width-phone" id="newDeliveryAddress">Add a new address</a>
+                  <a class="primary-checkout-button small-text" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">CHOOSE AN ADDRESS</a>
+                  <a class="secondary-button full-width-phone small-text" id="newDeliveryAddress">ADD A NEW ADDRESS</a>
                 </div>
                 <div class="d-none" id="newDeliveryInput">
                   <%= simple_form_for @address, remote: true do |f| %>
@@ -219,19 +215,16 @@
               <!-- Billing Adress Modal -->
               <div class="modal fade" id="billingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
+                  <div class="modal-content loop-border">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Choose a Billing adress</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                      <h5 class="modal-title boldest muli" id="exampleModalLabel">Choose a Billing adress</h5>
                     </div>
                     <div class="modal-body">
                       <div class="address-grid">
                         <% @user.billing_addresses.each do |a| %>
                           <div class="address-grid-card-holder">
                             <div class="address-grid-card">
-                              <p class="small-text grey boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
+                              <p class="small-text boldest tiny-margin-bottom"><%= @user.first_name %> <%= @user.last_name %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.street %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
@@ -243,7 +236,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary small-text" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -252,8 +245,8 @@
               <% if @user.billing_addresses.any? %>
                 <p id="billingAddressShow" class="d-none"></p>
                 <div id="billingAddressButtons">
-                  <a class="primary-checkout-button" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
-                  <a class="secondary-button full-width-phone" id="newBillingAddress">Add a new address</a>
+                  <a class="primary-checkout-button small-text" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">CHOOSE AN ADDRESS</a>
+                  <a class="secondary-button full-width-phone small-text" id="newBillingAddress">ADD A NEW ADDRESS</a>
                 </div>
                 <div class="d-none" id="newBillingInput">
                   <%= simple_form_for @address, remote: true do |f| %>

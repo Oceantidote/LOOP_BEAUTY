@@ -11,6 +11,9 @@
     <hr style="border-color: #CFCFCF;">
     <% if @basket.products.count == 0 %>
       <p class="large-margin text-center boldest">Your basket is empty</p>
+      <div class="start-shopping-holder">
+        <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+      </div>
       <hr style="border-color: #CFCFCF;">
     <% end %>
     <% @basket.basket_products.each do |item| %>
