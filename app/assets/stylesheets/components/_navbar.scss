@@ -43,6 +43,12 @@
   }
 }
 
+.nav-link {
+  @include for-small-devices-up {
+    padding: 8px !important;
+  }
+}
+
 .nav-item {
   display: flex;
   @include for-medium-devices-down {
@@ -61,6 +67,13 @@
   }
   img {
     width: 25px;
+  }
+}
+
+.navbar-nav {
+  flex-direction: row;
+  .dropdown-menu {
+      position: absolute;
   }
 }
 
