@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    @query = params[:query]
     if params[:query].present?
       @products = policy_scope(Product).where(published: true).global_search(params[:query])
       @original = policy_scope(Product).global_search(params[:query])

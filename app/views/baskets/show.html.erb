@@ -20,18 +20,23 @@
     <% end %>
     <div class="shopping-bag-checkout">
       <div class="shopping-bag-code">
-        <p class="boldest small-text tiny-margin-bottom">Promotional code</p>
-        <%= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
-          <%= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
-          <div class="discount-message"></div>
-          <% if @basket.basket_products.count == 0 %>
-            <div class="primary-button discount-code-button disabled" style="width: 98px;">APPLY</div>
-          <% elsif @basket.discount_code.nil? %>
-            <%= f.submit 'APPLY', class: "primary-button discount-code-button", id: "discount-apply"  %>
-          <% else %>
-            <%= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>
-          <% end %>
-        <% end %>
+        <!-- <p class="boldest small-text tiny-margin-bottom">Promotional code</p> -->
+        <%#= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
+          <%# if @basket.discount_code %>
+            <%#= f.input :discount_code, label: false, placeholder: 'Enter code', disabled: true, input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
+          <%# else %>
+            <%#= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
+          <%# end %>
+          <!-- <div class="discount-message"></div> -->
+          <%# if @basket.basket_products.count == 0 %>
+            <!-- <div class="primary-button discount-code-button disabled" style="width: 98px;">APPLY</div> -->
+          <%# elsif @basket.discount_code.nil? %>
+            <%#= f.submit 'APPLY', class: "primary-button discount-code-button", id: "discount-apply"  %>
+          <%# else %>
+            <%#= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>
+          <%# end %>
+        <%# end %>
+        <%= render 'form', basket: @basket %>
       </div>
       <div class="shopping-bag-continue-checkout">
         <p class="boldest grey-font text-right small-text no-margin">Subtotal: <span class="basket-total-price" ><%= humanized_money_with_symbol @basket.subtotal %></span></p>
