@@ -57,4 +57,14 @@
   </div>
 </div>
 
+<script>
+  // Fixing poor naming 😔
+  const errors = document.querySelectorAll('.invalid-feedback')
+  errors.forEach( (error) => {
+    if (error.innerHTML == "Accepts terms You must accept the Terms &amp; Conditions") {
+      error.innerHTML = "You must accept the Terms &amp; Conditions"
+    }
+  })
+</script>
+
 <%#= render "devise/shared/links" %>

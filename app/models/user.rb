@@ -41,6 +41,7 @@ class User < ApplicationRecord
   include FriendlyId
   validates :first_name, :last_name, presence: true
   validate :password_complexity
+  validate :terms
   friendly_id :instagram, use: :slugged
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -108,6 +109,12 @@ class User < ApplicationRecord
   def password_complexity
     if password.present? and not password.match(/\S*([A-Z]+\S*(\d|[^\w\s])+|(\d|[^\w\s])+\S*[A-Z]+)\S*/)
       errors.add :password, 'must contain one capital letter and one non-letter character'
+    end
+  end
+
+  def terms
+    if accepts_terms == false
+      errors.add :accepts_terms, 'You must accept the Terms & Conditions'
     end
   end
 
