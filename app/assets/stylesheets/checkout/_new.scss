@@ -96,6 +96,8 @@
   padding: 6px 50px !important;
   letter-spacing: 2px !important;
   font-weight: bold !important;
+  font-size: inherit;
+  width: fit-content;
   @include absCenter;
   margin: 20px 0 20px auto !important;
   &:hover {
@@ -261,5 +263,28 @@
   width: 80%;
   @include for-medium-devices-down {
     width: 100%;
+  }
+}
+
+.conditional-button {
+  cursor: pointer;
+  border: none !important;
+  height: 50px !important;
+  background-color: black !important;
+  background-image: none !important;
+  color: $light-gray !important;
+  border-radius: 0 !important;
+  padding: 6px 50px !important;
+  letter-spacing: 2px !important;
+  font-weight: bold !important;
+  font-size: inherit;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px auto !important;
+  &:hover {
+    text-decoration: none !important;
+    color: $light-gray !important;
   }
 }
