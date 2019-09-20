@@ -87,11 +87,11 @@ class User < ApplicationRecord
   end
 
   def delivery_addresses
-    addresses.where(delivery_address: true)
+    addresses.where(delivery_address: true, deleted: false)
   end
 
   def billing_addresses
-    addresses.where(delivery_address: false)
+    addresses.where(delivery_address: false, deleted: false)
   end
 
   def remaining_credit

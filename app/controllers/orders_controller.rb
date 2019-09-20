@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
       session[:aff_code] = nil
     end
     unless @order.save
-      flash[:notice] = 'ERROR!'
+      flash[:notice] = @order.errors.full_messages.join(',')
       render :new and return
     end
     if @basket.total_price > 0
