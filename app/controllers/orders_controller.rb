@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def create
     @basket = find_basket
-    @order = Order.new(order_params.slice(:phone_number, :delivery_address_id, :billing_address_id, :delivery_type))
+    @order = Order.new(order_params.slice(:delivery_address_id, :billing_address_id, :delivery_type))
     @order.user = current_user
     @order.set_delivery_costs_cents
     authorize @order
@@ -110,17 +110,17 @@ class OrdersController < ApplicationController
         ShippingContact: {
           name: @order.user.full_name,
           email: @order.user.email,
-          phone: @order.phone_number,
+          phone: @order.delivery_address.phone_number,
           address: @order.delivery_address.street,
           city: @order.delivery_address.city,
           county: @order.delivery_address.county,
           country: @order.delivery_address.country,
-          postcode: @order.delivery_address.postcode
+          postcode: @order.delivery_address.postcode,
         },
         BillingContact: {
           name: @order.user.full_name,
           email: @order.user.email,
-          phone: @order.phone_number,
+          phone: @order.billing_address.phone_number,
           address: @order.billing_address.street,
           city: @order.billing_address.city,
           county: @order.billing_address.county,

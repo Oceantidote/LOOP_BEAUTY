@@ -115,6 +115,10 @@
                 <p class="boldest muli text-right no-margin">Postcode</p>
                 <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
+              <div class="personal-details-input">
+                <p class="boldest muli text-right no-margin">Phone Number</p>
+                <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
               <%= f.input :delivery_address, as: :hidden %>
               <%= f.submit 'ADD DELIVERY ADDRESS', class: 'primary-button address-button small-text' %>
             <% end %>
@@ -145,6 +149,10 @@
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Postcode</p>
                 <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
+              </div>
+              <div class="personal-details-input">
+                <p class="boldest muli text-right no-margin">Phone Number</p>
+                <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <%= f.input :delivery_address, as: :hidden %>
               <%= f.submit 'ADD BILLING ADDRESS', class: 'primary-button address-button small-text' %>
