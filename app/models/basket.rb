@@ -11,6 +11,7 @@ class Basket < ApplicationRecord
 
   def empty!
     basket_products.destroy_all
+    discount_code = nil
   end
 
   def total_number_of_products

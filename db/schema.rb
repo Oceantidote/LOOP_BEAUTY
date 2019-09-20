@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_151555) do
+ActiveRecord::Schema.define(version: 2019_09_20_122420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_151555) do
     t.string "county"
     t.string "street2"
     t.boolean "default_address", default: false
+    t.string "phone_number"
+    t.boolean "deleted", default: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -263,7 +265,6 @@ ActiveRecord::Schema.define(version: 2019_09_17_151555) do
     t.string "stripe_id"
     t.string "affiliate_code"
     t.integer "credit_spent_cents", default: 0
-    t.string "phone_number"
     t.bigint "delivery_address_id"
     t.bigint "billing_address_id"
     t.string "delivery_type"

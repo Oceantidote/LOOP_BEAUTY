@@ -166,6 +166,7 @@
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%= a.country %></p>
+                            <p class="small-text grey boldest tiny-margin-bottom"><%= a.phone_number %></p>
                             <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-street="<%= a.street %>" data-dismiss="modal">USE ADDRESS</button>
                             </div>
                           </div>
@@ -193,6 +194,7 @@
                     <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                     <div class="d-flex">
                       <a id="closeDeliveryInput" class="secondary-button secondary-checkout-button">Close</a>
@@ -203,11 +205,12 @@
               <% else %>
                 <%= simple_form_for @address, remote: true do |f| %>
                   <%= f.input :street, label: false, placeholder: 'House Name/Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                    <%= f.input :street2, label: false, placeholder: 'Street Name', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :street2, label: false, placeholder: 'Street Name', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                   <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
                 <% end %>
@@ -236,6 +239,7 @@
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.city %>, <%= a.county %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.postcode %></p>
                               <p class="small-text grey boldest tiny-margin-bottom"><%= a.country %></p>
+                              <p class="small-text grey boldest tiny-margin-bottom"><%= a.phone_number %></p>
                               <button class="billing-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-street="<%= a.street %>" data-dismiss="modal">USE ADDRESS</button>
                             </div>
                           </div>
@@ -263,6 +267,7 @@
                     <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                     <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                    <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>                    
                     <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
                     <div class="d-flex">
                       <a id="closeBillingInput" class="secondary-button secondary-checkout-button">Close</a>
@@ -278,6 +283,7 @@
                   <%= f.input :county, label: false, placeholder: 'County/State', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post code', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :country, label: false, prompt: 'Country', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
                   <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
                 <% end %>
@@ -290,7 +296,6 @@
             <%= f.input :delivery_address_id, as: :hidden, input_html: { id: "deliveryHolder", value: current_user&.delivery_addresses&.last&.id } %>
             <%= f.input :billing_address_id, as: :hidden, input_html: { id: "billingHolder", value: current_user&.billing_addresses&.last&.id } %>
             <%= f.input :delivery_type, as: :hidden, input_html: { value: 'standard' } %>
-            <%= f.input :phone_number, input_html: { value: "#{current_user&.phone_number ? current_user.phone_number : '' }", class: "contact-form-input checkout-mobile-input" }  %>
           </div>
           <script src="https://js.stripe.com/v3/"></script>
           <% if @basket.total_price <= 0 %>
