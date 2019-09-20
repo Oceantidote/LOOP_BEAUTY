@@ -489,7 +489,7 @@
   // top: -40px;
   z-index: 99;
   background: #FFF;
-  transition: all 1s ease;
+  transition: all .5s ease;
   transition-delay: .25s;
   // width: 312px;
   .form-group {
@@ -514,8 +514,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   float: right;
-  transition: all .5s ease;
-  transition-delay: 0.2s;
+  transition: all .2s ease;
+  transition-delay: .2s;
   cursor: pointer;
   &:focus {
     box-shadow: none;
