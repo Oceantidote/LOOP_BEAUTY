@@ -295,8 +295,11 @@
           <script src="https://js.stripe.com/v3/"></script>
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
+          <% elsif @user.delivery_addresses.length == 0 || @user.billing_addresses.length == 0 %>
+            <a class="strip-button conditional-button" id="addressBtn">CONFIRM ADDRESSES</a>
+            <%= f.submit 'PAYMENT', class: 'stripe-button conditional-button d-none', id: "paymentHidden" %>
           <% else %>
-            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el' %>
+            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el ' %>
           <% end %>
         <% end %>
       </div>

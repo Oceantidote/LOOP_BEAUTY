@@ -1,4 +1,3 @@
-
 const initCheckout = () => {
   const form = document.querySelector("#new_order")
   if (!form) return
@@ -24,6 +23,7 @@ const initCheckout = () => {
   const addressBtn = document.getElementById('addressBtn')
   const deliveryBtn = document.getElementById('deliveryBtn')
   const billingBtn = document.getElementById('billingBtn')
+  const paymentBtn = document.getElementById('paymentHidden')
 
   const newBillingInput = document.getElementById('newBillingInput')
   const newBilling = document.getElementById('newBillingAddress')
@@ -54,9 +54,13 @@ const initCheckout = () => {
   }))
 
   if (addressBtn) {
-    addressBtn.addEventListener('click', (event) => {
+    addressBtn.addEventListener('click', () => {
+      console.log('triggered')
       deliveryBtn.click();
       billingBtn.click();
+      console.log('test')
+      addressBtn.classList.add('d-none')
+      paymentBtn.classList.remove('d-none')
     })
   }
 
