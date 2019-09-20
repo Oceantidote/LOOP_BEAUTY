@@ -143,6 +143,9 @@
   width: 275px;
   padding-left: 5px;
   font-family: 'Muli', sans-serif;
+  &:focus {
+    outline: none;
+  }
   @include for-phone-only {
     width: auto;
   }

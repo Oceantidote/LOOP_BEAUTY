@@ -1,3 +1,7 @@
+formContainer = document.querySelector('.shopping-bag-code');
+formContainer.innerHTML = ''
+formContainer.innerHTML = "<%= j render 'form', basket: @basket %>"
+
 priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
 priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"
 discountForm = document.querySelector('.shopping-bag-code > form')
@@ -11,3 +15,4 @@ input.style.marginBottom = '1rem'
 document.querySelector('.discount-message').innerHTML = ''
 input.firstElementChild.value = ''
 discountForm.insertAdjacentHTML('beforeend', '<input type="submit" name="commit" value="APPLY" class="primary-button discount-code-button" data-disable-with="APPLY">')
+
