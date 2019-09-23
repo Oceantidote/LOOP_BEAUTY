@@ -1,7 +1,11 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
     <div class="dash-menu-container">
-      <%= render 'shared/dash' %>
+      <% if current_user.influencer %>
+        <%= render 'shared/influencer_dash' %>
+      <% else %>
+        <%= render 'shared/dash' %>
+      <% end %>
     </div>
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">My Orders</h2>

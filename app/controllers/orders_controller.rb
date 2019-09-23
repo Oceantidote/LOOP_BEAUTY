@@ -55,6 +55,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @user = @order.user
     authorize @order
   end
 
