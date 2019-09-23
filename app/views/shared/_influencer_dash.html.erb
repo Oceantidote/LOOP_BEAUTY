@@ -2,7 +2,10 @@
   <%= image_tag url_for(@user.avatar_photo), class: "dash-links-avatar" %>
   <div class="each-dash-link-title">Hello <%= @user.first_name %></div>
   <%= link_to user_dashboard_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image" %>Account Overview
+    <%= image_tag "account-overview.png", class: "dash-links-image" %>Account Overview
+  <% end %>
+  <%= link_to user_my_orders_path(@user), class: "each-dash-link" do %>
+    <%= image_tag "basket.png", class: "dash-links-image" %>My Orders
   <% end %>
   <%= link_to  user_share_path(@user), class: "each-dash-link" do %>
     <%= image_tag "share.png", class: "dash-links-image" %>Share
@@ -21,6 +24,7 @@
   <% end %>
 </div>
 
+<!-- NEED TO ADD MY ORDERS FOR INFLUENCERS ON MOBILE -->
 <div class="dash-links-mobile">
   <%= link_to user_dashboard_path(@user), class: "each-dash-link-mobile no-decoration" do %>
     <%= image_tag "basket.png", class: "dash-links-mobile-image" %>
