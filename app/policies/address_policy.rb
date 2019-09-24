@@ -12,4 +12,8 @@ class AddressPolicy < ApplicationPolicy
   def destroy?
     record.user == user || user.admin?
   end
+
+  # def set_default?
+  #   record.user == user
+  # end
 end

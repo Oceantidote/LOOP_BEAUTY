@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_122420) do
+ActiveRecord::Schema.define(version: 2019_09_24_133928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_122420) do
     t.boolean "default_address", default: false
     t.string "phone_number"
     t.boolean "deleted", default: false
+    t.boolean "use_as_billing", default: true
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 

@@ -40,16 +40,30 @@ const initCheckout = () => {
   const savedDeliveryAddresses = document.querySelectorAll('.delivery-address-selector')
   const billingHolder = document.getElementById('billingHolder')
   const savedBillingAddresses = document.querySelectorAll('.billing-address-selector')
+  const useAsBilling = document.getElementById('address_use_as_billing')
+  console.log(useAsBilling.checked)
 
   savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
     deliveryHolder.value = a.id;
-    deliveryAddressShow.innerHTML = a.dataset.street
+    deliveryAddressShow.innerHTML = `
+                                      <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.street}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.city}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.country}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.postcode}</p>
+                                    `
     deliveryAddressShow.classList.remove('d-none')
   }))
 
   savedBillingAddresses.forEach(a => a.addEventListener('click', () => {
     billingHolder.value = a.id;
-    billingAddressShow.innerHTML = a.dataset.street
+    billingAddressShow.innerHTML = `
+                                      <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.street}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.city}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.country}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.postcode}</p>
+                                    `
     billingAddressShow.classList.remove('d-none')
   }))
 
@@ -57,7 +71,9 @@ const initCheckout = () => {
     addressBtn.addEventListener('click', () => {
       console.log('triggered')
       deliveryBtn.click();
-      billingBtn.click();
+      if (useAsBilling.checked === false) {
+        billingBtn.click();
+      }
       console.log('test')
       addressBtn.classList.add('d-none')
       paymentBtn.classList.remove('d-none')

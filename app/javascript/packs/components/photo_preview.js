@@ -1,7 +1,7 @@
 displayPreview = (input) => {
   videoPreview = document.querySelector('.video-preview')
   if (input.files && input.files[0]) {
-    const reader = new FileReader();
+    let reader = new FileReader();
     document.querySelectorAll('.photo-preview').forEach((preview) => {
       if (input.dataset.name === preview.dataset.name) {
         reader.onload = (event) => {
