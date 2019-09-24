@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     @user = @basket.user
     @order = Order.new
     @address = Address.new
+    @default_address = @user.addresses.where(default_address: true).first
     authorize @order
   end
 

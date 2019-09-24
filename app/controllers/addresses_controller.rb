@@ -4,6 +4,12 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     authorize @address
     @address.user = current_user
+    if @address.use_as_billing
+      new_billing_address = Address.new(address_params)
+      new_billing_address.user = current_user
+      new_billing_address.delivery_address = false
+      new_billing_address.save!
+    end
     if @address.save
       respond_to do |format|
         format.html { redirect_back fallback_location: user_account_details_path(current_user) }
@@ -12,15 +18,21 @@ class AddressesController < ApplicationController
     elsif @address.delivery_address
       @delivery_address = @address
       @billing_address = Address.new(delivery_address: false)
-      render template: 'user/account_details'
-    elsif @address.billing_address
+      render template: 'users/account_details'
+    elsif @address.delivery_address == false
       @billing_address = @address
       @delivery_address = Address.new(delivery_address: true)
-      render template: 'user/account_details'
+      render template: 'users/account_details'
     else
       flash[:error] = 'Please fill out all fields'
     end
   end
+
+  # def set_default
+  #   @address = Address.find(params[:address_id])
+  #   authorize @address
+  #   @address.update(default_address: true)
+  # end
 
   def destroy
     authorize @address
@@ -29,7 +41,7 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:street, :street2, :city, :postcode, :delivery_address, :country, :county)
+    params.require(:address).permit(:street, :street2, :city, :postcode, :delivery_address, :country, :county, :phone_number, :use_as_billing)
   end
 
   def set_address
