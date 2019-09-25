@@ -21,7 +21,7 @@
           <div>
             <%= f.input :banner, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @home_banner.banner.attached? %>
-              <%= image_tag @home_banner.banner, height: 100, class: "photo-preview", 'data-name': 'home-banner' %>
+              <%= image_tag url_for(@home_banner.banner), height: 100, class: "photo-preview", 'data-name': 'home-banner' %>
             <% else %>
               <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner' %>
             <% end %>

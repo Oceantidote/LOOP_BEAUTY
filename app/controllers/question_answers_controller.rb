@@ -4,6 +4,8 @@ class QuestionAnswersController < ApplicationController
 
   def show
     @question_answer = QuestionAnswer.find_by(user: User.friendly.find(params[:id]))
+    # WHEN REDIRECTED HERE AFTER AN UPDATE {"user_id"=>"breenylee/3", "id"=>"breenylee"} AND SO GIVES THE FOLLOWING ERROR:
+    # Pundit::NotDefinedError (unable to find policy `NilClassPolicy` for `nil`):
     authorize @question_answer
   end
 
