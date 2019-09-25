@@ -8,9 +8,9 @@ class OrdersController < ApplicationController
 
   def new
     @basket = find_basket
-    @user = @basket.user
+    @user = @basket.user # to be reviewed
     @order = Order.new
-    @address = Address.new
+    @address = Address.new # to be reviewed
     @default_address = @user.addresses.where(default_address: true).first
     authorize @order
   end
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
       session[:aff_code] = nil
     end
     unless @order.save
-      flash[:notice] = @order.errors.full_messages.join(',')
+      flash[:alert] = @order.errors.full_messages.join(', ')
       render :new and return
     end
     if @basket.total_price > 0

@@ -37,7 +37,7 @@
             <div>
               <%= f.input :avatar_photo, input_html: { class: 'd-none photo-input', 'data-name': 'avatar', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.avatar_photo.attached? %>
-                <%= image_tag @influencer.avatar_photo, height: 100, class: "photo-preview", 'data-name': 'avatar' %>
+                <%= image_tag url_for(@influencer.avatar_photo), height: 100, class: "photo-preview", 'data-name': 'avatar' %>
               <% else %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'avatar' %>
               <% end %>
@@ -48,7 +48,7 @@
             <div>
               <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.cover_photo.attached? %>
-                <%= image_tag @influencer.cover_photo, height: 100, class: "photo-preview", 'data-name': 'cover' %>
+                <%= image_tag url_for(@influencer.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover' %>
               <% else %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover' %>
               <% end %>
@@ -59,7 +59,7 @@
             <div>
               <%= f.input :qa_photo, input_html: { class: 'd-none photo-input', 'data-name': 'qa', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.qa_photo.attached? %>
-                <%= image_tag @influencer.qa_photo, height: 100, class: "photo-preview", 'data-name': 'qa' %>
+                <%= image_tag url_for(@influencer.qa_photo), height: 100, class: "photo-preview", 'data-name': 'qa' %>
               <% else %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa' %>
               <% end %>
@@ -70,7 +70,7 @@
             <div>
               <%= f.input :lookbook_photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.lookbook_photo.attached? %>
-                <%= image_tag @influencer.lookbook_photo, height: 100, class: "photo-preview", 'data-name': 'lookbook' %>
+                <%= image_tag url_for(@influencer.lookbook_photo), height: 100, class: "photo-preview", 'data-name': 'lookbook' %>
               <% else %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'lookbook' %>
               <% end %>
@@ -81,7 +81,7 @@
             <div>
               <%= f.input :tutorial_photo, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.tutorial_photo.attached? %>
-                <%= image_tag @influencer.tutorial_photo, height: 100, class: "photo-preview", 'data-name': 'tutorial' %>
+                <%= image_tag url_for(@influencer.tutorial_photo), height: 100, class: "photo-preview", 'data-name': 'tutorial' %>
               <% else %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'tutorial' %>
               <% end %>
@@ -92,7 +92,7 @@
             <div>
               <%= f.input :makeup_photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.makeup_photo.attached? %>
-                <%= image_tag @influencer.makeup_photo, height: 100, class: "photo-preview", 'data-name': 'makeup' %>
+                <%= image_tag url_for(@influencer.makeup_photo), height: 100, class: "photo-preview", 'data-name': 'makeup' %>
               <% else %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup' %>
               <% end %>
