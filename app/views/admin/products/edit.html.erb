@@ -76,7 +76,7 @@
                   <div>
                     <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <% if shade.card_photo.attached? %>
-                      <%= image_tag shade.card_photo, height: 100, class: "photo-preview", 'data-name': 'shade-card-photo' %>
+                      <%= image_tag url_for(shade.card_photo), height: 100, class: "photo-preview", 'data-name': 'shade-card-photo' %>
                     <% else %>
                       <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo' %>
                     <% end %>
@@ -88,7 +88,7 @@
                     <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <% if shade.photos.attached? %>
                       <% shade.photos.each do |photo| %>
-                        <%= image_tag photo, height: 100, class: "photo-preview", 'data-name': 'shade-photos' %>
+                        <%= url_for(image_tag photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos' %>
                       <% end %>
                     <% else %>
                       <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos' %>
