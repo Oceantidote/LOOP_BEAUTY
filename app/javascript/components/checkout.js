@@ -80,25 +80,33 @@ const initCheckout = () => {
     })
   }
 
-  newDelivery.addEventListener('click', () => {
-    newDeliveryInput.classList.remove('d-none')
-    deliveryButtons.classList.add('d-none')
-  })
+  if (newDelivery) {
+    newDelivery.addEventListener('click', () => {
+      newDeliveryInput.classList.remove('d-none')
+      deliveryButtons.classList.add('d-none')
+    })
+  }
 
-  closeDelivery.addEventListener('click', () => {
-    newDeliveryInput.classList.add('d-none')
-    deliveryButtons.classList.remove('d-none')
-  })
+  if (closeDelivery) {
+    closeDelivery.addEventListener('click', () => {
+      newDeliveryInput.classList.add('d-none')
+      deliveryButtons.classList.remove('d-none')
+    })
+  }
 
-  newBilling.addEventListener('click', () => {
-    newBillingInput.classList.remove('d-none')
-    billingButtons.classList.add('d-none')
-  })
+  if (newBilling) {
+    newBilling.addEventListener('click', () => {
+      newBillingInput.classList.remove('d-none')
+      billingButtons.classList.add('d-none')
+    })
+  }
 
-  closeBilling.addEventListener('click', () => {
-    newBillingInput.classList.add('d-none')
-    billingButtons.classList.remove('d-none')
-  })
+  if (closeBilling) {
+    closeBilling.addEventListener('click', () => {
+      newBillingInput.classList.add('d-none')
+      billingButtons.classList.remove('d-none')
+    })
+  }
 }
 
 export default initCheckout

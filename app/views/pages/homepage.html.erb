@@ -6,7 +6,6 @@
           <div class="holding-page-banner-text-container">
             <div class="holding-page-banner-text">
               <h2 class="didot"><%= home_banner.content %></h2>
-              <%#= link_to 'See more articles', insider_articles_path %>
               <a href="<%= home_banner.link %>"><%= home_banner.link_text %></a>
             </div>
           </div>
@@ -15,39 +14,6 @@
     <% end %>
   </div>
 </div>
-<!-- <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="holding-page-image-banner" style="background-image: url('<%#= asset_path 'homepage-header.jpg' %>')">
-        <div class="holding-page-banner-text-container">
-          <div class="holding-page-banner-text">
-            <h2 class="didot">Introducing Glossier’s new eye pallette..</h2>
-            <%#= link_to 'See more articles', insider_articles_path %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="holding-page-image-banner" style="background-image: url('https://images.pexels.com/photos/925381/pexels-photo-925381.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-        <div class="holding-page-banner-text-container">
-          <div class="holding-page-banner-text">
-            <h2 class="didot">Shop the new look here..</h2>
-            <%#= link_to 'Shop now', products_path %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="holding-page-image-banner" style="background-image: url('https://images.pexels.com/photos/1870885/pexels-photo-1870885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-      <div class="holding-page-banner-text-container">
-        <div class="holding-page-banner-text">
-          <h2 class="didot">Get the look from your favourite influencers..</h2>
-          <%#= link_to 'See all influencers', users_path %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
@@ -64,8 +30,10 @@
                 </div>
               </div>
               <div class="insider-info-right">
-                <% user = User.select { |u| u.first_name == article.by.split(" ")[0] } %>
-                <div class="insider-info-image" style="background-image: url(<%= url_for(user.first.avatar_photo) %>)"></div>
+                <%# user = User.select { |u| u.first_name == article.by.split(" ")[0] } %>
+                <% user = User.find(article.by) %>
+                <!-- <div class="insider-info-image" style="background-image: url(<%#= url_for(user.first.avatar_photo) %>)"></div> -->
+                <div class="insider-info-image" style="background-image: url(<%= url_for(user.avatar_photo) %>)"></div>
               </div>
             </div>
           <% end %>
@@ -94,7 +62,6 @@
     <h3>First time with us?</h3>
     <h6>Get 10% off your first order</h6>
     <h6 class="grey-font">CODE: WELCOME2LOOP</h6>
-    <%#= link_to 'SHOP NOW', homepage_path, class: "primary-button pop-up-content-button" %>
     <p class="primary-button pop-up-content-button">SHOP NOW</p>
     <%= link_to about_us_path, class: "no-decoration" do %>
       <h6 class="grey-font no-margin" style="border-bottom: 1px solid #676767;">Learn more</h6>

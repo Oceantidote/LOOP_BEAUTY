@@ -5,7 +5,7 @@
       <div class="article-header">
         <h6><%= @insider_article.category %>:</h6>
         <h2 class="didot"><%= @insider_article.title %></h2>
-        <p>by <%= link_to "#{@insider_article.user.first_name} #{@insider_article.user.last_name}", user_path(@insider_article.user) %> </p>
+        <p>by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> </p>
       </div>
       <div class="article-content">
         <p class="didot"><%= simple_format(@insider_article.text1) %></p>
