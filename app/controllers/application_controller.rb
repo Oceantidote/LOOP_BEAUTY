@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_navbar_variables
   before_action :store_aff_code
   before_action :check_for_empty_orders
+  before_action :first_time_visit, unless: -> { cookies[:first_visit] }
   include Pundit
   @influencers = User.where(influencer: true).where(published: true)
   # Pundit: white-list approach.
@@ -14,6 +15,11 @@ class ApplicationController < ActionController::Base
 
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def first_time_visit
+     cookies.permanent[:first_visit] = 1
+     @first_visit = true
+  end
 
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }
