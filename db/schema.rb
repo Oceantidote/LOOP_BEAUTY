@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_133928) do
+ActiveRecord::Schema.define(version: 2019_09_26_094628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2019_09_24_133928) do
   create_table "addresses", force: :cascade do |t|
     t.bigint "user_id"
     t.string "postcode"
-    t.string "street"
+    t.string "address_line1"
     t.string "city"
     t.boolean "delivery_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "country"
     t.string "county"
-    t.string "street2"
+    t.string "address_line2"
     t.boolean "default_address", default: false
     t.string "phone_number"
     t.boolean "deleted", default: false

@@ -11,7 +11,8 @@ class OrdersController < ApplicationController
     @user = @basket.user # to be reviewed
     @order = Order.new
     @address = Address.new # to be reviewed
-    @default_address = @user.addresses.where(default_address: true).first
+    @default_delivery = @user.addresses.where(delivery_address: true).where(default_address: true).first
+    @default_billing = @user.addresses.where(delivery_address: false).where(default_address: true).first
     authorize @order
   end
 
@@ -113,7 +114,7 @@ class OrdersController < ApplicationController
           name: @order.user.full_name,
           email: @order.user.email,
           phone: @order.delivery_address.phone_number,
-          address: @order.delivery_address.street,
+          address: @order.delivery_address.address_line1,
           city: @order.delivery_address.city,
           county: @order.delivery_address.county,
           country: @order.delivery_address.country,
@@ -123,7 +124,7 @@ class OrdersController < ApplicationController
           name: @order.user.full_name,
           email: @order.user.email,
           phone: @order.billing_address.phone_number,
-          address: @order.billing_address.street,
+          address: @order.billing_address.address_line1,
           city: @order.billing_address.city,
           county: @order.billing_address.county,
           country: @order.billing_address.country,
