@@ -45,9 +45,11 @@ const initCheckout = () => {
 
   savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
     deliveryHolder.value = a.id;
+    console.log(deliveryHolder)
+    console.log(deliveryHolder.value)
     deliveryAddressShow.innerHTML = `
                                       <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
-                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.street}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.address_line1}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.city}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.country}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.postcode}</p>
@@ -59,7 +61,7 @@ const initCheckout = () => {
     billingHolder.value = a.id;
     billingAddressShow.innerHTML = `
                                       <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
-                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.street}</p>
+                                      <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.address_line1}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.city}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.country}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.postcode}</p>

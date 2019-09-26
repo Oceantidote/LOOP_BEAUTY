@@ -1,23 +1,29 @@
 class Address < ApplicationRecord
   belongs_to :user
-  # after_save :set_default_address
+  # after_save :set_default
   # after_save :update_default_address
-  validates :street, presence: true
+  validates :address_line1, presence: true
   validates :city, presence: true
   validates :county, presence: true
   validates :postcode, presence: true
   validates :country, presence: true
 
-  # def set_default_address
-  #   if Address.where(user: user).where(delivery_address: true).count == 1
-  #     self.update(default_address: true)
-  #   end
+  # def set_default
+  #     self.update(default_address: true) if self.id == 1
   # end
 
   # def update_default_address
   #   if self.default_address == true
   #     user.addresses.where(default_address: true).where.not(id: self.id).update_all(default_address: false)
   #   end
+  # end
+
+  # def delivery_addresses
+  #   self.user.addresses.where(default_address: true)
+  # end
+
+  # def billing_addresses
+  #   self.user.addresses.where(default_address: false)
   # end
 
   def destroy

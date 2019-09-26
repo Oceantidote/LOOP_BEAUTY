@@ -145,6 +145,7 @@
           <div class="checkout-addresses-container">
             <div class="checkout-address">
               <p class="medium-text boldest">Delivery Address</p>
+
               <!-- Delivery Address Modal -->
               <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -153,33 +154,33 @@
                       <h5 class="modal-title insider-info-title muli boldest" id="exampleModalLabel">Choose a delivery address</h5>
                     </div>
                     <div class="modal-body">
-                        <% @user.delivery_addresses.each do |a| %>
- <!--                          <div class="address-grid-card-holder">
-                            <div class="address-grid-card">
+                      <% @user.delivery_addresses.each do |a| %>
+<!--                    <div class="address-grid-card-holder">
+                          <div class="address-grid-card">
                             <p class="small-text boldest tiny-margin-bottom"><%#= @user.first_name %> <%#= @user.last_name %></p>
-                            <p class="small-text grey boldest tiny-margin-bottom"><%#= a.street %></p>
+                            <p class="small-text grey boldest tiny-margin-bottom"><%#= a.address_line1 %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%#= a.city %>, <%#= a.county %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%#= a.postcode %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%#= a.country %></p>
                             <p class="small-text grey boldest tiny-margin-bottom"><%#= a.phone_number %></p>
-                            <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-street="<%= a.street %>" data-dismiss="modal">USE ADDRESS</button>
-                            </div>
-                          </div> -->
-                          <div class="row row-style">
-                            <div class="col-xs-12" style="margin: auto;">
-                              <div class="address-card checkout-address-card">
-                                <div class="address-info">
-                                  <p class="small-text muli boldest tiny-margin-bottom"><%= "#{@user.full_name}" %></p>
-                                  <p class="grey-font small-text muli boldest no-margin"><%= "#{a.street}" %></p>
-                                  <p class="grey-font small-text muli boldest no-margin"><%= "#{a.city}" %></p>
-                                  <p class="small-text grey boldest no-margin"><%= a.country %></p>
-                                  <p class="grey-font small-text muli boldest no-margin"><%= a.postcode %></p>
-                                </div>
-                                <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-user="<%= @user.full_name %>" data-street="<%= a.street %>" data-street="<%= a.street %>" data-city="<%= a.city %>" data-country="<%= a.country %>" data-postcode="<%= a.postcode %>" data-dismiss="modal">USE ADDRESS</button>
+                            <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-address-line1="<%= a.address_line1 %>" data-dismiss="modal">USE ADDRESS</button>
+                          </div>
+                        </div> -->
+                        <div class="row row-style">
+                          <div class="col-xs-12" style="margin: auto;">
+                            <div class="address-card checkout-address-card">
+                              <div class="address-info">
+                                <p class="small-text muli boldest tiny-margin-bottom"><%= "#{@user.full_name}" %></p>
+                                <p class="grey-font small-text muli boldest no-margin"><%= "#{a.address_line1}" %></p>
+                                <p class="grey-font small-text muli boldest no-margin"><%= "#{a.city}" %></p>
+                                <p class="small-text grey boldest no-margin"><%= a.country %></p>
+                                <p class="grey-font small-text muli boldest no-margin"><%= a.postcode %></p>
                               </div>
+                              <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-user="<%= @user.full_name %>" data-address_line1="<%= a.address_line1 %>" data-address_line2="<%= a.address_line2 %>" data-city="<%= a.city %>" data-country="<%= a.country %>" data-postcode="<%= a.postcode %>" data-dismiss="modal">USE ADDRESS</button>
                             </div>
                           </div>
-                        <% end %>
+                        </div>
+                      <% end %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary small-text" data-dismiss="modal">CLOSE</button>
@@ -196,8 +197,8 @@
                 </div>
                 <div class="d-none" id="newDeliveryInput">
                   <%= simple_form_for @address, remote: true do |f| %>
-                  <%= f.input :street, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :street2, label: false, placeholder: 'Address Line 2  (optional) (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional) (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -216,8 +217,8 @@
                 </div>
               <% else %>
                 <%= simple_form_for @address, remote: true do |f| %>
-                  <%= f.input :street, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :street2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -249,12 +250,12 @@
                             <div class="address-card checkout-address-card">
                               <div class="address-info">
                                 <p class="small-text muli boldest tiny-margin-bottom"><%= "#{@user.full_name}" %></p>
-                                <p class="grey-font small-text muli boldest no-margin"><%= "#{a.street}" %></p>
+                                <p class="grey-font small-text muli boldest no-margin"><%= "#{a.address_line1}" %></p>
                                 <p class="grey-font small-text muli boldest no-margin"><%= "#{a.city}" %></p>
                                 <p class="small-text grey boldest no-margin"><%= a.country %></p>
                                 <p class="grey-font small-text muli boldest no-margin"><%= a.postcode %></p>
                               </div>
-                              <button class="delivery-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-user="<%= @user.full_name %>" data-street="<%= a.street %>" data-street="<%= a.street %>" data-city="<%= a.city %>" data-country="<%= a.country %>" data-postcode="<%= a.postcode %>" data-dismiss="modal">USE ADDRESS</button>
+                              <button class="billing-address-selector secondary-button secondary-checkout-button" id="<%= a.id %>" data-user="<%= @user.full_name %>" data-address_line1="<%= a.address_line1 %>" data-address_line2="<%= a.address_line2 %>" data-city="<%= a.city %>" data-country="<%= a.country %>" data-postcode="<%= a.postcode %>" data-dismiss="modal">USE ADDRESS</button>
                             </div>
                           </div>
                         </div>
@@ -275,8 +276,8 @@
                 </div>
                 <div class="d-none" id="newBillingInput">
                   <%= simple_form_for @address, remote: true do |f| %>
-                  <%= f.input :street, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :street2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
@@ -292,8 +293,8 @@
                 </div>
               <% else %>
                 <%= simple_form_for @address, remote: true do |f| %>
-                  <%= f.input :street, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :street2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :county, label: false, placeholder: 'County/State', required: true,  input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>

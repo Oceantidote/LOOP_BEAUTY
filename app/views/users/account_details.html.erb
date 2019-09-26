@@ -52,7 +52,7 @@
                 <div class="row row-style">
                   <div class="col-xs-12">
                     <div class="address-card">
-                      <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.street}" %></p>
+                      <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
     <!--                   <%# unless add.default_address %>
                         <%#= link_to address_set_default_path(add), method: :patch, class: "no-decoration" do %>
@@ -79,7 +79,7 @@
                 <div class="row row-style">
                   <div class="col-xs-12">
                     <div class="address-card">
-                      <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.street}" %></p>
+                      <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
                       <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
                         <p class="small-text underline grey-font boldest text-right no-margin">Remove</p>
@@ -97,12 +97,12 @@
             <h6 class="boldest text-center margin-bottom">Add Delivery Address</h6>
             <%= simple_form_for @delivery_address || Address.new(delivery_address: true) do |f| %>
               <div class="personal-details-input">
-                <p class="boldest muli text-right no-margin">Street</p>
-                <%= f.input :street, label: false, input_html: { class: 'contact-form-input' } %>
+                <p class="boldest muli text-right no-margin">Address Line 1</p>
+                <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli text-right no-margin">Street 2</p>
-                <%= f.input :street2, label: false, input_html: { class: 'contact-form-input' } %>
+                <p class="boldest muli text-right no-margin">Address Line 2</p>
+                <%= f.input :address_line2, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">City</p>
@@ -136,12 +136,12 @@
             <h6 class="boldest text-center margin-bottom">Add Billing Address</h6>
             <%= simple_form_for @billing_address || Address.new(delivery_address: false) do |f| %>
               <div class="personal-details-input">
-                <p class="boldest muli text-right no-margin">Street</p>
-                <%= f.input :street, label: false, input_html: { class: 'contact-form-input' } %>
+                <p class="boldest muli text-right no-margin">Address Line 1</p>
+                <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
-                <p class="boldest muli text-right no-margin">Street 2</p>
-                <%= f.input :street2, label: false, input_html: { class: 'contact-form-input' } %>
+                <p class="boldest muli text-right no-margin">Address Line 2</p>
+                <%= f.input :address_line2, label: false, input_html: { class: 'contact-form-input' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">City</p>

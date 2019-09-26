@@ -22,7 +22,7 @@
             <!-- <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p> -->
             <p class="boldest s-medium-text no-margin">Delivery address:</p>
             <p class="small-text grey boldest tiny-margin-bottom"><%= @order.user.first_name %> <%= @order.user.last_name %></p>
-            <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.street %></p>
+            <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.address_line1 %></p>
             <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.city %>, <%= @order.delivery_address.postcode %></p>
           </div>
           <div class="order-show-info-right">
