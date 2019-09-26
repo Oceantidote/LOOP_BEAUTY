@@ -82,24 +82,3 @@
     min-height: 320px;
   }
 }
-
-.primary-button {
-  border: none;
-  cursor: pointer;
-  height: 50px;
-  background-color: black;
-  color: $light-gray !important;
-  border-radius: 0;
-  padding: 6px 50px;
-  letter-spacing: 2px;
-  font-weight: bold;
-  @include absCenter;
-  margin: 20px 0;
-  &:hover {
-    text-decoration: none;
-    color: $light-gray !important;
-  }
-  @include for-medium-devices-down {
-    margin: 10px;
-  }
-}

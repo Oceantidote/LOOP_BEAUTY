@@ -266,3 +266,18 @@
   }
 }
 
+.cookie-bar {
+  height: 150px;
+  width: 100%;
+  padding: 0 15px;
+  background-color: #000;
+  position: fixed;
+  bottom: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  p {
+    color: #FFF
+  }
+}
+

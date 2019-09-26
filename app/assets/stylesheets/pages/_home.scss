@@ -166,6 +166,7 @@
   }
   &:hover {
     color: $light-gray;
+    background-color: rgba(0,0,0,0.9);
   }
   @include for-phone-only {
     padding: 10px;
