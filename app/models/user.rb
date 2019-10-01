@@ -165,6 +165,9 @@ class User < ApplicationRecord
   end
 
   def create_wishlist
+    if self.influencer
+      Showroom.create(user: self)
+    end
     Wishlist.create(user: self)
   end
 

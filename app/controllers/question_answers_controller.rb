@@ -22,7 +22,7 @@ class QuestionAnswersController < ApplicationController
     authorize @question_answer
     if @question_answer.save
       flash[:notice] = 'Q&A Created'
-      redirect_to user_question_answer_path(@question_answer.user, @question_answer)
+      redirect_to user_question_answer_path(@question_answer.user, @question_answer.user)
     else
       flash[:error] = 'Item not added due to error'
       @user = @question_answer.user
@@ -39,7 +39,7 @@ class QuestionAnswersController < ApplicationController
   def update
     if @question_answer.update(question_answer_params)
       flash[:notice] = 'Q&A Updated'
-      redirect_to user_question_answer_path(@question_answer.user, @question_answer)
+      redirect_to user_question_answer_path(@question_answer.user, @question_answer.user)
     else
       flash[:error] = 'Please review the problems'
       render :edit
@@ -49,7 +49,7 @@ class QuestionAnswersController < ApplicationController
   def destroy
     @user = @question_answer.user
     @question_answer.destroy
-    redirect_to influencers_path(id: @user.id)
+    redirect_to user_path(id: @user.id)
   end
 
   private
@@ -75,6 +75,10 @@ class QuestionAnswersController < ApplicationController
       :answer_six,
       :photo_one,
       :photo_two,
-      :photo_three)
+      :photo_three,
+      :photo_one_alt_text,
+      :photo2_alt_text,
+      :photo3_alt_text
+      )
   end
 end
