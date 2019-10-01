@@ -4,7 +4,7 @@
       <div class="product-carousel">
         <% @product.shades.first.photos.first(4).each do |shade_photo| %>
           <div class="product-shade-image">
-            <%= image_tag(url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail"), alt: "shade photo"  %>
+            <%= image_tag(url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo")  %>
           </div>
         <% end %>
       </div>
