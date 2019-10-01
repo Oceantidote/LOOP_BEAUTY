@@ -10,7 +10,7 @@
       <h5 class="didot"><%= @user.description %></h5>
       <div class="influencer-social-data">
         <% if @user.instagram %>
-          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", class: "each-social-data" do %>
+          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data" do %>
               <i class="fab fa-instagram social-instagram"></i>
               <h6><%= @user.instagram_followers %></h6>
           <% end %>

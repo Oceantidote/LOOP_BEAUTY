@@ -4,12 +4,12 @@
       <div class="product-carousel">
         <% @product.shades.first.photos.first(4).each do |shade_photo| %>
           <div class="product-shade-image">
-            <%= image_tag(url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail")  %>
+            <%= image_tag(url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail"), alt: "shade photo"  %>
           </div>
         <% end %>
       </div>
       <div class="product-main-image">
-        <%= image_tag url_for(@product.shades.first.photos.first), id: "expandedImg", class: "myImg" %>
+        <%= image_tag url_for(@product.shades.first.photos.first), id: "expandedImg", class: "myImg", alt: "shade photo" %>
       </div>
     </div>
     <div class="product-info-container assistant">
@@ -115,7 +115,7 @@
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% if @product.insider_reviews.count == 0 %>
         <p class="text-center medium-margin width-100 didot">There are no insider reviews yet</p>
       <% end %>
@@ -154,7 +154,7 @@
           </div>
         </div>
       <% end %>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
     <% if current_user&.admin %>
       <div class="admin-options">
@@ -182,7 +182,7 @@
               <%= link_to product_path(product) do %>
                 <div class="card_image">
                   <%= link_to product_path(product) do %>
-                    <%= image_tag url_for(product.shades.first.photos.first) %>
+                    <%= image_tag url_for(product.shades.first.photos.first), alt: "product shade photo" %>
                   <% end %>
                 </div>
               <% end %>

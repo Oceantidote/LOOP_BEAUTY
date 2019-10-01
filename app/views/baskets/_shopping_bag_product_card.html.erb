@@ -1,6 +1,6 @@
 <div class="shopping-bag-card">
   <div class="shopping-bag-card-content">
-    <%= image_tag url_for(item.shade.photos.first), class: 'shopping-bag-card-image' %>
+    <%= image_tag url_for(item.shade.photos.first), class: 'shopping-bag-card-image', alt: "shade photo" %>
     <div class="shopping-bag-card-title">
       <p class="small-text boldest no-margin"><%= item.product.title %></p>
       <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text underline grey-font boldest text-right" %>

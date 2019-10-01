@@ -37,7 +37,7 @@
           <div class="col-6 col-sm-4 col-lg-3">
             <%= link_to brand_path(brand), class: "influencer-card-link" do %>
               <div class="each-influencer-avatar-card text-center">
-                <%= image_tag (brand.logo.attached? ? url_for(brand.logo) : 'brand-default.jpg'), class: "influencer-large-avatar" %>
+                <%= image_tag (brand.logo.attached? ? url_for(brand.logo) : 'brand-default.jpg'), class: "influencer-large-avatar", alt: "brand logo" %>
                 <h6><%= brand.name %></h6>
               </div>
             <% end %>

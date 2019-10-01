@@ -1,6 +1,6 @@
 <%= link_to tutorial_path(@featured_tutorial), class: "featured-tutorial" do %>
   <div class="video-home-image-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_tutorial.cover_photo) %>)">
-    <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80 %>
+    <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "Play button" %>
     <div class="video-home-banner-text-container">
       <div class="video-home-banner-text">
         <h2 class="didot"><%= @featured_tutorial.title %></h2>
@@ -13,11 +13,11 @@
     <%= link_to 'See all', all_videos_path(link: 'all'), class: "see-all-videos-link" %>
     <h2 class="insider-info-title text-center">Latest Videos</h2>
     <div class="row-carousel" style="margin: 30px 0;">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @tutorials.order(created_at: :DESC).first(4).each do |tutorial| %>
         <%= render 'shared/tutorials_card', tutorial: tutorial %>
       <% end %>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
 </div>
@@ -26,11 +26,11 @@
     <%= link_to 'See all', all_videos_path(link: 'tutorial'), class: "see-all-videos-link" %>
     <h2 class="insider-info-title text-center">Tutorials</h2>
     <div class="row-carousel" style="margin: 30px 0;">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @tutorials.first(4).each do |tutorial| %>
         <%= render 'shared/tutorials_card', tutorial: tutorial %>
       <% end %>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
 </div>
@@ -39,11 +39,11 @@
     <%= link_to 'See all', all_videos_path(link: 'ask the expert'), class: "see-all-videos-link" %>
     <h2 class="insider-info-title text-center">Ask the experts</h2>
     <div class="row-carousel" style="margin: 30px 0;">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @tutorials.first(4).each do |tutorial| %>
         <%= render 'shared/tutorials_card', tutorial: tutorial %>
       <% end %>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
 </div>

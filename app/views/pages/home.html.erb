@@ -4,7 +4,7 @@
 <div class="logo-bar">
   <div class="logo-bar-section"></div>
   <div class="logo-bar-section middle-section">
-    <%= image_tag 'loop-beauty-logo.svg' %>
+    <%= image_tag 'loop-beauty-logo.svg', alt: "Loop beauty logo" %>
   </div>
   <div class="logo-bar-section last-section">
     <p class="follow-us-instagram">Follow us: </p>
@@ -14,7 +14,6 @@
   </div>
 </div>
 <div class="holding-page-image-banner" style="background-image: url('<%= asset_path 'homepage-header.jpg' %>')"></div>
-<%#= image_tag 'homepage-header.jpg', style: "width: 100%;" %>
 <div class="holding-page-text-banner">
   <div class="holding-page-text">
     <p>As women of colour we know filtering through the 100s of beauty brands to find the perfect product can be daunting.</p>
@@ -30,6 +29,7 @@
       <div id="mc_embed_signup_scroll">
         <div class="mc-field-group">
           <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <label for="mce-EMAIL" hidden>Subscribe</label>
             <input type="email" value="" name="EMAIL" class="required email send_email_input" id="mce-EMAIL" placeholder="Email address">
             <div class="clear">
               <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button contact-form-button">

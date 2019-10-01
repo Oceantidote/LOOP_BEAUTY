@@ -18,7 +18,7 @@
               <div class="each-order-card">
                 <div class="each-order-container">
                   <div class="my-order-details">
-                    <%= image_tag url_for(order.products.first.shades.first.photos.first), class: "order-image" %>
+                    <%= image_tag url_for(order.products.first.shades.first.photos.first), class: "order-image", alt: "product shade photo" %>
                     <div class="order-details-text">
                       <p><%= order.products.first.title %></p>
                       <p class="small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->

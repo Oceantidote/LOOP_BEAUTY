@@ -1,50 +1,50 @@
 <div class="dash-links">
-  <%= image_tag url_for(@user.avatar_photo), class: "dash-links-avatar" %>
+  <%= image_tag url_for(@user.avatar_photo), class: "dash-links-avatar", alt: "influencer avatar" %>
   <div class="each-dash-link-title">Hello <%= @user.first_name %></div>
   <%= link_to user_dashboard_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "account-overview.png", class: "dash-links-image" %>Account Overview
+    <%= image_tag "account-overview.png", class: "dash-links-image", alt: "dash account icon" %>Account Overview
   <% end %>
   <%= link_to user_my_orders_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image" %>My Orders
+    <%= image_tag "basket.png", class: "dash-links-image", alt: "dash basket icon" %>My Orders
   <% end %>
   <%= link_to  user_share_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "share.png", class: "dash-links-image" %>Share
+    <%= image_tag "share.png", class: "dash-links-image", alt: "dash share icon" %>Share
   <% end %>
   <%= link_to user_analytics_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "analytics.png", class: "dash-links-image" %>Analytics
+    <%= image_tag "analytics.png", class: "dash-links-image", alt: "dash analytics icon" %>Analytics
   <% end %>
   <%= link_to user_showroom_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-image" %>Showroom
+    <%= image_tag "lipstick.png", class: "dash-links-image", alt: "dash lipstick icon" %>Showroom
   <% end %>
   <%= link_to user_account_details_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "default-user.png", class: "dash-links-image" %>Account Details
+    <%= image_tag "default-user.png", class: "dash-links-image", alt: "dash user icon" %>Account Details
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-image" %>Sign Out
+    <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dashsign out icon" %>Sign Out
   <% end %>
 </div>
 
 <!-- NEED TO ADD MY ORDERS FOR INFLUENCERS ON MOBILE -->
 <div class="dash-links-mobile">
   <%= link_to user_dashboard_path(@user), class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "basket.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "dash basket icon" %>
   <% end %>
   <%= link_to  user_share_path(@user), class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "share.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "share.png", class: "dash-links-mobile-image", alt: "dash share icon" %>
   <% end %>
   <%= link_to user_analytics_path(@user), class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "analytics.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "analytics.png", class: "dash-links-mobile-image", alt: "dash analytics icon" %>
   <% end %>
   <%= link_to user_showroom_path(@user), class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "lipstick.png", class: "dash-links-mobile-image", alt: "dash lipstick icon" %>
   <% end %>
     <%= link_to user_account_details_path(@user), class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "default-user.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "default-user.png", class: "dash-links-mobile-image", alt: "dash user icon" %>
   <% end %>
   <%= link_to user_preference_centre_path(current_user), class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "dash-preferences.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "dash-preferences.png", class: "dash-links-mobile-image", alt: "dash preferences icon" %>
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image", alt: "dash sign out icon" %>
   <% end %>
 </div>

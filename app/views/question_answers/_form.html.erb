@@ -5,9 +5,9 @@
       <div>
         <%= f.input :photo_one, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-one', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
         <% if question_answer.photo_one.attached? %>
-          <%= image_tag url_for(question_answer.photo_one), height: 100, class: "photo-preview", 'data-name': 'qa-photo-one' %>
+          <%= image_tag url_for(question_answer.photo_one), height: 100, class: "photo-preview", 'data-name': 'qa-photo-one', alt: "q and a photo one preview" %>
         <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-one' %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-one', alt: "q and a photo one preview" %>
         <% end %>
       </div>
     </div>
@@ -36,9 +36,9 @@
       <div>
         <%= f.input :photo_two, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-two', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
         <% if question_answer.photo_two.attached? %>
-          <%= image_tag url_for(question_answer.photo_two), height: 100, class: "photo-preview", 'data-name': 'qa-photo-two' %>
+          <%= image_tag url_for(question_answer.photo_two), height: 100, class: "photo-preview", 'data-name': 'qa-photo-two', alt: "q and a photo two preview" %>
         <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-two' %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-two', alt: "q and a photo two preview" %>
         <% end %>
       </div>
     </div>
@@ -67,9 +67,9 @@
       <div>
         <%= f.input :photo_three, input_html: { class: 'd-none photo-input', 'data-name': 'qa-photo-three', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
         <% if question_answer.photo_three.attached? %>
-          <%= image_tag url_for(question_answer.photo_three), height: 100, class: "photo-preview", 'data-name': 'qa-photo-three' %>
+          <%= image_tag url_for(question_answer.photo_three), height: 100, class: "photo-preview", 'data-name': 'qa-photo-three', alt: "q and a photo three preview" %>
         <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-three' %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa-photo-three', alt: "q and a photo three preview" %>
         <% end %>
       </div>
     </div>

@@ -9,28 +9,28 @@
       <div class="dash-home-options">
         <%= link_to admin_brands_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag "basket.png" %>
+            <%= image_tag "basket.png", alt: "basket icon" %>
             <h5>All Brands</h5>
           </div>
         <% end %>
         <div class="dash-home-options-line-break"></div>
         <%= link_to admin_products_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag "lipstick.png" %>
+            <%= image_tag "lipstick.png", alt: "lipstick icon" %>
             <h5>All Products</h5>
           </div>
         <% end %>
         <div class="dash-home-options-line-break"></div>
         <%= link_to admin_lookbooks_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag "lookbook-icon.png" %>
+            <%= image_tag "lookbook-icon.png", alt: "lookbook icon" %>
             <h5>Pending Lookbooks - <%= Lookbook.where(status: 'pending').size %></h5>
           </div>
         <% end %>
         <div class="dash-home-options-line-break"></div>
         <%= link_to admin_tutorials_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag "tutorial-icon.png" %>
+            <%= image_tag "tutorial-icon.png", alt: "tutorial icon" %>
             <h5>Pending Tutorials - <%= Tutorial.where(status: 'pending').size %></h5>
           </div>
         <% end %>

@@ -9,21 +9,21 @@
       <div class="dash-home-options">
         <%= link_to new_lookbook_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag 'upload-lookbook.png' %>
+            <%= image_tag 'upload-lookbook.png', alt: "share lookbook icon" %>
             <h5>Upload Lookbook</h5>
           </div>
         <% end %>
         <div class="dash-home-options-line-break"></div>
         <%= link_to new_tutorial_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag 'upload-tutorial.png' %>
+            <%= image_tag 'upload-tutorial.png', alt: "share tutorial icon" %>
             <h5>Upload Tutorial</h5>
           </div>
         <% end %>
         <div class="dash-home-options-line-break"></div>
         <%= link_to user_uploads_path, class: "dash-home-option-links" do %>
           <div class="each-dash-home-option">
-            <%= image_tag 'check-content-status.png' %>
+            <%= image_tag 'check-content-status.png', alt: "content status icon" %>
             <h5>Check Content Status</h5>
           </div>
         <% end %>

@@ -23,9 +23,9 @@
             <div>
               <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @tutorial.cover_photo.attached? %>
-                <%= image_tag url_for(@tutorial.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover-photo' %>
+                <%= image_tag url_for(@tutorial.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover-photo', alt: "tutorial cover photo preview" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover-photo' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover-photo', alt: "tutorial cover photo preview" %>
               <% end %>
             </div>
           </div>

@@ -9,9 +9,9 @@
           <div>
             <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup_banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @banner.photo.attached? %>
-              <%= image_tag url_for(@banner.photo), height: 100, class: "photo-preview", 'data-name': 'makeup_banner' %>
+              <%= image_tag url_for(@banner.photo), height: 100, class: "photo-preview", 'data-name': 'makeup_banner', alt: "banner preview" %>
             <% else %>
-              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup_banner' %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup_banner', alt: "banner preview" %>
             <% end %>
           </div>
         </div>
