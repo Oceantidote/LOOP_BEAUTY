@@ -22,7 +22,7 @@
         <%= f.label :cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
         <%= f.file_field :cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
         <% if @insider_article.cover_photo.attached? %>
-          <%= image_tag url_for(@insider_article.cover_photo), height: 100, class: "photo-preview", 'data-name': 'insider-cover-photo' %>
+          <%= image_tag url_for(@insider_article.cover_photo), height: 100, class: "photo-preview", 'data-name': 'insider-cover-photo', alt: "Insider article cover photo" %>
         <% else %>
           <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-cover-photo' %>
         <% end %>
@@ -50,9 +50,9 @@
         <%= f.label :photo1, 'CHOOSE FILE',class: 'upload-photo' %>
         <%= f.file_field :photo1, class: 'd-none photo-input', 'data-name': 'insider-photo-one', onchange: "displayPreview(this)" %>
         <% if @insider_article.photo1.attached? %>
-          <%= image_tag url_for(@insider_article.photo1), height: 100, class: "photo-preview", 'data-name': 'insider-photo-one' %>
+          <%= image_tag url_for(@insider_article.photo1), height: 100, class: "photo-preview", 'data-name': 'insider-photo-one', alt: "Insider article photo one" %>
         <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-one' %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-one', alt: "Insider article photo one" %>
         <% end %>
       </div>
     </div>
@@ -78,9 +78,9 @@
         <%= f.label :photo2, 'CHOOSE FILE',class: 'upload-photo' %>
         <%= f.file_field :photo2, class: 'd-none photo-input', 'data-name': 'insider-photo-two', onchange: "displayPreview(this)" %>
         <% if @insider_article.photo2.attached? %>
-          <%= image_tag url_for(@insider_article.photo2), height: 100, class: "photo-preview", 'data-name': 'insider-photo-two' %>
+          <%= image_tag url_for(@insider_article.photo2), height: 100, class: "photo-preview", 'data-name': 'insider-photo-two', alt: "Insider article photo two" %>
         <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-two' %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-two', alt: "Insider article photo two" %>
         <% end %>
       </div>
     </div>
@@ -106,9 +106,9 @@
         <%= f.label :photo3, 'CHOOSE FILE',class: 'upload-photo' %>
         <%= f.file_field :photo3, class: 'd-none photo-input', 'data-name': 'insider-photo-three', onchange: "displayPreview(this)" %>
         <% if @insider_article.photo3.attached? %>
-          <%= image_tag url_for(@insider_article.photo3), height: 100, class: "photo-preview", 'data-name': 'insider-photo-three' %>
+          <%= image_tag url_for(@insider_article.photo3), height: 100, class: "photo-preview", 'data-name': 'insider-photo-three', alt: "Insider article photo three" %>
         <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-three' %>
+          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-three', alt: "Insider article photo three" %>
         <% end %>
       </div>
     </div>

@@ -7,20 +7,20 @@
   <h2 class="insider-info-title text-center"><%= @tutorial.title %></h2>
   <div class="previous-next-tutorial">
     <div class="previous">
-      <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)" %>
+      <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)", alt: "dropdown icon" %>
       <%= link_to 'Previous', tutorial_path(@previous_tutorial) %>
     </div>
     <span class="previous-next-seperator"><strong style="margin: 0 5px;">|</strong></span>
     <div class="next">
       <%= link_to 'Next', tutorial_path(@next_tutorial) %>
-      <%= image_tag 'dropdown-forward.png', width: 10 %>
+      <%= image_tag 'dropdown-forward.png', width: 10, alt: "dropdown icon" %>
     </div>
   </div>
 </div>
 <div class="tutorial-show-video-banner">
-  <%= video_tag url_for(@tutorial.video), style: "width: 100%", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo) %>
+  <%= video_tag url_for(@tutorial.video), style: "width: 100%", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video" %>
   <div class="video-overlay">
-    <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80 %>
+    <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
   </div>
 </div>
 <% if request&.referrer&.include?('videos') %>
@@ -36,13 +36,13 @@
   </div>
   <div class="max-width">
     <div class="row-carousel">
-      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @tutorial.products.first(4).each do |product| %>
         <div class="col-8 col-sm-6 col-md-3 d-flex justify-content-center tp-cols">
           <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
-      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
   <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
@@ -55,13 +55,13 @@
   </div>
   <div class="max-width">
     <div class="row-carousel">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @users_tutorials.each do |tutorial| %>
         <div class="col-10 col-md-6 col-lg-3 lv-cols">
           <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
             <div class="homepage-video-card">
               <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
-                <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+                <%= image_tag 'play-button.png', class: "play-button", width: 80, alt: "forward arrow" %>
               </div>
               <div class="homepage-video-card-text">
                 <p class="video-card-text-title">by <%= tutorial.user.instagram %></p>

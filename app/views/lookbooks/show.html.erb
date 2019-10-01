@@ -9,7 +9,7 @@
 <div class="main-lookbook-cards-container">
   <div class="main-lookbook-card lookbook-card-opacity left-lookbook-card">
     <div class="main-lookbook-card-image-container">
-      <%= image_tag url_for(@previous_lookbook.photo), class: "main-lookbook-card-image" %>
+      <%= image_tag url_for(@previous_lookbook.photo), class: "main-lookbook-card-image", alt: "previous lookbook photo" %>
     </div>
     <div class="main-lookbook-card-text">
       <p class="didot"><%= @previous_lookbook.description %></p>
@@ -17,23 +17,23 @@
   </div>
   <div class="main-card-container">
     <%= link_to lookbook_path(@previous_lookbook, user_id: @previous_lookbook.user.id) do %>
-      <%= image_tag 'previous.png', class: "lookbook-previous-next-buttons" %>
+      <%= image_tag 'previous.png', class: "lookbook-previous-next-buttons", alt: "previous arrow" %>
     <% end %>
     <div class="main-lookbook-card">
       <div class="main-lookbook-card-image-container">
-          <%= image_tag url_for(@lookbook.photo), class: "main-lookbook-card-image" %>
+          <%= image_tag url_for(@lookbook.photo), class: "main-lookbook-card-image", alt: "influencer lookbook photo" %>
       </div>
       <div class="main-lookbook-card-text">
         <p class="didot"><%= @lookbook.description %></p>
       </div>
     </div>
     <%= link_to lookbook_path(@next_lookbook, user_id: @next_lookbook.user.id) do %>
-      <%= image_tag 'next.png', class: "lookbook-previous-next-buttons" %>
+      <%= image_tag 'next.png', class: "lookbook-previous-next-buttons", alt: "next arrow" %>
     <% end %>
   </div>
   <div class="main-lookbook-card lookbook-card-opacity right-lookbook-card">
     <div class="main-lookbook-card-image-container">
-      <%= image_tag url_for(@next_lookbook.photo), class: "main-lookbook-card-image" %>
+      <%= image_tag url_for(@next_lookbook.photo), class: "main-lookbook-card-image", alt: "next lookbook photo" %>
     </div>
     <div class="main-lookbook-card-text">
       <p class="didot"><%= @next_lookbook.description %></p>
@@ -55,13 +55,13 @@
       <p class="shop-look-text text-center">Scroll across to see more products</p>
     <% end %>
     <div class="row-carousel">
-      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @lookbook.products.each do |product| %>
         <div class="col-9 col-sm-6 col-md-3 tp-cols">
           <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
-      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
   <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
@@ -82,7 +82,7 @@
           <%= link_to lookbook_path(lookbook, user_id: lookbook.user.id), class: "lookbook-small-card-link card-link" do %>
             <div class="lookbook-small-card">
               <div class="lookbook-card-small-image">
-                <%= image_tag url_for(lookbook.photo) %>
+                <%= image_tag url_for(lookbook.photo), alt: "influencer lookbook photo" %>
               </div>
               <div class="lookbook-card-small-text-container">
                 <p class="lookbook-card-small-text muli">Shop the look</p>

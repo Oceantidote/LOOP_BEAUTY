@@ -37,9 +37,9 @@
             <div>
               <%= f.input :avatar_photo, input_html: { class: 'd-none photo-input', 'data-name': 'avatar', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.avatar_photo.attached? %>
-                <%= image_tag url_for(@influencer.avatar_photo), height: 100, class: "photo-preview", 'data-name': 'avatar' %>
+                <%= image_tag url_for(@influencer.avatar_photo), height: 100, class: "photo-preview", 'data-name': 'avatar', alt: "influencer avatar" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'avatar' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'avatar', alt: "influencer avatar" %>
               <% end %>
             </div>
           </div>
@@ -48,9 +48,9 @@
             <div>
               <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.cover_photo.attached? %>
-                <%= image_tag url_for(@influencer.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover' %>
+                <%= image_tag url_for(@influencer.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover', alt: "influencer cover photo" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover', alt: "influencer cover photo" %>
               <% end %>
             </div>
           </div>
@@ -59,9 +59,9 @@
             <div>
               <%= f.input :qa_photo, input_html: { class: 'd-none photo-input', 'data-name': 'qa', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.qa_photo.attached? %>
-                <%= image_tag url_for(@influencer.qa_photo), height: 100, class: "photo-preview", 'data-name': 'qa' %>
+                <%= image_tag url_for(@influencer.qa_photo), height: 100, class: "photo-preview", 'data-name': 'qa', alt: "influencer q and a photo" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'qa', alt: "influencer q and a photo" %>
               <% end %>
             </div>
           </div>
@@ -70,9 +70,9 @@
             <div>
               <%= f.input :lookbook_photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.lookbook_photo.attached? %>
-                <%= image_tag url_for(@influencer.lookbook_photo), height: 100, class: "photo-preview", 'data-name': 'lookbook' %>
+                <%= image_tag url_for(@influencer.lookbook_photo), height: 100, class: "photo-preview", 'data-name': 'lookbook', alt: "influencer lookbook photo" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'lookbook' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'lookbook', alt: "influencer lookbook photo" %>
               <% end %>
             </div>
           </div>
@@ -81,9 +81,9 @@
             <div>
               <%= f.input :tutorial_photo, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.tutorial_photo.attached? %>
-                <%= image_tag url_for(@influencer.tutorial_photo), height: 100, class: "photo-preview", 'data-name': 'tutorial' %>
+                <%= image_tag url_for(@influencer.tutorial_photo), height: 100, class: "photo-preview", 'data-name': 'tutorial', alt: "influencer tutorial photo" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'tutorial' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'tutorial', alt: "influencer tutorial photo" %>
               <% end %>
             </div>
           </div>
@@ -92,9 +92,9 @@
             <div>
               <%= f.input :makeup_photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.makeup_photo.attached? %>
-                <%= image_tag url_for(@influencer.makeup_photo), height: 100, class: "photo-preview", 'data-name': 'makeup' %>
+                <%= image_tag url_for(@influencer.makeup_photo), height: 100, class: "photo-preview", 'data-name': 'makeup', alt: "influencer makeup photo" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup', alt: "influencer makeup photo" %>
               <% end %>
             </div>
           </div>

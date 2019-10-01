@@ -17,9 +17,9 @@
             <div>
               <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @lookbook.photo.attached? %>
-                <%= image_tag url_for(@lookbook.photo), height: 100, class: "photo-preview", 'data-name': 'lookbook-photo' %>
+                <%= image_tag url_for(@lookbook.photo), height: 100, class: "photo-preview", 'data-name': 'lookbook-photo', alt: "Lookbook photo preview" %>
               <% else %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'lookbook-photo' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'lookbook-photo', alt: "Lookbook photo preview" %>
               <% end %>
             </div>
           </div>

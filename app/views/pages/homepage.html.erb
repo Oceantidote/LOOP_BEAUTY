@@ -18,7 +18,7 @@
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
     <div class="row-carousel">
-      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
+      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @insider_articles.each do |article| %>
         <div class="col-10 col-sm-12 col-md-4 ia-cols">
           <%= link_to insider_article_path(article), class: "card-link insider-info-card-link" do %>
@@ -39,7 +39,7 @@
           <% end %>
         </div>
       <% end %>
-      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right' %>
+      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
 </div>
@@ -48,11 +48,11 @@
     <h2 class="insider-info-title text-center">Latest Videos</h2>
     <div class="latest-videos-container lookbook-max-width">
       <div class="row-carousel" style="margin: 30px 0;">
-        <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
+        <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
           <% @tutorials.each do |tutorial| %>
             <%= render 'shared/tutorials_card', tutorial: tutorial %>
           <% end %>
-        <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+        <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
       </div>
     </div>
   </div>
@@ -79,12 +79,14 @@
   popUp = document.querySelector('.homepage-pop-up');
   popUpContent = document.querySelector('.pop-up-content');
   popUpContentButton = document.querySelector('.pop-up-content-button');
-  popUp.addEventListener('click', function() {
-    popUp.style.display = 'none'
-    popUpContent.style.display = 'none'
-  })
-  popUpContentButton.addEventListener('click', function() {
-    popUp.style.display = 'none'
-    popUpContent.style.display = 'none'
-  })
+  if (popUp) {
+    popUp.addEventListener('click', function() {
+      popUp.style.display = 'none'
+      popUpContent.style.display = 'none'
+    })
+    popUpContentButton.addEventListener('click', function() {
+      popUp.style.display = 'none'
+      popUpContent.style.display = 'none'
+    })
+  }
 </script>

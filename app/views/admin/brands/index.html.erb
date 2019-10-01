@@ -15,9 +15,9 @@
             </div>
             <div class="my-products-image">
               <% if brand.logo.attached? %>
-                <%= image_tag url_for(brand.logo) %>
+                <%= image_tag url_for(brand.logo), alt: "brand logo" %>
               <% else %>
-                <%= image_tag 'brand-default.png' %>
+                <%= image_tag 'brand-default.png', alt: "default photo for brands" %>
               <% end %>
             </div>
             <div class="products-admin-options">

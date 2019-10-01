@@ -3,7 +3,7 @@
   <div class="brand-header-section-container">
     <div class="brand-header-section brand-logo">
       <% if @brand.logo.attached? %>
-        <%= image_tag url_for(@brand.logo) %>
+        <%= image_tag url_for(@brand.logo), alt: "brand logo" %>
       <% end %>
     </div>
     <div class="brand-header-section brand-description">
@@ -14,14 +14,14 @@
     <hr>
     <div class="brand-header-section brand-photo">
       <% if @brand.photo.attached? %>
-        <%= image_tag url_for(@brand.photo) %>
+        <%= image_tag url_for(@brand.photo), alt: "brand photo" %>
       <% end %>
     </div>
   </div>
   <div class="mobile-brand-header-section-container">
     <div class="mobile-brand-logo">
       <% if @brand.logo.attached? %>
-        <%= image_tag url_for(@brand.logo) %>
+        <%= image_tag url_for(@brand.logo), alt: "brand logo" %>
       <% end %>
     </div>
     <div class="mobile-brand-info">
@@ -32,7 +32,7 @@
       </div>
       <div class="mobile-brand-photo">
         <% if @brand.photo.attached? %>
-          <%= image_tag url_for(@brand.photo) %>
+          <%= image_tag url_for(@brand.photo), alt: "brand photo" %>
         <% end %>
       </div>
     </div>

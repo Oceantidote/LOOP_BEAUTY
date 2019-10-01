@@ -10,7 +10,7 @@
         <% @home_banners.each do |home_banner| %>
           <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
             <div class="freebies-card">
-              <%= image_tag url_for(home_banner.banner) %>
+              <%= image_tag url_for(home_banner.banner), alt: "Home banner" %>
               <p class="small-text boldest no-margin"><%= home_banner.content %></p>
               <p class="small-text no-margin boldest">Link: <span class="didot normal"><%= home_banner.link %></span></p>
               <p class="small-text small-margin-bottom boldest">Link text: <span class="didot normal"><%= home_banner.link_text %></span></p>

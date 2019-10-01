@@ -2,51 +2,51 @@
   <h2 class="insider-info-title mlb-title text-center dash-mobile-title">Menu</h2>
   <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
   <%= link_to admin_brands_path, class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image" %>All Brands
+    <%= image_tag "basket.png", class: "dash-links-image", alt: "basket icon" %> %>All Brands
   <% end %>
   <%= link_to admin_products_path, class: "each-dash-link" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-image" %>All Products
+    <%= image_tag "lipstick.png", class: "dash-links-image", alt: "lipstick icon" %>All Products
   <% end %>
   <%= link_to admin_freebies_path, class: "each-dash-link" do %>
-    <%= image_tag "freebie-icon.png", class: "dash-links-image" %>Freebies
+    <%= image_tag "freebie-icon.png", class: "dash-links-image", alt: "freebie icon" %>Freebies
   <% end %>
   <%= link_to admin_lookbooks_path, class: "each-dash-link" do %>
-    <%= image_tag "lookbook-icon.png", class: "dash-links-image" %>Pending Lookbooks
+    <%= image_tag "lookbook-icon.png", class: "dash-links-image", alt: "lookbook icon" %>Pending Lookbooks
     <% if Lookbook.where(status: 'pending').any? %>
       <p class="admin-notification"><%= Lookbook.where(status: 'pending').size %></p>
     <% end %>
   <% end %>
   <%= link_to admin_tutorials_path, class: "each-dash-link" do %>
-    <%= image_tag "tutorial-icon.png", class: "dash-links-image" %>Pending Tutorials
+    <%= image_tag "tutorial-icon.png", class: "dash-links-image", alt: "basket icon" %>Pending Tutorials
     <% if Tutorial.where(status: 'pending').any? %>
       <p class="admin-notification"><%= Tutorial.where(status: 'pending').size %></p>
     <% end %>
   <% end %>
   <%= link_to admin_insider_articles_path, class: "each-dash-link" do %>
-    <%= image_tag "article.png", class: "dash-links-image" %>Insider Articles
+    <%= image_tag "article.png", class: "dash-links-image", alt: "article icon" %>Insider Articles
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-image" %>Sign Out
+    <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dash icon" %>Sign Out
   <% end %>
 </div>
 
 <div class="dash-links-mobile">
   <%= link_to admin_brands_path, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "basket.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "basket icon" %>
   <% end %>
   <%= link_to admin_products_path, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "lipstick.png", class: "dash-links-mobile-image", alt: "lipstick icon" %>
   <% end %>
   <%= link_to admin_freebies_path, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
   <% end %>
   <%= link_to admin_lookbooks_path, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "lookbook-icon.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "lookbook-icon.png", class: "dash-links-mobile-image", alt: "lookbook icon" %>
   <% end %>
   <%= link_to admin_tutorials_path, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "tutorial-icon.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "tutorial-icon.png", class: "dash-links-mobile-image", alt: "tutorial icon" %>
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image" %>
+    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image", alt: "sign out icon" %>
   <% end %>
 </div>

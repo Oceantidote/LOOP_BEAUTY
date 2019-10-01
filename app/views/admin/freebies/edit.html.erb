@@ -17,9 +17,9 @@
           <div>
             <%= f.input :banner, input_html: { class: 'd-none photo-input', 'data-name': 'freebie-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @freebie.banner.attached? %>
-              <%= image_tag url_for(@freebie.banner), height: 100, class: "photo-preview", 'data-name': 'freebie-banner' %>
+              <%= image_tag url_for(@freebie.banner), height: 100, class: "photo-preview", 'data-name': 'freebie-banner', alt: "Freebie banner" %>
             <% else %>
-              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'freebie-banner' %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'freebie-banner', alt: "Freebie banner" %>
             <% end %>
           </div>
         </div>

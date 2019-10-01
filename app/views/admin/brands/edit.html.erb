@@ -13,9 +13,9 @@
           <div>
             <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @brand.photo.attached? %>
-              <%= image_tag url_for(@brand.photo), height: 100, class: "photo-preview", 'data-name': 'brand-photo' %>
+              <%= image_tag url_for(@brand.photo), height: 100, class: "photo-preview", 'data-name': 'brand-photo', alt: "brand photo" %>
             <% else %>
-              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-photo' %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-photo', alt: "brand photo" %>
             <% end %>
           </div>
         </div>
@@ -24,9 +24,9 @@
           <div>
             <%= f.input :logo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-logo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @brand.logo.attached? %>
-              <%= image_tag url_for(@brand.logo), height: 100, class: "photo-preview", 'data-name': 'brand-logo' %>
+              <%= image_tag url_for(@brand.logo), height: 100, class: "photo-preview", 'data-name': 'brand-logo', alt: "brand logo" %>
             <% else %>
-              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-logo' %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-logo', alt: "brand logo" %>
             <% end %>
           </div>
         </div>

@@ -10,7 +10,7 @@
         <% @freebies.each do |freebie| %>
           <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
             <div class="freebies-card">
-              <%= image_tag url_for(freebie.banner) %>
+              <%= image_tag url_for(freebie.banner), alt: "Freebie banner" %>
               <p class="small-text text-center boldest no-margin"><%= freebie.heading %></p>
               <p class="small-text text-center no-margin"><%= freebie.blurb %></p>
 

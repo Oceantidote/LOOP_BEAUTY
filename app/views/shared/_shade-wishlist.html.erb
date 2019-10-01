@@ -1,9 +1,9 @@
 <% if current_user.wishlist_products.where(shade: shade).any? %>
   <%= link_to wishlist_product_path(current_user.wishlist_products.where(shade: shade).first), method: :delete, remote: :true, class: 'no-decoration' do %>
-    <%= image_tag 'heart-after.png', class: "wishlist-#{shade.id}" %>
+    <%= image_tag 'heart-after.png', class: "wishlist-#{shade.id}", alt: "wishlist heart icon" %>
   <% end %>
 <% else %>
   <%= link_to product_wishlist_products_path(product, params: { shade: shade }), method: :post, remote: :true, class: 'no-decoration' do %>
-    <%= image_tag 'heart-before.png', class: "wishlist-#{shade.id}" %>
+    <%= image_tag 'heart-before.png', class: "wishlist-#{shade.id}", alt: "wishlist heart icon" %>
   <% end %>
 <% end %>
