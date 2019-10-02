@@ -56,7 +56,7 @@
             </div> -->
         <div class="row" style="flex: 1; margin: 0;">
           <% if products.count == 0 %>
-            <h6 class="didot text-center large-margin-top width-100">There were no products matching "<%= @query %>"</h6>
+            <h6 class="didot text-center large-margin-top width-100">There were no products <%= @query ? "matching #{ @query }" : "" %></h6>
           <% else %>
             <% products.each do |product| %>
               <div class="col-6 col-sm-6 col-md-4" style="padding: 10px;">
