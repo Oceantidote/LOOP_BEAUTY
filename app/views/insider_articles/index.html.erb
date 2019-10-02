@@ -17,12 +17,12 @@
       <%= submit_tag "Inspiration", class: "each-insider-home-tab #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
     <% end %>
     <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :category, params[:category], value: "Lifestyle" %>
-      <%= submit_tag "Lifestyle", class: "each-insider-home-tab #{ params[:category] == 'Lifestyle' ? 'insider-home-tab-active' : '' }"  %>
+      <%= hidden_field_tag :category, params[:category], value: "Beauty News" %>
+      <%= submit_tag "Beauty News", class: "each-insider-home-tab #{ params[:category] == 'Beauty News' ? 'insider-home-tab-active' : '' }"  %>
     <% end %>
     <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :category, params[:category], value: "Ask the expert" %>
-      <%= submit_tag "Ask the expert", class: "each-insider-home-tab #{ params[:category] == 'Ask the expert' ? 'insider-home-tab-active' : '' }"  %>
+      <%= hidden_field_tag :category, params[:category], value: "Ask the Expert" %>
+      <%= submit_tag "Ask the Expert", class: "each-insider-home-tab #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
     <% end %>
   </div>
 </div>
