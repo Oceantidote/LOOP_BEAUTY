@@ -1,11 +1,10 @@
 import $ from 'jquery';
 $('#query').keyup(function() {
   let query = document.getElementById('query').value
-  console.log("Hi, I'm in autocomplete")
-  console.log(window.location.origin)
+  // console.log("Hi, I'm in autocomplete")
+  // console.log(window.location.origin)
   $.ajax({
       url: "/search_products",
-      // url: "https://infinite-journey-41892.herokuapp.com/search_products",
       type: "GET",
       data: { input : query }
   })
