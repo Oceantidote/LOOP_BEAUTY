@@ -1,0 +1,7 @@
+<%= simple_form_for [@user, ShowroomProduct.new], remote: true do |f| %>
+  <div class="personal-details-input">
+    <p class="boldest muli s-medium-text text-right no-margin">Product</p>
+    <%= f.input :product, label: false, collection: @demoable_products, input_html: { class: "dropdown-input sign-up-dropdown tiny-margin-left" } %>
+  </div>
+  <%= f.submit 'CREATE SHOWROOM PRODUCT', class: 'primary-button personal-details-button small-text' %>
+<% end %>
