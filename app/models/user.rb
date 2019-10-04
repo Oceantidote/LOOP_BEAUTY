@@ -88,11 +88,11 @@ class User < ApplicationRecord
   end
 
   def delivery_addresses
-    addresses.where(delivery_address: true, deleted: false)
+    addresses.where(delivery_address: true, deleted: false).order(created_at: :asc)
   end
 
   def billing_addresses
-    addresses.where(delivery_address: false, deleted: false)
+    addresses.where(delivery_address: false, deleted: false).order(created_at: :asc)
   end
 
   def remaining_credit
