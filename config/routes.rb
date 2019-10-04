@@ -136,10 +136,10 @@ Rails.application.routes.draw do
     end
   end
   resources :brands, only: [:index, :show]
-  resources :addresses, only: [:create, :destroy]
-  # resources :addresses, only: [:create, :destroy] do
-  #   patch 'set_default', to: 'addresses#set_default'
-  # end
+  # resources :addresses, only: [:create, :destroy]
+  resources :addresses, only: [:create, :destroy] do
+    patch 'set_default', to: 'addresses#set_default'
+  end
   get '/bag', to: 'baskets#show'
   patch '/discount', to: 'baskets#add_discount_code'
   patch '/remove_discount', to: 'baskets#remove_discount_code'

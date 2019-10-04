@@ -13,7 +13,7 @@ class AddressPolicy < ApplicationPolicy
     record.user == user || user.admin?
   end
 
-  # def set_default?
-  #   record.user == user
-  # end
+  def set_default?
+    record.user == user
+  end
 end

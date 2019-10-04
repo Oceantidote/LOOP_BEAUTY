@@ -6,7 +6,11 @@ class AddressesController < ApplicationController
     @address.user = current_user
     @user = current_user
     @order = Order.new
+
     if @address.save
+      if @user.delivery_addresses.count == 1
+        @address.update(default_address: true)
+      end
       respond_to do |format|
         format.html { redirect_back fallback_location: user_account_details_path(current_user) }
         format.js
@@ -16,6 +20,9 @@ class AddressesController < ApplicationController
         new_billing_address.user = current_user
         new_billing_address.delivery_address = false
         new_billing_address.save
+        if @user.billing_addresses.count == 1
+          new_billing_address.update(default_address: true)
+        end
       end
     elsif @address.delivery_address
       @delivery_address = @address
@@ -30,11 +37,26 @@ class AddressesController < ApplicationController
     end
   end
 
-  # def set_default
-  #   @address = Address.find(params[:address_id])
-  #   authorize @address
-  #   @address.update(default_address: true)
-  # end
+  def set_default
+    @address = Address.find(params[:address_id])
+    authorize @address
+    @user = @address.user
+    @default_delivery = @user.addresses.where(delivery_address: true).where(default_address: true).first
+    @default_billing = @user.addresses.where(delivery_address: false).where(default_address: true).first
+    if @address.delivery_address
+      @user.delivery_addresses.where.not(id: @address.id).update_all(default_address: false)
+      @address.update(default_address: true)
+      @default_is_delivery = true
+    else
+      @default_is_delivery = false
+      @user.billing_addresses.where.not(id: @address.id).update_all(default_address: false)
+      @address.update(default_address: true)
+    end
+    respond_to do |format|
+      format.html { redirect_back fallback_location: checkout_path }
+      format.js
+    end
+  end
 
   def destroy
     authorize @address

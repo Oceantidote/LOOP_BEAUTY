@@ -38,6 +38,6 @@
   </div>
 </div>
 
-<% if policy(ShowroomProduct).destroy? && (current_page?(controller: 'users', action: 'make_up') || ((params[:controller] == 'showroom_products' && params[:action] == 'destroy') || (params[:controller] == 'showroom_products' && params[:action] == 'create')) ) %>
+<% if policy(ShowroomProduct).destroy? && (params[:controller] == 'users' && params[:action] == 'make_up' || ((params[:controller] == 'showroom_products' && params[:action] == 'destroy') || (params[:controller] == 'showroom_products' && params[:action] == 'create')) ) %>
   <%= link_to 'Remove', user_showroom_product_path(@user, ShowroomProduct.where(product: product).first.id), method: :delete, class: "small-text underline grey-font boldest showroom-delete-link", remote: true %>
 <% end %>
