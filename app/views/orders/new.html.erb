@@ -32,10 +32,15 @@
                   <span class="small-text grey boldest">Discount: </span>
                   <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
                 </div>
+              <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
+                <div class="basket-price">
+                  <span class="small-text grey boldest">Credit Spent: </span>
+                  <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></h5>
+                </div>
               <% end %>
               <div class="basket-price small-margin-bottom">
                 <span class="small-text grey boldest no-margin">Delivery: </span>
-                <% if @basket.basket_products.first.purchase_with_credit %>
+                <% if @basket.basket_products.all?(&:purchase_with_credit?) %>
                   <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                 <% else %>
                   <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
@@ -43,7 +48,7 @@
               </div>
               <div class="basket-price">
                 <span class="grey boldest medium-text">Total: </span>
-                <h5 class="grey boldest medium-text no-margin total-cost"><%=humanized_money_with_symbol(@basket.total_price + Money.new(595)) %></h5>
+                <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.total_price_cents > 0 ? @basket.total_price + Money.new(595) : Money.new(0)) %></h5>
               </div>
             </div>
           </div>
@@ -88,10 +93,15 @@
                       <span class="small-text grey boldest">Discount: </span>
                       <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
                     </div>
+                  <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
+                    <div class="basket-price">
+                      <span class="small-text grey boldest">Credit Spent: </span>
+                      <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></h5>
+                    </div>
                   <% end %>
                   <div class="basket-price small-margin-bottom">
                     <span class="small-text grey boldest no-margin">Delivery: </span>
-                    <% if @basket.basket_products.first.purchase_with_credit %>
+                    <% if @basket.basket_products.all(&:purchase_with_credit?) %>
                       <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                     <% else %>
                       <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
@@ -99,7 +109,7 @@
                   </div>
                   <div class="basket-price">
                     <span class="grey boldest medium-text">Total: </span>
-                    <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.total_price + Money.new(595)) %></h5>
+                    <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.total_price_cents > 0 ? @basket.total_price + Money.new(595) : Money.new(0)) %></h5>
                   </div>
                 </div>
               </div>

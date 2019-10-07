@@ -12,6 +12,10 @@ class BasketProduct < ApplicationRecord
     )
   end
 
+  def purchase_with_credit?
+    purchase_with_credit
+  end
+
   def individual_price
     Money.new individual_price_cents
   end
