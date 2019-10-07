@@ -1,4 +1,5 @@
 import "bootstrap";
+import "./components/cookie_box";
 import 'flatpickr/dist/flatpickr.min.css';
 import 'flatpickr/dist/themes/dark.css';
 import 'tablesorter/dist/css/theme.default.min.css';

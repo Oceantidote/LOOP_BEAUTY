@@ -34,6 +34,20 @@
     <%= render 'shared/flashes' %>
     <div class="minimum-height">
       <%= yield %>
+      <!-- COOKIE MESSAGE - JS IN PACKS/COMPONENTS/COOKIE_BOX -->
+      <% if @not_seen_cookie %>
+        <div class="cookie-box" style="background-image: url('<%= asset_path 'cookies-background-two.png' %>')">
+          <div class="width-100">
+            <h5 class="boldest">This site uses cookies</h5>
+            <p class="boldest didot">We use cookies to ensure you get the best experience. By using out website you agree to our <%= link_to 'Cookie Policy', privacy_policy_path, class: "cookie-link" %> </p>
+            <%= link_to seen_cookie_path, remote: true do %>
+              <%= image_tag 'close-black.png', class: 'cookie-close close-cookie-box' %>
+            <% end %>
+            <%= link_to 'GOT IT', seen_cookie_path, remote: true, class: 'cookies-button close-cookie-box' %>
+          </div>
+        </div>
+      <% end %>
+      <!-- COOKIE MESSAGE - JS IN PACKS/COMPONENTS/COOKIE_BOX -->
     </div>
     <% unless (params[:controller] == 'pages' && params[:action] == 'home') || (params[:controller] == 'pages' && params[:action] == 'freebies') %>
       <%= render 'shared/footer' %>

@@ -177,7 +177,4 @@
     color: $light-gray !important;
     background-color: rgba(0,0,0,0.9);
   }
-  @include for-medium-devices-down {
-    margin: 10px;
-  }
 }
