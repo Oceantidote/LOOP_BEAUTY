@@ -160,21 +160,22 @@
 
 .cookies-button {
   border: 2px solid rgba(0,0,0,0.3);
+  border-radius: 5px;
   cursor: pointer;
   height: 50px;
-  background-color: #FFF;
-  color: #000;
-  border-radius: 0;
-  padding: 6px 15px;
+  background-color: #000;
+  color: #FFF;
+  padding: 6px 20px;
   letter-spacing: 1px;
   font-weight: bold;
-  font-size: 10px;
-  margin: 10px;
+  font-size: 12px;
+  display: block;
+  width: max-content;
   @include absCenter;
   &:hover {
     text-decoration: none;
     color: $light-gray !important;
-    background-color: #A9A9A9;
+    background-color: rgba(0,0,0,0.9);
   }
   @include for-medium-devices-down {
     margin: 10px;
