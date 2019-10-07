@@ -1,10 +1,5 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :insider, :videos, :influencer_video, :about_us, :questions_and_answers, :influencers, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy, :contact_us, :seen_cookie_message]
-  before_action :not_seen_cookie_message, unless: -> { cookies[:seen_cookie_message] }
-
-  def not_seen_cookie_message
-    @not_seen_cookie = true
-  end
 
   def seen_cookie_message
     cookies.permanent[:seen_cookie_message] = true

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_navbar_variables
   before_action :store_aff_code
   before_action :check_for_empty_orders
+  before_action :not_seen_cookie_message, unless: -> { cookies[:seen_cookie_message] }
   before_action :first_time_visit, unless: -> { cookies[:not_first_visit] }
   include Pundit
   @influencers = User.where(influencer: true).where(published: true)
@@ -16,6 +17,9 @@ class ApplicationController < ActionController::Base
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def not_seen_cookie_message
+    @not_seen_cookie = true
+  end
   def first_time_visit
     cookies.permanent[:not_first_visit] = true
     @first_visit = true
