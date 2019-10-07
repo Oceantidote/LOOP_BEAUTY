@@ -132,11 +132,11 @@
 
 .show-text {
   max-height: 300px !important;
-  margin-bottom: 6px !important;
+  padding-bottom: 6px !important;
 }
 
 .product-details-text, .benefits-text, .about-the-brand-text {
-  transition: max-height 0.6s ease-in-out;
+  transition: max-height 0.5s ease;
   max-height: 0;
   overflow: hidden;
 }
