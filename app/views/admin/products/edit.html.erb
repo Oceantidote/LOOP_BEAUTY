@@ -74,7 +74,7 @@
                 <div class="personal-details-input align-items-start">
                   <p class="boldest muli s-medium-text text-right photo-input-text">Card Photo</p>
                   <div>
-                    <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                    <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_card" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <% if shade.card_photo.attached? %>
                       <%= image_tag url_for(shade.card_photo), height: 100, class: "photo-preview", 'data-name': 'shade-card-photo', alt: "shade photo" %>
                     <% else %>
@@ -85,7 +85,7 @@
                 <div class="personal-details-input align-items-start">
                   <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
                   <div style="max-width: 288px;">
-                    <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                    <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true, id: "shade_#{shade.id}_photos" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <% if shade.photos.attached? %>
                       <% shade.photos.each do |photo| %>
                         <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
