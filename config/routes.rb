@@ -143,5 +143,6 @@ Rails.application.routes.draw do
   get '/bag', to: 'baskets#show'
   patch '/discount', to: 'baskets#add_discount_code'
   patch '/remove_discount', to: 'baskets#remove_discount_code'
+  get '/seen_cookie', to: 'pages#seen_cookie_message'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

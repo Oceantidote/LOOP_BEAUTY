@@ -70,14 +70,6 @@
     </div>
   </div>
 <% end %>
-<div class="cookie-box" style="background-image: url('<%= asset_path 'cookies-background-two.png' %>')">
-  <div class="width-75">
-    <h5 class="boldest">This site uses cookies</h5>
-    <p class="boldest didot">We use cookies to ensure you get the best experience. By using out website you agree to our <%= link_to 'Cookie Policy', privacy_policy_path, class: "cookie-link" %> </p>
-    <%= image_tag 'close-black.png', class: 'cookie-close close-cookie-box' %>
-    <%= link_to 'GOT IT', '#', class: 'cookies-button close-cookie-box' %>
-  </div>
-</div>
 <script>
   popUp = document.querySelector('.homepage-pop-up');
   popUpContent = document.querySelector('.pop-up-content');
@@ -92,16 +84,4 @@
       popUpContent.style.display = 'none'
     })
   }
-
-  cookieClose = document.querySelectorAll('.close-cookie-box');
-  cookieBox = document.querySelector('.cookie-box');
-  cookieClose.forEach((close) => {
-    close.addEventListener('click', () => {
-      cookieBox.style.opacity = '0'
-      setTimeout(function() {
-          cookieBox.style.display = 'none'
-          }, 500
-        )
-    })
-  })
 </script>
