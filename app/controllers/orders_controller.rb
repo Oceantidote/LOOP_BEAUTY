@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     @basket = find_basket
     @order = Order.new(order_params.slice(:delivery_address_id, :billing_address_id, :delivery_type))
     @order.user = current_user
-    @order.set_delivery_costs_cents
+    @basket.basket_products.all?(&:purchase_with_credit?) && @basket.total_price_cents == 0 ? @order.delivery_cost_cents = 0 : @order.set_delivery_costs_cents
     authorize @order
     if session[:aff_code]
       affiliation = Tutorial.find_by_affiliate_code(session[:aff_code]).present? ? Tutorial.find_by_affiliate_code(session[:aff_code]) : Lookbook.find_by_affiliate_code(session[:aff_code])
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
           quantity: item.quantity
         }
       end
-      items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: 'gbp', quantity: 1}
+      items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: 'gbp', quantity: 1} if @order.delivery_cost_cents > 0
       @session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
         line_items: items,
