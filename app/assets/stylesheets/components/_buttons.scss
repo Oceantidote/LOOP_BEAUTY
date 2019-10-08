@@ -20,6 +20,14 @@
   }
 }
 
+.disabled-button {
+  padding: 6px 38px !important;
+  background-color: #D2D2D2 !important;
+  &:hover {
+  background-color: #D2D2D2 !important;
+  }
+}
+
 .secondary-button {
   height: 40px;
   text-decoration: none;

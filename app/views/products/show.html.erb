@@ -25,7 +25,8 @@
           <% @product.shades.each_with_index do |shade, i| %>
             <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
               <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)",
-                data-name="<%= shade.name %>"
+                data-name="<%= shade.name %>",
+                data-stock="<%= shade.number_in_stock %>"
                 data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
               </div>
 <!--               <%# if user_signed_in? && current_user.wishlist %>
@@ -49,8 +50,15 @@
         <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
         <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
-      <%#= link_to 'ADD TO BAG', '#', class: "primary-button" %>
-      <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
+      <div class="button-holder">
+        <% if @product.out_of_stock %>
+          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+        <% elsif @product.shades.first.out_of_stock %>
+          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+        <% else %>
+          <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
+        <% end %>
+      </div>
     <% end %>
       <div class="product-details-section info-expand">
         <div class="product-details-title">
@@ -296,18 +304,20 @@
     aboutBrandText.classList.toggle('show-text');
   });
 
-  addToBag.addEventListener('click', function() {
-    addToBag.value = 'ITEM ADDED';
-    itemAdded.classList.add('item-added-show');
-    basketIcon.style.animation = 'basket-bounce 2s ease'
-    basketIconMobile.style.animation = 'basket-bounce 2s ease'
-    setTimeout(() => basketIcon.style.animation = '', 2000)
-    setTimeout(() => basketIconMobile.style.animation = '', 2000)
-    setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
-    setTimeout(() => addToBag.disabled = true, 100)
-    setTimeout(() => addToBag.disabled = false, 4000)
-    setTimeout(() => addToBag.value = 'ADD TO BAG', 3500)
-  });
+  if (addToBag) {
+    addToBag.addEventListener('click', function() {
+      addToBag.value = 'ITEM ADDED';
+      itemAdded.classList.add('item-added-show');
+      basketIcon.style.animation = 'basket-bounce 2s ease'
+      basketIconMobile.style.animation = 'basket-bounce 2s ease'
+      setTimeout(() => basketIcon.style.animation = '', 2000)
+      setTimeout(() => basketIconMobile.style.animation = '', 2000)
+      setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
+      setTimeout(() => addToBag.disabled = true, 100)
+      setTimeout(() => addToBag.disabled = false, 4000)
+      setTimeout(() => addToBag.value = 'ADD TO BAG', 3500)
+    });
+  }
 
   recommendedItemAdded.forEach((addedItem) => {
     addedItem.addEventListener('click', function() {
