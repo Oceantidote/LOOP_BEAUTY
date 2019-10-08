@@ -150,7 +150,7 @@
                 <h6 class="review-modal-influencer"><%= review.user.instagram %></h6>
               <% end %>
               <div class="review-modal-body">
-                <%= review.review %>
+                <p class="didot"><%= review.review %></p>
                 <div class="d-flex justify-content-center py-3">
                   <%= render 'shared/ratings', rating: review.rating %>
                 </div>
