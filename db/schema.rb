@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_094628) do
+ActiveRecord::Schema.define(version: 2019_10_08_101142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -272,6 +272,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_094628) do
     t.integer "delivery_cost_cents"
     t.string "affiliation_type"
     t.bigint "affiliation_id"
+    t.boolean "processed", default: false
     t.index ["affiliation_type", "affiliation_id"], name: "index_orders_on_affiliation_type_and_affiliation_id"
     t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
     t.index ["delivery_address_id"], name: "index_orders_on_delivery_address_id"
