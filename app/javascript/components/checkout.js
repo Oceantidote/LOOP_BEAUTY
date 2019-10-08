@@ -72,12 +72,10 @@ const initCheckout = () => {
 
   if (addressBtn) {
     addressBtn.addEventListener('click', () => {
-      console.log('triggered')
       deliveryBtn.click();
       if (useAsBilling.checked === false) {
         billingBtn.click();
       }
-      console.log('test')
       addressBtn.classList.add('d-none')
       paymentBtn.classList.remove('d-none')
     })
