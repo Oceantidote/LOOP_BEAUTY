@@ -63,14 +63,18 @@ class OrdersController < ApplicationController
 
   def order_success
     @order = Order.find(params[:order_id])
-    @order.credit_spent = @basket.money_off_from_credit
-    @basket.basket_products.each do |item|
-      order_product = item.convert_to_order_product
-      order_product.order = @order
-      order_product.save
+    unless @order.processed?
+      @order.credit_spent = @basket.money_off_from_credit
+      @order.processed = true
+      @order.save
+      @basket.basket_products.each do |item|
+        order_product = item.convert_to_order_product
+        order_product.order = @order
+        order_product.save
+      end
+      @basket.empty!
+      submit_order
     end
-    @basket.empty!
-    submit_order
     @user = @order.user
     authorize @order
   end

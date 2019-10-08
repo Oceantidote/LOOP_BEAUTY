@@ -112,4 +112,8 @@ class Order < ApplicationRecord
       self[:delivery_cost_cents] = 595
     end
   end
+
+  def processed?
+    processed
+  end
 end
