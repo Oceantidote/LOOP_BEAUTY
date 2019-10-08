@@ -2,11 +2,13 @@ cookieClose = document.querySelectorAll('.close-cookie-box');
 cookieBox = document.querySelector('.cookie-box');
 
 setTimeout(function() {
-  if (window.innerWidth < 576) {
-    cookieBox.style.bottom = '0' + 'px'
-  } else {
-    cookieBox.style.bottom = '30' + 'px'
-  }
+  if (cookieBox) {
+      if (window.innerWidth < 576) {
+        cookieBox.style.bottom = '0' + 'px'
+      } else {
+        cookieBox.style.bottom = '30' + 'px'
+      }
+    }
   }, 2000
 )
 

@@ -41,12 +41,11 @@ const initCheckout = () => {
   const billingHolder = document.getElementById('billingHolder')
   const savedBillingAddresses = document.querySelectorAll('.billing-address-selector')
   const useAsBilling = document.getElementById('address_use_as_billing')
-  console.log(useAsBilling.checked)
+
+
 
   savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
     deliveryHolder.value = a.id;
-    console.log(deliveryHolder)
-    console.log(deliveryHolder.value)
     deliveryAddressShow.innerHTML = `
                                       <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.address_line1}</p>
@@ -54,7 +53,8 @@ const initCheckout = () => {
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.country}</p>
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.postcode}</p>
                                     `
-    deliveryAddressShow.classList.remove('d-none')
+                                    deliveryAddressShow.classList.remove('d-none')
+                                    deliveryAddressShow.parentNode.querySelector('.delivery-default').classList.add('d-none')
   }))
 
   savedBillingAddresses.forEach(a => a.addEventListener('click', () => {
@@ -67,6 +67,7 @@ const initCheckout = () => {
                                       <p class="grey-font s-medium-text didot boldest no-margin">${a.dataset.postcode}</p>
                                     `
     billingAddressShow.classList.remove('d-none')
+    billingAddressShow.parentNode.querySelector('.billing-default').classList.add('d-none')
   }))
 
   if (addressBtn) {
