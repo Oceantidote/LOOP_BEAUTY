@@ -57,7 +57,7 @@ class BasketProduct < ApplicationRecord
     return unadjusted_price_cents unless info
     (unadjusted_price_cents * info.rate).round
   end
-  
+
   def unadjusted_price_cents
     product.price_cents * quantity
   end

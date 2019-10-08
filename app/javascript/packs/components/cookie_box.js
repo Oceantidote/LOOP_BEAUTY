@@ -1,23 +1,26 @@
 cookieClose = document.querySelectorAll('.close-cookie-box');
 cookieBox = document.querySelector('.cookie-box');
 
-setTimeout(function() {
-  if (cookieBox) {
-      if (window.innerWidth < 576) {
-        cookieBox.style.bottom = '0' + 'px'
-      } else {
-        cookieBox.style.bottom = '30' + 'px'
-      }
+if (cookieBox) {
+  setTimeout(function() {
+    if (window.innerWidth < 576) {
+      cookieBox.style.bottom = '0' + 'px'
+    } else {
+      cookieBox.style.bottom = '30' + 'px'
     }
-  }, 2000
-)
+    }, 2000
+  )
+}
 
-cookieClose.forEach((close) => {
-  close.addEventListener('click', () => {
-    cookieBox.style.opacity = '0'
-    setTimeout(function() {
-      cookieBox.style.display = 'none'
-      }, 500
-    )
+if (cookieClose) {
+  cookieClose.forEach((close) => {
+    close.addEventListener('click', () => {
+      cookieBox.style.opacity = '0'
+      setTimeout(function() {
+        cookieBox.style.display = 'none'
+        }, 500
+      )
+    })
   })
-})
+}
+

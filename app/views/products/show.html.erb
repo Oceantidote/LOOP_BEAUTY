@@ -51,13 +51,13 @@
         <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <div class="button-holder">
-        <% if @product.out_of_stock %>
-          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
-        <% elsif @product.shades.first.out_of_stock %>
-          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
-        <% else %>
+        <%# if @product.out_of_stock? %>
+          <%#= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+        <%# elsif @product.shades.first.out_of_stock? %>
+          <%#= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+        <%# else %>
           <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
-        <% end %>
+        <%# end %>
       </div>
     <% end %>
       <div class="product-details-section info-expand">

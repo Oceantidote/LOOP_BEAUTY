@@ -9,13 +9,15 @@
     <% end %>
     <h2 class="shopping-bag-title text-center">Shopping Bag</h2>
     <hr style="border-color: #CFCFCF;">
-    <% if @basket.products.count == 0 %>
-      <p class="large-margin text-center boldest">Your basket is empty</p>
-      <div class="start-shopping-holder">
-        <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
-      </div>
-      <hr style="border-color: #CFCFCF;">
-    <% end %>
+    <div class="empty-basket-text">
+      <% if @basket.products.count == 0 %>
+        <p class="large-margin text-center boldest">Your basket is empty</p>
+        <div class="start-shopping-holder">
+          <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+        </div>
+        <hr style="border-color: #CFCFCF;">
+      <% end %>
+    </div>
     <% @basket.basket_products.each do |item| %>
       <div class="item-<%= item.id %> item-bag-<%= item.id %> %>">
         <%= render 'shopping_bag_product_card', item: item %>
@@ -46,11 +48,9 @@
         <div class="shopping-bag-continue-checkout-total">
           <%= render 'shared/shopping_bag_price', basket: @basket %>
         </div>
-        <% if @basket.basket_products.count == 0 %>
-          <div class="primary-button bag-checkout-button disabled">CHECKOUT</div>
-        <% else %>
-          <%= link_to 'CHECKOUT', checkout_path, id: "pos-checkout", class: 'primary-button bag-checkout-button' %>
-        <% end %>
+        <div class="checkout-button">
+          <%= render 'checkout_button', basket: @basket %>
+        </div>
         <%= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe', alt: 'stripe photo' %>
       </div>
     </div>
