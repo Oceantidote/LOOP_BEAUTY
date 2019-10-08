@@ -49,7 +49,7 @@ class Product < ApplicationRecord
     self.shades.sum(:number_in_stock)
   end
 
-  def out_of_stock
+  def out_of_stock?
     (self.shades.sum(:number_in_stock) == 0) ? true : false
   end
 

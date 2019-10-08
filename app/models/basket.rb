@@ -5,6 +5,11 @@ class Basket < ApplicationRecord
   has_many :products, through: :basket_products
   has_many :shades, through: :products
 
+  def any_out_of_stock?
+    puts all_shades = self.basket_products.map { |basket_product| basket_product.shade.number_in_stock }
+    all_shades.include?(0)
+  end
+
   def empty?
     basket_products.empty?
   end
@@ -59,7 +64,7 @@ class Basket < ApplicationRecord
   def unadjusted_price
     Money.new unadjusted_price_cents
   end
-  
+
   def unadjusted_price_cents
     basket_products.map(&:unadjusted_price_cents).sum
   end

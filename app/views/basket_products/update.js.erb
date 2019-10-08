@@ -15,3 +15,6 @@ quantity.innerHTML = 'Quantity: <%= @item.quantity %>'
 
 priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
 priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"
+
+checkoutButtonContainer = document.querySelector('.checkout-button')
+checkoutButtonContainer.innerHTML = `<%= j render 'baskets/checkout_button', basket: @basket %>`

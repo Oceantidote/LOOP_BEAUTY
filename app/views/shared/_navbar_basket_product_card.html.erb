@@ -3,6 +3,11 @@
     <%= link_to product_path(item.product), class: 'no-decoration' do %>
       <div class="basket-items-card">
         <div class="basket-items-card-image">
+          <% if item.shade.number_in_stock == 0 %>
+            <div class="out-of-stock-overlay">
+              <p class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</p>
+            </div>
+          <% end %>
           <%= image_tag url_for(item.shade.photos.first), alt: "product shade photo" %>
         </div>
         <div class="basket-items-card-info">
