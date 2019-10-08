@@ -90,6 +90,13 @@
   height: 40px !important;
   padding: 0 25px !important;
   margin: auto 0 auto 10px !important;
+  width: max-content !important;
+}
+
+.checkout-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .shopping-bag-continue-checkout {
