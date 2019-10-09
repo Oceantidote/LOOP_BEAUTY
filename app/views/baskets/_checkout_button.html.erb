@@ -1,7 +1,8 @@
-<% if basket.basket_products.count == 0 || basket.any_out_of_stock? %>
+<% if basket.basket_products.count == 0 %>
   <div class="primary-button bag-checkout-button disabled">CHECKOUT</div>
-  <p class="didot">Remove out of stock items to checkout</p>
-
+<% elsif basket.any_out_of_stock? %>
+    <p class="didot tiny-margin-bottom boldest">Remove out of stock items to checkout</p>
+    <div class="primary-button bag-checkout-button disabled">CHECKOUT</div>
 <% else %>
   <%= link_to 'CHECKOUT', checkout_path, id: "pos-checkout", class: 'primary-button bag-checkout-button' %>
 <% end %>
