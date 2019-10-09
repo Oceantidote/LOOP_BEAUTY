@@ -65,7 +65,7 @@
           <h6 class="small-text">Product details</h6>
           <i class="fas fa-plus pd-expand"></i>
         </div>
-        <p class="product-details-text didot small-text no-margin"><%= @product.details %></p>
+        <p class="product-details-text didot small-text"><%= @product.details %></p>
       </div>
       <div class="benefits-section info-expand">
         <div class="benefits-title">
@@ -83,7 +83,7 @@
           <h6 class="small-text">About the brand</h6>
           <i class="fas fa-plus ab-expand"></i>
         </div>
-        <p class="about-the-brand-text didot small-text no-margin"><%= @product.brand.description %></p>
+        <p class="about-the-brand-text didot small-text"><%= @product.brand.description %></p>
       </div>
       <div class="share-section">
         <h6 class="small-text">Share</h6>
@@ -289,19 +289,22 @@
   details.addEventListener('click', function() {
     expandIconProduct.classList.toggle('fa-plus');
     expandIconProduct.classList.toggle('fa-minus');
-    detailsText.classList.toggle('show-text');
+    // detailsText.classList.toggle('show-text');
+    $(detailsText).slideToggle();
   });
 
   benefit.addEventListener('click', function() {
     expandIconBenefit.classList.toggle('fa-plus');
     expandIconBenefit.classList.toggle('fa-minus');
-    benefitsText.classList.toggle('show-text');
+    // benefitsText.classList.toggle('show-text');
+    $(benefitsText).slideToggle();
   });
 
   aboutBrand.addEventListener('click', function() {
     expandIconBrand.classList.toggle('fa-plus');
     expandIconBrand.classList.toggle('fa-minus');
-    aboutBrandText.classList.toggle('show-text');
+    // aboutBrandText.classList.toggle('show-text');
+    $(aboutBrandText).slideToggle();
   });
 
   if (addToBag) {

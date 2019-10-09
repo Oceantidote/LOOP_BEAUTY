@@ -1,3 +1,6 @@
+import $ from 'jquery'
+global.$ = $
+
 import "bootstrap";
 import "./components/cookie_box";
 import 'flatpickr/dist/flatpickr.min.css';
