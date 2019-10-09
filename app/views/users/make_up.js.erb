@@ -4,4 +4,4 @@ cards.forEach(function(card) {
 });
 results = document.querySelector('.influencer-makeup-container')
 document.querySelector('#product-filter').remove()
-results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>")
+results.insertAdjacentHTML('beforeend', "<%= j render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>")
