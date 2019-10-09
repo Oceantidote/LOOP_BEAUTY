@@ -1,0 +1,7 @@
+cards = document.querySelectorAll('.card-image-results');
+cards.forEach(function(card) {
+  card.remove();
+});
+results = document.querySelector('.influencer-makeup-container')
+document.querySelector('#product-filter').remove()
+results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>")
