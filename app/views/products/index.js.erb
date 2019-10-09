@@ -5,3 +5,9 @@ cards.forEach(function(card) {
 results = document.querySelector('.partial-banner')
 document.querySelector('#product-filter').remove()
 results.insertAdjacentHTML('afterend', "<%= j render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>")
+
+filterSlider = $('.mobile-filters')
+filters = $('.partial-filters')
+$(filterSlider).click(function() {
+  $(filters).slideToggle();
+});

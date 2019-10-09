@@ -136,9 +136,11 @@
 }
 
 .product-details-text, .benefits-text, .about-the-brand-text {
-  transition: max-height 0.5s ease;
-  max-height: 0;
-  overflow: hidden;
+  // transition: max-height 0.5s ease;
+  // max-height: 0;
+  // overflow: hidden;
+  display: none;
+  margin-bottom: 5px;
 }
 
 .product-insider-reviews-wrapper {
