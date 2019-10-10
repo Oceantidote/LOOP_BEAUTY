@@ -50,6 +50,12 @@
   margin-right: 10px;
 }
 
+.order-show-image {
+  height: auto;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 .orders-button {
   width: fit-content;
   margin: 20px auto;
@@ -69,14 +75,17 @@
 }
 
 .order-show-each-order {
+  display: block !important;
   border: none !important;
   padding: 10px !important;
+  p {
+    text-align: left !important;
+    margin-bottom: 3px;
+  }
 }
 
 .order-show-product-card {
-  border: 1px solid rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  margin: 10px auto;
   width: 100% !important;
 }
 
@@ -85,4 +94,5 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
 }
+
 

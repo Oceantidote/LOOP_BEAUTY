@@ -17,7 +17,7 @@
               <p class="boldest s-medium-text no-margin">Total credits spent: <%= humanized_money_with_symbol @order.credit_spent %></p>
               <p class="boldest s-medium-text no-margin">Remaining credits: <%= humanized_money_with_symbol @order.user.remaining_credit %></p>
             <% else %>
-              <p class="boldest s-medium-text no-margin">Total: <%= humanized_money_with_symbol @order.total_price %></p>
+              <p class="boldest s-medium-text small-margin-bottom">Total: <%= humanized_money_with_symbol @order.total_price %></p>
             <% end %>
             <!-- <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p> -->
             <p class="boldest s-medium-text no-margin">Delivery address:</p>
@@ -26,23 +26,21 @@
             <p class="small-text grey boldest tiny-margin-bottom"><%= @order.delivery_address.city %>, <%= @order.delivery_address.postcode %></p>
           </div>
           <div class="order-show-info-right">
-            <p class="boldest s-medium-text no-margin">Date: <%= @order.created_at.strftime('%d\%m\%y') %></p>
+            <p class="boldest s-medium-text small-margin-bottom">Date: <%= @order.created_at.strftime('%d\%m\%y') %></p>
             <p class="boldest s-medium-text no-margin">No of items: <%= @order.products.count %></p>
           </div>
         </div>
         <div class="row row-padding" style="width: 100%;">
           <% @order.order_products.each do |order_product| %>
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-sm-4">
               <%= link_to product_path(order_product.product), class: "order-show-card-link no-decoration" do %>
                 <div class="each-order-card order-show-product-card">
                   <div class="each-order-container order-show-each-order">
-                    <div class="my-order-details">
-                      <%= image_tag url_for(order_product.product.shades.first.photos.first), class: "order-image", alt: "order product shade photo" %>
-                      <div class="order-details-text">
-                        <p class="boldest s-medium-text"><%= order_product.product.title %></p>
-                        <p class="small-text"><%= order_product.shade.name %></p>
-                        <p class="small-text">Quantity: <%= order_product.quantity %></p>
-                      </div>
+                    <%= image_tag url_for(order_product.product.shades.first.photos.first), class: "order-image order-show-image", alt: "order product shade photo" %>
+                    <div class="order-details-text">
+                      <p class="boldest s-medium-text"><%= order_product.product.title %></p>
+                      <p class="small-text"><%= order_product.shade.name %></p>
+                      <p class="small-text">Quantity: <%= order_product.quantity %></p>
                     </div>
                     <div class="order-price">
                       <p class="boldest small-text"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
