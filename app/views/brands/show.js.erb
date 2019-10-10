@@ -5,3 +5,9 @@ cards.forEach((card) => {
 results = document.getElementById('brandsResults')
 document.getElementById('product-filter').remove()
 results.insertAdjacentHTML('beforeend', "<%= j render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>")
+
+filterSlider = $('.mobile-filters')
+filters = $('.partial-filters')
+$(filterSlider).click(function() {
+  $(filters).slideToggle();
+});
