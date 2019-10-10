@@ -124,10 +124,7 @@
 .customer-review-input {
   margin-bottom: 5px;
   input, textarea, select {
-    width: 500px !important;
-    @include for-phone-only {
-      width: 100% !important;
-    }
+    width: 100% !important;
   }
   @include for-phone-only {
     flex-direction: column;
