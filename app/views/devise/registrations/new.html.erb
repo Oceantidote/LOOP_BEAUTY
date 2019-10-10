@@ -27,7 +27,22 @@
                         required: true,
                         label: false,
                         prompt: "Country",
-                        input_html: { autocomplete: "email", class: 'dropdown-input sign-up-dropdown' } %>
+                        input_html: { autocomplete: "country", class: 'dropdown-input sign-up-dropdown' } %>
+            <%= f.input :gender,
+                        required: true,
+                        label: false,
+                        collection: ["Male", "Female"],
+                        prompt: "Gender",
+                        input_html: { autocomplete: "gender", class: 'dropdown-input sign-up-dropdown' } %>
+            <p style="margin: 0 0 0 5px; color: #BCBCBC; font-size: 14px;">Date of Birth</p>
+            <%= f.input :dob,
+                        required: true,
+                        as: :date,
+                        label: false,
+                        prompt: "-",
+                        start_year: Date.today.year - 13, end_year: Date.today.year - 75,
+                        order: [:day, :month, :year],
+                        input_html: { autocomplete: "email", id: 'date_of_birth', class: 'dropdown-input sign-up-dropdown' } %>
             <%= f.input :password,
                         label: false,
                         placeholder: "Password",

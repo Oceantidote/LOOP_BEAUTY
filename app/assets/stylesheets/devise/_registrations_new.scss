@@ -118,3 +118,23 @@
   margin-bottom: 0;
 }
 
+small {
+  font-size: 9px !important;
+}
+
+
+#date_of_birth[name="user[dob(3i)]"] {
+  width: 20% !important;
+  min-width: auto;
+}
+
+#date_of_birth[name="user[dob(2i)]"] {
+  width: 50% !important;
+  min-width: auto;
+}
+
+#date_of_birth[name="user[dob(1i)]"] {
+  width: 30% !important;
+  min-width: auto;
+}
+
