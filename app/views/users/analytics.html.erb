@@ -8,6 +8,16 @@
       <hr>
       <div class="analytics-content">
         <h6 class="muli boldest">Pieces of content shared: <span class="normal didot"><%= @number_of_content_shared %></span></h6>
+        <h6 class="muli boldest">Total number of visitors brought to site: <span class="normal didot"><%= @total_visits %></span></h6>
+        <h6 class="muli boldest">Total number of sales: <span class="normal didot"><%= @total_sales %></span></h6>
+        <h6 class="muli boldest">Conversion rate: <span class="normal didot"><%= @total_conversion_rate %>%</span></h6>
+      </div>
+      <hr>
+      <div class="analytics-content">
+        <h6>Content which generates most visits</h6>
+        <% @top_content.each do |content| %>
+          <%= content.title %>
+        <% end %>
       </div>
       <hr>
       <div class="analytics-top-section">

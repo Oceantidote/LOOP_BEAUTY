@@ -31,7 +31,13 @@ class UsersController < ApplicationController
   end
 
   def analytics
-    @number_of_content_shared = Lookbook.where(user: @user).count + Tutorial.where(user: @user).count
+    @lookbooks = Lookbook.where(user: @user)
+    @tutorials = Tutorial.where(user: @user)
+    @number_of_content_shared = @lookbooks.count + @tutorials.count
+    @total_visits = @lookbooks.sum(:visits) + @tutorials.sum(:visits)
+    @total_sales = @lookbooks.sum(&:sales) + @tutorials.sum(&:sales)
+    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse 
+    @total_conversion_rate = @total_visits.zero? ? 0 : (@total_sales / @total_visits.to_f * 100).round(2)
     @top_brands_count = []
     @top_brands = []
     @user.orders.each do |order|
