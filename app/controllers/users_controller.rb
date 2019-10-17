@@ -125,7 +125,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = policy_scope(User).where(influencer: true)
+    @users = policy_scope(User).where(influencer: true).order(instagram: :asc)
   end
 
   def make_up

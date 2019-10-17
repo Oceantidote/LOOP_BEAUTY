@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
 
   def set_navbar_variables
     @brands = Brand.all.order(name: :ASC)
-    @influencers = User.where(influencer: true).order(first_name: :ASC)
+    @influencers = User.where(influencer: true).order(instagram: :ASC)
     @basket = find_basket
     @products = Product.all
   end
