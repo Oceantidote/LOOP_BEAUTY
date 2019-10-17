@@ -8,14 +8,14 @@ class AddressesController < ApplicationController
     @order = Order.new
 
     if @address.save
-      if @user.delivery_addresses.count == 1
+      if (@address.delivery_address && @user.delivery_addresses.count == 1) || (!@address.delivery_address && @user.billing_addresses.count == 1)
         @address.update(default_address: true)
       end
       respond_to do |format|
         format.html { redirect_back fallback_location: user_account_details_path(current_user) }
         format.js
       end
-      if @address.use_as_billing
+      if @address.use_as_billing && @address.delivery_address
         new_billing_address = Address.new(address_params)
         new_billing_address.user = current_user
         new_billing_address.delivery_address = false

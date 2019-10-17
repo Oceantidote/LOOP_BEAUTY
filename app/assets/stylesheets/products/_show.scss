@@ -136,9 +136,11 @@
 }
 
 .product-details-text, .benefits-text, .about-the-brand-text {
-  transition: max-height 0.5s ease;
-  max-height: 0;
-  overflow: hidden;
+  // transition: max-height 0.5s ease;
+  // max-height: 0;
+  // overflow: hidden;
+  display: none;
+  margin-bottom: 5px;
 }
 
 .product-insider-reviews-wrapper {
@@ -154,8 +156,11 @@
   justify-content: space-between;
   margin: 20px 0;
   transition: box-shadow 0.3s ease;
-  cursor: pointer;
+  cursor: pointer !important;
   // padding: 10px 30px;
+  .rating-container {
+    margin-bottom: 5px;
+  }
 }
 
 .insider-review-left {
@@ -249,7 +254,17 @@
   justify-content: space-between;
   margin: 20px 0;
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
   // padding: 10px 30px;
+  p {
+    font-size: 14px;
+  }
+  @include for-medium-devices-down {
+    padding: 20px 20px;
+  }
+  @include for-small-devices-down {
+    padding: 30px 40px;
+  }
   @include for-phone-only {
     padding: 25px;
     p {
@@ -258,6 +273,9 @@
     h6 {
       font-size: 12px;
     }
+  }
+  @include for-xsmall-phone-only {
+    padding: 20px 10px;
   }
 }
 
@@ -275,12 +293,30 @@
   p {
     margin: 0;
   }
+  @include for-large-devices-down {
+    width: 35%
+  }
+  @include for-medium-devices-down {
+
+  }
+  @include for-small-devices-down {
+
+  }
 }
 
 .customer-review-right {
   width: 60%;
   height: 100%;
   @include absCenter;
+  @include for-large-devices-down {
+    width: 65%
+  }
+  @include for-medium-devices-down {
+
+  }
+  @include for-small-devices-down {
+
+  }
 }
 
 .customer-review-text {
@@ -294,8 +330,24 @@
   }
 }
 
+.cust-review-recommend {
+  font-size: 12px;
+  @include for-phone-only {
+    font-size: 10px;
+  }
+}
+
+.customer-review-modal-top {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
 .recommended-products-wrapper {
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .shade-wishlist-heart {
@@ -349,6 +401,18 @@
   border: 3px solid #000;
 }
 
+.product-review-wrapper {
+  background: #ECECEC;
+  padding: 30px 0;
+}
 
+#insider_review_review::placeholder, #customer_review_review::placeholder {
+  color: #BCBCBC;
+  font-size: 14px;
+}
+
+.product-show-review-input {
+  width: 100% !important;
+}
 
 

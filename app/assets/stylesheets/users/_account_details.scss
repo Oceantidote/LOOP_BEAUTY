@@ -87,9 +87,20 @@
   }
   @include for-phone-only {
     padding: 0;
+    fieldset {
+      @include for-phone-only {
+        width: auto !important;
+      }
+    }
     .form-group {
       width: 100%;
     }
+  }
+}
+
+.account-details-check {
+  @include for-small-devices-up {
+    justify-content: flex-end;
   }
 }
 
@@ -124,10 +135,7 @@
 .customer-review-input {
   margin-bottom: 5px;
   input, textarea, select {
-    width: 500px !important;
-    @include for-phone-only {
-      width: 100% !important;
-    }
+    width: 100% !important;
   }
   @include for-phone-only {
     flex-direction: column;

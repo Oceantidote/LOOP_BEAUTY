@@ -10,6 +10,11 @@
       <div class="col-6 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
         <div class="my-products-card">
           <div class="my-products-image">
+            <% if wishlist_product.product.out_of_stock? %>
+              <div class="out-of-stock-overlay">
+                <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+              </div>
+            <% end %>
             <%= image_tag url_for(wishlist_product.shade.photos.first), alt: "product shade photo" %>
           </div>
           <div class="my-products-details text-center">

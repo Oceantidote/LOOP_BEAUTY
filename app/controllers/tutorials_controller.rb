@@ -18,7 +18,7 @@ class TutorialsController < ApplicationController
       @title = 'Tutorials'
     elsif params[:link] = 'ask the expert'
       @videos = Tutorial.where(category: 'ask the expert').where(status: 'approved')
-      @title = 'Ask the experts'
+      @title = 'Ask the Expert'
     else
       @videos = Tutorial.where(status: 'approved')
       @title = 'All Videos'

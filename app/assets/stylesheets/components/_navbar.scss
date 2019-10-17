@@ -161,7 +161,7 @@
   }
   @include for-medium-devices-down {
     text-align: center;
-    padding: 15px;
+    padding: 15px !important;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     margin-bottom: 0;
   }
@@ -427,6 +427,7 @@
 }
 
 .basket-items-card-image {
+  position: relative;
   width: 40%;
   img {
     width: 100%;

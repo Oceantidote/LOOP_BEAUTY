@@ -117,9 +117,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def dashboard
-  end
-
   def share
   end
 
@@ -134,16 +131,20 @@ class UsersController < ApplicationController
   def make_up
     @showroom_products = @user.showroom.showroom_products
     @products = @user.showroom.products
-    @original = @user.showroom.products
+    @original = @products
     @demoable_products = Product.all - @products
     @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
-    @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
+    @products = @products.filter(params[:product].slice(:category, :brand)) if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
       @sort_method = params[:product][:sort][:method]
     else
       # @products = @products.filter_sort(*'created_at,desc'.split(','))
       @sort_method = 'created_at,desc'
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE

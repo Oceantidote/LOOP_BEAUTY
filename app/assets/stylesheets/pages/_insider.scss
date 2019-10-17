@@ -27,9 +27,13 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 35%;
+  width: 40%;
+  @include for-medium-devices-down {
+    width: 50%;
+  }
   @include for-phone-only {
-    width: 80%;
+    width: 100%;
+    padding-right: 5px;
   }
 }
 
@@ -70,6 +74,12 @@
   form {
     flex: 1;
   }
+  @include for-small-devices-down {
+    width: 100%;
+    form {
+      width: 25%;
+    }
+  }
 }
 
 .each-insider-home-tab {
@@ -92,8 +102,16 @@
   &:focus {
     outline: none;
   }
+  @include for-small-devices-down {
+    width: 100%;
+  }
   @include for-phone-only {
     font-size: 12px;
+  }
+  @include for-xsmall-phone-only {
+    padding: 0;
+    font-size: 10px;
+
   }
 }
 

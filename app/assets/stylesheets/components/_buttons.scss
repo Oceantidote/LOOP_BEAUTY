@@ -20,6 +20,15 @@
   }
 }
 
+.disabled-button {
+  padding: 6px 38px !important;
+  cursor: default;
+  background-color: #D2D2D2 !important;
+  &:hover {
+  background-color: #D2D2D2 !important;
+  }
+}
+
 .secondary-button {
   height: 40px;
   text-decoration: none;
@@ -41,7 +50,11 @@
   }
 }
 .disabled {
-  opacity: 0.2;
+  background-color: #D2D2D2 !important;
+  cursor: default;
+  &:hover {
+    background-color: #D2D2D2 !important;
+  }
 }
 .m10 {
   margin: 10px;

@@ -76,6 +76,16 @@
   @include for-small-devices-down {
     width: 90%;
   }
+  @include for-phone-only {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.shopping-bag-code {
+  @include for-phone-only {
+    margin-bottom: 50px;
+  }
 }
 
 .discount-code-button {
@@ -90,6 +100,13 @@
   height: 40px !important;
   padding: 0 25px !important;
   margin: auto 0 auto 10px !important;
+  width: max-content !important;
+}
+
+.checkout-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .shopping-bag-continue-checkout {
@@ -131,4 +148,8 @@
 
 #basket_discount_code {
   padding-right: calc(1.5em + 0.75rem);
+}
+
+.shopping-bag-image-container {
+  position: relative;
 }

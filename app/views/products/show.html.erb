@@ -25,7 +25,8 @@
           <% @product.shades.each_with_index do |shade, i| %>
             <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
               <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)",
-                data-name="<%= shade.name %>"
+                data-name="<%= shade.name %>",
+                data-stock="<%= shade.number_in_stock %>"
                 data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
               </div>
 <!--               <%# if user_signed_in? && current_user.wishlist %>
@@ -49,15 +50,22 @@
         <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
         <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
-      <%#= link_to 'ADD TO BAG', '#', class: "primary-button" %>
-      <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
+      <div class="button-holder">
+        <% if @product.out_of_stock? %>
+          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+        <% elsif @product.shades.first.out_of_stock? %>
+          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+        <% else %>
+          <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
+        <% end %>
+      </div>
     <% end %>
       <div class="product-details-section info-expand">
         <div class="product-details-title">
           <h6 class="small-text">Product details</h6>
           <i class="fas fa-plus pd-expand"></i>
         </div>
-        <p class="product-details-text didot small-text no-margin"><%= @product.details %></p>
+        <p class="product-details-text didot small-text"><%= @product.details %></p>
       </div>
       <div class="benefits-section info-expand">
         <div class="benefits-title">
@@ -75,7 +83,7 @@
           <h6 class="small-text">About the brand</h6>
           <i class="fas fa-plus ab-expand"></i>
         </div>
-        <p class="about-the-brand-text didot small-text no-margin"><%= @product.brand.description %></p>
+        <p class="about-the-brand-text didot small-text"><%= @product.brand.description %></p>
       </div>
       <div class="share-section">
         <h6 class="small-text">Share</h6>
@@ -92,27 +100,30 @@
   </div>
 </div>
 <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
-  <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
-      <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
-      <div class="customer-review-input">
-        <p class="boldest muli s-medium-text no-margin">Rating</p>
-        <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
-      </div>
-      <div class="customer-review-input">
-        <p class="boldest muli s-medium-text no-margin">Review</p>
-        <%= f.input :review, label: false %>
-      </div>
-      <% unless current_user.influencer %>
+  <div class="product-review-wrapper">
+    <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
+        <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
         <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
-          <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+          <p class="boldest muli s-medium-text no-margin">Rating</p>
+          <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
         </div>
-      <% end %>
-      <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
-  <% end %>
+        <div class="customer-review-input">
+          <p class="boldest muli s-medium-text no-margin">Review</p>
+          <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
+        </div>
+        <% unless current_user.influencer %>
+          <div class="customer-review-input">
+            <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
+            <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+          </div>
+        <% end %>
+        <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
+    <% end %>
+  </div>
 <% end %>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
+  <p class="shop-look-text text-center">Click a review to see more</p>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
@@ -124,12 +135,12 @@
           <div class="insider-review-cards" data-toggle="modal" data-target="#review_<%= review.id %>">
             <div class="insider-review-left">
               <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
-              <h6><%= review.user.instagram %></h6>
+              <h6 class="truncate-text"><%= review.user.instagram %></h6>
             </div>
             <div class="insider-review-right">
               <div class="insider-review-text">
                 <%= render 'shared/ratings', rating: review.rating %>
-                <p class="didot"><%= review.review.truncate(150) %></p>
+                <p class="didot"><%= review.review.truncate(100) %></p>
               </div>
             </div>
           </div>
@@ -142,7 +153,7 @@
                 <h6 class="review-modal-influencer"><%= review.user.instagram %></h6>
               <% end %>
               <div class="review-modal-body">
-                <%= review.review %>
+                <p class="didot"><%= review.review %></p>
                 <div class="d-flex justify-content-center py-3">
                   <%= render 'shared/ratings', rating: review.rating %>
                 </div>
@@ -205,6 +216,7 @@
 </div>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
+  <p class="shop-look-text text-center">Click a review to see more</p>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
@@ -213,21 +225,47 @@
       <% end %>
       <% @product.customer_reviews.sample(6).each do |review| %>
         <div class="col-10 col-md-6 ir-cols">
-          <div class="customer-review-cards">
+          <div class="customer-review-cards" data-toggle="modal" data-target="#review_two_<%= review.id %>">
             <div class="customer-review-left">
               <h6><%= review.user.first_name.capitalize %></h6>
               <div class="boldest grey-font">
                 <p><%= review.user.country %></p>
                 <p>Age: 22-25</p>
-                <p>Gender: Female</p>
+                <p>Gender: <%= review.user.gender %></p>
               </div>
               <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
             </div>
             <div class="customer-review-right">
               <div class="customer-review-text">
                 <%= render 'shared/ratings', rating: review.rating %>
-                <p class="didot">"<%= review.review.truncate(170) %>"</p>
-                <p class="boldest"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+                <p class="didot">"<%= review.review.truncate(150) %>"</p>
+                <p class="boldest cust-review-recommend"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-two" id="review_two_<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content loop-border">
+              <div class="customer-review-modal-top">
+                <div class="customer-review-top-content">
+                  <h6 class="boldest no-margin"><%= review.user.first_name.capitalize %></h6>
+                  <div class="boldest grey-font">
+                    <p class="no-margin"><%= review.user.country %></p>
+                    <p class="no-margin">Age: 22-25</p>
+                    <p class="no-margin">Gender: <%= review.user.gender %></p>
+                  </div>
+                  <h6 class="no-margin boldest"><%= review.created_at.strftime('%d.%m.%y') %></h6>
+                </div>
+              </div>
+              <div class="review-modal-body">
+                <p class="didot"><%= review.review %></p>
+                <div class="d-flex justify-content-center py-3">
+                  <%= render 'shared/ratings', rating: review.rating %>
+                </div>
+              </div>
+              <div class="review-modal-footer">
+                <button type="button" class="primary-button small-text" data-dismiss="modal">CLOSE</button>
               </div>
             </div>
           </div>
@@ -281,33 +319,38 @@
   details.addEventListener('click', function() {
     expandIconProduct.classList.toggle('fa-plus');
     expandIconProduct.classList.toggle('fa-minus');
-    detailsText.classList.toggle('show-text');
+    // detailsText.classList.toggle('show-text');
+    $(detailsText).slideToggle();
   });
 
   benefit.addEventListener('click', function() {
     expandIconBenefit.classList.toggle('fa-plus');
     expandIconBenefit.classList.toggle('fa-minus');
-    benefitsText.classList.toggle('show-text');
+    // benefitsText.classList.toggle('show-text');
+    $(benefitsText).slideToggle();
   });
 
   aboutBrand.addEventListener('click', function() {
     expandIconBrand.classList.toggle('fa-plus');
     expandIconBrand.classList.toggle('fa-minus');
-    aboutBrandText.classList.toggle('show-text');
+    // aboutBrandText.classList.toggle('show-text');
+    $(aboutBrandText).slideToggle();
   });
 
-  addToBag.addEventListener('click', function() {
-    addToBag.value = 'ITEM ADDED';
-    itemAdded.classList.add('item-added-show');
-    basketIcon.style.animation = 'basket-bounce 2s ease'
-    basketIconMobile.style.animation = 'basket-bounce 2s ease'
-    setTimeout(() => basketIcon.style.animation = '', 2000)
-    setTimeout(() => basketIconMobile.style.animation = '', 2000)
-    setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
-    setTimeout(() => addToBag.disabled = true, 100)
-    setTimeout(() => addToBag.disabled = false, 4000)
-    setTimeout(() => addToBag.value = 'ADD TO BAG', 3500)
-  });
+  if (addToBag) {
+    addToBag.addEventListener('click', function() {
+      addToBag.value = 'ITEM ADDED';
+      itemAdded.classList.add('item-added-show');
+      basketIcon.style.animation = 'basket-bounce 2s ease'
+      basketIconMobile.style.animation = 'basket-bounce 2s ease'
+      setTimeout(() => basketIcon.style.animation = '', 2000)
+      setTimeout(() => basketIconMobile.style.animation = '', 2000)
+      setTimeout(() => itemAdded.classList.remove('item-added-show'), 4000)
+      setTimeout(() => addToBag.disabled = true, 100)
+      setTimeout(() => addToBag.disabled = false, 4000)
+      setTimeout(() => addToBag.value = 'ADD TO BAG', 3500)
+    });
+  }
 
   recommendedItemAdded.forEach((addedItem) => {
     addedItem.addEventListener('click', function() {

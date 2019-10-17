@@ -1,2 +1,8 @@
 document.querySelector('.influencer-makeup-container').innerHTML = `<%= j render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>`
 document.querySelector('.showroom-product-form').innerHTML = `<%= render 'shared/showroom_product_form' %>`
+
+filterSlider = $('.mobile-filters')
+filters = $('.partial-filters')
+$(filterSlider).click(function() {
+  $(filters).slideToggle();
+});

@@ -9,6 +9,10 @@ class Shade < ApplicationRecord
   has_one_attached :card_photo
   after_create :set_sku
 
+  def out_of_stock?
+    (self.number_in_stock == 0) ? true : false
+  end
+
   def set_sku
     self.update(sku: "SKU-#{self.id}")
   end
