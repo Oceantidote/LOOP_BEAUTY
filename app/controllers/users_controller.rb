@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
   def update
     authorize current_user
-    if current_user.update!(user_params)
+    if current_user.update(user_params)
       redirect_to user_account_details_path(current_user)
     else
       render :account_details
