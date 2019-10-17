@@ -87,9 +87,20 @@
   }
   @include for-phone-only {
     padding: 0;
+    fieldset {
+      @include for-phone-only {
+        width: auto !important;
+      }
+    }
     .form-group {
       width: 100%;
     }
+  }
+}
+
+.account-details-check {
+  @include for-small-devices-up {
+    justify-content: flex-end;
   }
 }
 

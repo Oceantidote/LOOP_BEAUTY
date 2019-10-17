@@ -57,15 +57,17 @@
           </div>
       </div>
       <div class="sign-up-extras-container">
-          <h6 class="no-margin">How did you hear about us?</h6>
+        <div>
+          <h6 class="">How did you hear about us?</h6>
           <%= f.input :origin, label: false, prompt: "Choose option", collection: ["Please", "Choose", "One", "Option"], include_blank: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-          <h6 class="no-margin s-medium-text">Find out about the latest offers, new products and beauty news.</h6>
-          <%= f.input :newsletter, label: false, input_html: { class: 'lb-checkbox' } %>
-          <h6 class="no-margin grey-font s-medium-text">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
+          <h6 class="s-medium-text">Find out about the latest offers, new products and beauty news.</h6>
+          <%= f.input :newsletter, label: false, input_html: { class: 'lb-checkbox margin-bottom' } %>
+          <h6 class="grey-font s-medium-text">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
           <%= f.input :accepts_terms, label: false, input_html: { class: 'lb-checkbox' } %>
-          <div class="form-actions">
-            <%= f.button :submit, "SUBMIT", class: "primary-button" %>
-          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "SUBMIT", class: "primary-button" %>
+        </div>
       </div>
         <% end %>
     </div>

@@ -76,6 +76,16 @@
   @include for-small-devices-down {
     width: 90%;
   }
+  @include for-phone-only {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.shopping-bag-code {
+  @include for-phone-only {
+    margin-bottom: 50px;
+  }
 }
 
 .discount-code-button {
