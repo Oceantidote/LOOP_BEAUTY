@@ -37,6 +37,7 @@
   &_ratings {
     margin-top: 5px;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     p {
       margin: 0;

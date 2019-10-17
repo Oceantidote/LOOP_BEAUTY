@@ -13,7 +13,7 @@
         </div>
       </div>
     <% end %>
-    <p class="no-margin small-text"><%= item.affiliate_link %></p>
+    <p class="no-margin small-text">Affiliate link: <%= link_to "#{item.affiliate_link}", item.affiliate_link %></p>
     <% if current_user&.admin %>
       <div class="d-flex justify-content-around">
         <%= link_to 'APPROVE', approve_admin_lookbook_path(item), method: :patch, class: 'secondary-button products-admin-buttons' %>
@@ -36,7 +36,7 @@
         </div>
       </div>
     <% end %>
-    <p class="no-margin small-text"><%= item.affiliate_link %></p>
+    <p class="no-margin small-text">Affiliate link: <%= link_to "#{item.affiliate_link}", item.affiliate_link %></p>
     <% if current_user&.admin %>
       <div class="d-flex justify-content-around">
         <%= link_to 'APPROVE', approve_admin_tutorial_path(item), method: :patch, class: 'secondary-button products-admin-buttons' %>

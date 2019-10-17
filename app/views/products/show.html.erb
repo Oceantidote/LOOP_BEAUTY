@@ -123,6 +123,7 @@
 <% end %>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
+  <p class="shop-look-text text-center">Click a review to see more</p>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
@@ -134,12 +135,12 @@
           <div class="insider-review-cards" data-toggle="modal" data-target="#review_<%= review.id %>">
             <div class="insider-review-left">
               <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
-              <h6><%= review.user.instagram %></h6>
+              <h6 class="truncate-text"><%= review.user.instagram %></h6>
             </div>
             <div class="insider-review-right">
               <div class="insider-review-text">
                 <%= render 'shared/ratings', rating: review.rating %>
-                <p class="didot"><%= review.review.truncate(150) %></p>
+                <p class="didot"><%= review.review.truncate(100) %></p>
               </div>
             </div>
           </div>
@@ -215,6 +216,7 @@
 </div>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
+  <p class="shop-look-text text-center">Click a review to see more</p>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
@@ -223,21 +225,47 @@
       <% end %>
       <% @product.customer_reviews.sample(6).each do |review| %>
         <div class="col-10 col-md-6 ir-cols">
-          <div class="customer-review-cards">
+          <div class="customer-review-cards" data-toggle="modal" data-target="#review_two_<%= review.id %>">
             <div class="customer-review-left">
               <h6><%= review.user.first_name.capitalize %></h6>
               <div class="boldest grey-font">
                 <p><%= review.user.country %></p>
                 <p>Age: 22-25</p>
-                <p>Gender: Female</p>
+                <p>Gender: <%= review.user.gender %></p>
               </div>
               <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
             </div>
             <div class="customer-review-right">
               <div class="customer-review-text">
                 <%= render 'shared/ratings', rating: review.rating %>
-                <p class="didot">"<%= review.review.truncate(170) %>"</p>
-                <p class="boldest"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+                <p class="didot">"<%= review.review.truncate(150) %>"</p>
+                <p class="boldest cust-review-recommend"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade modal-two" id="review_two_<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content loop-border">
+              <div class="customer-review-modal-top">
+                <div class="customer-review-top-content">
+                  <h6 class="boldest no-margin"><%= review.user.first_name.capitalize %></h6>
+                  <div class="boldest grey-font">
+                    <p class="no-margin"><%= review.user.country %></p>
+                    <p class="no-margin">Age: 22-25</p>
+                    <p class="no-margin">Gender: <%= review.user.gender %></p>
+                  </div>
+                  <h6 class="no-margin boldest"><%= review.created_at.strftime('%d.%m.%y') %></h6>
+                </div>
+              </div>
+              <div class="review-modal-body">
+                <p class="didot"><%= review.review %></p>
+                <div class="d-flex justify-content-center py-3">
+                  <%= render 'shared/ratings', rating: review.rating %>
+                </div>
+              </div>
+              <div class="review-modal-footer">
+                <button type="button" class="primary-button small-text" data-dismiss="modal">CLOSE</button>
               </div>
             </div>
           </div>

@@ -301,6 +301,9 @@ body {
     overflow: scroll;
     position: relative;
   }
+  @include for-small-devices-up {
+    justify-content: center;
+  }
 }
 
 .mobile-row {
@@ -308,6 +311,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  @include for-small-devices-up {
+    justify-content: center;
   }
 }
 

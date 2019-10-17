@@ -63,7 +63,7 @@
       <div class="order-summary-container">
         <div class="order-summary">
           <div class="order-summary-mobile">
-            <h4 class="boldest medium-text">Order Summary</h4>
+            <h4 class="boldest medium-text checkout-show-mobile-subtitle">Order Summary</h4>
             <% if @basket.empty? %>
               <p class="didot">There are no items in your basket</p>
             <% else %>
@@ -192,7 +192,7 @@
                   <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom', style: "width: 95%;" } %>
                   <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <div class="d-flex align-items-center">
+                  <div class="d-flex align-items-center" style="width: 95%;">
                     <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
                     <p class="no-bottom-margin didot">Use as billing address</p>
                   </div>
@@ -221,7 +221,7 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="checkout-address">
+            <div class="checkout-address billing-address-container">
               <p class="medium-text boldest">Billing Address</p>
                 <% if @default_billing %>
                   <div class="billing-default">
@@ -305,3 +305,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  // billingAddressContainer = document.querySelector('.billing-address-container')
+  // useAsBilling = document.getElementById('address_use_as_billing')
+  // useAsBilling.addEventListener('change', () => {
+  //   billingAddressContainer.classList.toggle('d-none')
+  // })
+</script>
