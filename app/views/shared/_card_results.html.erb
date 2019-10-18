@@ -1,19 +1,20 @@
 <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
   <div class="products-index-filters-container">
     <div class="partial-filters-one">
-      <h5 class="medium-text">Refine By</h5>
-      <div>
+      <h5 class="medium-text no-bottom-margin">Refine By</h5>
+      <div class="d-flex align-items-center">
         <%#= image_tag 'dropdown-down.png', class: "dropdown-arrow" %>
         <%= f.fields_for :sort do |s| %>
           <%= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
         <% end %>
       </div>
+      <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= @products.count %> products found</p>
     </div>
   </div>
   <div class="products-index-container">
     <div class="partial-filters-two">
       <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
-        <div class="partial-filters-container ">
+        <div class="partial-filters-container">
           <div class="mobile-filters">
             <p class="boldest no-margin">Filter</p>
           </div>

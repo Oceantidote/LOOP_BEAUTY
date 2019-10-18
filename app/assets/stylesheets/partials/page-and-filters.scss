@@ -62,6 +62,14 @@
       width: 85%;
     }
   }
+  @include for-medium-devices-down {
+    display: block;
+    margin-bottom: 10px;
+    p {
+      margin-top: 5px;
+      margin-left: 2px;
+    }
+  }
 }
 
 .partial-filters-two {
