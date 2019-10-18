@@ -6,6 +6,9 @@
 .products-index-filters-container {
   max-width: 1240px;
   margin: 20px auto auto auto;
+  .product_sort_method {
+    margin: 0;
+  }
 }
 
 .rating-container {
@@ -49,3 +52,4 @@
   color: #FFF;
   opacity: 0.5;
 }
+
