@@ -14,6 +14,22 @@
     <% end %>
   </div>
 </div>
+<div class="container">
+  <% if user_signed_in? && current_user.admin %>
+    <% if policy([:admin, HomeBanner]).edit? %>
+      <div class="admin-options">
+        <hr>
+        <div class="container">
+          <h6 class="boldest">Admin options</h6>
+          <div class="d-flex">
+            <%= link_to "EDIT HOME BANNERS", admin_home_banners_path, class: 'secondary-button small-margin-right' %>
+          </div>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
