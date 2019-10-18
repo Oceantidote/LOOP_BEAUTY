@@ -19,8 +19,9 @@
 }
 
 .influencer-large-avatar {
-  width: 195px;
-  height: 195px;
+  // width: 195px;
+  // height: 195px;
+  width: 100%;
   object-fit: cover;
   border-radius: 50%;
   transition: all 0.3s ease;
