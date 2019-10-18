@@ -7,6 +7,7 @@ class Shade < ApplicationRecord
   # WISHLIST TEST
   has_many_attached :photos
   has_one_attached :card_photo
+  has_one_attached :shade_color
   after_create :set_sku
 
   def out_of_stock?

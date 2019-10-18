@@ -2,6 +2,9 @@
   <div class="product-details">
     <div class="product-image-container">
       <div class="product-carousel">
+        <div class="product-shade-image">
+          <%= image_tag url_for(@product.shades.first.card_photo), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+        </div>
         <% @product.shades.first.photos.first(4).each do |shade_photo| %>
           <div class="product-shade-image">
             <%= image_tag url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
@@ -9,7 +12,7 @@
         <% end %>
       </div>
       <div class="product-main-image">
-        <%= image_tag url_for(@product.shades.first.photos.first), id: "expandedImg", class: "myImg", alt: "shade photo" %>
+        <%= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg", alt: "shade photo" %>
       </div>
     </div>
     <div class="product-info-container assistant">
@@ -18,26 +21,22 @@
       <h5><%= @product.title %></h5>
       <hr>
       <p class="product-shade-title small-margin-bottom"><strong><%= @product.shades.first.name %></strong></p>
-      <% colors = ['https://media.istockphoto.com/photos/green-cosmetic-clay-powder-texture-close-up-selective-focus-abstract-picture-id884603174', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS78bHnt2gbcBbyeTBBqVde3suKnkxZMtWfj8R1-IIdsnUlcj2PDQ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81aMOdrVMLvvEWZUPHPdNyc1Vv-OPn-EUKC9dlJzJDnd900bprQ'] %>
-      <% num = 3 %>
-      <div class="shades-container">
-        <div class="row" style="margin: 0; width: 100%;">
-          <% @product.shades.each_with_index do |shade, i| %>
-            <div class="col-2 col-md-4" style="padding: 0 3px 0 0;">
-              <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.photos.last) %>)",
-                data-name="<%= shade.name %>",
-                data-stock="<%= shade.number_in_stock %>"
-                data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
-              </div>
-<!--               <%# if user_signed_in? && current_user.wishlist %>
-                <div class="shade-wishlist-heart shade-<%= shade.id %>">
-                  <%#= render 'shared/shade-wishlist', product: @product, shade: shade %>
+      <% if @product.shades.count > 1 && @product.shades.first.shade_color.attached? %>
+        <div class="shades-container">
+          <div class="row" style="margin: 0; width: 100%;">
+            <% @product.shades.each_with_index do |shade, i| %>
+              <div class="col-2" style="padding: 0 3px 0 0;">
+                <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color) %>)",
+                  data-name="<%= shade.name %>",
+                  data-stock="<%= shade.number_in_stock %>"
+                  data-main="<%= url_for(shade.card_photo) %>"
+                  data-urls="<%= shade.photos.first(4).map { |photo| url_for(photo) } %>">
                 </div>
-              <%# end %> -->
-            </div>
-          <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="d-flex justify-content-between">
         <h5><%= humanized_money_with_symbol(@product.price) %></h5>
         <% if user_signed_in? && current_user.wishlist %>
@@ -123,7 +122,9 @@
 <% end %>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
-  <p class="shop-look-text text-center">Click a review to see more</p>
+  <% if @product.insider_reviews.any? %>
+    <p class="shop-look-text text-center">Click a review to see more</p>
+  <% end %>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
@@ -193,7 +194,7 @@
               <%= link_to product_path(product) do %>
                 <div class="card_image">
                   <%= link_to product_path(product) do %>
-                    <%= image_tag url_for(product.shades.first.photos.first), alt: "product shade photo" %>
+                    <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
                   <% end %>
                 </div>
               <% end %>
@@ -216,7 +217,9 @@
 </div>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
-  <p class="shop-look-text text-center">Click a review to see more</p>
+  <% if @product.insider_reviews.any? %>
+    <p class="shop-look-text text-center">Click a review to see more</p>
+  <% end %>
   <div class="insider-review-container max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>

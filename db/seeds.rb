@@ -208,7 +208,7 @@ pink_ross = Shade.create!(name: "Pink - Ross", sku: "M5400002", product: disco_f
 nude_gaynor = Shade.create!(name: "Nude - Gaynor", sku: "M5400004", product: disco_fluid_lipstick)
 
 rj1 = File.join(Rails.root,'app/assets/images/red_jerry1.jpg')
-red_jerry.photos.attach(io: File.open(rj1) , filename: 'red_jerry1.jpg')
+red_jerry.card_photo.attach(io: File.open(rj1) , filename: 'red_jerry1.jpg')
 
 rj2 = File.join(Rails.root,'app/assets/images/red_jerry2.jpg')
 red_jerry.photos.attach(io: File.open(rj2) , filename: 'red_jerry2.jpg')
@@ -220,10 +220,10 @@ rj4 = File.join(Rails.root,'app/assets/images/red_jerry4.jpg')
 red_jerry.photos.attach(io: File.open(rj4) , filename: 'red_jerry4.jpg')
 
 rj5 = File.join(Rails.root,'app/assets/images/red_jerry5.jpg')
-red_jerry.photos.attach(io: File.open(rj5) , filename: 'red_jerry5.jpg')
+red_jerry.shade_color.attach(io: File.open(rj5) , filename: 'red_jerry5.jpg')
 
 pink_ross1 = File.join(Rails.root,'app/assets/images/pink_ross1.jpg')
-pink_ross.photos.attach(io: File.open(pink_ross1) , filename: 'pink_ross1.jpg')
+pink_ross.card_photo.attach(io: File.open(pink_ross1) , filename: 'pink_ross1.jpg')
 
 pink_ross2 = File.join(Rails.root,'app/assets/images/pink_ross2.jpg')
 pink_ross.photos.attach(io: File.open(pink_ross2) , filename: 'pink_ross2.jpg')
@@ -235,10 +235,10 @@ pink_ross4 = File.join(Rails.root,'app/assets/images/pink_ross4.jpg')
 pink_ross.photos.attach(io: File.open(pink_ross4) , filename: 'pink_ross4.jpg')
 
 pink_ross5 = File.join(Rails.root,'app/assets/images/pink_ross5.jpg')
-pink_ross.photos.attach(io: File.open(pink_ross5) , filename: 'pink_ross5.jpg')
+pink_ross.shade_color.attach(io: File.open(pink_ross5) , filename: 'pink_ross5.jpg')
 
 nude_gaynor1 = File.join(Rails.root,'app/assets/images/nude_gaynor1.jpg')
-nude_gaynor.photos.attach(io: File.open(nude_gaynor1) , filename: 'nude_gaynor1.jpg')
+nude_gaynor.card_photo.attach(io: File.open(nude_gaynor1) , filename: 'nude_gaynor1.jpg')
 
 nude_gaynor2 = File.join(Rails.root,'app/assets/images/nude_gaynor2.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor2) , filename: 'nude_gaynor2.jpg')
@@ -250,7 +250,7 @@ nude_gaynor4 = File.join(Rails.root,'app/assets/images/nude_gaynor4.jpg')
 nude_gaynor.photos.attach(io: File.open(nude_gaynor4) , filename: 'nude_gaynor4.jpg')
 
 nude_gaynor5 = File.join(Rails.root,'app/assets/images/nude_gaynor5.jpg')
-nude_gaynor.photos.attach(io: File.open(nude_gaynor5) , filename: 'nude_gaynor5.jpg')
+nude_gaynor.shade_color.attach(io: File.open(nude_gaynor5) , filename: 'nude_gaynor5.jpg')
 
 v_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: vegan)
 long_disco_fluid = ProductBenefit.create!(product: disco_fluid_lipstick, benefit: longwearing)
@@ -278,7 +278,7 @@ disco_topper_lip_topper = Product.create!(
 glitterball = Shade.create!(name: "Glitterball", sku: "M5400005", product: disco_topper_lip_topper)
 
 glitterball1 = File.join(Rails.root,'app/assets/images/glitterball1.jpg')
-glitterball.photos.attach(io: File.open(glitterball1) , filename: 'glitterball1.jpg')
+glitterball.card_photo.attach(io: File.open(glitterball1) , filename: 'glitterball1.jpg')
 
 glitterball2 = File.join(Rails.root,'app/assets/images/glitterball2.jpg')
 glitterball.photos.attach(io: File.open(glitterball2) , filename: 'glitterball2.jpg')
@@ -325,7 +325,7 @@ brow_lift = Product.create!(
 pick_me_up = Shade.create!(name: "Pick-Me-Up", sku: "BL03", product: brow_lift)
 
 pick_me_up1 = File.join(Rails.root,'app/assets/images/pick_me_up1.png')
-pick_me_up.photos.attach(io: File.open(pick_me_up1) , filename: 'pick_me_up1.png')
+pick_me_up.card_photo.attach(io: File.open(pick_me_up1) , filename: 'pick_me_up1.png')
 
 pick_me_up2 = File.join(Rails.root,'app/assets/images/pick_me_up2.jpg')
 pick_me_up.photos.attach(io: File.open(pick_me_up2) , filename: 'pick_me_up2.jpg')
@@ -361,7 +361,7 @@ brow_filler = Product.create!(
 dark_dahlia = Shade.create!(name: "Dark Dahlia", sku: "BF03", product: brow_filler)
 
 dark_dahlia1 = File.join(Rails.root,'app/assets/images/dark_dahlia1.png')
-dark_dahlia.photos.attach(io: File.open(dark_dahlia1) , filename: 'dark_dahlia1.png')
+dark_dahlia.card_photo.attach(io: File.open(dark_dahlia1) , filename: 'dark_dahlia1.png')
 
 dark_dahlia2 = File.join(Rails.root,'app/assets/images/dark_dahlia2.jpg')
 dark_dahlia.photos.attach(io: File.open(dark_dahlia2) , filename: 'dark_dahlia2.jpg')
@@ -397,7 +397,7 @@ brow_setter = Product.create!(
 clear = Shade.create!(name: "Clear", sku: "BR01", product: brow_setter)
 
 clear1 = File.join(Rails.root,'app/assets/images/clear1.png')
-clear.photos.attach(io: File.open(clear1) , filename: 'clear1.png')
+clear.card_photo.attach(io: File.open(clear1) , filename: 'clear1.png')
 
 clear2 = File.join(Rails.root,'app/assets/images/clear2.jpg')
 clear.photos.attach(io: File.open(clear2) , filename: 'clear2.jpg')
@@ -427,7 +427,7 @@ brow_styler = Product.create!(
 brush = Shade.create!(name: "", sku: "BS01", product: brow_styler)
 
 brush1 = File.join(Rails.root,'app/assets/images/brush1.png')
-brush.photos.attach(io: File.open(brush1) , filename: 'brush1.png')
+brush.card_photo.attach(io: File.open(brush1) , filename: 'brush1.png')
 
 brush2 = File.join(Rails.root,'app/assets/images/brush2.jpg')
 brush.photos.attach(io: File.open(brush2) , filename: 'brush2.jpg')
@@ -454,7 +454,7 @@ highlighter_brush = Product.create!(
 highlighter_brush_shade = Shade.create!(name: "", sku: "HB01", product: highlighter_brush)
 
 highlighter_brush1 = File.join(Rails.root,'app/assets/images/highlighter_brush1.png')
-highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush1) , filename: 'highlighter_brush1.png')
+highlighter_brush_shade.card_photo.attach(io: File.open(highlighter_brush1) , filename: 'highlighter_brush1.png')
 
 highlighter_brush2 = File.join(Rails.root,'app/assets/images/highlighter_brush2.jpg')
 highlighter_brush_shade.photos.attach(io: File.open(highlighter_brush2) , filename: 'brush2.jpg')

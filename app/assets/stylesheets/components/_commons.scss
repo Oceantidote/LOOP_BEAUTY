@@ -304,6 +304,9 @@ body {
   @include for-small-devices-up {
     justify-content: center;
   }
+  @include for-medium-devices-up {
+    justify-content: flex-start;
+  }
 }
 
 .mobile-row {
@@ -314,6 +317,9 @@ body {
   }
   @include for-small-devices-up {
     justify-content: center;
+  }
+  @include for-medium-devices-up {
+    justify-content: flex-start;
   }
 }
 

@@ -83,6 +83,17 @@
                   </div>
                 </div>
                 <div class="personal-details-input align-items-start">
+                  <p class="boldest muli s-medium-text text-right photo-input-text">Shade Colour</p>
+                  <div>
+                    <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_color" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                    <% if shade.shade_color.attached? %>
+                      <%= image_tag url_for(shade.shade_color), height: 100, class: "photo-preview", 'data-name': 'shade-color-photo', alt: "shade colour" %>
+                    <% else %>
+                      <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-color-photo', alt: "shade colour" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="personal-details-input align-items-start">
                   <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
                   <div style="max-width: 288px;">
                     <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true, id: "shade_#{shade.id}_photos" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
@@ -118,6 +129,13 @@
               <div>
                 <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo' %>
+              </div>
+            </div>
+            <div class="personal-details-input align-items-start">
+              <p class="boldest muli s-medium-text text-right photo-input-text">Shade Colour</p>
+              <div>
+                <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-color-photo' %>
               </div>
             </div>
             <div class="personal-details-input align-items-start">
