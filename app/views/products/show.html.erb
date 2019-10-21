@@ -12,7 +12,7 @@
         <% end %>
       </div>
       <div class="product-main-image">
-        <%= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg", alt: "shade photo" %>
+        <%= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg magniflier", alt: "shade photo" %>
       </div>
     </div>
     <div class="product-info-container assistant">
@@ -288,6 +288,10 @@
     <% end %>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/image_magnifier' %>
+<% end %>
 
 <script>
 

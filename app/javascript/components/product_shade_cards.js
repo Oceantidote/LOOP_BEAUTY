@@ -9,7 +9,7 @@ const initProductShadeCards = () => {
       e.currentTarget.classList.add('product-shade-card-selected')
       $('#basket_product_shade_id').val(e.currentTarget.dataset.shadeid)
       mainImage.empty()
-      mainImage.append(`<img id="expandedImg" class="myImg" alt="main shade image" src=${e.currentTarget.dataset.main}>`)
+      mainImage.append(`<img id="expandedImg" class="myImg magniflier" alt="main shade image" src=${e.currentTarget.dataset.main}>`)
       $('.product-carousel').empty()
       $('.product-carousel').append(`<div class="product-shade-image">
                                         <img onclick="myFunction(this);" class="item-image-thumbnail" src=${e.currentTarget.dataset.main}>
