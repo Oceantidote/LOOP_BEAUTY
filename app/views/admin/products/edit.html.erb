@@ -127,8 +127,8 @@
             <div class="personal-details-input align-items-start">
               <p class="boldest muli s-medium-text text-right photo-input-text">Card Photo</p>
               <div>
-                <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo' %>
+                <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-card-photo' %>
               </div>
             </div>
             <div class="personal-details-input align-items-start">
@@ -141,8 +141,8 @@
             <div class="personal-details-input align-items-start">
               <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
               <div style="max-width: 288px;">
-                <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
+                <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-photos', alt: "shade photo" %>
               </div>
             </div>
             <%= f.submit 'CREATE SHADE', class: 'primary-button small-text personal-details-button' %>
