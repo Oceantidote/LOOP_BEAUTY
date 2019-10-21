@@ -19,12 +19,23 @@
 }
 
 .influencer-large-avatar {
-  // width: 195px;
-  // height: 195px;
-  width: 100%;
+  width: 195px;
+  height: 195px;
   object-fit: cover;
   border-radius: 50%;
   transition: all 0.3s ease;
+  @include for-large-devices-down {
+    width: 162px;
+    height: 162px;
+  }
+  @include for-small-devices-down {
+    width: 115px;
+    height: 115px;
+  }
+  @include for-xsmall-phone-only {
+    width: 101px;
+    height: 101px;
+  }
 }
 
 .influencer-card-link {
