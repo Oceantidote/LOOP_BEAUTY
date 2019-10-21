@@ -36,7 +36,7 @@
               <%= link_to product_path(order_product.product), class: "order-show-card-link no-decoration" do %>
                 <div class="each-order-card order-show-product-card">
                   <div class="each-order-container order-show-each-order">
-                    <%= image_tag url_for(order_product.product.shades.first.photos.first), class: "order-image order-show-image", alt: "order product shade photo" %>
+                    <%= image_tag url_for(order_product.product.shades.first.card_photo), class: "order-image order-show-image", alt: "order product shade photo" %>
                     <div class="order-details-text">
                       <p class="boldest s-medium-text"><%= order_product.product.title %></p>
                       <p class="small-text"><%= order_product.shade.name %></p>

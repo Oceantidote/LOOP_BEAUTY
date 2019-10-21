@@ -6,7 +6,7 @@
           <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
         </div>
       <% end %>
-      <%= image_tag url_for(item.shade.photos.first), class: 'shopping-bag-card-image', alt: "shade photo" %>
+      <%= image_tag url_for(item.shade.card_photo), class: 'shopping-bag-card-image', alt: "shade photo" %>
     </div>
     <div class="shopping-bag-card-title">
       <p class="small-text boldest no-margin"><%= item.product.title %></p>
