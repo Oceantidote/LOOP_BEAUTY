@@ -188,10 +188,11 @@ let imageMagnifier = () => {
 
       ui.glass.on('mousemove', mouseMove);
     });
-
-    ui.glass.on('mouseout', function() {
-      ui.glass.off('mousemove', mouseMove);
-    });
+    if (ui.glass) {
+      ui.glass.on('mouseout', function() {
+        ui.glass.off('mousemove', mouseMove);
+      });
+    }
   });
 }
 
