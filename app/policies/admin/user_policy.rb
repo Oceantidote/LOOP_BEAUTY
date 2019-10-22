@@ -36,8 +36,12 @@ class Admin::UserPolicy < ApplicationPolicy
   def sales_report?
     new?
   end
-  
+
   def activity_report?
+    new?
+  end
+
+  def categories?
     new?
   end
 end

@@ -1,4 +1,4 @@
-class SubCategoryPolicy < ApplicationPolicy
+class Admin::CategoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,6 +6,6 @@ class SubCategoryPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin
+    user&.admin?
   end
 end

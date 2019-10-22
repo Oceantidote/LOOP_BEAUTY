@@ -1,0 +1,48 @@
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">Categories</h2>
+      <hr>
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <% @categories.each do |category| %>
+            <div class="col-2 small-bottom-margin">
+              <h5 class="boldest"><%= category.name %><%= link_to 'Delete',  admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %></h5>
+
+              <% category.sub_categories.each do |sub_category| %>
+                <p class="no-margin"><%= sub_category.name %></p>
+                <%= link_to 'Delete',  admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="admin-products-container">
+        <%= simple_form_for [:admin, @category] do |f| %>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+            <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
+          </div>
+          <%= f.submit 'CREATE CATEGORY', class: 'primary-button small-text personal-details-button' %>
+        <% end %>
+
+        <%= simple_form_for [:admin, @sub_category] do |f| %>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Sub category</p>
+            <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
+          </div>
+          <div class="personal-details-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+            <%= f.association :category, label: false,  input_html: { class: 'dropdown-input sign-up-dropdown' }  %>
+            <%#= f.collection_select :category_id, Category.all, :id, :name, {}, { class: 'filters-container boldest s-medium-text insider-article-category' }  %>
+          </div>
+          <%= f.submit 'CREATE SUB CATEGORY', class: 'primary-button small-text personal-details-button' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

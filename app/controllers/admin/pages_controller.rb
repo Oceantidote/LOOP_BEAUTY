@@ -3,17 +3,25 @@ class Admin::PagesController < ApplicationController
     authorize [:admin, current_user]
   end
 
+  def categories
+    @category = Category.new
+    @categories = Category.all
+    @sub_category = SubCategory.new
+    @sub_categories = SubCategory.all
+    authorize [:admin, current_user]
+  end
+
   def sales_report
     authorize [:admin, current_user]
     @orders = Order.all
     if params[:filter] && filter_params[:from].present?
       from  = Date.parse(filter_params[:from]).beginning_of_day
       to = Date.parse(filter_params[:to]).end_of_day
-      @orders = @orders.where(created_at: from..to) 
+      @orders = @orders.where(created_at: from..to)
     end
     if params[:filter] && filter_params[:influencer_id].present?
       id = filter_params[:influencer_id]
-      @orders = @orders.joins("LEFT JOIN tutorials ON orders.affiliation_type = 'Tutorial' AND 
+      @orders = @orders.joins("LEFT JOIN tutorials ON orders.affiliation_type = 'Tutorial' AND
                                             orders.affiliation_id = tutorials.id").
                         joins("LEFT JOIN lookbooks ON orders.affiliation_type = 'Lookbook' AND
                                              orders.affiliation_id = lookbooks.id").
@@ -28,8 +36,8 @@ class Admin::PagesController < ApplicationController
     if params[:filter] && filter_params[:from].present?
       from  = Date.parse(filter_params[:from]).beginning_of_day
       to = Date.parse(filter_params[:to]).end_of_day
-      lookbooks = lookbooks.where(publish_date: from..to) 
-      tutorials = tutorials.where(publish_date: from..to) 
+      lookbooks = lookbooks.where(publish_date: from..to)
+      tutorials = tutorials.where(publish_date: from..to)
     end
     if params[:filter] && filter_params[:influencer_id].present?
       id = filter_params[:influencer_id]

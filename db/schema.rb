@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_135503) do
+ActiveRecord::Schema.define(version: 2019_10_22_164236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -374,6 +374,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_135503) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_sub_categories_on_category_id"
   end
 
   create_table "tutorial_products", force: :cascade do |t|
@@ -492,6 +494,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_135503) do
   add_foreign_key "showroom_products", "products"
   add_foreign_key "showroom_products", "showrooms"
   add_foreign_key "showrooms", "users"
+  add_foreign_key "sub_categories", "categories"
   add_foreign_key "tutorial_products", "products"
   add_foreign_key "tutorial_products", "tutorials"
   add_foreign_key "tutorials", "users"
