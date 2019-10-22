@@ -1,0 +1,36 @@
+.insider-article-banner-text-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    letter-spacing: 1px;
+    text-shadow: 0 0 1px #6b6b6b;
+  }
+  p {
+    font-family: $title-font;
+    font-weight: 900;
+    border-bottom: 1px solid #d4d4d4;
+    line-height: 15px;
+    width: fit-content;
+    text-shadow: 0 0 1px #6b6b6b;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.insider-article-banner {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 40%;
+  @include for-medium-devices-down {
+    width: 50%;
+  }
+  @include for-phone-only {
+    width: 100%;
+    padding-right: 5px;
+  }
+}

@@ -13,8 +13,8 @@ class Admin::InsiderArticlesController < ApplicationController
   def create
     # raise
     @insider_article = InsiderArticle.new(insider_article_params)
-    @insider_article.user = User.find(params['insider_article']['by'].to_i)
-    @insider_article.by = params['insider_article']['by']
+    # @insider_article.user = User.find(params['insider_article']['by'].to_i)
+    # @insider_article.by = params['insider_article']['by']
     if @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
@@ -27,8 +27,8 @@ class Admin::InsiderArticlesController < ApplicationController
 
   def update
     if @insider_article.update(insider_article_params)
-      @insider_article.user = User.find(params['insider_article']['by'].to_i)
-      @insider_article.by = params['insider_article']['by']
+      # @insider_article.user = User.find(params['insider_article']['by'].to_i)
+      # @insider_article.by = params['insider_article']['by']
       @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
@@ -58,6 +58,8 @@ class Admin::InsiderArticlesController < ApplicationController
   def insider_article_params
     params.require(:insider_article).permit(
       :category,
+      :by,
+      :author_avatar,
       :title,
       :text1,
       :text2,
@@ -72,7 +74,9 @@ class Admin::InsiderArticlesController < ApplicationController
       :photo2_alt_text,
       :photo3_alt_text,
       :published,
-      :featured
+      :homepage,
+      :featured,
+      :card_text_color
     )
   end
 

@@ -1,15 +1,16 @@
 <div class="row" style="margin: 0; width: 100%;">
   <% insider_articles.each_with_index do |article, index| %>
-
     <% if (index + 1) % 4  == 0 %>
-      <div class="insider-home-articles-banner" style="background-image:url(<%= url_for(article.cover_photo) %>)">
-        <div class="insider-home-banner-text-container">
-          <div class="insider-home-banner-text">
-            <h2 class="didot"><%= article.title %></h2>
-            <%= link_to 'Read more', insider_article_path(article) %>
+      <%= link_to insider_article_path(article), class: 'no-decoration' do %>
+        <div class="insider-home-articles-banner" style="background-image:url(<%= url_for(article.cover_photo) %>)">
+          <div class="insider-article-banner-text-container">
+            <div class="insider-article-banner">
+              <h2 class="didot" style="color: <%= article.card_text_color == 'White' ? '#FFF' : '#000' %>"><%= article.title %></h2>
+              <p style="color: <%= article.card_text_color == 'White' ? '#FFF' : '#000' %>; border-color: <%= article.card_text_color == 'White' ? '#FFF' : '#000' %>">Read more</p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% else %>
       <div class="col-xs-12 col-md-4" style="padding: 0;">
         <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>

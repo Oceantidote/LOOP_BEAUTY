@@ -1,11 +1,13 @@
-<div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
-  <div class="insider-home-banner-text-container">
-    <div class="insider-home-banner-text">
-      <h2 class="didot"><%= @featured_article.title %></h2>
-      <%= link_to 'Read more', insider_article_path(@featured_article) %>
+<%= link_to insider_article_path(@featured_article), class: 'no-decoration' do %>
+  <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
+    <div class="insider-article-banner-text-container">
+      <div class="insider-article-banner">
+        <h2 class="didot" style="color: <%= @featured_article.card_text_color == 'White' ? '#FFF' : '#000' %>"><%= @featured_article.title %></h2>
+        <p style="color: <%= @featured_article.card_text_color == 'White' ? '#FFF' : '#000' %>; border-color: <%= @featured_article.card_text_color == 'White' ? '#FFF' : '#000' %>">Read more</p>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 <div class="insider-home-tabs-container">
   <div class="insider-home-tabs">
     <%= form_tag(insider_articles_path, method: :get, remote: true) do %>

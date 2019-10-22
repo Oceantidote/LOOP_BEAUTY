@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_105814) do
+ActiveRecord::Schema.define(version: 2019_10_22_135503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_105814) do
     t.boolean "published", default: false
     t.boolean "featured", default: false
     t.boolean "homepage", default: false
+    t.string "card_text_color"
     t.index ["user_id"], name: "index_insider_articles_on_user_id"
   end
 
@@ -466,7 +467,6 @@ ActiveRecord::Schema.define(version: 2019_10_10_105814) do
   add_foreign_key "customer_reviews", "products"
   add_foreign_key "customer_reviews", "users"
   add_foreign_key "freebies", "discount_codes"
-  add_foreign_key "insider_articles", "users"
   add_foreign_key "insider_reviews", "products"
   add_foreign_key "insider_reviews", "users"
   add_foreign_key "lookbook_products", "lookbooks"
