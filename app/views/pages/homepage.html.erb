@@ -47,9 +47,8 @@
               </div>
               <div class="insider-info-right">
                 <%# user = User.select { |u| u.first_name == article.by.split(" ")[0] } %>
-                <% user = User.find(article.by) %>
                 <!-- <div class="insider-info-image" style="background-image: url(<%#= url_for(user.first.avatar_photo) %>)"></div> -->
-                <div class="insider-info-image" style="background-image: url(<%= url_for(user.avatar_photo) %>)"></div>
+                <div class="insider-info-image" style="background-image: url(<%= url_for(article.author_avatar) %>)"></div>
               </div>
             </div>
           <% end %>

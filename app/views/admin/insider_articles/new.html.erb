@@ -16,10 +16,21 @@
             <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
           </div>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Influencer</p>
-            <%= f.collection_select :by, User.where(influencer: true).order(:last_name), :id, :full_name, {}, {class: 'filters-container boldest s-medium-text insider-article-category'}  %>
+            <p class="boldest muli s-medium-text text-right no-margin">Author</p>
+            <%= f.text_field :by, class:"form-control" %>
           </div>
-
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Author avatar</p>
+            <div>
+              <%= f.label :author_avatar, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :author_avatar, class: 'd-none photo-input', 'data-name': 'insider-author-avatar', onchange: "displayPreview(this)" %>
+              <% if @insider_article.author_avatar.attached? %>
+                <%= image_tag url_for(@insider_article.author_avatar), height: 100, class: "photo-preview", 'data-name': 'insider-author-avatar', alt: "Insider article author avatar" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-author-avatar', alt: "Insider article author avatar" %>
+              <% end %>
+            </div>
+          </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input align-items-start">
             <p class="boldest muli s-medium-text text-right photo-input-text">Cover photo</p>
@@ -133,8 +144,16 @@
           </div>
           <hr>
           <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Homepage</p>
+            <%= f.check_box :homepage, class:"form-control lb-checkbox featured-check-box" %>
+          </div>
+          <div class="insider-articles-input">
             <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
             <%= f.check_box :featured, class:"form-control lb-checkbox featured-check-box" %>
+          </div>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Card text color</p>
+            <%= f.select(:card_text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <%= f.submit 'CREATE INSIDER ARTICLE', class: 'primary-button personal-details-button small-text' %>

@@ -1,139 +1,165 @@
-<h2 class="insider-info-title text-center">Update Insider Article</h2>
-
-<div class="new-question-answers-form insider-form">
-  <%= form_for [:admin, @insider_article] do |f| %>
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Article title</p>
-      <%= f.text_field :title, class:"form-control" %>
-    </div>
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Category</p>
-      <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
-    </div>
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Influencer</p>
-      <%= f.collection_select :by, User.where(influencer: true).order(:last_name), :id, :full_name, {}, { class: 'filters-container boldest s-medium-text insider-article-category' }  %>
-    </div>
-
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right photo-input-text">Cover photo</p>
-      <div>
-        <%= f.label :cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
-        <%= f.file_field :cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
-        <% if @insider_article.cover_photo.attached? %>
-          <%= image_tag url_for(@insider_article.cover_photo), height: 100, class: "photo-preview", 'data-name': 'insider-cover-photo', alt: "Insider article cover photo" %>
-        <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-cover-photo' %>
+<div class="admin-wrapper minimum-height">
+  <div class="admin-container" style="max-width: 850px; padding-bottom: 0;">
+    <h2 class="insider-info-title mlb-title text-center">Update Insider Article</h2>
+    <hr>
+      <div class="new-question-answers-form insider-form">
+        <%= form_for [:admin, @insider_article] do |f| %>
+          <%if @insider_article.errors.any? %>
+            <p class="form-error"><%= @insider_article.errors.full_messages.first  %></p>
+          <% end %>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Article title</p>
+            <%= f.text_field :title, class:"form-control" %>
+          </div>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+            <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
+          </div>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Author</p>
+            <%= f.text_field :by, class:"form-control" %>
+          </div>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Author avatar</p>
+            <div>
+              <%= f.label :author_avatar, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :author_avatar, class: 'd-none photo-input', 'data-name': 'insider-author-avatar', onchange: "displayPreview(this)" %>
+              <% if @insider_article.author_avatar.attached? %>
+                <%= image_tag url_for(@insider_article.author_avatar), height: 100, class: "photo-preview", 'data-name': 'insider-author-avatar', alt: "Insider article author avatar" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-author-avatar', alt: "Insider article author avatar" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Cover photo</p>
+            <div>
+              <%= f.label :cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
+              <% if @insider_article.cover_photo.attached? %>
+                <%= image_tag url_for(@insider_article.cover_photo), height: 100, class: "photo-preview", 'data-name': 'insider-cover-photo', alt: "Insider article cover photo" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-cover-photo', alt: "Insider article cover photo" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Cover photo alt text</p>
+            <%= f.text_field :cover_alt_text, class:"form-control" %>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <hr>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right no-margin">Text one</p>
+            <div>
+              <%= f.text_field :text1, class:"form-control", id: :text1%>
+              <trix-editor input="text1" placeholder="Type here to generate HTML above..."></trix-editor>
+            </div>
+          </div>
+          <hr>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Media one</p>
+            <div>
+              <%= f.label :photo1, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :photo1, class: 'd-none photo-input', 'data-name': 'insider-photo-one', onchange: "displayPreview(this)" %>
+              <% if @insider_article.photo1.attached? %>
+                <%= image_tag url_for(@insider_article.photo1), height: 100, class: "photo-preview", 'data-name': 'insider-photo-one', alt: "Insider article photo one" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-one', alt: "Insider article photo one" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Media one alt text</p>
+            <%= f.text_field :photo1_alt_text, class:"form-control" %>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <hr>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right no-margin">Text two</p>
+            <div>
+              <%= f.text_field :text2, class:"form-control", id: :text2%>
+              <trix-editor input="text2" placeholder="Type here to generate HTML above..."></trix-editor>
+            </div>
+          </div>
+          <hr>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Media two</p>
+            <div>
+              <%= f.label :photo2, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :photo2, class: 'd-none photo-input', 'data-name': 'insider-photo-two', onchange: "displayPreview(this)" %>
+              <% if @insider_article.photo2.attached? %>
+                <%= image_tag url_for(@insider_article.photo2), height: 100, class: "photo-preview", 'data-name': 'insider-photo-two', alt: "Insider article photo two" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-two', alt: "Insider article photo two" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Media two alt text</p>
+            <%= f.text_field :photo2_alt_text, class:"form-control" %>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <hr>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right no-margin">Text three</p>
+            <div>
+              <%= f.text_field :text3, class:"form-control", id: :text3%>
+              <trix-editor input="text3" placeholder="Type here to generate HTML above..."></trix-editor>
+            </div>
+          </div>
+          <hr>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Media three</p>
+            <div>
+              <%= f.label :photo3, 'CHOOSE FILE',class: 'upload-photo' %>
+              <%= f.file_field :photo3, class: 'd-none photo-input', 'data-name': 'insider-photo-three', onchange: "displayPreview(this)" %>
+              <% if @insider_article.photo3.attached? %>
+                <%= image_tag url_for(@insider_article.photo3), height: 100, class: "photo-preview", 'data-name': 'insider-photo-three', alt: "Insider article photo three" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-three', alt: "Insider article photo three" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Media three alt text</p>
+            <%= f.text_field :photo3_alt_text, class:"form-control" %>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <hr>
+          <div class="insider-articles-input align-items-start">
+            <p class="boldest muli s-medium-text text-right no-margin">Text four</p>
+            <div>
+              <%= f.text_field :text4, class:"form-control", id: :text4%>
+              <trix-editor input="text4" placeholder="Type here to generate HTML above..."></trix-editor>
+            </div>
+          </div>
+          <hr>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Homepage</p>
+            <%= f.check_box :homepage, class:"form-control lb-checkbox featured-check-box" %>
+          </div>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
+            <%= f.check_box :featured, class:"form-control lb-checkbox featured-check-box" %>
+          </div>
+          <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text text-right no-margin">Card text color</p>
+            <%= f.select(:card_text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
+          </div>
+          <!-- <div class="spacer" style="height: 50px;"></div> -->
+          <%= f.submit 'UPDATE INSIDER ARTICLE', class: 'primary-button personal-details-button small-text' %>
         <% end %>
       </div>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Cover photo alt text</p>
-      <%= f.text_field :cover_alt_text, class:"form-control" %>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <hr>
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right no-margin">Text one</p>
-      <div>
-        <%= f.text_field :text1, class:"form-control", id: :text1%>
-        <trix-editor input="text1" placeholder="Type here to generate HTML above..."></trix-editor>
-      </div>
-    </div>
-    <hr>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right photo-input-text">Media one</p>
-      <div>
-        <%= f.label :photo1, 'CHOOSE FILE',class: 'upload-photo' %>
-        <%= f.file_field :photo1, class: 'd-none photo-input', 'data-name': 'insider-photo-one', onchange: "displayPreview(this)" %>
-        <% if @insider_article.photo1.attached? %>
-          <%= image_tag url_for(@insider_article.photo1), height: 100, class: "photo-preview", 'data-name': 'insider-photo-one', alt: "Insider article photo one" %>
-        <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-one', alt: "Insider article photo one" %>
-        <% end %>
-      </div>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Media one alt text</p>
-      <%= f.text_field :photo1_alt_text, class:"form-control" %>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <hr>
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right no-margin">Text two</p>
-      <div>
-        <%= f.text_field :text2, class:"form-control", id: :text2%>
-        <trix-editor input="text2" placeholder="Type here to generate HTML above..."></trix-editor>
-      </div>
-    </div>
-    <hr>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right photo-input-text">Media two</p>
-      <div>
-        <%= f.label :photo2, 'CHOOSE FILE',class: 'upload-photo' %>
-        <%= f.file_field :photo2, class: 'd-none photo-input', 'data-name': 'insider-photo-two', onchange: "displayPreview(this)" %>
-        <% if @insider_article.photo2.attached? %>
-          <%= image_tag url_for(@insider_article.photo2), height: 100, class: "photo-preview", 'data-name': 'insider-photo-two', alt: "Insider article photo two" %>
-        <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-two', alt: "Insider article photo two" %>
-        <% end %>
-      </div>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Media two alt text</p>
-      <%= f.text_field :photo2_alt_text, class:"form-control" %>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <hr>
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right no-margin">Text three</p>
-      <div>
-        <%= f.text_field :text3, class:"form-control", id: :text3%>
-        <trix-editor input="text3" placeholder="Type here to generate HTML above..."></trix-editor>
-      </div>
-    </div>
-    <hr>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right photo-input-text">Media three</p>
-      <div>
-        <%= f.label :photo3, 'CHOOSE FILE',class: 'upload-photo' %>
-        <%= f.file_field :photo3, class: 'd-none photo-input', 'data-name': 'insider-photo-three', onchange: "displayPreview(this)" %>
-        <% if @insider_article.photo3.attached? %>
-          <%= image_tag url_for(@insider_article.photo3), height: 100, class: "photo-preview", 'data-name': 'insider-photo-three', alt: "Insider article photo three" %>
-        <% else %>
-          <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'insider-photo-three', alt: "Insider article photo three" %>
-        <% end %>
-      </div>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Media three alt text</p>
-      <%= f.text_field :photo3_alt_text, class:"form-control" %>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <hr>
-    <div class="insider-articles-input align-items-start">
-      <p class="boldest muli s-medium-text text-right no-margin">Text four</p>
-      <div>
-        <%= f.text_field :text4, class:"form-control", id: :text4%>
-        <trix-editor input="text4" placeholder="Type here to generate HTML above..."></trix-editor>
-      </div>
-    </div>
-    <hr>
-    <div class="insider-articles-input">
-      <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
-      <%= f.check_box :featured, class:"form-control lb-checkbox featured-check-box" %>
-    </div>
-    <!-- <div class="spacer" style="height: 50px;"></div> -->
-    <%= f.submit 'UPDATE INSIDER ARTICLE', class: 'primary-button personal-details-button small-text' %>
-  <% end %>
+  </div>
 </div>
 
 <%= content_for(:after_js) do %>
