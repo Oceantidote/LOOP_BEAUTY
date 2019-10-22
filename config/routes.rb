@@ -113,7 +113,10 @@ Rails.application.routes.draw do
     resources :shades, only: [:update, :destroy]
     resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :home_banners
+    resources :categories, only: [:create, :destroy]
+    resources :sub_categories, only: [:create, :destroy]
     get '/portal', to: 'pages#portal'
+    get '/categories', to: 'pages#categories'
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
   end

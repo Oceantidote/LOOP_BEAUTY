@@ -1,5 +1,7 @@
 class Category < ApplicationRecord
   has_many :products
+  has_many :sub_categories, dependent: :destroy
+  validates :name, uniqueness: true
 
   def self.product_filter(ids)
     return all if ids.empty?
