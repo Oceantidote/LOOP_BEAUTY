@@ -2,8 +2,8 @@
   <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
     <div class="insider-article-banner-text-container">
       <div class="insider-article-banner">
-        <h2 class="didot" style="color: <%= @featured_article.card_text_color == 'White' ? '#FFF' : '#000' %>"><%= @featured_article.title %></h2>
-        <p style="color: <%= @featured_article.card_text_color == 'White' ? '#FFF' : '#000' %>; border-color: <%= @featured_article.card_text_color == 'White' ? '#FFF' : '#000' %>">Read more</p>
+        <h2 class="didot <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" ><%= @featured_article.title %></h2>
+        <p class="<%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
       </div>
     </div>
   </div>

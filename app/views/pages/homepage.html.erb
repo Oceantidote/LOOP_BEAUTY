@@ -35,7 +35,7 @@
   <div class="insider-info-container lookbook-max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-      <% @insider_articles.each do |article| %>
+      <% @insider_articles.last(3).each do |article| %>
         <div class="col-10 col-sm-10 col-md-4 ia-cols">
           <%= link_to insider_article_path(article), class: "card-link insider-info-card-link" do %>
             <div class="insider-info-cards">
