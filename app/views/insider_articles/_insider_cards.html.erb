@@ -5,8 +5,8 @@
         <div class="insider-home-articles-banner" style="background-image:url(<%= url_for(article.cover_photo) %>)">
           <div class="insider-article-banner-text-container">
             <div class="insider-article-banner">
-              <h2 class="didot" style="color: <%= article.card_text_color == 'White' ? '#FFF' : '#000' %>"><%= article.title %></h2>
-              <p style="color: <%= article.card_text_color == 'White' ? '#FFF' : '#000' %>; border-color: <%= article.card_text_color == 'White' ? '#FFF' : '#000' %>">Read more</p>
+              <h2 class="didot <%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>"><%= article.title %></h2>
+              <p class="<%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
             </div>
           </div>
         </div>
