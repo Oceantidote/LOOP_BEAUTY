@@ -278,13 +278,13 @@
     </div>
     <% if current_user&.admin %>
       <div class="admin-options">
-          <div class="container">
-            <hr>
-            <h6 class="boldest">Admin options</h6>
-            <%= link_to 'EDIT CUSTOMER REVIEWS', admin_product_customer_reviews_path(@product), class: 'secondary-button' %>
-            <hr>
-          </div>
+        <div class="container">
+          <hr>
+          <h6 class="boldest">Admin options</h6>
+          <%= link_to 'EDIT CUSTOMER REVIEWS', admin_product_customer_reviews_path(@product), class: 'secondary-button' %>
+          <hr>
         </div>
+      </div>
     <% end %>
   </div>
 </div>
