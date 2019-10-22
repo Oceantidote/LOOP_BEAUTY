@@ -47,6 +47,9 @@
   flex-direction: column;
   margin: auto;
   width: 55%;
+  @include for-large-devices-down {
+    width: 70%;
+  }
   @include for-phone-only {
     width: 85%;
   }
@@ -72,7 +75,7 @@
       text-decoration: none;
     }
   }
-  @include for-phone-only {
+  @include for-large-devices-down {
     display: none;
   }
 }
@@ -97,7 +100,7 @@
       text-decoration: none;
     }
   }
-  @include for-small-devices-up {
+  @include for-xlarge-devices-up {
     display: none;
   }
 }
