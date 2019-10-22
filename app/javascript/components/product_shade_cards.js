@@ -53,6 +53,9 @@ let imageMagnifier = () => {
       ui.glass = $(div);
 
       $('body').append(div);
+      if (window.innerWidth < 768) {
+        $('.glass').remove();
+      }
     }
 
 
