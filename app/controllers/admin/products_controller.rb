@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
     @products = @products.filter(params[:filter].slice(:brand, :category)) if params[:filter].present?
     respond_to do |format|
       format.html
-      format.js 
+      format.js
     end
   end
 
@@ -18,6 +18,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.category = @product.sub_category.category
     # authorize @product
     if @product.save
       redirect_to edit_admin_product_path(@product), notice: "Product added"
