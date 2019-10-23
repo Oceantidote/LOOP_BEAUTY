@@ -1,7 +1,7 @@
 class Admin::SubCategoriesController < ApplicationController
   def create
     @sub_category = SubCategory.new(sub_category_params)
-    @sub_category.category = SubCategory.find(params[:sub_category][:category_id].to_i)
+    @sub_category.category = Category.find(params[:sub_category][:category_id].to_i)
     authorize @sub_category
     @sub_category.save!
     redirect_to admin_categories_path
