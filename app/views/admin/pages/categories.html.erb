@@ -37,7 +37,6 @@
           <div class="personal-details-input">
             <p class="boldest muli s-medium-text text-right no-margin">Category</p>
             <%= f.association :category, label: false,  input_html: { class: 'dropdown-input sign-up-dropdown' }  %>
-            <%#= f.collection_select :category_id, Category.all, :id, :name, {}, { class: 'filters-container boldest s-medium-text insider-article-category' }  %>
           </div>
           <%= f.submit 'CREATE SUB CATEGORY', class: 'primary-button small-text personal-details-button' %>
         <% end %>
