@@ -70,7 +70,9 @@
             <% products.each do |product| %>
               <div class="col-6 col-sm-6 col-md-4" style="padding: 10px;">
                 <!-- removed d-flex justify-content-center from above div -->
-                <%= render 'shared/product_cards', product: product %>
+                <div class="product-cards-holder">
+                  <%= render 'shared/product_cards', product: product %>
+                </div>
               </div>
             <% end %>
           <% end %>
