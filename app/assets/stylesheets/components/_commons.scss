@@ -73,6 +73,14 @@ body {
   }
 }
 
+.grey-hover {
+  color: inherit;
+  &:hover {
+    color: #6D6D6D;
+    text-decoration: none;
+  }
+}
+
 // Colors
 .grey {
   color: #676767;

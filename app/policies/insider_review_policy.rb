@@ -6,6 +6,6 @@ class InsiderReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    user.influencer
+    user.influencer || user.admin
   end
 end

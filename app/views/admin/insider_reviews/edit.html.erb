@@ -15,7 +15,7 @@
         <% end %>
       </div>
       <div class="product-review-wrapper">
-        <%= simple_form_for [@product, InsiderReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
+        <%= simple_form_for [@product, @insider_review], url: admin_product_insider_review_path, html: { class: 'customer-review-form small-padding' } do |f| %>
             <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
             <div class="customer-review-input">
               <p class="boldest muli s-medium-text no-margin">Influencer</p>
@@ -29,7 +29,7 @@
               <p class="boldest muli s-medium-text no-margin">Review</p>
               <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
             </div>
-            <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
+            <%= f.submit 'UPDATE REVIEW' , class: 'primary-button personal-details-button small-text' %>
         <% end %>
       </div>
       <div class="row admin-review-row" style="margin: 30px 0;">

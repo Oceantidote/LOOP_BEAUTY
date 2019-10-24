@@ -107,7 +107,7 @@ Rails.application.routes.draw do
       resources :product_benefits, only: [:create]
       resources :shades, only: [:create]
       resources :customer_reviews, only: [:index, :destroy]
-      resources :insider_reviews, only: [:index, :destroy]
+      resources :insider_reviews, only: [:index, :edit, :update, :destroy]
     end
     resources :product_benefits, only: [:destroy]
     resources :shades, only: [:update, :destroy]
