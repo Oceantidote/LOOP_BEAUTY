@@ -5,6 +5,14 @@ class Admin::InsiderReviewPolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    user.admin
+  end
+
+  def update?
+    user.admin
+  end
+
   def destroy?
     user.admin
   end
