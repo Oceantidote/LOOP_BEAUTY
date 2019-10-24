@@ -10,8 +10,8 @@ class ProductsController < ApplicationController
       @products = policy_scope(Product).where(published: true)
       @original = policy_scope(Product)
     end
-    @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
-    @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
+    @products = Product.filter(params[:product].slice(:sub_category, :brand)) if params[:product].present?
+    @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:sub_category].reject(&:blank?).empty?)
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
       @sort_method = params[:product][:sort][:method]
