@@ -5,4 +5,3 @@ if (<%= @default_is_delivery %>) {
   document.querySelector('.billing-default').innerHTML = `<%= j render 'addresses/address', add: @default_billing %>`
   document.querySelector('.modal-billing-addresses').innerHTML = `<%= j render 'addresses/modal_addresses', addresses: @user.billing_addresses %>`
 }
-
