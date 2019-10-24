@@ -11,3 +11,19 @@ filters = $('.partial-filters')
 $(filterSlider).click(function() {
   $(filters).slideToggle();
 });
+
+filterTitleSubcategories = document.querySelector('.filter-title-subcategories')
+filterOptionsSubcategories = document.querySelector('.filters-options-subcategories')
+
+filterTitleBrands = document.querySelector('.filter-title-brands')
+filterOptionsBrands = document.querySelector('.filters-options-brands')
+
+filterTitleSubcategories.addEventListener('click', () => {
+  filterOptionsSubcategories.classList.toggle('show-filters')
+  document.querySelector('.filter-arrow-category').classList.toggle('arrow-flip')
+})
+
+filterTitleBrands.addEventListener('click', () => {
+  filterOptionsBrands.classList.toggle('show-filters')
+  document.querySelector('.filter-arrow-brands').classList.toggle('arrow-flip')
+})
