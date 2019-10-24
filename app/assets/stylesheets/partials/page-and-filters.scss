@@ -122,15 +122,6 @@
 }
 
 .partial-filters_collection {
-  h6 {
-    font-weight: 900;
-    background-color: #FAFAFA;
-    border-bottom: 1px solid $light-gray;
-    padding: 10px 0 10px 10px;
-    margin: 0;
-    font-size: 14px;
-  }
-
   input {
     // width: 5%;
   }
@@ -192,29 +183,55 @@
   flex-wrap: wrap;
   // justify-content: center;
   align-items: inherit;
-
-
   @include for-medium-devices-down {
     width: 70%;
   }
-
   @include for-small-devices-down {
     width: 100%;
   }
-
   @include for-medium-devices-up {
     width: 70%;
   }
-
   @include for-large-devices-up {
     width: 85%;
   }
-
   @include for-xxlarge-devices-up {
     width: 80%;
   }
-
   @include for-xxxlarge-devices-up {
     width: 85%;
   }
+}
+
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 10px;
+  h6 {
+    margin: 0;
+    font-weight: 900;
+    font-size: 14px;
+  }
+}
+
+.filter-arrow {
+  width: 15px;
+  transition: all 0.5s ease;
+}
+
+.filters-options {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s ease;
+}
+
+.show-filters {
+  max-height: 800px;
+  overflow: scroll;
+}
+
+.arrow-flip {
+  transform: rotate(180deg);
 }

@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   include Filterable
-  scope :category, -> (category) { where category: Category.product_filter(category.reject(&:blank?)) }
+  scope :sub_category, -> (sub_category) { where sub_category: SubCategory.product_filter(sub_category.reject(&:blank?)) }
   scope :brand, -> (brand) { where brand: Brand.product_filter(brand.reject(&:blank?)) }
   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
   extend FriendlyId
