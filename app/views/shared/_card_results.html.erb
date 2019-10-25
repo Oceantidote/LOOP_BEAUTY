@@ -8,7 +8,7 @@
           <%= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
         <% end %>
       </div>
-      <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= @products_count %> products found</p>
+      <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= page_entries_info @products %></p>
     </div>
   </div>
   <div class="products-index-container">
