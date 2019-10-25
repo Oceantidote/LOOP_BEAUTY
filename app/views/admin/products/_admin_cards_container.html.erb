@@ -1,0 +1,8 @@
+<div class="row" id="admin-cards-container" style="width: 100%; margin: 0; padding: 30px;">
+  <% @products.each do |product| %>
+    <%= render 'admin/products/admin_product_card', product: product %>
+  <% end %>
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate @products %>
+  </div>
+</div>

@@ -9,10 +9,8 @@
     <div class="product-index-container">
       <div class="partial-filters-two">
         <%= render 'admin/products/admin_filter' %>
-        <div class="row" id="admin-cards-container" style="width: 100%; margin: 0; padding: 30px;">
-          <% @products.each do |product| %>
-            <%= render 'admin/products/admin_product_card', product: product %>
-          <% end %>
+        <div class="cards-partial-container">
+          <%= render 'admin/products/admin_cards_container' %>
         </div>
       </div>
     </div>

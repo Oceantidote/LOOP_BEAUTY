@@ -33,9 +33,9 @@ class ShowroomProductsController < ApplicationController
     @original = @user.showroom.products
     @demoable_products = Product.all - @products
     @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
-    @products = Product.filter(params[:product].slice(:category, :brand)) if params[:product].present?
+    @products = Product.filter(params[:product].slice(:category, :brand)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
-      @products = @products.filter_sort(*sort_params)
+      @products = @products.filter_sort(*sort_params).page params[:page]
       @sort_method = params[:product][:sort][:method]
     else
       # @products = @products.filter_sort(*'created_at,desc'.split(','))

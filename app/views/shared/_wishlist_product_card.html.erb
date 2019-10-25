@@ -6,7 +6,7 @@
         <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
       </div>
     <% end %>
-    <% @wishlist.wishlist_products.each do |wishlist_product| %>
+    <% @wishlist_products.each do |wishlist_product| %>
       <div class="col-6 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
         <div class="my-products-card">
           <div class="my-products-image">
@@ -37,5 +37,8 @@
         </div>
       </div>
     <% end %>
+    <div class="col-12 d-flex justify-content-center">
+      <%= paginate @wishlist_products %>
+    </div>
   <% end %>
 </div>

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @number_of_content_shared = @lookbooks.count + @tutorials.count
     @total_visits = @lookbooks.sum(:visits) + @tutorials.sum(:visits)
     @total_sales = @lookbooks.sum(&:sales) + @tutorials.sum(&:sales)
-    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse 
+    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
     @total_conversion_rate = @total_visits.zero? ? 0 : (@total_sales / @total_visits.to_f * 100).round(2)
     @top_brands_count = []
     @top_brands = []
@@ -140,9 +140,9 @@ class UsersController < ApplicationController
     @original = @products
     @demoable_products = Product.all - @products
     @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
-    @products = @products.filter(params[:product].slice(:category, :brand)) if params[:product].present?
+    @products = @products.filter(params[:product].slice(:category, :brand)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
-      @products = @products.filter_sort(*sort_params)
+      @products = @products.filter_sort(*sort_params).page params[:page]
       @sort_method = params[:product][:sort][:method]
     else
       # @products = @products.filter_sort(*'created_at,desc'.split(','))
@@ -165,6 +165,7 @@ class UsersController < ApplicationController
 
   def set_wishlist
     @wishlist = Wishlist.find_by(user: @user)
+    @wishlist_products = @wishlist.wishlist_products.page params[:page]
     # WISHLIST TEST
   end
 

@@ -30,4 +30,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    pagination:
+      first: "<img src='/assets/pag-double-left.png' class='pag-icons' alt='pagination-icons'>"
+      last: "<img src='/assets/pag-double-right.png' class='pag-icons' alt='pagination-icons'>"
+      previous: "<img src='/assets/pag-left.png' class='pag-icons' alt='pagination-icons'>"
+      next: "<img src='/assets/pag-right.png' class='pag-icons' alt='pagination-icons'>"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"

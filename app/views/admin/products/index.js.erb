@@ -1,10 +1,7 @@
-container = document.getElementById('admin-cards-container')
+container = document.querySelector('.cards-partial-container')
 
-while (container.firstChild) {
-    container.removeChild(container.firstChild)
-}
+// while (container.firstChild) {
+//     container.removeChild(container.firstChild)
+// }
 
-<% @products.each do |product| %>
-    card = "<%= j render 'admin/products/admin_product_card', product: product %>" 
-    container.insertAdjacentHTML('beforeend', card)
-<% end %>
+container.innerHTML = `<%= j render 'admin/products/admin_cards_container' %>`
