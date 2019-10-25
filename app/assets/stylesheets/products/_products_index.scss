@@ -53,3 +53,53 @@
   opacity: 0.5;
 }
 
+// PAGINATION
+
+.pagination {
+  height: 30px;
+  @include absCenter;
+}
+
+.page {
+  @include absCenter;
+  height: 30px;
+  width: 30px;
+  border-radius: 2px;
+  a {
+    font-family: 'Muli', sans-serif;
+    color: #000;
+    &:hover {
+      text-decoration: none;
+      font-weight: bolder;
+    }
+  }
+}
+
+.current {
+  background-color: #000;
+  color: white;
+  font-size: 14px;
+
+  // font-weight: bolder;
+}
+
+.next, .prev, .last, .first {
+  a {
+    height: 40px;
+    padding: 0 5px;
+    font-family: 'Muli', sans-serif;
+    color: #000;
+    // font-weight: bolder;
+  }
+}
+
+.pag-icons {
+  height: 30px;
+}
+
+.pag-opacity {
+  opacity: 0.4;
+}
+
+// PAGINATION
+

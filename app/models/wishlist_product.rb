@@ -1,4 +1,6 @@
 class WishlistProduct < ApplicationRecord
+  paginates_per 3
+
   belongs_to :product
   belongs_to :shade
   belongs_to :wishlist

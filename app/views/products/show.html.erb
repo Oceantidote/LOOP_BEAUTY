@@ -217,7 +217,7 @@
 </div>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
-  <% if @product.insider_reviews.any? %>
+  <% if @product.customer_reviews.any? %>
     <p class="shop-look-text text-center">Click a review to see more</p>
   <% end %>
   <div class="insider-review-container max-width">
@@ -226,7 +226,7 @@
       <% if @product.customer_reviews.count == 0 %>
         <p class="text-center medium-margin width-100 didot">There are no customer reviews yet</p>
       <% end %>
-      <% @product.customer_reviews.sample(6).each do |review| %>
+      <% @customer_reviews.each do |review| %>
         <div class="col-10 col-md-6 ir-cols">
           <div class="customer-review-cards" data-toggle="modal" data-target="#review_two_<%= review.id %>">
             <div class="customer-review-left">
@@ -275,6 +275,9 @@
         </div>
       <% end %>
       <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+      <div class="col-12 d-flex justify-content-center">
+        <%= paginate @customer_reviews %>
+      </div>
     </div>
     <% if current_user&.admin %>
       <div class="admin-options">

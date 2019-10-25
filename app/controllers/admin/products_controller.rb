@@ -2,8 +2,8 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
-    @products = policy_scope(Product)
-    @products = @products.filter(params[:filter].slice(:brand, :category)) if params[:filter].present?
+    @products = policy_scope(Product).page params[:page]
+    @products = @products.filter(params[:filter].slice(:brand, :category)).page params[:page] if params[:filter].present?
     respond_to do |format|
       format.html
       format.js

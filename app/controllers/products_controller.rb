@@ -4,19 +4,24 @@ class ProductsController < ApplicationController
   def index
     @query = params[:query]
     if params[:query].present?
-      @products = policy_scope(Product).where(published: true).global_search(params[:query])
+      @products = policy_scope(Product).where(published: true).global_search(params[:query]).page params[:page]
+      @products_count = policy_scope(Product).where(published: true).global_search(params[:query]).count
       @original = policy_scope(Product).global_search(params[:query])
     else
-      @products = policy_scope(Product).where(published: true)
+      @products = policy_scope(Product).where(published: true).page params[:page]
+      @products_count = policy_scope(Product).where(published: true).count
       @original = policy_scope(Product)
     end
-    @products = Product.filter(params[:product].slice(:sub_category, :brand)) if params[:product].present?
+    @products = Product.filter(params[:product].slice(:sub_category, :brand)).page params[:page] if params[:product].present?
+    @products_count = @products.count
     @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:sub_category].reject(&:blank?).empty?)
     if params[:product].present? && params[:product][:sort].present?
-      @products = @products.filter_sort(*sort_params)
+      @products = @products.filter_sort(*sort_params).page params[:page]
+      @products_count = @products.filter_sort(*sort_params).count
       @sort_method = params[:product][:sort][:method]
     else
-      @products = @products.filter_sort(*'created_at,desc'.split(','))
+      @products = @products.filter_sort(*'created_at,desc'.split(',')).page params[:page]
+      @products_count = @products.count
       @sort_method = 'created_at,desc'
     end
     @categories = Category.all.map { |category| category.name }
@@ -43,6 +48,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.friendly.find(params[:id])
     authorize @product
+    @customer_reviews = @product.customer_reviews.page params[:page]
   end
 
   def my_product
