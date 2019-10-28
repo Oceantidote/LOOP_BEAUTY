@@ -12,7 +12,9 @@
         <% end %>
       </div>
       <div class="product-main-image">
-        <%= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg magniflier", alt: "shade photo" %>
+        <div class="myImg" id="expandedImg" style="background-image: url(<%= url_for(@product.shades.first.card_photo) %>); background-position: center; background-size: cover;">
+        </div>
+        <%#= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg magniflier", alt: "shade photo" %>
       </div>
     </div>
     <div class="product-info-container assistant">
@@ -303,7 +305,7 @@
   // Get the image text
   imgText = document.getElementById("imgtext");
   // Use the same src in the expanded image as the image being clicked on from the grid
-  expandImg.src = imgs.src;
+  expandImg.style.backgroundImage = `url(${imgs.src})`;
   // Use the value of the alt attribute of the clickable image as text inside the expanded image
   // imgText.innerHTML = imgs.alt;
   // Show the container element (hidden with CSS)
