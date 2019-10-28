@@ -38,6 +38,9 @@
       </div>
     <% end %>
     <div class="col-12 d-flex justify-content-center">
+      <p class="boldest muli left-margin small-text grey"><%= page_entries_info @wishlist_products %></p>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
       <%= paginate @wishlist_products %>
     </div>
   <% end %>
