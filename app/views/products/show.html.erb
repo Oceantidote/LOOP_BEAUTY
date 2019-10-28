@@ -20,7 +20,7 @@
       <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
       <h5><%= @product.title %></h5>
       <hr>
-      <p class="product-shade-title small-margin-bottom"><strong><%= @product.shades.first.name %></strong></p>
+      <p class="product-shade-title small-margin-bottom"><strong><%= @product.shades.order(created_at: :ASC).first.name %></strong></p>
       <% if @product.shades.count > 1 && @product.shades.first.shade_color.attached? %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
