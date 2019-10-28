@@ -24,7 +24,7 @@
       <% if @product.shades.count > 1 && @product.shades.first.shade_color.attached? %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
-            <% @product.shades.each_with_index do |shade, i| %>
+            <% @product.shades.order(created_at: :DESC).each_with_index do |shade, i| %>
               <div class="col-2" style="padding: 0 3px 0 0;">
                 <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color) %>)",
                   data-name="<%= shade.name %>",
