@@ -10,7 +10,7 @@
           <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
         </div>
         <div class="filters-options filters-options-subcategories show-filters">
-          <%= f.input :sub_category, collection: SubCategory.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:sub_category] : [] %>
+          <%= f.input :sub_category, collection: SubCategory.order(name: :ASC).product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:sub_category] : [] %>
         </div>
         <div class="partial-filters_collection">
           <div class="filter-title filter-title-brands">
@@ -18,7 +18,7 @@
             <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-brands' %>
           </div>
           <div class="filters-options filters-options-brands">
-            <%= f.input :brand, collection: Brand.product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
+            <%= f.input :brand, collection: Brand.order(name: :ASC).product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
           </div>
         </div>
       </div>
