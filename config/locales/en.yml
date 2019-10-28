@@ -32,10 +32,10 @@
 en:
   views:
     pagination:
-      first: "<img src='/images/assets/pag-double-left.png' class='pag-icons' alt='pagination-icons'>"
-      last: "<img src='/images/assets/pag-double-right.png' class='pag-icons' alt='pagination-icons'>"
-      previous: "<img src='/images/pag-left.png' class='pag-icons' alt='pagination-icons'>"
-      next: "<img src='/images/pag-right.png' class='pag-icons' alt='pagination-icons'>"
+      first: ""
+      last: ""
+      previous: ""
+      next: ""
       truncate: "&hellip;"
   helpers:
     page_entries_info:
