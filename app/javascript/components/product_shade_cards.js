@@ -36,44 +36,45 @@ const initProductShadeCards = () => {
 var initProductImageZoom = () => {
   // Get the image with the `myImg` class
   var zoomBox = document.querySelector('.myImg');
-  console.log(zoomBox.style.backgroundImage)
-  // Extract the URL
-  var imageCss = window.getComputedStyle(zoomBox, false),
-    imageUrl = imageCss.backgroundImage.slice(4, -1).replace(/['"]/g, '');
-  // Get the original source image
-  var imageSrc = new Image();
-  imageSrc.onload = function() {
-    var imageWidth = imageSrc.naturalWidth,
-        imageHeight = imageSrc.naturalHeight,
-        ratio = imageHeight / imageWidth;
-    // Adjust the box to fit the image and to adapt responsively
-    var percentage = ratio * 100 + '%';
-    zoomBox.style.paddingBottom = percentage;
-    // Zoom and scan on mousemove
-    zoomBox.onmousemove = function(e) {
-      // Get the width of the thumbnail
-      var boxWidth = zoomBox.clientWidth,
-        // Get the cursor position, minus element offset
-        x = e.pageX - this.offsetLeft,
-        y = e.pageY - this.offsetTop,
-        // Convert coordinates to % of elem. width & height
-        xPercent = x / (boxWidth / 100) + '%',
-        yPercent = y / (boxWidth * ratio / 100) + '%';
-      // Update styles w/actual size
-      Object.assign(zoomBox.style, {
-        backgroundPosition: xPercent + ' ' + yPercent,
-        backgroundSize: imageWidth + 'px'
-      });
-    };
-    // Reset when mouse leaves
-    zoomBox.onmouseleave = function(e) {
-      Object.assign(zoomBox.style, {
-        backgroundPosition: 'center',
-        backgroundSize: 'cover'
-      });
-    };
+  if (zoomBox) {
+    // Extract the URL
+    var imageCss = window.getComputedStyle(zoomBox, false),
+      imageUrl = imageCss.backgroundImage.slice(4, -1).replace(/['"]/g, '');
+    // Get the original source image
+    var imageSrc = new Image();
+    imageSrc.onload = function() {
+      var imageWidth = imageSrc.naturalWidth,
+          imageHeight = imageSrc.naturalHeight,
+          ratio = imageHeight / imageWidth;
+      // Adjust the box to fit the image and to adapt responsively
+      var percentage = ratio * 100 + '%';
+      zoomBox.style.paddingBottom = percentage;
+      // Zoom and scan on mousemove
+      zoomBox.onmousemove = function(e) {
+        // Get the width of the thumbnail
+        var boxWidth = zoomBox.clientWidth,
+          // Get the cursor position, minus element offset
+          x = e.pageX - this.offsetLeft,
+          y = e.pageY - this.offsetTop,
+          // Convert coordinates to % of elem. width & height
+          xPercent = x / (boxWidth / 100) + '%',
+          yPercent = y / (boxWidth * ratio / 100) + '%';
+        // Update styles w/actual size
+        Object.assign(zoomBox.style, {
+          backgroundPosition: xPercent + ' ' + yPercent,
+          backgroundSize: imageWidth + 'px'
+        });
+      };
+      // Reset when mouse leaves
+      zoomBox.onmouseleave = function(e) {
+        Object.assign(zoomBox.style, {
+          backgroundPosition: 'center',
+          backgroundSize: 'cover'
+        });
+      };
+    }
+    imageSrc.src = imageUrl;
   }
-  imageSrc.src = imageUrl;
 }
 
 initProductImageZoom();

@@ -4,16 +4,17 @@
       <%= render 'admin/shared/admin_dash' %>
     </div>
     <div class="dash-content-container">
-    <h2 class="insider-info-title mlb-title text-center">All Products</h2>
-    <hr>
-    <div class="product-index-container">
-      <div class="partial-filters-two">
-        <%= render 'admin/products/admin_filter' %>
-        <div class="cards-partial-container">
-          <%= render 'admin/products/admin_cards_container' %>
+      <h2 class="insider-info-title mlb-title text-center">All Products</h2>
+      <hr>
+      <div class="product-index-container">
+        <div class="partial-filters-two">
+          <%= render 'admin/products/admin_filter' %>
+          <div class="cards-partial-container">
+            <%= render 'admin/products/admin_cards_container' %>
+          </div>
         </div>
       </div>
+      <%= link_to 'NEW PRODUCT', new_admin_product_path, class: 'primary-button products-admin-primary' %>
     </div>
-    <%= link_to 'NEW PRODUCT', new_admin_product_path, class: 'primary-button products-admin-primary' %>
   </div>
 </div>
