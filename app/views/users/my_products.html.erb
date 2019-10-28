@@ -8,6 +8,9 @@
       <hr>
       <div class="my-product-cards-container">
         <%= render 'shared/my_products_cards', products: @products, wishlist_product: @wishlist_product %>
+        <div class="paginator-container">
+          <%= paginate @products %>
+        </div>
       </div>
     </div>
   </div>

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def my_products
     # @orders = Order.where(user: @user)
     @products = Order.where(user: @user).order(created_at: :DESC).map { |order| order.products }.flatten.uniq
+    @products = Kaminari.paginate_array(@products).page(params[:page]).per(3)
   end
 
   def refer_a_friend
@@ -64,10 +65,10 @@ class UsersController < ApplicationController
   end
 
   def showroom
-    @products = Product.where(demoable: true)
+    @products = Product.where(demoable: true).page params[:page]
     @original = Product.where(demoable: true)
     if params[:product].present? && params[:product][:sort].present?
-      @products = @products.filter_sort(*sort_params)
+      @products = @products.filter_sort(*sort_params).page params[:page]
       @sort_method = params[:product][:sort][:method]
     else
       # @products = @products.filter_sort(*'created_at,desc'.split(','))
