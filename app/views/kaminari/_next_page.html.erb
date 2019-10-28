@@ -6,6 +6,6 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="next" style="background-image: url('<%= asset_path 'pag-right.png' %>')">
+<span class="next <%= current_page.last? ? 'pag-opacity' : '' %>" style="background-image: url('<%= asset_path 'pag-right.png' %>')">
   <%= link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, rel: 'next', remote: remote %>
 </span>

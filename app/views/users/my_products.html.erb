@@ -9,7 +9,7 @@
       <div class="my-product-cards-container">
         <%= render 'shared/my_products_cards', products: @products, wishlist_product: @wishlist_product %>
         <div class="col-12 d-flex justify-content-center">
-          <p class="boldest muli left-margin small-text grey"><%= page_entries_info @products %></p>
+          <p class="boldest muli small-text grey"><%= page_entries_info @products %></p>
         </div>
         <div class="paginator-container">
           <%= paginate @products %>
