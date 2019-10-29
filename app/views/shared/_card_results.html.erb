@@ -8,7 +8,9 @@
           <%= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
         <% end %>
       </div>
-      <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= page_entries_info @products %></p>
+      <div class="show-page-entries">
+        <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= page_entries_info @products %></p>
+      </div>
     </div>
   </div>
   <div class="products-index-container">
@@ -25,11 +27,12 @@
                 <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
               </div>
               <div class="filters-options filters-options-categories show-filters">
-                <% Category.find_each do |category| %>
+                <% Category.order(name: :ASC).each do |category| %>
                   <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
                     <h6><%= category.name %></h6>
                     <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
                   </div>
+                  <% raise %>
                   <div class="filter-subcategory-container filter-subcategory-<%= category.name %>" data-sub="<%= category.name %>">
                     <%= f.input :sub_category, collection: category.sub_categories.order(name: :ASC).product_filter_labels_and_values(@original), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
                   </div>
@@ -85,7 +88,7 @@
 
   filterTitleBrands = document.querySelector('.filter-title-brands')
   filterOptionsBrands = document.querySelector('.filters-options-brands')
-  
+
   if (filterTitleCategories) {
     filterTitleCategories.addEventListener('click', () => {
       filterOptionsCategories.classList.toggle('show-filters')
