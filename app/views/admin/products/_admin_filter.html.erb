@@ -27,7 +27,7 @@
             <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-brands' %>
           </div>
           <div class="filters-options filters-options-brands">
-            <%= f.input :brand, collection: Brand.order(name: :ASC).product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
+            <%= f.input :brand, collection: Brand.order(name: :ASC).joins(:products).merge(Product.all.where(brand_id: Brand.all.ids)).product_filter_labels_and_values(Product.all).uniq, as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
           </div>
         </div>
       </div>
