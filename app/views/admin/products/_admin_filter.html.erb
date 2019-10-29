@@ -11,8 +11,9 @@
         </div>
         <div class="filters-options filters-options-subcategories show-filters">
           <% Category.find_each do |category| %>
+            <% next if category.sub_categories.all? { |sc| @products.where(sub_category: sc ).empty? } %>
             <h6><%= category.name %></h6>
-            <%= f.input :sub_category, collection: category.sub_categories.order(name: :ASC).product_filter_labels_and_values(Product.all), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+            <%= f.input :sub_category, collection: category.sub_categories.joins(:products).merge(Product.where(sub_category_id: category.sub_categories.ids)).order(name: :ASC).product_filter_labels_and_values(Product.all).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
           <% end %>
         </div>
         <div class="partial-filters_collection">
