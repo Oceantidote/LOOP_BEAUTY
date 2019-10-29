@@ -8,7 +8,9 @@
           <%= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
         <% end %>
       </div>
-      <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= page_entries_info @products %></p>
+      <div class="show-page-entries">
+        <p class="boldest muli no-bottom-margin left-margin small-text grey"><%= page_entries_info @products %></p>
+      </div>
     </div>
   </div>
   <div class="products-index-container">
@@ -26,6 +28,7 @@
               </div>
               <div class="filters-options filters-options-categories show-filters">
                 <% Category.find_each do |category| %>
+                <% Category.order(name: :ASC).each do |category| %>
                   <% next if category.sub_categories.all? { |sc| @products.where(sub_category: sc ).empty? } %>
                   <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
                     <h6><%= category.name %></h6>
@@ -86,7 +89,7 @@
 
   filterTitleBrands = document.querySelector('.filter-title-brands')
   filterOptionsBrands = document.querySelector('.filters-options-brands')
-  
+
   if (filterTitleCategories) {
     filterTitleCategories.addEventListener('click', () => {
       filterOptionsCategories.classList.toggle('show-filters')
