@@ -5,7 +5,7 @@ class Admin::ShadesController < ApplicationController
     @product = Product.friendly.find(params[:product_id])
     @shade = Shade.new(shade_params)
     @shade.product = @product
-    authorize @shade
+    authorize [:admin, @shade]
     if @shade.save
       redirect_to edit_admin_product_path(@product), notice: 'Shade added'
     else
@@ -29,6 +29,16 @@ class Admin::ShadesController < ApplicationController
     redirect_to edit_admin_product_path(@shade.product)
   end
 
+  def destroy_photo
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    authorize [:admin, @photo.record_type.constantize.find(@photo.record_id)]
+    @photo.purge
+    respond_to do |format|
+      format.html { redirect_back fallback_location: request.referer }
+      format.js
+    end
+  end
+
   private
 
   def shade_params
@@ -37,6 +47,6 @@ class Admin::ShadesController < ApplicationController
 
   def set_shade
     @shade = Shade.find(params[:id])
-    authorize @shade
+    authorize [:admin, @shade]
   end
 end

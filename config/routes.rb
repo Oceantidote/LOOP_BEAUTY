@@ -103,6 +103,7 @@ Rails.application.routes.draw do
         patch '/unpublish', to: 'influencers#unpublish'
       end
     end
+    delete 'photo/:id', to: 'shades#destroy_photo', as: :destroy_photo
     resources :products, except: [:show] do
       resources :product_benefits, only: [:create]
       resources :shades, only: [:create]

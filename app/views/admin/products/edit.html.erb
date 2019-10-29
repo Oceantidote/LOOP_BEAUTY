@@ -97,14 +97,17 @@
                   <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
                   <div style="max-width: 288px;">
                     <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true, id: "shade_#{shade.id}_photos" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                    <% if shade.photos.attached? %>
-                      <% shade.photos.each do |photo| %>
-                        <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                      <% end %>
-                    <% else %>
-                      <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                    <% end %>
+                    <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
                   </div>
+                </div>
+                <h6>Current Photos</h6>
+                <div class="d-flex">
+                  <% shade.photos.each do |photo| %>
+                    <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>"> 
+                      <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
+                      <%= link_to 'DESTROY', admin_destroy_photo_path(photo.id), remote: true, method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="d-flex justify-content-end">
                   <%= link_to 'DESTROY', admin_shade_path(shade), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
