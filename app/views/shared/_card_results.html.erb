@@ -20,14 +20,19 @@
           </div>
           <div class="partial-filters">
             <div class="partial-filters_collection">
-              <div class="filter-title filter-title-subcategories">
+              <div class="filter-title filter-title-categories">
                 <h6>Category</h6>
                 <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
               </div>
-              <div class="filters-options filters-options-subcategories show-filters">
+              <div class="filters-options filters-options-categories show-filters">
                 <% Category.find_each do |category| %>
-                  <h6><%= category.name %></h6>
-                  <%= f.input :sub_category, collection: category.sub_categories.order(name: :ASC).product_filter_labels_and_values(@original), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+                  <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
+                    <h6><%= category.name %></h6>
+                    <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
+                  </div>
+                  <div class="filter-subcategory-container filter-subcategory-<%= category.name %>" data-sub="<%= category.name %>">
+                    <%= f.input :sub_category, collection: category.sub_categories.order(name: :ASC).product_filter_labels_and_values(@original), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+                  </div>
                 <% end %>
               </div>
             </div>
@@ -75,15 +80,15 @@
 <% end %>
 
 <script>
-  filterTitleSubcategories = document.querySelector('.filter-title-subcategories')
-  filterOptionsSubcategories = document.querySelector('.filters-options-subcategories')
+  filterTitleCategories = document.querySelector('.filter-title-categories')
+  filterOptionsCategories = document.querySelector('.filters-options-categories')
 
   filterTitleBrands = document.querySelector('.filter-title-brands')
   filterOptionsBrands = document.querySelector('.filters-options-brands')
-
-  if (filterTitleSubcategories) {
-    filterTitleSubcategories.addEventListener('click', () => {
-      filterOptionsSubcategories.classList.toggle('show-filters')
+  
+  if (filterTitleCategories) {
+    filterTitleCategories.addEventListener('click', () => {
+      filterOptionsCategories.classList.toggle('show-filters')
       document.querySelector('.filter-arrow-category').classList.toggle('arrow-flip')
     })
   }
@@ -94,4 +99,21 @@
       document.querySelector('.filter-arrow-brands').classList.toggle('arrow-flip')
     })
    }
+
+  document.querySelectorAll('.filter-subtitle').forEach((subtitle) => {
+    subtitle.addEventListener('click', () => {
+      // document.querySelector(`.filter-subcategory-${subtitle.dataset.sub}`).classList.toggle('show-filters')
+      document.querySelectorAll('.filter-subcategory-container').forEach((subcategory) => {
+        if (subtitle.dataset.sub === subcategory.dataset.sub) {
+          subcategory.classList.toggle('show-filters')
+          document.querySelectorAll('.filter-arrow-subcategory').forEach((arrow) => {
+            if (arrow.dataset.sub === subcategory.dataset.sub) {
+              arrow.classList.toggle('arrow-flip')
+            }
+          })
+        }
+      })
+    })
+  })
+
 </script>
