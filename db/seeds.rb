@@ -145,22 +145,21 @@ puts "-"
 # CREATING SUB_CATEGORIES
 
 puts "CREATING SUB CATEGORIES"
-
-blush = SubCategory.create!(name: "Blush")
-powder = SubCategory.create!(name: "Powder")
-highlighter = SubCategory.create!(name: "Highlighter")
-foundation = SubCategory.create!(name: "Foundation")
-concealer = SubCategory.create!(name: "Concealer")
-primer = SubCategory.create!(name: "Primer")
-lipstick = SubCategory.create!(name: "Lipstick")
-lip_gloss = SubCategory.create!(name: "Lip Gloss")
-lip_liner = SubCategory.create!(name: "Lip Liner")
-eyeshadow = SubCategory.create!(name: "Eyeshadow")
-eyeliner = SubCategory.create!(name: "Eyeliner")
-brow = SubCategory.create!(name: "Brow")
-mascara = SubCategory.create!(name: "Mascara")
-sub_tools = SubCategory.create!(name: "Tools")
-sub_gift_sets = SubCategory.create!(name: "Gift Sets")
+blush = SubCategory.create!(name: "Blush", category: face)
+powder = SubCategory.create!(name: "Powder", category: face)
+highlighter = SubCategory.create!(name: "Highlighter", category: face)
+foundation = SubCategory.create!(name: "Foundation", category: face)
+concealer = SubCategory.create!(name: "Concealer", category: face)
+primer = SubCategory.create!(name: "Primer", category: face)
+lipstick = SubCategory.create!(name: "Lipstick", category: lips)
+lip_gloss = SubCategory.create!(name: "Lip Gloss", category: lips)
+lip_liner = SubCategory.create!(name: "Lip Liner", category: lips)
+eyeshadow = SubCategory.create!(name: "Eyeshadow", category: eyes)
+eyeliner = SubCategory.create!(name: "Eyeliner", category: eyes)
+brow = SubCategory.create!(name: "Brow", category: eyes)
+mascara = SubCategory.create!(name: "Mascara", category: eyes)
+sub_tools = SubCategory.create!(name: "Tools", category: tools)
+sub_gift_sets = SubCategory.create!(name: "Gift Sets", category: gifts_sets)
 
 puts "-"
 
