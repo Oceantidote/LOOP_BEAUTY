@@ -1,7 +1,7 @@
 container = document.querySelector('.cards-partial-container')
 
-// while (container.firstChild) {
-//     container.removeChild(container.firstChild)
-// }
+while (container.firstChild) {
+  container.removeChild(container.firstChild)
+}
 
-container.innerHTML = `<%= j render 'admin/products/admin_cards_container' %>`
+container.insertAdjacentHTML('beforeend', `<%= j render 'admin/products/admin_cards_container' %>`)

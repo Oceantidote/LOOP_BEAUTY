@@ -1,13 +1,5 @@
-cards = document.querySelectorAll('.card-image-results');
-cards.forEach((card) => {
-  card.remove();
-});
-results = document.getElementById('brandsResults')
-document.getElementById('product-filter').remove()
-results.insertAdjacentHTML('beforeend', "<%= j render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>")
-
-filterSlider = $('.mobile-filters')
-filters = $('.partial-filters')
-$(filterSlider).click(function() {
-  $(filters).slideToggle();
-});
+results = document.querySelector('#card-target')
+while (results.firstChild) {
+  results.firstChild.remove()
+}
+results.insertAdjacentHTML('beforeend', "<%= j render 'shared/filter_cards', products: @products %>")

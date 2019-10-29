@@ -71,22 +71,8 @@
           <!--   <div class="partial-products" id="results">
                 <%#= render 'card_results', products: @products %>
             </div> -->
-        <div class="row" style="flex: 1; margin: 0;">
-          <% if products.count == 0 %>
-            <h6 class="didot text-center large-margin-top width-100">There are no products <%= @query ? "matching '#{ @query }'" : "" %></h6>
-          <% else %>
-            <% products.each do |product| %>
-              <div class="col-6 col-sm-6 col-md-4" style="padding: 10px;">
-                <!-- removed d-flex justify-content-center from above div -->
-                <div class="product-cards-holder">
-                  <%= render 'shared/product_cards', product: product %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-          <div class="col-12 d-flex justify-content-center">
-            <%= paginate products %>
-          </div>
+        <div class="row" id="card-target" style="flex: 1; margin: 0;">
+          <%= render 'shared/filter_cards', products: products %>
         </div>
       </div>
     </div>
@@ -99,16 +85,20 @@
 
   filterTitleBrands = document.querySelector('.filter-title-brands')
   filterOptionsBrands = document.querySelector('.filters-options-brands')
+  
+  if (filterTitleCategories) {
+    filterTitleCategories.addEventListener('click', () => {
+      filterOptionsCategories.classList.toggle('show-filters')
+      document.querySelector('.filter-arrow-category').classList.toggle('arrow-flip')
+    })
+  }
 
-  filterTitleCategories.addEventListener('click', () => {
-    filterOptionsCategories.classList.toggle('show-filters')
-    document.querySelector('.filter-arrow-category').classList.toggle('arrow-flip')
-  })
-
-  filterTitleBrands.addEventListener('click', () => {
-    filterOptionsBrands.classList.toggle('show-filters')
-    document.querySelector('.filter-arrow-brands').classList.toggle('arrow-flip')
-  })
+  if (filterTitleBrands) {
+    filterTitleBrands.addEventListener('click', () => {
+      filterOptionsBrands.classList.toggle('show-filters')
+      document.querySelector('.filter-arrow-brands').classList.toggle('arrow-flip')
+    })
+   }
 
   document.querySelectorAll('.filter-subtitle').forEach((subtitle) => {
     subtitle.addEventListener('click', () => {
