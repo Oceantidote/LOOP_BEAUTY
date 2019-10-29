@@ -10,7 +10,10 @@
           <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
         </div>
         <div class="filters-options filters-options-subcategories show-filters">
-          <%= f.input :sub_category, collection: SubCategory.order(name: :ASC).product_filter_labels_and_values(Product.all), as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:sub_category] : [] %>
+          <% Category.find_each do |category| %>
+            <h6><%= category.name %></h6>
+            <%= f.input :sub_category, collection: category.sub_categories.order(name: :ASC).product_filter_labels_and_values(Product.all), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+          <% end %>
         </div>
         <div class="partial-filters_collection">
           <div class="filter-title filter-title-brands">

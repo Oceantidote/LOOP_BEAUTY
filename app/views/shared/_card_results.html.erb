@@ -25,7 +25,9 @@
                 <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
               </div>
               <div class="filters-options filters-options-subcategories show-filters">
-                <%= f.input :sub_category, collection: SubCategory.order(name: :ASC).product_filter_labels_and_values(@original), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+                <% Category.find_each do |category| %>
+                  <%= f.input :sub_category, collection: category.sub_categories.order(name: :ASC).product_filter_labels_and_values(@original), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+                <% end %>
               </div>
             </div>
             <% unless params[:controller] == 'brands' %>
