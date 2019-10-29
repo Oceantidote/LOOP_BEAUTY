@@ -217,22 +217,42 @@
   }
 }
 
+.filter-subtitle {
+  display: flex;
+  justify-content: space-between;
+  background-color: #EFEFEF;
+  padding: 10px;
+  cursor: pointer;
+  h6 {
+    margin: 0;
+    font-weight: 900;
+    font-size: 12px;
+  }
+}
+
 .filter-arrow {
   width: 15px;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .filters-options {
   overflow: hidden;
   max-height: 0;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .show-filters {
-  max-height: 800px;
-  overflow: scroll;
+  max-height: 400px !important;
+  overflow: scroll !important;
 }
 
 .arrow-flip {
   transform: rotate(180deg);
 }
+
+.filter-subcategory-container {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
