@@ -100,12 +100,12 @@
                     <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
                   </div>
                 </div>
-                <h6>Current Photos</h6>
+                <!-- <h6>Current Photos</h6> -->
                 <div class="d-flex">
                   <% shade.photos.each do |photo| %>
-                    <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>"> 
+                    <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>">
                       <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                      <%= link_to 'DESTROY', admin_destroy_photo_path(photo.id), remote: true, method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
+                      <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, class: 'small-text underline grey-font boldest text-right' %>
                     </div>
                   <% end %>
                 </div>
