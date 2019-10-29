@@ -24,6 +24,7 @@ class WishlistProductsController < ApplicationController
 
   def destroy
     @wishlist = @wishlist_product.wishlist
+    @wishlist_products = @wishlist.wishlist_products.page(params[:page])
     @product = @wishlist_product.product
     authorize @wishlist_product
     @wishlist_product.destroy

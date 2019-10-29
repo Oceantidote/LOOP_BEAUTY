@@ -1,47 +1,47 @@
 <div class="row row-padding" style="width: 100%; margin: 0;">
   <% if user_signed_in? && current_user.wishlist %>
-    <% if @wishlist.wishlist_products.count == 0 %>
-      <p class="medium-margin text-center boldest" style="width: 100%;">Your wishlist is empty</p>
-      <div class="start-shopping-holder">
+    <% if @wishlist_products.count == 0 %>
+<!--       <p class="medium-margin text-center boldest">Your wishlist is empty</p>
+ -->      <div class="start-shopping-holder">
         <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
       </div>
     <% end %>
-    <% @wishlist_products.each do |wishlist_product| %>
-      <div class="col-6 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
-        <div class="my-products-card">
-          <div class="my-products-image">
-            <% if wishlist_product.product.out_of_stock? %>
-              <div class="out-of-stock-overlay">
-                <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
-              </div>
-            <% end %>
-            <%= image_tag url_for(wishlist_product.shade.card_photo), alt: "product shade photo" %>
-          </div>
-          <div class="my-products-details text-center">
-            <p class="no-margin boldest"><%= wishlist_product.product.title %></p>
-            <% if wishlist_product.shade.name != "" %>
-              <p class="no-margin small-text"><%= wishlist_product.shade.name %></p>
-            <% else %>
-              <p class="no-margin small-text"> - </p>
-            <% end %>
-          </div>
-          <div class="my-products-price text-center boldest">
-            <%= humanized_money_with_symbol(wishlist_product.product.price) %>
-          </div>
-          <div class="my-products-purchase">
-            <%= link_to 'Add to bag', add_to_bag_wishlist_product_path(wishlist_product), method: :post, remote: true, class: "my-products-button add-to-bag-grey" %>
-            <%= link_to wishlist_product_path(wishlist_product), method: :delete, remote: :true, class: 'no-decoration' do %>
-              <i class="<%= current_user.wishlist.products.include?(wishlist_product.product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
-            <% end %>
-          </div>
+  <% end %>
+  <% @wishlist_products.each do |wishlist_product| %>
+    <div class="col-6 col-lg-4" style="margin-bottom: 15px;" id="wishlist-<%= wishlist_product.id %>-card">
+      <div class="my-products-card">
+        <div class="my-products-image">
+          <% if wishlist_product.product.out_of_stock? %>
+            <div class="out-of-stock-overlay">
+              <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+            </div>
+          <% end %>
+          <%= image_tag url_for(wishlist_product.shade.card_photo), alt: "product shade photo" %>
+        </div>
+        <div class="my-products-details text-center">
+          <p class="no-margin boldest"><%= wishlist_product.product.title %></p>
+          <% if wishlist_product.shade.name != "" %>
+            <p class="no-margin small-text"><%= wishlist_product.shade.name %></p>
+          <% else %>
+            <p class="no-margin small-text"> - </p>
+          <% end %>
+        </div>
+        <div class="my-products-price text-center boldest">
+          <%= humanized_money_with_symbol(wishlist_product.product.price) %>
+        </div>
+        <div class="my-products-purchase">
+          <%= link_to 'Add to bag', add_to_bag_wishlist_product_path(wishlist_product), method: :post, remote: true, class: "my-products-button add-to-bag-grey" %>
+          <%= link_to wishlist_product_path(wishlist_product), method: :delete, remote: :true, class: 'no-decoration' do %>
+            <i class="<%= current_user.wishlist.products.include?(wishlist_product.product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+          <% end %>
         </div>
       </div>
-    <% end %>
-    <div class="col-12 d-flex justify-content-center">
-      <p class="boldest muli small-text grey"><%= page_entries_info @wishlist_products %></p>
-    </div>
-    <div class="col-12 d-flex justify-content-center">
-      <%= paginate @wishlist_products %>
     </div>
   <% end %>
+  <div class="col-12 d-flex justify-content-center">
+    <p class="boldest muli small-text grey"><%= page_entries_info wishlist_products %></p>
+  </div>
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate wishlist_products, params: { controller: 'users', action: 'wishlist', user_id: current_user.id } %>
+  </div>
 </div>

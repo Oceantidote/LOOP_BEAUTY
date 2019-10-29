@@ -6,7 +6,7 @@ productShowWishlist = document.querySelector('.product-show-wishlist')
 
 
 if (wishlistCards) {
-  wishlistCards.innerHTML = "<%= j render 'shared/wishlist_product_card', wishlist_product: @wishlist_product %>"
+  wishlistCards.innerHTML = "<%= j render 'shared/wishlist_product_card', wishlist_products: @wishlist_products %>"
 }
 else if (productShowWishlist) {
   productShowWishlist.innerHTML = "<%= j render 'shared/product_show_wishlist', product: @product %>"

@@ -166,7 +166,7 @@ class UsersController < ApplicationController
 
   def set_wishlist
     @wishlist = Wishlist.find_by(user: @user)
-    @wishlist_products = @wishlist.wishlist_products.page params[:page]
+    @wishlist_products = @wishlist.wishlist_products.page(params[:page])
     # WISHLIST TEST
   end
 
