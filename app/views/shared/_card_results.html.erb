@@ -34,7 +34,7 @@
                     <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
                   </div>
                   <div class="filter-subcategory-container filter-subcategory-<%= category.name %>" data-sub="<%= category.name %>">
-                    <%= f.input :sub_category, collection: category.sub_categories.joins(:products).merge(Product.where(sub_category_id: category.sub_categories.ids)).order(name: :ASC).product_filter_labels_and_values(@original).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
+                    <%= f.input :sub_category, collection: category.sub_categories.joins(:products).merge(@original.where(sub_category_id: category.sub_categories.ids)).order(name: :ASC).product_filter_labels_and_values(@original).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
                   </div>
                 <% end %>
               </div>
@@ -46,7 +46,7 @@
                   <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-brands' %>
                 </div>
                 <div class="filters-options filters-options-brands">
-                  <%= f.input :brand, collection: Brand.order(name: :ASC).product_filter_labels_and_values(@original), as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
+                  <%= f.input :brand, collection: Brand.order(name: :ASC).joins(:products).merge(@original.where(brand_id: Brand.all.ids)).product_filter_labels_and_values(@original).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
                 </div>
               </div>
             <% end %>
