@@ -27,7 +27,6 @@
                 <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
               </div>
               <div class="filters-options filters-options-categories show-filters">
-                <% Category.find_each do |category| %>
                 <% Category.order(name: :ASC).each do |category| %>
                   <% next if category.sub_categories.all? { |sc| @products.where(sub_category: sc ).empty? } %>
                   <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
