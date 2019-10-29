@@ -137,10 +137,9 @@ class UsersController < ApplicationController
 
   def make_up
     @showroom_products = @user.showroom.showroom_products
-    @products = @user.showroom.products
+    @products = @user.showroom.products.page params[:page]
     @original = @products
     @demoable_products = Product.all - @products
-    @start = params[:product].nil? || (params[:product][:brand].reject(&:blank?).empty? && params[:product][:category].reject(&:blank?).empty?)
     @products = @products.filter(params[:product].slice(:category, :brand)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params).page params[:page]

@@ -10,8 +10,7 @@ class BrandsController < ApplicationController
     authorize @brand
     @products = @brand.products
     @original = @brand.products
-    @start = params[:product].nil? || params[:product][:category].reject(&:blank?).empty?
-    @products = @products.filter(params[:product].slice(:category, :brand)).page params[:page] if params[:product].present?
+    @products = @products.filter(params[:product].slice(:sub_category)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
       @sort_method = params[:product][:sort][:method]
