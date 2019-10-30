@@ -101,7 +101,7 @@
                   </div>
                 </div>
                 <!-- <h6>Current Photos</h6> -->
-                <div class="d-flex">
+                <div class="d-flex" style="margin-left: 120px;">
                   <% shade.photos.each do |photo| %>
                     <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>">
                       <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
@@ -113,6 +113,7 @@
                   <%= link_to 'DESTROY', admin_shade_path(shade), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
                   <%= f.submit 'UPDATE SHADE', class: 'primary-button small-text admin-product-shade-primary-button' %>
                 </div>
+                <hr>
             <% end %>
         <% end %>
       </div>
