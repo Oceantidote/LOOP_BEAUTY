@@ -79,6 +79,11 @@ class User < ApplicationRecord
     influencer
   end
 
+  def age
+    now = Date.today
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+
   def sales
     lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum
   end
@@ -186,4 +191,6 @@ class User < ApplicationRecord
       flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
+
+  
 end
