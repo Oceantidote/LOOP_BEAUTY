@@ -49,6 +49,10 @@ class ProductsController < ApplicationController
     @product = Product.friendly.find(params[:id])
     authorize @product
     @customer_reviews = @product.customer_reviews.page params[:page]
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def my_product
