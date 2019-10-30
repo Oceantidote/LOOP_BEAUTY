@@ -5,7 +5,7 @@
     </div>
     <div class="partial-filters">
       <div class="partial-filters_collection">
-        <div class="filter-title filter-title-subcategories">
+        <div class="filter-title filter-title-categories">
           <h6>Category</h6>
           <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
         </div>
@@ -14,7 +14,7 @@
             <% next if category.sub_categories.all? { |sc| @products.where(sub_category: sc ).empty? } %>
             <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
               <h6><%= category.name %></h6>
-              <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
+              <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category', data: { sub: "#{ category.name }" } %>
             </div>
             <div class="filter-subcategory-container filter-subcategory-<%= category.name %>" data-sub="<%= category.name %>">
               <%= f.input :sub_category, collection: category.sub_categories.joins(:products).merge(Product.where(sub_category_id: category.sub_categories.ids)).order(name: :ASC).product_filter_labels_and_values(Product.all).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
