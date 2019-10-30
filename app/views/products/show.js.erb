@@ -1,0 +1,21 @@
+reviews = document.getElementById('reviews-target')
+info = document.getElementById('info-target')
+paginate = document.getElementById('paginate-target')
+
+while (reviews.firstChild) {
+  reviews.firstChild.remove()
+}
+
+reviews.insertAdjacentHTML('beforeend', "<%= j render 'review_cards', reviews: @customer_reviews %>")
+
+while (info.firstChild) {
+  info.firstChild.remove()
+}
+
+info.insertAdjacentHTML('beforeend', "<%= page_entries_info @customer_reviews %>")
+
+while (paginate.firstChild) {
+  paginate.firstChild.remove()
+}
+
+paginate.insertAdjacentHTML('beforeend', "<%= j paginate @customer_reviews, remote: true %>")

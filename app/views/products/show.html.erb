@@ -228,62 +228,15 @@
       <% if @product.customer_reviews.count == 0 %>
         <p class="text-center medium-margin width-100 didot">There are no customer reviews yet</p>
       <% end %>
-      <% @customer_reviews.each do |review| %>
-        <div class="col-10 col-md-6 ir-cols">
-          <div class="customer-review-cards" data-toggle="modal" data-target="#review_two_<%= review.id %>">
-            <div class="customer-review-left">
-              <h6><%= review.user.first_name.capitalize %></h6>
-              <div class="boldest grey-font">
-                <p><%= review.user.country %></p>
-                <% if review.user.dob.present? %>
-                  <p>Age: <%= review.user.age %></p>
-                <% end %>
-                <p>Gender: <%= review.user.gender %></p>
-              </div>
-              <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
-            </div>
-            <div class="customer-review-right">
-              <div class="customer-review-text">
-                <%= render 'shared/ratings', rating: review.rating %>
-                <p class="didot">"<%= review.review.truncate(150) %>"</p>
-                <p class="boldest cust-review-recommend"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade modal-two" id="review_two_<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content loop-border">
-              <div class="customer-review-modal-top">
-                <div class="customer-review-top-content">
-                  <h6 class="boldest no-margin"><%= review.user.first_name.capitalize %></h6>
-                  <div class="boldest grey-font">
-                    <p class="no-margin"><%= review.user.country %></p>
-                    <p class="no-margin">Age: 22-25</p>
-                    <p class="no-margin">Gender: <%= review.user.gender %></p>
-                  </div>
-                  <h6 class="no-margin boldest"><%= review.created_at.strftime('%d.%m.%y') %></h6>
-                </div>
-              </div>
-              <div class="review-modal-body">
-                <p class="didot"><%= review.review %></p>
-                <div class="d-flex justify-content-center py-3">
-                  <%= render 'shared/ratings', rating: review.rating %>
-                </div>
-              </div>
-              <div class="review-modal-footer">
-                <button type="button" class="primary-button small-text" data-dismiss="modal">CLOSE</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <div class="row-carousel" id="reviews-target">
+        <%= render 'review_cards', reviews: @customer_reviews %>
+      </div>
       <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
       <div class="col-12 d-flex justify-content-center">
-        <p class="boldest muli small-text grey"><%= page_entries_info @customer_reviews %></p>
+        <p class="boldest muli small-text grey" id="info-target"><%= page_entries_info @customer_reviews %></p>
       </div>
-      <div class="col-12 d-flex justify-content-center">
-        <%= paginate @customer_reviews %>
+      <div class="col-12 d-flex justify-content-center" id="paginate-target">
+        <%= paginate @customer_reviews, remote: true %>
       </div>
     </div>
     <% if current_user&.admin %>
