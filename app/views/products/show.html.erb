@@ -235,7 +235,9 @@
               <h6><%= review.user.first_name.capitalize %></h6>
               <div class="boldest grey-font">
                 <p><%= review.user.country %></p>
-                <p>Age: 22-25</p>
+                <% if review.user.dob.present? %>
+                  <p>Age: <%= review.user.age %></p>
+                <% end %>
                 <p>Gender: <%= review.user.gender %></p>
               </div>
               <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
