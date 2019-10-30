@@ -1,16 +1,12 @@
 <div class="tutorials-index-wrapper">
   <h2 class="insider-info-title text-center influencer-videos-title-mobile"><%= @user.first_name %> <%= @user.last_name %><%= @user.last_name.last == 's' ? "'" : "'s" %> tutorials</h2>
   <div class="influencer-videos-title-section">
-    <%= simple_form_for :sort, url: user_tutorials_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
-      <%= f.input :sort_method, collection: [['Newest', 'created_at,desc'], ['Old', 'created_at,asc']], label: false, required: false, selected: @sort_method, input_html: { class: "filters-container boldest s-medium-text" } %>
+    <%= simple_form_for :sort, url: user_tutorials_path(@user), method: :get, html: { onchange: "this.submit()", class: 'some-class influencer-videos-title-section w-100' } do %>
+      <%= select_tag(:sort, options_for_select([["Newest", 'created_at,desc'], ["Oldest", 'created_at,asc']], params[:sort]), onchange: 'this.form.submit()', class: 'filters-container boldest s-medium-text form-control') %>
+      <h2 class="insider-info-title text-center influencer-videos-title-web"><%= @user.first_name %> <%= @user.last_name %><%= @user.last_name.last == 's' ? "'" : "'s" %> tutorials</h2>
+      <%= select_tag(:link, options_for_select([["All", 'all'], ["Tutorials", 'tutorial'], ["Ask the Expert", "ask the expert"]], params[:link]), onchange: 'this.form.submit()', class: 'filters-container boldest s-medium-text form-control') %>
     <% end %>
-    <h2 class="insider-info-title text-center influencer-videos-title-web"><%= @user.first_name %> <%= @user.last_name %><%= @user.last_name.last == 's' ? "'" : "'s" %> tutorials</h2>
-    <div class="filters-container">
-      <!-- <p>Filter by: tutorials</p> -->
-      <%#= image_tag 'dropdown-down.png', class: "dropdown-arrow" %>
-    </div>
   </div>
-
   <div class="max-width">
     <div class="row mobile-row" style="margin: 30px auto 0 auto;">
       <% @tutorials.each do |tutorial| %>
