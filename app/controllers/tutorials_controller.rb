@@ -5,8 +5,13 @@ class TutorialsController < ApplicationController
   def index
     @user = User.friendly.find(params[:user_id])
     @tutorials = policy_scope(Tutorial).where(user: @user).where(status: 'approved')
-    @sort_method = params[:sort].present? ? params[:sort][:sort_method] : 'created_at,desc'
+    @sort_method = params[:sort].present? ? params[:sort] : 'created_at,desc'
     @tutorials = @tutorials.filter_sort(*@sort_method.split(','))
+    if params[:link] == 'tutorial' 
+      @tutorials = @tutorials.where(category: 'tutorial')
+    elsif params[:link] == 'ask the expert' 
+      @tutorials = @tutorials.where(category: 'ask the expert')
+    end
   end
 
   def all_videos
