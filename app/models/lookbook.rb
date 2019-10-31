@@ -51,7 +51,7 @@ class Lookbook < ApplicationRecord
   end
 
   def gen_aff_link(code)
-    long_url = Rails.application.routes.url_helpers.tutorial_url(self, aff_code: code)
+    long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
     if Rails.env.development?
       long_url
     else

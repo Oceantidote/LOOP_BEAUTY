@@ -4,11 +4,11 @@
     <div class="selected-article">
       <div class="article-header">
         <h6><%= @insider_article.category %>:</h6>
-        <h2 class="didot"><%= @insider_article.title %></h2>
+          <h2><%= @insider_article.title %></h2>
         <p>by <%= @insider_article.by %> </p>
       </div>
       <div class="article-content">
-        <p class="didot"><%= simple_format(@insider_article.text1) %></p>
+        <%= simple_format(@insider_article.text1) %>
         <% if @insider_article.photo1.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
             <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo") %>

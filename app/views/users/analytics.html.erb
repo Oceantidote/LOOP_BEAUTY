@@ -41,6 +41,9 @@
       <hr>
       <div class="analytics-content-driven-sales">
         <h6 class="muli boldest">Top image content driving your sales</h6>
+        <% @top_lookbooks.each do |lb| %>
+          <h4><%= lb.title %>: <%= "#{lb.orders.count} #{'Sale'.pluralize(lb.orders.count)}" %> </h4> 
+        <% end %>
       </div>
     </div>
   </div>

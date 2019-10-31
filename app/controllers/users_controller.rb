@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       @top_brands_count << [brand.name, @top_brands.count(brand.name)]
     end
     @top_brands_count = @top_brands_count.sort_by {|i| i[1]}.reverse
-
+    @top_lookbooks = @lookbooks.sort_by { |lb| -lb.orders.count }.first(3)
     @top_items_count = []
     @top_items = []
     @user.orders.each do |order|
