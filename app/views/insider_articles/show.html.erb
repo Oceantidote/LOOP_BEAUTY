@@ -3,9 +3,9 @@
   <div class="container">
     <div class="selected-article">
       <div class="article-header">
-        <h6><%= @insider_article.category %>:</h6>
-          <h2><%= @insider_article.title %></h2>
-        <p>by <%= @insider_article.by %> </p>
+        <h6 class="boldest muli"><%= @insider_article.category %>:</h6>
+          <h2 class="didot"><%= @insider_article.title %></h2>
+        <p class="boldest muli">by <%= @insider_article.by %> </p>
       </div>
       <div class="article-content">
         <%= simple_format(@insider_article.text1) %>
