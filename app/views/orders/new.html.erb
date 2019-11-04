@@ -20,26 +20,26 @@
                   </div>
                 </div>
               <% end %>
-              <%= link_to 'Edit Bag', bag_path, class: 'text-center grey underline boldest small-text checkout-edit-bag' %>
+              <%= link_to 'Edit Bag', bag_path, class: 'muli text-center grey underline boldest small-text checkout-edit-bag' %>
             </div>
             <div class="checkout-total-container">
               <div class="basket-price">
-                <span class="small-text grey boldest">Subtotal: </span>
+                <span class="small-text grey boldest muli">Subtotal: </span>
                 <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
               </div>
               <% if @basket.discount_code.present? %>
                 <div class="basket-price">
-                  <span class="small-text grey boldest">Discount: </span>
+                  <span class="small-text grey boldest muli">Discount: </span>
                   <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
                 </div>
               <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
                 <div class="basket-price">
-                  <span class="small-text grey boldest">Credit Spent: </span>
+                  <span class="small-text grey boldest muli">Credit Spent: </span>
                   <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></h5>
                 </div>
               <% end %>
               <div class="basket-price small-margin-bottom">
-                <span class="small-text grey boldest no-margin">Delivery: </span>
+                <span class="small-text grey boldest no-margin muli">Delivery: </span>
                 <% if @basket.basket_products.all?(&:purchase_with_credit?) %>
                   <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                 <% else %>
@@ -47,7 +47,7 @@
                 <% end %>
               </div>
               <div class="basket-price">
-                <span class="grey boldest medium-text">Total: </span>
+                <span class="grey boldest medium-text muli">Total: </span>
                 <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.total_price_cents > 0 ? @basket.total_price + Money.new(595) : Money.new(0)) %></h5>
               </div>
             </div>
@@ -115,7 +115,7 @@
               </div>
             <% end %>
           </div>
-          <p class="medium-text boldest small-margin-top">Delivery Option</p>
+          <p class="medium-text boldest small-margin-top muli">Delivery Option</p>
           <% if @basket.basket_products.any?(&:purchase_with_credit) %>
             <h6 class="muli boldest s-medium-text">Free delivery on orders purchased with credit</h6>
           <% end %>
@@ -154,7 +154,7 @@
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address">
-              <p class="medium-text boldest">Delivery Address</p>
+              <p class="medium-text boldest muli">Delivery Address</p>
                 <% if @default_delivery %>
                   <div class="delivery-default">
                     <%= render 'addresses/address', add: @default_delivery %>
@@ -171,7 +171,7 @@
                       <%= render 'addresses/modal_addresses', addresses: @user.delivery_addresses %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary small-text" data-dismiss="modal">CLOSE</button>
+                      <button type="button" class="btn btn-secondary small-text muli" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -180,8 +180,8 @@
               <% if @user.delivery_addresses.any? %>
                 <p id="deliveryAddressShow" class="d-none"></p>
                 <div id="deliveryAddressButtons">
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href" id="newDeliveryAddress">Add new address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newDeliveryAddress">Add new address</a>
                 </div>
                 <div class="d-none" id="newDeliveryInput">
                   <%= simple_form_for @address do |f| %>
@@ -194,7 +194,7 @@
                   <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <div class="d-flex align-items-center" style="width: 95%;">
                     <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                    <p class="no-bottom-margin didot">Use as billing address</p>
+                    <p class="no-bottom-margin muli">Use as billing address</p>
                   </div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                     <div class="d-flex">
@@ -214,7 +214,7 @@
                   <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
                   <div class="d-flex align-items-center">
                     <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                    <p class="no-bottom-margin didot">Use as billing address</p>
+                    <p class="no-bottom-margin muli">Use as billing address</p>
                   </div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                   <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
@@ -222,7 +222,7 @@
               <% end %>
             </div>
             <div class="checkout-address billing-address-container">
-              <p class="medium-text boldest">Billing Address</p>
+              <p class="medium-text boldest muli">Billing Address</p>
                 <% if @default_billing %>
                   <div class="billing-default">
                     <%= render 'addresses/address', add: @default_billing %>
@@ -239,7 +239,7 @@
                       <%= render 'addresses/modal_addresses', addresses: @user.billing_addresses %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary small-text" data-dismiss="modal">CLOSE</button>
+                      <button type="button" class="btn btn-secondary small-text muli" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -248,8 +248,8 @@
               <% if @user.billing_addresses.any? %>
                 <p id="billingAddressShow" class="d-none"></p>
                 <div id="billingAddressButtons">
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href" id="newBillingAddress">Add new address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newBillingAddress">Add new address</a>
                 </div>
                 <div class="d-none" id="newBillingInput">
                   <%= simple_form_for @address do |f| %>
@@ -295,10 +295,10 @@
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% elsif @user.delivery_addresses.length == 0 || @user.billing_addresses.length == 0 %>
-            <a class="stripe-button conditional-button" id="addressBtn">CONFIRM ADDRESSES</a>
-            <%= f.submit 'PAYMENT', class: 'stripe-button conditional-button d-none', id: "paymentHidden" %>
+            <a class="stripe-button conditional-button muli" id="addressBtn">CONFIRM ADDRESSES</a>
+            <%= f.submit 'PAYMENT', class: 'stripe-button conditional-button d-none muli', id: "paymentHidden" %>
           <% else %>
-            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el ' %>
+            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el muli' %>
           <% end %>
         <% end %>
       </div>

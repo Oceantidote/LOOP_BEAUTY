@@ -6,12 +6,12 @@
   <% end %>
   <h2 class="insider-info-title text-center"><%= @tutorial.title %></h2>
   <div class="previous-next-tutorial">
-    <div class="previous">
+    <div class="previous-tutorial">
       <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)", alt: "dropdown icon" %>
       <%= link_to 'Previous', tutorial_path(@previous_tutorial) %>
     </div>
     <span class="previous-next-seperator"><strong style="margin: 0 5px;">|</strong></span>
-    <div class="next">
+    <div class="next-tutorial">
       <%= link_to 'Next', tutorial_path(@next_tutorial) %>
       <%= image_tag 'dropdown-forward.png', width: 10, alt: "dropdown icon" %>
     </div>

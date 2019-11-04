@@ -238,8 +238,8 @@
     <%= render 'shared/navbar_basket_product_card', item: @item %>
   </div>
   <div class="subtotal-container">
-    <p class="s-medium-text">Subtotal:</p>
-    <p class="s-medium-text basket-total-price"><%= humanized_money_with_symbol @basket.total_price %></p>
+    <p class="s-medium-text muli boldest">Subtotal:</p>
+    <p class="s-medium-text basket-total-price muli boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
 </div>

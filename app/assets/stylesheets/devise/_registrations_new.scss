@@ -100,6 +100,7 @@
   align-items: center;
   padding: 0 15px;
   color: black;
+  font-family: 'Muli', sans-serif;
 }
 
 #user_origin {
@@ -119,7 +120,7 @@
 }
 
 small {
-  font-size: 9px !important;
+  font-size: 10px !important;
 }
 
 
@@ -136,5 +137,9 @@ small {
 #date_of_birth[name="user[dob(1i)]"] {
   width: 30% !important;
   min-width: auto;
+}
+
+.text-muted {
+  font-family: 'Muli', sans-serif;
 }
 

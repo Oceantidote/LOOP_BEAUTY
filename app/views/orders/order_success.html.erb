@@ -17,7 +17,7 @@
               <p class="boldest s-medium-text no-margin muli">Total credits spent: <%= humanized_money_with_symbol @order.credit_spent %></p>
               <p class="boldest s-medium-text no-margin muli">Remaining credits: <%= humanized_money_with_symbol @order.user.remaining_credit %></p>
             <% else %>
-              <p class="boldest s-medium-text small-margin-bottom">Total: <%= humanized_money_with_symbol @order.total_with_delivery %></p>
+              <p class="boldest s-medium-text small-margin-bottom muli">Total: <%= humanized_money_with_symbol @order.total_with_delivery %></p>
             <% end %>
             <!-- <p class="boldest s-medium-text no-margin">Status: <%= @order.status %></p> -->
              <p class="boldest s-medium-text no-margin muli">Delivery address:</p>
@@ -38,12 +38,12 @@
                   <div class="each-order-container order-show-each-order">
                     <%= image_tag url_for(order_product.product.shades.first.card_photo), class: "order-image order-show-image", alt: "order product shade photo" %>
                     <div class="order-details-text">
-                      <p class="boldest s-medium-text"><%= order_product.product.title %></p>
-                      <p class="small-text"><%= order_product.shade.name %></p>
-                      <p class="small-text">Quantity: <%= order_product.quantity %></p>
+                      <p class="boldest s-medium-text muli"><%= order_product.product.title %></p>
+                      <p class="small-text muli"><%= order_product.shade.name %></p>
+                      <p class="small-text muli">Quantity: <%= order_product.quantity %></p>
                     </div>
                     <div class="order-price">
-                      <p class="boldest small-text"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
+                      <p class="boldest small-text muli"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
                     </div>
                   </div>
                 </div>
