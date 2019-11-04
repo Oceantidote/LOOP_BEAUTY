@@ -3,4 +3,9 @@
   top: 20px;
   right: 20px;
   width: 150px;
+  @include for-phone-only {
+    position: initial;
+    margin: 10px 10px 0 auto;
+  }
+
 }

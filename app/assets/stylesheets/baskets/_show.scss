@@ -12,7 +12,15 @@
   margin: auto;
   position: relative;
   .influencer-credit-container {
-    top: 15px !important;
+    @include for-small-devices-up {
+      top: 5px !important;
+    }
+    @include for-medium-devices-up {
+      top: 5px !important;
+    }
+    @include for-large-devices-up {
+      top: 15px !important;
+    }
   }
   label {
     font-size: 12px;
