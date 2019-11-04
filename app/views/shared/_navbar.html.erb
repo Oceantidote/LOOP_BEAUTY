@@ -13,7 +13,12 @@
 <% end %>
 <div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
   <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#mobile-nav-brands-menu,#mobile-nav-influencers-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <%= image_tag 'hamburger.png', width: 25, alt: "hamburger icon" %>
+    <%#= image_tag 'hamburger.png', width: 25, alt: "hamburger icon" %>
+    <div class="hamburger">
+      <div class="hamburger-stick ham-one"></div>
+      <div class="hamburger-stick ham-two"></div>
+      <div class="hamburger-stick ham-three"></div>
+    </div>
   </button>
   <div class="navbar-logo">
     <%= link_to homepage_path, class: "navbar-brand" do %>
@@ -349,6 +354,12 @@
   navbarToggler = document.getElementById('navbar-toggler');
 
   navbarToggler.addEventListener('click', function() {
+
+    // HAMBURGER CROSS
+
+    document.querySelector('.hamburger').classList.toggle('hamburger-cross');
+
+    // HAMBURGER CROSS
     subnavUnderlay.classList.toggle('show-underlay');
     setTimeout(function() {
       mobileNavBrandsMenu.style.display = "none";

@@ -209,6 +209,9 @@
 
 .navbar-toggler {
   border: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .navbar-brand {
@@ -604,5 +607,42 @@
     57%  { transform: scale(1,1)      translateY(-7px); }
     64%  { transform: scale(1,1)      translateY(0); }
     100% { transform: scale(1,1)      translateY(0); }
+}
+
+.hamburger {
+  @include absCenterColumn;
+}
+
+.hamburger-stick {
+  width: 25px;
+  height: 4px;
+  background: #000;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.ham-one {
+  margin-bottom: 4px;
+}
+
+.ham-three {
+  margin-top: 4px;
+}
+
+.hamburger-cross {
+  .ham-one {
+    transform: rotate(45deg);
+    margin-bottom: -8px
+  }
+
+  .ham-two {
+    position: absolute;
+    transform: rotate(180deg);
+    opacity: 0;
+  }
+
+  .ham-three {
+    transform: rotate(-45deg);
+  }
 }
 
