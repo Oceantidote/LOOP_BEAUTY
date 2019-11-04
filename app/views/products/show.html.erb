@@ -223,15 +223,12 @@
     <p class="shop-look-text text-center">Click a review to see more</p>
   <% end %>
   <div class="insider-review-container max-width">
-    <div class="row-carousel">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
-      <% if @product.customer_reviews.count == 0 %>
-        <p class="text-center medium-margin width-100 didot">There are no customer reviews yet</p>
-      <% end %>
-      <div class="row-carousel" id="reviews-target">
+    <div class="row-carousel" id="reviews-target">
+      <!-- <div class="row-carousel"> -->
         <%= render 'review_cards', reviews: @customer_reviews %>
-      </div>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
+      <!-- </div> -->
+    </div>
+    <div class="customer-review-pagination-container">
       <div class="col-12 d-flex justify-content-center">
         <p class="boldest muli small-text grey" id="info-target"><%= page_entries_info @customer_reviews %></p>
       </div>
