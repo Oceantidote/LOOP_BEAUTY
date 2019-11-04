@@ -1,15 +1,15 @@
 <div class="shopping-bag-continue-checkout-total">
   <% if basket.discount_code %>
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom">Savings: -<%= humanized_money_with_symbol basket.money_off %></p>
+    <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Savings: -<%= humanized_money_with_symbol basket.money_off %></p>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.subtotal %></p>
+    <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.subtotal %></p>
   <% elsif @basket.money_off_from_credit_cents > 0 %>
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom">Savings: -<%= humanized_money_with_symbol basket.money_off_from_credit %></p>
+    <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Savings: -<%= humanized_money_with_symbol basket.money_off_from_credit %></p>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom">Credit remaining: <%= humanized_money_with_symbol (@basket.user.remaining_credit - @basket.money_off_from_credit) %></p>
-    <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.total_price %></p>
+    <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Credit remaining: <%= humanized_money_with_symbol (@basket.user.remaining_credit - @basket.money_off_from_credit) %></p>
+    <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.total_price %></p>
   <% else %>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right medium-text" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol @basket.total_price %></p>
+    <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol @basket.total_price %></p>
   <% end %>
 </div>

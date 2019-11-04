@@ -9,15 +9,15 @@
       <%= image_tag url_for(item.shade.card_photo), class: 'shopping-bag-card-image', alt: "shade photo" %>
     </div>
     <div class="shopping-bag-card-title">
-      <p class="small-text boldest no-margin"><%= item.product.title %></p>
-      <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text underline grey-font boldest text-right" %>
+      <p class="small-text boldest no-margin muli"><%= item.product.title %></p>
+      <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text muli underline grey-font boldest text-right" %>
       <% if policy(item).set_credit_purchase? && item.product.demoable %>
         <%= simple_form_for item, url: set_credit_purchase_basket_product_path(item), method: :patch, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>
-            <%= f.input :purchase_with_credit %>
+            <%= f.input :purchase_with_credit, class: 'muli' %>
         <% end %>
       <% end %>
     </div>
-    <p class="small-text boldest text-right shopping-bag-card-price"><%= humanized_money_with_symbol(item.product.price) %></p>
+    <p class="small-text boldest text-right shopping-bag-card-price muli"><%= humanized_money_with_symbol(item.product.price) %></p>
     <span class="item-form-<%= item.id %>" style="display: contents;">
       <%= render 'baskets/shopping_bag_form_controls', item: item %>
     </span>

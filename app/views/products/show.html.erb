@@ -22,7 +22,7 @@
       <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades[0].id } %>
       <h5><%= @product.title %></h5>
       <hr>
-      <p class="product-shade-title small-margin-bottom"><strong><%= @product.shades.order(created_at: :ASC).first.name %></strong></p>
+      <p class="product-shade-title small-margin-bottom muli"><strong><%= @product.shades.order(created_at: :ASC).first.name %></strong></p>
       <% if @product.shades.count > 1 && @product.shades.first.shade_color.attached? %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
@@ -49,7 +49,7 @@
       </div>
       <div class="card_ratings">
         <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
-        <p class="small-text"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
+        <p class="small-text muli boldest"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <div class="button-holder">
         <% if @product.out_of_stock? %>
@@ -201,9 +201,9 @@
                 </div>
               <% end %>
               <div class="card_header">
-                <p><%= product.title %></p>
+                <p class="muli boldest"><%= product.title %></p>
               </div>
-              <div class="card_price-heart">
+              <div class="card_price-heart muli boldest">
                 <%= humanized_money_with_symbol(product.price) %>
               </div>
               <div class="my-products-purchase">

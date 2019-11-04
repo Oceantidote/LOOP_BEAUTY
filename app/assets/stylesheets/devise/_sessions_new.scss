@@ -93,11 +93,13 @@
 }
 
 #user_email, #user_password, #user_password_confirmation, #user_first_name, #user_last_name {
+  font-family: 'Muli', sans-serif;
   border: 1px solid #F0F0F0;
   background: #FCFCFC;
 }
 
 #user_email::placeholder, #user_password::placeholder, #user_password_confirmation::placeholder, #user_first_name::placeholder, #user_last_name::placeholder {
+  font-family: 'Muli', sans-serif;
   color: #BCBCBC;
   font-size: 14px;
 }
@@ -110,6 +112,7 @@
 }
 
 .sessions-new-options {
+  font-family: 'Muli', sans-serif;
   display: flex;
   justify-content: space-between;
   @include for-phone-only {
