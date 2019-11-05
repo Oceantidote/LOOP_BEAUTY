@@ -101,11 +101,11 @@
                   </div>
                 </div>
                 <!-- <h6>Current Photos</h6> -->
-                <div class="d-flex" style="margin-left: 120px;">
+                <div class="shade-photos-container">
                   <% shade.photos.each do |photo| %>
                     <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>">
                       <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                      <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, class: 'small-text underline grey-font boldest text-right' %>
+                      <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, class: 'muli small-text underline grey-font boldest text-right' %>
                     </div>
                   <% end %>
                 </div>
@@ -161,7 +161,7 @@
       <div class="admin-products-container">
         <% @product.product_benefits.each do |product_benefit| %>
           <div class="d-flex align-items-center">
-            <h6 class="boldest" style="width: 220px;"><%= product_benefit.benefit.name %></h6>
+            <h6 class="boldest shade-benefit-name"><%= product_benefit.benefit.name %></h6>
             <%= link_to 'DESTROY', admin_product_benefit_path(product_benefit), method: :delete, class: 'secondary-button admin-product-shade-secondary-button' %>
           </div>
         <% end %>

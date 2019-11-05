@@ -8,11 +8,20 @@
 }
 
 .admin-form-input {
-    border: 1px solid #F0F0F0;
-    background: #FCFCFC;
+  border: 1px solid #F0F0F0;
+  background: #FCFCFC;
+  @include for-phone-only {
+    width: 100%;
+  }
 }
 
 .admin-form-input::placeholder {
   color: #BCBCBC;
   font-size: 14px;
+}
+
+#new_user {
+  @include for-phone-only {
+    width: 100%;
+  }
 }

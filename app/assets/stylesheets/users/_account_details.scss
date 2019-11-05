@@ -130,6 +130,9 @@
   @include for-phone-only {
     flex-direction: column;
     align-items: flex-start !important;
+    .form-group {
+      width: 100%;
+    }
   }
 }
 

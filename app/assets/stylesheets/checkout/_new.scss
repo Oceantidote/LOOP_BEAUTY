@@ -339,3 +339,15 @@
   max-height: 500px;
   overflow: scroll;
 }
+
+.delivery-option-title {
+  @include for-phone-only {
+    p {
+      text-align: center;
+    }
+  }
+}
+
+#address_use_as_billing {
+  margin: 0 5px 0 0;
+}

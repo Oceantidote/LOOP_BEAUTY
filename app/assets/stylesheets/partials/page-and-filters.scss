@@ -44,6 +44,7 @@
     }
 
     @include for-medium-devices-up {
+      display: block;
       width: 70%;
       margin-left: 20px;
     }
@@ -63,11 +64,25 @@
     }
   }
   @include for-medium-devices-down {
-    display: block;
     margin-bottom: 10px;
     p {
       margin-top: 5px;
       margin-left: 2px;
+    }
+  }
+  @include for-phone-only {
+    display: block;
+  }
+}
+
+.show-page-entries {
+  p {
+    margin: 0 0 0 20px;
+    @include for-medium-devices-down {
+      margin: 0 0 0 10px;
+    }
+    @include for-phone-only {
+      margin: 3px 0 0 0;
     }
   }
 }
@@ -92,24 +107,33 @@
     padding-left: 10px;
   }
   @include for-small-devices-down {
+    border-radius: 2px;
     width: 100%;
     display: none;
   }
 }
 
 .mobile-filters {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
   min-width: 200px;
   height: 35px;
-  background-image: asset_url('dropdown-down.png');
+  background-image: asset_url('dropdown-down-small.png');
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
-  border: 1px solid #EAEAEA;
+  border: 1px solid #ced4da;
+  border-radius: 2px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
   color: black;
+  font-family: 'Muli', sans-serif;
   display: none;
+  cursor: pointer;
   @include for-small-devices-down {
     display: flex;
     height: 30px;
@@ -231,13 +255,14 @@
 
 .filter-arrow {
   width: 15px;
-  transition: all 0.3s ease;
+  height: 15px;
+  transition: all 0.2s ease;
 }
 
 .filters-options {
   overflow: hidden;
   max-height: 0;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
   font-family: 'Muli', sans-serif;
 }
 

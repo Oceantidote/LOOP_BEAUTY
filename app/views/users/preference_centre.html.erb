@@ -11,12 +11,12 @@
       <h2 class="insider-info-title mlb-title text-center">Preference Center</h2>
       <hr>
       <div class="preference-newsletter">
-        <h5 class="text-center">Control how you want to hear from us and how we use your data</h5>
-        <p class="boldest">Email: Newsletter</p>
+        <h5 class="text-center boldest">Control how you want to hear from us and how we use your data</h5>
+        <p class="boldest muli">Email: Newsletter</p>
         <p class="didot">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
         <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
         <div class="d-flex">
-          <p class="small-margin-right didot" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
+          <p class="small-margin-right muli boldest s-medium-text" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
           <%= f.input :newsletter, label: false %>
         </div>
         <% end %>
@@ -24,7 +24,7 @@
         <hr>
         <div class="preference-terms">
           <%= link_to terms_and_conditions_path, class: "underline-hover" do %>
-            <p class="boldest">View Terms & Conditions</p>
+            <p class="boldest muli">View Terms & Conditions</p>
           <% end %>
           <p class="didot">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
         </div>

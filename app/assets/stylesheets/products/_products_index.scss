@@ -32,6 +32,7 @@
   font-size: 12px;
   @include for-phone-only {
     font-size: 10px !important;
+    margin: 3px 0 0 3px !important;
   }
 }
 .my-products-price {

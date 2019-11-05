@@ -14,9 +14,42 @@
   }
 }
 
+.row-admin-cards {
+  width: 100%;
+  margin: 0;
+  padding: 30px;
+  @include for-phone-only {
+    padding: 0;
+  }
+}
+
 .products-admin-options {
   display: flex;
   justify-content: space-evenly;
+}
+
+.edit_product, .edit_shade, .new_shade {
+  @include for-phone-only {
+    width: 100% !important;
+    select {
+      max-width: 100% !important;
+    }
+  }
+}
+
+.shade-benefit-name {
+  width: 220px;
+  @include for-phone-only {
+    width: 140px;
+  }
+}
+
+.shade-photos-container {
+  display: flex;
+  margin-left: 120px;
+  @include for-phone-only {
+    margin-left: 0
+  }
 }
 
 .filters-container-admin-products {

@@ -44,3 +44,21 @@
   color: #000 !important;
   border-color: #000 !important;
 }
+
+// INSIDER NEW
+
+.new_insider_article {
+  @include for-small-devices-down {
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+// INSIDER EDIT
+
+.edit_insider_article {
+  @include for-small-devices-down {
+    padding: 10px;
+    width: 100%;
+  }
+}

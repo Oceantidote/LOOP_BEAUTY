@@ -5,22 +5,22 @@
       <div class="new-question-answers-form insider-form">
         <%= form_for [:admin, @insider_article] do |f| %>
           <%if @insider_article.errors.any? %>
-            <p class="form-error"><%= @insider_article.errors.full_messages.first  %></p>
+            <p class="form-error"><%= @insider_article.errors.full_messages.first %></p>
           <% end %>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Article title</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Article title</p>
             <%= f.text_field :title, class:"form-control" %>
           </div>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Category</p>
             <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
           </div>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Author</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Author</p>
             <%= f.text_field :by, class:"form-control" %>
           </div>
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Author avatar</p>
+            <p class="boldest muli s-medium-text photo-input-text">Author avatar</p>
             <div>
               <%= f.label :author_avatar, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :author_avatar, class: 'd-none photo-input', 'data-name': 'insider-author-avatar', onchange: "displayPreview(this)" %>
@@ -33,7 +33,7 @@
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Cover photo</p>
+            <p class="boldest muli s-medium-text photo-input-text">Cover photo</p>
             <div>
               <%= f.label :cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
@@ -46,13 +46,13 @@
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Cover photo alt text</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Cover photo alt text</p>
             <%= f.text_field :cover_alt_text, class:"form-control" %>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <hr>
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right no-margin">Text one</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Text one</p>
             <div>
               <%= f.text_field :text1, class:"form-control", id: :text1%>
               <trix-editor input="text1" placeholder="Type here to generate HTML above..."></trix-editor>
@@ -61,7 +61,7 @@
           <hr>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Media one</p>
+            <p class="boldest muli s-medium-text photo-input-text">Media one</p>
             <div>
               <%= f.label :photo1, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :photo1, class: 'd-none photo-input', 'data-name': 'insider-photo-one', onchange: "displayPreview(this)" %>
@@ -74,13 +74,13 @@
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Media one alt text</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Media one alt text</p>
             <%= f.text_field :photo1_alt_text, class:"form-control" %>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <hr>
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right no-margin">Text two</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Text two</p>
             <div>
               <%= f.text_field :text2, class:"form-control", id: :text2%>
               <trix-editor input="text2" placeholder="Type here to generate HTML above..."></trix-editor>
@@ -89,7 +89,7 @@
           <hr>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Media two</p>
+            <p class="boldest muli s-medium-text photo-input-text">Media two</p>
             <div>
               <%= f.label :photo2, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :photo2, class: 'd-none photo-input', 'data-name': 'insider-photo-two', onchange: "displayPreview(this)" %>
@@ -102,13 +102,13 @@
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Media two alt text</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Media two alt text</p>
             <%= f.text_field :photo2_alt_text, class:"form-control" %>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <hr>
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right no-margin">Text three</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Text three</p>
             <div>
               <%= f.text_field :text3, class:"form-control", id: :text3%>
               <trix-editor input="text3" placeholder="Type here to generate HTML above..."></trix-editor>
@@ -117,7 +117,7 @@
           <hr>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Media three</p>
+            <p class="boldest muli s-medium-text photo-input-text">Media three</p>
             <div>
               <%= f.label :photo3, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :photo3, class: 'd-none photo-input', 'data-name': 'insider-photo-three', onchange: "displayPreview(this)" %>
@@ -130,13 +130,13 @@
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Media three alt text</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Media three alt text</p>
             <%= f.text_field :photo3_alt_text, class:"form-control" %>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <hr>
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text text-right no-margin">Text four</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Text four</p>
             <div>
               <%= f.text_field :text4, class:"form-control", id: :text4%>
               <trix-editor input="text4" placeholder="Type here to generate HTML above..."></trix-editor>
@@ -144,15 +144,15 @@
           </div>
           <hr>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Homepage</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Homepage</p>
             <%= f.check_box :homepage, class:"form-control lb-checkbox featured-check-box" %>
           </div>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Featured</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Featured</p>
             <%= f.check_box :featured, class:"form-control lb-checkbox featured-check-box" %>
           </div>
           <div class="insider-articles-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Card text color</p>
+            <p class="boldest muli s-medium-text no-bottom-margin">Card text color</p>
             <%= f.select(:card_text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->

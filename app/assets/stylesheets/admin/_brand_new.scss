@@ -27,4 +27,10 @@
   .form-group {
     margin: 0;
   }
+  @include for-small-devices-down {
+    padding: 50px;
+  }
+  @include for-phone-only {
+    padding: 50px 10px;
+  }
 }

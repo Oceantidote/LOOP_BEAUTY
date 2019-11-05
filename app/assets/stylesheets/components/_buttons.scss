@@ -19,6 +19,9 @@
   @include for-medium-devices-down {
     margin: 10px;
   }
+  @include for-phone-only {
+    padding: 5px 10px;
+  }
 }
 
 .disabled-button {
@@ -49,6 +52,11 @@
     text-decoration: none;
     background: #000;
     color: #FFF !important;
+  }
+  @include for-phone-only {
+    height: 35px;
+    padding: 0 10px;
+    box-shadow: inset 0 0 0 3px #000;
   }
 }
 .disabled {
@@ -100,6 +108,11 @@
   padding: 5px 15px !important;
   height: 31px !important;
   box-shadow: inset 0 0 0 3px #000 !important;
+  @include for-phone-only {
+    padding: 5px !important;
+    box-shadow: inset 0 0 0 2px #000 !important;
+    letter-spacing: 1px !important
+  }
 }
 
 .products-admin-primary {
