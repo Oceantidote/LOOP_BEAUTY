@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  paginates_per 3
+  paginates_per 12
   include Filterable
   scope :sub_category, -> (sub_category) { where sub_category: SubCategory.product_filter(sub_category.reject(&:blank?)) }
   scope :brand, -> (brand) { where brand: Brand.product_filter(brand.reject(&:blank?)) }
