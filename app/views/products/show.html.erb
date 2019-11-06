@@ -54,7 +54,7 @@
       <div class="button-holder">
         <% if @product.out_of_stock? %>
           <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
-        <% elsif @product.shades.first.out_of_stock? %>
+        <% elsif @product.shades.order(created_at: :ASC).first.out_of_stock? %>
           <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
         <% else %>
           <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
