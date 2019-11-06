@@ -173,7 +173,7 @@
                       <%= render 'addresses/modal_addresses', addresses: @user.delivery_addresses %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary small-text muli" data-dismiss="modal">CLOSE</button>
+                      <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -183,27 +183,39 @@
                 <p id="deliveryAddressShow" class="d-none"></p>
                 <div id="deliveryAddressButtons">
                   <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newDeliveryAddress">Add new address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newDeliveryAddress" data-toggle="modal" data-target="#new-delivery-address">Add new address</a>
                 </div>
-                <div class="d-none" id="newDeliveryInput">
-                  <%= simple_form_for @address do |f| %>
-                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :address_line2, label: false, placeholder: 'Address Line 2 (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom', style: "width: 95%;" } %>
-                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <div class="d-flex align-items-center" style="width: 95%;">
-                    <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                    <p class="no-bottom-margin muli">Use as billing address</p>
-                  </div>
-                  <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
-                    <div class="d-flex">
-                      <a id="closeDeliveryInput" class="secondary-button secondary-checkout-button">Close</a>
-                      <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
+                <!-- New Delivery Address Modal -->
+                <div class="modal fade" id="new-delivery-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content loop-border">
+                      <div class="modal-header">
+                        <h5 class="modal-title insider-info-title muli boldest" id="exampleModalLabel">Add a delivery address</h5>
+                      </div>
+                      <div class="modal-body modal-delivery-addresses">
+                        <div class="modal-new-delivery-address">
+                          <%= simple_form_for @address do |f| %>
+                            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :address_line2, label: false, placeholder: 'Address Line 2 (optional)', required: false, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom' } %>
+                            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input' } %>
+                            <div class="d-flex align-items-center">
+                              <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
+                              <p class="no-bottom-margin muli">Use as billing address</p>
+                            </div>
+                            <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
+                        </div>
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
+                          <%= f.submit 'ADD ADDRESS', class: 'primary-button checkout-address-button', id: 'deliveryBtn' %>
+                        </div>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
                 </div>
               <% else %>
                 <%= simple_form_for @address do |f| %>
@@ -219,7 +231,7 @@
                     <p class="no-bottom-margin muli">Use as billing address</p>
                   </div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
-                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
+                  <%= f.submit 'ADD ADDRESS', class: 'primary-button checkout-address-button', id: 'deliveryBtn' %>
                 <% end %>
               <% end %>
             </div>
@@ -241,7 +253,7 @@
                       <%= render 'addresses/modal_addresses', addresses: @user.billing_addresses %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary small-text muli" data-dismiss="modal">CLOSE</button>
+                      <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -251,24 +263,36 @@
                 <p id="billingAddressShow" class="d-none"></p>
                 <div id="billingAddressButtons">
                   <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newBillingAddress">Add new address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newBillingAddress" data-toggle="modal" data-target="#new-billing-address">Add new address</a>
                 </div>
-                <div class="d-none" id="newBillingInput">
-                  <%= simple_form_for @address do |f| %>
-                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom', style: "width: 95%;" } %>
-                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <div style="height: 24px;"></div>
-                  <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
-                    <div class="d-flex">
-                      <a id="closeBillingInput" class="secondary-button secondary-checkout-button">Close</a>
-                      <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
+                <!-- New Billing Address Modal -->
+                <div class="modal fade" id="new-billing-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content loop-border">
+                      <div class="modal-header">
+                        <h5 class="modal-title insider-info-title muli boldest" id="exampleModalLabel">Add a billing address</h5>
+                      </div>
+                      <div class="modal-body modal-delivery-addresses">
+                        <div class="modal-new-delivery-address">
+                          <%= simple_form_for @address do |f| %>
+                            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom' } %>
+                            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input' } %>
+                            <div style="height: 24px;"></div>
+                            <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                        </div>
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
+                          <%= f.submit 'ADD ADDRESS', class: 'primary-button checkout-address-button', id: 'billingBtn' %>
+                        </div>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
                 </div>
               <% else %>
                 <%= simple_form_for @address do |f| %>
