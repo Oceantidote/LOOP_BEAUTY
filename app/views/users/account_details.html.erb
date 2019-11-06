@@ -50,7 +50,7 @@
               <% end %>
               <% current_user.delivery_addresses.each do |add| %>
                 <div class="row row-style">
-                  <div class="col-xs-12">
+                  <div class="col-12 account-details-address-card">
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
@@ -77,7 +77,7 @@
               <% end %>
               <% current_user.billing_addresses.each do |add| %>
                 <div class="row row-style">
-                  <div class="col-xs-12">
+                  <div class="col-12 account-details-address-card">
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>

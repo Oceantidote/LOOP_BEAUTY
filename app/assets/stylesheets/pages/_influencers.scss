@@ -48,3 +48,10 @@
     }
   }
 }
+
+.influencer-instagram {
+  @include for-phone-only {
+    font-size: 10px;
+    word-break: break-word;
+  }
+}
