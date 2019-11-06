@@ -395,3 +395,19 @@
 #address_use_as_billing {
   margin: 0 5px 0 0;
 }
+
+.modal-new-delivery-address {
+  @include absCenter;
+  .form-check {
+    padding: 0;
+  }
+}
+
+#new-billing-address, #new-delivery-address {
+  .checkout-address-button {
+    margin: 15px !important;
+    &:focus {
+      outline: none;
+    }
+  }
+}
