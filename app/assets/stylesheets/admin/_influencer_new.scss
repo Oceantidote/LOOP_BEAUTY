@@ -8,6 +8,9 @@
 }
 
 .admin-form-input {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
   border: 1px solid #F0F0F0;
   background: #FCFCFC;
   @include for-phone-only {

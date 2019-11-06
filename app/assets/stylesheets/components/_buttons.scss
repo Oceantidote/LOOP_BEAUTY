@@ -1,4 +1,7 @@
 .primary-button {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
   border: none;
   cursor: pointer;
   height: 50px;
@@ -34,6 +37,9 @@
 }
 
 .secondary-button {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
   height: 40px;
   text-decoration: none;
   border-radius: 0;
@@ -184,6 +190,7 @@
   &:hover {
     text-decoration: none;
     background: #000;
+    color: #FFF;
     color: #FFF;
   }
 }
