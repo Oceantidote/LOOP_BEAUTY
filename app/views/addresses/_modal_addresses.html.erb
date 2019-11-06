@@ -1,11 +1,11 @@
 <div class="row row-style">
-  <div class="col-xs-12" style="margin: auto;">
+  <div class="col-xs-12 modal-address-col">
     <% addresses.each do |address| %>
       <div class="address-card checkout-address-card" style="<%= address.default_address ? 'border: 3px solid #000' : '' %>">
         <div class="address-info">
           <%= render 'addresses/address', add: address %>
         </div>
-        <div>
+        <div class="modal-address-buttons">
           <% unless address.default_address %>
             <%= link_to 'SET AS DEFAULT', address_set_default_path(address), method: :patch, remote: true, class: 'secondary-button secondary-checkout-button' %>
           <% end %>

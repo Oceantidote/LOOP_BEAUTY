@@ -156,7 +156,7 @@
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address">
-              <p class="medium-text boldest muli">Delivery Address</p>
+              <p class="checkout-address-title medium-text boldest muli">Delivery Address</p>
                 <% if @default_delivery %>
                   <div class="delivery-default">
                     <%= render 'addresses/address', add: @default_delivery %>
@@ -224,7 +224,7 @@
               <% end %>
             </div>
             <div class="checkout-address billing-address-container">
-              <p class="medium-text boldest muli">Billing Address</p>
+              <p class="checkout-address-title medium-text boldest muli">Billing Address</p>
                 <% if @default_billing %>
                   <div class="billing-default">
                     <%= render 'addresses/address', add: @default_billing %>

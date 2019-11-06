@@ -8,11 +8,11 @@
       <div class="customer-review-left">
         <h6><%= review.user.first_name.capitalize %></h6>
         <div class="boldest grey-font">
-          <p muli><%= review.user.country %></p>
+          <p class="muli"><%= review.user.country %></p>
           <% if review.user.dob.present? %>
-            <p muli>Age: <%= review.user.age %></p>
+            <p class="muli">Age: <%= review.user.age %></p>
           <% end %>
-          <p muli>Gender: <%= review.user.gender %></p>
+          <p class="muli">Gender: <%= review.user.gender %></p>
         </div>
         <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
       </div>
@@ -20,7 +20,7 @@
         <div class="customer-review-text">
           <%= render 'shared/ratings', rating: review.rating %>
           <p class="didot">"<%= review.review.truncate(150) %>"</p>
-          <p class="boldest cust-review-recommend"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+          <p class="boldest cust-review-recommend muli"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
         </div>
       </div>
     </div>

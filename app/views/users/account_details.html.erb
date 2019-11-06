@@ -60,7 +60,7 @@
                         <%# end %>
                       <%# end %> -->
                       <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
-                        <p class="small-text underline grey-font boldest text-right no-margin">Remove</p>
+                        <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
                       <% end %>
                     </div>
                   </div>
@@ -82,7 +82,7 @@
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
                       <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
-                        <p class="small-text underline grey-font boldest text-right no-margin">Remove</p>
+                        <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
                       <% end %>
                     </div>
                   </div>
@@ -126,7 +126,7 @@
               </div>
               <div class="d-flex align-items-end account-details-check">
                 <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                <p class="no-bottom-margin didot">Use as billing address</p>
+                <p class="no-bottom-margin muli">Use as billing address</p>
               </div>
               <%= f.input :delivery_address, as: :hidden %>
               <%= f.submit 'ADD DELIVERY ADDRESS', class: 'primary-button address-button small-text' %>
