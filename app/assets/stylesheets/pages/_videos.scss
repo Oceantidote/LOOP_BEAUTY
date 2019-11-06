@@ -132,3 +132,9 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.all-vids-row {
+  @include for-phone-only {
+    justify-content: center;
+  }
+}
