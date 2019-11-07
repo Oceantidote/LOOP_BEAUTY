@@ -68,6 +68,10 @@
   display: flex;
   width: 80%;
   padding: 10px 30px;
+  @include for-phone-only {
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 .order-show-info-left, .order-show-info-left {
@@ -95,4 +99,11 @@
   }
 }
 
+.my-orders-title {
+  width: 80%;
+  padding: 10px 30px;
+  @include for-phone-only {
+    text-align: center;
+  }
+}
 

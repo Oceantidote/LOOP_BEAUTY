@@ -12,6 +12,11 @@ class Order < ApplicationRecord
   validate :discount_uses
   monetize :credit_spent_cents
   monetize :delivery_cost_cents
+  after_create :set_sku
+
+  def set_sku
+    self.update(sku: "ORDERSKU-00#{self.id}")
+  end
 
   def total_number_of_products
     order_products.map(&:quantity).sum
@@ -23,6 +28,10 @@ class Order < ApplicationRecord
 
   def subtotal_cents
     order_products.map(&:price_cents).sum
+  end
+
+  def initial_subtotal
+    order_products.map(&:price).sum
   end
 
   def subtotal_in(currency)
@@ -97,6 +106,19 @@ class Order < ApplicationRecord
       return 0
     else
       return 2
+    end
+  end
+
+  def delivery_cost
+    case delivery_type
+    when 'standard'
+      5.95
+    when 'express'
+      6.95
+    when 'international'
+      12.95
+    else
+      5.95
     end
   end
 

@@ -7,6 +7,10 @@ class OrderProduct < ApplicationRecord
     product.price_cents * quantity
   end
 
+  def price
+    product.price * quantity
+  end
+
   def price_cents_in(currency)
     info = ExchangeRate.find_by_currency(currency)
     return price_cents unless info
