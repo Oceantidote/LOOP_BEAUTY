@@ -39,7 +39,7 @@ hb1.banner.attach(io: File.open(hb1_banner), filename: 'homepage-header.jpg')
 
 hb1.save
 
-hb2 = HomeBanner.new( content: "Shop the new look here..", link: "/products", link_text: "Shop now", display: true )
+hb2 = HomeBanner.new( content: "Shop the new look here..", link: "/make-up", link_text: "Shop now", display: true )
 
 hb2_banner = File.join(Rails.root,'app/assets/images/home-banner2.jpg')
 hb2.banner.attach(io: File.open(hb2_banner), filename: 'home-banner2.jpg')

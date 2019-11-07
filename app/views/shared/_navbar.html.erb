@@ -238,7 +238,7 @@
   <hr>
   <div class="navbar-basket-items-container">
     <% if @basket.products.count == 0 %>
-      <p class="medium-margin text-center boldest">Your basket is empty</p>
+      <p class="medium-margin text-center boldest muli">Your basket is empty</p>
     <% end %>
     <%= render 'shared/navbar_basket_product_card', item: @item %>
   </div>
@@ -416,7 +416,6 @@
     }
     setTimeout(function() {
       navBasketDrop.addEventListener('mouseover', function() {
-        // navBasketDrop.classList.add('navbar-hover-container-top')
         if (window.scrollY > 40) {
           navBasketDrop.style.top = '60px'
         } else {
@@ -424,11 +423,9 @@
         }
       })
       navBasketDrop.addEventListener('mouseleave', function() {
-        // navBasketDrop.classList.remove('navbar-hover-container-top')
         navBasketDrop.style.top = '-620px'
       })
       navBasketClose.addEventListener('click', function() {
-        // navBasketDrop.classList.remove('navbar-hover-container-top')
         navBasketDrop.style.top = '-620px'
       })
     }, 1000)
