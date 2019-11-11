@@ -149,11 +149,13 @@
 
 .product-insider-reviews-wrapper {
   background: #F5F5F5;
+  background: #9c0b0b;
   padding: 10px 0 20px 0;
 }
 
 .insider-review-cards {
   padding: 20px 10px;
+  height: 200px;
   width: 100%;
   background: white;
   display: flex;
@@ -161,10 +163,18 @@
   margin: 20px 0;
   transition: box-shadow 0.3s ease;
   cursor: pointer !important;
+  overflow: hidden;
   // padding: 10px 30px;
   .rating-container {
     margin-bottom: 5px;
   }
+  @include for-small-devices-down {
+    height: auto;
+  }
+  @include for-phone-only {
+    height: 200px;
+  }
+
 }
 
 .insider-review-left {
@@ -181,6 +191,9 @@
 .insider-review-right {
   width: 50%;
   height: 100%;
+  p {
+    font-size: 14px;
+  }
 }
 
 .insider-review-image {
@@ -335,7 +348,7 @@
 }
 
 .cust-review-recommend {
-  font-size: 12px;
+  font-size: 12px !important;
   @include for-phone-only {
     font-size: 10px;
   }
@@ -394,7 +407,7 @@
 }
 
 .ratings-star {
-  height: 20px;
+  height: 18px;
   margin-right: 1px;
   @include for-phone-only {
     height: 17px;

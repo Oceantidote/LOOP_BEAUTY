@@ -23,9 +23,6 @@
     width: 80vw;
   }
   @include for-medium-devices-up {
-    height: 180px;
-  }
-  @include for-large-devices-up {
     height: 200px;
   }
 }
