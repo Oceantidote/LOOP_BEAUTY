@@ -49,7 +49,7 @@
       </div>
       <div class="card_ratings">
         <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
-        <p class="small-text muli boldest"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
+        <p id="product-show-reviews" class="small-text muli boldest"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <div class="button-holder">
         <% if @product.out_of_stock? %>
@@ -217,7 +217,7 @@
     </div>
   </div>
 </div>
-<div class="product-insider-reviews-wrapper">
+<div id="product-show-reviews-container" class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Customer Reviews</h2>
   <% if @product.customer_reviews.any? %>
     <p class="shop-look-text text-center">Click a review to see more</p>
@@ -250,6 +250,12 @@
 </div>
 
 <script>
+
+  numOfReviews = document.getElementById('product-show-reviews');
+  reviewsContainer = document.getElementById('product-show-reviews-container');
+  numOfReviews.addEventListener('click', function() {
+    reviewsContainer.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  })
 
   function myFunction(imgs) {
   // Get the expanded image
