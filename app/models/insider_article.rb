@@ -1,5 +1,4 @@
 class InsiderArticle < ApplicationRecord
-  belongs_to :user
   has_one_attached :author_avatar
   has_one_attached :cover_photo
   has_one_attached :photo1
