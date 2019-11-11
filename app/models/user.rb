@@ -53,7 +53,6 @@ class User < ApplicationRecord
   has_one_attached :tutorial_photo
   has_one_attached :makeup_photo
   has_many :lookbooks, dependent: :destroy
-  has_many :insider_articles, dependent: :destroy
   has_one :question_answer, dependent: :destroy
   has_many :customer_reviews, dependent: :destroy
   has_many :insider_reviews, dependent: :destroy
@@ -192,5 +191,5 @@ class User < ApplicationRecord
     end
   end
 
-  
+
 end

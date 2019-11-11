@@ -776,10 +776,9 @@ puts "CREATING INSIDER ARTICLES"
 # 5.times do
 
   esther_article = InsiderArticle.new(
-    by: esther.id,
+    by: "Esther",
     category: "Ask the Expert",
     title: "3 BEAUTY TRICKS WE LEARNT BACKSTAGE AT AUSTRALIAN FASHION WEEK",
-    user: admin,
     text1: "Fashion Week is a huge week for anyone - between witnessing expert hair and makeup artists work their magic (while under a serious time crunch),
     previewing new season collections from our favourite brands AND taking note of the incredible street style outfits and beauty looks, it’s all a lot to take in.
     And while it may all seem completely overwhelming (or for me, anyway), there are always a few tidbits worth mentioning; straight from the hair and makeup artists
@@ -824,10 +823,9 @@ puts "CREATING INSIDER ARTICLES"
   esther_article.save
 
   ropo_article = InsiderArticle.new(
-    by: ropo.id,
+    by: "Ropo",
     category: "Beauty News",
     title: "THE BEST CONCEALER FOR DRY SKIN",
-    user: admin,
     text1: "Hiding dark circles with concealer after a late night is one thing, but when you combine that with skin that’s as dry as the Sahara desert –
     the result is a flaky, creasing mess. Dry skin can be a nightmare to work with when you’re applying makeup. Which is why you need to find the right formula
     to hydrate and smooth over dry patches, rather than accentuate them.",
@@ -864,10 +862,9 @@ puts "CREATING INSIDER ARTICLES"
   ropo_article.save
 
   breeny_article = InsiderArticle.new(
-    by: breeny.id,
+    by: "Breeny",
     category: "Inspiration",
     title: "It's Never Too Late To Get In The Makeup Game",
-    user: admin,
     text1: "In middle school I wore thick black eyeliner all over my eyelids and about an inch below them as well with nothing else, not even mascara. In high
     school, I would either wear no makeup or black eyeliner in my entire waterline and maaaaaybe some mascara, but nothing else. Then I stopped wearing makeup
     completely for like five years except for 'special occasions' when I would wear the black eyeliner/mascara combo.",
@@ -904,10 +901,9 @@ puts "CREATING INSIDER ARTICLES"
   breeny_article.save
 
   nikki_article = InsiderArticle.new(
-    by: nikki.id,
+    by: "Nikki",
     category: "Ask the Expert",
     title: "Your Everyday Makeup Questions, Answered",
-    user: admin,
     text1: "A big night out may be a good excuse for a fun new makeup look, but most of us need our makeup to work Monday through Friday, and we count on a few
     reliable products to get the job done. Unless you’re ready to risk a faux pas — your smoky eye gone singed, let’s say — the workweek isn’t the best time to
     go experimental. Instead, we offer advice from experts on the best ways to apply your daily makeup and, along the way, clear up a few confounding makeup
@@ -954,10 +950,9 @@ puts "CREATING INSIDER ARTICLES"
   nikki_article.save
 
   shantania_article = InsiderArticle.new(
-    by: shantania.id,
+    by: "Shantania",
     category: "Beauty News",
     title: "Look flawless every day with super-easy makeup tips",
-    user: admin,
     text1: "First, you should use your fingers to dab the foundation in 4 spots on your face: Forehead, both the cheeks, and the chin. Then use the brush to
     blend it. On your forehead and chin, brush back and forth. On your cheeks, brush down and away from the centre of your face.",
     text2: "Add a drop of moisturizer to your brush before adding the concealer. Then dab the product about 4 times under your eyes. Smoothen with the brush,
@@ -992,10 +987,9 @@ puts "CREATING INSIDER ARTICLES"
   shantania_article.save
 
   bemi_article = InsiderArticle.new(
-    by: bemi.id,
+    by: "Bemi",
     category: "Inspiration",
     title: "From Covering Acne To Beginning To Love Makeup",
-    user: admin,
     text1: "My parents are well-off, but I've always been money-conscious (they were immigrants and were not always well off) so I was strictly drugstore for a
     long time. I started wearing foundation in middle school because I had really bad acne and scars and hyperpigmentation as a result. I didn't really wear any
     other makeup, just heavy foundation and perhaps some powder to set it if needed. This continued through high school. I think I was popular in the sense that
