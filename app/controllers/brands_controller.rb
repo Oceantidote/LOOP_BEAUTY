@@ -1,7 +1,7 @@
 class BrandsController < ApplicationController
   skip_before_action :authenticate_user!
   def index
-    @brands = policy_scope(Brand)
+    @brands = policy_scope(Brand).order(name: :ASC)
     @brands_index = ('A'..'Z').to_a
   end
 

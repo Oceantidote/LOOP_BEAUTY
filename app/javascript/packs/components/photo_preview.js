@@ -19,10 +19,10 @@ displayPreview = (input) => {
           console.log("false")
           preview.src = ''
           input.insertAdjacentHTML('afterend', `<div class="video-preview photo-preview" data-name="tutorial-video"><p class="boldest no-margin didot">${input.files[0].name}</p></div>`)
-          preview.classList.remove('d-none')
         }
       }
       reader.readAsDataURL(file)
+      preview.classList.remove('d-none')
     })
   }
 }
