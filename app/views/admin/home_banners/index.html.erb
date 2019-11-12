@@ -17,7 +17,7 @@
             </div>
             <div class="products-admin-options d-flex justify-content-around">
               <%= link_to 'EDIT', edit_admin_home_banner_path(home_banner), class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'DELETE', admin_home_banner_path(home_banner), method: :delete, class: 'secondary-button products-admin-buttons' %>
+              <%= link_to 'DELETE', admin_home_banner_path(home_banner), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button products-admin-buttons' %>
             </div>
           </div>
         <% end %>

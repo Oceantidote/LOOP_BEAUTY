@@ -47,7 +47,7 @@
                     <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
                   <% end %>
                   <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article), class: 'secondary-button small-margin-right' %>
-                  <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, class: 'secondary-button' %>
+                  <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
                 </div>
               </div>
               <hr>

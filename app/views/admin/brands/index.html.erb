@@ -22,7 +22,7 @@
             </div>
             <div class="products-admin-options">
               <%= link_to 'EDIT', edit_admin_brand_path(brand), class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'DELETE', admin_brand_path(brand), method: :delete, class: 'secondary-button products-admin-buttons' %>
+              <%= link_to 'DELETE', admin_brand_path(brand), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button products-admin-buttons' %>
             </div>
           </div>
         </div>
