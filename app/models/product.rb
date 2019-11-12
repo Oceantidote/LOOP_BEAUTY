@@ -13,10 +13,10 @@ class Product < ApplicationRecord
   has_many :shades, dependent: :destroy
   has_many :tutorials, through: :tutorial_products
   has_many :lookbooks, through: :lookbook_products
-  has_many :insider_reviews
-  has_many :customer_reviews
+  has_many :insider_reviews, dependent: :destroy
+  has_many :customer_reviews, dependent: :destroy
   monetize :price_cents
-  has_many :showroom_products
+  has_many :showroom_products, dependent: :destroy
   has_many :product_benefits, dependent: :destroy
   has_many :tutorial_products, dependent: :destroy
   has_many :lookbook_products, dependent: :destroy
