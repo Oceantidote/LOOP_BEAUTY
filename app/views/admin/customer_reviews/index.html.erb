@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <%= link_to "Remove",  admin_product_customer_review_path(@product, review), method: :delete, class: "small-text underline grey-font boldest text-right" %>
+              <%= link_to "Remove",  admin_product_customer_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' }, class: "small-text underline grey-font boldest text-right" %>
             </div>
           </div>
         <% end %>

@@ -7,43 +7,115 @@
       <h2 class="insider-info-title mlb-title text-center">Analytics</h2>
       <hr>
       <div class="analytics-content">
-        <h6 class="muli boldest">Pieces of content shared: <span class="normal didot"><%= @number_of_content_shared %></span></h6>
-        <h6 class="muli boldest">Total number of visitors brought to site: <span class="normal didot"><%= @total_visits %></span></h6>
-        <h6 class="muli boldest">Total number of sales: <span class="normal didot"><%= @total_sales %></span></h6>
-        <h6 class="muli boldest">Conversion rate: <span class="normal didot"><%= @total_conversion_rate %>%</span></h6>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="analytics-content-section">
+                <h6 class="text-center muli boldest">Pieces of content shared</h6>
+                <p class="large-text m-3"><%= @number_of_content_shared %></p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="analytics-content-section">
+                <h6 class="text-center muli boldest">Total number of visitors brought to site</h6>
+                <p class="large-text m-3"><%= @total_visits %></p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="analytics-content-section">
+                <h6 class="text-center muli boldest">Total number of sales</h6>
+                <p class="large-text m-3"><%= @total_sales %></p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="analytics-content-section">
+                <h6 class="text-center muli boldest">Conversion rate</h6>
+                <p class="large-text m-3"><%= @total_conversion_rate %>%</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <hr>
       <div class="analytics-content">
-        <h6>Content which generates most visits</h6>
-        <% @top_content.each do |content| %>
-          <%= content.title %>
-        <% end %>
+        <div class="container">
+          <h5 class="muli boldest mb-4">Content which generates most visits</h5>
+          <div class="row">
+            <% @top_content.each_with_index do |content, index| %>
+              <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
+                <div class="analytics-card">
+                  <div class="analytics-number">
+                    <span class="didot mt-1"><%= index + 1 %></span>
+                  </div>
+                  <%= image_tag url_for(content.class == Lookbook ? content.photo : content.cover_photo ), alt: "influencer lookbook photo"  %>
+                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= content.title %></p>
+                  <p class="no-margin medium-text muli truncate-text"><%= content.visits %> visits</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
       <hr>
       <div class="analytics-top-section">
-        <div class="analytics-top-items">
-          <h6 class="boldest">Top Items</h6>
-          <% @top_items_count.each_with_index do |top_item, index| %>
-            <% if top_item[1] > 0 %>
-              <p class="didot"><%= index + 1 %>. <%= top_item.first %></p>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="analytics-top-items">
-          <h6 class="boldest">Top Brands</h6>
-          <% @top_brands_count.each_with_index do |top_brand, index| %>
-            <% if top_brand[1] > 0 %>
-              <p class="didot"><%= index + 1 %>. <%= top_brand.first %></p>
-            <% end %>
-          <% end %>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+              <div class="analytics-top-items">
+                <h6 class="boldest muli">Top Items</h6>
+                <% @top_items_count.each_with_index do |top_item, index| %>
+                  <% if top_item[1] > 0 %>
+                    <div class="analytics-list-item">
+                      <div class="analytics-list-item-number">
+                        <span class="didot ml-1"><%= index + 1 %></span>
+                      </div>
+                      <div class="analytics-list-item-text pl-2">
+                        <p class="no-margin didot"><%= top_item.first %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+              <div class="analytics-top-items">
+                <h6 class="boldest muli">Top Brands</h6>
+                <% @top_brands_count.each_with_index do |top_brand, index| %>
+                  <% if top_brand[1] > 0 %>
+                    <div class="analytics-list-item">
+                      <div class="analytics-list-item-number">
+                        <span class="didot ml-1"><%= index + 1 %></span>
+                      </div>
+                      <div class="analytics-list-item-text pl-2">
+                        <p class="no-margin didot"><%= top_brand.first %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <hr>
       <div class="analytics-content-driven-sales">
-        <h6 class="muli boldest">Top image content driving your sales</h6>
-        <% @top_lookbooks.each do |lb| %>
-          <h4><%= lb.title %>: <%= "#{lb.orders.count} #{'Sale'.pluralize(lb.orders.count)}" %> </h4> 
-        <% end %>
+        <div class="container">
+          <h5 class="muli boldest mb-4">Top content driving your sales</h5>
+          <div class="row">
+            <% @top_lookbooks.each_with_index do |lb, index| %>
+              <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
+                <div class="analytics-card">
+                  <div class="analytics-number">
+                    <span class="didot mt-1"><%= index + 1 %></span>
+                  </div>
+                  <%= image_tag url_for(lb.photo), alt: "influencer lookbook photo"  %>
+                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= lb.title %></p>
+                  <p class="no-margin medium-text muli"><%= "#{lb.orders.count} #{'Sale'.pluralize(lb.orders.count)}" %> </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

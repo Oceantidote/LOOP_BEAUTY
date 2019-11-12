@@ -284,6 +284,10 @@ body {
 }
 
 //Orientations
+.flex-direction-column {
+  flex-direction: column;
+}
+
 .absCenter {
     display: flex;
     justify-content: center;

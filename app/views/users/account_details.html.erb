@@ -59,7 +59,7 @@
                           <p class="small-text underline grey-font boldest text-right no-margin">Set as default</p>
                         <%# end %>
                       <%# end %> -->
-                      <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
+                      <%= link_to address_path(add), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
                         <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
                       <% end %>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
-                      <%= link_to address_path(add), method: :delete, class: "no-decoration" do %>
+                      <%= link_to address_path(add), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
                         <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
                       <% end %>
                     </div>
