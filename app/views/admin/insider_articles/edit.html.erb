@@ -2,7 +2,7 @@
   <div class="admin-container" style="max-width: 850px; padding-bottom: 0;">
     <h2 class="insider-info-title mlb-title text-center">Update Insider Article</h2>
     <hr>
-      <div class="new-question-answers-form insider-form">
+      <div id="insiderArticle" class="new-question-answers-form insider-form">
         <%= form_for [:admin, @insider_article] do |f| %>
           <%if @insider_article.errors.any? %>
             <p class="form-error"><%= @insider_article.errors.full_messages.first  %></p>

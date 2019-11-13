@@ -226,7 +226,6 @@
     font-size: 9px;
     font-weight: bold;
     margin: 0;
-    margin-left: .5px;
   }
 }
 
@@ -239,14 +238,21 @@
   @include absCenter;
   position: absolute;
   z-index: 1000;
-  top: 1px;
-  right: -2px;
   p {
     font-size: 9px;
     font-weight: bold;
     margin: 0;
-    margin-left: .5px;
   }
+}
+
+.lookbook-red-dot {
+  top: 20px;
+  right: 10px;
+}
+
+.tutorial-red-dot {
+  top: 17px;
+  right: 7px;
 }
 
 .dash-share-options {
