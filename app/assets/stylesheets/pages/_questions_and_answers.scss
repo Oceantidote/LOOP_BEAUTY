@@ -93,7 +93,11 @@
   input, textarea {
     margin-left: 4px;
     width: 600px;
+    @include for-medium-devices-down {
+      max-width: 550px;
+    }
     @include for-small-devices-down {
+      max-width: 100%;
       width: 100%;
     }
   }
@@ -116,5 +120,11 @@
     background: #FCFCFC;
     margin: 0 0 0 4px;
     max-width: 600px;
+    @include for-medium-devices-down {
+      max-width: 550px;
+    }
+    @include for-small-devices-down {
+      max-width: 100%;
+    }
   }
 }

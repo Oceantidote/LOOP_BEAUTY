@@ -16,8 +16,7 @@
 
 .row-admin-cards {
   width: 100%;
-  margin: 0;
-  padding: 30px;
+  margin: 10px 0 0 0;
   @include for-phone-only {
     padding: 0;
   }

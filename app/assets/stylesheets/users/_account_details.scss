@@ -240,8 +240,12 @@
   min-width: 500px;
   padding: 20px 30px;
   margin-bottom: 10px;
+  @include for-medium-devices-down {
+    min-width: 400px;
+  }
   @include for-phone-only {
-    min-width: 80%;
+    min-width: 100%;
+    width: 100%;
   }
 }
 
