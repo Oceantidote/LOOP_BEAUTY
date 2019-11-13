@@ -51,7 +51,7 @@
     <span>LOOKBOOKS</span>
     <%= image_tag "lookbook-icon.png", class: "dash-links-mobile-image", alt: "lookbook icon" %>
     <% if Lookbook.where(status: 'pending').any? %>
-      <div class="admin-mobile-notification muli">
+      <div class="admin-mobile-notification muli lookbook-red-dot">
         <p><%= Lookbook.where(status: 'pending').size %></p>
       </div>
     <% end %>
@@ -60,7 +60,7 @@
     <span>TUTORIALS</span>
     <%= image_tag "admin-play-button.png", class: "dash-links-mobile-image", alt: "tutorial icon" %>
     <% if Tutorial.where(status: 'pending').any? %>
-      <div class="admin-mobile-notification muli">
+      <div class="admin-mobile-notification muli tutorial-red-dot">
         <p><%= Tutorial.where(status: 'pending').size %></p>
       </div>
     <% end %>
