@@ -2,6 +2,9 @@
   background: #F5F5F5;
   min-height: calc(100vh - 358px);
   padding: 50px;
+  @include for-medium-devices-down {
+    padding: 50px 10px;
+  }
   @include for-small-devices-down {
     padding: 0;
   }
@@ -46,6 +49,10 @@
     color: black;
     background: #F1F1F1;
   }
+  @include for-medium-devices-down {
+    padding: 10px;
+    font-size: 12px;
+  }
 }
 
 .dash-links-image {
@@ -62,6 +69,9 @@
   margin: 50px 10px 50px 0;
   position: sticky;
   top: 70px;
+  @include for-medium-devices-down {
+    width: 200px;
+  }
   @include for-small-devices-down {
     top: 60px;
     width: 100%;
@@ -86,6 +96,10 @@
   text-align: center;
   font-size: 18px;
   font-family: 'Muli', sans-serif;
+  @include for-medium-devices-down {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
 .dash-content-container {
@@ -101,18 +115,9 @@
 }
 
 .dash-home-options {
-  display: flex;
-  justify-content: space-evenly;
   background: #F5F5F5;
   border: 1px solid rgba(0,0,0,0.1);
-  margin: 100px 30px;
   padding: 40px 0;
-  @include for-medium-devices-down {
-    flex-direction: column;
-  }
-  @include for-phone-only {
-    margin: 10px;
-  }
 }
 
 .each-dash-home-option {
@@ -173,13 +178,15 @@
 }
 
 .each-dash-link-mobile {
-  padding: 10px;
+  padding: 8px;
   color: black;
-  font-weight: 900;
   background: #FBFBFB;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 12px;
+  position: relative;
+  // font-weight: 900;
   p {
     width: max-content;
   }
@@ -188,15 +195,42 @@
     color: black;
     background: #F1F1F1;
   }
+  @include for-phone-only {
+    font-size: 7px;
+    padding: 5px;
+  }
+  @include for-xsmall-phone-only {
+    font-size: 6px;
+    padding: 5px;
+  }
+
 }
 
 .dash-links-mobile-image {
   width: 25px;
+  margin-top: 5px;
 }
 
 .admin-notification {
-  font-size: 9px;
-  font-weight: bold;
+  background: #F40000;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  color: white;
+  @include absCenter;
+  position: absolute;
+  z-index: 1000;
+  top: -2px;
+  right: -2px;
+  p {
+    font-size: 9px;
+    font-weight: bold;
+    margin: 0;
+    margin-left: .5px;
+  }
+}
+
+.admin-mobile-notification {
   background: #F40000;
   border-radius: 50%;
   height: 14px;
@@ -205,6 +239,18 @@
   @include absCenter;
   position: absolute;
   z-index: 1000;
-  top: -2px;
+  top: 1px;
   right: -2px;
+  p {
+    font-size: 9px;
+    font-weight: bold;
+    margin: 0;
+    margin-left: .5px;
+  }
+}
+
+.dash-share-options {
+  @include for-large-devices-up {
+    padding: 84px 0 116px 0;
+  }
 }

@@ -16,6 +16,9 @@
             <p class="boldest muli s-medium-text text-right photo-input-text">Video</p>
             <div>
               <%= f.input :video, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial-video', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @tutorial.video.attached? %>
+                <div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin didot"><%= @tutorial.video.filename.to_s %></p></div>
+              <% end %>
             </div>
           </div>
           <div class="personal-details-input align-items-start">

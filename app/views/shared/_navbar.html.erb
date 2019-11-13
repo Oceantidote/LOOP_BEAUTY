@@ -6,7 +6,9 @@
     <div style="position: relative">
       <%= link_to 'PORTAL', admin_portal_path, class: 'admin-button' %>
       <% if Lookbook.where(status: 'pending').any? || Tutorial.where(status: 'pending').any? %>
-        <p class="admin-notification"><%= Lookbook.where(status: 'pending').size + Tutorial.where(status: 'pending').size %></p>
+        <div class="admin-notification muli">
+        <p><%= Lookbook.where(status: 'pending').size + Tutorial.where(status: 'pending').size %></p>
+      </div>
       <% end %>
     </div>
   </div>
