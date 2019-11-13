@@ -28,8 +28,12 @@
           </div>
         </div>
         <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">Text Color</p>
+            <%= f.select(:text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
+        </div>
+        <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Display?</p>
-          <%= f.input :display, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
+          <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
         </div>
         <%= f.submit 'UPDATE HOME BANNER', class: 'primary-button personal-details-button small-text' %>
       <% end %>
