@@ -44,6 +44,6 @@ class Admin::HomeBannersController < ApplicationController
   end
 
   def home_banner_params
-    params.require(:home_banner).permit(:content, :link, :link_text, :display, :banner)
+    params.require(:home_banner).permit(:content, :link, :link_text, :display, :banner, :text_color)
   end
 end
