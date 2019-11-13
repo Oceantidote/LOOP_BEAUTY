@@ -11,9 +11,8 @@
   p {
     font-family: $title-font;
     font-weight: 900;
-    border-bottom: 1px solid #d4d4d4;
     line-height: 15px;
-    width: fit-content;
+    text-decoration: underline;
     text-shadow: 0 0 1px #6b6b6b;
     &:hover {
       text-decoration: none;

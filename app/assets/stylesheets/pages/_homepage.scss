@@ -102,9 +102,8 @@
     font-family: $title-font;
     color: black;
     font-weight: 900;
-    border-bottom: 1px solid black;
+    text-decoration: underline;
     line-height: 15px;
-    width: fit-content;
     &:hover {
       text-decoration: none;
     }
