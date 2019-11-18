@@ -17,7 +17,7 @@
         <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
         <div class="d-flex">
           <p class="small-margin-right muli boldest s-medium-text" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
-          <%= f.input :newsletter, label: false %>
+          <%= f.input :newsletter, label: false, value: current_user.newsletter %>
         </div>
         <% end %>
       </div>
