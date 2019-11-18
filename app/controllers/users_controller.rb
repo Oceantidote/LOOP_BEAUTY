@@ -67,6 +67,7 @@ class UsersController < ApplicationController
   def showroom
     @products = Product.where(demoable: true).page params[:page]
     @original = Product.where(demoable: true)
+    @all = @original
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params).page params[:page]
       @sort_method = params[:product][:sort][:method]
