@@ -67,7 +67,7 @@
           <%= link_to "http://pinterest.com/pin/create/button/?url=#{insider_article_url(@insider_article)}&media=#{url_for(@insider_article.cover_photo)}&description=#{@insider_article.title}", target: "_blank" do %>
             <i class="fab fa-pinterest-p"></i>
           <% end %>
-          <%= mail_to '', subject: @insider_article.title, body: insider_article_url(@insider_article) do %>
+          <%= mail_to 'contact@hoxton-digital.com', subject: @insider_article.title, body: insider_article_url(@insider_article) do %>
             <i class="far fa-envelope"></i>
           <% end %>
         </div>
