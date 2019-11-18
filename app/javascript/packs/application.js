@@ -1,11 +1,14 @@
 import $ from 'jquery'
 global.$ = $
 
-import "bootstrap";
-import "./components/cookie_box";
+import 'bootstrap';
+import 'chartkick'
+import 'chart.js'
 import 'flatpickr/dist/flatpickr.min.css';
 import 'flatpickr/dist/themes/dark.css';
 import 'tablesorter/dist/css/theme.default.min.css';
+
+import "./components/cookie_box";
 import "./components/autocomplete";
 
 import initProductShadeCards from "../components/product_shade_cards";
