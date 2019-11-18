@@ -69,3 +69,14 @@
   color: #FFF;
   @include absCenter;
 }
+
+.analytics-boxes {
+  margin: 0 10%;
+  // margin: 0 100px;
+  // @include for-large-devices-down {
+  //   margin: 0 80px;
+  // }
+  // @include for-large-devices-down {
+  //   margin: 0 60px;
+  // }
+}
