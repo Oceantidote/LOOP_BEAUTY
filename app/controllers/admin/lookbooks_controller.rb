@@ -11,7 +11,7 @@ class Admin::LookbooksController < ApplicationController
   end
 
   def reject
-    @lookbook.update(lookbook_params)
+    @lookbook.update(lookbook_params) if params[:lookbook].present?
     @lookbook.reject!
     redirect_to admin_lookbooks_path
   end
