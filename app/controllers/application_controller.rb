@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { host: "https://infinite-journey-41892.herokuapp.com/" }
+    { host: "https://infinite-journey-41892.herokuapp.com" }
   end
 
   private
