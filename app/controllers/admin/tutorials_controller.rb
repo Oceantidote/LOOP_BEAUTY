@@ -11,7 +11,7 @@ class Admin::TutorialsController < ApplicationController
   end
 
   def reject
-    @tutorial.update(tutorial_params)
+    @tutorial.update(tutorial_params) if params[:lookbook].present?
     @tutorial.reject!
     redirect_to admin_tutorials_path
   end
