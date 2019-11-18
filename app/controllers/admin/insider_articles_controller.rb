@@ -76,7 +76,8 @@ class Admin::InsiderArticlesController < ApplicationController
       :published,
       :homepage,
       :featured,
-      :card_text_color
+      :card_text_color,
+      :article_date
     )
   end
 
@@ -84,5 +85,4 @@ class Admin::InsiderArticlesController < ApplicationController
     @insider_article = InsiderArticle.find(params[:id])
     authorize [:admin, @insider_article]
   end
-
 end

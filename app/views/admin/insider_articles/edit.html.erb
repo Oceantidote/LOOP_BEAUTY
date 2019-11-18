@@ -16,6 +16,10 @@
             <%= f.select(:category, ["Inspiration", "Ask the Expert", "Beauty News"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
           </div>
           <div class="insider-articles-input">
+            <p class="boldest muli s-medium-text no-bottom-margin">Article date</p>
+            <%= f.date_select :article_date, required: true, label: false, start_year: Date.today.year, end_year: Date.today.year - 20, order: [:day, :month, :year], input_html: { autocomplete: "email", id: 'date_of_birth', class: 'dropdown-input sign-up-dropdown' } %>
+          </div>
+          <div class="insider-articles-input">
             <p class="boldest muli s-medium-text no-bottom-margin">Author</p>
             <%= f.text_field :by, class:"form-control" %>
           </div>

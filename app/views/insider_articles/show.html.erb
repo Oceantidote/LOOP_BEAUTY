@@ -6,8 +6,8 @@
         <h6 class="boldest muli"><%= @insider_article.category %>:</h6>
         <h2 class="didot"><%= @insider_article.title %></h2>
         <p class="boldest muli no-bottom-margin">by <%= @insider_article.by %> </p>
-        <p class="muli small-text grey"><%= @insider_article.created_at.strftime('%e %B %Y') %></p>
-      </div>
+          <p class="muli small-text grey"><%= @insider_article.article_date ? @insider_article.article_date.strftime('%e %B %Y') : '' %></p>
+        <%# end %>
       <div class="article-content">
         <%= simple_format(@insider_article.text1) %>
         <% if @insider_article.photo1.attached? %>
