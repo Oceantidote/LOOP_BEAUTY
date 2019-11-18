@@ -96,6 +96,7 @@
 <% if current_user&.admin? && (@tutorial.status == "pending" || @tutorial.status == "rejected") %>
   <div class="container tutorial-show-admin-options">
     <h6 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h6>
+    <%= link_to "EDIT", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
     <%= link_to "APPROVE", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'primary-button personal-details-button small-text' %>
     <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
       <%= f.input :rejection_message, input_html: { class: 'contact-form-input' } %>

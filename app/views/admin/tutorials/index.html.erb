@@ -11,9 +11,7 @@
           <p class="medium-margin text-center boldest didot" style="width: 100%;">There are no pending tutorials</p>
         <% end %>
         <% @tutorials.each do |tutorial| %>
-          <div class="" style="margin-bottom: 15px; width: 100%;">
-            <%= render 'shared/upload_cards', item: tutorial %>
-          </div>
+          <%= render 'shared/upload_cards', item: tutorial %>
         <% end %>
       </div>
     </div>

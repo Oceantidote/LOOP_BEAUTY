@@ -34,7 +34,7 @@ class LookbooksController < ApplicationController
     authorize @lookbook
     if @lookbook.save
       flash[:notice] = 'Lookbook pending approval'
-      redirect_to lookbook_path(@lookbook)
+      redirect_to user_uploads_path(current_user)
     else
       raise
       flash[:error] = 'Please review problems'

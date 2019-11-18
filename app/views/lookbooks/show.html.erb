@@ -100,6 +100,7 @@
 <% if current_user&.admin? && (@lookbook.status == "pending" || @lookbook.status == "rejected") %>
   <div class="container tutorial-show-admin-options">
     <h6 class="boldest margin-top" >Current Status: <%= @lookbook.status %></h6>
+    <%= link_to "EDIT", edit_lookbook_path(@lookbook), class: 'secondary-button small-margin-right' %>
     <%= link_to "APPROVE", approve_admin_lookbook_path(@lookbook), method: :patch, class: 'primary-button personal-details-button small-text' %>
     <%= simple_form_for @lookbook, url: reject_admin_lookbook_path, method: :patch do |f| %>
       <%= f.input :rejection_message, input_html: { class: 'contact-form-input' } %>
@@ -113,7 +114,7 @@
         <% if @lookbook.rejection_message %>
           <p class="boldest">Message: <span class="didot lighter"><%= @lookbook.rejection_message %></span></p>
         <% end %>
-        <%= link_to "EDIT", edit_tutorial_path(@lookbook), class: 'secondary-button small-margin-right' %>
+        <%= link_to "EDIT", edit_lookbook_path(@lookbook), class: 'secondary-button small-margin-right' %>
       <hr>
     </div>
 <% end %>

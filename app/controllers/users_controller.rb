@@ -32,8 +32,8 @@ class UsersController < ApplicationController
   end
 
   def analytics
-    @lookbooks = Lookbook.where(user: @user)
-    @tutorials = Tutorial.where(user: @user)
+    @lookbooks = Lookbook.where(user: @user, status: 'approved')
+    @tutorials = Tutorial.where(user: @user, status: 'approved')
     @number_of_content_shared = @lookbooks.count + @tutorials.count
     @total_visits = @lookbooks.sum(:visits) + @tutorials.sum(:visits)
     @total_sales = @lookbooks.sum(&:sales) + @tutorials.sum(&:sales)
