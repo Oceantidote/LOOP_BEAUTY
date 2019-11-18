@@ -28,6 +28,8 @@ gem 'rest-client'
 gem 'rb-readline'
 gem 'pg_search', '~> 2.3.0'
 gem 'kaminari'
+gem 'chartkick'
+gem 'groupdate'
 # gem 'image_processing', '~> 1.2'
 
 

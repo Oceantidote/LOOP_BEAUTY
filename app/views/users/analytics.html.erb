@@ -117,6 +117,30 @@
           </div>
         </div>
       </div>
+      <hr>
+      <div class="container">
+        <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
+        <%= column_chart(
+            @orders_this_month.group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).count,
+            defer: true,
+            xtitle: 'Date',
+            ytitle: 'Sales',
+            colors: ['#000']
+          ) 
+        %>
+        <h5 class="muli boldest mb-4">Commission Earned by Day in <%= Date.today.strftime('%B') %></h5>
+        <%= column_chart(
+            @commission_this_month,
+            defer: true,
+            round: 2,
+            zeros: true,
+            prefix: '£',
+            xtitle: 'Date',
+            ytitle: 'Commission',
+            colors: ['#000']
+          ) 
+        %>
+      </div>
     </div>
   </div>
 </div>

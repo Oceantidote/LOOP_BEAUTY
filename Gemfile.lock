@@ -76,6 +76,7 @@ GEM
     bullet (6.0.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
+    chartkick (3.3.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
@@ -113,6 +114,8 @@ GEM
       multi_json (>= 1.11.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (4.2.0)
+      activesupport (>= 5)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.6.0)
@@ -299,12 +302,14 @@ DEPENDENCIES
   aws-ses (~> 0.4.4)
   bootsnap
   bullet
+  chartkick
   country_select
   devise
   dotenv-rails
   font-awesome-sass (~> 5.6.1)
   friendly_id (~> 5.2.4)
   gibbon
+  groupdate
   jbuilder (~> 2.0)
   kaminari
   letter_opener
