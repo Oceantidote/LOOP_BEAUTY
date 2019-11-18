@@ -89,10 +89,14 @@ class Order < ApplicationRecord
     info = ExchangeRate.find_by_currency(currency)
     (delivery_cost_cents * info.rate).round
   end
+
   def discount_uses
     return unless discount_code.present?
     if discount_code.orders.size >= discount_code.uses || user.orders.where(discount_code: discount_code).size >= discount_code.user_uses
       errors.add :discount_code, 'number of uses exceeded'
+    end
+    if user.referral_code == discount_code.code
+      errors.add :discount_code, 'cannot be your own referral code'
     end
   end
 

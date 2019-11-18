@@ -129,7 +129,7 @@ class User < ApplicationRecord
         set_referral_code
       else
         self.referral_code = code
-        DiscountCode.create(code: code, discount: 15)
+        DiscountCode.create(code: code, discount: 15, uses: 5)
       end
     end
   end
