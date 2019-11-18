@@ -11,9 +11,8 @@ class BasketsController < ApplicationController
     authorize @basket
     @code = params[:basket][:discount_code]
     @discount = DiscountCode.find_by_code(@code)
-    if @discount.present?
-      @basket.discount_code = @discount
-      @basket.save
+    @basket.discount_code = @discount if @discount.present?
+    if @discount.present? && @basket.save
       respond_to do |format|
         format.html do
           flash[:notice] = 'Discount applied'
