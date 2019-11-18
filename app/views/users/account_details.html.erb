@@ -244,7 +244,7 @@
             <%= simple_form_for @delivery_address || Address.new(delivery_address: true) do |f| %>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Address Line 1</p>
-                <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Address Line 2</p>
@@ -252,30 +252,30 @@
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">City</p>
-                <%= f.input :city, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :city, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">County/State</p>
-                <%= f.input :county, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :county, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Country</p>
-                <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+                <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown req-d-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Postcode</p>
-                <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Phone Number</p>
-                <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
               </div>
               <div class="d-flex align-items-end account-details-check">
                 <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
                 <p class="no-bottom-margin muli">Use as billing address</p>
               </div>
               <%= f.input :delivery_address, as: :hidden %>
-              <%= f.submit 'ADD DELIVERY ADDRESS', class: 'primary-button address-button small-text' %>
+              <%= f.submit 'ADD DELIVERY ADDRESS', disabled: true, id: 'acc-add-delivery', class: 'primary-button address-button small-text disabled' %>
             <% end %>
           </div>
           <div class="address-form-container">
@@ -283,7 +283,7 @@
             <%= simple_form_for @billing_address || Address.new(delivery_address: false) do |f| %>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Address Line 1</p>
-                <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Address Line 2</p>
@@ -291,26 +291,26 @@
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">City</p>
-                <%= f.input :city, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :city, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">County/State</p>
-                <%= f.input :county, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :county, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Country</p>
-                <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+                <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown req-b-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Postcode</p>
-                <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
               </div>
               <div class="personal-details-input">
                 <p class="boldest muli text-right no-margin">Phone Number</p>
-                <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input' } %>
+                <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
               </div>
               <%= f.input :delivery_address, as: :hidden %>
-              <%= f.submit 'ADD BILLING ADDRESS', class: 'primary-button address-button small-text' %>
+              <%= f.submit 'ADD BILLING ADDRESS', disabled: true, id: 'acc-add-billing', class: 'primary-button address-button small-text disabled' %>
             <% end %>
           </div>
         </div>
@@ -337,6 +337,50 @@
 </div>
 
 <script>
+
+  reqD = document.querySelectorAll('.req-d-add');
+  reqB = document.querySelectorAll('.req-b-add');
+  delButton = document.getElementById('acc-add-delivery')
+  bilButton = document.getElementById('acc-add-billing')
+
+  function isfilled(element) {
+    return element != ""
+  }
+
+  reqD.forEach((field) => {
+    field.addEventListener('change', () => {
+      myArray = []
+      reqD.forEach((input) => {
+        myArray.push(input.value)
+      })
+      console.log(myArray.every(isfilled))
+      if (myArray.every(isfilled)) {
+        delButton.disabled = false;
+        delButton.classList.remove('disabled')
+      } else {
+        delButton.disabled = true;
+        delButton.classList.add('disabled')
+      }
+    })
+  })
+
+  reqB.forEach((field) => {
+    field.addEventListener('change', () => {
+      myArray = []
+      reqB.forEach((input) => {
+        myArray.push(input.value)
+      })
+      console.log(myArray.every(isfilled))
+      if (myArray.every(isfilled)) {
+        bilButton.disabled = false;
+        bilButton.classList.remove('disabled')
+      } else {
+        bilButton.disabled = true;
+        bilButton.classList.add('disabled')
+      }
+    })
+  })
+
   tabOne = document.querySelector('.account-tab-one');
   tabTwo = document.querySelector('.account-tab-two');
   tabThree = document.querySelector('.account-tab-three');

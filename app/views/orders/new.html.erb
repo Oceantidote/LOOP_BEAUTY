@@ -219,19 +219,19 @@
                 </div>
               <% else %>
                 <%= simple_form_for @address do |f| %>
-                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-del-add', style: "width: 95%;" } %>
                   <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom', style: "width: 95%;" } %>
-                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-del-add', style: "width: 95%;" } %>
+                  <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-del-add', style: "width: 95%;" } %>
+                  <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-del-add', style: "width: 95%;" } %>
+                  <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom checkout-del-add', style: "width: 95%;" } %>
+                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-del-add', style: "width: 95%;" } %>
                   <div class="d-flex align-items-center">
                     <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
                     <p class="no-bottom-margin muli">Use as billing address</p>
                   </div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
-                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'deliveryBtn' %>
+                  <%= f.submit 'ADD ADDRESS', disabled: true, class: 'secondary-button checkout-address-button disabled-checkout-button', id: 'deliveryBtn' %>
                 <% end %>
               <% end %>
             </div>
@@ -296,16 +296,16 @@
                 </div>
               <% else %>
                 <%= simple_form_for @address do |f| %>
-                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-bil-add', style: "width: 95%;" } %>
                   <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :county, label: false, placeholder: 'County/State', required: true,  input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
-                  <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom', style: "width: 95%;" } %>
-                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input', style: "width: 95%;" } %>
+                  <%= f.input :county, label: false, placeholder: 'County/State', required: true,  input_html: { class: 'contact-form-input checkout-bil-add', style: "width: 95%;" } %>
+                  <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-bil-add', style: "width: 95%;" } %>
+                  <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-bil-add', style: "width: 95%;" } %>
+                  <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom checkout-bil-add', style: "width: 95%;" } %>
+                  <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-bil-add', style: "width: 95%;" } %>
                   <div style="height: 24px;"></div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
-                  <%= f.submit 'ADD ADDRESS', class: 'secondary-button checkout-address-button', id: 'billingBtn' %>
+                  <%= f.submit 'ADD ADDRESS', disabled: true, class: 'secondary-button checkout-address-button disabled-checkout-button', id: 'billingBtn' %>
                 <% end %>
               <% end %>
             </div>
@@ -321,8 +321,8 @@
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% elsif @user.delivery_addresses.length == 0 || @user.billing_addresses.length == 0 %>
-            <a class="stripe-button conditional-button muli" id="addressBtn">CONFIRM ADDRESSES</a>
-            <%= f.submit 'PAYMENT', class: 'stripe-button conditional-button d-none muli', id: "paymentHidden" %>
+            <!-- <a class="stripe-button conditional-button muli" id="addressBtn">CONFIRM ADDRESSES</a> -->
+            <%= f.submit 'PAYMENT', disabled: true, class: 'disabled-checkout-button-stripe stripe-button conditional-button muli', id: "paymentHidden" %>
           <% else %>
             <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el muli' %>
           <% end %>
@@ -338,4 +338,48 @@
   // useAsBilling.addEventListener('change', () => {
   //   billingAddressContainer.classList.toggle('d-none')
   // })
+
+  delButton = document.getElementById('deliveryBtn')
+  bilButton = document.getElementById('billingBtn')
+  reqCheckoutD = document.querySelectorAll('.checkout-del-add');
+  reqCheckoutB = document.querySelectorAll('.checkout-bil-add');
+
+  function isfilled(element) {
+    return element != ""
+  }
+
+  reqCheckoutD.forEach((field) => {
+    field.addEventListener('change', () => {
+      myArray = []
+      reqCheckoutD.forEach((input) => {
+        myArray.push(input.value)
+      })
+      console.log(myArray.every(isfilled))
+      if (myArray.every(isfilled)) {
+        delButton.disabled = false;
+        delButton.classList.remove('disabled-checkout-button')
+      } else {
+        delButton.disabled = true;
+        delButton.classList.add('disabled-checkout-button')
+      }
+    })
+  })
+
+  reqCheckoutB.forEach((field) => {
+    field.addEventListener('change', () => {
+      myArray = []
+      reqCheckoutB.forEach((input) => {
+        myArray.push(input.value)
+      })
+      console.log(myArray.every(isfilled))
+      if (myArray.every(isfilled)) {
+        bilButton.disabled = false;
+        bilButton.classList.remove('disabled-checkout-button')
+      } else {
+        bilButton.disabled = true;
+        bilButton.classList.add('disabled-checkout-button')
+      }
+    })
+  })
+
 </script>
