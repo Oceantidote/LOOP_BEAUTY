@@ -1,8 +1,14 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https://www.loopbeauty.co.uk" }
-  config.action_controller.default_url_options = { host: 'https://www.loopbeauty.co.uk' }
-
   # Settings specified here will take precedence over those in config/application.rb.
+
+  # Sets the default host for asset_urls (Used for sharing pages)
+  config.action_controller.default_url_options = { host: "https://www.loopbeauty.co.uk" }
+  config.action_mailer.asset_host = 'https://www.loopbeauty.co.uk'
+  config.action_mailer.default_url_options = { host: "https://www.loopbeauty.co.uk" }
+  # config.action_mailer.delivery_method     = :postmark
+  # config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  # config.action_mailer.perform_deliveries  = true
+
   config.action_mailer.delivery_method = :ses
   # Code is not reloaded between requests.
   config.cache_classes = true
