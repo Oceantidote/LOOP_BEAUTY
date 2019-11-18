@@ -70,16 +70,16 @@ const initCheckout = () => {
     billingAddressShow.parentNode.querySelector('.billing-default').classList.add('d-none')
   }))
 
-  if (addressBtn) {
-    addressBtn.addEventListener('click', () => {
-      deliveryBtn.click();
-      if (useAsBilling.checked === false) {
-        billingBtn.click();
-      }
-      addressBtn.classList.add('d-none')
-      paymentBtn.classList.remove('d-none')
-    })
-  }
+  // if (addressBtn) {
+  //   addressBtn.addEventListener('click', () => {
+  //     deliveryBtn.click();
+  //     if (useAsBilling.checked === false) {
+  //       billingBtn.click();
+  //     }
+  //     addressBtn.classList.add('d-none')
+  //     paymentBtn.classList.remove('d-none')
+  //   })
+  // }
 
   // if (newDelivery) {
   //   newDelivery.addEventListener('click', () => {

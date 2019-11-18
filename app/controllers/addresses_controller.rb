@@ -27,11 +27,13 @@ class AddressesController < ApplicationController
     elsif @address.delivery_address
       @delivery_address = @address
       @billing_address = Address.new(delivery_address: false)
-      render template: 'orders/new'
+      # render template: 'orders/new'
+      redirect_back fallback_location: user_account_details_path(current_user)
     elsif @address.delivery_address == false
       @billing_address = @address
       @delivery_address = Address.new(delivery_address: true)
-      render template: 'orders/new'
+      # render template: 'orders/new'
+      redirect_back fallback_location: user_account_details_path(current_user)
     else
       flash[:error] = 'Please fill out all fields'
     end
