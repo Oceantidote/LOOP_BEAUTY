@@ -1,6 +1,7 @@
 class Lookbook < ApplicationRecord
   include FriendlyId
   include Affiliation
+  include Tracked
 
   friendly_id :title, use: :slugged
   belongs_to :user
@@ -39,6 +40,10 @@ class Lookbook < ApplicationRecord
     orders.sum(&:total_price_cents)
   end
 
+  def record_current_visits
+    MonthlyVisit.create(month: Date.today.beginning_of_month, visits: visits, tracked: self)
+  end
+  
   private
 
   def gen_aff_code
@@ -62,4 +67,5 @@ class Lookbook < ApplicationRecord
     #   JSON.parse(response.body)['link']
     # end
   end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_095303) do
+ActiveRecord::Schema.define(version: 2019_11_19_141326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -239,6 +239,16 @@ ActiveRecord::Schema.define(version: 2019_11_18_095303) do
     t.integer "visits", default: 0
     t.index ["affiliate_code"], name: "index_lookbooks_on_affiliate_code"
     t.index ["user_id"], name: "index_lookbooks_on_user_id"
+  end
+
+  create_table "monthly_visits", force: :cascade do |t|
+    t.datetime "month"
+    t.integer "visits"
+    t.string "tracked_type"
+    t.bigint "tracked_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tracked_type", "tracked_id"], name: "index_monthly_visits_on_tracked_type_and_tracked_id"
   end
 
   create_table "offer_banners", force: :cascade do |t|
