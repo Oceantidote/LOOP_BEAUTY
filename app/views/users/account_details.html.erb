@@ -195,7 +195,9 @@
                     <p class="grey-font small-text muli boldest tiny-margin-bottom">You don't have any delivery addresses</p>
                   </div>
               <% end %>
+              <% delivery_counter = 0 %>
               <% current_user.delivery_addresses.each do |add| %>
+                <% delivery_counter +=1 %>
                 <div class="row row-style">
                   <div class="account-details-address-card">
                     <div class="address-card">
@@ -206,9 +208,8 @@
                           <p class="small-text underline grey-font boldest text-right no-margin">Set as default</p>
                         <%# end %>
                       <%# end %> -->
-                      <%= link_to address_path(add, request_location: "account_details"), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
-                        <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
-                      <% end %>
+                      <a href="#" class="sweet-alert-delivery-trigger d-block small-text underline grey-font boldest text-right no-margin muli" data-id="<%= delivery_counter %>">Remove</a>
+                      <%= link_to "", address_path(add, request_location: "account_details"), method: :delete, class: "hidden ", id: "delete-delivery-link#{delivery_counter}" %>
                     </div>
                   </div>
                 </div>
@@ -222,15 +223,16 @@
                   <p class="grey-font small-text muli boldest tiny-margin-bottom">You don't have any billing addresses</p>
                 </div>
               <% end %>
+              <% billing_counter = 0 %>
               <% current_user.billing_addresses.each do |add| %>
+                <% billing_counter +=1 %>
                 <div class="row row-style">
                   <div class="account-details-address-card">
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
-                      <%= link_to address_path(add, request_location: "account_details"), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
-                        <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
-                      <% end %>
+                      <a href="#" class="sweet-alert-billing-trigger d-block small-text underline grey-font boldest text-right no-margin muli" data-id="<%= billing_counter %>">Remove</a>
+                      <%= link_to "", address_path(add, request_location: "account_details"), method: :delete, class: "hidden", id: "delete-billing-link#{billing_counter}" %>
                     </div>
                   </div>
                 </div>
@@ -467,6 +469,26 @@
     }
   }
   tabDefault()
+
+  var deliveryId = 0
+  const deliveryButtons = document.querySelectorAll('.sweet-alert-delivery-trigger');
+  if (deliveryButtons) {
+    deliveryButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        deliveryId = button.dataset.id
+      })
+    })
+  }
+
+  var billingId = 0
+  const billingButtons = document.querySelectorAll('.sweet-alert-billing-trigger');
+  if (billingButtons) {
+    billingButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        billingId = button.dataset.id
+      })
+    })
+  }
 
 </script>
 
