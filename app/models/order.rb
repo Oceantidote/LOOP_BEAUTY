@@ -13,6 +13,7 @@ class Order < ApplicationRecord
   monetize :credit_spent_cents
   monetize :delivery_cost_cents
   after_create :set_sku
+  after_save :check_for_referral
 
   def set_sku
     self.update(sku: "ORDERSKU-00#{self.id}")
@@ -92,7 +93,7 @@ class Order < ApplicationRecord
 
   def discount_uses
     return unless discount_code.present?
-    if discount_code.orders.size >= discount_code.uses || user.orders.where(discount_code: discount_code).size >= discount_code.user_uses
+    if discount_code.orders.size > discount_code.uses || user.orders.where(discount_code: discount_code).size > discount_code.user_uses
       errors.add :discount_code, 'number of uses exceeded'
     end
     if user.referral_code == discount_code.code
@@ -141,5 +142,15 @@ class Order < ApplicationRecord
 
   def processed?
     processed
+  end
+
+  def check_for_referral
+    puts 'here'
+    return unless discount_code.present? && processed?
+    puts 'here'
+    user = User.find_by_referral_code(discount_code.code)
+    return unless user.present?
+    new_discount = DiscountCode.create(discount: 15)
+    UserMailer.with(user: user, discount: new_discount).referral.deliver_now
   end
 end

@@ -1,3 +1,4 @@
+<% if @featured_article %>
 <%= link_to insider_article_path(@featured_article), class: 'no-decoration' do %>
   <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
     <div class="insider-article-banner-text-container">
@@ -7,6 +8,7 @@
       </div>
     </div>
   </div>
+<% end %>
 <% end %>
 <div class="insider-home-tabs-container">
   <div class="insider-home-tabs">

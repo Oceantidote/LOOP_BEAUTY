@@ -253,16 +253,23 @@
     const years = document.getElementById("insider_article_article_date_1i").children;
     const dob = document.getElementById("insider_article_article_date_3i").dataset.date;
 
-    days[dob.split('-')[2]].selected = true
-    if(dob.split('-')[1].split('')[0] == "0") {
-      months[dob.split('-')[1].split('')[1]].selected = true
-    } else {
-      months[dob.split('-')[1]].selected = true
-    }
-    const yearValues = [...years].map( year => year.value)
-    const yearSelected = yearValues.indexOf(dob.split('-')[0])
-    years[yearSelected].selected = true
-  }
+    if(dob) {
+      if(dob.split('-')[2].split('')[0] == 0) {
+        days[dob.split('-')[2].split('')[1]].selected = true
+      } else {
+        days[dob.split('-')[2]].selected = true
+      }
 
+      if(dob.split('-')[1].split('')[0] == "0") {
+        months[dob.split('-')[1].split('')[1]].selected = true
+      } else {
+        months[dob.split('-')[1]].selected = true
+      }
+
+      const yearValues = [...years].map( year => year.value)
+      const yearSelected = yearValues.indexOf(dob.split('-')[0])
+      years[yearSelected].selected = true
+    }
+  }
   addSelected()
 </script>

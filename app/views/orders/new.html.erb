@@ -155,13 +155,14 @@
             </div>
           </div>
           <div class="checkout-addresses-container">
-            <div class="checkout-address">
+            <div class="checkout-address delivery-address-container">
               <p class="checkout-address-title medium-text boldest muli">Delivery Address</p>
-                <% if @default_delivery %>
-                  <div class="delivery-default">
-                    <%= render 'addresses/address', add: @default_delivery %>
-                  </div>
-                <% end %>
+              <hr>
+              <% if @default_delivery %>
+                <div class="delivery-default">
+                  <%= render 'addresses/address', add: @default_delivery %>
+                </div>
+              <% end %>
               <!-- Delivery Address Modal -->
               <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -181,6 +182,7 @@
 
               <% if @user.delivery_addresses.any? %>
                 <p id="deliveryAddressShow" class="d-none"></p>
+                <hr>
                 <div id="deliveryAddressButtons">
                   <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
                   <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newDeliveryAddress" data-toggle="modal" data-target="#new-delivery-address">Add new address</a>
@@ -231,17 +233,19 @@
                     <p class="no-bottom-margin muli">Use as billing address</p>
                   </div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
+                  <hr>
                   <%= f.submit 'ADD ADDRESS', disabled: true, class: 'secondary-button checkout-address-button disabled-checkout-button', id: 'deliveryBtn' %>
                 <% end %>
               <% end %>
             </div>
             <div class="checkout-address billing-address-container">
               <p class="checkout-address-title medium-text boldest muli">Billing Address</p>
-                <% if @default_billing %>
-                  <div class="billing-default">
-                    <%= render 'addresses/address', add: @default_billing %>
-                  </div>
-                <% end %>
+              <hr>
+              <% if @default_billing %>
+                <div class="billing-default">
+                  <%= render 'addresses/address', add: @default_billing %>
+                </div>
+              <% end %>
               <!-- Billing Address Modal -->
               <div class="modal fade" id="billingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -261,6 +265,7 @@
               <!--  -->
               <% if @user.billing_addresses.any? %>
                 <p id="billingAddressShow" class="d-none"></p>
+                <hr>
                 <div id="billingAddressButtons">
                   <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
                   <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newBillingAddress" data-toggle="modal" data-target="#new-billing-address">Add new address</a>
@@ -305,6 +310,7 @@
                   <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-bil-add', style: "width: 95%;" } %>
                   <div style="height: 24px;"></div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                  <hr>
                   <%= f.submit 'ADD ADDRESS', disabled: true, class: 'secondary-button checkout-address-button disabled-checkout-button', id: 'billingBtn' %>
                 <% end %>
               <% end %>

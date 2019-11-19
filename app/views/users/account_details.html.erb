@@ -18,7 +18,7 @@
         <p class="boldest grey-font account-tab-three all-tabs">Change Password</p>
       </div>
       <div class="account-details-content">
-        <div class="account-content-one account-content-show">
+        <div class="account-content-one account-content-show" data-tab="<%= params[:tab] %>" id="tab-info">
           <%= simple_form_for current_user, url: user_path(current_user), method: :patch do |f| %>
             <div class="personal-details-input">
               <p class="boldest muli text-right no-margin">First Name</p>
@@ -186,6 +186,7 @@
           <% end %>
         </div>
         <div class="account-content-two">
+          <%# raise %>
           <div class="address-container">
             <h6 class="boldest">Delivery Address</h6>
             <div>
@@ -196,7 +197,7 @@
               <% end %>
               <% current_user.delivery_addresses.each do |add| %>
                 <div class="row row-style">
-                  <div class="col-12 account-details-address-card">
+                  <div class="account-details-address-card">
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
@@ -205,7 +206,7 @@
                           <p class="small-text underline grey-font boldest text-right no-margin">Set as default</p>
                         <%# end %>
                       <%# end %> -->
-                      <%= link_to address_path(add), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
+                      <%= link_to address_path(add, request_location: "account_details"), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
                         <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
                       <% end %>
                     </div>
@@ -223,11 +224,11 @@
               <% end %>
               <% current_user.billing_addresses.each do |add| %>
                 <div class="row row-style">
-                  <div class="col-12 account-details-address-card">
+                  <div class="account-details-address-card">
                     <div class="address-card">
                       <p class="grey-font small-text muli boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
                       <p class="grey-font small-text muli boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
-                      <%= link_to address_path(add), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
+                      <%= link_to address_path(add, request_location: "account_details"), method: :delete, data: { confirm: 'Are you sure?' }, class: "no-decoration" do %>
                         <p class="small-text underline grey-font boldest text-right no-margin muli">Remove</p>
                       <% end %>
                     </div>
@@ -274,6 +275,7 @@
                 <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
                 <p class="no-bottom-margin muli">Use as billing address</p>
               </div>
+              <%= f.hidden_field :request_location, value: "account_details" %>
               <%= f.input :delivery_address, as: :hidden %>
               <%= f.submit 'ADD DELIVERY ADDRESS', disabled: true, id: 'acc-add-delivery', class: 'primary-button address-button small-text disabled' %>
             <% end %>
@@ -309,6 +311,7 @@
                 <p class="boldest muli text-right no-margin">Phone Number</p>
                 <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
               </div>
+              <%= f.hidden_field :request_location, value: "account_details" %>
               <%= f.input :delivery_address, as: :hidden %>
               <%= f.submit 'ADD BILLING ADDRESS', disabled: true, id: 'acc-add-billing', class: 'primary-button address-button small-text disabled' %>
             <% end %>
@@ -433,19 +436,37 @@
     const months = document.getElementById("user_dob_2i").children;
     const years = document.getElementById("user_dob_1i").children;
     const dob = document.getElementById("user_dob_3i").dataset.user;
+    if(dob) {
+      if(dob.split('-')[2].split('')[0] == 0) {
+        days[dob.split('-')[2].split('')[1]].selected = true
+      } else {
+        days[dob.split('-')[2]].selected = true
+      }
 
-    days[dob.split('-')[2]].selected = true
-    if(dob.split('-')[1].split('')[0] == "0") {
-      months[dob.split('-')[1].split('')[1]].selected = true
-    } else {
-      months[dob.split('-')[1]].selected = true
+      if(dob.split('-')[1].split('')[0] == "0") {
+        months[dob.split('-')[1].split('')[1]].selected = true
+      } else {
+        months[dob.split('-')[1]].selected = true
+      }
+
+      const yearValues = [...years].map( year => year.value)
+      const yearSelected = yearValues.indexOf(dob.split('-')[0])
+      years[yearSelected].selected = true
     }
-    const yearValues = [...years].map( year => year.value)
-    const yearSelected = yearValues.indexOf(dob.split('-')[0])
-    years[yearSelected].selected = true
   }
-
   addSelected()
+
+  const tabDefault = () => {
+    const tab = document.getElementById('tab-info').dataset.tab;
+    if(tab == "account-content-two") {
+      document.querySelector('.account-content-one').classList.remove('account-content-show');
+      document.querySelector('.account-content-two').classList.add('account-content-show');
+
+      document.querySelector('.account-tab-one').classList.remove('account-active-tab')
+      document.querySelector('.account-tab-two').classList.add('account-active-tab')
+    }
+  }
+  tabDefault()
 
 </script>
 

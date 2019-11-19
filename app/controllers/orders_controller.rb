@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
     @basket = find_basket
     @order = Order.new(order_params.slice(:delivery_address_id, :billing_address_id, :delivery_type))
     @order.user = current_user
+    @order.discount_code = @basket.discount_code
     @basket.basket_products.all?(&:purchase_with_credit?) && @basket.total_price_cents == 0 ? @order.delivery_cost_cents = 0 : @order.set_delivery_costs_cents
     authorize @order
     if session[:aff_code]
@@ -48,8 +49,8 @@ class OrdersController < ApplicationController
         success_url: order_order_success_url(@order),
         cancel_url: checkout_url,
         customer_email: current_user.email,
-
       })
+      raise
     else
       redirect_to order_order_success_path(@order)
     end
@@ -63,10 +64,11 @@ class OrdersController < ApplicationController
 
   def order_success
     @order = Order.find(params[:order_id])
+    find_basket.update(discount_code: nil)
     unless @order.processed?
       @order.credit_spent = @basket.money_off_from_credit
       @order.processed = true
-      @order.save
+      @order.save!
       @basket.basket_products.each do |item|
         order_product = item.convert_to_order_product
         order_product.order = @order
