@@ -36,7 +36,6 @@ class LookbooksController < ApplicationController
       flash[:notice] = 'Lookbook pending approval'
       redirect_to user_uploads_path(current_user)
     else
-      raise
       flash[:error] = 'Please review problems'
       render :new
     end
