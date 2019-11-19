@@ -348,7 +348,7 @@
   }
 
   reqD.forEach((field) => {
-    field.addEventListener('change', () => {
+    field.addEventListener('keyup', () => {
       myArray = []
       reqD.forEach((input) => {
         myArray.push(input.value)
@@ -365,7 +365,7 @@
   })
 
   reqB.forEach((field) => {
-    field.addEventListener('change', () => {
+    field.addEventListener('keyup', () => {
       myArray = []
       reqB.forEach((input) => {
         myArray.push(input.value)
