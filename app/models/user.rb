@@ -22,9 +22,9 @@ class MyValidator < ActiveModel::Validator
       if record.description.empty?
         record.errors[:description] << 'must be provided'
       end
-      if record.youtube.empty?
-        record.errors[:youtube] << 'must be provided'
-      end
+      # if record.youtube.empty?
+      #   record.errors[:youtube] << 'must be provided'
+      # end
       if record.instagram.empty?
         record.errors[:instagram] << 'must be provided'
       end

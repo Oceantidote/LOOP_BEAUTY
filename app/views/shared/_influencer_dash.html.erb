@@ -1,6 +1,6 @@
 <div class="dash-links">
-  <%= image_tag url_for(@user.avatar_photo), class: "dash-links-avatar", alt: "influencer avatar" %>
-  <div class="each-dash-link-title">Hello <%= @user.first_name %></div>
+  <%= image_tag @user == current_user ? url_for(@user.avatar_photo) : 'loop-oo.png', class: "dash-links-avatar", alt: "influencer avatar" %>
+  <div class="each-dash-link-title">Hello <%= @user == current_user ? @user.first_name : Admin %></div>
   <%= link_to user_dashboard_path(@user), class: "each-dash-link" do %>
     <%= image_tag "account-overview.png", class: "dash-links-image", alt: "dash account icon" %>Account Overview
   <% end %>
