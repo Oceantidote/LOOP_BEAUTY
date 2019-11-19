@@ -27,14 +27,18 @@ if (<%= params[:controller] == 'baskets' && params[:action] == 'show' %>) {
 }
 
 emptyBasketText = document.querySelector('.empty-basket-text')
-if (<%= @basket.products.count == 0%>) {
-  emptyBasketText.innerHTML = `<p class="large-margin text-center boldest muli grey s-medium-text">Your basket is empty</p>
-                               <div class="start-shopping-holder">
-                                 <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
-                               </div>
-                               <hr style="border-color: #CFCFCF;">
-                              `
+if (emptyBasketText) {
+  if (<%= @basket.products.count == 0%>) {
+    emptyBasketText.innerHTML = `<p class="large-margin text-center boldest muli grey s-medium-text">Your basket is empty</p>
+                                 <div class="start-shopping-holder">
+                                   <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+                                 </div>
+                                 <hr style="border-color: #CFCFCF;">
+                                `
+  }
 }
 
 checkoutButtonContainer = document.querySelector('.checkout-button')
-checkoutButtonContainer.innerHTML = `<%= j render 'baskets/checkout_button', basket: @basket %>`
+if (checkoutButtonContainer) {
+  checkoutButtonContainer.innerHTML = `<%= j render 'baskets/checkout_button', basket: @basket %>`
+}
