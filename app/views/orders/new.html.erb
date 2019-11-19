@@ -195,13 +195,13 @@
                       <div class="modal-body modal-delivery-addresses">
                         <div class="modal-new-delivery-address">
                           <%= simple_form_for @address do |f| %>
-                            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-modal-del-add' } %>
                             <%= f.input :address_line2, label: false, placeholder: 'Address Line 2 (optional)', required: false, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom' } %>
-                            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-modal-del-add' } %>
+                            <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-modal-del-add' } %>
+                            <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-modal-del-add' } %>
+                            <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom checkout-modal-del-add' } %>
+                            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-modal-del-add' } %>
                             <div class="d-flex align-items-center">
                               <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
                               <p class="no-bottom-margin muli">Use as billing address</p>
@@ -211,7 +211,7 @@
                       </div>
                         <div class="modal-footer">
                           <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
-                          <%= f.submit 'ADD ADDRESS', class: 'primary-button checkout-address-button', id: 'deliveryBtn' %>
+                          <%= f.submit 'ADD ADDRESS', disabled: true, class: 'primary-button checkout-address-button checkout-modal-del-add-btn disabled-checkout-button', id: 'deliveryBtn' %>
                         </div>
                       <% end %>
                     </div>
@@ -275,20 +275,20 @@
                       <div class="modal-body modal-delivery-addresses">
                         <div class="modal-new-delivery-address">
                           <%= simple_form_for @address do |f| %>
-                            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-modal-bil-add' } %>
                             <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input' } %>
-                            <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom' } %>
-                            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input' } %>
+                            <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-modal-bil-add' } %>
+                            <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-modal-bil-add' } %>
+                            <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-modal-bil-add' } %>
+                            <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'dropdown-input sign-up-dropdown tiny-margin-bottom checkout-modal-bil-add' } %>
+                            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-modal-bil-add' } %>
                             <div style="height: 24px;"></div>
                             <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
                         </div>
                       </div>
                         <div class="modal-footer">
                           <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
-                          <%= f.submit 'ADD ADDRESS', class: 'primary-button checkout-address-button', id: 'billingBtn' %>
+                          <%= f.submit 'ADD ADDRESS', disabled: true, class: 'primary-button checkout-address-button checkout-modal-bil-add-btn disabled-checkout-button', id: 'billingBtn' %>
                         </div>
                       <% end %>
                     </div>
@@ -341,15 +341,20 @@
 
   delButton = document.getElementById('deliveryBtn')
   bilButton = document.getElementById('billingBtn')
+  reqCheckoutModalBtn = document.querySelector('.checkout-modal-del-add-btn');
+  reqCheckoutModalBtn = document.querySelector('.checkout-modal-bil-add-btn');
+
   reqCheckoutD = document.querySelectorAll('.checkout-del-add');
+  reqCheckoutModalD = document.querySelectorAll('.checkout-modal-del-add');
   reqCheckoutB = document.querySelectorAll('.checkout-bil-add');
+  reqCheckoutModalB = document.querySelectorAll('.checkout-modal-bil-add');
 
   function isfilled(element) {
     return element != ""
   }
 
   reqCheckoutD.forEach((field) => {
-    field.addEventListener('change', () => {
+    field.addEventListener('keyup', () => {
       myArray = []
       reqCheckoutD.forEach((input) => {
         myArray.push(input.value)
@@ -365,10 +370,44 @@
     })
   })
 
+  reqCheckoutModalD.forEach((field) => {
+    field.addEventListener('keyup', () => {
+      myArray = []
+      reqCheckoutModalD.forEach((input) => {
+        myArray.push(input.value)
+      })
+      console.log(myArray.every(isfilled))
+      if (myArray.every(isfilled)) {
+        delButton.disabled = false;
+        delButton.classList.remove('disabled-checkout-button')
+      } else {
+        delButton.disabled = true;
+        delButton.classList.add('disabled-checkout-button')
+      }
+    })
+  })
+
   reqCheckoutB.forEach((field) => {
-    field.addEventListener('change', () => {
+    field.addEventListener('keyup', () => {
       myArray = []
       reqCheckoutB.forEach((input) => {
+        myArray.push(input.value)
+      })
+      console.log(myArray.every(isfilled))
+      if (myArray.every(isfilled)) {
+        bilButton.disabled = false;
+        bilButton.classList.remove('disabled-checkout-button')
+      } else {
+        bilButton.disabled = true;
+        bilButton.classList.add('disabled-checkout-button')
+      }
+    })
+  })
+
+  reqCheckoutModalB.forEach((field) => {
+    field.addEventListener('keyup', () => {
+      myArray = []
+      reqCheckoutModalB.forEach((input) => {
         myArray.push(input.value)
       })
       console.log(myArray.every(isfilled))
