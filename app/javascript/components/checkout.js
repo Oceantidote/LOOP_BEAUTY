@@ -47,7 +47,7 @@ const initCheckout = () => {
   savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
     deliveryHolder.value = a.id;
     deliveryAddressShow.innerHTML = `
-                                      <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
+                                      <p class="s-medium-text muli boldest no-margin">${a.dataset.user}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.address_line1}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.city}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.country}</p>
@@ -60,7 +60,7 @@ const initCheckout = () => {
   savedBillingAddresses.forEach(a => a.addEventListener('click', () => {
     billingHolder.value = a.id;
     billingAddressShow.innerHTML = `
-                                      <p class="s-medium-text muli boldest tiny-margin-bottom">${a.dataset.user}</p>
+                                      <p class="s-medium-text muli boldest no-margin">${a.dataset.user}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.address_line1}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.city}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.country}</p>
