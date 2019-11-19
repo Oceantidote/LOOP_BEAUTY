@@ -3,6 +3,7 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
   config.action_controller.default_url_options = { host: 'http://localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
