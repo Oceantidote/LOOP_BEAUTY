@@ -5,6 +5,14 @@
     </div>
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Analytics</h2>
+      <%= simple_form_for :analytics, url: user_analytics_path ,method: :get, html: { onchange: 'this.submit()' } do |f| %>
+          <label for="range">Data for</label>
+          <%= f.input :range, 
+                      selected: @range_value || 'mtd', collection: [['Month', 'mtd'], ['Year', 'ytd']],
+                      label: false,
+                      include_blank: false
+          %>
+      <% end %>
       <hr>
       <div class="analytics-content analytics-boxes">
         <div class="container">
@@ -121,7 +129,7 @@
       <div class="container">
         <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
         <%= column_chart(
-            @orders_this_month.group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).count,
+            @orders_this_period.group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).count,
             defer: true,
             xtitle: 'Date',
             ytitle: 'Sales',

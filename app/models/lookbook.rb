@@ -43,7 +43,17 @@ class Lookbook < ApplicationRecord
   def record_current_visits
     MonthlyVisit.create(month: Date.today.beginning_of_month, visits: visits, tracked: self)
   end
-  
+
+  def visits_this_period(period)
+    visits - monthly_visits.where(created_at: period).order(:created_at).first.visits
+  end
+
+  def self.total_visits_this_period(lookbooks, period)
+    total_visits = lookbooks.sum(:visits)
+    total_visits_at_start_of_period = lookbooks.map { |l| l.monthly_visits.where(month: period).minimum(:visits) || 0 }.sum
+    total_visits - total_visits_at_start_of_period 
+  end
+
   private
 
   def gen_aff_code

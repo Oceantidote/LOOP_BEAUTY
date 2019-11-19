@@ -32,16 +32,22 @@ class UsersController < ApplicationController
   end
 
   def analytics
+    @range_value = params[:analytics][:range] if params[:analytics]
+    @range = @range_value == 'mtd' ? (Date.today.beginning_of_month.beginning_of_day..Date.today.beginning_of_day) : (Date.today.last_year.beginning_of_day..Date.today.beginning_of_day)
     @lookbooks = Lookbook.where(user: @user, status: 'approved')
     @tutorials = Tutorial.where(user: @user, status: 'approved')
-    @number_of_content_shared = @lookbooks.count + @tutorials.count
-    @total_visits = @lookbooks.sum(:visits) + @tutorials.sum(:visits)
-    @total_sales = @lookbooks.sum(&:sales) + @tutorials.sum(&:sales)
-    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
+    @lookbooks_in_range = @lookbooks.where(created_at: @range)
+    @tutorials_in_range = @tutorials.where(created_at: @range)
+    @orders = Order.where(affiliation_type: 'Lookbook', affiliation_id: @lookbooks.ids).or(Order.where(affiliation_type: 'Tutorial', affiliation_id: @tutorials.ids))
+    @orders_this_period = @orders.where(created_at: @range)
+    @number_of_content_shared = @lookbooks_in_range.count + @tutorials_in_range.count
+    @total_visits = Lookbook.total_visits_this_period(@lookbooks, @range) + Tutorial.total_visits_this_period(@tutorials, @range)
+    @total_sales = @orders_this_period.size
+    @top_content = (@lookbooks_in_range.order(:visits).last(3) + @tutorials_in_range.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
     @total_conversion_rate = @total_visits.zero? ? 0 : ((@total_sales / @total_visits.to_f) * 100).round(2)
     @top_brands_count = []
     @top_brands = []
-    @user.orders.each do |order|
+    @orders_this_period.each do |order|
       order.products.each do |product|
         @top_brands << product.brand.name
       end
@@ -50,10 +56,10 @@ class UsersController < ApplicationController
       @top_brands_count << [brand.name, @top_brands.count(brand.name)]
     end
     @top_brands_count = @top_brands_count.sort_by {|i| i[1]}.reverse
-    @top_lookbooks = @lookbooks.sort_by { |lb| -lb.orders.count }.first(3)
+    @top_lookbooks = @lookbooks_in_range.sort_by { |lb| -lb.orders.count }.first(3)
     @top_items_count = []
     @top_items = []
-    @user.orders.each do |order|
+    @orders_this_period.each do |order|
       order.products.each do |product|
         @top_items << product.category.name
       end
@@ -62,9 +68,7 @@ class UsersController < ApplicationController
       @top_items_count << [category.name, @top_items.count(category.name)]
     end
     @top_items_count = @top_items_count.sort_by {|i| i[1]}.reverse
-    @orders = Order.where(affiliation_type: 'Lookbook', affiliation_id: @lookbooks.ids).or(Order.where(affiliation_type: 'Tutorial', affiliation_id: @tutorials.ids))
-    @orders_this_month = @orders.where(created_at: Date.today.beginning_of_month..Date.today)
-    @commission_this_month = @orders_this_month.joins(:order_products).joins(:products).group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).sum(
+    @commission_this_month = @orders_this_period.joins(:order_products).joins(:products).group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).sum(
       "((((order_products.quantity * products.price_cents) / 12) * 10) * (#{@user.commission_rate || 0} / 100)) / 100"
     )
     @commission_this_month.each { |k,v| @commission_this_month[k] = v.to_f }

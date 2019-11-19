@@ -39,7 +39,11 @@ class ApplicationController < ActionController::Base
       slack_exception = "BUG REPORT -  " + exception.class.to_s + "    " + exception.message + "    " + params.inspect + exception.backtrace.join("\n")
       slack_post(slack_exception)
     end
-    render file: File.join(Rails.root, "public", "500.html"), layout: false, status: :error
+    if Rails.env.production?
+      render file: File.join(Rails.root, "public", "500.html"), layout: false, status: :error
+    else
+      raise
+    end
   end
 
   def user_not_authorized
