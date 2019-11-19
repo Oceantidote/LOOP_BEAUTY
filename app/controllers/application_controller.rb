@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   def not_seen_cookie_message
     @not_seen_cookie = true
   end
+
   def first_time_visit
     cookies.permanent[:not_first_visit] = true
     @first_visit = true
@@ -36,8 +37,7 @@ class ApplicationController < ActionController::Base
   def internal_server_error(exception)
     slack_exception = "BUG REPORT -  " + exception.class.to_s + "    " + exception.message + "    " + params.inspect
     slack_post(slack_exception)
-    flash[:notice] = "Oops, something went wrong there. Please try again."
-    redirect_to root_path
+    render file: File.join(Rails.root, "public", "500.html"), layout: false, status: :error
   end
 
   def user_not_authorized
