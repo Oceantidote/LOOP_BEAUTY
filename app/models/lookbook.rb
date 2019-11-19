@@ -56,12 +56,13 @@ class Lookbook < ApplicationRecord
   end
 
   def gen_aff_link(code)
-    long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
     if Rails.env.development?
+      long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
       long_url
     else
+      "https://infinite-journey-41892.herokuapp.com/lookbooks/#{self.slug}?aff_code=#{code}"
       # Keep until we go to the live domain and then switch over to commented section below once live
-      long_url.sub!("http://localhost:3000","https://infinite-journey-41892.herokuapp.com")
+      # long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
       # response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
       #   title: title,
       #   long_url: long_url
