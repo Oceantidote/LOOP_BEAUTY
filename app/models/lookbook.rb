@@ -52,14 +52,14 @@ class Lookbook < ApplicationRecord
 
   def gen_aff_link(code)
     long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
-    if Rails.env.development?
-      long_url
-    else
-      response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
-        title: title,
-        long_url: long_url
-      }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
-      JSON.parse(response.body)['link']
-    end
+    # if Rails.env.development?
+    #   long_url
+    # else
+    #   response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
+    #     title: title,
+    #     long_url: long_url
+    #   }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
+    #   JSON.parse(response.body)['link']
+    # end
   end
 end
