@@ -9,4 +9,10 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
+
+  def referral
+    @user = params[:user]
+    @discount = params[:discount]
+    mail(to: @user.email, subject: 'New Referral')
+  end
 end
