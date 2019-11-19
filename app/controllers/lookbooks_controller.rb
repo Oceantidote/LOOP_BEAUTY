@@ -48,7 +48,11 @@ class LookbooksController < ApplicationController
   def update
     if @lookbook.update(lookbook_params)
       flash[:notice] = 'Lookbook updated'
-      redirect_to lookbook_path(@lookbook)
+      if current_user == @lookbook.user
+        redirect_to user_uploads_path(current_user)
+      else
+        redirect_to lookbook_path(@lookbook)
+      end
     else
       flash[:error] = 'Please review problems'
       render :edit

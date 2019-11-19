@@ -70,7 +70,11 @@ class TutorialsController < ApplicationController
   def update
     if @tutorial.update(tutorial_params)
       flash[:notice] = 'Tutorial updated'
-      redirect_to tutorial_path(@tutorial)
+      if current_user == @tutorial.user
+        redirect_to user_uploads_path(current_user)
+      else
+        redirect_to tutorial_path(@tutorial)
+      end
     else
       flash[:error] = 'Please review problems'
       render :edit
