@@ -164,7 +164,7 @@ class User < ApplicationRecord
         }
       })
     rescue Gibbon::MailChimpError
-      flash[:notice] = 'There was a problem subscribing you to the mailing list'
+      return 'There was a problem subscribing you to the mailing list'
     end
   end
 
