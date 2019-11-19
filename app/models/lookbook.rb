@@ -41,7 +41,7 @@ class Lookbook < ApplicationRecord
   end
 
   def record_current_visits
-    MonthlyVisit.create(month: Date.today, visits: visits, tracked: self)
+    MonthlyVisit.create(month: Date.today.beginning_of_month, visits: visits, tracked: self)
   end
   
   private
