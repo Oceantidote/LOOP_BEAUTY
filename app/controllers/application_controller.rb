@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :set_navbar_variables
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
 
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from StandardError, with: :internal_server_error
 
   def not_seen_cookie_message
     @not_seen_cookie = true
@@ -30,6 +32,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def internal_server_error(exception)
+    slack_exception = "BUG REPORT -  " + exception.class.to_s + "    " + exception.message + "    " + params.inspect
+    slack_post(slack_exception)
+    flash[:notice] = "Oops, something went wrong there. Please try again."
+    redirect_to root_path
+  end
 
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
