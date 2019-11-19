@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   private
 
   def internal_server_error(exception)
-    slack_exception = "BUG REPORT -  " + exception.class.to_s + "    " + exception.message + "    " + params.inspect
+    slack_exception = "BUG REPORT -  " + exception.class.to_s + "    " + exception.message + "    " + params.inspect + exception.backtrace.join("\n")
     slack_post(slack_exception)
     render file: File.join(Rails.root, "public", "500.html"), layout: false, status: :error
   end
