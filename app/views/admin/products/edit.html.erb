@@ -146,7 +146,9 @@
               <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
               <div style="max-width: 288px;">
                 <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-photos', alt: "shade photo" %>
+                <div class="d-flex" id="newShadePhotos">
+                  <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-photos', alt: "shade photo" %>
+                </div>
               </div>
             </div>
             <%= f.submit 'CREATE SHADE', class: 'primary-button small-text personal-details-button' %>
