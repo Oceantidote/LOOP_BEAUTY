@@ -59,7 +59,7 @@ class Tutorial < ApplicationRecord
   def self.total_visits_this_period(tutorials, period)
     total_visits = tutorials.sum(:visits)
     total_visits_at_start_of_period = tutorials.map { |t| t.monthly_visits.where(month: period).minimum(:visits) || 0 }.sum
-    total_visits - total_visits_at_start_of_period 
+    total_visits - total_visits_at_start_of_period
   end
 
   private
@@ -74,8 +74,8 @@ class Tutorial < ApplicationRecord
   end
 
   def gen_aff_link(code)
-    long_url = Rails.application.routes.url_helpers.tutorial_url(self, aff_code: code)
     if Rails.env.development?
+      long_url = Rails.application.routes.url_helpers.tutorial_url(self, aff_code: code)
       long_url
     else
       "https://infinite-journey-41892.herokuapp.com/tutorials/#{self.slug}?aff_code=#{code}"
