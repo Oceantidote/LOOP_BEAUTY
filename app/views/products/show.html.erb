@@ -131,7 +131,7 @@
     <div class="row-carousel">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% if @product.insider_reviews.count == 0 %>
-        <p class="text-center medium-margin width-100 didot">There are no insider reviews yet</p>
+        <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no insider reviews yet</p>
       <% end %>
       <% @product.insider_reviews.first(3).each do |review| %>
         <div class="col-10 col-md-4 ir-cols">

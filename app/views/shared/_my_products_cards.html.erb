@@ -1,6 +1,9 @@
 <div class="row row-padding" style="width: 100%; margin: 0;">
   <% if products.count == 0 %>
-    <p class="medium-margin text-center boldest" style="width: 100%;">You haven't ordered any products yet.</p>
+    <!-- <p class="medium-margin text-center boldest grey s-medium-text muli" style="width: 100%;">You haven't ordered any products yet.</p> -->
+    <div class="start-shopping-holder">
+      <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+    </div>
   <% end %>
   <% products.each do |product| %>
     <div class="col-6 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
@@ -38,4 +41,10 @@
       <% end %>
     </div>
   <% end %>
+  <div class="col-12 d-flex justify-content-center">
+    <p class="boldest muli small-text grey"><%= page_entries_info @products %></p>
+  </div>
+  <div class="paginator-container">
+    <%= paginate @products %>
+  </div>
 </div>
