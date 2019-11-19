@@ -6,8 +6,7 @@ class Admin::LookbooksController < ApplicationController
   end
 
   def approve
-    path = lookbook_path(@lookbook)
-    @lookbook.approve!(path)
+    @lookbook.approve!
     redirect_to admin_lookbooks_path
   end
 

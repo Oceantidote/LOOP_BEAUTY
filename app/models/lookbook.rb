@@ -13,7 +13,7 @@ class Lookbook < ApplicationRecord
 
   def approve!
     code = gen_aff_code
-    update(status: 'approved', affiliate_code: code, affiliate_link: gen_aff_code(code), publish_date: DateTime.now)
+    update(status: 'approved', affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: DateTime.now)
   end
 
   def reject!
@@ -43,7 +43,7 @@ class Lookbook < ApplicationRecord
   def record_current_visits
     MonthlyVisit.create(month: Date.today.beginning_of_month, visits: visits, tracked: self)
   end
-  
+
   private
 
   def gen_aff_code
