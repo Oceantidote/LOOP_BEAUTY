@@ -50,7 +50,6 @@ class OrdersController < ApplicationController
         cancel_url: checkout_url,
         customer_email: current_user.email,
       })
-      raise
     else
       redirect_to order_order_success_path(@order)
     end
