@@ -18,6 +18,7 @@ import initFlatpickr from "../components/flatpickr";
 import initTablesorter from "../components/tablesorter";
 import initStarRating from '../plugins/init_star_rating';
 import initFadeOut from "../components/fade_out";
+import { initSweetalert } from '../plugins/init_sweetalert';
 // import autocompleteSearch from "../components/autocomplete"
 
 initProductShadeCards();
@@ -28,3 +29,32 @@ initTablesorter();
 initStarRating();
 initFadeOut();
 // autocompleteSearch();
+
+
+// ========================
+//  Sweet Alert for Deleting Addresses
+// ========================
+
+// Delivery Adresses
+initSweetalert('.sweet-alert-delivery-trigger', {
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+}, (value) => {
+  if (value) {
+    const link = document.querySelector(`#delete-delivery-link${window.deliveryId}`);
+    link.click();
+  }
+});
+
+// Billing Adresses
+initSweetalert('.sweet-alert-billing-trigger', {
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+}, (value) => {
+  if (value) {
+    const link = document.querySelector(`#delete-billing-link${window.billingId}`);
+    link.click();
+  }
+});
