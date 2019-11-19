@@ -1,8 +1,8 @@
 <div class="row row-padding" style="width: 100%; margin: 0;">
   <% if user_signed_in? && current_user.wishlist %>
     <% if @wishlist_products.count == 0 %>
-<!--       <p class="medium-margin text-center boldest">Your wishlist is empty</p>
- -->      <div class="start-shopping-holder">
+      <!-- <p class="medium-margin text-center boldest">Your wishlist is empty</p> -->
+      <div class="start-shopping-holder">
         <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
       </div>
     <% end %>

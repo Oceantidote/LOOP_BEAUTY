@@ -6,7 +6,7 @@ class Lookbook < ApplicationRecord
   friendly_id :title, use: :slugged
   belongs_to :user
   has_one_attached :photo
-  has_many :lookbook_products
+  has_many :lookbook_products, dependent: :destroy
   has_many :products, through: :lookbook_products
   validates :title, uniqueness: true
   before_save :gen_aff_code
@@ -53,7 +53,7 @@ class Lookbook < ApplicationRecord
     total_visits_at_start_of_period = lookbooks.map { |l| l.monthly_visits.where(month: period).minimum(:visits) || 0 }.sum
     total_visits - total_visits_at_start_of_period 
   end
-
+  
   private
 
   def gen_aff_code
@@ -66,16 +66,19 @@ class Lookbook < ApplicationRecord
   end
 
   def gen_aff_link(code)
-    long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
-    # if Rails.env.development?
-    #   long_url
-    # else
-    #   response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
-    #     title: title,
-    #     long_url: long_url
-    #   }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
-    #   JSON.parse(response.body)['link']
-    # end
+    if Rails.env.development?
+      long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
+      long_url
+    else
+      "https://infinite-journey-41892.herokuapp.com/lookbooks/#{self.slug}?aff_code=#{code}"
+      # Keep until we go to the live domain and then switch over to commented section below once live
+      # long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
+      # response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
+      #   title: title,
+      #   long_url: long_url
+      # }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
+      # JSON.parse(response.body)['link']
+    end
   end
 
 end

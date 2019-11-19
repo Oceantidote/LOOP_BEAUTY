@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
 
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  rescue_from StandardError, with: :internal_server_error
+
+  rescue_from StandardError, with: :internal_server_error if Rails.env.production?
 
   def not_seen_cookie_message
     @not_seen_cookie = true
@@ -38,11 +39,6 @@ class ApplicationController < ActionController::Base
     unless Rails.env.development?
       slack_exception = "BUG REPORT -  " + exception.class.to_s + "    " + exception.message + "    " + params.inspect + exception.backtrace.join("\n")
       slack_post(slack_exception)
-    end
-    if Rails.env.production?
-      render file: File.join(Rails.root, "public", "500.html"), layout: false, status: :error
-    else
-      raise
     end
   end
 

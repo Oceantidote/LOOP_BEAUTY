@@ -31,7 +31,7 @@
     <p class="no-margin small-text"><%= item.updated_at.strftime('%A, %d %b %Y %l:%M %p') %></p>
     <%= link_to tutorial_path(item), class: "video-card-link card-link" do %>
       <div class="homepage-video-card">
-        <div class="video-holder" style="background-image: url(<%= url_for(item.cover_photo) %>)">
+        <div class="video-holder" style="background-image: url(<%= item.cover_photo ? url_for(item.cover_photo) : ""; %>)">
           <%= image_tag 'play-button.png', class: "play-button", width: 80, alt: "play button" %>
         </div>
         <div class="homepage-video-card-text">

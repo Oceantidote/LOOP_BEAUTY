@@ -59,7 +59,7 @@ class LookbooksController < ApplicationController
   def destroy
     if @lookbook.destroy
       flash[:notice] = 'Lookbook deleted'
-      redirect_to root_path
+      redirect_to admin_lookbooks_path
     end
   end
 
