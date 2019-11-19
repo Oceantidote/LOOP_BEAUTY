@@ -1,6 +1,7 @@
 class Tutorial < ApplicationRecord
   include FriendlyId
   include Affiliation
+  include Tracked
 
   friendly_id :title, use: :slugged
   belongs_to :user
@@ -45,6 +46,10 @@ class Tutorial < ApplicationRecord
 
   def sales_total_cents
     orders.sum(&:total_price_cents)
+  end
+
+  def record_current_visits
+    MonthlyVisit.create(month: Date.today, visits: visits, tracked: self)
   end
 
   private
