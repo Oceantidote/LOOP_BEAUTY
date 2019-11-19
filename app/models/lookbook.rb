@@ -6,7 +6,7 @@ class Lookbook < ApplicationRecord
   friendly_id :title, use: :slugged
   belongs_to :user
   has_one_attached :photo
-  has_many :lookbook_products
+  has_many :lookbook_products, dependent: :destroy
   has_many :products, through: :lookbook_products
   validates :title, uniqueness: true
   before_save :gen_aff_code

@@ -7,9 +7,9 @@ class TutorialsController < ApplicationController
     @tutorials = policy_scope(Tutorial).where(user: @user).where(status: 'approved')
     @sort_method = params[:sort].present? ? params[:sort] : 'created_at,desc'
     @tutorials = @tutorials.filter_sort(*@sort_method.split(','))
-    if params[:link] == 'tutorial' 
+    if params[:link] == 'tutorial'
       @tutorials = @tutorials.where(category: 'tutorial')
-    elsif params[:link] == 'ask the expert' 
+    elsif params[:link] == 'ask the expert'
       @tutorials = @tutorials.where(category: 'ask the expert')
     end
   end
@@ -70,7 +70,7 @@ class TutorialsController < ApplicationController
   def update
     if @tutorial.update(tutorial_params)
       flash[:notice] = 'Tutorial updated'
-      redirect_to root_path
+      redirect_to tutorial_path(@tutorial)
     else
       flash[:error] = 'Please review problems'
       render :edit
@@ -80,7 +80,7 @@ class TutorialsController < ApplicationController
   def destroy
     if @tutorial.destroy
       flash[:notice] = 'tutorial deleted'
-      redirect_to root_path
+      redirect_to admin_tutorials_path
     end
   end
 

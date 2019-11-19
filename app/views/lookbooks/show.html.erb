@@ -97,6 +97,19 @@
   </div>
   <%= link_to 'See more looks', user_lookbooks_path(@lookbook.user), class: "mobile-tutorials-link" %>
 </div>
+<% if current_user&.admin %>
+  <div class="admin-options">
+    <hr>
+    <div class="container">
+      <h6 class="boldest">Admin options</h6>
+      <div class="d-flex">
+        <%= link_to 'EDIT', edit_lookbook_path(@lookbook), class: 'secondary-button' %>
+        <%= link_to 'DELETE', lookbook_path(@lookbook), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
+      </div>
+    </div>
+    <hr>
+  </div>
+<% end %>
 <% if current_user&.admin? && (@lookbook.status == "pending" || @lookbook.status == "rejected") %>
   <div class="container tutorial-show-admin-options">
     <h6 class="boldest margin-top" >Current Status: <%= @lookbook.status %></h6>

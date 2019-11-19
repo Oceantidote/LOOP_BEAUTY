@@ -84,10 +84,12 @@
       <h6 class="boldest">Admin options</h6>
       <div class="d-flex">
         <% if @tutorial.featured %>
-          <p class="primary-button" style="width: max-content; height: 40px; padding: 6px 25px">FEATURED</p>
+          <p class="primary-button" style="width: max-content; height: 40px; padding: 6px 25px; margin: 0;cursor: default;">FEATURED</p>
         <% else %>
           <%= link_to 'SET AS FEATURED', featured_admin_tutorial_path(@tutorial), method: :patch, class: 'secondary-button' %>
         <% end %>
+        <%= link_to 'EDIT', edit_tutorial_path(@tutorial), class: 'secondary-button' %>
+        <%= link_to 'DELETE', tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
       </div>
     </div>
     <hr>
