@@ -12,7 +12,7 @@ class AddressesController < ApplicationController
         @address.update(default_address: true)
       end
       respond_to do |format|
-        format.html { redirect_back fallback_location: user_account_details_path(current_user) }
+        format.html { params[:address][:request_location] == "account_details" ? (redirect_to user_account_details_path(current_user, tab: "account-content-two")) : (redirect_back fallback_location: user_account_details_path(current_user)) }
         format.js
       end
       if @address.use_as_billing && @address.delivery_address
