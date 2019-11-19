@@ -106,11 +106,16 @@
 
 .checkout-address {
   width: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 16px;
+  .dropdown-input {
+    min-width: auto !important;
+  }
   @include for-phone-only {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
+    padding: 10px;
   }
 }
 
@@ -121,9 +126,18 @@
   }
 }
 
+.delivery-address-container {
+  @include for-small-devices-up {
+    margin-right: 10px;
+  }
+}
+
 .billing-address-container {
   @include for-phone-only {
     margin-top: 20px;
+  }
+  @include for-small-devices-up {
+    margin-left: 10px;
   }
 }
 
@@ -424,4 +438,8 @@
     border: none;
     box-shadow: inset 0 0 0 2px #D2D2D2 !important;
   }
+}
+
+#deliveryAddressButtons, #billingAddressButtons {
+  margin-top: 15px;
 }
