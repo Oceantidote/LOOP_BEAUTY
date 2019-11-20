@@ -150,6 +150,7 @@ class UsersController < ApplicationController
     @showroom_products = @user.showroom.showroom_products
     @products = @user.showroom.products.page params[:page]
     @original = @products
+    @all = @original
     @demoable_products = Product.all - @products
     @products = @products.filter(params[:product].slice(:category, :brand)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
