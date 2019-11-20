@@ -3,9 +3,9 @@ task fake_analytics: :environment do
   puts 'Destroying old data'
   MonthlyVisit.destroy_all
   Order.destroy_all
-  
-  puts 'Finding User'  
-  user = User.find(1)
+
+  puts 'Finding User'
+  user = User.find_by_email('esther@estareonline.com')
   user.update(commission_rate: 5.0)
   user.addresses.destroy_all
   puts 'making addresses'
