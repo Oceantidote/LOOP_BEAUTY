@@ -29,6 +29,12 @@
   <%= link_to admin_insider_articles_path, class: "each-dash-link" do %>
     <%= image_tag "magazine.png", class: "dash-links-image", alt: "article icon" %>Insider Articles
   <% end %>
+  <%= link_to admin_sales_report_path, class: "each-dash-link" do %>
+    <%= image_tag "sales.png", class: "dash-links-image", alt: "article icon" %>Sales Report
+  <% end %>
+  <%= link_to admin_activity_report_path, class: "each-dash-link" do %>
+    <%= image_tag "activity.png", class: "dash-links-image", alt: "article icon" %>Activity Report
+  <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
     <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dash icon" %>Sign Out
   <% end %>

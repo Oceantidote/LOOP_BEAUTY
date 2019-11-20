@@ -1,6 +1,7 @@
 <div class="admin-wrapper minimum-height">
   <div class="admin-sales-report-container">
-    <h2 class="insider-info-title mlb-title text-center">Activity Report</h2>
+    <%= link_to "Dashboard", admin_portal_path, class: "secondary-button mt-3 ml-3"  %>
+    <h2 class="insider-info-title mlb-title-admin-dash text-center">Activity Report</h2>
     <hr>
     <div class="admin-form-container admin-products-new-container sales-report-container">
       <%= simple_form_for :filter, url: admin_activity_report_path, method: :get do |f| %>
