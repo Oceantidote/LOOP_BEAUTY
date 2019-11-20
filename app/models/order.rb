@@ -19,6 +19,22 @@ class Order < ApplicationRecord
     self.update(sku: "ORDERSKU-00#{self.id}")
   end
 
+  def unadjusted_price
+    Money.new unadjusted_price_cents
+  end
+
+  def unadjusted_price_cents
+    order_products.map(&:unadjusted_price_cents).sum
+  end
+
+  def money_off
+    Money.new money_off_cents
+  end
+
+  def money_off_cents
+    unadjusted_price_cents - total_price_cents
+  end
+
   def total_number_of_products
     order_products.map(&:quantity).sum
   end
