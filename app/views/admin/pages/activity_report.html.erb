@@ -45,7 +45,7 @@
                         <td><%= user.id %></td>
                         <td><%= user.full_name %></td>
                         <td><%= user.commission_rate %></td>
-                        <td><%= result.publish_date.strftime('%d/%m/%Y') %></td>
+                        <td><%= result.publish_date.present? ? result.publish_date.strftime('%d/%m/%Y') ? 'Not Published' %></td>
                         <td><%= result.title %></td>
                         <td><%= result.class == Lookbook ? 'Image' : 'Video' %></td>
                         <td><%= result.visits %></td>
