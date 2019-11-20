@@ -9,7 +9,7 @@ Rails.application.configure do
   config.action_mailer.postmark_settings       = { api_token: ENV['POSTMARK_API_TOKEN'] }
   config.action_mailer.perform_deliveries      = true
 
-  config.action_mailer.delivery_method = :ses
+  # config.action_mailer.delivery_method = :ses
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -74,14 +74,14 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.smtp_settings = {
-      user_name: ENV['AWS_SMTP_KEY_ID'],
-      password: ENV['AWS_SMTP_SECRET_ACCESS_KEY'],
-      address: 'email-smtp.eu-west-1.amazonaws.com',
-      port: 587,
-      authentication: 'login',
-      enable_starttls_auto: 'true'
-  }
+  # config.action_mailer.smtp_settings = {
+  #     user_name: ENV['AWS_SMTP_KEY_ID'],
+  #     password: ENV['AWS_SMTP_SECRET_ACCESS_KEY'],
+  #     address: 'email-smtp.eu-west-1.amazonaws.com',
+  #     port: 587,
+  #     authentication: 'login',
+  #     enable_starttls_auto: 'true'
+  # }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
