@@ -98,7 +98,7 @@ class OrdersController < ApplicationController
     to_submit = order_hash_builder
     to_submit[:order][:items] = items
     response = JSON.parse(RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {}).body)
-    response['stock_changes'].each { |k,v| Shade.find_by_sku(k)&.update(number_in_stock: v) }
+    # response['stock_changes'].each { |k,v| Shade.find_by_sku(k)&.update(number_in_stock: v) }
   end
 
   def order_hash_builder
