@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Order No: <%= @order.sku %></h2>
+      <h2 class="insider-info-title mlb-title text-center">Order No: <%= "%05d" % @order.id %></h2>
       <hr>
       <div class="my-orders-container">
         <p class="medium-text boldest muli my-orders-title">Order details</p>
@@ -39,7 +39,7 @@
           <div class="order-show-info-right">
             <div class="order-success-order-number">
               <p class="boldest small-text no-margin muli">Order no:</p>
-              <p class="small-text grey boldest muli"><%= @order.sku %></p>
+              <p class="small-text grey boldest muli"><%= "%05d" % @order.id %></p>
             </div>
             <hr>
             <p class="boldest small-text no-margin muli">Date: <span class="grey"><%= @order.created_at.strftime('%e %B %Y') %></span></p>
