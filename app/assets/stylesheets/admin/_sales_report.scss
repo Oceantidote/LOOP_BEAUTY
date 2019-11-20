@@ -11,6 +11,11 @@
   }
 }
 
+.tablesorter-header {
+  position: sticky;
+  top: 60px;
+}
+
 .tablesorter-default .header, .tablesorter-default .tablesorter-header {
   background: #000 !important;
   color: #FFF;
