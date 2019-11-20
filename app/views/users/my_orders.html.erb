@@ -22,7 +22,7 @@
                     <div class="order-details-text">
                       <p class=" muli boldest"><%= order.products.first.title %></p>
                       <p class=" muli small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                      <p class="boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, <%= order.sku %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
+                      <p class="boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
                       <%#= link_to 'Track this order', '#', class: "small-text"  %>
                     </div>
                   </div>
