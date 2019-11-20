@@ -145,9 +145,7 @@ class Order < ApplicationRecord
   end
 
   def check_for_referral
-    puts 'here'
     return unless discount_code.present? && processed?
-    puts 'here'
     user = User.find_by_referral_code(discount_code.code)
     return unless user.present?
     new_discount = DiscountCode.create(discount: 15)
