@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def analytics
     @range_value = params[:analytics][:range] if params[:analytics]
-    @range = @range_value == 'mtd' ? (Date.today.beginning_of_month.beginning_of_day..Date.today.beginning_of_day) : (Date.today.last_year.beginning_of_day..Date.today.beginning_of_day)
+    @range = @range_value == 'ytd' ? (Date.today.last_year.beginning_of_day..Date.today.beginning_of_day) : (Date.today.beginning_of_month.beginning_of_day..Date.today.beginning_of_day)
     @lookbooks = Lookbook.where(user: @user, status: 'approved')
     @tutorials = Tutorial.where(user: @user, status: 'approved')
     @lookbooks_in_range = @lookbooks.where(created_at: @range)
