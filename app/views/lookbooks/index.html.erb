@@ -34,7 +34,7 @@
 </div>
 <div class="lookbooks-container">
   <div class="row" style="width: 100%; margin: 0;">
-    <% @lookbooks.each do |lookbook| %>
+    <% @lookbooks.reverse.each do |lookbook| %>
       <div class="col-xs-12 col-sm-6 col-md-4" style="padding: 10px;">
         <%= link_to lookbook_path(lookbook, user_id: @user.id) do %>
           <div class="lookbook-index-card">
