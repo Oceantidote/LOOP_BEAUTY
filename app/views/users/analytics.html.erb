@@ -27,27 +27,27 @@
       <div class="analytics-content analytics-boxes">
         <div class="container">
           <div class="row">
-            <div class="col-12 col-sm-6">
-              <div class="analytics-content-section">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="analytics-content-section analytics-content-flex">
                 <h6 class="text-center muli boldest">Pieces of content shared</h6>
                 <p class="large-text m-3"><%= @number_of_content_shared %></p>
               </div>
             </div>
-            <div class="col-12 col-sm-6">
-              <div class="analytics-content-section">
-                <h6 class="text-center muli boldest">Total number of visitors brought to site</h6>
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="analytics-content-section analytics-content-flex">
+                <h6 class="text-center muli boldest">Visitors brought to the site</h6>
                 <p class="large-text m-3"><%= @total_visits %></p>
               </div>
             </div>
-            <div class="col-12 col-sm-6">
-              <div class="analytics-content-section">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="analytics-content-section analytics-content-flex">
                 <h6 class="text-center muli boldest">Total number of sales</h6>
                 <p class="large-text m-3"><%= @total_sales %></p>
               </div>
             </div>
-            <div class="col-12 col-sm-6">
-              <div class="analytics-content-section">
-                <h6 class="text-center muli boldest">Conversion rate</h6>
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="analytics-content-section analytics-content-flex">
+                <h6 class="text-center muli boldest conditional-bottom-margin">Conversion rate</h6>
                 <p class="large-text m-3"><%= @total_conversion_rate %>%</p>
               </div>
             </div>
@@ -57,7 +57,7 @@
       <hr>
       <div class="analytics-content">
         <div class="container">
-          <h5 class="muli boldest mb-4">Content which generates most visits</h5>
+          <h5 class="muli boldest mb-4">Content which generates most visits this <%= @range_value == "mtd" ? "month" : "year" %></h5>
           <div class="row">
             <% @top_content.each_with_index do |content, index| %>
               <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
@@ -80,7 +80,7 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
               <div class="analytics-top-items">
-                <h6 class="boldest muli">Top Items</h6>
+                <h6 class="boldest muli">Top Items this <%= @range_value == "mtd" ? "month" : "year" %></h6>
                 <% @top_items_count.each_with_index do |top_item, index| %>
                   <% if top_item[1] > 0 %>
                     <div class="analytics-list-item">
@@ -97,7 +97,7 @@
             </div>
             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
               <div class="analytics-top-items">
-                <h6 class="boldest muli">Top Brands</h6>
+                <h6 class="boldest muli">Top Brands this <%= @range_value == "mtd" ? "month" : "year" %></h6>
                 <% @top_brands_count.each_with_index do |top_brand, index| %>
                   <% if top_brand[1] > 0 %>
                     <div class="analytics-list-item">
@@ -118,7 +118,7 @@
       <hr>
       <div class="analytics-content-driven-sales">
         <div class="container">
-          <h5 class="muli boldest mb-4">Top content driving your sales</h5>
+          <h5 class="muli boldest mb-4">Top content driving your sales this <%= @range_value == "mtd" ? "month" : "year" %></h5>
           <div class="row">
             <% @top_lookbooks.each_with_index do |lb, index| %>
               <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
