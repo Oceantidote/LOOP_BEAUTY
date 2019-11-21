@@ -32,6 +32,21 @@
   @include absCenterColumn;
 }
 
+.analytics-content-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h6 {
+    font-size: 0.9rem;
+  }
+}
+
+.conditional-bottom-margin {
+  @include for-medium-devices-up {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .analytics-top-items {
   margin: 10px 0;
   padding: 30px 10px;

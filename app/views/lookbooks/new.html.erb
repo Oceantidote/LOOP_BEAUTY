@@ -6,15 +6,15 @@
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Share Lookbook</h2>
       <hr>
-      <div class="dash-upload-content-container">
+      <div class="dash-upload-content-container-wide">
         <%= simple_form_for @lookbook do |f| %>
-          <div class="personal-details-input">
+          <div class="personal-details-input-wide">
             <p class="boldest muli s-medium-text text-right no-margin">Title</p>
             <%= f.input :title, label: false, input_html: { class: "contact-form-input" } %>
           </div>
-          <div class="personal-details-input align-items-start">
+          <div class="personal-details-input-wide align-items-start">
             <p class="boldest muli s-medium-text text-right photo-input-text">Photo</p>
-            <div>
+            <div style="width: 150px">
               <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @lookbook.photo.attached? %>
                 <%= image_tag url_for(@lookbook.photo), height: 100, class: "photo-preview", 'data-name': 'lookbook-photo', alt: "Lookbook photo preview" %>
@@ -23,11 +23,11 @@
               <% end %>
             </div>
           </div>
-          <div class="personal-details-input align-items-start">
+          <div class="personal-details-input-wide align-items-start">
             <p class="boldest muli s-medium-text text-right no-margin">Description</p>
             <%= f.input :description, label: false %>
           </div>
-          <div class="personal-details-input align-items-start">
+          <div class="personal-details-input-wide align-items-start">
             <p class="boldest muli s-medium-text text-right no-margin">Products</p>
             <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll" } %>
           </div>
