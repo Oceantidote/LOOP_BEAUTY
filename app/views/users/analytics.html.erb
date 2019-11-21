@@ -24,6 +24,54 @@
       </div>
       <% end %>
       <hr>
+      <div class="container">
+        <% if params[:analytics].present? && params[:analytics][:range] == 'ytd'  %>
+          <h5 class="muli boldest mb-4">Number of Sales by Month for the last 12 Months</h5>
+          <%= column_chart(
+              @orders_graph_data,
+              defer: true,
+              xtitle: 'Month',
+              ytitle: 'Sales',
+              colors: ['#000']
+            )
+          %>
+          <h5 class="muli boldest mb-4">Commission Earned by Day by Month for the last 12 Months</h5>
+          <%= column_chart(
+              @commission_this_month,
+              defer: true,
+              round: 2,
+              zeros: true,
+              prefix: '£',
+              xtitle: 'Month',
+              ytitle: 'Commission',
+              colors: ['#000']
+            )
+          %> 
+        <% else %>
+          <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
+          <%= column_chart(
+              @orders_graph_data,
+              defer: true,
+              xtitle: 'Date',
+              ytitle: 'Sales',
+              colors: ['#000']
+            )
+          %>
+          <h5 class="muli boldest mb-4">Commission Earned by Day in <%= Date.today.strftime('%B') %></h5>
+          <%= column_chart(
+              @commission_this_month,
+              defer: true,
+              round: 2,
+              zeros: true,
+              prefix: '£',
+              xtitle: 'Date',
+              ytitle: 'Commission',
+              colors: ['#000']
+            )
+          %>
+        <% end %>
+      </div>
+      <hr>
       <div class="analytics-content analytics-boxes">
         <div class="container">
           <div class="row">
@@ -134,30 +182,6 @@
             <% end %>
           </div>
         </div>
-      </div>
-      <hr>
-      <div class="container">
-        <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
-        <%= column_chart(
-            @orders_this_period.group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).count,
-            defer: true,
-            xtitle: 'Date',
-            ytitle: 'Sales',
-            colors: ['#000']
-          )
-        %>
-        <h5 class="muli boldest mb-4">Commission Earned by Day in <%= Date.today.strftime('%B') %></h5>
-        <%= column_chart(
-            @commission_this_month,
-            defer: true,
-            round: 2,
-            zeros: true,
-            prefix: '£',
-            xtitle: 'Date',
-            ytitle: 'Commission',
-            colors: ['#000']
-          )
-        %>
       </div>
     </div>
   </div>

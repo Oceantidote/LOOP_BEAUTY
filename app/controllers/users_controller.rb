@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def analytics
-    @range_value = params[:analytics][:range] if params[:analytics]
+    @range_value = params.dig(:analytics, :range)
     @range = @range_value == 'ytd' ? (Date.today.last_year.beginning_of_day..Date.today.beginning_of_day) : (Date.today.beginning_of_month.beginning_of_day..Date.today.beginning_of_day)
     @lookbooks = Lookbook.where(user: @user, status: 'approved')
     @tutorials = Tutorial.where(user: @user, status: 'approved')
@@ -68,9 +68,19 @@ class UsersController < ApplicationController
       @top_items_count << [category.name, @top_items.count(category.name)]
     end
     @top_items_count = @top_items_count.sort_by {|i| i[1]}.reverse
-    @commission_this_month = @orders_this_period.joins(:order_products).joins(:products).group_by_day(:created_at, format: '%-d/%-m', range: Date.today.beginning_of_month..Date.today.end_of_month).sum(
-      "((((order_products.quantity * products.price_cents) / 12) * 10) * (#{@user.commission_rate || 0} / 100)) / 100"
-    )
+    if params.dig(:analytics, :range) == 'ytd'
+      @commission_this_month = @orders_this_period.joins(:order_products).joins(:products).group_by_month(:created_at, format: '%b', range: @range).sum(
+        "((((order_products.quantity * products.price_cents) / 12) * 10) * (#{@user.commission_rate || 0} / 100)) / 100"
+      )
+      @commission_this_month[Date.today.strftime('%b')] = @commission_this_month.delete(Date.today.strftime('%b'))
+      @orders_graph_data = @orders_this_period.group_by_month(:created_at, format: '%b', range: @range).count
+      @orders_graph_data[Date.today.strftime('%b')] = @orders_graph_data.delete(Date.today.strftime('%b'))
+    else
+      @commission_this_month = @orders_this_period.joins(:order_products).joins(:products).group_by_day(:created_at, format: '%-d/%-m', range: @range).sum(
+        "((((order_products.quantity * products.price_cents) / 12) * 10) * (#{@user.commission_rate || 0} / 100)) / 100"
+      )
+      @orders_graph_data = @orders_this_period.group_by_day(:created_at, format: '%-d/%-m', range: @range).count
+    end
     @commission_this_month.each { |k,v| @commission_this_month[k] = v.to_f }
   end
 
