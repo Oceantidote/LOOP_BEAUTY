@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'hello@loopbeauty.co.uk'
+  default from: 'hello@myloopbeauty.com'
   layout 'mailer'
 end
