@@ -7,6 +7,7 @@ import 'chart.js'
 import 'flatpickr/dist/flatpickr.min.css';
 import 'flatpickr/dist/themes/dark.css';
 import 'tablesorter/dist/css/theme.default.min.css';
+import 'select2/dist/css/select2.min.css'
 
 import "./components/cookie_box";
 import "./components/autocomplete";
@@ -19,6 +20,7 @@ import initTablesorter from "../components/tablesorter";
 import initStarRating from '../plugins/init_star_rating';
 import initFadeOut from "../components/fade_out";
 import { initSweetalert } from '../plugins/init_sweetalert';
+import initSelect2 from '../plugins/init_select2';
 // import autocompleteSearch from "../components/autocomplete"
 
 initProductShadeCards();
@@ -28,6 +30,7 @@ initFlatpickr();
 initTablesorter();
 initStarRating();
 initFadeOut();
+initSelect2()
 // autocompleteSearch();
 
 
