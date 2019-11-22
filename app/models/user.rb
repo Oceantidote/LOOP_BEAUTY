@@ -69,59 +69,61 @@ class User < ApplicationRecord
   # WISHLIST TEST
   before_save :set_referral_code, :check_newsletter
   after_save :create_wishlist
+  after_create :send_welcome
 
   def admin?
     admin
   end
-
+  
   def influencer?
     influencer
   end
-
+  
   def age
     now = Date.today
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
-
+  
   def sales
     lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum
   end
-
+  
   def full_name
     "#{first_name} #{last_name}"
   end
-
+  
   def delivery_addresses
     addresses.where(delivery_address: true, deleted: false).order(created_at: :asc)
   end
-
+  
   def billing_addresses
     addresses.where(delivery_address: false, deleted: false).order(created_at: :asc)
   end
-
+  
   def remaining_credit
     Money.new remaining_credit_cents
   end
-
+  
   def remaining_credit_cents
     return 0 unless influencer?
     orders_with_credit_total = Order.where(created_at: Time.now.beginning_of_month..Time.now).map(&:credit_spent_cents).sum
     10000 - orders_with_credit_total
   end
+  
   private
-
+  
   def password_complexity
     if password.present? and not password.match(/\S*([A-Z]+\S*(\d|[^\w\s])+|(\d|[^\w\s])+\S*[A-Z]+)\S*/)
       errors.add :password, 'must contain one capital letter and one non-letter character'
     end
   end
-
+  
   def terms
     if accepts_terms == false
       errors.add :accepts_terms, 'You must accept the Terms & Conditions'
     end
   end
-
+  
   def set_referral_code
     if referral_code.nil?
       code = "#{first_name.downcase}#{[*0..9].sample(4).join('')}"
@@ -133,7 +135,7 @@ class User < ApplicationRecord
       end
     end
   end
-
+  
   def check_newsletter
     return unless valid?
     list_id = ENV['MAILCHIMP_LIST_ID']
@@ -150,7 +152,7 @@ class User < ApplicationRecord
       newsletter_subscribe(gibbon, list_id) if e.body[:status] == 404 && newsletter
     end
   end
-
+  
   def newsletter_subscribe(client, id)
     begin
       client.lists(id).members.create({
@@ -167,14 +169,14 @@ class User < ApplicationRecord
       return 'There was a problem subscribing you to the mailing list'
     end
   end
-
+    
   def create_wishlist
     if self.influencer
       Showroom.create(user: self)
     end
     Wishlist.create(user: self)
   end
-
+  
   def newsletter_unsubscribe(client, id)
     begin
       client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "unsubscribed"})
@@ -182,7 +184,7 @@ class User < ApplicationRecord
       flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
-
+  
   def newsletter_resubscribe(client, id)
     begin
       client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "subscribed"})
@@ -190,6 +192,10 @@ class User < ApplicationRecord
       flash[:notice] = 'There was a problem subscribing you to the mailing list'
     end
   end
-
-
+  
+  def send_welcome
+    if Rails.env.production?
+      UserMailer.with(user: self).welcome.deliver_now
+    end
+  end
 end
