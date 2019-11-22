@@ -11,8 +11,10 @@
       <h2 class="insider-info-title mlb-title text-center">My Orders</h2>
       <hr>
       <div class="my-orders-container">
-        <p class="muli">Displaying <span class="boldest"> <%= @orders.count %></span> orders</p>
         <div class="row" style="width: 100%;">
+          <div class="col-12 d-flex justify-content-center">
+            <p class="boldest muli small-text grey"><%= page_entries_info @orders %></p>
+          </div>
           <% @orders.each do |order| %>
             <div class="col-12">
               <div class="each-order-card">
@@ -39,8 +41,12 @@
               </div>
             </div>
           <% end %>
+          <div class="col-12 d-flex justify-content-center mt-3">
+            <%= paginate @orders %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
