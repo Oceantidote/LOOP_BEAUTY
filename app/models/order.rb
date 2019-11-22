@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  paginates_per 12
   belongs_to :user
   belongs_to :discount_code, optional: true
   belongs_to :affiliation, polymorphic: true, optional: true

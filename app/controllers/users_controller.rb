@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def my_orders
-    @orders = Order.where(user: @user).order(created_at: :DESC)
+    @orders = Order.where(user: @user).order(created_at: :DESC).page params[:page]
   end
 
   def my_products
