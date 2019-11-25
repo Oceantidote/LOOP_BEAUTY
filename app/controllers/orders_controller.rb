@@ -78,6 +78,7 @@ class OrdersController < ApplicationController
     end
     @user = @order.user
     authorize @order
+    @order.new_order
   end
 
   private

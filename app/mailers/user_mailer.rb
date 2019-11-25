@@ -24,8 +24,12 @@ class UserMailer < ApplicationMailer
 
   def order_confirmation
     @order = params[:order]
+    # @order_products = params[:order].order_products
     @user = params[:user]
-    mail(to: @user.email, subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
+    puts 'HELLOOOOOOOOOOOOOO'
+    puts @order
+    puts @order.order_products.count
+    mail(to: @user.email, subject: "Order confirmation" )
   end
 
   def new_content
