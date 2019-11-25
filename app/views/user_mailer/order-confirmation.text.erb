@@ -1,0 +1,12 @@
+Hi <%= @user.first_name.capitalize %>
+Thank you for shopping with us at LoopBeauty
+Delivery option:
+<%= @order.delivery_type.capitalize %>
+Delivery address:
+<%= @order.user.first_name %> <%= @order.user.last_name %>
+<%= @order.delivery_address.address_line1 %>
+<%= @order.delivery_address.city %>
+<%= @order.delivery_address.postcode %>
+Subtotal: <%= humanized_money_with_symbol @order.subtotal %>
+Delivery: <%= @order.delivery_cost %>
+Total: <%= humanized_money_with_symbol @order.total_with_delivery %>
