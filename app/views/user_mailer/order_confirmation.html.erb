@@ -102,7 +102,7 @@
     margin-bottom: 10px;
   }
   .no-bottom-margin {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
 </style>
 <div class="email-wrapper">
@@ -116,7 +116,7 @@
       <div style="margin: 50px 0;">
         <div>
           <h2 class="insider-info-title mlb-title text-center">Hi <%= @user.first_name.capitalize %></h2>
-          <p class="boldest" style="width: 50%;">Thank you for shopping with us at LoopBeauty</p>
+          <p  style="width: 100%;">Thank you for shopping with us at LoopBeauty</p>
           <hr>
           <div class="my-orders-container">
             <p class="boldest" style="width: 100%;">Order details</p>
