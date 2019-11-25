@@ -14,7 +14,12 @@ class Order < ApplicationRecord
   monetize :credit_spent_cents
   monetize :delivery_cost_cents
   after_create :set_sku
+  after_create :new_order
   after_save :check_for_referral
+
+  def new_order
+    UserMailer.with(content: self, user: self.user).order_confirmation.deliver_now
+  end
 
   def set_sku
     self.update(sku: "ORDERSKU-00#{self.id}")

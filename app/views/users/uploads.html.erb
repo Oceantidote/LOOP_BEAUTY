@@ -20,7 +20,7 @@
       <div class="account-details-content">
         <div class="uploads-content-one account-content-show">
           <% if @pending.count == 0 %>
-            <p class="large-margin text-center boldest muli">You have no pending uploads</p>
+            <p class="large-margin text-center boldest muli grey">You have no pending uploads</p>
           <% else %>
             <div class="row row-style">
               <% @pending.each do |item| %>
@@ -31,7 +31,7 @@
         </div>
         <div class="uploads-content-two">
           <% if @rejected.count == 0 %>
-            <p class="large-margin text-center boldest">You have no rejected uploads</p>
+            <p class="large-margin text-center boldest muli grey">You have no rejected uploads</p>
           <% else %>
             <div class="row row-style">
               <% @rejected.each do |item| %>
@@ -42,7 +42,7 @@
         </div>
         <div class="uploads-content-three">
           <% if @approved.count == 0 %>
-            <p class="large-margin text-center boldest">You have no approved uploads</p>
+            <p class="large-margin text-center boldest muli grey">You have no approved uploads</p>
           <% else %>
             <div class="row row-style">
               <% @approved.each do |item| %>
