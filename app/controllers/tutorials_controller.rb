@@ -68,6 +68,9 @@ class TutorialsController < ApplicationController
   end
 
   def update
+    if @tutorial.status == 'rejected'
+      @tutorial.submit_for_approval!
+    end
     if @tutorial.update(tutorial_params)
       flash[:notice] = 'Tutorial updated'
       if current_user == @tutorial.user

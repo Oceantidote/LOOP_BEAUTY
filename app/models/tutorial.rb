@@ -10,19 +10,28 @@ class Tutorial < ApplicationRecord
   has_many :tutorial_products, dependent: :destroy
   has_many :products, through: :tutorial_products
   validates :title, uniqueness: true
+  after_create :send_for_approval
   after_save :update_featured
 
   def approve!
     code = gen_aff_code
     update(status: 'approved', rejection_message: nil, affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: DateTime.now)
+    UserMailer.with(content: self, user: self.user).content_approval.deliver_now
   end
 
   def reject!
     update(status: 'rejected')
+    UserMailer.with(content: self, user: self.user).content_approval.deliver_now
   end
 
   def submit_for_approval!
+    self.status == 'rejected' ? rejected = true : rejected = false
     update(status: 'pending')
+    UserMailer.with(content: self, influencer: self.user, rejected: rejected).new_content.deliver_now
+  end
+
+  def send_for_approval
+    UserMailer.with(content: self, influencer: self.user).new_content.deliver_now
   end
 
   def sales

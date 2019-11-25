@@ -127,7 +127,7 @@
       <hr>
         <h6 class="boldest margin-top" >Current Status: <span class="didot lighter"><%= @lookbook.status.capitalize %></span></h6>
         <% if @lookbook.rejection_message %>
-          <p class="boldest">Reason for rejection: <span class="didot lighter"><%= @lookbook.rejection_message %></span></p>
+          <p class="boldest muli">Reason for rejection: <span class="didot lighter"><%= @lookbook.rejection_message %></span></p>
         <% end %>
         <%= link_to "RESUBMIT FOR APPROVAL", edit_lookbook_path(@lookbook), class: 'secondary-button small-margin-right' %>
       <hr>

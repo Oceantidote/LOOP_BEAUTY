@@ -46,6 +46,9 @@ class LookbooksController < ApplicationController
   end
 
   def update
+    if @lookbook.status == 'rejected'
+      @lookbook.submit_for_approval!
+    end
     if @lookbook.update(lookbook_params)
       flash[:notice] = 'Lookbook updated'
       if current_user == @lookbook.user

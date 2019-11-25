@@ -10,18 +10,27 @@ class Lookbook < ApplicationRecord
   has_many :products, through: :lookbook_products
   validates :title, uniqueness: true
   before_save :gen_aff_code
+  after_create :send_for_approval
 
   def approve!
     code = gen_aff_code
     update(status: 'approved', affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: DateTime.now)
+    UserMailer.with(content: self, user: self.user).content_approval.deliver_now
   end
 
   def reject!
     update(status: 'rejected')
+    UserMailer.with(content: self, user: self.user).content_approval.deliver_now
   end
 
   def submit_for_approval!
+    self.status == 'rejected' ? rejected = true : rejected = false
     update(status: 'pending')
+    UserMailer.with(content: self, influencer: self.user, rejected: rejected).new_content.deliver_now
+  end
+
+  def send_for_approval
+    UserMailer.with(content: self, influencer: self.user).new_content.deliver_now
   end
 
   def sales
@@ -51,9 +60,9 @@ class Lookbook < ApplicationRecord
   def self.total_visits_this_period(lookbooks, period)
     total_visits = lookbooks.sum(:visits)
     total_visits_at_start_of_period = lookbooks.map { |l| l.monthly_visits.where(month: period).minimum(:visits) || 0 }.sum
-    total_visits - total_visits_at_start_of_period 
+    total_visits - total_visits_at_start_of_period
   end
-  
+
   private
 
   def gen_aff_code
