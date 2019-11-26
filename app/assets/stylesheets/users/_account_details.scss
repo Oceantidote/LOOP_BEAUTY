@@ -148,7 +148,7 @@
     }
   }
   input, textarea, select {
-    width: 82% !important;
+    width: 100% !important;
     margin-left: 4px;
     @include for-phone-only {
       width: 100% !important;
@@ -161,9 +161,9 @@
       width: 100%;
     }
   }
-  .form-group {
-    width: 82%;
-  }
+  // .form-group {
+  //   width: 82%;
+  // }
   .lookbook_product_ids {
     margin-left: 4px !important;
   }
@@ -173,16 +173,32 @@
 }
 
 .new_lookbook {
-  width: 100%;
+  width: 474px;
+  @include for-phone-only {
+    width: 100%;
+    padding-right: 9px;
+  }
 }
 .edit_lookbook {
-  width: 100%;
+  width: 474px;
+  @include for-phone-only {
+    width: 100%;
+    padding-right: 9px;
+  }
 }
 .new_tutorial {
-  width: 100%;
+  width: 474px;
+  @include for-phone-only {
+    width: 100%;
+    padding-right: 9px;
+  }
 }
 .edit_tutorial {
-  width: 100%;
+  width: 474px;
+  @include for-phone-only {
+    width: 100%;
+    padding-right: 9px;
+  }
 }
 
 .customer-review-input {

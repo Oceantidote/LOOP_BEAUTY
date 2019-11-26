@@ -14,7 +14,7 @@
           </div>
           <div class="personal-details-input-wide align-items-start">
             <p class="boldest muli s-medium-text text-right photo-input-text">Photo</p>
-            <div style="width: 150px">
+            <div class="dash-upload-photo">
               <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @lookbook.photo.attached? %>
                 <%= image_tag url_for(@lookbook.photo), height: 100, class: "photo-preview", 'data-name': 'lookbook-photo', alt: "Lookbook photo preview" %>
@@ -29,7 +29,7 @@
           </div>
           <div class="personal-details-input-wide align-items-start">
             <p class="boldest muli s-medium-text text-right no-margin">Products</p>
-            <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll", class: "contact-form-input form-control" } %>
+            <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll", class: "contact-form-input" } %>
           </div>
           <%= f.submit 'SHARE LOOKBOOK', class: 'primary-button personal-details-button small-text' %>
         <% end %>
