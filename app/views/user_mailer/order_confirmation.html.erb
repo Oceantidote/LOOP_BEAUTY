@@ -163,14 +163,17 @@
               </li>
             </ul>
             <div class="email-order-price">
-              <p class="boldest small-text no-margin muli">Subtotal: <span class="grey"><%= humanized_money_with_symbol @order.subtotal %></span></p>
-              <p class="boldest small-text no-margin muli">Delivery: <span class="grey"><%= @order.delivery_cost %></span></p>
+              <p class="boldest small-text no-margin muli">Subtotal: <span class="grey"><%= humanized_money_with_symbol @order.unadjusted_price %></span></p>
+              <% if @order.discount_code %>
+                <p class="boldest small-text no-margin muli">Discount: <span class="grey">-<%= humanized_money_with_symbol @order.money_off %></span></p>
+              <% end %>
+              <p class="boldest small-text no-margin muli">Delivery: <span class="grey"><%= humanized_money_with_symbol @order.delivery_cost %></span></p>
               <% if @order.credit_spent_cents > 0 %>
                 <p class="boldest small-text no-margin muli">Total credits spent: <span class="grey"><%= humanized_money_with_symbol @order.credit_spent %></span></p>
                 <p class="boldest small-text no-margin muli">Remaining credits: <span class="grey"><%= humanized_money_with_symbol @order.user.remaining_credit %></span></p>
               <% end %>
               <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.2); margin: 8px 0"></div>
-              <p class="boldest small-text no-margin muli">Total: <span class="grey"><%= humanized_money_with_symbol @order.total_with_delivery %></span></p>
+              <p class="boldest s-medium-text no-margin muli">Total: <span class="grey"><%= humanized_money_with_symbol @order.total_with_delivery %></span></p>
             </div>
           </div>
         </div>
