@@ -29,7 +29,9 @@ displayPreview = (input) => {
             preview.src = ''
           }
           input.insertAdjacentHTML('afterend', `<div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin didot">${input.files[0].name}</p></div>`)
-          preview.classList.add('d-none')
+          if (preview) {
+            preview.classList.add('d-none')
+          }
         }
       }
       reader.readAsDataURL(file)

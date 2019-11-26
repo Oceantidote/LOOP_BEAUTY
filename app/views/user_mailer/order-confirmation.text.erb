@@ -7,6 +7,5 @@ Delivery address:
 <%= @order.delivery_address.address_line1 %>
 <%= @order.delivery_address.city %>
 <%= @order.delivery_address.postcode %>
-Subtotal: <%= humanized_money_with_symbol @order.subtotal %>
 Delivery: <%= @order.delivery_cost %>
 Total: <%= humanized_money_with_symbol @order.total_with_delivery %>

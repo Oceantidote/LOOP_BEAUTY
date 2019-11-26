@@ -15,28 +15,30 @@
           <div class="col-12 d-flex justify-content-center">
             <p class="boldest muli small-text grey"><%= page_entries_info @orders %></p>
           </div>
-          <% @orders.each do |order| %>
+          <% @orders.each_with_index do |order, index| %>
             <div class="col-12">
               <div class="each-order-card">
-                <div class="each-order-container">
-                  <div class="my-order-details">
-                    <%= image_tag url_for(order.products.first.shades.first.card_photo), class: "order-image", alt: "product shade photo" %>
-                    <div class="order-details-text">
-                      <p class=" muli boldest"><%= order.products.first.title %></p>
-                      <p class=" muli small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                      <p class="boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
-                      <%#= link_to 'Track this order', '#', class: "small-text"  %>
+                <% unless index == 0 %>
+                  <hr>
+                <% end %>
+                <%= link_to order_path(order), class: "no-decoration my-orders-cards" do %>
+                  <div class="each-order-container">
+                    <div class="my-order-details">
+                      <%= image_tag url_for(order.products.first.shades.first.card_photo), class: "order-image", alt: "product shade photo" %>
+                      <div class="order-details-text">
+                        <p class="small-text muli boldest"><%= order.products.first.title %></p>
+                        <p class="muli small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
+                        <p class="small-text boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
+                        <%#= link_to 'Track this order', '#', class: "small-text"  %>
+                      </div>
+                    </div>
+                    <div class="order-status">
+                      <p class="muli"><%= order.status %></p> <!-- STATUS OF THE ORDER -->
+                    </div>
+                    <div class="order-price muli boldest">
+                      <p class="small-text"><%= humanized_money_with_symbol order.total_with_delivery %></p> <!-- PRICE OF THE ORDER -->
                     </div>
                   </div>
-                  <div class="order-status">
-                    <p class="muli"><%= order.status %></p> <!-- STATUS OF THE ORDER -->
-                  </div>
-                  <div class="order-price muli boldest">
-                    <p><%= humanized_money_with_symbol order.total_price %></p> <!-- PRICE OF THE ORDER -->
-                  </div>
-                </div>
-                <%= link_to order_path(order), class: "primary-button orders-button small-text" do %>
-                  VIEW ALL PRODUCTS (<%= order.products.count %>)
                 <% end %>
               </div>
             </div>

@@ -3,8 +3,17 @@
   border: 1px solid rgba(0,0,0,0.2);
   padding: 16px;
   margin: 16px;
+  @include for-phone-only {
+    width: 100%;
+  }
 }
 
 .order-show-info-left {
   margin-left: 0 !important;
+}
+
+.order-show-info-right {
+  @include for-phone-only {
+    margin-left: 0 !important;
+  }
 }

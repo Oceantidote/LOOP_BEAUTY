@@ -20,11 +20,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-top: 1px solid rgba(0,0,0,0.3);
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  padding: 20px 0;
+  padding: 16px;
   p {
     margin: 0;
+  }
+  @include for-phone-only {
+    padding: 16px 0;
   }
 }
 
@@ -48,6 +49,9 @@
 .order-image {
   height: 90px;
   margin-right: 10px;
+  @include for-phone-only {
+    height: 60px;
+  }
 }
 
 .order-show-image {
@@ -68,14 +72,17 @@
   display: flex;
   width: 80%;
   padding: 10px 30px;
+  @include for-large-devices-down {
+    width: 90%;
+  }
+  @include for-medium-devices-down {
+    width: 95%;
+  }
   @include for-phone-only {
+    display: block;
     width: 100%;
     padding: 10px;
   }
-}
-
-.order-show-info-left, .order-show-info-left {
-  width: 50%;
 }
 
 .order-show-each-order {
@@ -104,6 +111,13 @@
   padding: 10px 30px;
   @include for-phone-only {
     text-align: center;
+  }
+}
+
+.my-orders-cards:hover {
+  .each-order-container {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
   }
 }
 
