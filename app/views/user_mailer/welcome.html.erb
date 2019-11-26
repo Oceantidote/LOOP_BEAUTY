@@ -1,1 +1,51 @@
-<h3>Welcome, <%= @user.full_name %></h3>
+<link href="https://fonts.googleapis.com/css?family=Muli:400,600,900&display=swap" rel="stylesheet">
+<style>
+
+  .email-wrapper {
+
+  }
+  .email-container {
+    font-family: 'Muli', 'sans serif';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #000;
+    padding: 16px;
+    overflow: scroll;
+  }
+  .black-bar {
+    height: 16px;
+    background: #000;
+  }
+  .black-footer {
+    height: 80px;
+    background: #000;
+  }
+  .loop-logo {
+    width: 200px;
+  }
+  .line-break {
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin: 16px 0;
+  }
+</style>
+<div class="email-wrapper">
+  <div class="black-bar"></div>
+  <div class="email-container">
+    <a href="https://infinite-journey-41892.herokuapp.com/">
+      <img class="loop-logo" src="https://infinite-journey-41892.herokuapp.com/assets/loop-beauty-logo-21ea5aaddb1f016acbe1be8b354d3dee32d32e991875035e9b6da3f5780a669b.svg" alt="loop beauty logo">
+    </a>
+    <div class="line-break"></div>
+    <div style="max-width: 700px;">
+      <div style="margin: 50px 0;">
+        <h3>Welcome, <%= @user.full_name %> to LoopBeauty!</h3>
+      </div>
+    </div>
+    <div class="line-break"></div>
+  </div>
+  <div class="black-footer"></div>
+</div>
+
+

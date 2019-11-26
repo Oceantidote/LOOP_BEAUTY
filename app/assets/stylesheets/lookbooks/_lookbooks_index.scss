@@ -156,33 +156,3 @@
   }
 }
 
-.select2-container--default .select2-selection--multiple {
-  -webkit-appearance: none !important;
-  -moz-appearance:    none !important;
-  appearance:         none !important;
-  border: 1px solid #F0F0F0 !important;
-  background: #FCFCFC !important;
-  font-family: 'Muli', sans-serif !important;
-  border-radius: 2px !important;
-}
-
-.select2-results__option {
-  font-family: 'Muli', sans-serif !important;
-  background: #FFF;
-}
-
-.select2-container--default .select2-results>.select2-results__options {
-  background: #F0F0F0 !important;
-}
-
-.select2-dropdown {
-  border: 1px solid #F0F0F0 !important;
-}
-
-.select2 {
-    width: 82% !important;
-    margin-left: 4px;
-    @include for-phone-only {
-      width: 100% !important;
-    }
-  }
