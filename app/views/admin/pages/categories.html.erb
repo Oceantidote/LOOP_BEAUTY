@@ -11,13 +11,13 @@
           <% @categories.each do |category| %>
             <div class="col-2 no-padding">
               <div class="admin-category">
-                <h5 class="boldest muli no-margin"><%= category.name %></h5>
-                <%= link_to 'Delete',  admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
+                <h6 class="boldest muli no-margin"><%= category.name %></h6>
+                <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
               </div>
               <% category.sub_categories.each do |sub_category| %>
                 <div class="admin-sub-category">
-                  <p class="no-margin didot"><%= sub_category.name %></p>
-                  <%= link_to 'Delete',  admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
+                  <p class="no-margin muli grey s-medium-text bold"><%= sub_category.name %></p>
+                  <%= link_to 'Delete', admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
                 </div>
               <% end %>
             </div>
