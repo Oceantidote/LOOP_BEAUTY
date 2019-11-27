@@ -11,6 +11,6 @@
   <% elsif basket.discount_code.nil? %>
     <%= f.submit 'APPLY', class: "primary-button discount-code-button", id: "discount-apply"  %>
   <% else %>
-    <%= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>
+    <%= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button width-min-content" %>
   <% end %>
 <% end %>
