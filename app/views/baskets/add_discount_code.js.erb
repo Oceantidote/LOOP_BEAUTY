@@ -1,12 +1,11 @@
 formContainer = document.querySelector('.shopping-bag-code');
 formContainer.innerHTML = ''
 formContainer.innerHTML = "<%= j render 'form', basket: @basket %>"
-
-priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
-priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"
 discountForm = document.querySelector('.shopping-bag-code > form')
 input = discountForm.querySelector('.form-group')
 if ('<%= @discount.present? && @basket.valid? %>' === 'true') {
+  priceContainer = document.querySelector('.shopping-bag-continue-checkout-total')
+  priceContainer.innerHTML = "<%= j render 'shared/shopping_bag_price', basket: @basket %>"
   // input.classList.add("form-group-valid")
   input.firstElementChild.classList.remove("is-invalid")
   input.firstElementChild.classList.add("is-valid")
