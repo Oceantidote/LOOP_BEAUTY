@@ -94,6 +94,14 @@
   @include for-phone-only {
     margin-bottom: 50px;
   }
+  .disabled {
+    background-color: #ECECEC !important;
+  }
+  .invalid-feedback {
+    margin: 0 !important;
+    background-color: #FFF !important;
+    font-size: 10px !important;
+  }
 }
 
 .discount-code-button {

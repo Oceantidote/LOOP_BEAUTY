@@ -15,14 +15,15 @@ if ('<%= @discount.present? && @basket.valid? %>' === 'true') {
   discountForm.lastElementChild.remove()
   discountForm.insertAdjacentHTML('beforeend', '<%= link_to "REMOVE", remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button width-max-content" %>')
 } else {
-  // input.classList.add("form-group-invalid")
+  input.classList.add("form-group-invalid")
   input.firstElementChild.classList.remove("is-valid")
   input.firstElementChild.classList.add("is-invalid")
   input.style.marginBottom = '0'
   if ('<%= @code.length %>' === '0') {
     document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #FD1015; margin-bottom: 1px;'>You didn't enter a discount code. Please try again</p>`
-  } else {
+  }
+  if ('<%= @discount.nil? %>' === 'true') {
     document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #FD1015; margin-bottom: 1px;'>Discount code is invalid</p>`
   }
 }
-
+console.log('<%= @discount.nil? %>')
