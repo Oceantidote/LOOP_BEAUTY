@@ -1,5 +1,5 @@
 <div class="registrations-new-wrapper">
-  <h1>Login or create an account</h1>
+  <h1>Create an account</h1>
   <div class="container registrations-new-sub-wrapper">
     <h3 class="text-center">Your details</h3>
     <div class="registrations-new-container">
@@ -58,12 +58,10 @@
           <h6 class="">How did you hear about us?</h6>
           <%= f.input :origin, label: false, prompt: "Choose option", collection: ["Search Engine", "Instagram", "YouTube", "Word of Mouth", "Print", "Radio", "TV", "Other"], include_blank: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
           <div class="d-flex" style="align-items: baseline;">
-            <%= f.input :newsletter, label: false, input_html: { class: 'lb-checkbox margin-bottom' } %>
-            <h6 class="s-medium-text">Find out about the latest offers, new products and beauty news.</h6>
+            <%= f.input :newsletter, label: "Find out about the latest offers, new products and beauty news.", label_html: { class: 'reg-new-checkbox-label' }, input_html: { class: 'margin-bottom' } %>
           </div>
           <div class="d-flex mb-3" style="align-items: baseline;">
-            <%= f.input :accepts_terms, label: false, input_html: { class: 'lb-checkbox' } %>
-            <h6 class="grey-font s-medium-text">By creating an account you agree to the website's Terms and our Privacy Policy</h6>
+            <%= f.input :accepts_terms, label: "By creating an account you agree to the website's Terms and our Privacy Policy", label_html: { class: 'reg-new-checkbox-label grey-important' }, input_html: { class: 'grey' } %>
           </div>
         </div>
         <div class="form-actions">
