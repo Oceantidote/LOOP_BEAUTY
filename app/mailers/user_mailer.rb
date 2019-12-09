@@ -7,6 +7,8 @@ class UserMailer < ApplicationMailer
   #
   def welcome
     @user = params[:user]
+    @article = params[:article]
+    @tutorial = params[:tutorial]
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
 

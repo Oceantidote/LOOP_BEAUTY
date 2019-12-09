@@ -194,8 +194,10 @@ class User < ApplicationRecord
   end
 
   def send_welcome
+    article = InsiderArticle.where(featured: true).first
+    tutorial = Tutorial.all.sample
     # if Rails.env.production?
-      UserMailer.with(user: self).welcome.deliver_now
+      UserMailer.with(user: self, article: article, tutorial: tutorial).welcome.deliver_now
     # end
   end
 end
