@@ -44,6 +44,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    appsignal (2.10.0)
+      rack
     arel (9.0.0)
     autoprefixer-rails (9.6.0)
       execjs
@@ -303,6 +305,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appsignal
   autoprefixer-rails
   aws-sdk-s3
   aws-ses (~> 0.4.4)
