@@ -48,6 +48,9 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:create, :show] do
     get 'order_success', to: 'orders#order_success'
+    member do
+      post 'pay', to: 'orders#pay'
+    end
   end
 
   resources :users, only: [:show, :index, :update], path: 'influencers' do
