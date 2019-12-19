@@ -180,6 +180,8 @@ class UsersController < ApplicationController
   def q_and_a
   end
 
+  private
+
   def set_user
     @user = User.friendly.find(params[:id])
     authorize @user
