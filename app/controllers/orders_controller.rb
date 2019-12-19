@@ -60,6 +60,12 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
+  def pay
+    @order = Order.find(params[:id])
+    authorize @order
+    launch_session
+  end
+
   private
 
   def launch_session
