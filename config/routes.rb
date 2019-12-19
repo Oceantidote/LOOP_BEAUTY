@@ -52,6 +52,9 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:create, :show] do
     get 'order_success', to: 'orders#order_success'
+    member do
+      post 'pay', to: 'orders#pay'
+    end
   end
 
   resources :users, only: [:show, :index, :update], path: 'influencers' do
@@ -152,5 +155,6 @@ Rails.application.routes.draw do
   patch '/discount', to: 'baskets#add_discount_code'
   patch '/remove_discount', to: 'baskets#remove_discount_code'
   get '/seen_cookie', to: 'pages#seen_cookie_message'
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -21,4 +21,7 @@ class OrderPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def pay?
+    show?
+  end
 end

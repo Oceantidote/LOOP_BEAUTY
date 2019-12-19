@@ -52,6 +52,10 @@
             <%= link_to 'TRACK ORDER', 'https://tracking.controlport.co.uk/e9ab6870/loop-beauty/return/49cbcb', target: '_blank', class: 'primary-button products-admin-buttons' %>
           </div>
         </div>
+        <% if @order.status == 'pending' %>
+          <script src="https://js.stripe.com/v3/"></script>
+          <%= link_to 'Pay', pay_order_path(@order), method: :post, remote: true %>
+        <% end %>
         <div class="row row-padding" style="width: 100%;">
           <% @order.order_products.each do |order_product| %>
             <div class="col-12 col-sm-4">
