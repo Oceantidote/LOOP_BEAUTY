@@ -17,7 +17,7 @@ class Order < ApplicationRecord
   after_save :check_for_referral
 
   def new_order
-    UserMailer.with(order: self, user: self.user).order_confirmation.deliver_now
+    UserMailer.with(order: self.id, user: self.user.id).order_confirmation.deliver_later(wait: 10.second)
   end
 
   def set_sku
@@ -170,6 +170,6 @@ class Order < ApplicationRecord
     user = User.find_by_referral_code(discount_code.code)
     return unless user.present?
     new_discount = DiscountCode.create(discount: 15)
-    UserMailer.with(user: user, discount: new_discount).referral.deliver_now
+    UserMailer.with(user: user.id, discount: new_discount.id).referral.deliver_later(wait: 30.second)
   end
 end

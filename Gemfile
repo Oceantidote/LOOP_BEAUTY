@@ -33,6 +33,8 @@ gem 'groupdate'
 gem 'postmark-rails'
 # gem 'image_processing', '~> 1.2'
 gem 'appsignal'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 
 group :development do

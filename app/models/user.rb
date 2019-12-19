@@ -194,10 +194,8 @@ class User < ApplicationRecord
   end
 
   def send_welcome
-    article = InsiderArticle.where(featured: true).first
-    tutorial = Tutorial.all.sample
-    # if Rails.env.production?
-      UserMailer.with(user: self, article: article, tutorial: tutorial).welcome.deliver_now
-    # end
+    article = InsiderArticle.where(featured: true).first.id
+    tutorial = Tutorial.all.sample.id
+    UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_later(wait: 30.second)
   end
 end
