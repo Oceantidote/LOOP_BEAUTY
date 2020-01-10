@@ -25,26 +25,28 @@
           </div>
           <div class="my-products-purchase">
             <%= link_to 'Reorder', my_product_product_path(product), remote: true, method: :post, class: "my-products-button add-to-bag-grey" %>
-            <% if user_signed_in? && current_user.wishlist %>
-              <% if Wishlist.where(user: current_user).first.products.include?(product) %>
-                <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first, return_to_my_products: true), method: :delete, remote: :true, class: 'no-decoration' do %>
-                  <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
-                <% end %>
-              <% else %>
-                <%= link_to product_wishlist_products_path(product, return_to_my_products: true), method: :post, remote: :true, class: 'no-decoration' do %>
-                  <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+            <div id="wishlist-<%= product.id %>">
+              <% if user_signed_in? && current_user.wishlist %>
+                <% if Wishlist.where(user: current_user).first.products.include?(product) %>
+                  <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first, return_to_my_products: true), method: :delete, remote: :true, class: 'no-decoration' do %>
+                    <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to product_wishlist_products_path(product, return_to_my_products: true), method: :post, remote: :true, class: 'no-decoration' do %>
+                    <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-index-heart-icon"></i>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
   <div class="col-12 d-flex justify-content-center">
-    <p class="boldest muli small-text grey"><%= page_entries_info @products %></p>
+    <p class="boldest muli small-text grey"><%= page_entries_info products %></p>
   </div>
   <div class="paginator-container">
-    <%= paginate @products %>
+    <%= paginate products %>
   </div>
 </div>

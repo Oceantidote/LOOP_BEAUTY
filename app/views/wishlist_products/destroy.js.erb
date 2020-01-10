@@ -1,25 +1,9 @@
-wishlistCards = document.querySelector('.wishlist-product-cards-container')
-cards = document.querySelectorAll('.card-image-results')
-myProductsCards = document.querySelector('.my-product-cards-container')
-shadeWishlist = document.querySelector('.shade-wishlist-heart.shade-<%= @wishlist_product.shade.id %>')
-productShowWishlist = document.querySelector('.product-show-wishlist')
+heart = document.querySelector('#wishlist-<%= @wishlist_product.product.id %>')
 
+link = heart.querySelector('a')
+link.href = '<%= product_wishlist_products_path(@wishlist_product.product) %>'
+link.setAttribute('data-method', 'post')
 
-if (wishlistCards) {
-  wishlistCards.innerHTML = "<%= j render 'shared/wishlist_product_card', wishlist_products: @wishlist_products %>"
-}
-else if (productShowWishlist) {
-  productShowWishlist.innerHTML = "<%= j render 'shared/product_show_wishlist', product: @product %>"
-}
-else if (myProductsCards) {
-  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', products: current_user.ordered_products, wishlist_product: @wishlist_product %>"
-}
-else if (shadeWishlist) {
-  shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product, shade: @wishlist_product.shade %>"
-}
-else if (cards) {
-  toReplace = document.getElementById(`item-<%= @product.id %>-wishlist`)
-  toReplace.innerHTML = '<%= link_to product_wishlist_products_path(@product), method: :post, remote: :true, class: 'no-decoration' do %>\
-                          <i class="<%= current_user.wishlist.products.include?(@product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>\
-                        <% end %>'
-}
+icon = heart.querySelector('i')
+icon.classList.remove('fas')
+icon.classList.add('far')
