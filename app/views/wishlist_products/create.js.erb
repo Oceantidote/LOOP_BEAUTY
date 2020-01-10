@@ -1,22 +1,9 @@
-myProductsCards = document.querySelector('.my-product-cards-container')
-cards = document.querySelectorAll('.card-image-results')
-shadeWishlist = document.querySelector('.shade-wishlist-heart.shade-<%= @wishlist_product.shade.id %>')
-productShowWishlist = document.querySelector('.product-show-wishlist')
+heart = document.querySelector('#wishlist-<%= @wishlist_product.product.id %>')
 
+link = heart.querySelector('a')
+link.href = '<%= wishlist_product_path(@wishlist_product) %>'
+link.setAttribute('data-method', 'delete')
 
-if (myProductsCards) {
-  myProductsCards.innerHTML = "<%= j render 'shared/my_products_cards', products: current_user.ordered_products, wishlist_product: @wishlist_product %>"
-}
-else if (productShowWishlist) {
-  productShowWishlist.innerHTML = "<%= j render 'shared/product_show_wishlist', product: @product %>"
-}
-else if (shadeWishlist) {
-  shadeWishlist.innerHTML = "<%= j render 'shared/shade-wishlist', product: @product, shade: @wishlist_product.shade %>"
-}
-else if (cards) {
-  toReplace = document.getElementById(`item-<%= @product.id %>-wishlist`)
-  toReplace.innerHTML = '<%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: @product, shade: @wishlist_product.shade).first), method: :delete, remote: :true, class: 'no-decoration' do %>\
-                          <i class="<%= current_user.wishlist.products.include?(@product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>\
-                        <% end %>'
-}
-
+icon = heart.querySelector('i')
+icon.classList.remove('far')
+icon.classList.add('fas')

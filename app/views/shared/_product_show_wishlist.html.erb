@@ -1,9 +1,11 @@
-<% if Wishlist.where(user: current_user).first.products.include?(product) %>
-  <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first, return_to_my_products: true), method: :delete, remote: :true, class: 'no-decoration' do %>
-    <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> product-show-wishlist-heart"></i>
+<div id="wishlist-<%= product.id %>">
+  <% if Wishlist.where(user: current_user).first.products.include?(product) %>
+    <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first, return_to_my_products: true), method: :delete, remote: :true, class: 'no-decoration' do %>
+      <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> product-show-wishlist-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to product_wishlist_products_path(product, return_to_my_products: true), method: :post, remote: :true, class: 'no-decoration' do %>
+      <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> product-show-wishlist-heart"></i>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to product_wishlist_products_path(product, return_to_my_products: true), method: :post, remote: :true, class: 'no-decoration' do %>
-    <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> product-show-wishlist-heart"></i>
-  <% end %>
-<% end %>
+</div>
