@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'change_banner', to: 'banners#change_banner'
     post 'change_banner', to: 'banners#change'
+    get 'sku', to: 'shades#index'
     get 'change_offer_banner', to: 'offer_banners#change_offer_banner'
     post 'change_offer_banner', to: 'offer_banners#change'
     resources :lookbooks, only: [:index] do

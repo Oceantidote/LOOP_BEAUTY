@@ -10,6 +10,9 @@
   <%= link_to admin_freebies_path, class: "each-dash-link" do %>
     <%= image_tag "freebie-icon.png", class: "dash-links-image", alt: "freebie icon" %>Freebies
   <% end %>
+  <%= link_to admin_sku_path, class: "each-dash-link" do %>
+    <%= image_tag "warehouse.png", class: "dash-links-image", alt: "freebie icon" %>SKUs
+  <% end %>
   <%= link_to admin_lookbooks_path, class: "each-dash-link" do %>
     <%= image_tag "lookbook-icon.png", class: "dash-links-image", alt: "lookbook icon" %>Pending Lookbooks
     <% if Lookbook.where(status: 'pending').any? %>

@@ -1,6 +1,10 @@
 class Admin::ShadesController < ApplicationController
   before_action :set_shade, only: [:update, :destroy]
 
+  def index
+    @shades = policy_scope(Shade)
+  end
+
   def create
     @product = Product.friendly.find(params[:product_id])
     @shade = Shade.new(shade_params)
