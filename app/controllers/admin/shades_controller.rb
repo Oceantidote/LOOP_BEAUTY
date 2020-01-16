@@ -1,5 +1,9 @@
+require 'csv'
+
 class Admin::ShadesController < ApplicationController
   before_action :set_shade, only: [:update, :destroy]
+  after_action :verify_policy_scoped, only: [:download]
+  skip_after_action :verify_authorized, only: [:download]
 
   def index
     @shades = policy_scope(Shade)
@@ -40,6 +44,19 @@ class Admin::ShadesController < ApplicationController
     respond_to do |format|
       format.html { redirect_back fallback_location: request.referer }
       format.js
+    end
+  end
+
+  def download
+    @shades = policy_scope(Shade).includes(product: [:brand])
+    download = CSV.generate(headers: true) do |csv|
+      csv << [:brand, :product, :shade, :sku]
+      @shades.each do |shade|
+        csv << [shade.product.brand.name, shade.product.title, shade.name, shade.sku]
+      end
+    end
+    respond_to do |format|
+      format.csv { send_data download, filename: "#{Date.today.strftime('%Y%m%d')}-skus.csv" }
     end
   end
 
