@@ -61,7 +61,7 @@
 
 .wishlist-heart-icon {
   position: absolute;
-  top: calc(50% - 11px);
+  bottom: 14px;
   right: 10px;
   font-size: 22px;
   @include for-phone-only {
