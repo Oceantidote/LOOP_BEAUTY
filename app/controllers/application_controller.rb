@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  rescue_from StandardError, with: :internal_server_error if Rails.env.production?
+  # rescue_from StandardError, with: :internal_server_error if Rails.env.production?
 
   def not_seen_cookie_message
     @not_seen_cookie = true
