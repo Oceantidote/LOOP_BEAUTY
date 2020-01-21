@@ -24,10 +24,11 @@
       <h5><%= @product.title %></h5>
       <hr>
       <p class="product-shade-title small-margin-bottom muli"><strong><%= @product.shades.order(created_at: :ASC).first.name %></strong></p>
-      <% if @product.shades.count > 1 && @product.shades.first.shade_color.attached? %>
+      <% if @product.shades.count > 1 %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
             <% @product.shades.order(created_at: :ASC).each_with_index do |shade, i| %>
+              <% next unless shade.shade_color.attached? %>
               <div class="col-2" style="padding: 0 3px 0 0;">
                 <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color) %>)",
                   data-name="<%= shade.name %>",
