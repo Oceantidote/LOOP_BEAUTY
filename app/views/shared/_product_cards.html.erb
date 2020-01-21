@@ -8,7 +8,11 @@
       <% end %>
       <div class="card_image">
         <%= link_to product_path(product) do %>
-          <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
+          <% if product.shades.first&.card_photo %>
+            <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
+          <% else %>
+            <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
