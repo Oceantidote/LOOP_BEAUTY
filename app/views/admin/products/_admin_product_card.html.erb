@@ -1,7 +1,11 @@
 <div class="col-6 col-lg-6 col-xl-4" style="margin-bottom: 15px;">
   <div class="my-products-card">
     <div class="my-products-image">
+      <% if product.shades.first&.card_photo %>
         <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
+      <% else %>
+        <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+      <% end %>
     </div>
     <div class="my-products-details text-center no-margin muli">
       <p><%= product.title %></p>
