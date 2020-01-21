@@ -4,19 +4,19 @@ class ProductsController < ApplicationController
   def index
     @query = params[:query]
     if params[:query].present?
-      @products = policy_scope(Product).where(published: true).global_search(params[:query])
+      @products = policy_scope(Product).global_search(params[:query])
       @all = @products
       @products = @products.page params[:page]
-      @products_count = policy_scope(Product).where(published: true).global_search(params[:query]).count
+      @products_count = policy_scope(Product).global_search(params[:query]).count
       @original = policy_scope(Product).global_search(params[:query])
     else
-      @products = policy_scope(Product).where(published: true)
+      @products = policy_scope(Product)
       @all = @products
       @products = @products.page params[:page]
-      @products_count = policy_scope(Product).where(published: true).count
+      @products_count = policy_scope(Product).count
       @original = policy_scope(Product)
     end
-    @products = Product.filter(params[:product].slice(:sub_category, :brand)) if params[:product].present?
+    @products = policy_scope(Product).filter(params[:product].slice(:sub_category, :brand)) if params[:product].present?
     @products = @products.page params[:page]
     @products_count = @products.count
     if params[:product].present? && params[:product][:sort].present?
@@ -38,9 +38,9 @@ class ProductsController < ApplicationController
 
   def search_products
     # if params[:input].present?
-      @search_products = policy_scope(Product).where(published: true).global_search(params[:input])
+      @search_products = policy_scope(Product).global_search(params[:input])
     # else
-    #   @search_products = policy_scope(Product).where(published: true)
+    #   @search_products = policy_scope(Product)
     # end
     @query = params[:input]
     authorize @search_products

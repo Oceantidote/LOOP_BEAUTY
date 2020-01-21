@@ -8,9 +8,9 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.friendly.find(params[:id])
     authorize @brand
-    @products = @brand.products.where(published:true)
+    @products = @brand.products.where(published: true)
     @all = @products
-    @original = @brand.products.where(published:true)
+    @original = @brand.products.where(published: true)
     @products = @products.filter(params[:product].slice(:sub_category)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params)
