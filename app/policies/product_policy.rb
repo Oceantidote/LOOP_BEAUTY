@@ -1,7 +1,7 @@
 class ProductPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all.where(published: true)
     end
   end
 
