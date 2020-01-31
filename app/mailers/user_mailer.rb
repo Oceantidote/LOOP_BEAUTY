@@ -10,6 +10,11 @@ class UserMailer < ApplicationMailer
     @article = InsiderArticle.find(params[:article])
     @tutorial = Tutorial.find(params[:tutorial])
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
+
+    # @user = User.last
+    # @article = InsiderArticle.last
+    # @tutorial = Tutorial.last
+    # mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
 
   def referral
@@ -28,6 +33,10 @@ class UserMailer < ApplicationMailer
     @order = Order.find(params[:order])
     @user = User.find(params[:user])
     mail(to: @user.email, subject: "Order confirmation" )
+
+    # @order = Order.last
+    # @user = User.last
+    # mail(to: @user.email, subject: "Order confirmation" )
   end
 
   def new_content
