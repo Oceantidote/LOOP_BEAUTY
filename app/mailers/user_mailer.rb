@@ -6,15 +6,15 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.welcome.subject
   #
   def welcome
-    @user = User.find(params[:user])
-    @article = InsiderArticle.find(params[:article])
-    @tutorial = Tutorial.find(params[:tutorial])
-    mail(to: @user.email, subject: 'Welcome to Loop Beauty')
-
-    # @user = User.last
-    # @article = InsiderArticle.last
-    # @tutorial = Tutorial.last
+    # @user = User.find(params[:user])
+    # @article = InsiderArticle.find(params[:article])
+    # @tutorial = Tutorial.find(params[:tutorial])
     # mail(to: @user.email, subject: 'Welcome to Loop Beauty')
+
+    @user = User.last
+    @article = InsiderArticle.last
+    @tutorial = Tutorial.last
+    mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
 
   def referral
@@ -30,13 +30,13 @@ class UserMailer < ApplicationMailer
   end
 
   def order_confirmation
-    @order = Order.find(params[:order])
-    @user = User.find(params[:user])
-    mail(to: @user.email, subject: "Order confirmation" )
-
-    # @order = Order.last
-    # @user = User.last
+    # @order = Order.find(params[:order])
+    # @user = User.find(params[:user])
     # mail(to: @user.email, subject: "Order confirmation" )
+
+    @order = Order.last
+    @user = User.last
+    mail(to: @user.email, subject: "Order confirmation" )
   end
 
   def new_content
