@@ -6,7 +6,19 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome
   end
 
+  def referral
+    UserMailer.referral
+  end
+
+  def content_approval
+    UserMailer.content_approval
+  end
+
   def order_confirmation
     UserMailer.order_confirmation
+  end
+
+  def new_content
+    UserMailer.new_content
   end
 end
