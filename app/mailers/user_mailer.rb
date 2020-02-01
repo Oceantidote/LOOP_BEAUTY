@@ -6,14 +6,9 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.welcome.subject
   #
   def welcome
-    # @user = User.find(params[:user])
-    # @article = InsiderArticle.find(params[:article])
-    # @tutorial = Tutorial.find(params[:tutorial])
-    # mail(to: @user.email, subject: 'Welcome to Loop Beauty')
-
-    @user = User.last
-    @article = InsiderArticle.last
-    @tutorial = Tutorial.last
+    @user = User.find(params[:user])
+    @article = InsiderArticle.find(params[:article])
+    @tutorial = Tutorial.find(params[:tutorial])
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
 
@@ -30,12 +25,8 @@ class UserMailer < ApplicationMailer
   end
 
   def order_confirmation
-    # @order = Order.find(params[:order])
-    # @user = User.find(params[:user])
-    # mail(to: @user.email, subject: "Order confirmation" )
-
-    @order = Order.last
-    @user = User.last
+    @order = Order.find(params[:order])
+    @user = User.find(params[:user])
     mail(to: @user.email, subject: "Order confirmation" )
   end
 
@@ -44,9 +35,9 @@ class UserMailer < ApplicationMailer
     @content = params[:content]
     @rejected = params[:rejected]
     if params[:rejected]
-        mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has edited a rejected #{@content.class.to_s}" )
-      else
-        mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
-      end
+      mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has edited a rejected #{@content.class.to_s}" )
+    else
+      mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
+    end
   end
 end
