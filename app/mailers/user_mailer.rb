@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
 
     @user = User.last
     @article = InsiderArticle.last
-    @tutorial = Tutorial.last
+    @tutorial = Tutorial.first
 
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
