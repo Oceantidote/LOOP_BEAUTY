@@ -195,6 +195,6 @@ class User < ApplicationRecord
   def send_welcome
     article = InsiderArticle.where(featured: true).first.id
     tutorial = Tutorial.all.sample.id
-    UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_later(wait: 30.second)
+    UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_now
   end
 end
