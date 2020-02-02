@@ -99,9 +99,9 @@
       .mcnImage,.mcnRetinaImage{
         vertical-align:bottom;
       }
-      .mcnCaptionRightTextContentContainer {
+/*      .mcnCaptionRightTextContentContainer {
         width: 264px;
-      }
+      }*/
       .mcnTextContent{
         word-break:break-word;
       }
@@ -556,11 +556,11 @@
     <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
     <!--*|END:IF|*-->
     <center>
-      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="background-color: #E5E5E5">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="background-color: #E5E5E5;">
         <tr>
           <td align="center" valign="top" id="bodyCell">
             <!-- BEGIN TEMPLATE // -->
-            <table border="0" cellpadding="0" cellspacing="0" class="main-body-container" style="width: 100%; max-width: 700px; margin: 100px 0;">
+            <table border="0" cellpadding="0" cellspacing="0" class="main-body-container" style="width: 100%; max-width: 700px; margin: 100px 16px;">
               <tr>
                 <td align="center" valign="top" id="templateHeader" data-template-container style="background-color:#ffffff; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; border-top:0; border-bottom:0; padding-top:22px; padding-bottom:22px;">
                   <!--[if (gte mso 9)|(IE)]>
@@ -686,7 +686,7 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #000000;font-size: 14px;font-style: normal;font-weight: normal;">
-                                          <h2 class="null"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Featured Insider Article</span></span></h2>
+                                          <h2 class="null" style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Featured Insider Article</span></span></h2>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -711,21 +711,22 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
-                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="264">
+                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="100%">
                                             <tbody>
                                               <tr>
                                                 <td class="mcnCaptionRightImageContent" align="center" valign="top">
-                                                  <img alt="" src="<%= url_for(@article.photo1) %>" width="264" style="max-width:326px; object-fit: cover;" class="mcnImage">
+                                                  <img alt="" src="<%= url_for(@article.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
                                                 </td>
                                               </tr>
                                             </tbody>
                                           </table>
-                                          <table class="mcnCaptionRightTextContentContainer" align="right" border="0" cellpadding="0" cellspacing="0">
+                                          <table class="mcnCaptionRightTextContentContainer" align="center" border="0" cellpadding="0" cellspacing="0">
                                             <tbody>
                                               <tr>
                                                 <td valign="top" class="mcnTextContent">
                                                   <span style="font-size:14px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">
-                                                    <%= raw @article.text1.truncate(200) %>
+                                                    <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center;"><%= @article.title %></p>
+                                                    <%= raw @article.text1.truncate(250) %>
                                                   </span>
                                                 </td>
                                               </tr>
@@ -772,11 +773,11 @@
                                   <!--[if mso]>
                                   <td valign="top" width="600" style="width:600px;">
                                   <![endif]-->
-                                  <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #000000;font-size: 14px;font-style: normal;font-weight: normal;">
-                                          <h2 class="null"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Featured Tutorial</span></span></h2>
+                                          <h2 class="null" style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Featured Tutorial</span></span></h2>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -801,21 +802,21 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
-                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="264">
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="100%">
                                             <tbody>
                                               <tr>
                                                 <td class="mcnCaptionRightImageContent" align="center" valign="top">
-                                                  <img alt="" src="<%= url_for(@tutorial.cover_photo) %>" width="264" style="max-width:326px; object-fit: cover;" class="mcnImage">
+                                                  <img alt="" src="<%= url_for(@tutorial.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
                                                 </td>
                                               </tr>
                                             </tbody>
                                           </table>
-                                          <table class="mcnCaptionRightTextContentContainer" align="right" border="0" cellpadding="0" cellspacing="0">
+                                          <table class="mcnCaptionRightTextContentContainer" align="center" border="0" cellpadding="0" cellspacing="0">
                                             <tbody>
                                               <tr>
                                                 <td valign="top" class="mcnTextContent">
                                                   <span style="font-size:14px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">
-                                                    <%= @tutorial.title %>
+                                                    <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center;"><%= @tutorial.title %></p>
                                                   </span>
                                                 </td>
                                               </tr>
@@ -1015,7 +1016,7 @@
                                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                                   <tbody>
                                     <tr>
-                                      <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px; color: #FFFFFF;">
+                                      <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px; color: #FFFFFF; text-align: center;">
                                         <em>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
                                         <br>
                                         *|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*
@@ -1028,7 +1029,7 @@
                                         <br>
                                         Want to change how you receive these emails?
                                         <br>
-                                        You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a>.
+                                        You can <a href="*|UPDATE_PROFILE|*" style="color: #FFFFFF; text-decoration: underline;">update your preferences</a> or <a href="*|UNSUB|*" style="color: #FFFFFF; text-decoration: underline;">unsubscribe from this list</a>.
                                         <br>
                                         <br>
                                         *|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*
