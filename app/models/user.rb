@@ -201,4 +201,5 @@ class User < ApplicationRecord
     article = InsiderArticle.where(featured: true).first
     tutorial = Tutorial.all.sample
     UserMailer.with(user: self, article: article, tutorial: tutorial).welcome.deliver_now
+  end
 end
