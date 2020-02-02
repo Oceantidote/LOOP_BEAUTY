@@ -6,9 +6,14 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.welcome.subject
   #
   def welcome
-    @user = User.find(params[:user])
-    @article = InsiderArticle.find(params[:article])
-    @tutorial = Tutorial.find(params[:tutorial])
+    # @user = User.find(params[:user])
+    # @article = InsiderArticle.find(params[:article])
+    # @tutorial = Tutorial.find(params[:tutorial])
+
+    @user = User.last
+    @article = InsiderArticle.last
+    @tutorial = Tutorial.last
+
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
   end
 
