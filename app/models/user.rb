@@ -32,7 +32,6 @@ class MyValidator < ActiveModel::Validator
   end
 end
 
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -194,12 +193,8 @@ class User < ApplicationRecord
   end
 
   def send_welcome
-    # article = InsiderArticle.where(featured: true).first.id
-    # tutorial = Tutorial.all.sample.id
-    # UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_later(wait: 30.second)
-
-    article = InsiderArticle.where(featured: true).first
-    tutorial = Tutorial.all.sample
-    UserMailer.with(user: self, article: article, tutorial: tutorial).welcome.deliver_now
+    article = InsiderArticle.where(featured: true).first.id
+    tutorial = Tutorial.all.sample.id
+    UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_later(wait: 30.second)
   end
 end
