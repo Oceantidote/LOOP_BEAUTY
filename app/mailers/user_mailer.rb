@@ -13,12 +13,8 @@ class UserMailer < ApplicationMailer
   end
 
   def referral
-    # @user = User.find(params[:user])
-    # @discount = DiscountCode.find(params[:discount])
-
-    @user = User.last
-    @discount = DiscountCode.last
-
+    @user = User.find(params[:user])
+    @discount = DiscountCode.find(params[:discount])
     mail(to: @user.email, subject: 'New Referral')
   end
 
