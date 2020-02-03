@@ -83,8 +83,6 @@
         line-height:inherit !important;
       }
       .main-body-container {
-        width: 700px;
-        margin: 100px 0;
       }
       .main-body {
         margin: 50px 0;
@@ -101,9 +99,9 @@
       .mcnImage,.mcnRetinaImage{
         vertical-align:bottom;
       }
-      .mcnCaptionRightTextContentContainer {
+/*      .mcnCaptionRightTextContentContainer {
         width: 264px;
-      }
+      }*/
       .mcnTextContent{
         word-break:break-word;
       }
@@ -236,7 +234,6 @@
         background-size:cover;
         padding-top:0px;
         padding-bottom:0px;
-        border: 1px solid rgba(0,0,0,0.1);
       }
       /*
       @tab Body
@@ -287,7 +284,6 @@
         /*@editable*/border-bottom:0;
         /*@editable*/padding-top:25px;
         /*@editable*/padding-bottom:25px;
-        /*@editable*/border: 1px solid #000000;
       }
       /*
       @tab Footer
@@ -547,8 +543,7 @@
       } @media only screen and (max-width: 768px){
 
           .main-body-container {
-            margin: 50px 20px;
-            max-width: 100% !important;
+            max-width: 90% !important;
             width: auto !important;
           }
 
@@ -561,24 +556,24 @@
   </head>
   <body>
     <!--*|IF:MC_PREVIEW_TEXT|*-->
-    <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
+    <!--[if !gte mso 9]><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><![endif]-->
     <!--*|END:IF|*-->
     <center>
-      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="background-color: #E5E5E5;">
         <tr>
           <td align="center" valign="top" id="bodyCell">
             <!-- BEGIN TEMPLATE // -->
-            <table border="0" cellpadding="0" cellspacing="0" class="main-body-container">
+            <table border="0" cellpadding="0" cellspacing="0" class="main-body-container"style="width: 90%; max-width: 700px; margin: 20px 0;">
               <tr>
-                <td align="center" valign="top" id="templateHeader" data-template-container>
+                <td align="center" valign="top" id="templateHeader" data-template-container style="background-color:#ffffff; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; border-top:0; border-bottom:0; padding-top:22px; padding-bottom:22px;">
                   <!--[if (gte mso 9)|(IE)]>
                   <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
                   <tr>
                   <td align="center" valign="top" width="600" style="width:600px;">
                   <![endif]-->
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" class="templateContainer">
                     <tr>
-                      <td valign="top" class="headerContainer">
+                      <td valign="top" class="headerContainer" style="background-color: transparent; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; border-top:0; border-bottom:0; padding-top:0; padding-bottom:0;">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
                           <tbody class="mcnImageBlockOuter">
                             <tr>
@@ -607,7 +602,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center" valign="top" id="templateBody" data-template-container>
+                <td align="center" valign="top" id="templateBody" data-template-container  style="background-color:#ffffff; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; padding-top:0px; padding-bottom:0px; border-top: 1px solid rgba(0,0,0,0.1);">
                     <!--[if (gte mso 9)|(IE)]>
                     <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
                     <tr>
@@ -615,7 +610,7 @@
                     <![endif]-->
                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer main-body">
                       <tr>
-                        <td valign="top" class="bodyContainer">
+                        <td valign="top" class="bodyContainer" style="background-color:#transparent; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; border-top:0; border-bottom:0; padding-top:0; padding-bottom:0;">
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
                             <tbody class="mcnTextBlockOuter">
                               <tr>
@@ -634,7 +629,7 @@
                                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #000000;font-style: normal;font-weight: normal;">
                                           <h2 class="null"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Hi&nbsp;<%= @user.first_name.capitalize %>! </span></h2>
                                           <br>
-                                          <h3>Your <%= @content.class.to_s.downcase %> has been <%= @content.status %><%= @content.status == 'approved' ? '!' : '.' %></h3>
+                                          <h3 style="font-size: 20px;">Your <%= @content.class.to_s.downcase %> has been <%= @content.status %><%= @content.status == 'approved' ? '!' : '.' %></h3>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -688,7 +683,7 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #000000;font-size: 14px;font-style: normal;font-weight: normal;">
-                                          <h2 class="null"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Your <%= @content.class.to_s %></span></span></h2>
+                                          <h2 class="null" style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Your <%= @content.class.to_s %></span></span></h2>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -713,28 +708,28 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
-                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="264">
+                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="100%">
                                             <tbody>
                                               <tr>
                                                 <td class="mcnCaptionRightImageContent" align="center" valign="top">
                                                   <% if @content.class.to_s == "Lookbook" %>
-                                                    <img alt="" src="<%= url_for(@content.photo) %>" width="264" style="max-width:326px; object-fit: cover;" class="mcnImage">
+                                                    <img alt="" src="<%= url_for(@content.photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
                                                   <% else %>
-                                                    <img alt="" src="<%= url_for(@content.cover_photo) %>" width="264" style="max-width:326px; object-fit: cover;" class="mcnImage">
+                                                    <img alt="" src="<%= url_for(@content.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
                                                   <% end %>
                                                 </td>
                                               </tr>
                                             </tbody>
                                           </table>
-                                          <table class="mcnCaptionRightTextContentContainer" align="right" border="0" cellpadding="0" cellspacing="0">
+                                          <table class="mcnCaptionRightTextContentContainer" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tbody>
                                               <tr>
                                                 <td valign="top" class="mcnTextContent">
                                                   <% if @content.class.to_s == "Lookbook" %>
-                                                    <h6 class="content-title" style="font-size: 16px; color: #000000;"><%= @content.title %></h6>
-                                                    <p style="font-size: 14px;"><%= @content.description %></p>
+                                                    <h6 class="content-title" style="font-size: 16px; color: #000000; margin: 10px 0; font-weight: bold; text-align: center;"><%= @content.title %></h6>
+                                                    <p style="width: 100%; max-width: 450px; margin: 0 auto; font-size:14px; color: #757575;"><%= @content.description %></p>
                                                   <% else %>
-                                                    <h6 class="content-title" style="font-size: 16px; color: #000000;"><%= @content.title %></h6>
+                                                    <h6 class="content-title" style="font-size: 16px; color: #000000;font-weight: bold; text-align: center;"><%= @content.title %></h6>
                                                   <% end %>
                                                 </td>
                                               </tr>
@@ -786,7 +781,7 @@
                                       <tr>
                                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #000000;font-style: normal;font-weight: normal;">
                                           <% if @content.status == 'approved' %>
-                                            <h2 class="null"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Your affiliate link</span></span></h2>
+                                            <h2 class="null" style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Your affiliate link</span></span></h2>
                                             <div class="referral-code" style="border: 2px dotted rgba(0,0,0,0.1); margin: 30px 0;padding: 16px;">
                                               <a href="<%= @content.affiliate_link %>" target="_blank" style="text-align: center;"><p style="text-align: center;"><%= @content.affiliate_link %></p></a>
                                             </div>
@@ -865,7 +860,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center" valign="top" id="templateFooter" data-template-container>
+                <td align="center" valign="top" id="templateFooter" data-template-container style=" background-color:#000000; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; border-top:0; border-bottom:0; padding-top:25px; padding-bottom:25px;">
                   <!--[if (gte mso 9)|(IE)]>
                   <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
                   <tr>
@@ -873,7 +868,7 @@
                   <![endif]-->
                   <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
                     <tr>
-                      <td valign="top" class="footerContainer">
+                      <td valign="top" class="footerContainer" style="background-color:#transparent; background-image:none; background-repeat:no-repeat; background-position:center; background-size:cover; border-top:0; border-bottom:0; padding-top:0; padding-bottom:0;">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
                           <tbody class="mcnImageBlockOuter">
                             <tr>
@@ -981,7 +976,7 @@
                                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                                   <tbody>
                                     <tr>
-                                      <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                      <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px; color: #FFFFFF; text-align: center;">
                                         <em>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
                                         <br>
                                         *|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*
@@ -994,7 +989,7 @@
                                         <br>
                                         Want to change how you receive these emails?
                                         <br>
-                                        You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a>.
+                                        You can <a href="*|UPDATE_PROFILE|*" style="color: #FFFFFF; text-decoration: underline;">update your preferences</a> or <a href="*|UNSUB|*" style="color: #FFFFFF; text-decoration: underline;">unsubscribe from this list</a>.
                                         <br>
                                         <br>
                                         *|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*
