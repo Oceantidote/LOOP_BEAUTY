@@ -35,6 +35,7 @@ class UserMailer < ApplicationMailer
     @content = params[:content]
     @rejected = params[:rejected]
     if params[:rejected]
+    if @rejected
       mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has edited a rejected #{@content.class.to_s}" )
     else
       mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
