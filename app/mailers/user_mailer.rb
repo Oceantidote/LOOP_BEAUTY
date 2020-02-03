@@ -12,15 +12,14 @@ class UserMailer < ApplicationMailer
     @tutorial = Tutorial.find(params[:tutorial])
     # mail(to: @user.email, subject: 'Welcome to Loop Beauty')
     mail(to: 'ifeodugbesan@gmail.com', subject: 'Welcome to Loop Beauty')
-    mail(to: 'leonardpercival@hoxton-digial.com', subject: 'Welcome to Loop Beauty')
   end
 
   def referral
+    # NOT WORKING
     @user = User.find(params[:user])
     @discount = DiscountCode.find(params[:discount])
     # mail(to: @user.email, subject: 'New Referral')
     mail(to: 'ifeodugbesan@gmail.com', subject: 'New Referral')
-    mail(to: 'leonardpercival@hoxton-digial.com', subject: 'New Referral')
   end
 
   def content_approval
@@ -29,15 +28,14 @@ class UserMailer < ApplicationMailer
     @content = params[:content]
     # mail(to: @user.email, subject: 'The status of your content has changed')
     mail(to: 'ifeodugbesan@gmail.com', subject: 'The status of your content has changed')
-    mail(to: 'leonardpercival@hoxton-digial.com', subject: 'The status of your content has changed')
   end
 
   def order_confirmation
+    # NOT WORKING
     @order = Order.find(params[:order])
     @user = User.find(params[:user])
     # mail(to: @user.email, subject: "Order confirmation" )
     mail(to: 'ifeodugbesan@gmail.com', subject: "Order confirmation" )
-    mail(to: 'leonardpercival@hoxton-digial.com', subject: "Order confirmation" )
   end
 
   def new_content
@@ -48,11 +46,9 @@ class UserMailer < ApplicationMailer
     if @rejected
       # mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has edited a rejected #{@content.class.to_s}" )
       mail(to: 'ifeodugbesan@gmail.com', subject: "#{@influencer.full_name} has edited a rejected #{@content.class.to_s}" )
-      mail(to: 'leonardpercival@hoxton-digial.com', subject: "#{@influencer.full_name} has edited a rejected #{@content.class.to_s}" )
     else
       # mail(to: 'hello@myloopbeauty.com', subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
       mail(to: 'ifeodugbesan@gmail.com', subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
-      mail(to: 'leonardpercival@hoxton-digial.com', subject: "#{@influencer.full_name} has shared a new #{@content.class.to_s}" )
     end
   end
 end
