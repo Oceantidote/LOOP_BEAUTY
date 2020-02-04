@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>*|MC:SUBJECT|*</title>
+    <title></title>
     <style type="text/css">
       p{
         font-family:'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -582,7 +582,9 @@
                                   <tbody>
                                     <tr>
                                       <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/6b83f61d-5677-4572-940a-cc6c6f19944b.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <%= link_to :root, target: "_blank", style: "cursor: pointer" do %>
+                                          <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/6b83f61d-5677-4572-940a-cc6c6f19944b.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom; cursor: pointer;" class="mcnImage">
+                                        <% end %>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -717,9 +719,13 @@
                                               <tr>
                                                 <td class="mcnCaptionRightImageContent" align="center" valign="top">
                                                   <% if @content.class.to_s == "Lookbook" %>
-                                                    <img alt="" src="<%= url_for(@content.photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                    <%= link_to lookbook_url(@content), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                      <img alt="" src="<%= url_for(@content.photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                    <% end %>
                                                   <% else %>
-                                                    <img alt="" src="<%= url_for(@content.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                    <%= link_to tutorial_url(@content), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                      <img alt="" src="<%= url_for(@content.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                    <% end %>
                                                   <% end %>
                                                 </td>
                                               </tr>
@@ -730,10 +736,14 @@
                                               <tr>
                                                 <td valign="top" class="mcnTextContent">
                                                   <% if @content.class.to_s == "Lookbook" %>
-                                                    <h6 class="content-title" style="font-size: 16px; color: #000000; margin: 10px 0; font-weight: bold; text-align: center;"><%= @content.title %></h6>
+                                                    <%= link_to lookbook_url(@content), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                      <h6 class="content-title" style="font-size: 16px; color: #000000; margin: 10px 0; font-weight: bold; text-align: center;"><%= @content.title %></h6>
+                                                    <% end %>
                                                     <p style="width: 100%; max-width: 450px; margin: 0 auto; font-size:14px; color: #757575;"><%= @content.description %></p>
                                                   <% else %>
-                                                    <h6 class="content-title" style="font-size: 16px; color: #000000;"><%= @content.title %></h6>
+                                                    <%= link_to tutorial_url(@content), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                      <h6 class="content-title" style="font-size: 16px; color: #000000; margin: 10px 0; font-weight: bold; text-align: center;"><%= @content.title %></h6>
+                                                    <% end %>
                                                   <% end %>
                                                 </td>
                                               </tr>
@@ -789,36 +799,38 @@
                                               <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightContentOuter" width="100%">
                                                 <tbody>
                                                   <tr>
-                                                    <td valign="top" class="mcnCaptionRightContentInner" style="padding: 9px;">
-                                                      <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" style="width: 100%;">
-                                                        <tbody>
-                                                          <tr>
-                                                            <td class="" align="left" valign="top" style="width: 50px;">
-                                                              <%= image_tag url_for(product.shades.first.card_photo), style: "width:50px;", alt: "order product shade photo" %>
-                                                            </td>
-                                                            <td style="width: 100%;">
-                                                              <table border="0" cellpadding="0" cellspacing="0" class="mcnTextBlock" style="width: 100%;">
-                                                                <tbody class="mcnTextBlockOuter">
-                                                                  <tr>
-                                                                    <td valign="top" class="mcnTextBlockInner">
-                                                                      <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnTextContentContainer" style="margin: 0;">
-                                                                        <tbody>
-                                                                          <tr>
-                                                                            <td valign="top" class="mcnTextContent" style="padding: 0 0 0 16px !important;">
-                                                                              <p style="color: #0E0000; font-size: 14px; font-weight: 900; margin: 0;"><%= product.title %> <span style="font-weight: 400; color: #676767;">by</span> <%= product.brand.name %></p>
-                                                                            </td>
-                                                                          </tr>
-                                                                        </tbody>
-                                                                      </table>
-                                                                    </td>
-                                                                  </tr>
-                                                                </tbody>
-                                                              </table>
-                                                            </td>
-                                                          </tr>
-                                                        </tbody>
-                                                      </table>
-                                                    </td>
+                                                      <td valign="top" class="mcnCaptionRightContentInner" style="padding: 9px;">
+                                                        <%= link_to product_url(product), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" style="width: 100%;">
+                                                            <tbody>
+                                                              <tr>
+                                                                <td class="" align="left" valign="top" style="width: 50px;">
+                                                                  <%= image_tag url_for(product.shades.first.card_photo), style: "width:50px;", alt: "order product shade photo" %>
+                                                                </td>
+                                                                <td style="width: 100%;">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" class="mcnTextBlock" style="width: 100%;">
+                                                                    <tbody class="mcnTextBlockOuter">
+                                                                      <tr>
+                                                                        <td valign="top" class="mcnTextBlockInner">
+                                                                          <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnTextContentContainer" style="margin: 0;">
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td valign="top" class="mcnTextContent" style="padding: 0 0 0 16px !important;">
+                                                                                  <p style="color: #0E0000; font-size: 14px; font-weight: 900; margin: 0;"><%= product.title %> <span style="font-weight: 400; color: #676767;">by</span> <%= product.brand.name %></p>
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        <% end %>
+                                                      </td>
                                                   </tr>
                                                 </tbody>
                                               </table>
@@ -945,7 +957,9 @@
                                   <tbody>
                                     <tr>
                                       <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/461ed616-5205-437c-9da5-8473f871503f.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <%= link_to :root, target: "_blank", style: "cursor: pointer" do %>
+                                          <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/461ed616-5205-437c-9da5-8473f871503f.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <% end %>
                                       </td>
                                     </tr>
                                   </tbody>
