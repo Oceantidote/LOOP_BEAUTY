@@ -179,7 +179,11 @@ longwearing = Benefit.create!(name: "Longwearing")
 buildable_coverage = Benefit.create!(name: "Buildable Coverage")
 transfer_resistant = Benefit.create!(name: "Transfer Resistant")
 creamy_fluid_formula = Benefit.create!(name: "Creamy Fluid Formula")
-non_drying = Benefit.create!(name: "Non Drying")
+hypoallergenic = Benefit.create!(name: "Hypoallergenic")
+for_oily_skin = Benefit.create!(name: "For Oily Skin")
+for_all_skin_types = Benefit.create!(name: "For All Skin Types")
+for_dry_skin = Benefit.create!(name: "For Dry Skin")
+no_flashback = Benefit.create!(name: "No Flashback")
 
 puts "-"
 
