@@ -196,7 +196,7 @@ class User < ApplicationRecord
     article = InsiderArticle.where(featured: true).first.id
     tutorial = Tutorial.where(featured: true).first.id
     if influencer?
-      UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome_influencer.deliver_now
+      UserMailer.with(user: self.id).welcome_influencer.deliver_now
     else
       UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_now
     end

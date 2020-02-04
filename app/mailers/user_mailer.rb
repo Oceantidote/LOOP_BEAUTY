@@ -17,8 +17,6 @@ class UserMailer < ApplicationMailer
   def welcome_influencer
     # WORKING
     @user = User.find(params[:user])
-    @article = InsiderArticle.find(params[:article])
-    @tutorial = Tutorial.find(params[:tutorial])
     # mail(to: @user.email, subject: 'Welcome to Loop Beauty')
     mail(to: 'ifeodugbesan@gmail.com', subject: 'Welcome to Loop Beauty')
   end
