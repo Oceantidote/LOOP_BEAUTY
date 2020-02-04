@@ -6,6 +6,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome
   end
 
+  def welcome_influencer
+    UserMailer.welcome_influencer
+  end
+
   def referral
     UserMailer.referral
   end
