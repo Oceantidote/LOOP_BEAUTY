@@ -578,7 +578,9 @@
                                   <tbody>
                                     <tr>
                                       <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/6b83f61d-5677-4572-940a-cc6c6f19944b.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <%= link_to :root, target: "_blank", style: "cursor: pointer" do %>
+                                          <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/6b83f61d-5677-4572-940a-cc6c6f19944b.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom; cursor: pointer;" class="mcnImage">
+                                        <% end %>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -713,7 +715,9 @@
                                             <tbody>
                                               <tr>
                                                 <td class="mcnCaptionRightImageContent" align="center" valign="top">
-                                                  <img alt="" src="<%= url_for(@article.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                  <%= link_to insider_article_url(@article), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                    <img alt="" src="<%= url_for(@article.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                  <% end %>
                                                 </td>
                                               </tr>
                                             </tbody>
@@ -722,7 +726,9 @@
                                             <tbody>
                                               <tr>
                                                 <td valign="top" class="mcnTextContent">
-                                                  <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center;"><%= @article.title %></p>
+                                                  <%= link_to insider_article_url(@article), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                    <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center;"><%= @article.title %></p>
+                                                  <% end %>
                                                   <div style="max-width: 450px; margin: 0 auto; font-size:14px; color: #757575;">
                                                     <%= raw @article.text1.truncate(250) %>
                                                   </div>
@@ -804,7 +810,9 @@
                                             <tbody>
                                               <tr>
                                                 <td class="mcnCaptionRightImageContent" align="center" valign="top">
-                                                  <img alt="" src="<%= url_for(@tutorial.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                  <%= link_to tutorial_url(@tutorial), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                    <img alt="" src="<%= url_for(@tutorial.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                  <% end %>
                                                 </td>
                                               </tr>
                                             </tbody>
@@ -813,9 +821,9 @@
                                             <tbody>
                                               <tr>
                                                 <td valign="top" class="mcnTextContent">
-                                                  <span style="font-size:14px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">
+                                                  <%= link_to tutorial_url(@tutorial), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
                                                     <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center; max-width: 450px;"><%= @tutorial.title %></p>
-                                                  </span>
+                                                  <% end %>
                                                 </td>
                                               </tr>
                                             </tbody>
@@ -857,7 +865,7 @@
                                     <tbody>
                                       <tr>
                                         <td align="center" valign="middle" class="mcnButtonContent" style="font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 18px;">
-                                          <a class="mcnButton " title="SHOP NOW" href="https://infinite-journey-41892.herokuapp.com/make-up" target="_blank" style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">SHOP NOW</a>
+                                          <a class="mcnButton " title="SHOP NOW" href="/make-up" target="_blank" style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">SHOP NOW</a>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -915,7 +923,9 @@
                                   <tbody>
                                     <tr>
                                       <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/461ed616-5205-437c-9da5-8473f871503f.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <%= link_to :root, target: "_blank", style: "cursor: pointer" do %>
+                                          <img align="center" alt="" src="https://gallery.mailchimp.com/2e469bc335ba91eb474ed6736/images/461ed616-5205-437c-9da5-8473f871503f.png" width="513" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <% end %>
                                       </td>
                                     </tr>
                                   </tbody>
