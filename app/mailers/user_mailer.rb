@@ -14,6 +14,19 @@ class UserMailer < ApplicationMailer
     mail(to: 'leonardpercival@hoxton-digital.com', subject: 'Welcome to Loop Beauty')
   end
 
+  def welcome_influencer
+    # WORKING
+    # @user = User.find(params[:user])
+    # @article = InsiderArticle.find(params[:article])
+    # @tutorial = Tutorial.find(params[:tutorial])
+
+    @user = User.last
+    @article = InsiderArticle.last
+    @tutorial = Tutorial.last
+    # mail(to: @user.email, subject: 'Welcome to Loop Beauty')
+    mail(to: 'leonardpercival@hoxton-digital.com', subject: 'Welcome to Loop Beauty')
+  end
+
   def referral
     # NOT WORKING
     @user = User.find(params[:user])
