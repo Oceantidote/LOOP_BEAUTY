@@ -1,5 +1,8 @@
 class StripeCheckoutSessionService
   def call(event)
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+    puts 'CALLED'
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
     url = event.data.object.success_url
     order_id = url.match(/\/orders\/(\d+)\/order_success/)[1].to_i
     order = Order.find(order_id)

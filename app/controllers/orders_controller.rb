@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.status = 'pending'
     @order.discount_code = @basket.discount_code
-    @basket.basket_products.all?(&:purchase_with_credit?) && @basket.total_price_cents == 0 ? @order.delivery_cost_cents = 0 : @order.set_delivery_costs_cents
+    @order.delivery_cost_cents = 0 if @basket.basket_products.any?(&:purchase_with_credit?)
     authorize @order
     if session[:aff_code]
       affiliation = Tutorial.find_by_affiliate_code(session[:aff_code]).present? ? Tutorial.find_by_affiliate_code(session[:aff_code]) : Lookbook.find_by_affiliate_code(session[:aff_code])
@@ -69,12 +69,24 @@ class OrdersController < ApplicationController
   private
 
   def launch_session
+    credit = @order.credit_spent_cents
     items = @order.order_products.map do |item|
+      if credit > 0 && item.purchase_with_credit?
+        if credit >= item.price_cents
+          amount = 0
+          credit -= item.price_cents
+        else
+          amount = item.price_cents - credit
+          credit = 0
+        end
+      else
+        amount = item.price_cents
+      end
       {
-        name: item.shade.name.present? ? item.shade.name : item.product.title,
-        amount: item.individual_price_cents,
+        name: "#{item.shade.name.present? ? item.shade.name : item.product.title} × #{item.quantity}",
+        amount: amount,
         currency: 'gbp',
-        quantity: item.quantity
+        quantity: 1
       }
     end
     items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: 'gbp', quantity: 1} if @order.delivery_cost_cents > 0
