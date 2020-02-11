@@ -643,3 +643,26 @@
   }
 }
 
+.follow-dropdown {
+  position: relative;
+  right: 170px !important;
+  a {
+    height: 45px;
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+}
+
+.follow-dropdown-toggle:after {
+  border: none !important;
+}
+
+.follow-icon {
+  width: 30px;
+  @include absCenter;
+  i {
+    font-size: 25px;
+    font-weight: normal;
+  }
+}
+

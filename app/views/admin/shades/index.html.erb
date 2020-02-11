@@ -1,19 +1,33 @@
-<div class="container skucont">
-  <table>
-    <tr>
-      <th>Brand</th>
-      <th>Product</th>
-      <th>Shade</th>
-      <th>SKU</th>
-    </tr>
-    <% @shades.each_with_index do |shade, index| %>
-      <tr class="<%= index.even? ? 'shaded' : '' %>">
-        <td><%= shade.product.brand.name %></td>
-        <td><%= shade.product.title %></td>
-        <td><%= shade.name %></td>
-        <td><%= shade.sku %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= link_to 'DOWNLOAD', admin_sku_download_path(format: :csv), class: 'secondary-button', method: :get, style: 'margin-top: 10px' %>
+<div class="dashboard-wrapper">
+  <div class="container">
+    <div class="dash-content-container">
+      <h2 class="insider-info-title mlb-title text-center">SKU's</h2>
+      <hr>
+        <div class="p-4">
+          <%= link_to 'DOWNLOAD', admin_sku_download_path(format: :csv), class: 'secondary-button', method: :get, style: 'margin: 0 0 50px 0' %>
+          <table>
+            <tr>
+              <th class="muli">Brand</th>
+              <th class="muli">Product</th>
+              <th class="muli">Shade</th>
+              <th class="muli">SKU</th>
+            </tr>
+            <% @shades.each_with_index do |shade, index| %>
+              <tr class="<%= index.even? ? 'shaded' : '' %>">
+                <td><%= shade.product.brand.name %></td>
+                <td><%= shade.product.title %></td>
+                <td><%= shade.name %></td>
+                <td><%= shade.sku %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <p class="boldest muli small-text grey"><%= page_entries_info @shades %></p>
+        </div>
+        <div class="paginator-container">
+          <%= paginate @shades %>
+        </div>
+    </div>
+  </div>
 </div>

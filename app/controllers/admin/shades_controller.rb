@@ -6,7 +6,7 @@ class Admin::ShadesController < ApplicationController
   skip_after_action :verify_authorized, only: [:download]
 
   def index
-    @shades = policy_scope(Shade)
+    @shades = policy_scope(Shade).page params[:page]
   end
 
   def create
