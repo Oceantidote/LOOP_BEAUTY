@@ -47,6 +47,7 @@
 .video-home-image-banner {
   width: 100vw;
   height: calc(100vw * 0.4);
+  max-height: 500px;
   background-position: center;
   background-size: cover;
   display: flex;

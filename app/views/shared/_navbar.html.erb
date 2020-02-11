@@ -35,7 +35,7 @@
       <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'users' && params[:action] == 'index' ? 'navbar-active' : '' %>">Influencers</p>
     <% end %>
     <%= link_to products_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Make Up</p>
+      <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Makeup</p>
     <% end %>
     <%= link_to insider_articles_path do %>
       <p class="navbar-middle-item <%= params[:controller] == 'insider_articles' ? 'navbar-active' : '' %>">Insider</p>
@@ -132,7 +132,7 @@
       <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
     </li>
     <li class="nav-item">
-      <%= link_to "Make Up", products_path, class: "nav-link mobile-dropdown-options each-item" %>
+      <%= link_to "Makeup", products_path, class: "nav-link mobile-dropdown-options each-item" %>
     </li>
     <li class="nav-item">
       <%= link_to "Insider", insider_articles_path, class: "nav-link mobile-dropdown-options each-item" %>

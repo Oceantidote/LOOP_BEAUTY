@@ -1,6 +1,6 @@
 <div class="tutorial-show-title-content lookbook-max-width">
   <div style="width: 120px;">
-    <%= link_to 'See all looks', influencer_video_path, class: "web-tutorials-link" %>
+    <%= link_to 'See all looks', user_lookbooks_path(@lookbook.user), class: "web-tutorials-link" %>
   </div>
   <h2 class="insider-info-title text-center"><%= @lookbook.title %></h2>
   <div style="width: 120px;">
