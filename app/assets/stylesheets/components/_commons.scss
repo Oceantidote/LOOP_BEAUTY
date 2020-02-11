@@ -312,12 +312,12 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  @include for-phone-only {
+  @include for-medium-devices-down {
     flex-wrap: nowrap;
     overflow: scroll;
     position: relative;
   }
-  @include for-small-devices-up {
+  @include for-medium-devices-up {
     justify-content: center;
   }
   @include for-medium-devices-up {

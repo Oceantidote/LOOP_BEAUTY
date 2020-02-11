@@ -1,5 +1,6 @@
 .influencers-show-banner {
   height: calc(100vw * 0.3);
+  max-height: 500px;
   // background: #DDDEE2;
   background-position: left;
   background-size: cover;
@@ -43,6 +44,7 @@
 }
 
 .influencer-show-banner-text {
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
   margin: auto;

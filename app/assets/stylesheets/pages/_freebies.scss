@@ -1,6 +1,7 @@
 .freebies-title-banner {
   background: $light-gray;
   height: calc(100vw * 0.3);
+  max-height: 500px;
   @include absCenterColumn;
   h1 {
     font-weight: 900;
@@ -22,6 +23,7 @@
 
 .freebies-first-time-banner {
   height: calc(100vw * 0.3);
+  max-height: 500px;
   background-size: cover;
   background-position: center;
   @include absCenterColumn;
@@ -50,6 +52,7 @@
 
 .freebies-newsletter-banner {
   height: calc(100vw * 0.3);
+  max-height: 500px;
   background: #E6CFF9;
   @include absCenterColumn;
   h1 {
