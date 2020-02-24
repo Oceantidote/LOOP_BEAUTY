@@ -32,6 +32,57 @@
     <% end %>
   <% end %>
 </div>
+<div class="home-featured-wrapper">
+  <div class="home-featured-container">
+    <div class="home-featured-tabs">
+      <div class="home-tab bold home-tab-active">
+        NEW IN
+      </div>
+      <div class="home-tab bold">
+        TRENDING NOW
+      </div>
+      <div class="home-tab bold">
+        BEST SELLERS
+      </div>
+    </div>
+    <div class="home-featured-products home-featured-products-active">
+      <div class="row-carousel">
+        <% Product.last(3).each do |product| %>
+          <div class="col-md-6 col-lg-4">
+            <%= render 'shared/product_cards', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="home-featured-products d-none">
+      <div class="row-carousel">
+        <% Product.first(3).each do |product| %>
+          <div class="col-md-6 col-lg-4">
+            <%= render 'shared/product_cards', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="home-featured-products d-none">
+      <div class="row-carousel">
+        <% Product.last(3).each do |product| %>
+          <div class="col-md-6 col-lg-4">
+            <%= render 'shared/product_cards', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="home-featured-products d-none">
+      <div class="row-carousel">
+        <% Product.last(3).each do |product| %>
+          <div class="col-md-6 col-lg-4">
+            <%= render 'shared/product_cards', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
@@ -101,4 +152,24 @@
       popUpContent.style.display = 'none'
     })
   }
+
+  homeTab = document.querySelectorAll('.home-tab');
+  homeTab.forEach((tab) => {
+    tab.addEventListener('click', (event) => {
+      homeTab.forEach((tab) => { tab.classList.remove('home-tab-active') });
+      event.currentTarget.classList.add('home-tab-active');
+    })
+  })
+
+  homeFeaturedProducts = document.querySelectorAll('.home-featured-products')
+  homeFeaturedProducts.forEach((hfp) => {
+    hfp.addEventListener('click', (event) => {
+      homeFeaturedProducts.forEach((choice) => {
+        choice.classList.remove('home-featured-products-active')
+        choice.classList.add('d-none')
+      });
+      event.currentTarget.classList.add('home-featured-products-active')
+      event.currentTarget.remove.add('d-none')
+    })
+  })
 </script>
