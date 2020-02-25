@@ -21,6 +21,9 @@ import initStarRating from '../plugins/init_star_rating';
 import initFadeOut from "../components/fade_out";
 import { initSweetalert } from '../plugins/init_sweetalert';
 import initSelect2 from '../plugins/init_select2';
+import 'slick-carousel';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 // import autocompleteSearch from "../components/autocomplete"
 
 initProductShadeCards();
@@ -61,3 +64,16 @@ initSweetalert('.sweet-alert-billing-trigger', {
     link.click();
   }
 });
+
+// ========================
+//  Slick
+// ========================
+
+$(document).ready(function(){
+  $('.homepage-slick').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  });
+});
+

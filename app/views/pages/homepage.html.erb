@@ -35,48 +35,39 @@
 <div class="home-featured-wrapper">
   <div class="home-featured-container">
     <div class="home-featured-tabs">
-      <div class="home-tab bold home-tab-active">
+      <div class="home-tab bold home-tab-active" data-section="new">
         NEW IN
       </div>
-      <div class="home-tab bold">
+      <div class="home-tab bold" data-section="trending">
         TRENDING NOW
       </div>
-      <div class="home-tab bold">
+      <div class="home-tab bold" data-section="best">
         BEST SELLERS
       </div>
     </div>
-    <div class="home-featured-products home-featured-products-active">
-      <div class="row-carousel">
-        <% Product.last(3).each do |product| %>
-          <div class="col-md-6 col-lg-4">
-            <%= render 'shared/product_cards', product: product %>
+    <div class="home-featured-products home-featured-products-active" data-section="new">
+      <div class="row-carousel homepage-slick">
+        <% Product.all.each do |product| %>
+          <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+            <%= render 'shared/homepage_tab_products', product: product %>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="home-featured-products d-none">
-      <div class="row-carousel">
-        <% Product.first(3).each do |product| %>
-          <div class="col-md-6 col-lg-4">
-            <%= render 'shared/product_cards', product: product %>
+    <div class="home-featured-products" data-section="trending">
+      <div class="row-carousel ">
+        <% Product.all.each do |product| %>
+          <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+            <%= render 'shared/homepage_tab_products', product: product %>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="home-featured-products d-none">
+    <div class="home-featured-products" data-section="best">
       <div class="row-carousel">
-        <% Product.last(3).each do |product| %>
-          <div class="col-md-6 col-lg-4">
-            <%= render 'shared/product_cards', product: product %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="home-featured-products d-none">
-      <div class="row-carousel">
-        <% Product.last(3).each do |product| %>
-          <div class="col-md-6 col-lg-4">
-            <%= render 'shared/product_cards', product: product %>
+        <% Product.all.each do |product| %>
+          <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+            <%= render 'shared/homepage_tab_products', product: product %>
           </div>
         <% end %>
       </div>
@@ -154,22 +145,18 @@
   }
 
   homeTab = document.querySelectorAll('.home-tab');
+  homeFeaturedProducts = document.querySelectorAll('.home-featured-products')
   homeTab.forEach((tab) => {
     tab.addEventListener('click', (event) => {
       homeTab.forEach((tab) => { tab.classList.remove('home-tab-active') });
       event.currentTarget.classList.add('home-tab-active');
-    })
-  })
 
-  homeFeaturedProducts = document.querySelectorAll('.home-featured-products')
-  homeFeaturedProducts.forEach((hfp) => {
-    hfp.addEventListener('click', (event) => {
-      homeFeaturedProducts.forEach((choice) => {
-        choice.classList.remove('home-featured-products-active')
-        choice.classList.add('d-none')
+      homeFeaturedProducts.forEach((result) => {
+        result.classList.remove('home-featured-products-active');
+        if (tab.dataset.section == result.dataset.section ) {
+          result.classList.add('home-featured-products-active');
+        }
       });
-      event.currentTarget.classList.add('home-featured-products-active')
-      event.currentTarget.remove.add('d-none')
     })
   })
 </script>
