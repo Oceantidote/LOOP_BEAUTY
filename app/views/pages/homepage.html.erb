@@ -33,46 +33,7 @@
   <% end %>
 </div>
 <div class="home-featured-wrapper">
-  <div class="home-featured-container">
-    <div class="home-featured-tabs">
-      <div class="home-tab bold home-tab-active" data-section="new">
-        NEW IN
-      </div>
-      <div class="home-tab bold" data-section="trending">
-        TRENDING NOW
-      </div>
-      <div class="home-tab bold" data-section="best">
-        BEST SELLERS
-      </div>
-    </div>
-    <div class="home-featured-products home-featured-products-active" data-section="new">
-      <div class="row-carousel homepage-slick">
-        <% Product.all.each do |product| %>
-          <div class="col-md-6 col-lg-4 d-flex justify-content-center">
-            <%= render 'shared/homepage_tab_products', product: product %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="home-featured-products" data-section="trending">
-      <div class="row-carousel ">
-        <% Product.all.each do |product| %>
-          <div class="col-md-6 col-lg-4 d-flex justify-content-center">
-            <%= render 'shared/homepage_tab_products', product: product %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="home-featured-products" data-section="best">
-      <div class="row-carousel">
-        <% Product.all.each do |product| %>
-          <div class="col-md-6 col-lg-4 d-flex justify-content-center">
-            <%= render 'shared/homepage_tab_products', product: product %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render 'shared/home_tabs' %>
 </div>
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
@@ -152,9 +113,13 @@
       event.currentTarget.classList.add('home-tab-active');
 
       homeFeaturedProducts.forEach((result) => {
-        result.classList.remove('home-featured-products-active');
+        // result.classList.remove('home-featured-products-active');
+        result.style.display = 'none';
+        result.setAttribute('aria-hidden', 'true');
         if (tab.dataset.section == result.dataset.section ) {
-          result.classList.add('home-featured-products-active');
+          // result.classList.add('home-featured-products-active');
+          result.style.display = 'block';
+          result.setAttribute('aria-hidden', 'false');
         }
       });
     })

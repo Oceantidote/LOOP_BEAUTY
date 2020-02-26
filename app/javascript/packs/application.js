@@ -73,7 +73,26 @@ $(document).ready(function(){
   $('.homepage-slick').slick({
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    speed: 1000,
+    nextArrow: '<img src="/assets/pag-right.png" class="slick-next" style="width: 40px !important; height: 40px !important; z-index: 10" alt="next arrow">',
+    prevArrow: '<img src="/assets/pag-left.png" class="slick-prev" style="width: 40px !important; height: 40px !important; z-index: 10" alt="next arrow">',
+    autoplay: true,
+    autoplaySpeed: 5000,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
   });
 });
 
