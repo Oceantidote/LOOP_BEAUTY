@@ -1,0 +1,39 @@
+<div class="card-image-results homepage-products">
+  <div class="card">
+    <%= link_to product_path(product) do %>
+      <% if product.out_of_stock? %>
+        <div class="out-of-stock-overlay">
+          <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+        </div>
+      <% end %>
+      <div class="card_image">
+        <%= link_to product_path(product) do %>
+          <% if product.shades.first&.card_photo %>
+            <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
+          <% else %>
+            <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="card-info">
+    <p class="muli boldest text-center" style="margin-bottom: 0px;"><%= product.brand.name %></p>
+    <div class="card_header">
+      <p class="muli boldest text-center"><%= product.title %></p>
+    </div>
+    <div class="card_price-heart muli boldest text-center">
+      <%= humanized_money_with_symbol(product.price) %>
+    </div>
+    <div class="card_ratings">
+      <div class="rating-stars">
+        <%= render 'shared/ratings', rating: product.average_rating.to_i %>
+        <p class="all-reviews muli boldest"><%= product.average_rating %></p>
+      </div>
+      <p class="all-reviews muli boldest">(<%= product.total_reviews %>)</p>
+    </div>
+  </div>
+</div>
+<% if policy(ShowroomProduct).destroy? && (params[:controller] == 'users' && params[:action] == 'make_up' || ((params[:controller] == 'showroom_products' && params[:action] == 'destroy') || (params[:controller] == 'showroom_products' && params[:action] == 'create')) ) %>
+  <%= link_to 'Remove', user_showroom_product_path(@user, ShowroomProduct.where(showroom: @user.showroom, product: product).first.id), method: :delete, class: "small-text underline grey-font boldest showroom-delete-link", remote: true %>
+<% end %>

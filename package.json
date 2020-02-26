@@ -12,6 +12,7 @@
     "js-autocomplete": "^1.0.4",
     "popper.js": "^1.15.0",
     "select2": "^4.0.12",
+    "slick-carousel": "^1.8.1",
     "sweetalert": "^2.1.2",
     "tablesorter": "^2.31.1"
   },

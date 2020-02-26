@@ -1,0 +1,42 @@
+<div class="home-featured-container">
+  <div class="home-featured-tabs">
+    <div class="home-tab bold home-tab-active" data-section="new">
+      NEW IN
+    </div>
+    <div class="home-tab bold" data-section="trending">
+      TRENDING NOW
+    </div>
+    <div class="home-tab bold" data-section="best">
+      BEST SELLERS
+    </div>
+  </div>
+  <div class="home-featured-products-container">
+    <div class="home-featured-products" data-section="new" aria-hidden="false">
+      <div class="homepage-slick">
+        <% Product.all.select { |product| !product.out_of_stock? }.first(5).each do |product| %>
+          <div class="homepage-slick-card">
+            <%= render 'shared/homepage_tab_products', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="home-featured-products" data-section="trending" aria-hidden="true" style="display: none;">
+      <div class="homepage-slick">
+        <% Product.all.select { |product| !product.out_of_stock? }.select { |product| product.brand.name == "Black Up" }.each do |product| %>
+          <div class="homepage-slick-card">
+            <%= render 'shared/homepage_tab_products', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="home-featured-products" data-section="best" aria-hidden="true" style="display: none;">
+      <div class="homepage-slick">
+        <% Product.all.select { |product| !product.out_of_stock? }.last(5).each do |product| %>
+          <div class="homepage-slick-card">
+            <%= render 'shared/homepage_tab_products', product: product %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

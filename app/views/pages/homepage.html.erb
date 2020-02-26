@@ -32,6 +32,9 @@
     <% end %>
   <% end %>
 </div>
+<div class="home-featured-wrapper">
+  <%= render 'shared/home_tabs' %>
+</div>
 <div class="insider-info-wrapper">
   <h2 class="insider-info-title text-center">Insider Info</h2>
   <div class="insider-info-container lookbook-max-width">
@@ -101,4 +104,24 @@
       popUpContent.style.display = 'none'
     })
   }
+
+  homeTab = document.querySelectorAll('.home-tab');
+  homeFeaturedProducts = document.querySelectorAll('.home-featured-products')
+  homeTab.forEach((tab) => {
+    tab.addEventListener('click', (event) => {
+      homeTab.forEach((tab) => { tab.classList.remove('home-tab-active') });
+      event.currentTarget.classList.add('home-tab-active');
+
+      homeFeaturedProducts.forEach((result) => {
+        // result.classList.remove('home-featured-products-active');
+        result.style.display = 'none';
+        result.setAttribute('aria-hidden', 'true');
+        if (tab.dataset.section == result.dataset.section ) {
+          // result.classList.add('home-featured-products-active');
+          result.style.display = 'block';
+          result.setAttribute('aria-hidden', 'false');
+        }
+      });
+    })
+  })
 </script>
