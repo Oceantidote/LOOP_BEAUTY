@@ -33,6 +33,7 @@
   <% end %>
 </div>
 <div class="home-featured-wrapper">
+  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
   <%= render 'shared/home_tabs' %>
 </div>
 <div class="insider-info-wrapper">
@@ -124,5 +125,15 @@
       });
     })
   })
+
+  document.onreadystatechange = function() {
+    if (document.readyState !== "complete") {
+        document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'hidden' })
+        document.querySelector(".lds-spinner").style.visibility = "visible";
+    } else {
+        document.querySelector(".lds-spinner").style.display = "none";
+        document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'visible' })
+    }
+  };
 </script>
 
