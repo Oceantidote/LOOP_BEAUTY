@@ -18,19 +18,12 @@
     <% end %>
   </div>
   <div class="card-info">
-    <p class="muli boldest text-center" style="margin-bottom: 0px;"><%= product.brand.name %></p>
+    <p class="muli boldest text-center truncate-text" style="margin-bottom: 0px;"><%= product.brand.name %></p>
     <div class="card_header">
-      <p class="muli boldest text-center"><%= product.title %></p>
+      <p class="muli boldest text-center truncate-text"><%= product.title %></p>
     </div>
     <div class="card_price-heart muli boldest text-center">
       <%= humanized_money_with_symbol(product.price) %>
-    </div>
-    <div class="card_ratings">
-      <div class="rating-stars">
-        <%= render 'shared/ratings', rating: product.average_rating.to_i %>
-        <p class="all-reviews muli boldest"><%= product.average_rating %></p>
-      </div>
-      <p class="all-reviews muli boldest">(<%= product.total_reviews %>)</p>
     </div>
   </div>
 </div>
