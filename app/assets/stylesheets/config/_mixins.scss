@@ -2,21 +2,21 @@
 
 @mixin absCenter {
   display: flex !important;
-  visibility: visible !important;
+  // visibility: visible !important;
   justify-content: center;
   align-items: center;
 }
 
 @mixin absCenterSA {
   display: flex !important;
-  visibility: visible !important;
+  // visibility: visible !important;
   justify-content: space-around;
   align-items: center;
 }
 
 @mixin absCenterSB {
   display: flex !important;
-  visibility: visible !important;
+  // visibility: visible !important;
   justify-content: space-between;
   align-items: center;
 }
@@ -31,7 +31,7 @@
 @mixin absCenterColumnSA {
   display: flex !important;
   flex-direction: column;
-  visibility: visible !important;
+  // visibility: visible !important;
   align-items: space-around;
   justify-content: center;
 }
@@ -39,7 +39,7 @@
 @mixin absCenterColumnSB {
   display: flex !important;
   flex-direction: column;
-  visibility: visible !important;
+  // visibility: visible !important;
   align-items: space-between;
   justify-content: center;
 }
