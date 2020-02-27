@@ -65,9 +65,11 @@ initSweetalert('.sweet-alert-billing-trigger', {
   }
 });
 
-// ========================
-//  Slick
-// ========================
+// // ========================
+// //  Slick
+// // ========================
+
+const carousel = document.querySelector('.home-featured-container');
 
 $(document).ready(function(){
   $('.homepage-slick').slick({
@@ -75,8 +77,8 @@ $(document).ready(function(){
     slidesToShow: 3,
     slidesToScroll: 1,
     speed: 1000,
-    nextArrow: '<img src="/assets/pag-right.png" class="slick-next" style="width: 40px !important; height: 40px !important; z-index: 10" alt="next arrow">',
-    prevArrow: '<img src="/assets/pag-left.png" class="slick-prev" style="width: 40px !important; height: 40px !important; z-index: 10" alt="next arrow">',
+    nextArrow: `<img src=${carousel.dataset.next} class="slick-next" style="width: 40px !important; height: 40px !important; z-index: 10" alt="next arrow">`,
+    prevArrow: `<img src=${carousel.dataset.prev} class="slick-prev" style="width: 40px !important; height: 40px !important; z-index: 10" alt="next arrow">`,
     autoplay: true,
     autoplaySpeed: 5000,
     responsive: [
