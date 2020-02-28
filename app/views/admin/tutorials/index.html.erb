@@ -6,6 +6,7 @@
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Pending Approval</h2>
       <hr>
+      <%= link_to "NEW TUTORIAL", new_tutorial_path, class: 'primary-button products-admin-primary m10' %>
       <div class="row" style="margin: 30px 0;">
         <% if @tutorials.count == 0 %>
           <p class="medium-margin text-center boldest muli grey" style="width: 100%;">There are no pending tutorials</p>

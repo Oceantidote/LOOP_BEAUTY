@@ -1,13 +1,23 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
     <div class="dash-menu-container">
-      <%= render 'shared/influencer_dash' %>
+      <% if current_user.influencer? %>
+        <%= render 'shared/influencer_dash' %>
+      <% elsif current_user.admin %>
+        <%= render 'admin/shared/admin_dash' %>
+      <% end %>
     </div>
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Share Tutorial</h2>
       <hr>
       <div class="dash-upload-content-container-wide">
         <%= simple_form_for @tutorial do |f| %>
+          <% if current_user.admin %>
+            <div class="personal-details-input-wide">
+              <p class="boldest muli s-medium-text text-right no-margin">Influencer</p>
+              <%= f.input :user_id, collection: @users, label_method: ->(user){ "#{user.full_name}" }, label: false %>
+            </div>
+          <% end %>
           <div class="personal-details-input-wide">
             <p class="boldest muli s-medium-text text-right no-margin">Title</p>
             <%= f.input :title, label: false, input_html: { class: "contact-form-input" } %>
