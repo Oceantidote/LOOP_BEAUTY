@@ -13,7 +13,7 @@
   <div class="home-featured-products-container">
     <div class="home-featured-products" data-section="new" aria-hidden="false">
       <div class="homepage-slick">
-        <% Product.all.where(featured: true).each do |product| %>
+        <% @new_in.each do |product| %>
           <div class="homepage-slick-card">
             <%= render 'shared/homepage_tab_products', product: product %>
           </div>
@@ -22,7 +22,7 @@
     </div>
     <div class="home-featured-products" data-section="trending" aria-hidden="true" style="display: none;">
       <div class="homepage-slick">
-        <% Product.all.select { |product| !product.out_of_stock? }.select { |product| product.brand.name == "Black Up" }.each do |product| %>
+        <% @trending.each do |product| %>
           <div class="homepage-slick-card">
             <%= render 'shared/homepage_tab_products', product: product %>
           </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="home-featured-products" data-section="best" aria-hidden="true" style="display: none;">
       <div class="homepage-slick">
-        <% Product.all.select { |product| !product.out_of_stock? }.last(5).each do |product| %>
+        <% @best_sellers.each do |product| %>
           <div class="homepage-slick-card">
             <%= render 'shared/homepage_tab_products', product: product %>
           </div>

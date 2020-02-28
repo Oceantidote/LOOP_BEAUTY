@@ -42,7 +42,8 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new_in
-    @products = Product.where(featured: true)
+    @featured_products = Product.where(featured: true)
+    @not_featured_products = Product.where(featured: false).select { |product| !product.out_of_stock? }
   end
 
   def add_new_in

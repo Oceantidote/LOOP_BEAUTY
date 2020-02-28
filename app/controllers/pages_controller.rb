@@ -12,6 +12,9 @@ class PagesController < ApplicationController
     @home_banners = HomeBanner.where(display: true)
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC).first(4)
     @insider_articles = InsiderArticle.where(homepage: true).order(created_at: :DESC).first(3)
+    @new_in = Product.all.where(featured: true).select { |product| !product.out_of_stock? }
+    @trending = Product.all.select { |product| !product.out_of_stock? }.select { |product| product.brand.name == "Black Up" }
+    @best_sellers = Product.all.select { |product| !product.out_of_stock? }.last(5)
   end
 
   def freebies
