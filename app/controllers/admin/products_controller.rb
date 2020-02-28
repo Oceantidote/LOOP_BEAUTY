@@ -41,6 +41,24 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def new_in
+    @products = Product.where(featured: true)
+  end
+
+  def add_new_in
+    product_ids = params[:new_in][:products].reject(&:blank?)
+    product_ids.each do |id|
+      Product.find(id.to_i).update(featured: true)
+    end
+    redirect_to admin_new_in_path
+  end
+
+  def remove_new_in
+    @product = Product.friendly.find(params[:product_id])
+    @product.update(featured: false)
+    redirect_to admin_new_in_path
+  end
+
   def destroy
     @product.destroy
     redirect_to admin_products_path, notice: 'Deleted'

@@ -75,8 +75,6 @@ Rails.application.routes.draw do
     resources :showroom_products, only: [:create, :destroy]
   end
 
-  # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
-
   # ADMIN ROUTES BELOW
 
   namespace :admin do
@@ -86,6 +84,8 @@ Rails.application.routes.draw do
     get 'sku-download', to: 'shades#download'
     get 'change_offer_banner', to: 'offer_banners#change_offer_banner'
     post 'change_offer_banner', to: 'offer_banners#change'
+    get 'new_in', to: 'products#new_in'
+    post 'add_new_in', to: 'products#add_new_in'
     resources :lookbooks, only: [:index] do
       member do
         patch '/approve', to: 'lookbooks#approve'
@@ -114,6 +114,7 @@ Rails.application.routes.draw do
     end
     delete 'photo/:id', to: 'shades#destroy_photo', as: :destroy_photo
     resources :products, except: [:show] do
+      post 'remove_new_in', to: 'products#remove_new_in'
       resources :product_benefits, only: [:create]
       resources :shades, only: [:create]
       resources :customer_reviews, only: [:index, :destroy]
