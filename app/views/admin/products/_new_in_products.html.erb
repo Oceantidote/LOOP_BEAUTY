@@ -1,0 +1,34 @@
+<div class="card-image-results">
+  <div class="card">
+    <%= link_to product_path(product) do %>
+      <% if product.out_of_stock? %>
+        <div class="out-of-stock-overlay">
+          <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+        </div>
+      <% end %>
+      <div class="card_image">
+        <%= link_to product_path(product) do %>
+          <% if product.shades.first&.card_photo %>
+            <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
+          <% else %>
+            <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="card-info">
+    <p class="muli boldest" style="margin-bottom: 0px;"><%= product.brand.name %></p>
+    <div class="card_header">
+      <p class="muli boldest"><%= product.title %></p>
+    </div>
+    <div class="card_price-heart muli boldest">
+      <%= humanized_money_with_symbol(product.price) %>
+    </div>
+  </div>
+</div>
+<%= link_to admin_product_remove_new_in_path(product), method: :post, class: 'no-decoration' do %>
+  <div class='primary-button personal-details-button small-text'>
+    REMOVE
+  </div>
+<% end %>

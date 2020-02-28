@@ -13,7 +13,7 @@
   <div class="home-featured-products-container">
     <div class="home-featured-products" data-section="new" aria-hidden="false">
       <div class="homepage-slick">
-        <% Product.all.select { |product| !product.out_of_stock? }.first(5).each do |product| %>
+        <% Product.all.where(featured: true).each do |product| %>
           <div class="homepage-slick-card">
             <%= render 'shared/homepage_tab_products', product: product %>
           </div>
