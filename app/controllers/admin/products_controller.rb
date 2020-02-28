@@ -48,14 +48,14 @@ class Admin::ProductsController < ApplicationController
   def add_new_in
     product_ids = params[:new_in][:products].reject(&:blank?)
     product_ids.each do |id|
-      Product.find(id.to_i).update!(featured: true)
+      Product.find(id.to_i).update(featured: true)
     end
     redirect_to admin_new_in_path
   end
 
   def remove_new_in
     @product = Product.friendly.find(params[:product_id])
-    @product.update!(featured: false)
+    @product.update(featured: false)
     redirect_to admin_new_in_path
   end
 
