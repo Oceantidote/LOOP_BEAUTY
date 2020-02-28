@@ -112,7 +112,6 @@
     tab.addEventListener('click', (event) => {
       homeTab.forEach((tab) => { tab.classList.remove('home-tab-active') });
       event.currentTarget.classList.add('home-tab-active');
-
       homeFeaturedProducts.forEach((result) => {
         // result.classList.remove('home-featured-products-active');
         result.style.display = 'none';

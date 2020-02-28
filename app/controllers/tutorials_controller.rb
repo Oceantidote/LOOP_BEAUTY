@@ -46,13 +46,16 @@ class TutorialsController < ApplicationController
 
   def new
     @user = current_user
+    @users = User.where(published: true).where(influencer: true)
     @tutorial = Tutorial.new
     authorize @tutorial
   end
 
   def create
     @tutorial = Tutorial.new(tutorial_params)
-    @tutorial.user = current_user
+    if current_user.influencer?
+      @tutorial.user = current_user
+    end
     authorize @tutorial
     if @tutorial.save
       flash[:notice] = 'Tutorial pending approval'
@@ -99,6 +102,6 @@ class TutorialsController < ApplicationController
   end
 
   def tutorial_params
-    params.require(:tutorial).permit(:cover_photo, :title, :status, :video, product_ids: [])
+    params.require(:tutorial).permit(:cover_photo, :title, :status, :video, :user_id, product_ids: [])
   end
 end
