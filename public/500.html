@@ -1,134 +1,177 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Page Not Found 500 | Loop Beauty</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    .rails-default-error-page {
-      background-color: #FFF;
-      color: #2E2F30;
-      font-family: arial, sans-serif;
-      margin: 0;
-    }
+  <head>
+    <title>Page Not Found 500 | Loop Beauty</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      .rails-default-error-page {
+        background-color: #FFF;
+        color: #2E2F30;
+        font-family: arial, sans-serif;
+        margin: 0;
+      }
 
-    .offers-banner {
-      height: 40px;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      z-index: 100;
-    }
+      .offers-banner {
+        height: 40px;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+      }
 
-    .offers-banner-text {
-      font-family: $menu-font;
-      margin: 0;
-      font-weight: 800;
-      color: white;
-    }
+      .offers-banner-text {
+        font-family: $menu-font;
+        margin: 0;
+        font-weight: 800;
+        color: white;
+      }
 
-    .error-container {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
+      .error-container {
+        min-height: calc(100vh - 40px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .left-side {
-      width: 50%;
-      height: calc(100vh - 40px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding-left: 40px;
-    }
+      .make-up-powder {
+        width: 80%;
+        max-width: 900px;
+        object-fit: cover;
+        object-position: center;
+      }
 
-    .make-up-powder {
-      height: 90vh;
-      object-fit: cover;
-      object-position: center;
-    }
+      .oops {
+        width: 200px;
+      }
 
-    .oops {
-      width: 200px;
-    }
+      .primary-button {
+        border: none;
+        height: 40px;
+        background-color: black;
+        color: #FFF;
+        text-decoration: none;
+        border-radius: 0;
+        padding: 6px 50px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .left-side-content {
-      margin-left: 20px;
-    }
+      .pb-shop {
+        height: 40px;
+        text-decoration: none;
+        border-radius: 0;
+        letter-spacing: 2px;
+        padding: 6px 50px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 5px;
+        box-shadow: inset 0 0 0 2px #000;
+        color: #000;
+      }
 
-    .primary-button {
-      border: none;
-      height: 40px;
-      background-color: black;
-      color: #FFF;
-      text-decoration: none;
-      border-radius: 0;
-      padding: 6px 50px;
-      letter-spacing: 2px;
-      font-weight: bold;
-      margin: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      .pb-shop:hover {
+        background: #000;
+        color: #FFF;
+      }
 
-    .pb-shop {
-      height: 40px;
-      text-decoration: none;
-      border-radius: 0;
-      letter-spacing: 2px;
-      padding: 6px 50px;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 15px;
-      box-shadow: inset 0 0 0 4px #000;
-      color: #000;
-    }
+      .error-page-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 15px;
+      }
 
-    .pb-shop:hover {
-      background: #000;
-      color: #FFF;
-    }
+      .buttons {
+        display: flex;
+      }
 
-    .error-page-buttons {
-      display: flex;
-      width: 100%;
-      justify-content: flex-start;
-    }
-  </style>
-</head>
-<body class="rails-default-error-page">
+      .error-text {
+        text-align: center;
+        margin: 0 0 20px 0;
+      }
+
+      h1 {
+        font-size: 70px;
+        color: #000000;
+        margin: 0 0 20px 0;
+      }
+
+      h2 {
+        margin: 0 0 5px 0;
+      }
+
+      @media only screen and (max-width: 768px) {
+        .make-up-powder {
+          width: 100%;
+        }
+        .buttons {
+          display: block;
+        }
+        h1 {
+          font-size: 40px;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+
+      @media only screen and (max-width: 576px) {
+        .make-up-powder {
+          width: 100%;
+        }
+        h1 {
+          font-size: 30px;
+        }
+        h2 {
+          font-size: 16px;
+        }
+        .error-text {
+          margin: 0 10px 15px 10px;
+        }
+        .error-page-buttons {
+          display: block;
+          margin: 0;
+        }
+        .pb-shop {
+          height: 32px;
+          padding: 6px 32px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="rails-default-error-page">
     <!-- This file lives in public/404.html -->
     <div class="offers-banner">
-      <p class="offers-banner-text s-medium-text">FREE SAMPLES WITH EVERY ORDER</p>
+      <p class="offers-banner-text s-medium-text"></p>
     </div>
     <div class="error-container">
-      <div class="left-side">
-        <div class="left-side-content">
-          <img src="/images/oops.jpg" alt="oops" class="oops">
-          <h2>We're sorry, but something went wrong.</h2>
-          <h4>Never fear, we've got you covered.</h4>
-        </div>
-        <div class="error-page-buttons">
+      <img src="/images/500.png" alt="make-up-powder" class="make-up-powder">
+      <!-- <img src="/images/oops.jpg" alt="oops" class="oops"> -->
+      <div class="error-text">
+        <h1>OOPS!</h1>
+        <h2>We're sorry but something went wrong...</h2>
+        <h2>Don't worry, we've got your covered</h2>
+      </div>
+      <div class="error-page-buttons">
+        <div class="buttons">
           <a href="/" class="pb-shop">HOME</a>
-          <a href="/influencers" class="pb-shop">INFLUENCERS</a>
+          <a href="/make-up" class="pb-shop">SHOP</a>
         </div>
-        <div class="error-page-buttons">
-          <a href="/products" class="pb-shop">SHOP</a>
+        <div class="buttons">
           <a href="/videos" class="pb-shop">VIDEOS</a>
-        </div>
-        <div class="error-page-buttons">
-          <a href="/brands" class="pb-shop">BRANDS</a>
           <a href="/insider_articles" class="pb-shop">INSIDER</a>
         </div>
-      </div>
-      <div class="right-side">
-        <img src="/images/make-up-powder.jpg" alt="make-up-powder" class="make-up-powder">
       </div>
     </div>
   </body>
