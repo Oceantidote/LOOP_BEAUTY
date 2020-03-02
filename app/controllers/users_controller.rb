@@ -92,7 +92,7 @@ class UsersController < ApplicationController
       @products = @products.filter_sort(*sort_params).page params[:page]
       @sort_method = params[:product][:sort][:method]
     else
-      # @products = @products.filter_sort(*'created_at,desc'.split(','))
+      @products = @products.filter_sort(*'created_at,desc'.split(','))
       @sort_method = 'created_at,desc'
     end
   end

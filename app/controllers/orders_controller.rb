@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def new
-    raise
     @basket = find_basket
     @user = @basket.user # to be reviewed
     @order = Order.new
@@ -87,6 +86,7 @@ class OrdersController < ApplicationController
       else
         amount = item.price_cents
       end
+      next if amount < 1
       {
         name: "#{item.shade.name.present? ? item.shade.name : item.product.title} × #{item.quantity}",
         amount: amount,
@@ -94,6 +94,7 @@ class OrdersController < ApplicationController
         quantity: 1
       }
     end
+    items.reject!(&:nil?)
     items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: 'gbp', quantity: 1} if @order.delivery_cost_cents > 0
     @session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],

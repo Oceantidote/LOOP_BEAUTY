@@ -18,10 +18,10 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # config/environments/development.rb
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.rails_logger = true
-  end
+  # config.after_initialize do
+  #   Bullet.enable = true
+  #   Bullet.rails_logger = true
+  # end
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
