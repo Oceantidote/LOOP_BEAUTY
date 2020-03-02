@@ -1,0 +1,5 @@
+results = document.querySelector('#card-target')
+while (results.firstChild) {
+  results.firstChild.remove()
+}
+results.insertAdjacentHTML('beforeend', "<%= j render 'shared/filter_cards', products: @products %>")

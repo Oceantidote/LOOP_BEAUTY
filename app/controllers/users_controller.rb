@@ -88,11 +88,16 @@ class UsersController < ApplicationController
     @products = Product.where(demoable: true).page params[:page]
     @original = Product.where(demoable: true)
     @all = @original
+    @products = policy_scope(Product).filter(params[:product].slice(:sub_category, :brand)) if params[:product].present?
+    @products = @products.page params[:page]
+    @products_count = @products.count
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params).page params[:page]
+      @products_count = @products.filter_sort(*sort_params).count
       @sort_method = params[:product][:sort][:method]
     else
-      @products = @products.filter_sort(*'created_at,desc'.split(','))
+      @products = @products.filter_sort(*'created_at,desc'.split(',')).page params[:page]
+      @products_count = @products.count
       @sort_method = 'created_at,desc'
     end
   end
