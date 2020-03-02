@@ -144,16 +144,7 @@ class Order < ApplicationRecord
   end
 
   def delivery_cost
-    case delivery_type
-    when 'standard'
-      5.95
-    when 'express'
-      6.95
-    when 'international'
-      12.95
-    else
-      5.95
-    end
+    Money.new delivery_cost_cents
   end
 
   def set_delivery_costs_cents

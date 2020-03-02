@@ -105,7 +105,7 @@ class User < ApplicationRecord
 
   def remaining_credit_cents
     return 0 unless influencer?
-    orders_with_credit_total = Order.where(created_at: Time.now.beginning_of_month..Time.now).map(&:credit_spent_cents).sum
+    orders_with_credit_total = Order.where(user: self, created_at: Time.now.beginning_of_month..Time.now).map(&:credit_spent_cents).sum
     10000 - orders_with_credit_total
   end
 
