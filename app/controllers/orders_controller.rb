@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    raise
     @basket = find_basket
     @user = @basket.user # to be reviewed
     @order = Order.new
@@ -22,7 +23,11 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.status = 'pending'
     @order.discount_code = @basket.discount_code
-    @order.delivery_cost_cents = 0 if @basket.basket_products.any?(&:purchase_with_credit?)
+    if @basket.basket_products.any?(&:purchase_with_credit?)
+      @order.delivery_cost_cents = 0
+    else
+      @order.set_delivery_costs_cents
+    end
     authorize @order
     if session[:aff_code]
       affiliation = Tutorial.find_by_affiliate_code(session[:aff_code]).present? ? Tutorial.find_by_affiliate_code(session[:aff_code]) : Lookbook.find_by_affiliate_code(session[:aff_code])
