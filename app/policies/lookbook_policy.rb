@@ -14,7 +14,7 @@ class LookbookPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.status == 'approved' || record.user == user || user&.admin
   end
 
   def edit?
