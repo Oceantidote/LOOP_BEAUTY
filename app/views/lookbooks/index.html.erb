@@ -2,26 +2,24 @@
   <div class="lookbook-show-banner-text-container">
     <div class="lookbook-show-banner-text">
       <div style="width:250px;"></div>
-      <% if @lookbooks.first&.user %>
-        <div class="lookbook-index-avatar">
-          <%= image_tag url_for(@lookbooks.first.user.avatar_photo), class: "lookbook-avatar", alt: "lookbook user avatar" %>
-          <h4><%= @lookbooks.first.user.instagram %></h4>
-        </div>
-        <div class="lookbook-social-data">
-          <% if @lookbooks.first.user.instagram %>
-            <%= link_to "https://www.instagram.com/#{@lookbooks.first.user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data" do %>
-                <i class="fab fa-instagram social-instagram"></i>
-                <h6>274k</h6>
-            <% end %>
+      <div class="lookbook-index-avatar">
+        <%= image_tag url_for(@user.avatar_photo), class: "lookbook-avatar", alt: "lookbook user avatar" %>
+        <h4><%= @user.instagram %></h4>
+      </div>
+      <div class="lookbook-social-data">
+        <% if @user.instagram %>
+          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data" do %>
+              <i class="fab fa-instagram social-instagram"></i>
+              <h6>274k</h6>
           <% end %>
-          <% if @lookbooks.first.user.youtube %>
-            <%= link_to @lookbooks.first.user.youtube, target: "_blank", class: "each-social-data" do %>
-                <i class="fab fa-youtube social-youtube"></i>
-                <h6>400k</h6>
-            <% end %>
+        <% end %>
+        <% if @user.youtube %>
+          <%= link_to @user.youtube, target: "_blank", class: "each-social-data" do %>
+              <i class="fab fa-youtube social-youtube"></i>
+              <h6>400k</h6>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

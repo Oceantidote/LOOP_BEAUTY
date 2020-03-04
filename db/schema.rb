@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_101001) do
+ActiveRecord::Schema.define(version: 2020_03_04_150842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_101001) do
     t.bigint "affiliation_id"
     t.boolean "processed", default: false
     t.string "sku"
+    t.boolean "completed", default: false
     t.index ["affiliation_type", "affiliation_id"], name: "index_orders_on_affiliation_type_and_affiliation_id"
     t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
     t.index ["delivery_address_id"], name: "index_orders_on_delivery_address_id"

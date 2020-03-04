@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_user_and_address, only: [:create] # BEN WRIGHT CONFIRM PLEASE THANKS
   skip_before_action :check_for_empty_orders, only: [:order_success]
   def index
-    @orders = policy_scope(Order).where(user: current_user)
+    @orders = policy_scope(Order).where(user: current_user, completed: true)
     authorize @orders
   end
 
@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     @basket = find_basket
     @order = Order.new(order_params.slice(:delivery_address_id, :billing_address_id, :delivery_type))
     @order.user = current_user
-    @order.status = 'pending'
+    # @order.status = 'pending'
     @order.discount_code = @basket.discount_code
     if @basket.basket_products.any?(&:purchase_with_credit?)
       @order.delivery_cost_cents = 0
@@ -34,20 +34,45 @@ class OrdersController < ApplicationController
       session[:aff_code] = nil
     end
     @order.credit_spent = @basket.money_off_from_credit
-    unless @order.save
-      flash[:alert] = @order.errors.full_messages.join(', ')
-      render :new and return
-    end
-    @basket.basket_products.each do |item|
-      order_product = item.convert_to_order_product
-      order_product.order = @order
-      order_product.save
-    end
-    @basket.empty!
-    @basket.update(discount_code: nil)
+    # unless @order.save
+    #   flash[:alert] = @order.errors.full_messages.join(', ')
+    #   render :new and return
+    # end
+    # @basket.basket_products.each do |item|
+    #   order_product = item.convert_to_order_product
+    #   order_product.order = @order
+    #   order_product.save
+    # end
+    # @basket.empty!
+    # @basket.update(discount_code: nil)
     if @order.total_price > 0
+      # --------- NEW CHECKOUT SYSTEM TEST ----------------
+      unless @order.save
+        flash[:alert] = @order.errors.full_messages.join(', ')
+        render :new and return
+      end
+      @basket.basket_products.each do |item|
+        order_product = item.convert_to_order_product
+        order_product.order = @order
+        order_product.save
+      end
+      # --------- NEW CHECKOUT SYSTEM TEST ----------------
       launch_session
     else
+      # --------- NEW CHECKOUT SYSTEM TEST ----------------
+      @order.completed = true
+      unless @order.save
+        flash[:alert] = @order.errors.full_messages.join(', ')
+        render :new and return
+      end
+      @basket.basket_products.each do |item|
+        order_product = item.convert_to_order_product
+        order_product.order = @order
+        order_product.save
+      end
+      @basket.empty!
+      @basket.update(discount_code: nil)
+      # --------- NEW CHECKOUT SYSTEM TEST ----------------
       redirect_to order_order_success_path(@order)
     end
   end

@@ -8,6 +8,9 @@ class BasketProductsController < ApplicationController
     @item.basket = find_basket
     @item.product = @product
     @item.shade = @product.shades.first if @item.shade.nil?
+    if current_user&.influencer && current_user&.remaining_credit_cents > 0 && @product.demoable
+      @item.purchase_with_credit = true
+    end
     authorize @item
     if @basket.products.any? && @basket.basket_products.where(product: @item.product).where(shade: @item.shade).any? # IFE FIX TO BE APPROVED BY THE MIGHTY BEN WRIGHT
     # if @basket.shades.include?(@item.shade)
