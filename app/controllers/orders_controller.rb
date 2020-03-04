@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_user_and_address, only: [:create] # BEN WRIGHT CONFIRM PLEASE THANKS
   skip_before_action :check_for_empty_orders, only: [:order_success]
   def index
-    @orders = policy_scope(Order).where(user: current_user)
+    @orders = policy_scope(Order).where(user: current_user, completed: true)
     authorize @orders
   end
 
@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     @basket = find_basket
     @order = Order.new(order_params.slice(:delivery_address_id, :billing_address_id, :delivery_type))
     @order.user = current_user
-    @order.status = 'pending'
+    # @order.status = 'pending'
     @order.discount_code = @basket.discount_code
     if @basket.basket_products.any?(&:purchase_with_credit?)
       @order.delivery_cost_cents = 0
@@ -43,11 +43,14 @@ class OrdersController < ApplicationController
       order_product.order = @order
       order_product.save
     end
-    @basket.empty!
-    @basket.update(discount_code: nil)
+    # @basket.empty!
+    # @basket.update(discount_code: nil)
     if @order.total_price > 0
       launch_session
     else
+      @basket.empty!
+      @basket.update(discount_code: nil)
+      @order.update(completed: true)
       redirect_to order_order_success_path(@order)
     end
   end
@@ -100,7 +103,7 @@ class OrdersController < ApplicationController
       payment_method_types: ['card'],
       line_items: items,
       success_url: order_order_success_url(@order),
-      cancel_url: order_url(@order),
+      cancel_url: checkout_url,
       customer_email: current_user.email,
     })
   end
