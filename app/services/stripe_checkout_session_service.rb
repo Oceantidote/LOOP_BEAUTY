@@ -1,6 +1,5 @@
 class StripeCheckoutSessionService
   def call(event)
-    puts event
     puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
     puts 'CALLED'
     puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'

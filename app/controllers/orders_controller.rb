@@ -34,45 +34,23 @@ class OrdersController < ApplicationController
       session[:aff_code] = nil
     end
     @order.credit_spent = @basket.money_off_from_credit
-    # unless @order.save
-    #   flash[:alert] = @order.errors.full_messages.join(', ')
-    #   render :new and return
-    # end
-    # @basket.basket_products.each do |item|
-    #   order_product = item.convert_to_order_product
-    #   order_product.order = @order
-    #   order_product.save
-    # end
+    unless @order.save
+      flash[:alert] = @order.errors.full_messages.join(', ')
+      render :new and return
+    end
+    @basket.basket_products.each do |item|
+      order_product = item.convert_to_order_product
+      order_product.order = @order
+      order_product.save
+    end
     # @basket.empty!
     # @basket.update(discount_code: nil)
     if @order.total_price > 0
-      # --------- NEW CHECKOUT SYSTEM TEST ----------------
-      unless @order.save
-        flash[:alert] = @order.errors.full_messages.join(', ')
-        render :new and return
-      end
-      @basket.basket_products.each do |item|
-        order_product = item.convert_to_order_product
-        order_product.order = @order
-        order_product.save
-      end
-      # --------- NEW CHECKOUT SYSTEM TEST ----------------
       launch_session
     else
-      # --------- NEW CHECKOUT SYSTEM TEST ----------------
-      @order.completed = true
-      unless @order.save
-        flash[:alert] = @order.errors.full_messages.join(', ')
-        render :new and return
-      end
-      @basket.basket_products.each do |item|
-        order_product = item.convert_to_order_product
-        order_product.order = @order
-        order_product.save
-      end
       @basket.empty!
       @basket.update(discount_code: nil)
-      # --------- NEW CHECKOUT SYSTEM TEST ----------------
+      @order.update(completed: true)
       redirect_to order_order_success_path(@order)
     end
   end
@@ -125,7 +103,7 @@ class OrdersController < ApplicationController
       payment_method_types: ['card'],
       line_items: items,
       success_url: order_order_success_url(@order),
-      cancel_url: order_url(@order),
+      cancel_url: checkout_url,
       customer_email: current_user.email,
     })
   end
