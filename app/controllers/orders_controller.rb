@@ -106,6 +106,7 @@ class OrdersController < ApplicationController
       cancel_url: checkout_url,
       customer_email: current_user.email,
     })
+    @order.update(discount_code: nil)
   end
 
   def set_user_and_address # BEN WRIGHT CONFIRM PLEASE THANKS
