@@ -53,7 +53,7 @@
 .freebies-newsletter-banner {
   height: calc(100vw * 0.3);
   max-height: 500px;
-  background: #E6CFF9;
+  background-size: cover;
   @include absCenterColumn;
   h1 {
     font-weight: 900;
@@ -77,6 +77,7 @@
   }
   @include for-large-devices-down {
     height: calc(100vw * 0.4);
+    background-position: center;
   }
   @include for-small-devices-down {
     height: calc(100vw * 0.5);
