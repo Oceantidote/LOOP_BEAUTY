@@ -453,15 +453,89 @@
     0 0 0 5px rgba(0, 0, 0, 0.85),
     0 0 7px 7px rgba(0, 0, 0, 0.25),
     inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
-
   /* hide the glass by default */
   display: none;
+}
+
+.show-tutorial {
+  @include for-large-devices-down {
+    padding: 0 40px;
+  }
+  @include for-medium-devices-down {
+    padding: 0;
+  }
+  @include for-small-devices-down {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 #product-show-reviews {
   cursor: pointer;
 }
 
-//
+.product-show-video-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.product-show-video-holder {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-show-modal {
+  .modal-content {
+    background: none;
+    border: none;
+  }
+  .modal-dialog {
+    max-width: 900px !important;
+    width: 85vw;
+    margin: 0 auto;
+  }
+}
+
+.product-show-video-card-underlay {
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1060;
+}
+
+.product-show-video {
+  border: 3px solid #000;
+  object-fit: cover;
+  &:focus {
+    outline: none;
+  }
+}
+
+.modal-content-info {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  background-color: #FFF;
+  border: 3px solid #000;
+}
+
+.modal-avatar {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
 
 
