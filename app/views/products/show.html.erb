@@ -124,6 +124,47 @@
     <% end %>
   </div>
 <% end %>
+<div class="home-featured-wrapper" style="background: #FFF !important;">
+  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div class="home-featured-container show-tutorial load-show h-100" data-prev="<%= asset_path 'pag-left.png' %>"  data-next="<%= asset_path 'pag-right.png' %>">
+    <h2 class="insider-info-title text-center mt-0 mb-4">Tutorials featuring <%= @product.title %></h2>
+    <div class="product-show-tutorial-container">
+      <div class="home-featured-products" style="background: #FFF !important;" aria-hidden="false">
+        <div class="homepage-slick">
+          <% @tutorials.each do |tutorial| %>
+            <div class="homepage-slick-card">
+              <%= render 'shared/product_show_tutorials', tutorial: tutorial %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% @tutorials.each do |tutorial| %>
+    <!-- Modal -->
+    <div class="product-show-modal modal fade" id="tutorial-modal_<%= tutorial.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="tutorial-show-video-banner">
+            <%= video_tag url_for(tutorial.video), style: "width: 100%", id: "tutorial-show-video_#{tutorial.id}", playsinline: true, poster: url_for(tutorial.cover_photo), alt: "influencer tutorial video", class: "product-show-video" %>
+            <div class="video-overlay video-overlay_<%= tutorial.id %>" onclick="playVideo(<%= tutorial.id %>)">
+              <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+            </div>
+          </div>
+          <div class="modal-content-info">
+            <%= image_tag url_for(tutorial.user.avatar_photo), class: 'modal-avatar mr-3' %>
+            <div class="">
+              <h4 class="muli boldest mt-0 mb-2"><%= tutorial.title %></h4>
+              <%= link_to user_path(tutorial.user), class: 'no-decoration' do %>
+                <p class="muli m-0"><%= tutorial.user.instagram %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
   <% if @product.insider_reviews.any? %>
@@ -342,5 +383,30 @@
       setTimeout(() => addedItem.innerHTML = 'Add to bag', 3500)
     });
   })
+
+  document.onreadystatechange = function() {
+    if (document.readyState !== "complete") {
+        document.querySelector(".load-show").style.visibility = 'hidden';
+        document.querySelector(".lds-spinner").style.visibility = "visible";
+    } else {
+        document.querySelector(".lds-spinner").style.display = "none";
+        document.querySelector(".load-show").style.visibility = 'visible';
+    }
+  };
+
+  function playVideo(tutorial_id) {
+    videoOverlay = document.querySelector(`.video-overlay_${tutorial_id}`);
+    video = document.getElementById(`tutorial-show-video_${tutorial_id}`);
+    modal = document.getElementById(`tutorial-modal_${tutorial_id}`);
+    videoOverlay.style.display = "none";
+    video.play();
+    video.controls = 'true';
+    modal.addEventListener('click', (event) => {
+      if (modal.classList.contains('show') == false) {
+        videoOverlay.style.display = "block";
+        video.pause()
+      }
+    })
+  }
 
 </script>

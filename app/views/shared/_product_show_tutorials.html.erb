@@ -1,0 +1,7 @@
+<div class="product-show-video-card" data-toggle="modal" data-target="#tutorial-modal_<%= tutorial.id %>">
+  <div class="product-show-video-holder mb-2" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
+    <%= image_tag 'play-button.png', class: "play-button", width: 80, alt: "forward arrow" %>
+  </div>
+  <p class="video-card-text-title mb-1">by <%= tutorial.user.instagram %></p>
+  <p class="video-card-text-content mb-0"><%= tutorial.title %></p>
+</div>
