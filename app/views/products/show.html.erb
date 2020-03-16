@@ -124,47 +124,49 @@
     <% end %>
   </div>
 <% end %>
-<div class="home-featured-wrapper" style="background: #FFF !important;">
-  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-  <div class="home-featured-container show-tutorial load-show h-100" data-prev="<%= asset_path 'pag-left.png' %>"  data-next="<%= asset_path 'pag-right.png' %>">
-    <h2 class="insider-info-title text-center mt-0 mb-4">Tutorials featuring <%= @product.title %></h2>
-    <div class="product-show-tutorial-container">
-      <div class="home-featured-products" style="background: #FFF !important;" aria-hidden="false">
-        <div class="homepage-slick">
-          <% @tutorials.each do |tutorial| %>
-            <div class="homepage-slick-card">
-              <%= render 'shared/product_show_tutorials', tutorial: tutorial %>
-            </div>
-          <% end %>
+<% if @tutorials.any? %>
+  <div class="home-featured-wrapper" style="background: #FFF !important;">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div class="home-featured-container show-tutorial load-show h-100" data-prev="<%= asset_path 'pag-left.png' %>"  data-next="<%= asset_path 'pag-right.png' %>">
+      <h2 class="insider-info-title text-center mt-0 mb-4">Tutorials featuring <%= @product.title %></h2>
+      <div class="product-show-tutorial-container">
+        <div class="home-featured-products" style="background: #FFF !important;" aria-hidden="false">
+          <div class="homepage-slick">
+            <% @tutorials.each do |tutorial| %>
+              <div class="homepage-slick-card">
+                <%= render 'shared/product_show_tutorials', tutorial: tutorial %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
+    <% @tutorials.each do |tutorial| %>
+      <!-- Modal -->
+      <div class="product-show-modal modal fade" id="tutorial-modal_<%= tutorial.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="tutorial-show-video-banner">
+              <%= video_tag url_for(tutorial.video), style: "width: 100%", id: "tutorial-show-video_#{tutorial.id}", playsinline: true, poster: url_for(tutorial.cover_photo), alt: "influencer tutorial video", class: "product-show-video" %>
+              <div class="video-overlay video-overlay_<%= tutorial.id %>" onclick="playVideo(<%= tutorial.id %>)">
+                <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+              </div>
+            </div>
+            <div class="modal-content-info">
+              <%= image_tag url_for(tutorial.user.avatar_photo), class: 'modal-avatar mr-3' %>
+              <div class="">
+                <h4 class="muli boldest mt-0 mb-2"><%= tutorial.title %></h4>
+                <%= link_to user_path(tutorial.user), class: 'no-decoration' do %>
+                  <p class="muli m-0"><%= tutorial.user.instagram %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% @tutorials.each do |tutorial| %>
-    <!-- Modal -->
-    <div class="product-show-modal modal fade" id="tutorial-modal_<%= tutorial.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="tutorial-show-video-banner">
-            <%= video_tag url_for(tutorial.video), style: "width: 100%", id: "tutorial-show-video_#{tutorial.id}", playsinline: true, poster: url_for(tutorial.cover_photo), alt: "influencer tutorial video", class: "product-show-video" %>
-            <div class="video-overlay video-overlay_<%= tutorial.id %>" onclick="playVideo(<%= tutorial.id %>)">
-              <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
-            </div>
-          </div>
-          <div class="modal-content-info">
-            <%= image_tag url_for(tutorial.user.avatar_photo), class: 'modal-avatar mr-3' %>
-            <div class="">
-              <h4 class="muli boldest mt-0 mb-2"><%= tutorial.title %></h4>
-              <%= link_to user_path(tutorial.user), class: 'no-decoration' do %>
-                <p class="muli m-0"><%= tutorial.user.instagram %></p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<% end %>
 <div class="product-insider-reviews-wrapper">
   <h2 class="insider-info-title text-center">Insider Reviews</h2>
   <% if @product.insider_reviews.any? %>
