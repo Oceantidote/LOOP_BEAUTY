@@ -102,6 +102,16 @@
     </div>
   </div>
 </div>
+<% if current_user&.admin %>
+  <div class="admin-options">
+    <div class="container">
+      <hr>
+      <h6 class="boldest">Admin options</h6>
+      <%= link_to 'EDIT PRODUCT', edit_admin_product_path(@product), class: 'secondary-button' %>
+      <hr>
+    </div>
+  </div>
+<% end %>
 <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
   <div class="product-review-wrapper">
     <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
@@ -234,27 +244,27 @@
   <div class="max-width">
     <div class="row-carousel">
       <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left' %>
-      <% Product.all.sample(4).each do |product| %>
+      <% @product.sent_recommended_products.each do |product| %>
         <div class="col-8 col-sm-6 col-md-3 d-flex justify-content-center tp-cols" >
           <div class="card-image-results">
             <div class="card">
-              <%= link_to product_path(product) do %>
+              <%= link_to product_path(product.recommended) do %>
                 <div class="card_image">
-                  <% if product.shades.first&.card_photo %>
-                    <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
+                  <% if product.recommended.shades.first&.card_photo %>
+                    <%= image_tag url_for(product.recommended.shades.first.card_photo), alt: "product shade photo" %>
                   <% else %>
                     <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
                   <% end %>
                 </div>
               <% end %>
               <div class="card_header">
-                <p class="muli boldest"><%= product.title %></p>
+                <p class="muli boldest"><%= product.recommended.title %></p>
               </div>
               <div class="card_price-heart muli boldest">
-                <%= humanized_money_with_symbol(product.price) %>
+                <%= humanized_money_with_symbol(product.recommended.price) %>
               </div>
               <div class="my-products-purchase">
-                <%= link_to 'Add to bag', my_product_product_path(product), remote: true, method: :post, class: "my-products-button" %>
+                <%= link_to 'Add to bag', my_product_product_path(product.recommended), remote: true, method: :post, class: "my-products-button" %>
               </div>
             </div>
           </div>
