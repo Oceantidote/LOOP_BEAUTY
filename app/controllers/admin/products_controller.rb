@@ -34,7 +34,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to edit_admin_product_path(@product), notice: "Product added"
+      redirect_to product_path(@product), notice: "Product updated"
     else
       flash[:error] = "Fix errors"
       render :edit
@@ -68,7 +68,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:weight, :measurement, :title, :details, :lb_id, :category_id, :sub_category_id, :brand_id, :department_id, :price, :demoable, :published)
+    params.require(:product).permit(:weight, :measurement, :title, :details, :lb_id, :category_id, :sub_category_id, :brand_id, :department_id, :price, :demoable, :published, product_ids: [])
   end
 
   def set_product

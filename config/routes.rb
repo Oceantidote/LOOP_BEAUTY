@@ -116,11 +116,13 @@ Rails.application.routes.draw do
     resources :products, except: [:show] do
       post 'remove_new_in', to: 'products#remove_new_in'
       resources :product_benefits, only: [:create]
+      resources :recommended_products, only: [:create]
       resources :shades, only: [:create]
       resources :customer_reviews, only: [:index, :destroy]
       resources :insider_reviews, only: [:index, :edit, :update, :destroy]
     end
     resources :product_benefits, only: [:destroy]
+    resources :recommended_products, only: [:destroy]
     resources :shades, only: [:update, :destroy]
     resources :freebies, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :home_banners
