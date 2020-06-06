@@ -15,8 +15,10 @@ class StripeCheckoutSessionService
     puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
     puts "order.completed = #{order.completed}"
     puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+    order.update(discount_code: user.basket.discount_code)
     user.basket.empty!
     user.basket.update(discount_code: nil)
+    user.orders.where(completed: false).destroy_all
     # order.update(status: 'paid')
     SendOrderJob.perform_later(order_id)
   end

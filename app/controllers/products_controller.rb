@@ -53,6 +53,7 @@ class ProductsController < ApplicationController
     @product = Product.friendly.find(params[:id])
     authorize @product
     @customer_reviews = @product.customer_reviews.page params[:page]
+    @tutorials = Tutorial.select { |tutorial| tutorial.products.include?(@product) }
     respond_to do |format|
       format.js
       format.html

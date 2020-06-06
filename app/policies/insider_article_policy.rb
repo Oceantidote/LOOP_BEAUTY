@@ -6,6 +6,6 @@ class InsiderArticlePolicy < ApplicationPolicy
   end
 
   def show?
-    record.published == true || user.admin
+    record.published == true || user&.admin
   end
 end

@@ -184,6 +184,7 @@ for_oily_skin = Benefit.create!(name: "For Oily Skin")
 for_all_skin_types = Benefit.create!(name: "For All Skin Types")
 for_dry_skin = Benefit.create!(name: "For Dry Skin")
 no_flashback = Benefit.create!(name: "No Flashback")
+non_drying = Benefit.create!(name: "Non-Drying")
 
 puts "-"
 
@@ -1038,7 +1039,7 @@ puts "-"
 
 puts "CREATING TUTORIALS"
 
-esther_tutorial = Tutorial.create!(
+esther_tutorial = Tutorial.new(
                                       user: esther,
                                       status: "approved",
                                       title: "Perfect nude lip for dark skin",
@@ -1052,9 +1053,10 @@ esther_video_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
 esther_tutorial.cover_photo.attach(io: File.open(esther_video_cover) , filename: 'esther_cover.jpg')
 esther_video = File.join(Rails.root,'app/assets/images/esther-vid.mp4')
 esther_tutorial.video.attach(io: File.open(esther_video) , filename: 'esther-vid.mp4')
+esther_tutorial.save!
 esther_tutorial.approve!
 
-breeny_tutorial = Tutorial.create!(
+breeny_tutorial = Tutorial.new(
                                       user: breeny,
                                       status: "approved",
                                       title: "Sleek cream contour kit in extra dark",
@@ -1065,10 +1067,11 @@ breeny_video_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
 breeny_tutorial.cover_photo.attach(io: File.open(breeny_video_cover) , filename: 'breeny_cover.jpg')
 breeny_video = File.join(Rails.root,'app/assets/images/breeny-vid.mp4')
 breeny_tutorial.video.attach(io: File.open(breeny_video) , filename: 'breeny-vid.mp4')
+breeny_tutorial.save!
 breeny_tutorial.approve!
 
 
-nikki_tutorial = Tutorial.create!(
+nikki_tutorial = Tutorial.new(
                                       user: nikki,
                                       status: "approved",
                                       title: "Skincare prep before makeup",
@@ -1079,10 +1082,11 @@ nikki_video_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
 nikki_tutorial.cover_photo.attach(io: File.open(nikki_video_cover) , filename: 'nikki_cover.jpg')
 nikki_video = File.join(Rails.root,'app/assets/images/nikki-vid.mp4')
 nikki_tutorial.video.attach(io: File.open(nikki_video) , filename: 'nikki-vid.mp4')
+nikki_tutorial.save!
 nikki_tutorial.approve!
 
 
-shantania_tutorial = Tutorial.create!(
+shantania_tutorial = Tutorial.new(
                                       user: shantania,
                                       status: "approved",
                                       title: "Everyday drugstore £5 makeup tutorial",
@@ -1093,9 +1097,10 @@ shantania_video_cover = File.join(Rails.root,'app/assets/images/shantania_cover.
 shantania_tutorial.cover_photo.attach(io: File.open(shantania_video_cover) , filename: 'shantania_cover.jpg')
 shantania_video = File.join(Rails.root,'app/assets/images/shantania-vid.mp4')
 shantania_tutorial.video.attach(io: File.open(shantania_video) , filename: 'shantania-vid.mp4')
+shantania_tutorial.save!
 shantania_tutorial.approve!
 
-bemi_tutorial = Tutorial.create!(
+bemi_tutorial = Tutorial.new(
                                       user: bemi,
                                       status: "approved",
                                       title: "Foundation review | Fenty beauty",
@@ -1106,10 +1111,11 @@ bemi_video_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
 bemi_tutorial.cover_photo.attach(io: File.open(bemi_video_cover) , filename: 'bemi_cover.jpg')
 bemi_video = File.join(Rails.root,'app/assets/images/bemi-vid.mp4')
 bemi_tutorial.video.attach(io: File.open(bemi_video) , filename: 'bemi-vid.mp4')
+bemi_tutorial.save!
 bemi_tutorial.approve!
 
 
-ropo_tutorial = Tutorial.create!(
+ropo_tutorial = Tutorial.new(
                                       user: ropo,
                                       status: "approved",
                                       title: "Instagram 'Baddie' inspired makeup",
@@ -1120,6 +1126,7 @@ ropo_video_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
 ropo_tutorial.cover_photo.attach(io: File.open(ropo_video_cover) , filename: 'ropo_cover.jpg')
 ropo_video = File.join(Rails.root,'app/assets/images/ropo-vid.mp4')
 ropo_tutorial.video.attach(io: File.open(ropo_video) , filename: 'ropo-vid.mp4')
+ropo_tutorial.save
 ropo_tutorial.approve!
 
 

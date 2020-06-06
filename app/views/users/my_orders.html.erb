@@ -27,7 +27,11 @@
                       <%= image_tag url_for(order.products.first.shades.first.card_photo), class: "order-image", alt: "product shade photo" %>
                       <div class="order-details-text">
                         <p class="small-text muli boldest"><%= order.products.first.title %></p>
-                        <p class="muli small-text">(and <%= order.products.count - 1 %> more)</p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
+                        <p class="muli small-text">
+                          <% if order.products.count > 1 %>
+                            (and <%= order.products.count - 1 %> more)
+                          <% end %> 
+                        </p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
                         <p class="small-text boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
                         <%#= link_to 'Track this order', '#', class: "small-text"  %>
                       </div>
