@@ -193,8 +193,8 @@ class User < ApplicationRecord
   end
 
   def send_welcome
-    article = InsiderArticle.where(featured: true).first.id
-    tutorial = Tutorial.where(featured: true).first.id
+    article = InsiderArticle.where(featured: true).first&.id
+    tutorial = Tutorial.where(featured: true).first&.id
     if influencer?
       UserMailer.with(user: self.id).welcome_influencer.deliver_now
     else
