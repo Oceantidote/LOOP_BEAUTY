@@ -8,8 +8,8 @@ class UserMailer < ApplicationMailer
   def welcome
     # WORKING
     @user = User.find(params[:user])
-    @article = InsiderArticle.find(params[:article])
-    @tutorial = Tutorial.find(params[:tutorial])
+    @article = InsiderArticle.find(params[:article]) if params[:article].present?
+    @tutorial = Tutorial.find(params[:tutorial]) if params[:tutorial].present?
     mail(to: @user.email, subject: 'Welcome to Loop Beauty')
     # mail(to: 'ifeodugbesan@hoxton-digital.com', subject: 'Welcome to Loop Beauty')
   end
