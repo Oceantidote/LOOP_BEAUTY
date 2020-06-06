@@ -800,44 +800,47 @@
                               </tr>
                             </tbody>
                           </table>
-                          <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
-                            <tbody class="mcnCaptionBlockOuter">
-                              <tr>
-                                <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
-                                  <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightContentOuter" width="100%">
-                                    <tbody>
-                                      <tr>
-                                        <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
-                                          <table align="center" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="100%">
-                                            <tbody>
-                                              <tr>
-                                                <td class="mcnCaptionRightImageContent" align="center" valign="top">
-                                                  <%= link_to tutorial_url(@tutorial), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
-                                                    <img alt="" src="<%= url_for(@tutorial.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
-                                                  <% end %>
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                          <table class="mcnCaptionRightTextContentContainer" align="center" border="0" cellpadding="0" cellspacing="0">
-                                            <tbody>
-                                              <tr>
-                                                <td valign="top" class="mcnTextContent">
-                                                  <%= link_to tutorial_url(@tutorial), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
-                                                    <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center; max-width: 450px;"><%= @tutorial.title %></p>
-                                                  <% end %>
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                          <% if @tutorial.present? %>
+
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                              <tbody class="mcnCaptionBlockOuter">
+                                <tr>
+                                  <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightContentOuter" width="100%">
+                                      <tbody>
+                                        <tr>
+                                          <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
+                                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="100%">
+                                              <tbody>
+                                                <tr>
+                                                  <td class="mcnCaptionRightImageContent" align="center" valign="top">
+                                                    <%= link_to tutorial_url(@tutorial), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                      <img alt="" src="<%= url_for(@tutorial.cover_photo) %>" width="100%" style="max-width:450px; object-fit: cover;" class="mcnImage">
+                                                    <% end %>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                            <table class="mcnCaptionRightTextContentContainer" align="center" border="0" cellpadding="0" cellspacing="0">
+                                              <tbody>
+                                                <tr>
+                                                  <td valign="top" class="mcnTextContent">
+                                                    <%= link_to tutorial_url(@tutorial), target: "_blank", style: "cursor: pointer; text-decoration: none;" do %>
+                                                      <p style="font-size:14px; color: #000000; font-weight: bold; text-align: center; max-width: 450px;"><%= @tutorial.title %></p>
+                                                    <% end %>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          <% end %>
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
                             <tbody class="mcnDividerBlockOuter">
                               <tr>
