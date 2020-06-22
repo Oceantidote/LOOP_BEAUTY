@@ -10,7 +10,9 @@
     padding: 40px 0 200px 0
   }
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .about-us-banner {
   display: flex;
   justify-content: center;

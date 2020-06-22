@@ -1,6 +1,6 @@
 .influencers-show-banner {
-  height: calc(100vw * 0.3);
-  max-height: 500px;
+  position: relative;
+  height: calc(100vh - 100px);
   // background: #DDDEE2;
   background-position: left;
   background-size: cover;
@@ -19,7 +19,14 @@
     min-height: 220px;
   }
 }
-
+.banner-arrow {
+  position: absolute;
+  bottom: 20px;
+  font-size: 3rem;
+  left: calc(50vw - 1.5rem);
+  cursor: pointer;
+  color: black !important;
+}
 .unpublished_bar {
   width: 100%;
   background-color: $blue;
@@ -147,7 +154,7 @@
 
 
 .influencer-show-options {
-  margin: 40px 0 80px 0;
+  margin: 90px 0 80px 0;
   @include for-phone-only {
     margin: 0;
   }
@@ -178,6 +185,7 @@
   height: 170px;
   @include absCenter;
   transition: all 0.3s ease;
+  -webkit-filter: brightness(100%);
 }
 
 .influencer-card-link {
@@ -188,11 +196,42 @@
     .play-button {
       transform: scale(1.1);
     }
-    .influencer-show-card-image {
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
     .plus-circle {
       opacity: 0.6;
     }
+    .influencer-show-card-image {
+      -webkit-filter: brightness(70%);
+          -webkit-transition: all 1s ease;
+          -moz-transition: all 1s ease;
+          -o-transition: all 1s ease;
+          -ms-transition: all 1s ease;
+          transition: all 1s ease;
+    }
   }
+}
+
+.animated {
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translateY(0);}
+  50% {-webkit-transform: translateY(-5px);}
+}
+
+@keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-5px);}
+}
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
 }

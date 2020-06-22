@@ -47,30 +47,6 @@
   <ul class="navbar-nav" style="flex-direction: row">
     <div style="display: flex; align-items: center;">
       <li class="nav-item small-hidden">
-        <p class="dropdown-toggle nav-link-normal follow-dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Follow</p>
-        <div class="dropdown-menu dropdown-menu-right follow-dropdown" aria-labelledby="navbarDropdown" style="padding: 0; margin-top: 0;">
-          <ul class="web-dropdown">
-            <li>
-              <%= link_to 'https://www.instagram.com/myloopbeauty/', target: "_blank", rel: "noopener" do %>
-                <span>Instagram</span>
-                <div class="follow-icon">
-                  <i class="fab fa-instagram"></i>
-                </div>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to 'https://www.youtube.com/', target: "_blank", rel: "noopener" do %>
-                <span>Youtube</span>
-                <div class="follow-icon">
-                  <i class="fab fa-youtube"></i>
-                </div>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <span class="small-hidden">|</span>
-      <li class="nav-item small-hidden">
         <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
       </li>
     </div>
