@@ -8,26 +8,51 @@
 .insider-info-cards {
   padding: 10px;
   width: 100%;
+  min-height: 200px;
   background: white;
   display: flex;
+  position: relative;
   justify-content: space-between;
+  background-size: cover;
   align-items: center;
-  border: 1px solid rgba(0,0,0,0.2);
   margin: 20px 0;
-  transition: box-shadow 0.3s ease;
+  -webkit-filter: brightness(100%);
   // padding: 10px 30px;
   @include for-xsmall-phone-only {
     height: 180px;
   }
   @include for-phone-only {
     width: 80vw;
+     -webkit-filter: brightness(70%);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
   }
   @include for-medium-devices-up {
     height: 200px;
   }
 }
+.insider-info-card-link:hover {
+  .insider-info-cards{
+    -webkit-filter: brightness(70%);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+  }
+  .insider-info-text {
+    opacity: 1;
+  }
+}
+
 
 .insider-info-left {
+  position: absolute;
+  top: 0;
+  left: 20px;
   width: 45%;
   height: 100%;
   @include absCenter;
@@ -74,9 +99,14 @@
 
 .insider-info-text {
   // width: 150px;
-  display: flex;
+  transition: all 1s ease;
+  opacity: 0;
+  color: white;
   flex-direction: column;
   justify-content: center;
+  @include for-phone-only {
+    opacity: 1;
+  }
 }
 
 .insider-info-title {
@@ -179,12 +209,6 @@
   &:hover {
     color: inherit;
     text-decoration: none;
-  }
-}
-
-.insider-info-card-link:hover {
-  .insider-info-cards {
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
 }
 

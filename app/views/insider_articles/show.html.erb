@@ -1,14 +1,17 @@
-<div class="insider-show-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)"></div>
+<div class="insider-show-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)">
+  <div class="article-header">
+    <h4 class="boldest muli"><%= @insider_article.category %>:</h4>
+    <h1 class="didot"><%= @insider_article.title %></h1>
+    <h5 class="boldest muli no-bottom-margin">by <%= @insider_article.by %> </h5>
+      <h5 class="muli small-text grey"><%= @insider_article.article_date ? @insider_article.article_date.strftime('%e %B %Y') : '' %></h5>
+  </div>
+  <i id='arrow' class="banner-arrow white animated bounce fa fa-chevron-down"></i>
+</div>
+<div id="here"></div>
 <div class="insider-show-article-wrapper">
   <div class="container">
     <div class="selected-article">
-      <div class="article-header">
-        <h6 class="boldest muli"><%= @insider_article.category %>:</h6>
-        <h2 class="didot"><%= @insider_article.title %></h2>
-        <p class="boldest muli no-bottom-margin">by <%= @insider_article.by %> </p>
-          <p class="muli small-text grey"><%= @insider_article.article_date ? @insider_article.article_date.strftime('%e %B %Y') : '' %></p>
-        <%# end %>
-      <div class="article-content">
+      <div class="article-content" id='cont'>
         <%= simple_format(@insider_article.text1) %>
         <% if @insider_article.photo1.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
@@ -91,3 +94,12 @@
     <% end %>
   </div>
 </div>
+<script>
+  let arrow = document.getElementById('arrow');
+  arrow.addEventListener('click',() => {
+    window.scroll({
+      top: window.innerHeight - 100,
+      behavior: 'smooth'
+    });
+  })
+</script>

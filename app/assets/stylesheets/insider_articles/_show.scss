@@ -28,20 +28,30 @@
 
 .insider-show-banner {
   width: 100vw;
-  height: calc(100vw * 0.3);
-  max-height: 500px;
+  height: calc(100vh - 100px);
   background-position: center;
   background-size: cover;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   @include for-phone-only {
-    height: calc(100vw * 0.5);
+    align-items: center;
   }
 }
-
+.article-header {
+  width: 50%;
+  color: white;
+  padding-right: 5%;
+  @include for-phone-only {
+    width: 100%;
+    padding-left: 5%;
+  }
+}
 .selected-article {
   width: 50%;
   margin: 40px auto;
+  padding-bottom: 10vh;
+
   @include for-medium-devices-down {
     width: 70%;
   }

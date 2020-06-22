@@ -25,6 +25,8 @@
   font-size: 3rem;
   left: calc(50vw - 1.5rem);
   cursor: pointer;
+}
+.blacki {
   color: black !important;
   @include for-large-devices-down {
     display: none;
