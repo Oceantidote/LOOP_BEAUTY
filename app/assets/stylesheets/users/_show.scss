@@ -26,6 +26,9 @@
   left: calc(50vw - 1.5rem);
   cursor: pointer;
   color: black !important;
+  @include for-large-devices-down {
+    display: none;
+  }
 }
 .unpublished_bar {
   width: 100%;
@@ -154,7 +157,7 @@
 
 
 .influencer-show-options {
-  margin: 90px 0 80px 0;
+  margin: 90px 0 90px 0;
   @include for-phone-only {
     margin: 0;
   }
