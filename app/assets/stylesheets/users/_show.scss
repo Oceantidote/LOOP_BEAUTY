@@ -19,6 +19,9 @@
     min-height: 220px;
   }
 }
+.min-h-inner {
+  min-height: calc(100vh - 100px);
+}
 .banner-arrow {
   position: absolute;
   bottom: 20px;
