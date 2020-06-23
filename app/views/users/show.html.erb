@@ -24,9 +24,7 @@
       </div>
     </div>
   </div>
-  <a href="#options">
-    <i class="banner-arrow animated bounce blacki fa fa-chevron-down" href="#options"></i>
-  </a>
+  <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
 </div>
 <div class="influencer-show-banner-text-mobile-container">
   <div class="influencer-show-banner-text">
@@ -128,3 +126,13 @@
     </div>
   </div>
 <% end %>
+<script>
+  let arrow = document.getElementById('arrow');
+  arrow.addEventListener('click',() => {
+    window.scroll({
+      top: window.innerHeight - 100,
+      behavior: 'smooth'
+    });
+  })
+
+</script>

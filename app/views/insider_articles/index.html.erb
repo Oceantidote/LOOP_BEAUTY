@@ -1,14 +1,15 @@
 <% if @featured_article %>
-<%= link_to insider_article_path(@featured_article), class: 'no-decoration' do %>
-  <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
-    <div class="insider-article-banner-text-container">
-      <div class="insider-article-banner">
-        <h2 class="didot <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" ><%= @featured_article.title %></h2>
-        <p class="<%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
+  <%= link_to insider_article_path(@featured_article), class: 'no-decoration' do %>
+    <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
+      <div class="insider-article-banner-text-container">
+        <div class="insider-article-banner">
+          <h2 class="didot <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" ><%= @featured_article.title %></h2>
+          <p class="<%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
+        </div>
       </div>
+      <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
     </div>
-  </div>
-<% end %>
+  <% end %>
 <% end %>
 <div class="insider-home-tabs-container">
   <div class="insider-home-tabs">
@@ -42,4 +43,14 @@
       e.currentTarget.classList.add('insider-home-tab-active');
     })
   });
+
+  let arrow = document.getElementById('arrow');
+  arrow.addEventListener('click',() => {
+    window.scroll({
+      top: window.innerHeight - 100,
+      behavior: 'smooth'
+    });
+  })
+
+
 </script>

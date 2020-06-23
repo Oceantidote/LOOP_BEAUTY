@@ -1,17 +1,18 @@
 <div class="insider-show-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)">
-  <div class="article-header">
-    <h4 class="boldest muli"><%= @insider_article.category %>:</h4>
-    <h1 class="didot"><%= @insider_article.title %></h1>
-    <h5 class="boldest muli no-bottom-margin">by <%= @insider_article.by %> </h5>
-      <h5 class="muli small-text grey"><%= @insider_article.article_date ? @insider_article.article_date.strftime('%e %B %Y') : '' %></h5>
-  </div>
-  <i id='arrow' class="banner-arrow white animated bounce fa fa-chevron-down"></i>
+  <!-- <i id='arrow' class="banner-arrow white animated bounce fa fa-chevron-down"></i> -->
+  <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
 </div>
 <div id="here"></div>
 <div class="insider-show-article-wrapper">
   <div class="container">
     <div class="selected-article">
       <div class="article-content" id='cont'>
+        <div class="article-header">
+          <h5 class="boldest muli"><%= @insider_article.category %>:</h5>
+          <h2 class="didot"><%= @insider_article.title %></h2>
+          <h6 class="boldest muli no-bottom-margin">by <%= @insider_article.by %> </h6>
+            <h6 class="muli small-text grey"><%= @insider_article.article_date ? @insider_article.article_date.strftime('%e %B %Y') : '' %></h6>
+        </div>
         <%= simple_format(@insider_article.text1) %>
         <% if @insider_article.photo1.attached? %>
           <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>

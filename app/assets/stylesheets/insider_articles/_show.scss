@@ -39,12 +39,9 @@
   }
 }
 .article-header {
-  width: 50%;
-  color: white;
-  padding-right: 5%;
+
   @include for-phone-only {
     width: 100%;
-    padding-left: 5%;
   }
 }
 .selected-article {
