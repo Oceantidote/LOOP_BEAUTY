@@ -1,4 +1,6 @@
 class InsiderArticle < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   has_one_attached :author_avatar
   has_one_attached :cover_photo
   has_one_attached :photo1
