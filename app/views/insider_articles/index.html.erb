@@ -45,7 +45,8 @@
   });
 
   let arrow = document.getElementById('arrow');
-  arrow.addEventListener('click',() => {
+  arrow.addEventListener('click',(e) => {
+    e.preventDefault()
     window.scroll({
       top: window.innerHeight - 100,
       behavior: 'smooth'
