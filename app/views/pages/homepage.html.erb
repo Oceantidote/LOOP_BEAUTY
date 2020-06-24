@@ -3,7 +3,7 @@
     <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
       <div class="carousel-item <%= index == 0 ? 'active' : '' %> ">
         <a href="<%= home_banner.link %>" class="no-decoration">
-          <div class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+          <div data-mob="<%= rails_blob_path home_banner.mobile_banner %>" data-lrg="<%= rails_blob_path home_banner.banner %>" class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
             <div class="holding-page-banner-text-container">
               <div class="holding-page-banner-text">
                 <h2 class="didot <%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.content %></h2>
@@ -112,5 +112,18 @@
         document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'visible' })
     }
   };
+  function changeBannerUrls() {
+    if (window.innerWidth < 767.98) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.mob}')`
+      })
+    } else {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.lrg}')`
+      })
+    }
+  }
+  changeBannerUrls()
+  window.onresize = changeBannerUrls;
 </script>
 

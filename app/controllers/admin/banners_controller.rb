@@ -15,6 +15,6 @@ class Admin::BannersController < ApplicationController
   end
 
   def banner_params
-    params.require(:banner).permit(:photo)
+    params.require(:banner).permit(:photo, :mobile_photo)
   end
 end
