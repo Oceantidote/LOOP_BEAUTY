@@ -2,17 +2,91 @@
   background-size: cover;
   background-position: top;
   @include absCenterColumn;
-  padding: 40px 0;
-  @include for-phone-only {
-    padding: 0;
+  padding: 0;
+  padding-bottom: 10vh;
+}
+.about-us-top-cont {
+  height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  @include for-medium-devices-down {
+    justify-content: center;
+    height: calc(80vh - 100px);
   }
-  @include for-xxlarge-devices-up {
-    padding: 40px 0 200px 0
+  @include for-small-devices-down {
+    height: calc(55vh - 100px);
+    padding-top: 10%;
+  }
+}
+.about-us-top {
+  position: relative;
+  height: 100%;
+  width: 67%;
+  background-size: cover;
+  background-position: center;
+  h1 {
+    font-size: 3.5rem;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    color: white;
+    font-weight: boldest;
+  }
+  @include for-medium-devices-down {
+    width: 100%;
+  }
+  @include for-small-devices-down {
+    width: 100%;
+    h1 {
+      font-size: 3rem;
+    }
   }
 }
 html {
   scroll-behavior: smooth;
 }
+
+.about-us-cont {
+  padding-top: 80px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include for-small-devices-down {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+.about-us-img {
+  width: 50%;
+  @include for-small-devices-down {
+    width: 100%;
+  }
+}
+.about-us-text {
+  width: 50%;
+  padding: 5%;
+  h1 {
+    font-weight: boldest;
+    font-size: 4rem;
+  }
+  @include for-small-devices-down {
+    width: 100%;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+.rev {
+  @include for-small-devices-up {
+    flex-direction: row-reverse;
+  }
+  @include for-small-devices-down {
+    flex-direction: column;
+  }
+}
+
 .about-us-banner {
   display: flex;
   justify-content: center;
@@ -53,19 +127,7 @@ html {
   // }
 }
 
-.about-us-text {
-  width: 40%;
-  h3 {
-    margin-bottom: 30px;
-    font-weight: 900;
-  }
-  h4 {
-    font-weight: 900;
-  }
-  @include for-phone-only {
-    width: 100%;
-  }
-}
+
 
 .our-history-banner {
   width: 70%;
