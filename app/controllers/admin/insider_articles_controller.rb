@@ -82,7 +82,7 @@ class Admin::InsiderArticlesController < ApplicationController
   end
 
   def set_insider_article
-    @insider_article = InsiderArticle.find(params[:id])
+    @insider_article = InsiderArticle.friendly.find(params[:id])
     authorize [:admin, @insider_article]
   end
 end
