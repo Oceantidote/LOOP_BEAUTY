@@ -5,7 +5,7 @@
       <% @brands.each_with_index do |brand, index| %>
         <div class="col-xs-12 col-md-4" style="padding: 0;">
           <%= link_to brand_path(brand), class: "insider-home-card-link" do %>
-            <div class="insider-home-articles-card" style="background-image: url(<%= brand.logo.attached? ? url_for(brand.logo) : asset_path('brand-default.jpg') %>);">
+            <div class="insider-home-articles-card  brand-card" style="background-image: url(<%= brand.logo.attached? ? url_for(brand.logo) : asset_path('brand-default.jpg') %>);">
             </div>
           <% end %>
         </div>
