@@ -29,6 +29,7 @@
     font-weight: boldest;
   }
   @include for-medium-devices-down {
+    align-items: flex-start;
     flex-order: 2;
     width: 100%;
     height: 30%;
@@ -49,6 +50,7 @@
     height: 70%;
   }
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -59,9 +61,17 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  @include for-medium-devices-down {
+    padding-top: 40px;
+  }
   @include for-small-devices-down {
     width: 100%;
     flex-direction: column;
+  }
+}
+.no-padt-mdown {
+  @include for-medium-devices-down {
+    padding-top: 0px;
   }
 }
 .about-us-img {
