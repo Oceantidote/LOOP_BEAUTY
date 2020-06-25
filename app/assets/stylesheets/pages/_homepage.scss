@@ -112,11 +112,7 @@
 .insider-info-title {
   font-family: $title-font;
   font-weight: 900;
-}
-
-.insider-info-title {
   margin: 15px 0;
-  font-weight: 900;
 }
 
 .holding-page-banner-text-container {
@@ -152,16 +148,24 @@
 
 .latest-videos-wrapper {
   background: $light-gray;
-  padding: 15px;
+  padding: 15px 0;
   position: relative;
   // @include for-phone-only {
   //   padding: 15px 0;
   // }
-  @include for-phone-only {
-    padding: 15px 0;
+  // @include for-phone-only {
+  //   padding: 15px 0;
+  // }
+}
+.no-mb-small {
+  font-family: $title-font;
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 15px;
+  @include for-medium-devices-down {
+    margin-bottom: 0;
   }
 }
-
 .homepage-video-card {
   transition: box-shadow 0.3s ease;
   @include for-medium-devices-down {
