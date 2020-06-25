@@ -9,38 +9,44 @@
   height: calc(100vh - 100px);
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   @include for-medium-devices-down {
-    justify-content: center;
-    height: calc(80vh - 100px);
+    flex-direction: column-reverse;
+  }
+}
+.lh {
+  line-height: 1.5;
+}
+.about-us-title {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  width: 33%;
+  padding: 5%;
+  h1 {
+    font-size: 3.5rem;
+    color: black;
+    font-weight: boldest;
+  }
+  @include for-medium-devices-down {
+    flex-order: 2;
+    width: 100%;
+    height: 30%;
   }
   @include for-small-devices-down {
-    height: calc(55vh - 100px);
-    padding-top: 10%;
+    h1 {
+      font-size: 3rem;
+    }
   }
 }
 .about-us-top {
-  position: relative;
   height: 100%;
   width: 67%;
   background-size: cover;
   background-position: center;
-  h1 {
-    font-size: 3.5rem;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-    color: white;
-    font-weight: boldest;
-  }
   @include for-medium-devices-down {
     width: 100%;
-  }
-  @include for-small-devices-down {
-    width: 100%;
-    h1 {
-      font-size: 3rem;
-    }
+    height: 70%;
   }
 }
 html {
