@@ -14,6 +14,14 @@
     flex-direction: column-reverse;
   }
 }
+.static-title {
+  font-size: 3.5rem;
+  color: black;
+  font-weight: 900;
+  @include for-small-devices-down {
+    font-size: 3rem;
+  }
+}
 .lh {
   line-height: 1.5;
 }
