@@ -1,4 +1,4 @@
-.influencers-show-banner {
+.makeup-show-banner {
   position: relative;
   height: calc(100vh - 100px);
   // background: #DDDEE2;
@@ -17,6 +17,21 @@
   }
   @include for-phone-only {
     min-height: 220px;
+  }
+}
+.influencers-show-banner {
+  position: relative;
+  height: calc(100vh - 100px);
+  // background: #DDDEE2;
+  background-position: left;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  h4 {
+    font-weight: 900;
+  }
+  @include for-small-devices-down {
+    background-position: center;
   }
 }
 .min-h-inner {
