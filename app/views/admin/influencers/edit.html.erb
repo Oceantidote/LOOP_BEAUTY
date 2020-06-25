@@ -55,6 +55,17 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Mobile Cover Photo</p>
+            <div>
+              <%= f.input :mobile_cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.mobile_cover_photo.attached? %>
+                <%= image_tag url_for(@influencer.mobile_cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover', alt: "influencer cover photo" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover', alt: "influencer cover photo" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="personal-details-input align-items-start">
             <p class="boldest muli s-medium-text text-right photo-input-text">Q&A photo</p>
             <div>
               <%= f.input :qa_photo, input_html: { class: 'd-none photo-input', 'data-name': 'qa', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>

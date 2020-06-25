@@ -4,6 +4,9 @@ class MyValidator < ActiveModel::Validator
       unless record.cover_photo.attached?
         record.errors[:cover_photo] << 'must be provided'
       end
+      unless record.mobile_cover_photo.attached?
+        record.errors[:mobile_cover_photo] << 'must be provided'
+      end
       unless record.lookbook_photo.attached?
         record.errors[:lookbook_photo] << 'must be provided'
       end
@@ -46,6 +49,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :basket, dependent: :destroy
   has_one_attached :cover_photo
+  has_one_attached :mobile_cover_photo
   has_one_attached :avatar_photo
   has_one_attached :qa_photo
   has_one_attached :lookbook_photo

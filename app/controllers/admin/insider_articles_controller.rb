@@ -11,10 +11,7 @@ class Admin::InsiderArticlesController < ApplicationController
   end
 
   def create
-    # raise
     @insider_article = InsiderArticle.new(insider_article_params)
-    # @insider_article.user = User.find(params['insider_article']['by'].to_i)
-    # @insider_article.by = params['insider_article']['by']
     if @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
@@ -27,8 +24,6 @@ class Admin::InsiderArticlesController < ApplicationController
 
   def update
     if @insider_article.update(insider_article_params)
-      # @insider_article.user = User.find(params['insider_article']['by'].to_i)
-      # @insider_article.by = params['insider_article']['by']
       @insider_article.save
       redirect_to insider_article_path(@insider_article)
     else
@@ -66,6 +61,7 @@ class Admin::InsiderArticlesController < ApplicationController
       :text3,
       :text4,
       :cover_photo,
+      :mobile_cover_photo,
       :photo1,
       :photo2,
       :photo3,

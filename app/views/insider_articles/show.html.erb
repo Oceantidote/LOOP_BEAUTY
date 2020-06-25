@@ -1,4 +1,4 @@
-<div class="insider-show-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)">
+<div class="insider-show-banner" id="article-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)" data-mob="<%= rails_blob_path @insider_article.mobile_cover_photo %>" data-lrg="<%= rails_blob_path @insider_article.cover_photo %>">
   <!-- <i id='arrow' class="banner-arrow white animated bounce fa fa-chevron-down"></i> -->
   <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
 </div>
@@ -103,4 +103,13 @@
       behavior: 'smooth'
     });
   })
+  function changeBannerUrls() {
+    if (window.innerWidth < 767.98) {
+      document.getElementById('article-banner').style.backgroundImage = `url('${document.getElementById('article-banner').dataset.mob}')`
+    } else {
+      document.getElementById('article-banner').style.backgroundImage = `url('${document.getElementById('article-banner').dataset.lrg}')`
+    }
+  }
+  changeBannerUrls()
+  window.onresize = changeBannerUrls;
 </script>
