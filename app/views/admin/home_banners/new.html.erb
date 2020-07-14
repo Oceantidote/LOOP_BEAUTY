@@ -38,6 +38,91 @@
             <% end %>
           </div>
         </div>
+        <!-- BEGINNING OF RESPONSIVE IMAGE LOADERS -->
+        <!-- IPAD -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Ipad Banner (768 x 924)</p>
+          <div>
+            <%= f.input :ipad, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.ipad.attached? %>
+              <%= image_tag url_for(@home_banner.ipad), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- IPADPRO -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">IpadPro Banner (1024 x 1266)</p>
+          <div>
+            <%= f.input :ipadpro, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.ipadpro.attached? %>
+              <%= image_tag url_for(@home_banner.ipadpro), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- IPADX -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">IpadX Banner (375 x 712)</p>
+          <div>
+            <%= f.input :ipadx, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.ipadx.attached? %>
+              <%= image_tag url_for(@home_banner.ipadx), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- IPADX -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Iphone Banner (375 x 567)</p>
+          <div>
+            <%= f.input :iphone, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.iphone.attached? %>
+              <%= image_tag url_for(@home_banner.iphone), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- IPADX -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">IphoneSE Banner (320 x 468)</p>
+          <div>
+            <%= f.input :iphonese, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.iphonese.attached? %>
+              <%= image_tag url_for(@home_banner.iphonese), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- PIXEL -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Pixel Banner (411 x 631)</p>
+          <div>
+            <%= f.input :pixel, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.pixel.attached? %>
+              <%= image_tag url_for(@home_banner.pixel), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- GALAXY -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Galaxy Banner (360 x 540)</p>
+          <div>
+            <%= f.input :galaxy, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.galaxy.attached? %>
+              <%= image_tag url_for(@home_banner.galaxy), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Text Color</p>
             <%= f.select(:text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>

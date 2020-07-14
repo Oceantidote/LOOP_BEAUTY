@@ -1,0 +1,70 @@
+<div class="carousel-item <%= index == 0 ? 'active' : '' %> ">
+  <a href="<%= home_banner.link %>" class="no-decoration">
+    <div
+      data-mob="<%= rails_blob_path home_banner.mobile_banner %>"
+      data-lrg="<%= rails_blob_path home_banner.banner %>"
+      data-ipad="<%= rails_blob_path home_banner.ipad %>"
+      data-ipadpro="<%= rails_blob_path home_banner.ipadpro %>"
+      data-ipadx="<%= rails_blob_path home_banner.ipadx %>"
+      data-iphone="<%= rails_blob_path home_banner.iphone %>"
+      data-iphonese="<%= rails_blob_path home_banner.iphonese %>"
+      data-pixel="<%= rails_blob_path home_banner.pixel %>"
+      data-galaxy="<%= rails_blob_path home_banner.galaxy %>"
+      class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+      <div class="holding-page-banner-text-container">
+        <div class="holding-page-banner-text">
+          <h2 class="didot <%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.content %></h2>
+          <p class="<%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.link_text %></p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script>
+  function changeBannerUrls() {
+    if (window.innerWidth <= 320 && window.innerHeight <= 568) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.iphonese}')`
+      })
+    } else if (window.innerWidth <= 360 && window.innerHeight <= 640) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.galaxy}')`
+      })
+    } else if (window.innerWidth <= 375 && window.innerHeight <= 667) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.iphone}')`
+      })
+    } else if (window.innerWidth <= 375 && window.innerHeight <= 812) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.ipadx}')`
+      })
+    } else if (window.innerWidth <= 411 && window.innerHeight <= 823) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.pixel}')`
+      })
+    } else if (window.innerWidth <= 414 && window.innerHeight <= 736) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.iphone}')`
+      })
+    } else if (window.innerWidth <= 768 && window.innerHeight <= 1024) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.ipad}')`
+      })
+    } else if (window.innerWidth <= 1024 && window.innerHeight <= 1366) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.galaxy}')`
+      })
+    } else if (window.innerWidth <= 768) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.mob}')`
+      })
+    } else {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.lrg}')`
+      })
+    }
+  }
+  changeBannerUrls()
+  window.onresize = changeBannerUrls;
+</script>

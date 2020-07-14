@@ -3,7 +3,7 @@
 </div>
 <% if current_user&.admin %>
   <div class="admin-button-container">
-    <div style="position: relative">
+    <div style="position: fixed;right: 5px;">
       <%= link_to 'PORTAL', admin_portal_path, class: 'admin-button' %>
       <% if Lookbook.where(status: 'pending').any? || Tutorial.where(status: 'pending').any? %>
         <div class="admin-notification muli">

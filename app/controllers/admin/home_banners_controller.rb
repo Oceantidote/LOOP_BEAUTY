@@ -12,7 +12,7 @@ class Admin::HomeBannersController < ApplicationController
   def create
     @home_banner = HomeBanner.new(home_banner_params)
 
-    if @home_banner.save
+    if @home_banner.save!
       redirect_to admin_home_banners_path
     else
       render :new
@@ -47,6 +47,6 @@ class Admin::HomeBannersController < ApplicationController
   end
 
   def home_banner_params
-    params.require(:home_banner).permit(:content, :link, :link_text, :display, :banner, :text_color, :mobile_banner)
+    params.require(:home_banner).permit(:ipad, :ipadpro, :ipadx, :iphone, :iphonese, :pixel, :galaxy, :content, :link, :link_text, :display, :banner, :text_color, :mobile_banner)
   end
 end
