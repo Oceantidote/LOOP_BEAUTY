@@ -23,6 +23,7 @@
 
 <script>
   function changeBannerUrls() {
+    document.getElementById('carouselExampleSlidesOnly').style.height = document.documentElement.clientHeight - 100
     if (window.innerWidth <= 320 && window.innerHeight <= 568) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.iphonese}')`
