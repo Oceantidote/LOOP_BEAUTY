@@ -1,17 +1,18 @@
 .footer-top {
   font-family: $menu-font;
-  height: 60px;
+  // height: 60px;
   background: white;
   border-bottom: 1px solid #d0cdcd;
   display: flex;
   justify-content: space-between;
+  height: 60px;
   @include for-medium-devices-down {
-    justify-content: center;
-  }
-  @include for-phone-only {
-    height: 100px;
+    height: unset;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    }
+    padding: 15px;
+  }
 }
 
 .footer-bottom {
@@ -39,7 +40,6 @@
   margin: 0;
   height: 100%;
   @include absCenter;
-  border-bottom: 3px solid transparent;
   color: black;
   font-size: 12px;
   font-weight: 900;
@@ -49,11 +49,13 @@
     border-color: black;
     cursor: pointer;
   }
+  a {
+    margin-bottom: 0;
+  }
   @include for-medium-devices-down {
     padding: 0 10px;
     font-size: 11px;
-  }
-  @include for-phone-only {
+    padding-bottom: 10px;
     height: auto;
     border-bottom: none;
   }
@@ -72,7 +74,7 @@
     flex-wrap: wrap;
     justify-content: center;
     height: 100%;
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -90,9 +92,15 @@
   @include for-medium-devices-down {
     padding-right: 15px;
   }
+  @include for-small-devices-down {
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    justify-content: center;
+  }
 }
 
-.footer-first-section, .footer-last-section {
+.footer-first-section,{
   width: 130px;
   @include for-small-devices-down {
     display: none;
