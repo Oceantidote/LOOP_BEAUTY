@@ -31,7 +31,7 @@
   <%= render 'insider_articles/insider_cards', insider_articles: @insider_articles.last(3) %>
 </div>
 
-<% if @tutorials %>
+<% if !@tutorials.empty? %>
   <div class="latest-videos-wrapper">
     <h2 class="text-center no-mb-small">Latest Videos</h2>
     <div class="latest-videos-container lookbook-max-width">

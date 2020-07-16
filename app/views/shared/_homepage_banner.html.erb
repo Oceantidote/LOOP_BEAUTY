@@ -23,39 +23,47 @@
 
 <script>
   function changeBannerUrls() {
-    document.getElementById('carouselExampleSlidesOnly').style.height = document.documentElement.clientHeight - 100
+    // document.querySelector('.holding-page-image-banner').style.height = document.documentElement.clientHeight - 100
     if (window.innerWidth <= 320 && window.innerHeight <= 568) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.iphonese}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '468px'
     } else if (window.innerWidth <= 360 && window.innerHeight <= 640) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.galaxy}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '540px'
     } else if (window.innerWidth <= 375 && window.innerHeight <= 667) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.iphone}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '567px'
     } else if (window.innerWidth <= 375 && window.innerHeight <= 812) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.ipadx}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '712px'
     } else if (window.innerWidth <= 411 && window.innerHeight <= 823) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.pixel}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '723px'
     } else if (window.innerWidth <= 414 && window.innerHeight <= 736) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.iphone}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '636px'
     } else if (window.innerWidth <= 768 && window.innerHeight <= 1024) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.ipad}')`
       })
-    } else if (window.innerWidth <= 1024 && window.innerHeight <= 1366) {
+      document.querySelector('.holding-page-image-banner').style.height = '924px'
+    } else if (window.innerWidth <= 1024 && window.innerHeight == 1366) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.galaxy}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = '1266px'
     } else if (window.innerWidth <= 768) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.mob}')`
@@ -64,6 +72,7 @@
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.lrg}')`
       })
+      document.querySelector('.holding-page-image-banner').style.height = `${window.innerWidth * 0.3}px`
     }
   }
   changeBannerUrls()

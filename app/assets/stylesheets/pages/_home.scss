@@ -66,9 +66,9 @@
   background-size: cover;
   display: flex;
   justify-content: flex-end;
-  @include for-small-devices-down {
-    height: calc(100vh - 100px);
-  }
+  // @include for-small-devices-down {
+  //   height: calc(100vh - 100px);
+  // }
 }
 
 .holding-page-text-banner {
