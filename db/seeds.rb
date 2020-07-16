@@ -4,6 +4,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Wishlist.destroy_all
 HomeBanner.destroy_all
 OfferBanner.destroy_all
 DiscountCode.destroy_all
@@ -638,12 +639,12 @@ bemi.makeup_photo.attach(io: File.open(bemi_makeup) , filename: 'makeup_photo.jp
 
 
 
-esther.save
-ropo.save
-breeny.save
-nikki.save
-shantania.save
-bemi.save
+esther.save!
+ropo.save!
+breeny.save!
+nikki.save!
+shantania.save!
+bemi.save!
 
 puts "-"
 

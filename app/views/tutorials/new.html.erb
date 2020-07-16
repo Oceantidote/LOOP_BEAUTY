@@ -25,7 +25,7 @@
           <div class="personal-details-input-wide align-items-start">
             <p class="boldest muli s-medium-text text-right photo-input-text">Video</p>
             <div class="dash-upload-photo">
-              <p>The video may not exceed 25MB, must have an aspect ratio of 16:9 and musthave dimensions between (1280px x 720px) and (1920px x 1080px).</p>
+              <p style="width: unset;padding: 10px;">The video may not exceed 25MB, must have an aspect ratio of 16:9 and musth ave dimensions between (1280px X 720px) and (1920px X 1080px).</p>
               <%= f.input :video, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial-video', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @tutorial.video.attached? %>
                 <div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin didot"><%= @tutorial.video.filename.to_s %></p></div>
