@@ -1,7 +1,7 @@
 class TutorialsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index, :all_videos]
   before_action :set_tutorial, only: [:edit, :update, :destroy, :show]
-
+  include ActiveStorageValidations
   def index
     @user = User.friendly.find(params[:user_id])
     @tutorials = policy_scope(Tutorial).where(user: @user).where(status: 'approved')
@@ -52,12 +52,15 @@ class TutorialsController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @users = User.where(published: true).where(influencer: true)
     @tutorial = Tutorial.new(tutorial_params)
     if current_user.influencer?
       @tutorial.user = current_user
     end
     authorize @tutorial
     if @tutorial.save
+      UserMailer.with(content: @tutorial, influencer: @user).new_content.deliver_now
       flash[:notice] = 'Tutorial pending approval'
       redirect_to user_uploads_path(current_user)
     else

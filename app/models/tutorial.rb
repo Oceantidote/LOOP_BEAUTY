@@ -10,8 +10,8 @@ class Tutorial < ApplicationRecord
   has_many :tutorial_products, dependent: :destroy
   has_many :products, through: :tutorial_products
   validates :title, uniqueness: true
-  validates :video, aspect_ratio: :is_16_9, size: { less_than: 25.megabytes , message: 'The video cannot exceed 25MB' }, dimension: { width: { min: 1280, max: 1920 }, height: { min: 720, max: 1080 }, message: 'The video must be between (1280px x 720px) and (1920px x 1080px)' }
-  after_create :send_for_approval
+  validates :video, size: { less_than: 100.megabytes, message: 'cannot exceed 100MB' }
+  validates :cover_photo, attached: true
   after_save :update_featured
 
   def approve!
@@ -29,10 +29,6 @@ class Tutorial < ApplicationRecord
     self.status == 'rejected' ? rejected = true : rejected = false
     update(status: 'pending')
     UserMailer.with(content: self, influencer: self.user, rejected: rejected).new_content.deliver_now
-  end
-
-  def send_for_approval
-    UserMailer.with(content: self, influencer: self.user).new_content.deliver_now
   end
 
   def sales
