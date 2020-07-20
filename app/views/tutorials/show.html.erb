@@ -18,7 +18,7 @@
   </div>
 </div>
 <div class="tutorial-show-video-banner">
-  <%= video_tag url_for(@tutorial.video), style: "width: 100%", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video" %>
+  <%= video_tag url_for(@tutorial.video), style: "margin: 0 auto;max-width: 100%;max-height: 60vh;", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video" %>
   <div class="video-overlay">
     <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
   </div>

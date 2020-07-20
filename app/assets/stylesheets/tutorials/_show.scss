@@ -68,6 +68,8 @@
 
 .tutorial-show-video-banner {
   max-width: 900px;
+  max-height: 60vh;
+  display: flex;
   margin: 0 auto;
   position: relative;
   &:hover {
