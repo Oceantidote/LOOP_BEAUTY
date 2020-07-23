@@ -6,7 +6,7 @@ class LookbookPolicy < ApplicationPolicy
   end
 
   def new?
-    user.influencer?
+    user.influencer? || user&.admin
   end
 
   def create?

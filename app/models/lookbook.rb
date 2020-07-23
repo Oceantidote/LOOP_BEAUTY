@@ -9,8 +9,8 @@ class Lookbook < ApplicationRecord
   has_many :lookbook_products, dependent: :destroy
   has_many :products, through: :lookbook_products
   validates :title, uniqueness: true
+  validates :photo, attached: true
   before_save :gen_aff_code
-  after_create :send_for_approval
 
   def approve!
     code = gen_aff_code
@@ -27,10 +27,6 @@ class Lookbook < ApplicationRecord
     self.status == 'rejected' ? rejected = true : rejected = false
     update(status: 'pending')
     UserMailer.with(content: self, influencer: self.user, rejected: rejected).new_content.deliver_now
-  end
-
-  def send_for_approval
-    UserMailer.with(content: self, influencer: self.user).new_content.deliver_now
   end
 
   def sales

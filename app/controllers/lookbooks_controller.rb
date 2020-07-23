@@ -23,6 +23,7 @@ class LookbooksController < ApplicationController
   end
 
   def new
+    @users = User.where(influencer: true)
     @lookbook = Lookbook.new
     @user = current_user
     authorize @lookbook
@@ -30,11 +31,16 @@ class LookbooksController < ApplicationController
 
   def create
     @lookbook = Lookbook.new(lookbook_params)
-    @lookbook.user = current_user
+    @lookbook.user = current_user if !current_user.admin
     authorize @lookbook
     if @lookbook.save
       flash[:notice] = 'Lookbook pending approval'
-      redirect_to user_uploads_path(current_user)
+      if current_user.admin
+        redirect_to admin_lookbooks_path
+      else
+        UserMailer.with(content: @lookbook, influencer: current_user).new_content.deliver_now
+        redirect_to user_uploads_path(current_user)
+      end
     else
       flash[:error] = 'Please review problems'
       render :new
@@ -42,7 +48,8 @@ class LookbooksController < ApplicationController
   end
 
   def edit
-    @user = @lookbook.user
+    @users = User.where(influencer: true)
+    @user = current_user
   end
 
   def update
@@ -117,6 +124,6 @@ class LookbooksController < ApplicationController
   end
 
   def lookbook_params
-    params.require(:lookbook).permit(:title, :photo, :rejection_message, :description, product_ids: [])
+    params.require(:lookbook).permit(:title, :photo, :rejection_message, :description, :user_id, product_ids: [])
   end
 end

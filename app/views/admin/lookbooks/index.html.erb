@@ -6,6 +6,7 @@
     <div class="dash-content-container">
       <h2 class="insider-info-title mlb-title text-center">Pending Approval</h2>
       <hr>
+      <%= link_to "NEW LOOKBOOK", new_lookbook_path, class: 'primary-button products-admin-primary m10' %>
       <div class="row" style="margin: 30px 0;">
         <% if @lookbooks.count == 0 %>
           <p class="medium-margin text-center boldest muli grey s-medium-text" style="width: 100%;">There are no pending lookbooks</p>
