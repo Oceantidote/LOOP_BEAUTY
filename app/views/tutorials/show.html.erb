@@ -35,9 +35,9 @@
     <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
   </div>
   <div class="max-width">
-    <div class="row-carousel">
+    <div class="row-carousel scrolling">
       <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-      <% @tutorial.products.first(4).each do |product| %>
+      <% @tutorial.products.each do |product| %>
         <div class="col-8 col-sm-6 col-md-3 d-flex justify-content-center tp-cols">
           <%= render 'shared/product_cards', product: product %>
         </div>

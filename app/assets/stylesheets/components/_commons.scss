@@ -310,7 +310,7 @@ body {
 
 .row-carousel {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   @include for-medium-devices-down {
     flex-wrap: nowrap;
@@ -324,7 +324,10 @@ body {
     justify-content: flex-start;
   }
 }
-
+.scrolling {
+  overflow: scroll;
+  flex-wrap: unset;
+}
 .mobile-row {
   @include for-phone-only {
     display: flex;

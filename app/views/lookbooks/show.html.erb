@@ -54,7 +54,7 @@
     <% if @lookbook.products.count > 4 %>
       <p class="shop-look-text text-center">Scroll across to see more products</p>
     <% end %>
-    <div class="row-carousel">
+    <div class="row-carousel scrolling">
       <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @lookbook.products.each do |product| %>
         <div class="col-9 col-sm-6 col-md-3 tp-cols">
