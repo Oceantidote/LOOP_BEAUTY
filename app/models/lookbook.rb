@@ -8,9 +8,11 @@ class Lookbook < ApplicationRecord
   has_one_attached :photo
   has_many :lookbook_products, dependent: :destroy
   has_many :products, through: :lookbook_products
-  validates :title, uniqueness: true
+  validates :title, uniqueness: true, presence: true
   validates :photo, attached: true
   before_save :gen_aff_code
+  validates :user_id, presence: true
+
 
   def approve!
     code = gen_aff_code
