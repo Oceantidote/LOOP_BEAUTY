@@ -21,15 +21,15 @@
     <% end %>
   <% end %>
 </div>
+<h2 class="insider-info-title text-center">Insider</h2>
+<div class="insider-home-articles">
+  <%= render 'insider_articles/insider_cards', insider_articles: @insider_articles.last(3) %>
+</div>
 <div class="home-featured-wrapper">
   <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
   <%= render 'shared/home_tabs' %>
 </div>
 
-<h2 class="insider-info-title text-center">Insider</h2>
-<div class="insider-home-articles">
-  <%= render 'insider_articles/insider_cards', insider_articles: @insider_articles.last(3) %>
-</div>
 
 <% if !@tutorials.empty? %>
   <div class="latest-videos-wrapper">
