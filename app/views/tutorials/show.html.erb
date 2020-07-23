@@ -35,6 +35,9 @@
     <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
   </div>
   <div class="max-width">
+    <% if @tutorial.products.count > 4 %>
+      <p class="shop-look-text text-center">Scroll across to see more products</p>
+    <% end %>
     <div class="row-carousel scrolling">
       <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
       <% @tutorial.products.each do |product| %>
