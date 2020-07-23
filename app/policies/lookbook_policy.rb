@@ -18,7 +18,7 @@ class LookbookPolicy < ApplicationPolicy
   end
 
   def edit?
-    (record.user == user || user.admin) && (record.status == "pending" || record.status == "rejected")
+    (record.user == user && (record.status == "pending" || record.status == "rejected")) || user.admin
   end
 
   def update?
