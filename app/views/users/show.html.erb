@@ -7,17 +7,17 @@
 <div class="influencers-show-banner" id="influencers-show-banner"  style="background-image: url('<%= @user.cover_photo.attached? ? (rails_blob_path @user.cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')" data-mob="<%= rails_blob_path @user.mobile_cover_photo %>" data-lrg="<%= rails_blob_path @user.cover_photo %>">
   <div class="influencer-show-banner-text-container">
     <div class="influencer-show-banner-text">
-      <h4><%= @user.instagram %></h4>
-      <h5 class="didot"><%= @user.description %></h5>
+      <h4 class="<%= 'light-text' if !@user.light_text %>"><%= @user.instagram %></h4>
+      <h5 class="didot <%= 'light-text' if !@user.light_text %>"><%= @user.description %></h5>
       <div class="influencer-social-data">
         <% if @user.instagram %>
-          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data" do %>
+          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data #{'light-link' if !@user.light_text}" do %>
               <i class="fab fa-instagram social-instagram"></i>
               <h6><%= @user.instagram_followers %></h6>
           <% end %>
         <% end %>
         <% unless @user.youtube.empty? %>
-          <%= link_to @user.youtube, target: "_blank", class: "each-social-data" do %>
+          <%= link_to @user.youtube, target: "_blank", class: "each-social-data #{'light-link' if !@user.light_text}" do %>
               <i class="fab fa-youtube social-youtube"></i>
               <h6><%= @user.youtube_subscribers %></h6>
           <% end %>

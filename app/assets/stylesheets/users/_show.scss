@@ -259,3 +259,23 @@
   -webkit-animation-name: bounce;
   animation-name: bounce;
 }
+#user_light_text {
+  width: unset !important;
+}
+.light-link {
+  @include for-medium-devices-up {
+    .social-youtube, .social-instagram, h6 {
+      color: white;
+    }
+    &:hover {
+      .social-youtube, .social-instagram, h6 {
+        color: gray;
+      }
+    }
+  }
+}
+.light-text {
+  @include for-medium-devices-up {
+    color: white;
+  }
+}
