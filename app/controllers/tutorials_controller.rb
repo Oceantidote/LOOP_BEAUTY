@@ -62,7 +62,11 @@ class TutorialsController < ApplicationController
     if @tutorial.save!
       UserMailer.with(content: @tutorial, influencer: @user).new_content.deliver_now
       flash[:notice] = 'Tutorial pending approval'
-      redirect_to user_uploads_path(current_user)
+      if current_user.admin
+        redirect_to admin_tutorials_path
+      else
+        redirect_to user_uploads_path(current_user)
+      end
     else
       flash[:error] = 'Please review problems'
       render :new
