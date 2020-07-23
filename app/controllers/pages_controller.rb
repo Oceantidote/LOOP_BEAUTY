@@ -25,6 +25,7 @@ class PagesController < ApplicationController
 
   def videos
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC)
+    @loops = Tutorial.where(status: 'approved', user_id: 116).order(created_at: :DESC)
     @featured_tutorial = Tutorial.where(featured: true).first
   end
 
