@@ -30,6 +30,8 @@ class LookbooksController < ApplicationController
   end
 
   def create
+    @users = User.where(influencer: true)
+    @user = current_user
     @lookbook = Lookbook.new(lookbook_params)
     @lookbook.user = current_user if !current_user.admin
     authorize @lookbook
