@@ -8,6 +8,12 @@
       <hr>
       <div class="dash-upload-content-container-wide">
         <%= simple_form_for @lookbook do |f| %>
+          <% if current_user.admin %>
+            <div class="personal-details-input-wide">
+              <p class="boldest muli s-medium-text text-right no-margin">Influencer</p>
+              <%= f.input :user_id, collection: @users, label_method: ->(user){ "#{user.full_name}" }, label: false %>
+            </div>
+          <% end %>
           <div class="personal-details-input-wide">
             <p class="boldest muli s-medium-text text-right no-margin">Title</p>
             <%= f.input :title, label: false, input_html: { class: "contact-form-input" } %>
