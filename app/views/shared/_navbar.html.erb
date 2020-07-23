@@ -164,7 +164,6 @@
       <% end %>
     <% @brands.each do |brand| %>
       <%= link_to brand_path(brand), class: "each-item" do %>
-
         <li class="nav-item each-item-dropdown">
           <%= brand.name %>
         </li>
@@ -200,6 +199,16 @@
 </div>
 <!-- HIDDEN INFLUENCERS BAR -->
 
+<div class="navbar-submenu navbar-submenu-influencers">
+  <div class="navbar-submenu-container">
+    <% @influencers.each do |influencer| %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
+        <%= influencer.first_name %> <%= influencer.last_name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <div class="navbar-submenu navbar-submenu-brands">
   <div class="navbar-submenu-container">
     <% @brands.each do |brand| %>
@@ -209,18 +218,7 @@
     <% end %>
   </div>
 </div>
-<div class="navbar-submenu navbar-submenu-influencers">
-  <div class="navbar-submenu-container">
-    <% @influencers.each do |influencer| %>
-      <% if influencer.published %>
-        <%= link_to user_path(influencer), class: "each-item" do %>
-          <%= influencer.first_name %> <%= influencer.last_name %>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-<div class="navbar-submenu-underlay"></div>
+<div class="navbar-submenu-underlay" style="display: block;"></div>
 
 <!-- HIDDEN BASKET CONTENT -->
 

@@ -41,7 +41,6 @@ class PagesController < ApplicationController
   end
 
   def influencers
-    @influencers = User.where(influencer: true)
   end
 
   def terms_and_conditions
