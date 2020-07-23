@@ -312,6 +312,8 @@ body {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   @include for-medium-devices-down {
     flex-wrap: nowrap;
     overflow: scroll;
@@ -324,6 +326,10 @@ body {
     justify-content: flex-start;
   }
 }
+.row-carousel::-webkit-scrollbar {
+  display: none;
+}
+
 .scrolling {
   overflow: scroll;
   flex-wrap: unset;
