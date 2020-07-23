@@ -46,20 +46,20 @@ class TutorialsController < ApplicationController
 
   def new
     @user = current_user
-    @users = User.where(published: true).where(influencer: true)
+    @users = User.where(influencer: true)
     @tutorial = Tutorial.new
     authorize @tutorial
   end
 
   def create
     @user = current_user
-    @users = User.where(published: true).where(influencer: true)
+    @users = User.where(influencer: true)
     @tutorial = Tutorial.new(tutorial_params)
     if current_user.influencer?
       @tutorial.user = current_user
     end
     authorize @tutorial
-    if @tutorial.save
+    if @tutorial.save!
       UserMailer.with(content: @tutorial, influencer: @user).new_content.deliver_now
       flash[:notice] = 'Tutorial pending approval'
       redirect_to user_uploads_path(current_user)
