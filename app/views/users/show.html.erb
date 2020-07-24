@@ -55,7 +55,7 @@
         <%= link_to make_up_user_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Makeup</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%= @user.makeup_photo.attached? ?  (rails_blob_path @user.makeup_photo) : ('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1295&q=80') %>')">
+            <div class="influencer-show-card-image" style="background-image: url('<%= @user.makeup_photo.attached? ?  (url_for @user.makeup_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1295&q=80') %>')">
             </div>
           </div>
         <% end %>
@@ -82,7 +82,7 @@
           <%= link_to user_question_answer_path([@user, @user.question_answer]), class: "influencer-card-link" do %>
             <div class="influencer-show-card">
               <h5 class="text-center">Q & A</h5>
-              <div class="influencer-show-card-image" style="background-image: url('<%= @user.qa_photo.attached? ?  (rails_blob_path @user.qa_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+              <div class="influencer-show-card-image" style="background-image: url('<%= @user.qa_photo.attached? ?  (url_for @user.qa_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               </div>
             </div>
           <% end %>
@@ -92,7 +92,7 @@
         <%= link_to user_tutorials_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Tutorials</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%= @user.tutorial_photo.attached? ?  (rails_blob_path @user.tutorial_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+            <div class="influencer-show-card-image" style="background-image: url('<%= @user.tutorial_photo.attached? ?  (url_for @user.tutorial_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
             </div>
         <% end %>
@@ -102,7 +102,7 @@
         <%= link_to user_lookbooks_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Lookbook</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%= @user.lookbook_photo.attached? ?  (rails_blob_path @user.lookbook_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+            <div class="influencer-show-card-image" style="background-image: url('<%= @user.lookbook_photo.attached? ?  (url_for @user.lookbook_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
             </div>
           </div>
         <% end %>
