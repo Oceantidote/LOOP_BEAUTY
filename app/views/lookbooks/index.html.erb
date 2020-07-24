@@ -36,7 +36,7 @@
       <div class="col-xs-12 col-sm-6 col-md-4" style="padding: 10px;">
         <%= link_to lookbook_path(lookbook, user_id: @user.id) do %>
           <div class="lookbook-index-card">
-            <%= image_tag url_for(lookbook.photo), alt: "influencer lookbook photo" %>
+            <%= image_tag url_for(lookbook.photo.variant(resize: '400')), alt: "influencer lookbook photo" %>
           </div>
         <% end %>
       </div>

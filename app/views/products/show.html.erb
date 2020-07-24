@@ -3,16 +3,16 @@
     <div class="product-image-container">
       <div class="product-carousel">
         <div class="product-shade-image">
-          <%= image_tag url_for(@product.shades.first.card_photo), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+          <%= image_tag url_for(@product.shades.first.card_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
         </div>
         <% @product.shades.first.photos.first(3).each do |shade_photo| %>
           <div class="product-shade-image">
-            <%= image_tag url_for(shade_photo), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+            <%= image_tag url_for(shade_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
           </div>
         <% end %>
       </div>
       <div class="product-main-image">
-        <div class="myImg" id="expandedImg" style="background-image: url(<%= url_for(@product.shades.first.card_photo) %>); background-position: center; background-size: cover;">
+        <div class="myImg" id="expandedImg" style="background-image: url(<%= url_for(@product.shades.first.card_photo.variant(resize: '700x700')) %>); background-position: center; background-size: cover;">
         </div>
         <%#= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg magniflier", alt: "shade photo" %>
       </div>
@@ -30,11 +30,11 @@
             <% @product.shades.order(created_at: :ASC).each_with_index do |shade, i| %>
               <% next unless shade.shade_color.attached? %>
               <div class="col-2" style="padding: 0 3px 0 0;">
-                <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color) %>)",
+                <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color.variant(resize: '90x90')) %>)",
                   data-name="<%= shade.name %>",
                   data-stock="<%= shade.number_in_stock %>"
-                  data-main="<%= url_for(shade.card_photo) %>"
-                  data-urls="<%= shade.photos.first(3).map { |photo| url_for(photo) } %>">
+                  data-main="<%= url_for(shade.card_photo.variant(resize: '700x700')) %>"
+                  data-urls="<%= shade.photos.first(3).map { |photo| url_for(photo.variant(resize: '700x700')) } %>">
                 </div>
               </div>
             <% end %>
@@ -192,7 +192,7 @@
         <div class="col-10 col-md-4 ir-cols">
           <div class="insider-review-cards" data-toggle="modal" data-target="#review_<%= review.id %>">
             <div class="insider-review-left">
-              <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
+              <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo.variant(resize: '300x300')) %>)"></div>
               <h6 class="truncate-text text-center"><%= review.user.instagram %></h6>
             </div>
             <div class="insider-review-right">
@@ -251,7 +251,7 @@
               <%= link_to product_path(product.recommended) do %>
                 <div class="card_image">
                   <% if product.recommended.shades.first&.card_photo %>
-                    <%= image_tag url_for(product.recommended.shades.first.card_photo), alt: "product shade photo" %>
+                    <%= image_tag url_for(product.recommended.shades.first.card_photo.variant(resize: '700x700')), alt: "product shade photo" %>
                   <% else %>
                     <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
                   <% end %>

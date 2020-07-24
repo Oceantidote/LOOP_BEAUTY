@@ -14,7 +14,7 @@
     <% else %>
       <div class="col-xs-12 col-md-4" style="padding: 0;">
         <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
-          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
+          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo.variant(resize: '700')) %>);">
             <div class="insider-home-articles-card-text">
               <h6><%= article.category %></h6>
               <p class="didot"><%= article.title %></p>
