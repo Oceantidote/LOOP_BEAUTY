@@ -16,6 +16,10 @@ class Order < ApplicationRecord
   after_create :set_sku
   after_save :check_for_referral
 
+  def completed?
+    completed
+  end
+
   def new_order
     UserMailer.with(order: self.id, user: self.user.id).order_confirmation.deliver_now
   end
