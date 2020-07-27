@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
       flash[:alert] = @order.errors.full_messages.join(', ')
       render :new and return
     end
+    CleanUpIncompleteOrderJob.set(wait: 2.hours).perform_later(@order.id)
     @basket.basket_products.each do |item|
       order_product = item.convert_to_order_product
       order_product.order = @order
