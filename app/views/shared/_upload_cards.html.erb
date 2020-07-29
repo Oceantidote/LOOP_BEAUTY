@@ -14,8 +14,10 @@
       </div>
     <% end %>
     <% if item.affiliate_link %>
-      <hr>
-      <p class="no-margin small-text">Affiliate link: <%= link_to "#{item.affiliate_link}", item.affiliate_link %></p>
+      <div onclick='myFunction("<%= item.id %>")' style="cursor: pointer;">
+        <p class="mb-0"><strong>Affiliate Link:</strong> <%= item.affiliate_link %></p>
+        <input id="<%= item.id %>" type="text" value="<%= item.affiliate_link %>" style="height: 0px;width: 0px;border: none !important; opacity: 1;">
+      </div>
     <% end %>
     <% if current_user&.admin %>
       <hr>
@@ -41,8 +43,10 @@
       </div>
     <% end %>
     <% if item.affiliate_link %>
-      <hr>
-      <p class="no-margin small-text">Affiliate link: <%= link_to "#{item.affiliate_link}", item.affiliate_link %></p>
+      <div onclick='myFunction("<%= item.id %>")' style="cursor: pointer;">
+        <p class="mb-0"><strong>Affiliate Link:</strong> <%= item.affiliate_link %></p>
+        <input id="<%= item.id %>" type="text" value="<%= item.affiliate_link %>" style="height: 0px;width: 0px;border: none !important; opacity: 1;">
+      </div>
     <% end %>
     <% if current_user&.admin %>
       <hr>
@@ -54,3 +58,20 @@
   </div>
 <% end %>
 
+<script>
+  function myFunction(id) {
+    /* Get the text field */
+    var copyId = document.getElementById(id);
+
+
+    copyId.select();
+    copyId.setSelectionRange(0, 99999);
+
+
+    // // /* Copy the text inside the text field */
+    document.execCommand("copy");
+    // var promise = navigator.clipboard.writeText("work")
+    /* Alert the copied text */
+    alert('"' + copyId.value + '" copied to clipboard"');
+  }
+</script>
