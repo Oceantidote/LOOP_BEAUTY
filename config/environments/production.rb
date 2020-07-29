@@ -9,7 +9,7 @@ Rails.application.configure do
   config.action_mailer.postmark_settings       = { api_token: ENV['POSTMARK_API_TOKEN'] }
   config.action_mailer.perform_deliveries      = true
 
-  Rails.application.routes.default_url_options[:host] = ENV['host']
+  Rails.application.routes.default_url_options[:host] = ENV['HOST']
   # config.action_mailer.delivery_method = :ses
   # Code is not reloaded between requests.
   config.cache_classes = true
