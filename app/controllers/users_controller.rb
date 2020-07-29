@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_nested_user, only: [:uploads, :share, :dashboard, :my_orders, :my_products, :refer_a_friend, :wishlist, :account_details, :preference_centre, :analytics, :showroom]
   before_action :set_user, only: [:show, :make_up, :q_and_a]
   before_action :set_wishlist, only: [:wishlist]
+  skip_before_action :verify_authenticity_token, only: [:show]
 
   def dashboard
   end
