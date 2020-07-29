@@ -10,6 +10,16 @@
       data-iphonese="<%= rails_blob_path home_banner.iphonese %>"
       data-pixel="<%= rails_blob_path home_banner.pixel %>"
       data-galaxy="<%= rails_blob_path home_banner.galaxy %>"
+      data-pixel2="<%= rails_blob_path home_banner.pixel2 %>"
+      data-pixel3="<%= rails_blob_path home_banner.pixel3 %>"
+      data-galaxy2="<%= rails_blob_path home_banner.galaxy2 %>"
+      data-galaxymini="<%= rails_blob_path home_banner.galaxymini %>"
+      data-flexi="<%= rails_blob_path home_banner.flexi %>"
+      data-iphone9="<%= rails_blob_path home_banner.iphone9 %>"
+      data-iphone10="<%= rails_blob_path home_banner.iphone10 %>"
+      data-tablet="<%= rails_blob_path home_banner.tablet %>"
+      data-tabletlrg="<%= rails_blob_path home_banner.tabletlrg %>"
+      data-tabletpan="<%= rails_blob_path home_banner.tabletpan %>"
       class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
       <div class="holding-page-banner-text-container">
         <div class="holding-page-banner-text">
@@ -29,15 +39,30 @@
         element.style.backgroundImage = `url('${element.dataset.iphonese}')`
         element.style.height = '468px'
       })
+    } else if (window.innerWidth <= 360 && window.innerHeight <= 540) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.galaxymini}')`
+        element.style.height = '440px'
+      })
     } else if (window.innerWidth <= 360 && window.innerHeight <= 640) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.galaxy}')`
         element.style.height = '540px'
       })
+    } else if (window.innerWidth <= 375 && window.innerHeight <= 567) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.iphone10}')`
+        element.style.height = '467px'
+      })
     } else if (window.innerWidth <= 375 && window.innerHeight <= 667) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.iphone}')`
         element.style.height = '567px'
+      })
+    } else if (window.innerWidth <= 375 && window.innerHeight <= 712) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.iphone9}')`
+        element.style.height = '612px'
       })
     } else if (window.innerWidth <= 375 && window.innerHeight <= 812) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
@@ -49,29 +74,47 @@
         element.style.backgroundImage = `url('${element.dataset.pixel}')`
         element.style.height = '631px'
       })
-    } else if (window.innerWidth <= 411 && window.innerHeight <= 823) {
+    } else if (window.innerWidth <= 412 && window.innerHeight <= 724) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.pixel}')`
-        element.style.height = '723px'
+        element.style.backgroundImage = `url('${element.dataset.pixel3}')`
+        element.style.height = '624px'
       })
-    } else if (window.innerWidth <= 414 && window.innerHeight <= 736) {
+    } else if (window.innerWidth <= 412 && window.innerHeight <= 747) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.iphone}')`
-        element.style.height = '636px'
+        element.style.backgroundImage = `url('${element.dataset.pixel2}')`
+        element.style.height = '647px'
       })
-    } else if (window.innerWidth <= 768 && window.innerHeight <= 1024) {
+    } else if (window.innerWidth <= 414 && window.innerHeight <= 796) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.flexi}')`
+        element.style.height = '696px'
+      })
+    } else if (window.innerWidth <= 480 && window.innerHeight <= 753) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.galaxy2}')`
+        element.style.height = '653px'
+      })
+    } else if (window.innerWidth <= 600 && window.innerHeight <= 860) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.tablet}')`
+        element.style.height = '760px'
+      })
+    } else if (window.innerWidth <= 768 && window.innerHeight == 1024) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.ipad}')`
         element.style.height = '924px'
       })
+    } else if (window.innerWidth <= 800 && window.innerHeight == 1180) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.tabletlrg}')`
+      })
     } else if (window.innerWidth <= 1024 && window.innerHeight == 1366) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.ipadpro}')`
-        element.style.height = '1266px'
       })
-    } else if (window.innerWidth <= 768) {
+    } else if (window.innerWidth <= 1280 && window.innerHeight == 750) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.mob}')`
+        element.style.backgroundImage = `url('${element.dataset.tabletpan}')`
       })
     } else {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
