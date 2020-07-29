@@ -18,6 +18,7 @@ class HomeBanner < ApplicationRecord
   has_one_attached :tablet
   has_one_attached :tabletlrg
   has_one_attached :tabletpan
+  has_one_attached :pixel2xl
 
   validates :banner, attached: true
   validates :mobile_banner, attached: true
@@ -38,9 +39,11 @@ class HomeBanner < ApplicationRecord
   # validates :pixel, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
   #                                    dimension: { width: 411, height: 631 }
   # validates :pixel3, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 412, height: 624 }
+  #                                    dimension: { width: 411, height: 624 }
   # validates :pixel2, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 412, height: 647 }
+  #                                    dimension: { width: 411, height: 647 }
+  # validates :pixel2xl, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+  #                                    dimension: { width: 411, height: 723 }
   # validates :flexi, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
   #                                    dimension: { width: 414, height: 696 }
   # validates :galaxy2, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],

@@ -135,6 +135,18 @@
             <% end %>
           </div>
         </div>
+        <!-- Pixel 2 XL -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Tablet Pan banner (411 x 723)</p>
+          <div>
+            <%= f.input :pixel2xl, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.pixel2xl.attached? %>
+              <%= image_tag url_for(@home_banner.pixel2xl), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
         <!-- PIXEL3 -->
         <div class="personal-details-input align-items-start">
           <p class="boldest muli s-medium-text text-right photo-input-text">Pixel 3 Banner (412 x 624)</p>

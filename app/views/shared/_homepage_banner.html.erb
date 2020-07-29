@@ -20,6 +20,7 @@
       data-tablet="<%= rails_blob_path home_banner.tablet if home_banner.tablet.attached? %>"
       data-tabletlrg="<%= rails_blob_path home_banner.tabletlrg if home_banner.tabletlrg.attached? %>"
       data-tabletpan="<%= rails_blob_path home_banner.tabletpan if home_banner.tabletpan.attached? %>"
+      data-pixel2xl="<%= rails_blob_path home_banner.pixel2xl if home_banner.pixel2xl.attached? %>"
       class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
       <div class="holding-page-banner-text-container">
         <div class="holding-page-banner-text">
@@ -74,20 +75,30 @@
         element.style.backgroundImage = `url('${element.dataset.pixel}')`
         element.style.height = '631px'
       })
-    } else if (window.innerWidth <= 412 && window.innerHeight <= 724) {
+    } else if (window.innerWidth <= 411 && window.innerHeight <= 724) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.pixel3}')`
         element.style.height = '624px'
       })
-    } else if (window.innerWidth <= 412 && window.innerHeight <= 747) {
+    } else if (window.innerWidth <= 411 && window.innerHeight <= 747) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.pixel2}')`
         element.style.height = '647px'
+      })
+    } else if (window.innerWidth <= 414 && window.innerHeight <= 736) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.iphone}')`
+        element.style.height = '636px'
       })
     } else if (window.innerWidth <= 414 && window.innerHeight <= 796) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
         element.style.backgroundImage = `url('${element.dataset.flexi}')`
         element.style.height = '696px'
+      })
+    } else if (window.innerWidth <= 414 && window.innerHeight <= 823) {
+      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
+        element.style.backgroundImage = `url('${element.dataset.pixel2xl}')`
+        element.style.height = '723px'
       })
     } else if (window.innerWidth <= 480 && window.innerHeight <= 753) {
       document.querySelectorAll('.holding-page-image-banner').forEach((element) => {

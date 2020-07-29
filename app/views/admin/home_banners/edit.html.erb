@@ -125,7 +125,7 @@
         </div>
         <!-- PIXEL2 -->
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">Pixel 2 Banner (412 x 647)</p>
+          <p class="boldest muli s-medium-text text-right photo-input-text">Pixel 2 Banner (411 x 647)</p>
           <div>
             <%= f.input :pixel2, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @home_banner.pixel2.attached? %>
@@ -135,9 +135,21 @@
             <% end %>
           </div>
         </div>
+        <!-- Pixel 2 XL -->
+        <div class="personal-details-input align-items-start">
+          <p class="boldest muli s-medium-text text-right photo-input-text">Pixel 2 XL (411 x 723)</p>
+          <div>
+            <%= f.input :pixel2xl, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+            <% if @home_banner.pixel2xl.attached? %>
+              <%= image_tag url_for(@home_banner.pixel2xl), height: 100, class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+            <% end %>
+          </div>
+        </div>
         <!-- PIXEL3 -->
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">Pixel 3 Banner (412 x 624)</p>
+          <p class="boldest muli s-medium-text text-right photo-input-text">Pixel 3 Banner (411 x 624)</p>
           <div>
             <%= f.input :pixel3, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @home_banner.pixel3.attached? %>
@@ -185,7 +197,7 @@
         </div>
         <!-- IPHONE9 -->
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">IPhone 9 banner (376 x 612)</p>
+          <p class="boldest muli s-medium-text text-right photo-input-text">IPhone 9 banner (375 x 612)</p>
           <div>
             <%= f.input :iphone9, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @home_banner.iphone9.attached? %>
@@ -197,7 +209,7 @@
         </div>
         <!-- IPHONE10 -->
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">IPhone 10 banner (376 x 467)</p>
+          <p class="boldest muli s-medium-text text-right photo-input-text">IPhone 10 banner (375 x 467)</p>
           <div>
             <%= f.input :iphone10, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @home_banner.iphone10.attached? %>
