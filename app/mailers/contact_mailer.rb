@@ -8,6 +8,6 @@ class ContactMailer < ApplicationMailer
   def contact
     @details = params[:details]
 
-    # mail to: "hello@myloopbeauty.com"
+    mail to: "hello@myloopbeauty.com"
   end
 end
