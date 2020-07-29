@@ -114,6 +114,17 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
+            <p class="boldest muli s-medium-text text-right photo-input-text">Makeup Cover photo</p>
+            <div>
+              <%= f.input :makeup_cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+              <% if @influencer.makeup_cover_photo.attached? %>
+                <%= image_tag url_for(@influencer.makeup_cover_photo), height: 100, class: "photo-preview", 'data-name': 'makeup', alt: "influencer makeup photo" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'makeup', alt: "influencer makeup photo" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="personal-details-input align-items-start">
             <p class="boldest muli s-medium-text text-right no-margin">Description</p>
             <%= f.input :description, label: false, placeholder:'This influencer...', input_html: { class: "admin-form-input" } %>
           </div>
