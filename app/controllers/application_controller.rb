@@ -29,9 +29,9 @@ class ApplicationController < ActionController::Base
     @first_visit = true
   end
 
-  # def default_url_options
-  #   # { host: ENV['HOST'] || 'http://localhost:3000' }
-  # end
+  def default_url_options
+    { host: ENV['HOST'] || 'http://localhost:3000' }
+  end
 
   private
 
