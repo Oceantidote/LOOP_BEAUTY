@@ -211,6 +211,12 @@
   &:focus {
     outline: none;
   }
+  @include for-medium-devices-down {
+    margin-right: 70px;
+  }
+  @include for-small-devices-down {
+    margin-right: 0px;
+  }
 }
 
 .navbar-brand {
@@ -225,9 +231,13 @@
     display: none;
   }
 }
-
-.small-hidden {
+.medium-hidden {
   @include for-medium-devices-down {
+    display: none;
+  }
+}
+.small-hidden {
+  @include for-small-devices-down {
     display: none;
   }
 }
