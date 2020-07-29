@@ -55,9 +55,11 @@ class ProductsController < ApplicationController
     authorize @product
     @customer_reviews = @product.customer_reviews.page params[:page]
     @tutorials = Tutorial.select { |tutorial| tutorial.products.include?(@product) }
-    respond_to do |format|
-      format.js
-      format.html
+    if request.referrer.match?(/myloopbeauty/) || Rails.env.development?
+      respond_to do |format|
+        format.js
+        format.html
+      end
     end
   end
 
