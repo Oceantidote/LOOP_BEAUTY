@@ -7,6 +7,9 @@
   </div>
 </div>
 <div class="influencer-makeup-container">
+  <div class="text-center">
+    <h3 class="muli boldest influencer-makeup-title"><%= @user.first_name.upcase %> <%= @user.last_name.upcase %>'S MAKEUP PICKS</h3>
+  </div>
   <%= render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>
 </div>
 <% if policy(ShowroomProduct).create? %>

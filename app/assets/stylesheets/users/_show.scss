@@ -112,7 +112,13 @@
     display: none;
   }
 }
-
+.influencer-makeup-title {
+  display: none;
+  @include for-large-devices-down {
+    display: block;
+  }
+  margin-top: 1.5rem;
+}
 .influencer-show-banner-text-mobile-container {
   padding: 10px 0;
   background: #F5F5F5;
