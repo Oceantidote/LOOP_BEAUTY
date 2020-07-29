@@ -78,6 +78,7 @@ Rails.application.routes.draw do
   # ADMIN ROUTES BELOW
 
   namespace :admin do
+    resources :orders, only: [:destroy]
     get 'change_banner', to: 'banners#change_banner'
     post 'change_banner', to: 'banners#change'
     get 'sku', to: 'shades#index'
