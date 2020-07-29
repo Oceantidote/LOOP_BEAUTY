@@ -46,7 +46,7 @@
               ytitle: 'Commission',
               colors: ['#000']
             )
-          %> 
+          %>
         <% else %>
           <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
           <%= column_chart(
@@ -168,7 +168,7 @@
         <div class="container">
           <h5 class="muli boldest mb-4">Top content driving your sales this <%= @range_value == "mtd" ? "month" : "year" %></h5>
           <div class="row">
-            <% @top_lookbooks.each_with_index do |lb, index| %>
+            <% @top_content.each_with_index do |lb, index| %>
               <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
                 <div class="analytics-card">
                   <div class="analytics-number">
