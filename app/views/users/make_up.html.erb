@@ -1,8 +1,8 @@
 <div class="makeup-show-banner"  style="background-image: url('<%= @user.cover_photo.attached? ? (rails_blob_path @user.cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
-  <div class="influencer-show-banner-text-container">
+  <div class="influencer-show-banner-text-container" style="width: 40%;">
     <div class="influencer-show-banner-text">
-      <h4><%= @user.instagram %></h4>
-      <h1 class="muli boldest make-up-picks">Makeup Picks</h1>
+      <h3 class="muli boldest"><%= @user.first_name.upcase %> <%= @user.last_name.upcase %>'S</h3>
+      <h1 class="didot" style="margin-bottom: 178px;">Makeup Picks</h1>
     </div>
   </div>
 </div>
