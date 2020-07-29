@@ -13,7 +13,7 @@ class Admin::PagesController < ApplicationController
 
   def sales_report
     authorize [:admin, current_user]
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :desc)
     if params[:filter] && filter_params[:from].present?
       from  = Date.parse(filter_params[:from]).beginning_of_day
       to = Date.parse(filter_params[:to]).end_of_day
