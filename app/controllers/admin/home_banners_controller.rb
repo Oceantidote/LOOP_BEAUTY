@@ -47,6 +47,6 @@ class Admin::HomeBannersController < ApplicationController
   end
 
   def home_banner_params
-    params.require(:home_banner).permit(:ipad, :ipadpro, :ipadx, :iphone, :iphonese, :pixel, :galaxy, :content, :link, :link_text, :display, :banner, :text_color, :mobile_banner)
+    params.require(:home_banner).permit(:ipad, :ipadpro, :ipadx, :iphone, :iphonese, :pixel, :galaxy, :pixel2, :pixel3, :galaxy2, :galaxymini, :flexi, :iphone9, :iphone10, :tablet, :tabletlrg, :tabletpan, :content, :link, :link_text, :display, :banner, :text_color, :mobile_banner)
   end
 end

@@ -14,8 +14,8 @@ class InsiderArticlesController < ApplicationController
       @insider_articles = policy_scope(InsiderArticle)
     elsif params[:category].present? && params[:category] == "Inspiration"
       @insider_articles = policy_scope(InsiderArticle).where(category: "Inspiration")
-    elsif params[:category].present? && params[:category] == "Beauty News"
-      @insider_articles = policy_scope(InsiderArticle).where(category: "Beauty News")
+    elsif params[:category].present? && params[:category] == "News"
+      @insider_articles = policy_scope(InsiderArticle).where(category: "News")
     elsif params[:category].present? && params[:category] == "Ask the Expert"
       @insider_articles = policy_scope(InsiderArticle).where(category: "Ask the Expert")
     else
