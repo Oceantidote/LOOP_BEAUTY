@@ -21,7 +21,7 @@ class LookbooksController < ApplicationController
     current_lookbook = @lookbooks.index(@lookbook)
     @previous_lookbook = @lookbooks[@lookbook == @lookbooks.first ? @lookbooks.index(@lookbooks.last) : current_lookbook - 1]
     @next_lookbook = @lookbooks[@lookbook == @lookbooks.last ? @lookbooks.index(@lookbooks.first) : current_lookbook + 1]
-    @users_lookbooks = @lookbooks.where.not(id: @lookbook.id)[0..3]
+    @users_lookbooks = @lookbooks.where.not(id: @lookbook.id).shuffle[0..3]
   end
 
   def new
