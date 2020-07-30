@@ -122,6 +122,11 @@
       })
     }
   }
+  function do_i_change() {
+    if (window.innerWidth > 480) {
+      changeBannerUrls()
+    }
+  }
   changeBannerUrls()
-  window.onresize = changeBannerUrls;
+  window.onresize = do_i_change;
 </script>
