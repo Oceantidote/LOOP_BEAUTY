@@ -14,10 +14,10 @@
       </div>
     <% end %>
     <% if item.affiliate_link %>
-      <div onclick='myFunction("<%= item.id %>")' style="cursor: pointer;">
-        <p class="mb-0"><strong>Affiliate Link:</strong> <%= item.affiliate_link %></p>
-        <input id="<%= item.id %>" type="text" value="<%= item.affiliate_link %>" style="height: 0px;width: 0px;border: none !important; opacity: 1;">
-      </div>
+      <input type="text" value="<%= item.affiliate_link %>" id="<%= item.id %>" class="aff-link">
+
+      <!-- The button used to copy the text -->
+      <button class="aff-btn" onclick="myFunction(<%= item.id %>)">Copy Link</button>
     <% end %>
     <% if current_user&.admin %>
       <hr>
@@ -43,10 +43,10 @@
       </div>
     <% end %>
     <% if item.affiliate_link %>
-      <div onclick='myFunction("<%= item.id %>")' style="cursor: pointer;">
-        <p class="mb-0"><strong>Affiliate Link:</strong> <%= item.affiliate_link %></p>
-        <input id="<%= item.id %>" type="text" value="<%= item.affiliate_link %>" style="height: 0px;width: 0px;border: none !important; opacity: 1;">
-      </div>
+      <input type="text" value="<%= item.affiliate_link %>" id="<%= item.id %>" class="aff-link">
+
+      <!-- The button used to copy the text -->
+      <button class="aff-btn" onclick="myFunction(<%= item.id %>)">Copy Link</button>
     <% end %>
     <% if current_user&.admin %>
       <hr>
@@ -57,21 +57,20 @@
     <% end %>
   </div>
 <% end %>
-
 <script>
   function myFunction(id) {
     /* Get the text field */
-    var copyId = document.getElementById(id);
+    var copyText = document.getElementById(id);
 
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
-    copyId.select();
-    copyId.setSelectionRange(0, 99999);
-
-
-    // // /* Copy the text inside the text field */
+    /* Copy the text inside the text field */
     document.execCommand("copy");
-    // var promise = navigator.clipboard.writeText("work")
+
     /* Alert the copied text */
-    alert('"' + copyId.value + '" copied to clipboard"');
+    alert("Copied the text: " + copyText.value);
   }
+
 </script>
