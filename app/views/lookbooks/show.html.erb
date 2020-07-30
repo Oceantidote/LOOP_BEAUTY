@@ -82,7 +82,7 @@
           <%= link_to lookbook_path(lookbook, user_id: lookbook.user.id), class: "lookbook-small-card-link card-link" do %>
             <div class="lookbook-small-card">
               <div class="lookbook-card-small-image">
-                <%= image_tag url_for(lookbook.photo.variant(resize: '300')), alt: "influencer lookbook photo" %>
+                <%= image_tag url_for(lookbook.photo), alt: "influencer lookbook photo" %>
               </div>
               <div class="lookbook-card-small-text-container">
                 <p class="lookbook-card-small-text muli">Shop the look</p>
