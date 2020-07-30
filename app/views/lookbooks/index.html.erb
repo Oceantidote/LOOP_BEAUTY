@@ -3,7 +3,7 @@
     <div class="lookbook-show-banner-text">
       <div style="width:250px;"></div>
       <div class="lookbook-index-avatar">
-        <%= image_tag url_for(@user.avatar_photo), class: "lookbook-avatar", alt: "lookbook user avatar" %>
+        <%= image_tag url_for(@user.avatar_photo.variant(resize: '200')), class: "lookbook-avatar", alt: "lookbook user avatar" %>
         <h4><%= @user.instagram %></h4>
       </div>
       <div class="lookbook-social-data">

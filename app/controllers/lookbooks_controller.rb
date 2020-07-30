@@ -13,7 +13,7 @@ class LookbooksController < ApplicationController
     # NOT SURE IF CORRECT BUT WORKS
     # user = User.find(params[:user_id])
     @lookbook = Lookbook.friendly.find(params[:id])
-    @lookbooks = Lookbook.where(user: @lookbook.user)
+    @lookbooks = Lookbook.where(user: @lookbook.user, status: 'approved')
     if @lookbooks.length < 3
       @lookbooks = Lookbook.where(status: 'approved')
     end
@@ -21,7 +21,7 @@ class LookbooksController < ApplicationController
     current_lookbook = @lookbooks.index(@lookbook)
     @previous_lookbook = @lookbooks[@lookbook == @lookbooks.first ? @lookbooks.index(@lookbooks.last) : current_lookbook - 1]
     @next_lookbook = @lookbooks[@lookbook == @lookbooks.last ? @lookbooks.index(@lookbooks.first) : current_lookbook + 1]
-    @users_lookbooks = Lookbook.where(user: @lookbook.user).where(status: 'approved').where.not(id: @lookbook.id)
+    @users_lookbooks = @lookbooks.where.not(id: @lookbook.id)[0..3]
   end
 
   def new
