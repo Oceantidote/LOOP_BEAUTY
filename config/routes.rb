@@ -76,8 +76,6 @@ Rails.application.routes.draw do
     resources :showroom_products, only: [:create, :destroy]
   end
 
-  get "/:id", to: "users#show"
-
   # ADMIN ROUTES BELOW
 
   namespace :admin do
