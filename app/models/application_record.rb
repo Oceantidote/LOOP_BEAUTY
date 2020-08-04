@@ -6,12 +6,12 @@ class ApplicationRecord < ActiveRecord::Base
    :iphone_se=>{:width=>320, :height=>568},
    :samsung_galaxy_s7=>{:width=>360, :height=>640},
    :samsung_galaxy_s9=>{:width=>360, :height=>740},
-   :iphone_11_pro=>{:width=>375, :height=>812},
-   :iphone_8_plus=>{:width=>414, :height=>736},
    :iphone_8=>{:width=>375, :height=>667},
+   :iphone_11_pro=>{:width=>375, :height=>812},
    :nexus_6p=>{:width=>411, :height=>731},
-   :google_pixel_2_xl=>{:width=>411, :height=>823},
+   :iphone_8_plus=>{:width=>414, :height=>736},
    :iphone_11_pro_max=>{:width=>414, :height=>896},
+   :google_pixel_2_xl=>{:width=>411, :height=>823},
    :samsung_galaxy_note_5=>{:width=>480, :height=>853},
    :nexus_7=>{:width=>600, :height=>960},
    :ipad_third__fourth_generation=>{:width=>768, :height=>1024},
@@ -21,11 +21,11 @@ class ApplicationRecord < ActiveRecord::Base
  }
 
   def viewport_array_ordered_by_width
-    UNIQUE_VIEWPORTS.map{ |v| [v[0], v[1][:width], v[1][:height] ]}.sort_by{|v| v[2]}
+    UNIQUE_VIEWPORTS.map{ |v| [v[0], v[1][:width], v[1][:height] ]}
   end
 
   def self.ordered_breakpoints
-    UNIQUE_VIEWPORTS.map { |key,v| [ v[:width], v[:height] ] }
+    UNIQUE_VIEWPORTS.map { |key,v| [ v[:width], v[:height] ] }.reverse
   end
 
   def unique_viewports

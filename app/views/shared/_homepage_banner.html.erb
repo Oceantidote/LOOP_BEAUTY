@@ -1,9 +1,9 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
-  <div class="carousel-inner" style="height: 200px;" id="carousel-data" data-banner_urls="<%= @ordered_dimensions_and_urls.to_json %>" data-breakpoints="<%= @ordered_breakpoints %>">
+  <div class="carousel-inner" id="carousel-data" data-banner_urls="<%= @ordered_dimensions_and_urls.to_json %>" data-breakpoints="<%= @ordered_breakpoints %>">
     <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
-      <div class="carousel-item <%= index == 0 ? 'active' : '' %> ">
+      <div class="carousel-item <%= index == 0 ? 'active' : '' %>" style="background-image: url(<%= url_for home_banner.banner %>)">
         <a href="<%= home_banner.link %>" class="no-decoration">
-          <div id="banner_<%= home_banner.id %>" class="banner-backgrounds" style="background-image: url('<%= url_for home_banner.mobile_banner %>')">
+          <div id="banner_<%= home_banner.id %>" class="banner-backgrounds">
             <div class="holding-page-banner-text-container">
               <div class="holding-page-banner-text">
                 <h2 class="didot <%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.content %></h2>
@@ -25,11 +25,12 @@
     index = 0
     breakpoints.forEach((breakpoint) => {
       index += 1
-      if (window.innerWidth < breakpoint[0] && window.innerHeight < breakpoint[1] - 100) {
+      if (window.innerWidth == breakpoint[0] && window.innerHeight == breakpoint[1]) {
         banners.forEach((banner) => {
           banner_index = Array.prototype.indexOf.call(banners, banner);
+          banner.style.height = `${breakpoint[1] - 100}px`
           banner.style.backgroundImage = `url(${banners_array[banner_index][1][index][2]})`
-          banner.style.height = breakpoint[1] - 100
+          console.log(`reset banner height to ${breakpoint[1] - 100}px`)
         })
       }
     })
