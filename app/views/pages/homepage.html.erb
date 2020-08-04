@@ -1,10 +1,4 @@
-<div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
-  <div class="carousel-inner">
-    <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
-      <%= render "shared/homepage_banner", index: index, home_banner: home_banner %>
-    <% end %>
-  </div>
-</div>
+<%= render "shared/homepage_banner"%>
 <div class="container">
   <% if user_signed_in? && current_user.admin %>
     <% if policy([:admin, HomeBanner]).edit? %>

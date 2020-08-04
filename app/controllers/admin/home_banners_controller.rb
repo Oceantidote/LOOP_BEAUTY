@@ -12,7 +12,7 @@ class Admin::HomeBannersController < ApplicationController
   def create
     @home_banner = HomeBanner.new(home_banner_params)
 
-    if @home_banner.save!
+    if @home_banner.save
       redirect_to admin_home_banners_path
     else
       render :new
@@ -47,7 +47,7 @@ class Admin::HomeBannersController < ApplicationController
   end
 
   def permit_hash
-    [:content, :link, :link_text, :display,:text_color] + HomeBanner.unique_symbols_array
+    [:content, :link, :link_text, :display,:text_color,:banner,:mobile_banner] + HomeBanner.unique_symbols_array
   end
 
   def home_banner_params

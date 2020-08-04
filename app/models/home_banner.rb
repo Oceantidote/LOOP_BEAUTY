@@ -22,11 +22,14 @@ class HomeBanner < ApplicationRecord
     validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - 100}
   end
 
-  validates :banner, attached: true
-  validates :mobile_banner, attached: true
-
   def am_i_valid?
     unique_viewports.keys.all?{|attachment| self[attachment]&.attached?}
+  end
+
+  def ordered_array_with_image_paths
+    viewport_array_ordered_by_width.map do |r|
+      [r, self.safe_url(r[0])]
+    end
   end
 
   def safe_url(key)

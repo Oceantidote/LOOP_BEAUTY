@@ -10,6 +10,8 @@ class PagesController < ApplicationController
 
   def homepage
     @home_banners = HomeBanner.where(display: true)
+    @ordered_dimensions_and_urls = ordered_array_with_image_urls
+    @ordered_breakpoints = HomeBanner.ordered_breakpoints
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC).first(4)
     @insider_articles = InsiderArticle.where(homepage: true).order(created_at: :DESC).first(3)
     @new_in = Product.all.where(featured: true).select { |product| !product.out_of_stock? }
@@ -68,5 +70,11 @@ class PagesController < ApplicationController
     if params[:send_email]
       ContactMailer.with(details: params[:send_email]).contact.deliver_now
     end
+  end
+
+  private
+
+  def ordered_array_with_image_urls
+    @home_banners.map{|banner| [ banner.id, banner.ordered_array_with_image_paths.map{|ar| ar << url_for(ar[1])} ] }
   end
 end
