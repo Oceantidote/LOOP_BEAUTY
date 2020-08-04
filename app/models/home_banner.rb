@@ -1,61 +1,76 @@
 class HomeBanner < ApplicationRecord
+
   has_one_attached :banner
   has_one_attached :mobile_banner
-  has_one_attached :ipad
-  has_one_attached :ipadpro
-  has_one_attached :ipadx
-  has_one_attached :iphone
-  has_one_attached :iphonese
-  has_one_attached :pixel
-  has_one_attached :galaxy
-  has_one_attached :pixel2
-  has_one_attached :pixel3
-  has_one_attached :galaxy2
-  has_one_attached :galaxymini
-  has_one_attached :flexi
-  has_one_attached :iphone9
-  has_one_attached :iphone10
-  has_one_attached :tablet
-  has_one_attached :tabletlrg
-  has_one_attached :tabletpan
-  has_one_attached :pixel2xl
+  has_one_attached :iphone_se
+  has_one_attached :iphone_11_pro_max
+  has_one_attached :iphone_11_pro
+  has_one_attached :iphone_8_plus
+  has_one_attached :iphone_8
+  has_one_attached :ipad_pro
+  has_one_attached :ipad_third__fourth_generation
+  has_one_attached :nexus_6p
+  has_one_attached :google_pixel_2_xl
+  has_one_attached :samsung_galaxy_note_5
+  has_one_attached :samsung_galaxy_s9
+  has_one_attached :samsung_galaxy_s7
+  has_one_attached :nexus_7
+  has_one_attached :samsung_galaxy_tab_10
+  has_one_attached :chromebook_pixel
+
+  UNIQUE_VIEWPORTS.each do |viewport|
+    validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - 100}
+  end
 
   validates :banner, attached: true
   validates :mobile_banner, attached: true
-  # validates :iphonese, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 320, height: 468 }
-  # validates :galaxymini, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 360, height: 440 }
-  # validates :galaxy, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 360, height: 540 }
-  # validates :iphone10, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 375, height: 467 }
-  # validates :iphone, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 375, height: 567 }
-  # validates :iphone9, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 375, height: 612 }
-  # validates :ipadx, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 375, height: 712 }
-  # validates :pixel, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 411, height: 631 }
-  # validates :pixel3, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 411, height: 624 }
-  # validates :pixel2, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 411, height: 647 }
-  # validates :pixel2xl, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 411, height: 723 }
-  # validates :flexi, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 414, height: 696 }
-  # validates :galaxy2, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 480, height: 653 }
-  # validates :tablet, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 600, height: 760 }
-  # validates :ipad, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 768, height: 924 }
-  # validates :tabletlrg, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 800, height: 1180 }
-  # validates :ipadpro, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 1024, height: 1266 }
-  # validates :tabletpan, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #                                    dimension: { width: 1280, height: 650 }
+
+  def am_i_valid?
+    unique_viewports.keys.all?{|attachment| self[attachment]&.attached?}
+  end
+
+  def safe_url(key)
+    if self.send(key).attached?
+      self.send(key)
+    else
+      "about-us-ariel-border.png"
+    end
+    # key if self.send(key).attached? : asset_path('sctivity.png')
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

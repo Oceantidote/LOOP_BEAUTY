@@ -1,0 +1,77 @@
+<hr>
+<div class="admin-form-container freebies-form-container">
+  <%= simple_form_for [:admin, @home_banner], html: { id: "form" } do |f| %>
+    <div class="personal-details-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Content</p>
+      <%= f.input :content, label: false, input_html: { class: "contact-form-input" } %>
+    </div>
+    <div class="personal-details-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Link</p>
+      <%= f.input :link, label: false, placeholder: 'e.g. /products', input_html: { class: "contact-form-input" } %>
+    </div>
+    <div class="personal-details-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Link text</p>
+      <%= f.input :link_text, label: false, input_html: { class: "contact-form-input" } %>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="p-2 mt-4 card">
+          <p class="boldest muli s-medium-text photo-input-text">Banner</p>
+          <p class="boldest muli s-medium-text photo-input-text">Widescreen</p>
+          <%= f.input :banner, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+          <% if @home_banner.banner.attached? %>
+            <%= image_tag url_for(@home_banner.banner), class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+          <% else %>
+            <%= image_tag "", height: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="p-2 mt-4 card">
+          <p class="boldest muli s-medium-text photo-input-text">Mobile Banner</p>
+          <p class="boldest muli s-medium-text photo-input-text">Profile</p>
+          <%= f.input :mobile_banner, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+          <% if @home_banner.mobile_banner.attached? %>
+            <%= image_tag url_for(@home_banner.mobile_banner), class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+          <% else %>
+            <%= image_tag "", height: 100, class: "d-none photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
+          <% end %>
+        </div>
+      </div>
+      <% HomeBanner::UNIQUE_VIEWPORTS.each do |viewport| %>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+        <%= render "photo_form", home_banner: @home_banner, name: viewport.first, dimensions: viewport.second , f: f  %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="personal-details-input">
+      <p class="boldest muli s-medium-text text-right no-margin">Text Color</p>
+        <%= f.select(:text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
+    </div>
+    <div class="personal-details-input">
+      <% if @home_banner.am_i_valid? %>
+        <p class="boldest muli s-medium-text text-right no-margin red">Will be displayable once all correct image sizes have been added</p>
+      <% else %>
+        <p class="boldest muli s-medium-text text-right no-margin green">Ready to display!</p>
+        <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
+      <% end %>
+    </div>
+    <%= f.submit 'UPDATE HOME BANNER', class: 'primary-button personal-details-button small-text' %>
+  <% end %>
+</div>
+
+<script>
+  document.querySelectorAll(".photo-input").forEach((element) => {
+    element.onchange = function() {
+      document.getElementById("form").submit();
+    }
+  })
+</script>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>
+
+
