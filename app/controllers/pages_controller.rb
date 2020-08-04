@@ -75,6 +75,6 @@ class PagesController < ApplicationController
   private
 
   def ordered_array_with_image_urls
-    @home_banners.map{|banner| [ banner.id, banner.ordered_array_with_image_paths.map{|ar| ar << url_for(ar[1])} ] }
+    @home_banners.map{|banner| [ banner.id, banner.ordered_array_with_image_paths.map{|ar|url_for(ar[1])}.first ] }
   end
 end

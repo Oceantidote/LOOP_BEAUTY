@@ -22,17 +22,21 @@
     banners_array = JSON.parse(document.getElementById('carousel-data').dataset.banner_urls)
     banners = document.querySelectorAll('.banner-backgrounds')
     breakpoints = JSON.parse(document.getElementById('carousel-data').dataset.breakpoints)
-    index = 0
+    breaks = 0
     breakpoints.forEach((breakpoint) => {
-      index += 1
+      index = 0
       if (window.innerWidth == breakpoint[0] && window.innerHeight == breakpoint[1]) {
         banners.forEach((banner) => {
-          banner_index = Array.prototype.indexOf.call(banners, banner);
-          banner.style.height = `${breakpoint[1] - 100}px`
-          banner.style.backgroundImage = `url(${banners_array[banner_index][1][index][2]})`
-          console.log(`reset banner height to ${breakpoint[1] - 100}px`)
+          banner_id_and_url = banners_array[index]
+          id = `banner_${banner_id_and_url[0]}`
+          div = document.getElementById(id)
+          height = breakpoints[breaks][1] - 100
+          div.style.height = `${height}px`
+          div.style.backgroundImage = `url(${banner_id_and_url[1]})`
+          index += 1
         })
       }
+      breaks += 1
     })
   }
   function do_i_change() {
@@ -43,36 +47,6 @@
   changeBannerUrls()
   window.onresize = do_i_change;
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
