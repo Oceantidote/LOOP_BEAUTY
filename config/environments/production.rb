@@ -2,9 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Sets the default host for asset_urls (Used for sharing pages)
-  config.action_controller.default_url_options = { host: "https://infinite-journey-41892.herokuapp.com" }
-  config.action_mailer.asset_host              = 'https://infinite-journey-41892.herokuapp.com'
-  config.action_mailer.default_url_options     = { host: "https://infinite-journey-41892.herokuapp.com" }
+  config.action_controller.default_url_options = { host: ENV['HROKU_HOST'] }
+  config.action_mailer.asset_host              = ENV['HROKU_HOST']
+  config.action_mailer.default_url_options     = { host: ENV['HROKU_HOST'] }
   config.action_mailer.delivery_method         = :postmark
   config.action_mailer.postmark_settings       = { api_token: ENV['POSTMARK_API_TOKEN'] }
   config.action_mailer.perform_deliveries      = true
