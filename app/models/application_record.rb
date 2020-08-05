@@ -25,7 +25,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.ordered_breakpoints
-    UNIQUE_VIEWPORTS.map { |key,v| [ v[:width], v[:height] ] }.reverse
+    UNIQUE_VIEWPORTS.map { |key,v| [ v[:width], v[:height] ] }
   end
 
   def unique_viewports
@@ -52,7 +52,6 @@ class ApplicationRecord < ActiveRecord::Base
 
 
 end
-
 
 
 

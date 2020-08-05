@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   end
 
   def homepage
+    @color = "green"
     @home_banners = HomeBanner.where(display: true)
     @ordered_dimensions_and_urls = ordered_array_with_image_urls
     @ordered_breakpoints = HomeBanner.ordered_breakpoints
@@ -75,6 +76,30 @@ class PagesController < ApplicationController
   private
 
   def ordered_array_with_image_urls
-    @home_banners.map{|banner| [ banner.id, banner.ordered_array_with_image_paths.map{|ar|url_for(ar[1])}.first ] }
+    @home_banners.map{|banner| [ banner.id, banner.ordered_array_with_image_paths.map{|ar| ar << url_for(ar[1])} ] }
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
