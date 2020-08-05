@@ -6,7 +6,7 @@ class ApplicationRecord < ActiveRecord::Base
    :iphone_se=>{:width=>320, :height=>568},
    :samsung_galaxy_s7=>{:width=>360, :height=>640},
    :samsung_galaxy_s9=>{:width=>360, :height=>740},
-   :iphone_8=>{:width=>375, :height=>667},
+   :iphone_8=>{:width=>375, :height=>667, safari: 114, brave: 108, chrome: 116},
    :iphone_11_pro=>{:width=>375, :height=>812},
    :nexus_6p=>{:width=>411, :height=>731},
    :iphone_8_plus=>{:width=>414, :height=>736},
