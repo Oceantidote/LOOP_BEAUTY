@@ -42,12 +42,12 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
-      <%#= render 'shared/navbar' %>
+      <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
     <div class="minimum-height">
       <p id="desc" style="color: black"></p>
-      <%#= yield %>
+      <%= yield %>
       <!-- COOKIE MESSAGE - JS IN PACKS/COMPONENTS/COOKIE_BOX -->
       <% if @not_seen_cookie %>
         <div class="cookie-box" style="background-image: url('<%= asset_path 'cookies-background-two.png' %>')">
@@ -82,17 +82,17 @@
       console.log(isMobile())
 
 
-      function Browser() {
-        if (window.navigator.userAgent.includes("Safari") && !window.navigator.userAgent.includes("Chrome") && !window.navigator.userAgent.includes("Chromium")) {
-          return "Safari"
-        } else if (window.navigator.userAgent.includes("Firefox") && !window.navigator.userAgent.includes("Seamonkey")) {
-          return "Firefox"
-        } else {
-          return "Chrome"
-        }
-      }
-      console.log(Browser())
-      document.getElementById('desc').innerHTML = `<h2>width = ${screen.width} <br> heights = ${screen.height} - ${window.innerHeight} <br> calc height = ${screen.height} - ${window.innerHeight} <br> difference: ${screen.height - window.innerHeight} <br> Browser: ${Browser()}</h2>`
+      // function Browser() {
+      //   if (window.navigator.userAgent.includes("Safari") && !window.navigator.userAgent.includes("Chrome") && !window.navigator.userAgent.includes("Chromium")) {
+      //     return "Safari"
+      //   } else if (window.navigator.userAgent.includes("Firefox") && !window.navigator.userAgent.includes("Seamonkey")) {
+      //     return "Firefox"
+      //   } else {
+      //     return "Chrome"
+      //   }
+      // }
+      // console.log(Browser())
+      // document.getElementById('desc').innerHTML = `<h2>width = ${screen.width} <br> height = ${screen.height}<br> calc height = ${screen.height} - ${window.innerHeight} <br> difference: ${screen.height - window.innerHeight} <br> Browser: ${Browser()}</h2>`
 
     </script>
   </body>
