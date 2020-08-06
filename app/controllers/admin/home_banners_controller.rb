@@ -11,9 +11,8 @@ class Admin::HomeBannersController < ApplicationController
 
   def create
     @home_banner = HomeBanner.new(home_banner_params)
-
     if @home_banner.save
-      redirect_to edit_admin_home_banners_path(@banner)
+      redirect_to edit_admin_home_banner_path(@home_banner)
     else
       render :new
     end

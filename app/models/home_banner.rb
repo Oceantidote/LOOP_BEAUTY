@@ -28,7 +28,7 @@ class HomeBanner < ApplicationRecord
   has_one_attached :chromebook_pixel
 
   UNIQUE_VIEWPORTS.each do |viewport|
-    # validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - viewport.second[:browser]}
+    validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - viewport.second[:browser]}
   end
 
   def am_i_valid?
