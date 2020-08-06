@@ -26,9 +26,12 @@ class HomeBanner < ApplicationRecord
   has_one_attached :samsung_galaxy_tab_10
   has_one_attached :ipad_pro
   has_one_attached :chromebook_pixel
+  validates :banner, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: 1500, height: 450}
+  validates :mobile_banner, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: 676, height: 676}
+
 
   UNIQUE_VIEWPORTS.each do |viewport|
-    validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - viewport.second[:browser]}
+    # validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - viewport.second[:browser]}
   end
 
   def am_i_valid?
