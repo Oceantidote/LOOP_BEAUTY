@@ -29,7 +29,13 @@ class OrdersController < ApplicationController
     end
     authorize @order
     if session[:aff_code]
-      affiliation = Tutorial.find_by_affiliate_code(session[:aff_code]).present? ? Tutorial.find_by_affiliate_code(session[:aff_code]) : Lookbook.find_by_affiliate_code(session[:aff_code])
+      if Tutorial.find_by_affiliate_code(session[:aff_code]).present?
+        affiliation = Tutorial.find_by_affiliate_code(session[:aff_code])
+      elsif Lookbook.find_by_affiliate_code(session[:aff_code]).present?
+        affiliation = Lookbook.find_by_affiliate_code(session[:aff_code])
+      else
+        affiliation = User.friendly.find(session[:aff_code])
+      end
       @order.affiliation = affiliation
       session[:aff_code] = nil
     end

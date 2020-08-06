@@ -42,8 +42,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include ActiveModel::Validations
-  validates_with MyValidator
+  include Affiliation
   include FriendlyId
+  validates_with MyValidator
   validates :first_name, :last_name, presence: true
   validate :password_complexity
   validate :terms
@@ -77,6 +78,7 @@ class User < ApplicationRecord
   before_save :set_referral_code, :check_newsletter
   after_save :create_wishlist
   after_create :send_welcome
+  # AFFILIATIONS
 
   def admin?
     admin
@@ -209,4 +211,24 @@ class User < ApplicationRecord
       UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_now
     end
   end
+
+  private
+
+  def gen_aff_link
+    if Rails.env.development?
+      long_url = Rails.application.routes.url_helpers.tutorial_url(self, aff_code: code)
+      long_url
+    else
+      # "https://infinite-journey-41892.herokuapp.com/tutorials/#{self.slug}?aff_code=#{code}"
+      # Keep until we go to the live domain and then switch over to commented section below once live
+      long_url = Rails.application.routes.url_helpers.user_url(self)
+      response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
+        title: instagram,
+        long_url: long_url
+      }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
+      JSON.parse(response.body)['link']
+    end
+  end
+
+
 end
