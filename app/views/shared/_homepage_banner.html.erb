@@ -1,9 +1,9 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
   <div class="carousel-inner" id="carousel-data" data-banner_urls="<%= @ordered_dimensions_and_urls.to_json %>" data-breakpoints="<%= @ordered_breakpoints %>">
     <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
-      <div class="carousel-item <%= index == 0 ? 'active' : '' %>" style="background-image: url(<%= url_for home_banner.banner %>)">
+      <div class="carousel-item <%= index == 0 ? 'active' : '' %>" style="background-image: url(<%= url_for home_banner.banner %>)" >
         <a href="<%= home_banner.link %>" class="no-decoration">
-          <div id="banner_<%= home_banner.id %>" class="banner-backgrounds">
+          <div id="banner_<%= home_banner.id %>" class="banner-backgrounds" data-mob="<%= url_for home_banner.mobile_banner %>" data-lrg="<%= url_for home_banner.banner %>">
             <div class="holding-page-banner-text-container">
               <div class="holding-page-banner-text">
                 <h2 class="didot <%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.content %></h2>
@@ -26,30 +26,38 @@
     breakpoints.forEach((breakpoint) => {
 
       index = 0
-      if (screen.width == breakpoint[0]) {
-        if (screen.height == breakpoint[1]) {
-          banners.forEach((banner) => {
-            banner_id_and_url = banners_array[index]
-            id = `banner_${banner_id_and_url[0]}`
-            div = document.getElementById(id)
-            div.style.height = `${window.innerHeight - 100}px`
-            div.style.backgroundImage = `url(${banner_id_and_url[1][breaks][2].split("/").slice(3).join("/")})`
-            index += 1
-
-          })
-          return;
-        }
+      if (screen.width == breakpoint[0] && screen.height == breakpoint[1]) {
+        banners.forEach((banner) => {
+          banner_id_and_url = banners_array[index]
+          id = `banner_${banner_id_and_url[0]}`
+          div = document.getElementById(id)
+          div.style.height = `${window.innerHeight - 100}px`
+          div.style.backgroundImage = `url(${banner_id_and_url[1][breaks][2].split("/").slice(3).join("/")})`
+          index += 1
+        })
+        return;
       }
       breaks += 1
     })
+    banners.forEach((banner) => {
+      banner_id_and_url = banners_array[index]
+      id = `banner_${banner_id_and_url[0]}`
+      div = document.getElementById(id)
+      if (window.innerWidth > 767) {
+        // debugger
+        div.parentElement.parentElement.style.height = `${window.innerWidth / 3.0}px`
+        div.parentElement.parentElement.style.backgroundImage = `url(${banner.dataset.lrg})`
+        return
+      } else {
+        // debugger
+        div.parentElement.parentElement.style.height = `${window.innerWidth}px`
+        div.parentElement.parentElement.style.backgroundImage = `url(${banner.dataset.mob})`
+      }
+      index += 1
+    })
   }
-  function do_i_change() {
-    if (window.innerWidth > 480) {
-      changeBannerUrls()
-    }
-  }
+  window.onresize = changeBannerUrls;
   changeBannerUrls()
-  window.onresize = do_i_change;
 </script>
 
 
