@@ -3,20 +3,34 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   UNIQUE_VIEWPORTS = {
-   # :iphone_se=>{:width=>320, :height=>568, },
-   # :samsung_galaxy_s7=>{:width=>360, :height=>640, safari: 0, firefox: 0, chrome: 80},
-   # :samsung_galaxy_s9=>{:width=>360, :height=>740},
-   # :iphone_8=>{:width=>375, :height=>667, safari: 0, firefox: 0, chrome: 116},
-   # :iphone_11_pro=>{:width=>375, :height=>812},
-   # :nexus_6p=>{:width=>411, :height=>731},
-   # :iphone_8_plus=>{:width=>414, :height=>736, chrome: ,safari: 116},
-   # :iphone_11_pro_max=>{:width=>414, :height=>896},
+   # :iphone_se=>{:width=>320, :height=>568, safari: 114, chrome: 116 },
+
+   # :samsung_galaxy_s7=>{:width=>360, :height=>640, safari: 80, chrome: 80},
+
+   # :samsung_galaxy_s9=>{:width=>360, :height=>740, chrome: 128, safari: 128},
+
+   # :iphone_8=>{:width=>375, :height=>667, safari: 114, firefox: 0, chrome: 116},
+
+   # :iphone_11_pro=>{:width=>375, :height=>812, safari: 177, chrome: 174},
+
+   # :nexus_6p=>{:width=>411, :height=>731, chrome: 128, safari: 128},
+
+   # :iphone_8_plus=>{:width=>414, :height=>736, chrome: 116,safari: 114},
+   # HERE
+   # :iphone_11_pro_max=>{:width=>414, :height=>896, safari: 177, chrome: 174 },
+
    # :google_pixel_2_xl=>{:width=>411, :height=>823},
+
    # :samsung_galaxy_note_5=>{:width=>480, :height=>853},
+
    # :nexus_7=>{:width=>600, :height=>960},
+
    # :ipad_third__fourth_generation=>{:width=>768, :height=>1024},
+
    # :samsung_galaxy_tab_10=>{:width=>800, :height=>1280},
-   # :ipad_pro=>{:width=>1024, :height=>1366},
+
+   # :ipad_pro=>{:width=>1024, :height=>1366, safari: },
+
    # :chromebook_pixel=>{:width=>1280, :height=>850}
  }
 
