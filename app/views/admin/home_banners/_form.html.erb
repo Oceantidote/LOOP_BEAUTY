@@ -24,10 +24,12 @@
         <div class="personal-details-input">
           <% if @home_banner.display %>
             <p class="boldest muli s-medium-text text-right no-margin" style="color: green">I'm live, uncheck to take me off the homepage</p>
-          <% else %>
-            <p class="boldest muli s-medium-text text-right no-margin">I'm not to go live, uncheck to put me the homepage</p>
           <% end %>
-          <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
+          <% if @home_banner.am_i_valid? %>
+            <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
+          <% else %>
+            <p class="boldest muli s-medium-text text-right no-margin" style="color: red;">Not yet ready to go live</p>
+          <% end %>
         </div>
       </div>
       <%= f.submit 'UPDATE HOME BANNER', class: 'primary-button personal-details-button small-text' %>

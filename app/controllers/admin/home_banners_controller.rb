@@ -13,7 +13,7 @@ class Admin::HomeBannersController < ApplicationController
     @home_banner = HomeBanner.new(home_banner_params)
 
     if @home_banner.save
-      redirect_to admin_home_banners_path
+      redirect_to edit_admin_home_banners_path(@banner)
     else
       render :new
     end
@@ -26,9 +26,14 @@ class Admin::HomeBannersController < ApplicationController
 
   def update
     @home_banner = HomeBanner.find(params[:id])
+    live = @home_banner.display
     if @home_banner.update(home_banner_params)
       authorize [:admin, @home_banner]
-      redirect_to edit_admin_home_banner_path(@home_banner)
+      if live != @home_banner.display
+        redirect_to admin_home_banners_path
+      else
+        redirect_to edit_admin_home_banner_path(@home_banner)
+      end
     else
       render :edit
     end

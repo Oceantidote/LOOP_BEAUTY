@@ -40,7 +40,7 @@
       }
       breaks += 1
     })
-    if (breaks == breakpoints.length){
+    if (breaks == breakpoints.length || document.querySelector('.carousel-item').style.backgroundImage == 'url("")'){
       banners.forEach((banner) => {
         banner_id_and_url = banners_array[index]
         id = `banner_${banner_id_and_url[0]}`
