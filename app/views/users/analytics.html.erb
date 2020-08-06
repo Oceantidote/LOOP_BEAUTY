@@ -48,7 +48,7 @@
             )
           %>
         <% else %>
-          <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
+          <h5 class="muli boldest mb-4">Number of Sales by Day this month</h5>
           <%= column_chart(
               @orders_graph_data,
               defer: true,
@@ -57,7 +57,7 @@
               colors: ['#000']
             )
           %>
-          <h5 class="muli boldest mb-4">Commission Earned by Day in <%= Date.today.strftime('%B') %></h5>
+          <h5 class="muli boldest mb-4">Commission Earned by Day this month</h5>
           <%= column_chart(
               @commission_this_month,
               defer: true,
