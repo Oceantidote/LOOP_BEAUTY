@@ -174,7 +174,7 @@
                   <div class="analytics-number">
                     <span class="didot mt-1"><%= index + 1 %></span>
                   </div>
-                  <%= image_tag url_for(lb.class == "Lookbook" ? lb.photo : lb.cover_photo), alt: "influencer lookbook photo"  %>
+                  <%= image_tag url_for(lb.class == Lookbook ? lb.photo : lb.cover_photo), alt: "influencer lookbook photo"  %>
                   <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= lb.title %></p>
                   <p class="no-margin medium-text muli"><%= "#{lb.orders.count} #{'Sale'.pluralize(lb.orders.count)}" %> </p>
                 </div>
