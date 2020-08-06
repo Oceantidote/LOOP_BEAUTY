@@ -1,6 +1,6 @@
 <div class="p-2 mt-4 card">
   <p class="boldest muli s-medium-text photo-input-text"><%= name.upcase %></p>
-  <p class="boldest muli s-medium-text photo-input-text"><%= dimensions[:width] %> x <%= dimensions[:height] - 100 %></p>
+  <p class="boldest muli s-medium-text photo-input-text"><%= dimensions[:width] %> x <%= dimensions[:height] - (dimensions[:browser] + 100) %></p>
   <%= f.input name, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
   <% if home_banner.send(name).attached? && home_banner.errors.empty? %>
     <%= image_tag url_for(home_banner.send(name)), class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
