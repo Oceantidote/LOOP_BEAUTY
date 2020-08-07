@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def analytics
     @range_value = params.dig(:analytics, :range)
-    @range = @range_value == 'ytd' ? (Date.today.last_year.beginning_of_day..Date.today.end_of_day) : (Date.today.beginning_of_month.beginning_of_day..Date.today.end_of_day)
+    @range = @range_value == 'ytd' ? (1.year.ago..Date.today.end_of_day) : (1.month.ago..Date.today.end_of_day)
     @lookbooks = Lookbook.where(user: @user, status: 'approved')
     @tutorials = Tutorial.where(user: @user, status: 'approved')
     @lookbooks_in_range = @lookbooks.where(created_at: @range)
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @number_of_content_shared = @lookbooks_in_range.count + @tutorials_in_range.count
     @total_visits = Lookbook.total_visits_this_period(@lookbooks, @range) + Tutorial.total_visits_this_period(@tutorials, @range)
     @total_sales = @orders_this_period.size
-    @top_content = (@lookbooks_in_range.order(:visits).last(3) + @tutorials_in_range.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
+    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
     @total_conversion_rate = @total_visits.zero? ? 0 : ((@total_sales / @total_visits.to_f) * 100).round(2)
     @top_brands_count = []
     @top_brands = []

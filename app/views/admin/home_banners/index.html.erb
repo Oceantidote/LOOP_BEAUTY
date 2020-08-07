@@ -7,13 +7,16 @@
       <h2 class="insider-info-title mlb-title text-center">Home Banners</h2>
       <hr>
       <div class="row" style="width: 100%; margin: 0; padding: 30px;">
-        <% @home_banners.each do |home_banner| %>
+        <% @home_banners.order(display: :desc).each do |home_banner| %>
           <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
             <div class="freebies-card">
               <%= image_tag url_for(home_banner.banner), alt: "Home banner" %>
               <p class="small-text boldest no-margin"><%= home_banner.content %></p>
-              <p class="small-text no-margin boldest">Link: <span class="didot normal"><%= home_banner.link %></span></p>
-              <p class="small-text small-margin-bottom boldest">Link text: <span class="didot normal"><%= home_banner.link_text %></span></p>
+              <% if home_banner.display %>
+                <p class="small-text boldest muli no-margin green">LIVE</p>
+              <% else %>
+                <p class="small-text boldest muli no-margin">Dormant</p>
+              <% end %>
             </div>
             <div class="products-admin-options d-flex justify-content-around">
               <%= link_to 'EDIT', edit_admin_home_banner_path(home_banner), class: 'secondary-button products-admin-buttons' %>
