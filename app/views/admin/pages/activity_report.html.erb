@@ -40,14 +40,14 @@
             </thead>
             <tbody>
                 <% @results.each do |result| %>
-                    <% user = result.user %>
+                    <% user = result.class == User ? result : result.user %>
                     <tr class="influencer-order">
                         <td><%= user.id %></td>
                         <td><%= user.full_name %></td>
                         <td><%= user.commission_rate %></td>
                         <td><%= result.publish_date.present? ? result.publish_date.strftime('%d/%m/%Y') : 'Not Published' %></td>
-                        <td><%= result.title %></td>
-                        <td><%= result.class == Lookbook ? 'Image' : 'Video' %></td>
+                        <td><%= result.class == User ? result.full_name : result.title %></td>
+                        <td><%= result.class == User ? 'Influencer' : (result.class == Lookbook ? 'Image' : 'Video') %></td>
                         <td><%= result.visits %></td>
                         <td><%= result.sales %></td>
                         <td><%= humanized_money_with_symbol Money.new (result.sales_total_cents / 12.to_f) * 10 %></td>
@@ -70,7 +70,7 @@
                     <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| (result.sales_total_cents / 12.to_f) * 10 } %></strong></td>
                     <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| result.sales_total_cents - (result.sales_total_cents / 12.to_f) * 10 } %></strong></td>
                     <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| result.sales_total_cents } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| ((result.sales_total_cents / 12.to_f) * 10) * ((result.user.commission_rate) / 100) } %></strong></td>
+                    <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| ((result.sales_total_cents / 12.to_f) * 10) * (((result.class == User ? result : result.user).commission_rate) / 100) } %></strong></td>
                 </tr>
             </tfoot>
         </table>

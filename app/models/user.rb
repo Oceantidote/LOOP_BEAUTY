@@ -71,6 +71,7 @@ class User < ApplicationRecord
   has_many :tutorials, dependent: :destroy
   has_one :showroom, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :affiliate_orders, -> { where(affiliation_type: 'User') }, class_name: 'Order', foreign_key: :affiliation_id
   # WISHLIST TEST
   has_one :wishlist, dependent: :destroy
   has_many :wishlist_products, through: :wishlist
@@ -94,7 +95,11 @@ class User < ApplicationRecord
   end
 
   def sales
-    lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum
+    lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum + user_sales
+  end
+
+  def user_sales
+    affiliate_orders.size
   end
 
   def full_name
@@ -117,6 +122,15 @@ class User < ApplicationRecord
     return 0 unless influencer?
     orders_with_credit_total = Order.where(user: self, created_at: Time.now.beginning_of_month..Time.now).map(&:credit_spent_cents).sum
     10000 - orders_with_credit_total
+  end
+
+  def publish!
+    code = gen_aff_code
+    update(published: true, affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: Date.today)
+  end
+
+  def sales_total_cents
+    affiliate_orders.sum(&:total_price_cents)
   end
 
   private
@@ -214,9 +228,18 @@ class User < ApplicationRecord
 
   private
 
-  def gen_aff_link
+  def gen_aff_code
+    code = [*(0..9), *('a'..'z'), *('A'..'Z')].sample(8).join
+    if Lookbook.find_by_affiliate_code(code) || Tutorial.find_by_affiliate_code(code) || User.find_by_affiliate_code(code)
+      gen_aff_code
+    else
+      code
+    end
+  end
+
+  def gen_aff_link(code)
     if Rails.env.development?
-      long_url = Rails.application.routes.url_helpers.tutorial_url(self, aff_code: code)
+      long_url = Rails.application.routes.url_helpers.user_url(self, aff_code: code)
       long_url
     else
       # "https://infinite-journey-41892.herokuapp.com/tutorials/#{self.slug}?aff_code=#{code}"

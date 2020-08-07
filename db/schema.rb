@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_200048) do
+ActiveRecord::Schema.define(version: 2020_08_07_125512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -454,6 +454,11 @@ ActiveRecord::Schema.define(version: 2020_07_23_200048) do
     t.string "youtube_subscribers"
     t.string "gender"
     t.boolean "light_text", default: true
+    t.string "affiliate_code"
+    t.string "affiliate_link"
+    t.integer "visits", default: 0
+    t.datetime "publish_date"
+    t.index ["affiliate_code"], name: "index_users_on_affiliate_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
