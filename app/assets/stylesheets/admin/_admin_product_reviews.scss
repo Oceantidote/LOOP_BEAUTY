@@ -21,7 +21,10 @@
     font-size: 12px;
   }
 }
-
+.carousel-item {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .review-product-container {
   padding: 15px;
   display: flex;
@@ -51,6 +54,11 @@
   .insider-review-right {
     width: 100%;
   }
+}
+.banner-backgrounds {
+  background-size: cover;
+  // background-repeat: no-repeat;
+  height: calc( 100vw * 0.3);
 }
 
 .admin-review-row {

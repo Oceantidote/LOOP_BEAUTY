@@ -11,9 +11,8 @@ class Admin::HomeBannersController < ApplicationController
 
   def create
     @home_banner = HomeBanner.new(home_banner_params)
-
-    if @home_banner.save!
-      redirect_to admin_home_banners_path
+    if @home_banner.save
+      redirect_to edit_admin_home_banner_path(@home_banner)
     else
       render :new
     end
@@ -26,9 +25,14 @@ class Admin::HomeBannersController < ApplicationController
 
   def update
     @home_banner = HomeBanner.find(params[:id])
+    live = @home_banner.display
     if @home_banner.update(home_banner_params)
       authorize [:admin, @home_banner]
-      redirect_to admin_home_banners_path
+      if live != @home_banner.display
+        redirect_to admin_home_banners_path
+      else
+        redirect_to edit_admin_home_banner_path(@home_banner)
+      end
     else
       render :edit
     end
@@ -46,7 +50,11 @@ class Admin::HomeBannersController < ApplicationController
     @home_banner = HomeBanner.find(params[:id])
   end
 
+  def permit_hash
+    [:content, :link, :link_text, :display,:text_color,:banner,:mobile_banner] + HomeBanner.unique_symbols_array
+  end
+
   def home_banner_params
-    params.require(:home_banner).permit(:pixel2xl, :ipad, :ipadpro, :ipadx, :iphone, :iphonese, :pixel, :galaxy, :pixel2, :pixel3, :galaxy2, :galaxymini, :flexi, :iphone9, :iphone10, :tablet, :tabletlrg, :tabletpan, :content, :link, :link_text, :display, :banner, :text_color, :mobile_banner)
+    params.require(:home_banner).permit(permit_hash)
   end
 end

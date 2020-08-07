@@ -9,6 +9,8 @@ class PagesController < ApplicationController
   end
 
   def homepage
+    @color = "green"
+    @breaks = HomeBanner::UNIQUE_VIEWPORTS
     @home_banners = HomeBanner.where(display: true)
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC).first(4)
     @insider_articles = InsiderArticle.where(homepage: true).order(created_at: :DESC).first(3)
@@ -69,4 +71,34 @@ class PagesController < ApplicationController
       ContactMailer.with(details: params[:send_email]).contact.deliver_now
     end
   end
+
+  private
+
+  def ordered_array_with_image_urls
+    @home_banners.map{|banner| [ banner.id, banner.ordered_array_with_image_paths.map{|ar| ar << url_for(ar[1])} ] }
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

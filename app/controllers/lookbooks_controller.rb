@@ -12,14 +12,16 @@ class LookbooksController < ApplicationController
   def show
     # NOT SURE IF CORRECT BUT WORKS
     # user = User.find(params[:user_id])
-    @lookbook = Lookbook.find((Lookbook.select{ |r| r.slug == params[:id]}).first.id)
-    @lookbooks = Lookbook.where(user: @lookbook.user)
-    @all_lookbooks = Lookbook.where(status: 'approved')
+    @lookbook = Lookbook.friendly.find(params[:id])
+    @lookbooks = Lookbook.where(user: @lookbook.user, status: 'approved')
+    if @lookbooks.length < 3
+      @lookbooks = Lookbook.where(status: 'approved')
+    end
     authorize @lookbook
     current_lookbook = @lookbooks.index(@lookbook)
     @previous_lookbook = @lookbooks[@lookbook == @lookbooks.first ? @lookbooks.index(@lookbooks.last) : current_lookbook - 1]
     @next_lookbook = @lookbooks[@lookbook == @lookbooks.last ? @lookbooks.index(@lookbooks.first) : current_lookbook + 1]
-    @users_lookbooks = Lookbook.where(user: @lookbook.user).where(status: 'approved').where.not(id: @lookbook.id)
+    @users_lookbooks = Lookbook.where.not(user: @lookbook.user).shuffle[0..3]
   end
 
   def new

@@ -135,14 +135,14 @@
       behavior: 'smooth'
     });
   })
-  function changeBannerUrls() {
+  function change_users() {
     if (window.innerWidth < 767.98) {
       document.getElementById('influencers-show-banner').style.backgroundImage = `url('${document.getElementById('influencers-show-banner').dataset.mob}')`
     } else {
       document.getElementById('influencers-show-banner').style.backgroundImage = `url('${document.getElementById('influencers-show-banner').dataset.lrg}')`
     }
   }
-  changeBannerUrls()
-  window.onresize = changeBannerUrls;
+  change_users()
+  window.onresize = change_users;
 
 </script>

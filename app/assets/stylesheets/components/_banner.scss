@@ -1,1 +1,7 @@
-
+.banner-backgrounds {
+  background-size: cover;
+  height: calc( 100vw * 0.3)
+}
+[data-color] {
+  content: attr(data-color);
+}

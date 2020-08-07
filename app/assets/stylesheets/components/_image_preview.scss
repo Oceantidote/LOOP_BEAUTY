@@ -1,10 +1,14 @@
 .photo-preview {
   margin: 5px;
-  max-width: 288px;
+  width: 100px;
+  max-width: 100px;
 }
 
 .photo-input-text {
   margin: 4px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .photo-upload-input {

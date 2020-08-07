@@ -48,7 +48,7 @@
             )
           %>
         <% else %>
-          <h5 class="muli boldest mb-4">Number of Sales by Day in <%= Date.today.strftime('%B') %></h5>
+          <h5 class="muli boldest mb-4">Number of Sales by Day this month</h5>
           <%= column_chart(
               @orders_graph_data,
               defer: true,
@@ -57,7 +57,7 @@
               colors: ['#000']
             )
           %>
-          <h5 class="muli boldest mb-4">Commission Earned by Day in <%= Date.today.strftime('%B') %></h5>
+          <h5 class="muli boldest mb-4">Commission Earned by Day this month</h5>
           <%= column_chart(
               @commission_this_month,
               defer: true,
@@ -174,7 +174,7 @@
                   <div class="analytics-number">
                     <span class="didot mt-1"><%= index + 1 %></span>
                   </div>
-                  <%= image_tag url_for(lb.class == "Lookbook" ? lb.photo : lb.cover_photo), alt: "influencer lookbook photo"  %>
+                  <%= image_tag url_for(lb.class == Lookbook ? lb.photo : lb.cover_photo), alt: "influencer lookbook photo"  %>
                   <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= lb.title %></p>
                   <p class="no-margin medium-text muli"><%= "#{lb.orders.count} #{'Sale'.pluralize(lb.orders.count)}" %> </p>
                 </div>

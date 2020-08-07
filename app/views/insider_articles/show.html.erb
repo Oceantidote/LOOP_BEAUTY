@@ -102,13 +102,13 @@
       behavior: 'smooth'
     });
   })
-  function changeBannerUrls() {
+  function set_articles() {
     if (window.innerWidth < 767.98) {
       document.getElementById('article-banner').style.backgroundImage = `url('${document.getElementById('article-banner').dataset.mob}')`
     } else {
       document.getElementById('article-banner').style.backgroundImage = `url('${document.getElementById('article-banner').dataset.lrg}')`
     }
   }
-  changeBannerUrls()
-  window.onresize = changeBannerUrls;
+  set_articles()
+  window.onresize = set_articles;
 </script>

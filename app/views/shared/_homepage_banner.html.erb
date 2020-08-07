@@ -1,127 +1,47 @@
-<div class="carousel-item <%= index == 0 ? 'active' : '' %> ">
-  <a href="<%= home_banner.link %>" class="no-decoration">
-    <div
-      data-mob="<%= rails_blob_path home_banner.mobile_banner %>"
-      data-lrg="<%= rails_blob_path home_banner.banner %>"
-      data-ipad="<%= rails_blob_path home_banner.ipad %>"
-      data-ipadpro="<%= rails_blob_path home_banner.ipadpro %>"
-      data-ipadx="<%= rails_blob_path home_banner.ipadx %>"
-      data-iphone="<%= rails_blob_path home_banner.iphone %>"
-      data-iphonese="<%= rails_blob_path home_banner.iphonese %>"
-      data-pixel="<%= rails_blob_path home_banner.pixel %>"
-      data-galaxy="<%= rails_blob_path home_banner.galaxy %>"
-      data-pixel2="<%= rails_blob_path home_banner.pixel2 if home_banner.pixel2.attached? %>"
-      data-pixel3="<%= rails_blob_path home_banner.pixel3 if home_banner.pixel3.attached? %>"
-      data-galaxy2="<%= rails_blob_path home_banner.galaxy2 if home_banner.galaxy2.attached? %>"
-      data-galaxymini="<%= rails_blob_path home_banner.galaxymini if home_banner.galaxymini.attached? %>"
-      data-flexi="<%= rails_blob_path home_banner.flexi if home_banner.flexi.attached? %>"
-      data-iphone9="<%= rails_blob_path home_banner.iphone9 if home_banner.iphone9.attached? %>"
-      data-iphone10="<%= rails_blob_path home_banner.iphone10 if home_banner.iphone10.attached? %>"
-      data-tablet="<%= rails_blob_path home_banner.tablet if home_banner.tablet.attached? %>"
-      data-tabletlrg="<%= rails_blob_path home_banner.tabletlrg if home_banner.tabletlrg.attached? %>"
-      data-tabletpan="<%= rails_blob_path home_banner.tabletpan if home_banner.tabletpan.attached? %>"
-      data-pixel2xl="<%= rails_blob_path home_banner.pixel2xl if home_banner.pixel2xl.attached? %>"
-      class="holding-page-image-banner" style="background-image: url('<%= home_banner.banner.attached? ? (rails_blob_path home_banner.banner) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
-      <div class="holding-page-banner-text-container">
-        <div class="holding-page-banner-text">
-          <h2 class="didot <%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.content %></h2>
-          <p class="<%= home_banner.text_color == 'White' ? 'home-banner-white' : 'home-banner-black' %>"><%= home_banner.link_text %></p>
-        </div>
+<div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
+  <div class="carousel-inner" id="carousel-data">
+    <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
+      <div id="test_<%= home_banner.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>" >
+        <style>
+          @media screen and (min-width: 767px) {
+            #test_<%= home_banner.id %> {
+              background-image: url("<%= url_for home_banner.banner %>");
+              width: 100%;
+              height: calc(0.3 * 100vw);
+              background-size: cover;
+              background-repeat: no-repeat;
+            }
+          }
+          @media screen and (max-width: 766.95px) {
+            #test_<%= home_banner.id %> {
+              background-image: url("<%= url_for home_banner.mobile_banner %>");
+              width: 100%;
+              height: 100vw;
+            }
+          }
+        </style>
+        <% @breaks.each do |breaker| %>
+          <% if home_banner.send(breaker[0]).attached? %>
+            <style scoped>
+              @media screen and (min-width: <%= breaker[1][:width] %>px) and (max-width: <%= breaker[1][:width] %>px ) and (max-height: <%= breaker[1][:height] %>px) {
+                #test_<%= home_banner.id %> {
+                  background-image: url("<%= url_for home_banner.send(breaker[0]) %>");
+                  background-size: cover;
+                  height: <%= breaker[1][:height] - breaker[1][:browser] - 100 %>px;
+                }
+              }
+            </style>
+          <% end %>
+        <% end %>
       </div>
-    </div>
-  </a>
+    <% end %>
+  </div>
 </div>
 
-<script>
-  function changeBannerUrls() {
-    // document.querySelector('.holding-page-image-banner').style.height = document.documentElement.clientHeight - 100
-    if (window.innerWidth <= 320 && window.innerHeight <= 568) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.iphonese}')`
-        element.style.height = '468px'
-      })
-    } else if (window.innerWidth <= 360 && window.innerHeight <= 540) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.galaxymini}')`
-        element.style.height = '440px'
-      })
-    } else if (window.innerWidth <= 360 && window.innerHeight <= 640) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.galaxy}')`
-        element.style.height = '540px'
-      })
-    } else if (window.innerWidth <= 375 && window.innerHeight <= 567) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.iphone10}')`
-        element.style.height = '467px'
-      })
-    } else if (window.innerWidth <= 375 && window.innerHeight <= 667) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.iphone}')`
-        element.style.height = '567px'
-      })
-    } else if (window.innerWidth <= 375 && window.innerHeight <= 712) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.iphone9}')`
-        element.style.height = '612px'
-      })
-    } else if (window.innerWidth <= 375 && window.innerHeight <= 812) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.ipadx}')`
-        element.style.height = '712px'
-      })
-    } else if (window.innerWidth <= 411 && window.innerHeight <= 731) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.pixel}')`
-        element.style.height = '631px'
-      })
-    } else if (window.innerWidth <= 411 && window.innerHeight <= 724) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.pixel3}')`
-        element.style.height = '624px'
-      })
-    } else if (window.innerWidth <= 411 && window.innerHeight <= 747) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.pixel2}')`
-        element.style.height = '647px'
-      })
-    } else if (window.innerWidth <= 414 && window.innerHeight <= 736) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.iphone}')`
-        element.style.height = '636px'
-      })
-    } else if (window.innerWidth <= 414 && window.innerHeight <= 796) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.flexi}')`
-        element.style.height = '696px'
-      })
-    } else if (window.innerWidth <= 414 && window.innerHeight <= 823) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.pixel2xl}')`
-        element.style.height = '723px'
-      })
-    } else if (window.innerWidth <= 480 && window.innerHeight <= 753) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.galaxy2}')`
-        element.style.height = '653px'
-      })
-    } else if (window.innerWidth <= 600 && window.innerHeight <= 860) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.tablet}')`
-        element.style.height = '760px'
-      })
-    } else if (window.innerWidth <= 768 && window.innerHeight <= 1024) {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.ipad}')`
-        element.style.height = '924px'
-      })
-    } else {
-      document.querySelectorAll('.holding-page-image-banner').forEach((element) => {
-        element.style.backgroundImage = `url('${element.dataset.lrg}')`
-        element.style.height = `${window.innerWidth * 0.3}px`
-      })
-    }
-  }
-  changeBannerUrls()
-  window.onresize = changeBannerUrls;
-</script>
+
+
+
+
+
+
+

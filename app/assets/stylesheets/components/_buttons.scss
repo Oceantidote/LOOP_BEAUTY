@@ -26,7 +26,23 @@
     padding: 5px 10px;
   }
 }
-
+.aff-btn {
+  height: 30px;
+  background-color: #000;
+  color: white;
+  border-radius: 0;
+  font-family: 'Muli', sans-serif;
+  border: none;
+  &:hover {
+    text-decoration: none;
+    color: $light-gray !important;
+    background-color: rgba(0,0,0,0.9);
+  }
+}
+.aff-link {
+  border-radius: 0;
+  border: 2px solid #000;
+}
 .disabled-button {
   padding: 6px 38px !important;
   cursor: default;

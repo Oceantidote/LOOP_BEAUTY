@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get '/returns_policy', to: 'pages#returns_policy', as: :returns_policy
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
-
+  get '/make-up', to: 'products#index'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
+
   resources :users, only: [], path: 'influencers' do
     resources :lookbooks, only: [:index] do
       member do
@@ -164,3 +165,4 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe-webhooks'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
