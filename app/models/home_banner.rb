@@ -31,7 +31,7 @@ class HomeBanner < ApplicationRecord
 
 
   UNIQUE_VIEWPORTS.each do |viewport|
-    # validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - viewport.second[:browser]}
+    validates viewport.first, content_type: ['image/png', 'image/jpg', 'image/jpeg'], dimension: { width: viewport.second[:width], height: viewport.second[:height] - viewport.second[:browser] - 100}
   end
 
   def am_i_valid?

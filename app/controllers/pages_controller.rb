@@ -10,6 +10,7 @@ class PagesController < ApplicationController
 
   def homepage
     @color = "green"
+    @breaks = HomeBanner::UNIQUE_VIEWPORTS
     @home_banners = HomeBanner.where(display: true)
     @ordered_dimensions_and_urls = ordered_array_with_image_urls
     @ordered_breakpoints = HomeBanner.ordered_breakpoints
