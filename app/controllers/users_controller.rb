@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @number_of_content_shared = @lookbooks_in_range.count + @tutorials_in_range.count
     @total_visits = Lookbook.total_visits_this_period(@lookbooks, @range) + Tutorial.total_visits_this_period(@tutorials, @range) + current_user.total_visits_this_period(@range)
     @total_sales = @orders_this_period.size
-    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
+    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3) << current_user).sort_by(&:visits).last(3).reverse
     @total_conversion_rate = @total_visits.zero? ? 0 : ((@total_sales / @total_visits.to_f) * 100).round(2)
     @top_brands_count = []
     @top_brands = []

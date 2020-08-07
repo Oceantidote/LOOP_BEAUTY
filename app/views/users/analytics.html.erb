@@ -4,7 +4,7 @@
       <%= render 'shared/influencer_dash' %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Analytics</h2>
+      <h2 class="insider-info-title mcontent-title text-center">Analytics</h2>
       <hr>
       <div class="container">
         <div class="row">
@@ -113,8 +113,8 @@
                   <div class="analytics-number">
                     <span class="didot mt-1"><%= index + 1 %></span>
                   </div>
-                  <%= image_tag url_for(content.class == Lookbook ? content.photo : content.cover_photo ), alt: "influencer lookbook photo"  %>
-                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= content.title %></p>
+                  <%= image_tag url_for(content.class == Lookbook ? content.photo : content.class == User ? current_user.avatar_photo : content.cover_photo  ), alt: "influencer lookbook photo"  %>
+                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= content.class == User ? "You" : content.title %></p>
                   <p class="no-margin medium-text muli truncate-text"><%= content.visits %> visits</p>
                 </div>
               </div>
@@ -168,15 +168,15 @@
         <div class="container">
           <h5 class="muli boldest mb-4">Top content driving your sales this <%= @range_value == "mtd" ? "month" : "year" %></h5>
           <div class="row">
-            <% @top_content.each_with_index do |lb, index| %>
+            <% @top_content.each_with_index do |content, index| %>
               <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
                 <div class="analytics-card">
                   <div class="analytics-number">
                     <span class="didot mt-1"><%= index + 1 %></span>
                   </div>
-                  <%= image_tag url_for(lb.class == Lookbook ? lb.photo : lb.cover_photo), alt: "influencer lookbook photo"  %>
-                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= lb.title %></p>
-                  <p class="no-margin medium-text muli"><%= "#{lb.orders.count} #{'Sale'.pluralize(lb.orders.count)}" %> </p>
+                  <%= image_tag url_for(content.class == Lookbook ? content.photo : content.class == User ? current_user.avatar_photo : content.cover_photo  ), alt: "influencer lookbook photo"  %>
+                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= content.class == User ? "You" : content.title %></p>
+                  <p class="no-margin medium-text muli truncate-text"><%= content.visits %> visits</p>
                 </div>
               </div>
             <% end %>
