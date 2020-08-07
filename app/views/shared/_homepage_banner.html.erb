@@ -1,4 +1,4 @@
-<div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-pause="false">
+<div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
   <div class="carousel-inner" id="carousel-data">
     <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
       <div id="test_<%= home_banner.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>" >
