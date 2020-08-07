@@ -9,7 +9,15 @@
     padding: 0;
   }
 }
-
+.link-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Muli";
+  h5 {
+    margin-bottom: 0;
+  }
+}
 .dashboard-container {
   display: flex;
   max-width: 1200px;

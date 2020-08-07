@@ -9,7 +9,16 @@
     </div>
     <% if current_user.influencer? %>
       <div class="dash-content-container">
-        <h2 class="insider-info-title mlb-title text-center">Account Overview</h2>
+        <h2 class="insider-info-title pt-2 pb-2 text-center">Account Overview</h2>
+        <% if current_user.affiliate_link %>
+          <div class="link-row pb-2">
+            <h5 class="mr-2">Your affiliate link: </h5>
+            <input type="text" value="<%= current_user.affiliate_link %>" id="link" class="aff-link min-200-w">
+
+            <!-- The button used to copy the text -->
+            <button class="aff-btn" onclick="myFunction(<%= current_user.id %>)">Copy Link</button>
+          </div>
+        <% end %>
         <hr>
         <div class="row m-3">
           <div class="col-6 col-lg-4" style="padding: 0;">
@@ -72,9 +81,6 @@
               <% end %>
             </div>
           </div>
-        </div>
-        <div>
-          YOUR AFFILIATE LINK: <%= current_user.affiliate_link %>
         </div>
       </div>
     <% else %>
@@ -147,4 +153,19 @@
     <% end %>
   </div>
 </div>
+<script>
+  function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById('link');
 
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    // alert("Copied the text: " + copyText.value);
+  }
+</script>

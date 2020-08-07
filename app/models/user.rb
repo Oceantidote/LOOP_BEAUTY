@@ -44,6 +44,7 @@ class User < ApplicationRecord
   include ActiveModel::Validations
   include Affiliation
   include FriendlyId
+  include Tracked
   validates_with MyValidator
   validates :first_name, :last_name, presence: true
   validate :password_complexity
@@ -131,6 +132,12 @@ class User < ApplicationRecord
 
   def sales_total_cents
     affiliate_orders.sum(&:total_price_cents)
+  end
+
+  def total_visits_this_period(period)
+    total_visits = visits
+    total_visits_at_start_of_period = monthly_visits.where(month: period).minimum(:visits) || 0
+    total_visits - total_visits_at_start_of_period
   end
 
   private
