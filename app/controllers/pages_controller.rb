@@ -12,8 +12,6 @@ class PagesController < ApplicationController
     @color = "green"
     @breaks = HomeBanner::UNIQUE_VIEWPORTS
     @home_banners = HomeBanner.where(display: true)
-    @ordered_dimensions_and_urls = ordered_array_with_image_urls
-    @ordered_breakpoints = HomeBanner.ordered_breakpoints
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC).first(4)
     @insider_articles = InsiderArticle.where(homepage: true).order(created_at: :DESC).first(3)
     @new_in = Product.all.where(featured: true).select { |product| !product.out_of_stock? }
