@@ -104,6 +104,7 @@
     <h6 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h6>
     <%= link_to "EDIT", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
     <%= link_to "APPROVE", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'primary-button personal-details-button small-text' %>
+    <%= link_to "DOWNLOAD", url_for(@tutorial.video) , class: 'primary-button personal-details-button small-text'  %>
     <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
       <%= f.input :rejection_message, input_html: { class: 'contact-form-input' } %>
       <%= f.submit "REJECT", class: 'secondary-button personal-details-button small-text' %>
