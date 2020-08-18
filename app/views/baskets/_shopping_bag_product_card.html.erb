@@ -10,6 +10,7 @@
     </div>
     <div class="shopping-bag-card-title">
       <p class="small-text boldest no-margin muli"><%= item.product.title %></p>
+      <p class="small-text no-margin muli"><%= item.shade.name %></p>
       <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text muli underline grey-font boldest text-right" %>
       <%# if policy(item).set_credit_purchase? && item.product.demoable %>
         <%#= simple_form_for item, url: set_credit_purchase_basket_product_path(item), method: :patch, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>

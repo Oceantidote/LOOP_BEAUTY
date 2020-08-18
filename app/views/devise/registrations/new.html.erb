@@ -61,7 +61,7 @@
             <%= f.input :newsletter, label: "Find out about the latest offers, new products and beauty news.", label_html: { class: 'reg-new-checkbox-label' }, input_html: { class: 'margin-bottom' } %>
           </div>
           <div class="d-flex mb-3" style="align-items: baseline;">
-            <%= f.input :accepts_terms, label: "By creating an account you agree to the website's Terms and our Privacy Policy", label_html: { class: 'reg-new-checkbox-label grey-important' }, input_html: { class: 'grey' } %>
+            <%= f.input :accepts_terms, label: ("By creating an account you agree to the website's #{ link_to 'Terms', sale_terms_path } and our #{ link_to 'Privacy Policy', privacy_policy_path }").html_safe, label_html: { class: 'reg-new-checkbox-label grey-important' }, input_html: { class: 'grey' } %>
           </div>
         </div>
         <div class="form-actions">
