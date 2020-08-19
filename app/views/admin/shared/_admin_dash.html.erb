@@ -10,6 +10,9 @@
   <%= link_to admin_freebies_path, class: "each-dash-link" do %>
     <%= image_tag "freebie-icon.png", class: "dash-links-image", alt: "freebie icon" %>Freebies
   <% end %>
+  <%= link_to admin_discount_codes_path, class: "each-dash-link" do %>
+    <%= image_tag "freebie-icon.png", class: "dash-links-image", alt: "freebie icon" %>Discounts
+  <% end %>
   <%= link_to admin_sku_path, class: "each-dash-link" do %>
     <%= image_tag "warehouse.png", class: "dash-links-image", alt: "freebie icon" %>SKUs
   <% end %>
@@ -54,6 +57,10 @@
   <% end %>
   <%= link_to admin_freebies_path, class: "each-dash-link-mobile no-decoration muli" do %>
     <span>FREEBIES</span>
+    <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
+  <% end %>
+  <%= link_to admin_discount_codes_path, class: "each-dash-link-mobile no-decoration muli" do %>
+    <span>DISCOUNTS</span>
     <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
   <% end %>
   <%= link_to admin_lookbooks_path, class: "each-dash-link-mobile no-decoration muli" do %>

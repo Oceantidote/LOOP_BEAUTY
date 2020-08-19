@@ -134,6 +134,7 @@ Rails.application.routes.draw do
     get '/categories', to: 'pages#categories'
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
+    resources :discount_codes, except: [:show]
   end
 
   # ADMIN ROUTES ABOVE

@@ -98,6 +98,16 @@
         </div>
         <div class="col-6 col-lg-4 col-xl-3" style="padding: 0;">
           <div class="admin-portal-option">
+            <%= link_to admin_discount_codes_path, class: "dash-home-option-links" do %>
+              <div class="each-dash-home-option">
+                <%= image_tag "freebie-icon.png", alt: "freebie icon" %>
+                <h6 class="boldest muli no-margin">Discounts</h6>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-6 col-lg-4 col-xl-3" style="padding: 0;">
+          <div class="admin-portal-option">
             <%= link_to admin_insider_articles_path, class: "dash-home-option-links" do %>
               <div class="each-dash-home-option">
                 <%= image_tag "magazine.png", alt: "article icon" %>
