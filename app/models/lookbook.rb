@@ -82,7 +82,8 @@ class Lookbook < ApplicationRecord
       long_url = Rails.application.routes.url_helpers.lookbook_url(self, aff_code: code)
       response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
         title: title,
-        long_url: long_url
+        long_url: long_url,
+        domain: 'loopb.me'
       }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
       JSON.parse(response.body)['link']
     end
