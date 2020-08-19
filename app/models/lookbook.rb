@@ -65,7 +65,7 @@ class Lookbook < ApplicationRecord
 
   def gen_aff_code
     code = [*(0..9), *('a'..'z'), *('A'..'Z')].sample(8).join
-    if Lookbook.find_by_affiliate_code(code) || Tutorial.find_by_affiliate_code(code)
+    if Lookbook.find_by_affiliate_code(code) || Tutorial.find_by_affiliate_code(code) || User.find_by_affiliate_code(code)
       gen_aff_code
     else
       code

@@ -52,6 +52,7 @@ class ApplicationRecord < ActiveRecord::Base
     chromebook_pixel: { width: 1280, height: 850, browser: 120 }
  }
 
+
   def viewport_array_ordered_by_width
     UNIQUE_VIEWPORTS.map{ |v| [v[0], v[1][:width], v[1][:height]]}
   end

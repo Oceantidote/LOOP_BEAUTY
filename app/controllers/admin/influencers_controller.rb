@@ -36,8 +36,7 @@ class Admin::InfluencersController < ApplicationController
   end
 
   def publish
-    @influencer.published = true
-    @influencer.save!
+    @influencer.publish!
     flash[:notice] = 'User Published!'
     redirect_to user_path(@influencer)
   end

@@ -42,8 +42,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include ActiveModel::Validations
-  validates_with MyValidator
+  include Affiliation
   include FriendlyId
+  include Tracked
+  validates_with MyValidator
   validates :first_name, :last_name, presence: true
   validate :password_complexity
   validate :terms
@@ -70,6 +72,7 @@ class User < ApplicationRecord
   has_many :tutorials, dependent: :destroy
   has_one :showroom, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :affiliate_orders, -> { where(affiliation_type: 'User') }, class_name: 'Order', foreign_key: :affiliation_id
   # WISHLIST TEST
   has_one :wishlist, dependent: :destroy
   has_many :wishlist_products, through: :wishlist
@@ -77,6 +80,7 @@ class User < ApplicationRecord
   before_save :set_referral_code, :check_newsletter
   after_save :create_wishlist
   after_create :send_welcome
+  # AFFILIATIONS
 
   def admin?
     admin
@@ -92,7 +96,11 @@ class User < ApplicationRecord
   end
 
   def sales
-    lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum
+    lookbooks.map(&:sales).sum + tutorials.map(&:sales).sum + user_sales
+  end
+
+  def user_sales
+    affiliate_orders.size
   end
 
   def full_name
@@ -115,6 +123,21 @@ class User < ApplicationRecord
     return 0 unless influencer?
     orders_with_credit_total = Order.where(user: self, created_at: Time.now.beginning_of_month..Time.now).map(&:credit_spent_cents).sum
     10000 - orders_with_credit_total
+  end
+
+  def publish!
+    code = gen_aff_code
+    update(published: true, affiliate_code: code, affiliate_link: gen_aff_link(code), publish_date: Date.today)
+  end
+
+  def sales_total_cents
+    affiliate_orders.sum(&:total_price_cents)
+  end
+
+  def total_visits_this_period(period)
+    total_visits = visits
+    total_visits_at_start_of_period = monthly_visits.where(month: period).minimum(:visits) || 0
+    total_visits - total_visits_at_start_of_period
   end
 
   private
@@ -209,4 +232,33 @@ class User < ApplicationRecord
       UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_now
     end
   end
+
+  private
+
+  def gen_aff_code
+    code = [*(0..9), *('a'..'z'), *('A'..'Z')].sample(8).join
+    if Lookbook.find_by_affiliate_code(code) || Tutorial.find_by_affiliate_code(code) || User.find_by_affiliate_code(code)
+      gen_aff_code
+    else
+      code
+    end
+  end
+
+  def gen_aff_link(code)
+    if Rails.env.development?
+      long_url = Rails.application.routes.url_helpers.user_url(self, aff_code: code)
+      long_url
+    else
+      # "https://infinite-journey-41892.herokuapp.com/tutorials/#{self.slug}?aff_code=#{code}"
+      # Keep until we go to the live domain and then switch over to commented section below once live
+      long_url = Rails.application.routes.url_helpers.user_url(self)
+      response = RestClient.post("https://api-ssl.bitly.com/v4/bitlinks", {
+        title: instagram,
+        long_url: long_url
+      }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
+      JSON.parse(response.body)['link']
+    end
+  end
+
+
 end

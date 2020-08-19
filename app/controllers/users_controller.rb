@@ -39,12 +39,12 @@ class UsersController < ApplicationController
     @tutorials = Tutorial.where(user: @user, status: 'approved')
     @lookbooks_in_range = @lookbooks.where(created_at: @range)
     @tutorials_in_range = @tutorials.where(created_at: @range)
-    @orders = Order.where(affiliation_type: 'Lookbook', affiliation_id: @lookbooks.ids).or(Order.where(affiliation_type: 'Tutorial', affiliation_id: @tutorials.ids))
+    @orders = Order.where(affiliation_type: 'Lookbook', affiliation_id: @lookbooks.ids).or(Order.where(affiliation_type: 'Tutorial', affiliation_id: @tutorials.ids)).or(Order.where(affiliation_type: 'User', affiliation_id: current_user.id))
     @orders_this_period = @orders.where(created_at: @range)
     @number_of_content_shared = @lookbooks_in_range.count + @tutorials_in_range.count
-    @total_visits = Lookbook.total_visits_this_period(@lookbooks, @range) + Tutorial.total_visits_this_period(@tutorials, @range)
+    @total_visits = Lookbook.total_visits_this_period(@lookbooks, @range) + Tutorial.total_visits_this_period(@tutorials, @range) + current_user.total_visits_this_period(@range)
     @total_sales = @orders_this_period.size
-    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3)).sort_by(&:visits).last(3).reverse
+    @top_content = (@lookbooks.order(:visits).last(3) + @tutorials.order(:visits).last(3) << current_user).sort_by(&:visits).last(3).reverse
     @total_conversion_rate = @total_visits.zero? ? 0 : ((@total_sales / @total_visits.to_f) * 100).round(2)
     @top_brands_count = []
     @top_brands = []

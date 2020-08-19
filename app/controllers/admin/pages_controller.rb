@@ -23,9 +23,11 @@ class Admin::PagesController < ApplicationController
       id = filter_params[:influencer_id]
       @orders = @orders.joins("LEFT JOIN tutorials ON orders.affiliation_type = 'Tutorial' AND
                                             orders.affiliation_id = tutorials.id").
+                        joins("LEFT JOIN users ON orders.affiliation_type = 'User' AND
+                                            orders.affiliation_id = users.id").
                         joins("LEFT JOIN lookbooks ON orders.affiliation_type = 'Lookbook' AND
                                              orders.affiliation_id = lookbooks.id").
-                        where('tutorials.user_id = ? OR lookbooks.user_id = ?', id, id)
+                        where('tutorials.user_id = ? OR lookbooks.user_id = ? OR users.id' , id, id, id)
     end
   end
 
@@ -33,18 +35,21 @@ class Admin::PagesController < ApplicationController
     authorize [:admin, current_user]
     lookbooks = Lookbook.where(status: 'approved')
     tutorials = Tutorial.where(status: 'approved')
+    influencers = User.where(published: true)
     if params[:filter] && filter_params[:from].present?
       from  = Date.parse(filter_params[:from]).beginning_of_day
       to = Date.parse(filter_params[:to]).end_of_day
       lookbooks = lookbooks.where(publish_date: from..to)
       tutorials = tutorials.where(publish_date: from..to)
+      influencers = influencers.where(publish_date: from..to).pluck(:visits, :publish_date)
     end
     if params[:filter] && filter_params[:influencer_id].present?
       id = filter_params[:influencer_id]
       lookbooks = lookbooks.where(user_id: id)
       tutorials = tutorials.where(user_id: id)
+      influencers = influencers.where(id: id)
     end
-    @results = (lookbooks + tutorials).sort { |model| -model.publish_date.to_i }
+    @results = (lookbooks + tutorials + influencers).sort { |model| -model.publish_date.to_i }
   end
 
   private

@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
   def store_aff_code
     if params[:aff_code]
       session[:aff_code] = params[:aff_code]
-      model = Lookbook.find_by_affiliate_code(params[:aff_code]).nil? ? Tutorial.find_by_affiliate_code(params[:aff_code]) : Lookbook.find_by_affiliate_code(params[:aff_code])
+      model = Lookbook.find_by_affiliate_code(params[:aff_code]) || Tutorial.find_by_affiliate_code(params[:aff_code]) || User.find_by_affiliate_code(params[:aff_code])
       model.increment!(:visits)
     end
   end
