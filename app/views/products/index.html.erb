@@ -1,6 +1,9 @@
 <!-- <div class="partial-banner" style="background-image: url(<%#= Banner.any? ? url_for(Banner.first.photo) : 'https://images.pexels.com/photos/1377034/pexels-photo-1377034.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260' %>;)"> -->
     <!-- IMAGE HERE -->
 <!-- </div> -->
+<%= content_for :meta_title do %>
+  Shop Make up and Cosmetics products
+<% end %>
 <%= render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>
 <% if current_user&.admin %>
   <div class="admin-options">

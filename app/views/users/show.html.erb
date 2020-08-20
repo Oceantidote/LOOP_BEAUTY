@@ -1,3 +1,7 @@
+<%= content_for :meta_title do %>
+  <%= @user.instagram.gsub(/@/, '') %> - <%= @user.full_name %>
+<% end %>
+
 <% if !@user.published %>
   <div class="unpublished_bar">
     <h3>PENDING PUBLICATION</h3>
