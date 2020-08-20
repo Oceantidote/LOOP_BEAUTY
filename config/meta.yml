@@ -1,5 +1,5 @@
-meta_product_name: "LoopBeauty"
-meta_title: "LoopBeauty - Perfect your look in one place."
-meta_description: "Expert advice. Fun secrets. Master classes. Exciting stories. Perfect your look in one place."
-meta_image: "social-card.png" # should exist in `app/assets/images/`
+meta_product_name: 'Loop Beauty'
+meta_title: 'Loop Beauty - Perfect your look in one place.'
+meta_description: 'Expert advice. Fun secrets. Master classes. Exciting stories. Perfect your look in one place.'
+meta_image: 'social-card.png' # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
