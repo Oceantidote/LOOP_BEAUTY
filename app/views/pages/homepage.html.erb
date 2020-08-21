@@ -39,9 +39,11 @@
     </div>
   </div>
 <% end %>
-<% if @first_visit %>
+<%# if @first_visit %>
+<% if 1==1 %>
   <div class="homepage-pop-up">
     <div class="pop-up-content">
+      <%= image_tag 'close-black.png', class: 'close-homepage-pop-up' %>
       <h3>First time with us?</h3>
       <h6>Get 10% off your first order</h6>
       <h6 class="grey-font">CODE: WELCOME2LOOP</h6>
