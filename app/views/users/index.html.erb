@@ -14,7 +14,7 @@
                 <h6 class="influencer-instagram"><%= influencer.instagram %></h6>
                 <% if !influencer.published %>
                   <p>UNPUBLISHED</p>
-                <% elsif current_user.admin? %>
+                <% elsif current_user&.admin? %>
                   <p><%= influencer.affiliate_link %></p>
                 <% end %>
               </div>
