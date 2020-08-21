@@ -262,6 +262,7 @@ class User < ApplicationRecord
         custom_bitlink: "loopb.me/#{instagram.gsub(/@/, '')}",
         bitlink_id: link
       }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
+      JSON.parse(custom_response.body)['custom_bitlink']
     end
   end
 
