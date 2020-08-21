@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   scope :brand, -> (brand) { where brand: Brand.product_filter(brand.reject(&:blank?)) }
   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
   extend FriendlyId
+  has_one_attached :lead_product_image
   friendly_id :title, use: :slugged
   belongs_to :category
   belongs_to :sub_category
