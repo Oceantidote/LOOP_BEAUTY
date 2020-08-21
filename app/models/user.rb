@@ -257,7 +257,7 @@ class User < ApplicationRecord
         long_url: long_url,
         domain: 'loopb.me'
       }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
-      link = JSON.parse(response.body)['link']
+      link = JSON.parse(response.body)['id']
       custom_response = RestClient.post("https://api-ssl.bitly.com/v4/custom_bitlinks", {
         custom_bitlink: "loopb.me/#{instagram.gsub(/@/, '')}",
         bitlink_id: link
