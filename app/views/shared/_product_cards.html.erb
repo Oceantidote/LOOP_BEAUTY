@@ -1,6 +1,9 @@
 <div class="card-image-results">
   <div class="card">
     <%= link_to product_path(product) do %>
+      <div class="button-overlay">
+        <button class="primary-button" type="button">BUY NOW</button>
+      </div>
       <% if product.out_of_stock? %>
         <div class="out-of-stock-overlay">
           <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
