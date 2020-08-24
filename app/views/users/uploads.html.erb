@@ -40,7 +40,7 @@
             </div>
           <% end %>
         </div>
-        <div class="uploads-content-three">
+        <div class="uploads-content-three wrap">
           <% if @approved.count == 0 %>
             <p class="large-margin text-center boldest muli grey">You have no approved uploads</p>
           <% else %>
@@ -50,10 +50,17 @@
               <% end %>
             </div>
           <% end %>
+          <% if current_user.affiliate_link %>
+            <div class="link-row pb-2 mt-4">
+              <h5 class="mr-2">Your Overall Shop affiliate link: </h5>
+              <input type="text" value="<%= current_user.affiliate_link %>" id="link" class="aff-link min-200-w">
+
+              <!-- The button used to copy the text -->
+              <button class="aff-btn" onclick="myFunction(<%= current_user.id %>)">Copy Link</button>
+            </div>
+          <% end %>
         </div>
-        <div class="uploads-user-link">
-          Personal Affiliate Link: <span><%= current_user.affiliate_link %></span>
-        </div>
+
       </div>
     </div>
   </div>

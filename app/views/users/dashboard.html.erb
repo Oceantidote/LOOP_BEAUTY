@@ -10,15 +10,6 @@
     <% if current_user.influencer? %>
       <div class="dash-content-container">
         <h2 class="insider-info-title pt-2 pb-2 text-center">Account Overview</h2>
-        <% if current_user.affiliate_link %>
-          <div class="link-row pb-2">
-            <h5 class="mr-2">Your affiliate link: </h5>
-            <input type="text" value="<%= current_user.affiliate_link %>" id="link" class="aff-link min-200-w">
-
-            <!-- The button used to copy the text -->
-            <button class="aff-btn" onclick="myFunction(<%= current_user.id %>)">Copy Link</button>
-          </div>
-        <% end %>
         <hr>
         <div class="row m-3">
           <div class="col-6 col-lg-4" style="padding: 0;">

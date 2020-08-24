@@ -17,6 +17,14 @@
   h5 {
     margin-bottom: 0;
   }
+  @include for-small-devices-down {
+    flex-direction: column;
+  }
+}
+.min-200-w {
+  @include for-small-devices-down {
+    min-width: 150px;
+  }
 }
 .dashboard-container {
   display: flex;
