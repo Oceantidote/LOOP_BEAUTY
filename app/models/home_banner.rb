@@ -35,7 +35,7 @@ class HomeBanner < ApplicationRecord
   end
 
   def am_i_valid?
-    unique_viewports.keys.all?{|attachment| self[attachment]&.attached?}
+    unique_viewports.keys.all?{|attachment| self.send(attachment)&.attached?}
   end
 
   def ordered_array_with_image_paths
