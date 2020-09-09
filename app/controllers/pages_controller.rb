@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def homepage
     @color = "green"
-    @breaks = HomeBanner::UNIQUE_VIEWPORTS.map{|y|y}.reverse
+    @breaks = HomeBanner::UNIQUE_VIEWPORTS.to_a.reverse
     @home_banners = HomeBanner.where(display: true)
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC).first(4)
     @insider_articles = InsiderArticle.where(homepage: true).order(created_at: :DESC).first(3)
