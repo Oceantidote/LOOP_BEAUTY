@@ -20,7 +20,7 @@
             }
           }
         </style>
-        <% @breaks.reverse.each do |breaker| %>
+        <% @breaks.each do |breaker| %>
           <% if home_banner.send(breaker[0]).attached? %>
             <style scoped>
               @media screen and (min-width: <%= breaker[1][:width] %>px) and (max-width: <%= breaker[1][:width] %>px ) and (max-height: <%= breaker[1][:height] %>px) {
