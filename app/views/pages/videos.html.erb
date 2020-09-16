@@ -29,26 +29,23 @@
     <h2 class="insider-info-title text-center">Tutorials</h2>
     <div class="row-carousel" style="margin: 30px 0;">
       <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-      <% @tutorials.last(4).each do |tutorial| %>
+      <% @tutorials.where(category: 'tutorial').first(4).each do |tutorial| %>
         <%= render 'shared/tutorials_card', tutorial: tutorial %>
       <% end %>
       <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
 </div>
-<% if !@loops.empty? %>
-  <div class="latest-videos-wrapper">
-    <div class="max-width" style="position: relative;">
-      <%= link_to 'See all', all_videos_path(link: 'ask the expert'), class: "see-all-videos-link muli" %>
-      <h2 class="insider-info-title text-center">Ask the Expert</h2>
-      <div class="row-carousel" style="margin: 30px 0;">
-        <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-        <% @loops.first(4).each do |tutorial| %>
-          <%= render 'shared/tutorials_card', tutorial: tutorial %>
-        <% end %>
-        <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
-      </div>
+<div class="latest-videos-wrapper">
+  <div class="max-width" style="position: relative;">
+    <%= link_to 'See all', all_videos_path(link: 'ask the expert'), class: "see-all-videos-link muli" %>
+    <h2 class="insider-info-title text-center">Ask the Expert</h2>
+    <div class="row-carousel" style="margin: 30px 0;">
+      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
+      <% @tutorials.where(category: 'ask the expert').first(4).each do |tutorial| %>
+        <%= render 'shared/tutorials_card', tutorial: tutorial %>
+      <% end %>
+      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
-
-<% end %>
+</div>
