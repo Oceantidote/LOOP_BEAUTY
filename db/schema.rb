@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_125512) do
+ActiveRecord::Schema.define(version: 2020_09_17_140500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -419,6 +419,8 @@ ActiveRecord::Schema.define(version: 2020_08_07_125512) do
     t.boolean "featured", default: false
     t.datetime "publish_date"
     t.integer "visits", default: 0
+    t.boolean "processing", default: true
+    t.float "progress"
     t.index ["affiliate_code"], name: "index_tutorials_on_affiliate_code"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end

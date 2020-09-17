@@ -280,6 +280,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    streamio-ffmpeg (3.0.2)
+      multi_json (~> 1.8)
     stripe (4.19.0)
       faraday (~> 0.13)
       net-http-persistent (~> 3.0)
@@ -356,6 +358,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  streamio-ffmpeg
   stripe
   stripe_event
   trix
