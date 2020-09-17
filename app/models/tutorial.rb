@@ -12,7 +12,9 @@ class Tutorial < ApplicationRecord
   validates :title, uniqueness: true, presence: true
   validates :video, size: { less_than: 100.megabytes, message: 'cannot exceed 100MB' }
   validates :cover_photo, attached: true
+  before_save :check_video
   after_save :update_featured
+  after_save :process_video, if: :processing?
   validates :user_id, presence: true
 
   def approve!
@@ -95,5 +97,15 @@ class Tutorial < ApplicationRecord
       }.to_json, {'Authorization': "Bearer #{ENV['BITLY_API_KEY']}", 'Content-Type': 'application/json'})
       JSON.parse(response.body)['link']
     end
+  end
+
+  def check_video
+    if video.content_type != 'video/webm'
+      self[:processing] = true
+    end
+  end
+
+  def process_video
+    ProcessVideoJob.perform_later(id)
   end
 end

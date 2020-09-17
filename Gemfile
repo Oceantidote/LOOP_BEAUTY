@@ -37,6 +37,7 @@ gem 'image_processing', '~> 1.2'
 gem 'appsignal'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'streamio-ffmpeg'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

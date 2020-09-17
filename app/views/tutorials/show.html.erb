@@ -18,10 +18,17 @@
   </div>
 </div>
 <div class="tutorial-show-video-banner">
-  <%= video_tag url_for(@tutorial.video), style: "margin: 0 auto;max-width: 100%;max-height: 60vh;", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video" %>
-  <div class="video-overlay">
-    <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+  <% if @tutorial.processing? %>
+  <div class="d-flex align-items-center justify-content-center flex-column" style="width: 100%; height: 600px;">
+    <h3>Video is processing</h3>
+    <h6><%= @tutorial.progress %>% done</h6>
   </div>
+  <% else %>
+    <%= video_tag url_for(@tutorial.video), style: "margin: 0 auto;max-width: 100%;max-height: 60vh;", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video", preload: 'none' %>
+    <div class="video-overlay">
+      <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+    </div>
+  <% end %>
 </div>
 <% if request&.referrer&.include?('videos') %>
   <%= link_to 'See all tutorials', videos_path, class: "mobile-tutorials-link" %>
@@ -93,6 +100,7 @@
           <%= link_to 'SET AS FEATURED', featured_admin_tutorial_path(@tutorial), method: :patch, class: 'secondary-button' %>
         <% end %>
         <%= link_to 'EDIT', edit_tutorial_path(@tutorial), class: 'secondary-button' %>
+        <%= link_to 'DOWNLOAD', url_for(@tutorial.video), class: 'secondary-button' %>
         <%= link_to 'DELETE', tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
       </div>
     </div>
