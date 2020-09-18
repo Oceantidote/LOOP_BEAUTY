@@ -10,6 +10,13 @@
 
       gtag('config', 'UA-173916603-1');
     </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PNDD2JZ');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= meta_title %></title>
@@ -38,7 +45,7 @@
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TL8CPFS"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNDD2JZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
@@ -65,8 +72,98 @@
     <% unless (params[:controller] == 'pages' && params[:action] == 'home') || (params[:controller] == 'pages' && params[:action] == 'freebies') %>
       <%= render 'shared/footer' %>
     <% end %>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield(:after_js) %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173916603-1"></script>
+
+    <script>
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag(){dataLayer.push(arguments);}
+
+      gtag('js', new Date());
+
+      gtag('config', 'UA-173916603-1', {
+
+        'linker': {
+
+          'domains': ['checkout.stripe.com']
+
+        }
+
+      });
+
+      gtag('event', 'purchase', {
+
+        "transaction_id": "24.031608523954162",
+
+        "affiliation": "Google online store",
+
+        "value": 23.07,
+
+        "currency": "USD",
+
+        "tax": 1.24,
+
+        "shipping": 0,
+
+        "items": [
+
+          {
+
+            "id": "P12345",
+
+            "name": "Android Warhol T-Shirt",
+
+            "list_name": "Search Results",
+
+            "brand": "Google",
+
+            "category": "Apparel/T-Shirts",
+
+            "variant": "Black",
+
+            "list_position": 1,
+
+            "quantity": 2,
+
+            "price": '2.0'
+
+          },
+
+          {
+
+            "id": "P67890",
+
+            "name": "Flame challenge TShirt",
+
+            "list_name": "Search Results",
+
+            "brand": "MyBrand",
+
+            "category": "Apparel/T-Shirts",
+
+            "variant": "Red",
+
+            "list_position": 2,
+
+            "quantity": 1,
+
+            "price": '3.0'
+
+          }
+
+        ]
+
+      });
+
+
+    </script>
+
+
+
   </body>
 </html>
