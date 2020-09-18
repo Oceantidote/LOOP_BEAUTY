@@ -100,63 +100,42 @@
 
   gtag('event', 'purchase', {
 
-    "transaction_id": "24.031608523954162",
+    "transaction_id": "<%= @order.id %>",
 
-    "affiliation": "Google online store",
+    "affiliation": "LOOP BEAUTY",
 
-    "value": 23.07,
+    "value": <%= ((@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
 
-    "currency": "USD",
+    "currency": "GBP",
 
-    "tax": 1.24,
+    "tax": <%= (@order.total_price_cents - (@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
 
-    "shipping": 0,
+    "shipping": <%= @order.delivery_cost_cents / 100.to_f %>,
 
     "items": [
+      <% @order.order_products.each_with_index do |item, i| %>
+        {
 
-      {
+          "id": "<%= item.shade.sku %>",
 
-        "id": "P12345",
+          "name": "<%= item.product.title %>",
 
-        "name": "Android Warhol T-Shirt",
+          "list_name": "order_<%= item.order.id %>",
 
-        "list_name": "Search Results",
+          "brand": "<%= item.product.brand.name %>",
 
-        "brand": "Google",
+          "category": "<%= item.product.category.name %>",
 
-        "category": "Apparel/T-Shirts",
+          "variant": "<%= item.shade.name %>",
 
-        "variant": "Black",
+          "list_position": <%= i + 1 %>,
 
-        "list_position": 1,
+          "quantity": <%= item.quantity %>,
 
-        "quantity": 2,
+          "price": <%= item.price_cents / 100.to_f %>
 
-        "price": '2.0'
-
-      },
-
-      {
-
-        "id": "P67890",
-
-        "name": "Flame challenge TShirt",
-
-        "list_name": "Search Results",
-
-        "brand": "MyBrand",
-
-        "category": "Apparel/T-Shirts",
-
-        "variant": "Red",
-
-        "list_position": 2,
-
-        "quantity": 1,
-
-        "price": '3.0'
-
-      }
+        }<%= ',' if @order.order_products.size != i + 1 %>
+      <% end %>
 
     ]
 
