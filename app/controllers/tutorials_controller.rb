@@ -59,6 +59,7 @@ class TutorialsController < ApplicationController
       @tutorial.user = current_user
     end
     authorize @tutorial
+    process_video if params.dig(:tutorial, :video)
     if @tutorial.save
       flash[:notice] = 'Tutorial pending approval'
       if current_user.admin
@@ -81,6 +82,7 @@ class TutorialsController < ApplicationController
     if @tutorial.status == 'rejected'
       @tutorial.submit_for_approval!
     end
+    process_video if params.dig(:tutorial, :video)
     if @tutorial.update(tutorial_params)
       flash[:notice] = 'Tutorial updated'
       if current_user == @tutorial.user
@@ -102,6 +104,11 @@ class TutorialsController < ApplicationController
   end
 
   private
+
+  def process_video
+    @tutorial.processing = true
+    @tutorial.video.purge if @tutorial.video.attached? && @tutorial.id
+  end
 
   def set_tutorial
     @tutorial = Tutorial.friendly.find(params[:id])
