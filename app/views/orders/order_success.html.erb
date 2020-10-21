@@ -76,5 +76,75 @@
     </div>
   </div>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'GA_MEASUREMENT_ID', {
+
+    'linker': {
+
+      'domains': ['checkout.stripe.com']
+
+    }
+
+  });
+
+  gtag('event', 'purchase', {
+
+    "transaction_id": "<%= @order.id %>",
+
+    "affiliation": "LOOP BEAUTY",
+
+    "value": <%= ((@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
+
+    "currency": "GBP",
+
+    "tax": <%= (@order.total_price_cents - (@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
+
+    "shipping": <%= @order.delivery_cost_cents / 100.to_f %>,
+
+    "items": [
+      <% @order.order_products.each_with_index do |item, i| %>
+        {
+
+          "id": "<%= item.shade.sku %>",
+
+          "name": "<%= item.product.title %>",
+
+          "list_name": "order-<%= item.order.id %>",
+
+          "brand": "<%= item.product.brand.name %>",
+
+          "category": "<%= item.product.category.name %>",
+
+          "variant": "<%= item.shade.name %>",
+
+          "list_position": <%= i + 1 %>,
+
+          "quantity": <%= item.quantity %>,
+
+          "price": <%= item.price_cents / 100.to_f %>
+
+        }<%= ',' if @order.order_products.size != i + 1 %>
+      <% end %>
+
+    ]
+
+  });
+
+
+</script>
+
+
+
 
 
