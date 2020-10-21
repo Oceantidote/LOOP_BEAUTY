@@ -509,146 +509,146 @@ QuestionAnswer.destroy_all
 
 # puts "-"
 
-# CREATING INFLUENCERS
+# # CREATING INFLUENCERS
 
-date_of_birth = "#{(1990..1999).to_a.sample}-#{(1..12).to_a.sample}-#{(1..31).to_a.sample}"
+# date_of_birth = "#{(1990..1999).to_a.sample}-#{(1..12).to_a.sample}-#{(1..31).to_a.sample}"
 
-puts "CREATING INFLUENCERS"
+# puts "CREATING INFLUENCERS"
 
-esther = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Esther", last_name: "Areola", gender: "Female", dob: date_of_birth, instagram: "@estaregrams", instagram_followers: '244k', youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', youtube_subscribers: '187k', password: "Esther123", email: "esther@estareonline.com", accepts_terms: true)
-ropo = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Ropo", last_name: "Demure", gender: "Female", dob: date_of_birth, instagram: "@ropo.demure", instagram_followers: '55k', youtube: 'https://www.youtube.com/user/22ropoable', youtube_subscribers: '123k', password: "Ropo123", email: "ropo_demuren@gmail.com", accepts_terms: true)
-breeny = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Breeny", last_name: "Lee", gender: "Female", dob: date_of_birth, instagram: "@breenylee", instagram_followers: '132k', youtube: 'https://www.youtube.com/user/BreenyLee', youtube_subscribers: '299k', password: "Breeny123", email: "info.breenylee@gmail.com", accepts_terms: true)
-nikki = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Nikki", last_name: "Patel", gender: "Female", dob: date_of_birth, instagram: "@nikkissecretx", instagram_followers: '433k', youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', youtube_subscribers: '172k', password: "Nikki123", email: "nicky.o.patel@gmail.com", accepts_terms: true)
-shantania = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", gender: "Female", dob: date_of_birth, instagram: "@shantaniabeckford", instagram_followers: '241k', youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', youtube_subscribers: '319k', password: "Shantania123", email: "shantaniabeckford@gmail.com", accepts_terms: true)
-bemi = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", gender: "Female", dob: date_of_birth, instagram: "@beautybybemii",instagram_followers: '18k', youtube: 'https://www.youtube.com/channel/UC1sEM6rvD-EtmmCc9ZMm7PQ', youtube_subscribers: '123k', password: "Bemi123", email: "beautybybemi@gmail.com", accepts_terms: true)
+# esther = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Esther", last_name: "Areola", gender: "Female", dob: date_of_birth, instagram: "@estaregrams", instagram_followers: '244k', youtube: 'https://www.youtube.com/user/EstAreLIVE/featured', youtube_subscribers: '187k', password: "Esther123", email: "esther@estareonline.com", accepts_terms: true)
+# ropo = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Ropo", last_name: "Demure", gender: "Female", dob: date_of_birth, instagram: "@ropo.demure", instagram_followers: '55k', youtube: 'https://www.youtube.com/user/22ropoable', youtube_subscribers: '123k', password: "Ropo123", email: "ropo_demuren@gmail.com", accepts_terms: true)
+# breeny = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Breeny", last_name: "Lee", gender: "Female", dob: date_of_birth, instagram: "@breenylee", instagram_followers: '132k', youtube: 'https://www.youtube.com/user/BreenyLee', youtube_subscribers: '299k', password: "Breeny123", email: "info.breenylee@gmail.com", accepts_terms: true)
+# nikki = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Nikki", last_name: "Patel", gender: "Female", dob: date_of_birth, instagram: "@nikkissecretx", instagram_followers: '433k', youtube: 'https://www.youtube.com/user/N1kk1sSecr3t', youtube_subscribers: '172k', password: "Nikki123", email: "nicky.o.patel@gmail.com", accepts_terms: true)
+# shantania = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Shantania", last_name: "Beckford", gender: "Female", dob: date_of_birth, instagram: "@shantaniabeckford", instagram_followers: '241k', youtube: 'https://www.youtube.com/channel/UC6jaD2FmAFXL7dsHgzCDy3w', youtube_subscribers: '319k', password: "Shantania123", email: "shantaniabeckford@gmail.com", accepts_terms: true)
+# bemi = User.new(description: "Beauty Edit Mayfair is the brainchild of celebrity brow expert, Sherrille Riley – a stand out range of brow enhancing pencils, brushes and a setting gel. The inclusive collection is expertly created, bringing Riley’s in-salon expertise to clients helping them maintain and create expert results at home.", published: true, influencer: true, first_name: "Bemi", last_name: "Akinde", gender: "Female", dob: date_of_birth, instagram: "@beautybybemii",instagram_followers: '18k', youtube: 'https://www.youtube.com/channel/UC1sEM6rvD-EtmmCc9ZMm7PQ', youtube_subscribers: '123k', password: "Bemi123", email: "beautybybemi@gmail.com", accepts_terms: true)
 
-esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
-esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
+# esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
+# esther.cover_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
 
-esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
-esther.avatar_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
+# esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
+# esther.avatar_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
-esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
-esther.qa_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
+# esther_cover = File.join(Rails.root,'app/assets/images/esther_cover.jpg')
+# esther.qa_photo.attach(io: File.open(esther_cover) , filename: 'esther_cover.jpg')
 
-esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
-esther.lookbook_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
+# esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
+# esther.lookbook_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
-esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
-esther.tutorial_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
+# esther_avatar = File.join(Rails.root,'app/assets/images/esther_avatar.jpg')
+# esther.tutorial_photo.attach(io: File.open(esther_avatar) , filename: 'esther_avatar.jpg')
 
-esther_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
-esther.makeup_photo.attach(io: File.open(esther_makeup) , filename: 'makeup_photo.jpg')
-
-
-
-ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
-ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
-
-ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
-ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
-
-ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
-ropo.lookbook_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
-
-ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
-ropo.qa_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
-
-ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
-ropo.tutorial_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
-
-ropo_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
-ropo.makeup_photo.attach(io: File.open(ropo_makeup) , filename: 'makeup_photo.jpg')
+# esther_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+# esther.makeup_photo.attach(io: File.open(esther_makeup) , filename: 'makeup_photo.jpg')
 
 
 
-breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
-breeny.cover_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
+# ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
+# ropo.cover_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
 
-breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
-breeny.avatar_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
+# ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
+# ropo.avatar_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
 
-breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
-breeny.qa_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
+# ropo_cover = File.join(Rails.root,'app/assets/images/ropo_cover.jpg')
+# ropo.lookbook_photo.attach(io: File.open(ropo_cover) , filename: 'ropo_cover.jpg')
 
-breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
-breeny.lookbook_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
+# ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
+# ropo.qa_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
 
-breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
-breeny.tutorial_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
+# ropo_avatar = File.join(Rails.root,'app/assets/images/ropo_avatar.jpg')
+# ropo.tutorial_photo.attach(io: File.open(ropo_avatar) , filename: 'ropo_avatar.jpg')
 
-breeny_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
-breeny.makeup_photo.attach(io: File.open(breeny_makeup) , filename: 'makeup_photo.jpg')
-
-
-
-
-nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
-nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
-
-nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
-nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
-
-nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
-nikki.qa_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
-
-nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
-nikki.lookbook_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
-
-nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
-nikki.tutorial_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
-
-nikki_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
-nikki.makeup_photo.attach(io: File.open(nikki_makeup) , filename: 'makeup_photo.jpg')
+# ropo_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+# ropo.makeup_photo.attach(io: File.open(ropo_makeup) , filename: 'makeup_photo.jpg')
 
 
 
-shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
-shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
+# breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
+# breeny.cover_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
 
-shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
-shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+# breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+# breeny.avatar_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
 
-shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
-shantania.qa_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
+# breeny_cover = File.join(Rails.root,'app/assets/images/breeny_cover.jpg')
+# breeny.qa_photo.attach(io: File.open(breeny_cover) , filename: 'breeny_cover.jpg')
 
-shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
-shantania.lookbook_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+# breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+# breeny.lookbook_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
 
-shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
-shantania.tutorial_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+# breeny_avatar = File.join(Rails.root,'app/assets/images/breeny_avatar.jpg')
+# breeny.tutorial_photo.attach(io: File.open(breeny_avatar) , filename: 'breeny_avatar.jpg')
 
-shantania_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
-shantania.makeup_photo.attach(io: File.open(shantania_makeup) , filename: 'makeup_photo.jpg')
-
-
-
-bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
-bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpg')
-
-bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
-bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
-
-bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
-bemi.qa_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpg')
-
-bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
-bemi.lookbook_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
-
-bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
-bemi.tutorial_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
-
-bemi_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
-bemi.makeup_photo.attach(io: File.open(bemi_makeup) , filename: 'makeup_photo.jpg')
+# breeny_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+# breeny.makeup_photo.attach(io: File.open(breeny_makeup) , filename: 'makeup_photo.jpg')
 
 
 
-esther.save!
-ropo.save!
-breeny.save!
-nikki.save!
-shantania.save!
-bemi.save!
+
+# nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
+# nikki.cover_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
+
+# nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
+# nikki.avatar_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
+
+# nikki_cover = File.join(Rails.root,'app/assets/images/nikki_cover.jpg')
+# nikki.qa_photo.attach(io: File.open(nikki_cover) , filename: 'nikki_cover.jpg')
+
+# nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
+# nikki.lookbook_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
+
+# nikki_avatar = File.join(Rails.root,'app/assets/images/nikki_avatar.jpg')
+# nikki.tutorial_photo.attach(io: File.open(nikki_avatar) , filename: 'nikki_avatar.jpg')
+
+# nikki_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+# nikki.makeup_photo.attach(io: File.open(nikki_makeup) , filename: 'makeup_photo.jpg')
+
+
+
+# shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
+# shantania.cover_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
+
+# shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
+# shantania.avatar_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+
+# shantania_cover = File.join(Rails.root,'app/assets/images/shantania_cover.jpg')
+# shantania.qa_photo.attach(io: File.open(shantania_cover) , filename: 'shantania_cover.jpg')
+
+# shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
+# shantania.lookbook_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+
+# shantania_avatar = File.join(Rails.root,'app/assets/images/shantania_avatar.jpg')
+# shantania.tutorial_photo.attach(io: File.open(shantania_avatar) , filename: 'shantania_avatar.jpg')
+
+# shantania_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+# shantania.makeup_photo.attach(io: File.open(shantania_makeup) , filename: 'makeup_photo.jpg')
+
+
+
+# bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
+# bemi.cover_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpg')
+
+# bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
+# bemi.avatar_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
+
+# bemi_cover = File.join(Rails.root,'app/assets/images/bemi_cover.jpg')
+# bemi.qa_photo.attach(io: File.open(bemi_cover) , filename: 'bemi_cover.jpg')
+
+# bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
+# bemi.lookbook_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
+
+# bemi_avatar = File.join(Rails.root,'app/assets/images/bemi_avatar.jpg')
+# bemi.tutorial_photo.attach(io: File.open(bemi_avatar) , filename: 'bemi_avatar.jpg')
+
+# bemi_makeup = File.join(Rails.root,'app/assets/images/makeup_photo.jpg')
+# bemi.makeup_photo.attach(io: File.open(bemi_makeup) , filename: 'makeup_photo.jpg')
+
+
+
+# esther.save!
+# ropo.save!
+# breeny.save!
+# nikki.save!
+# shantania.save!
+# bemi.save!
 
 # puts "-"
 
