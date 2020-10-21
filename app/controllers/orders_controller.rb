@@ -58,6 +58,7 @@ class OrdersController < ApplicationController
       @basket.empty!
       @basket.update(discount_code: nil)
       @order.update(completed: true)
+      SendOrderJob.perform_later(@order.id)
       redirect_to order_order_success_path(@order)
     end
   end
