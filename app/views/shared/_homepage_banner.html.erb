@@ -1,39 +1,41 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
   <div class="carousel-inner" id="carousel-data">
     <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
-      <div id="test_<%= home_banner.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>" >
-        <style>
-          @media screen and (min-width: 767px) {
-            #test_<%= home_banner.id %> {
-              background-image: url("<%= url_for home_banner.banner %>");
-              width: 100%;
-              height: calc(0.3 * 100vw);
-              background-size: cover;
-              background-repeat: no-repeat;
-            }
-          }
-          @media screen and (max-width: 766.95px) {
-            #test_<%= home_banner.id %> {
-              background-image: url("<%= url_for home_banner.mobile_banner %>");
-              width: 100%;
-              height: 100vw;
-            }
-          }
-        </style>
-        <% @breaks.each do |breaker| %>
-          <% if home_banner.send(breaker[0]).attached? %>
-            <style scoped>
-              @media screen and (min-width: <%= breaker[1][:width] %>px) and (max-width: <%= breaker[1][:width] %>px ) and (max-height: <%= breaker[1][:height] %>px) {
-                #test_<%= home_banner.id %> {
-                  background-image: url("<%= url_for home_banner.send(breaker[0]) %>");
-                  background-size: cover;
-                  height: <%= breaker[1][:height] - breaker[1][:browser] - 100 %>px;
-                }
+      <%= link_to home_banner.link do %>
+        <div id="test_<%= home_banner.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>" >
+          <style>
+            @media screen and (min-width: 767px) {
+              #test_<%= home_banner.id %> {
+                background-image: url("<%= url_for home_banner.banner %>");
+                width: 100%;
+                height: calc(0.3 * 100vw);
+                background-size: cover;
+                background-repeat: no-repeat;
               }
-            </style>
+            }
+            @media screen and (max-width: 766.95px) {
+              #test_<%= home_banner.id %> {
+                background-image: url("<%= url_for home_banner.mobile_banner %>");
+                width: 100%;
+                height: 100vw;
+              }
+            }
+          </style>
+          <% @breaks.each do |breaker| %>
+            <% if home_banner.send(breaker[0]).attached? %>
+              <style scoped>
+                @media screen and (min-width: <%= breaker[1][:width] %>px) and (max-width: <%= breaker[1][:width] %>px ) and (max-height: <%= breaker[1][:height] %>px) {
+                  #test_<%= home_banner.id %> {
+                    background-image: url("<%= url_for home_banner.send(breaker[0]) %>");
+                    background-size: cover;
+                    height: <%= breaker[1][:height] - breaker[1][:browser] - 100 %>px;
+                  }
+                }
+              </style>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
