@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
     @product = Product.friendly.find(params[:id])
     authorize @product
     @customer_reviews = @product.customer_reviews.page params[:page]
-    @tutorials = Tutorial.select { |tutorial| tutorial.products.include?(@product) }
+    @tutorials = Tutorial.where(status: 'approved').select { |tutorial| tutorial.products.include?(@product) }
     if request.referrer&.match?(/myloopbeauty/) || Rails.env.development?
       respond_to do |format|
         format.js
