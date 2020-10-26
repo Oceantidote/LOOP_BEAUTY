@@ -10,7 +10,7 @@ class Tutorial < ApplicationRecord
   has_many :tutorial_products, dependent: :destroy
   has_many :products, through: :tutorial_products
   validates :title, uniqueness: true, presence: true
-  validates :video, size: { less_than: 100.megabytes, message: 'cannot exceed 100MB' }
+  validates :video, size: { less_than: 500.megabytes, message: 'cannot exceed 500MB' }
   validates :cover_photo, attached: true
   after_save :update_featured
   after_save :process_video, if: :processing?
