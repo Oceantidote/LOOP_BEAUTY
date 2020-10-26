@@ -63,6 +63,8 @@
           <div class="d-flex mb-3" style="align-items: baseline;">
             <%= f.input :accepts_terms, label: ("By creating an account you agree to the website's #{ link_to 'Terms', sale_terms_path } and our #{ link_to 'Privacy Policy', privacy_policy_path }").html_safe, label_html: { class: 'reg-new-checkbox-label grey-important' }, input_html: { class: 'grey' } %>
           </div>
+          <%= flash[:recaptcha_error] %>
+          <%= recaptcha_v3(action: 'registration') %>
         </div>
         <div class="form-actions">
           <%= f.button :submit, "SUBMIT", class: "primary-button" %>

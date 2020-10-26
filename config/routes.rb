@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
-  devise_for :users
+  devise_for :users, controllers: { registrations: :registrations }
   root to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage'
   get '/contact_us', to: 'pages#contact_us'
