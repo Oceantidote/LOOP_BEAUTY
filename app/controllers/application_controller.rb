@@ -95,6 +95,7 @@ class ApplicationController < ActionController::Base
     unless session['location']
       session['location'] = request.location.country || 'GB'
     end
+    @locale = session['location']
   end
 
   def combine_baskets

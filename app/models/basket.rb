@@ -28,8 +28,16 @@ class Basket < ApplicationRecord
     Money.new subtotal_cents
   end
 
+  def us_subtotal
+    Money.new us_subtotal_cents, :usd
+  end
+
   def subtotal_cents
     basket_products.map(&:price_cents).sum
+  end
+
+  def us_subtotal_cents
+    basket_products.map(&:us_price_cents).sum
   end
 
   def subtotal_in(currency)
@@ -46,9 +54,18 @@ class Basket < ApplicationRecord
     Money.new total_price_cents
   end
 
+  def us_total_price
+    Money.new us_total_price_cents, :usd
+  end
+
   def total_price_cents
     credit_spent = money_off_from_credit_cents
     credit_spent > 0 ? subtotal_cents - credit_spent : subtotal_cents
+  end
+
+  def us_total_price_cents
+    credit_spent = money_off_from_credit_cents
+    credit_spent > 0 ? us_subtotal_cents - credit_spent : us_subtotal_cents
   end
 
   def total_price_in(currency)
@@ -66,8 +83,16 @@ class Basket < ApplicationRecord
     Money.new unadjusted_price_cents
   end
 
+  def us_unadjusted_price
+    Money.new us_unadjusted_price_cents, :usd
+  end
+
   def unadjusted_price_cents
     basket_products.map(&:unadjusted_price_cents).sum
+  end
+
+  def us_unadjusted_price_cents
+    basket_products.map(&:us_unadjusted_price_cents).sum
   end
 
   def unadjusted_price_in(currency)
@@ -84,8 +109,16 @@ class Basket < ApplicationRecord
     Money.new money_off_cents
   end
 
+  def us_money_off
+    Money.new money_off_cents, :usd
+  end
+
   def money_off_cents
     unadjusted_price_cents - total_price_cents
+  end
+
+  def us_money_off_cents
+    us_unadjusted_price_cents - us_total_price_cents
   end
 
   def money_off_in(currency)
@@ -102,7 +135,17 @@ class Basket < ApplicationRecord
     Money.new money_off_from_credit_cents
   end
 
+  def us_money_off_from_credit
+    Money.new us_money_off_from_credit_cents, :usd
+  end
+
   def money_off_from_credit_cents
+    return 0 unless user&.influencer?
+    total = basket_products.where(purchase_with_credit: true).map(&:price_cents).sum
+    return user.remaining_credit_cents > total ? total : user.remaining_credit_cents
+  end
+
+  def us_money_off_from_credit_cents
     return 0 unless user&.influencer?
     total = basket_products.where(purchase_with_credit: true).map(&:price_cents).sum
     return user.remaining_credit_cents > total ? total : user.remaining_credit_cents

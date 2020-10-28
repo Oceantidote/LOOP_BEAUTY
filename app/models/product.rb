@@ -17,6 +17,7 @@ class Product < ApplicationRecord
   has_many :insider_reviews, dependent: :destroy
   has_many :customer_reviews, dependent: :destroy
   monetize :price_cents
+  monetize :us_price_cents, with_currency: :usd
   has_many :showroom_products, dependent: :destroy
   has_many :product_benefits, dependent: :destroy
   has_many :tutorial_products, dependent: :destroy
