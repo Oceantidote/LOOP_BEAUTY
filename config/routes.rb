@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
   get '/make-up', to: 'products#index'
+  post '/locale', to: 'pages#change_locale'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
