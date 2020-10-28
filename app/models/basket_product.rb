@@ -20,11 +20,23 @@ class BasketProduct < ApplicationRecord
     Money.new individual_price_cents
   end
 
+  def us_individual_price
+    Money.new us_individual_price_cents, :usd
+  end
+
   def individual_price_cents
     if basket.discount_code.present?
       (product.price_cents * ((100 - basket.discount_code.discount) / 100.to_f)).ceil
     else
       product.price_cents
+    end
+  end
+
+  def us_individual_price_cents
+    if basket.discount_code.present?
+      (product.us_price_cents * ((100 - basket.discount_code.discount) / 100.to_f)).ceil
+    else
+      product.us_price_cents
     end
   end
 
@@ -52,6 +64,14 @@ class BasketProduct < ApplicationRecord
     end
   end
 
+  def us_price_cents
+    if basket.discount_code.present?
+      (us_unadjusted_price_cents * ((100 - basket.discount_code.discount) / 100.to_f)).ceil
+    else
+      us_unadjusted_price_cents
+    end
+  end
+
   def unadjusted_price_in_cents(currency)
     info = ExchangeRate.find_by_currency(currency)
     return unadjusted_price_cents unless info
@@ -60,5 +80,9 @@ class BasketProduct < ApplicationRecord
 
   def unadjusted_price_cents
     product.price_cents * quantity
+  end
+
+  def us_unadjusted_price_cents
+    product.us_price_cents * quantity
   end
 end
