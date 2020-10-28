@@ -103,7 +103,10 @@
           </div>
           <!-- <div class="spacer" style="height: 50px;"></div> -->
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text photo-input-text">Cover photo</p>
+            <div>
+              <p class="boldest muli s-medium-text photo-input-text">Cover photo</p>
+              <p class="boldest muli v-small-text photo-input-text">1680 x 870</p>
+            </div>
             <div>
               <%= f.label :cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
@@ -115,7 +118,10 @@
             </div>
           </div>
           <div class="insider-articles-input align-items-start">
-            <p class="boldest muli s-medium-text photo-input-text">Mobile Cover photo</p>
+            <div>
+              <p class="boldest muli s-medium-text photo-input-text">Mobile Cover photo</p>
+              <p class="boldest muli v-small-text photo-input-text">676 x 676</p>
+            </div>
             <div>
               <%= f.label :mobile_cover_photo, 'CHOOSE FILE',class: 'upload-photo' %>
               <%= f.file_field :mobile_cover_photo, class: 'd-none photo-input', 'data-name': 'insider-cover-photo', onchange: "displayPreview(this)" %>
