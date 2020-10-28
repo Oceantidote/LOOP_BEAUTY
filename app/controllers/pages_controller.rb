@@ -1,8 +1,13 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :insider, :videos, :influencer_video, :about_us, :questions_and_answers, :influencers, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy, :contact_us, :returns_policy, :seen_cookie_message]
+  skip_before_action :authenticate_user!, only: [:home, :homepage, :freebies, :insider, :videos, :influencer_video, :about_us, :questions_and_answers, :influencers, :terms_and_conditions, :shipping, :sale_terms, :privacy_policy, :contact_us, :returns_policy, :seen_cookie_message, :change_locale]
 
   def seen_cookie_message
     cookies.permanent[:seen_cookie_message] = true
+  end
+
+  def change_locale
+    session['location'] = params['locale']
+    redirect_back fallback_location: root_path
   end
 
   def home
