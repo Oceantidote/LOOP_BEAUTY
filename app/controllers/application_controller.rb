@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     unless session['location']
-      session['location'] = request.location.country
+      session['location'] = request.location.country || 'GB'
     end
   end
 
