@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_151033) do
+ActiveRecord::Schema.define(version: 2020_10_29_125714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -370,6 +370,8 @@ ActiveRecord::Schema.define(version: 2020_10_28_151033) do
     t.datetime "updated_at", null: false
     t.integer "number_in_stock", default: 0
     t.integer "us_number_in_stock", default: 0
+    t.boolean "uk_available", default: true
+    t.boolean "us_available", default: false
     t.index ["product_id"], name: "index_shades_on_product_id"
   end
 
