@@ -12,6 +12,8 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :department
   has_many :shades, dependent: :destroy
+  has_many :uk_shades, -> { where(uk_available: true) }, class_name: 'Shade'
+  has_many :us_shades, -> { where(us_available: true) }, class_name: 'Shade'
   has_many :tutorials, through: :tutorial_products
   has_many :lookbooks, through: :lookbook_products
   has_many :insider_reviews, dependent: :destroy
