@@ -29,6 +29,13 @@ class ProductsController < ApplicationController
       @products_count = @products.count
       @sort_method = 'created_at,desc'
     end
+    if @locale == 'US'
+      @products = @products.where.not(us_price_cents: 0)
+      @original = @original.where.not(us_price_cents: 0)
+    else
+      @products = @products.where.not(price_cents: 0)
+      @original = @original.where.not(price_cents: 0)
+    end
     @categories = Category.all.map { |category| category.name }
     @brand_names = Brand.all.map { |brand| brand.name }
     respond_to do |format|
