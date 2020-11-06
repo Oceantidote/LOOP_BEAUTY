@@ -1,25 +1,31 @@
 <div class="container">
-  <table class="table muli">
+  <h2 class="mt-4 muli">Abandoned Carts</h2>
+  <table id="analytics-table" class="mt-4">
     <thead>
-      <th>No. of Items</th>
-      <th>Price</th>
-      <th></th>
-      <th>Items</th>
+      <th class="w25">Date Abandoned</th>
+      <th class="w50">Items</th>
+      <th class="w125">Total</th>
+      <th class="w125"></th>
     </thead>
     <tbody>
       <% @baskets.each do |basket| %>
-        <tr>
-          <td><%= basket.basket_products.size %></td>
-          <td><%= humanized_money_with_symbol basket.total_price %></td>
-          <td><%= link_to 'View', abandoned_basket_path(basket)  %></td>
-          <td>
+        <tr class="influencer-order" id="order_<%= basket.id %>">
+          <td class="w25"><%= basket.updated_at.strftime('%D') %></td>
+          <td class="w50">
             <table>
-              <thead><th>Item</th><th>Quantity</th></thead>
-              <% basket.basket_products.each do |p| %>
-                <tbody><td><%= p.product.title %></td><td><%= p.quantity %></td></tbody>
+              <% basket.basket_products.each do |bp| %>
+                <tbody>
+                  <td class="w25">
+                    <%= image_tag url_for(bp.shade.card_photo.variant(resize: '50x50')), class: "item-image-thumbnail", alt: "shade photo"  %>
+                  </td>
+                  <td class="w50"><%= bp.product.title %> - <%= humanized_money_with_symbol(bp.product.price) %></td>
+                  <td class="w25" style="text-align: center;">x <%= bp.quantity %></td>
+                </tbody>
               <% end %>
             </table>
           </td>
+          <td class="w125"><%= humanized_money_with_symbol basket.total_price %></td>
+          <td class="w125"><%= link_to 'View', abandoned_basket_path(basket)  %></td>
         </tr>
       <% end %>
     </tbody>
