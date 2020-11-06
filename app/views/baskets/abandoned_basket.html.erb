@@ -1,0 +1,38 @@
+<div class="shopping-bag-wrapper minimum-height">
+  <div class="shopping-bag-container">
+    <h2 class="shopping-bag-title text-center">Abandoned Bag</h2>
+    <hr style="border-color: #CFCFCF;">
+    <% @abandoned_basket.basket_products.each do |item| %>
+      <div class="item-<%= item.id %> item-bag-<%= item.id %> %>">
+        <div class="shopping-bag-card">
+          <div class="shopping-bag-card-content">
+            <div class="shopping-bag-image-container">
+              <% if item.shade.number_in_stock == 0 %>
+                <div class="out-of-stock-overlay">
+                  <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                </div>
+              <% end %>
+              <%= image_tag url_for(item.shade.card_photo), class: 'shopping-bag-card-image', alt: "shade photo" %>
+            </div>
+            <div class="shopping-bag-card-title">
+              <p class="small-text boldest no-margin muli"><%= item.product.title %></p>
+              <p class="small-text no-margin muli"><%= item.shade.name %></p>
+              <p class="small-text no-margin muli"><%= item.product.brand.name %></p>
+            </div>
+            <span class="item-form-<%= item.id %>" style="display: contents;">
+              <div class="shopping-bag-card-quantity muli boldest">
+                <p class="boldest no-margin small-text"><%= item.quantity %></p>
+              </div>
+              <p class="small-text boldest text-right shopping-bag-card-total muli"><%= humanized_money_with_symbol((item.product.price * item.quantity)) %></p>
+            </span>
+          </div>
+          <hr style="border-color: #CFCFCF;">
+        </div>
+      </div>
+    <% end %>
+    <div class="shopping-bag-checkout d-flex justify-content-center">
+      <%= link_to 'RECOVER', recover_path(@abandoned_basket), method: :patch, class: 'primary-button bag-checkout-button' %>
+    </div>
+  </div>
+</div>
+

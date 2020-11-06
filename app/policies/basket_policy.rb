@@ -20,4 +20,12 @@ class BasketPolicy < ApplicationPolicy
   def abandon?
     record.user == user
   end
+
+  def recover?
+    abandon?
+  end
+
+  def abandoned_basket?
+    abandon?
+  end
 end

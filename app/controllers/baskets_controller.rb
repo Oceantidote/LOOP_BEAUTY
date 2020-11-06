@@ -44,8 +44,21 @@ class BasketsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
+  def recover
+    @old_basket = Basket.find(params[:id])
+    authorize @old_basket
+    if @basket.empty?
+      @basket.destroy
+    else
+      @basket.update(abandoned: true, discount_code: nil)
+    end
+    @old_basket.update(abandoned: false)
+    redirect_to root_path
+  end
+
   def abandoned_basket
-    @basket = Basket.find(params[:id])
+    @abandoned_basket = Basket.find(params[:id])
+    authorize @abandoned_basket
   end
 
   def remove_discount_code
