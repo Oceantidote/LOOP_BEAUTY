@@ -10,7 +10,7 @@
     <tbody>
       <% @baskets.each do |basket| %>
         <tr class="influencer-order" id="order_<%= basket.id %>">
-          <td class="w25"><%= basket.updated_at.strftime('%D') %></td>
+          <td class="w25"><strong><%= basket.updated_at.strftime('%D') %></strong></td>
           <td class="w50">
             <table>
               <% basket.basket_products.each do |bp| %>
@@ -18,14 +18,14 @@
                   <td class="w25">
                     <%= image_tag url_for(bp.shade.card_photo.variant(resize: '50x50')), class: "item-image-thumbnail", alt: "shade photo"  %>
                   </td>
-                  <td class="w50"><%= bp.product.title %> - <%= humanized_money_with_symbol(bp.product.price) %></td>
-                  <td class="w25" style="text-align: center;">x <%= bp.quantity %></td>
+                  <td class="w50"><strong><%= bp.product.title %> - <%= humanized_money_with_symbol(bp.product.price) %></strong></td>
+                  <td class="w25" style="text-align: center;"><strong>x <%= bp.quantity %></strong></td>
                 </tbody>
               <% end %>
             </table>
           </td>
-          <td class="w125"><%= humanized_money_with_symbol basket.total_price %></td>
-          <td class="w125"><%= link_to 'View', abandoned_basket_path(basket)  %></td>
+          <td class="w125"><strong class="mt-3"><%= humanized_money_with_symbol basket.total_price %></strong></td>
+          <td class="w125"><%= link_to 'View', abandoned_basket_path(basket), class: "primary-button hunset"  %></td>
         </tr>
       <% end %>
     </tbody>
