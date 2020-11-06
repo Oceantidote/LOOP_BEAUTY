@@ -17,7 +17,7 @@
                     <td><%= code.discount %></td>
                     <td>
                       <% if User.find_by(referral_code: code.code) %>
-                        user referral code
+                        Friend Code
                       <% elsif code.freebie.present? %>
                         Freebie
                       <% elsif code.orders.any? || code.baskets.any? %>
