@@ -231,8 +231,10 @@
       <i class="far fa-check-circle"></i>
       <p class="muli">ITEM ADDED</p>
     </div>
-    <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
-      <%#= image_tag 'close.png', class: "nav-basket-close", alt: "close icon" %>
+    <div class="d-flex justify-content-between">
+      <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
+      <%= link_to 'Abandon bag', abandon_path, method: :patch, class: 'muli v-small-text' %>
+    </div>
   </div>
   <hr>
   <div class="navbar-basket-items-container">

@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
   get '/make-up', to: 'products#index'
+  get '/abandoned-baskets', to: 'baskets#index'
+  get '/abandoned-baskets/:id', to: 'baskets#abandoned_basket', as: 'abandoned_basket'
+  patch '/abandon-basket', to: 'baskets#abandon', as: 'abandon'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
@@ -38,7 +41,6 @@ Rails.application.routes.draw do
   resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
-
   resources :users, only: [], path: 'influencers' do
     resources :lookbooks, only: [:index] do
       member do
