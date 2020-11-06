@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_140500) do
+ActiveRecord::Schema.define(version: 2020_11_06_143140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_140500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "discount_code_id"
+    t.boolean "abandoned", default: false
     t.index ["discount_code_id"], name: "index_baskets_on_discount_code_id"
     t.index ["user_id"], name: "index_baskets_on_user_id"
   end
@@ -323,6 +324,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_140500) do
     t.boolean "demoable", default: false
     t.boolean "published", default: false
     t.boolean "featured", default: false
+    t.integer "us_price_cents", default: 0
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["department_id"], name: "index_products_on_department_id"
@@ -368,6 +370,9 @@ ActiveRecord::Schema.define(version: 2020_09_17_140500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number_in_stock", default: 0
+    t.integer "us_number_in_stock", default: 0
+    t.boolean "uk_available", default: true
+    t.boolean "us_available", default: false
     t.index ["product_id"], name: "index_shades_on_product_id"
   end
 
