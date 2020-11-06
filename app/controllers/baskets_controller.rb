@@ -1,5 +1,5 @@
 class BasketsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: [:abandon, :index]
 
   def show
     @basket = find_basket
@@ -29,6 +29,19 @@ class BasketsController < ApplicationController
         format.js
       end
     end
+  end
+
+  def index
+    @baskets = policy_scope(Basket)
+  end
+
+  def abandon
+    authorize @basket
+    unless @basket.empty?
+      @basket.update(abandoned: true, discount_code: nil)
+      Basket.create(user: current_user)
+    end
+    redirect_back fallback_location: root_path
   end
 
   def remove_discount_code

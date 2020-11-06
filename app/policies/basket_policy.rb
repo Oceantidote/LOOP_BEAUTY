@@ -1,7 +1,7 @@
 class BasketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(abandoned: true, user: user)
     end
   end
 
@@ -15,5 +15,9 @@ class BasketPolicy < ApplicationPolicy
 
   def remove_discount_code?
     show?
+  end
+
+  def abandon?
+    record.user == user
   end
 end
