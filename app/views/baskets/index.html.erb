@@ -1,3 +1,27 @@
 <div class="container">
-  <% raise %>
+  <table class="table muli">
+    <thead>
+      <th>No. of Items</th>
+      <th>Price</th>
+      <th></th>
+      <th>Items</th>
+    </thead>
+    <tbody>
+      <% @baskets.each do |basket| %>
+        <tr>
+          <td><%= basket.basket_products.size %></td>
+          <td><%= humanized_money_with_symbol basket.total_price %></td>
+          <td><%= link_to 'View', abandoned_basket_path(basket)  %></td>
+          <td>
+            <table>
+              <thead><th>Item</th><th>Quantity</th></thead>
+              <% basket.basket_products.each do |p| %>
+                <tbody><td><%= p.product.title %></td><td><%= p.quantity %></td></tbody>
+              <% end %>
+            </table>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
