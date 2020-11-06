@@ -1,17 +1,38 @@
-<div class="container">
-  <% @codes.each do |code| %>
-    <div>
-      <%= code.code %> - <%= code.discount %> - <%= link_to 'Edit', edit_admin_discount_code_path(code) %>
-      <% if User.find_by(referral_code: code.code) %>
-        - user referral code
-      <% elsif code.freebie.present? %>
-        - Freebie
-      <% elsif code.orders.any? || code.baskets.any? %>
-        - in use
-      <% else %>
-        - <%= link_to 'Delete', admin_discount_code_path(code), method: :delete %>
-      <% end %>
-    </div>
-  <% end %>
-  <%= link_to 'Add discount code', new_admin_discount_code_path %>
+<div class="influencer-orders-container">
+    <table id="analytics-table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Discount %</th>
+                <th>Type</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @codes.each do |code| %>
+                <tr class="influencer-order" id="order_<%= code.id %>">
+                    <td><%= code.code %></td>
+                    <td><%= code.discount %></td>
+                    <td>
+                      <% if User.find_by(referral_code: code.code) %>
+                        user referral code
+                      <% elsif code.freebie.present? %>
+                        Freebie
+                      <% elsif code.orders.any? || code.baskets.any? %>
+                        In use
+                      <% else %>
+                        Promo Code
+                      <% end %>
+                    </td>
+                    <td><%= link_to 'Edit', edit_admin_discount_code_path(code) %></td>
+                    <td>
+                      <% unless (User.find_by(referral_code: code.code) || code.freebie.present? ||code.orders.any? || code.baskets.any?)  %>
+                        <%= link_to 'Delete', admin_discount_code_path(code), method: :delete %>
+                      <% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
