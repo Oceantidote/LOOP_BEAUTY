@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/abandoned-baskets', to: 'baskets#index'
   get '/abandoned-baskets/:id', to: 'baskets#abandoned_basket', as: 'abandoned_basket'
   patch '/abandon-basket', to: 'baskets#abandon', as: 'abandon'
+  patch '/recover-basket/:id', to: 'baskets#recover', as: 'recover'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
