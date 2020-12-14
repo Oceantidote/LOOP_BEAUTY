@@ -233,7 +233,7 @@
     </div>
     <div class="d-flex justify-content-between">
       <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
-      
+
     </div>
   </div>
   <hr>
@@ -248,7 +248,6 @@
     <p class="s-medium-text basket-total-price muli boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button mb-0 navbar-basket-button" %>
-  <%= link_to 'Abandon bag', abandon_path, method: :patch, class: 'muli black v-small-text' %>
 </div>
 
 <!-- <div class="navbar-search-container">

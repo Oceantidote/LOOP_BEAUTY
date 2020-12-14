@@ -8,6 +8,8 @@ class OrdersController < ApplicationController
 
   def new
     @basket = find_basket
+    @basket.update(abandonable: true)
+    AbandonBasketJob.set(wait: 2.hours).perform_later(@basket.id)
     @user = @basket.user # to be reviewed
     @order = Order.new
     @address = Address.new # to be reviewed
@@ -50,8 +52,6 @@ class OrdersController < ApplicationController
       order_product.order = @order
       order_product.save
     end
-    # @basket.empty!
-    # @basket.update(discount_code: nil)
     if @order.total_price > 0
       launch_session
     else
