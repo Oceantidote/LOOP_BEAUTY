@@ -1,5 +1,5 @@
 {
-  "name": "LOOP_BEAUTY",
+  "name": "loop_beauty",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.7",

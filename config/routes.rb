@@ -29,10 +29,8 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
   get '/make-up', to: 'products#index'
-  get '/abandoned-baskets', to: 'baskets#index'
-  get '/abandoned-baskets/:id', to: 'baskets#abandoned_basket', as: 'abandoned_basket'
-  patch '/abandon-basket', to: 'baskets#abandon', as: 'abandon'
-  patch '/recover-basket/:id', to: 'baskets#recover', as: 'recover'
+  get '/abandoned-bags/:id', to: 'baskets#abandoned_basket', as: 'abandoned_basket'
+  patch '/recover-bag/:id', to: 'baskets#recover', as: 'recover'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
@@ -138,6 +136,7 @@ Rails.application.routes.draw do
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
     resources :discount_codes, except: [:show]
+    resources :baskets, only: [:index], path: :'abandoned-bags'
   end
 
   # ADMIN ROUTES ABOVE

@@ -35,24 +35,11 @@ class BasketsController < ApplicationController
     @baskets = policy_scope(Basket)
   end
 
-  def abandon
-    authorize @basket
-    unless @basket.empty?
-      @basket.update(abandoned: true, discount_code: nil)
-      Basket.create(user: current_user)
-    end
-    redirect_back fallback_location: root_path
-  end
-
   def recover
     @old_basket = Basket.find(params[:id])
     authorize @old_basket
-    if @basket.empty?
-      @basket.destroy
-    else
-      @basket.update(abandoned: true, discount_code: nil)
-    end
-    @old_basket.update(abandoned: false)
+    @basket.destroy
+    @old_basket.update(recovered: true)
     redirect_to root_path
   end
 

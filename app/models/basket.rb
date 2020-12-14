@@ -1,7 +1,7 @@
 class Basket < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :discount_code, optional: true
-  has_many :basket_products
+  has_many :basket_products, dependent: :destroy
   has_many :products, through: :basket_products
   has_many :shades, through: :products
   validate :discount_uses
@@ -18,6 +18,8 @@ class Basket < ApplicationRecord
   def empty!
     basket_products.destroy_all
     discount_code = nil
+    abandonable = false
+    save
   end
 
   def total_number_of_products

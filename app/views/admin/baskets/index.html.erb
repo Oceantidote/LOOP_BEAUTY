@@ -1,0 +1,53 @@
+<div class="container">
+  <h2 class="mt-4 muli">Abandoned Bags</h2>
+
+  <div class="stats-container muli d-flex justify-content-between">
+    <div>
+      <h6>Recovered Funds</h6>
+      <h3><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.currency %></h3>
+    </div>
+    <div>
+      <h6>Recovered Orders</h6>
+      <div class="d-flex align-items-end">
+        <h3><%= @recovered_orders %></h3>
+        <p class="mb-2 ml-1"><%= "ORDER".pluralize(@recovered_orders).upcase %></p>
+      </div>
+    </div>
+    <div>
+      <h6>Total Emails</h6>
+      <div class="d-flex align-items-end">
+        <h3><%= @total_emails %></h3>
+        <p class="mb-2 ml-1"><%= "EMAIL".pluralize(@total_emails).upcase %></p>
+      </div>
+    </div>
+    <div>
+      <h6>Total Sales</h6>
+      <h3><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.currency %></h3>
+    </div>
+  </div>
+
+  <table id="analytics-table" class="mt-4">
+    <thead>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Placed By</th>
+      <th>Email Address</th>
+      <th>Email Status</th>
+      <th>Recovery Status</th>
+      <th>Total</th>
+    </thead>
+    <tbody>
+      <% @baskets.each do |basket| %>
+        <tr class="muli" id="order_<%= basket.id %>">
+          <td>#<%= basket.id.to_s.rjust(7, '0') %></td>
+          <td><%= basket.updated_at.day.ordinalize %> <%= basket.updated_at.strftime('%b, %l:%M%P') %></td>
+          <td><%= basket.user.full_name %></td>
+          <td><%= basket.user.email %></td>
+          <td>Not Sent</td>
+          <td><%= basket.recovered? ? 'Recovered' : 'Not recovered' %></td>
+          <td><%= humanized_money_with_symbol basket.total_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

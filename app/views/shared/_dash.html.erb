@@ -14,9 +14,6 @@
   <%= link_to user_wishlist_path(current_user), class: "each-dash-link" do %>
     <%= image_tag "dash-wish.png", class: "dash-links-image", alt: "dash wishlist icon" %>Wishlist
   <% end %>
-  <%= link_to abandoned_baskets_path, class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image", alt: "dash basket icon" %>Abandoned Bags
-  <% end %>
   <div class="each-dash-link-title">ACCOUNT SETTINGS</div>
   <%= link_to user_account_details_path(current_user), class: "each-dash-link" do %>
     <%= image_tag "default-user.png", class: "dash-links-image", alt: "dash user icon" %>Account Details
@@ -53,10 +50,6 @@
   <%= link_to user_preference_centre_path(current_user), class: "each-dash-link-mobile muli no-decoration" do %>
     <span>PREFERENCES</span>
     <%= image_tag "dash-preferences.png", class: "dash-links-mobile-image", alt: "dash preferences icon" %>
-  <% end %>
-  <%= link_to abandoned_baskets_path, class: "each-dash-link-mobile muli no-decoration" do %>
-    <span>ABANDONED BAGS</span>
-    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "dash basket icon" %>
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile muli no-decoration" do %>
     <span>SIGN OUT</span>
