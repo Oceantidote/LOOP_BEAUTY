@@ -40,7 +40,7 @@
       <% @baskets.each do |basket| %>
         <tr class="muli" id="order_<%= basket.id %>">
           <td>#<%= basket.id.to_s.rjust(7, '0') %></td>
-          <td><%= basket.updated_at.day.ordinalize %> <%= basket.updated_at.strftime('%b, %l:%M%P') %></td>
+          <td><%= basket.abandoned_at.day.ordinalize %> <%= basket.updated_at.strftime('%b, %l:%M%P') %></td>
           <td><%= basket.user.full_name %></td>
           <td><%= basket.user.email %></td>
           <td>Not Sent</td>
