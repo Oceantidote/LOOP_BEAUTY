@@ -4,7 +4,7 @@
   <div class="stats-container muli d-flex justify-content-between">
     <div>
       <h6>Recovered Funds</h6>
-      <h3><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.currency %></h3>
+      <h3><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.currency unless @recovered_funds.zero? %></h3>
     </div>
     <div>
       <h6>Recovered Orders</h6>
@@ -22,7 +22,7 @@
     </div>
     <div>
       <h6>Total Sales</h6>
-      <h3><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.currency %></h3>
+      <h3><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.currency unless @total_sales.zero? %></h3>
     </div>
   </div>
 
