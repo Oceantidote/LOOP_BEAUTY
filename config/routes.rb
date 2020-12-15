@@ -134,7 +134,11 @@ Rails.application.routes.draw do
     get '/categories', to: 'pages#categories'
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
-    resources :discount_codes, except: [:show]
+    resources :discount_codes, except: [:show] do
+      member do
+        patch '/deactivate', to: 'discount_codes#deactivate'
+      end
+    end
     resources :baskets, only: [:index], path: :'abandoned-bags' do
       collection do
         get '/download', to: 'baskets#download'

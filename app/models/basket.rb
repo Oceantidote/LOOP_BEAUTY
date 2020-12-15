@@ -127,6 +127,9 @@ class Basket < ApplicationRecord
     if discount_code.orders.size >= discount_code.uses || ((user&.orders&.where(discount_code: discount_code)&.size || 0) >= discount_code.user_uses)
       errors.add :discount_code, 'number of uses exceeded'
     end
+    if !discount_code.active?
+      errors.add :discount_code, 'is inactive'
+    end
     if user&.referral_code == discount_code.code
       errors.add :discount_code, 'cannot be your own referral code'
     end
