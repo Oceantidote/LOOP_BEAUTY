@@ -2,7 +2,7 @@ class Admin::DiscountCodePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.admin?
-        scope.all
+        scope.where(active: true)
       else
         raise Pundit::NotAuthorizedError
       end
@@ -26,6 +26,10 @@ class Admin::DiscountCodePolicy < ApplicationPolicy
   end
 
   def destroy?
+    new?
+  end
+
+  def deactivate?
     new?
   end
 end
