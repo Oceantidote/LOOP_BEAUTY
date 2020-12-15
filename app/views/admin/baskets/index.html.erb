@@ -1,10 +1,26 @@
 <div class="container">
   <h2 class="mt-4 muli">Abandoned Bags</h2>
 
+  <div class="admin-form-container admin-products-new-container sales-report-container">
+    <%= simple_form_for :filter, method: :get, url: admin_baskets_path  do |f| %>
+      <div class="personal-details-input">
+        <p class="boldest muli s-medium-text text-right no-margin">Start Date</p>
+        <%= f.input :from, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
+      </div>
+      <div class="personal-details-input align-items-center">
+        <p class="boldest muli s-medium-text text-right no-margin">End Date</p>
+        <%= f.input :to, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
+      </div>
+      <div class="d-flex justify-content-around">
+        <%= f.submit 'FILTER', class: "primary-button personal-details-button small-text" %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="stats-container muli d-flex justify-content-between">
     <div>
       <h6>Recovered Funds</h6>
-      <h3><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.currency unless @recovered_funds.zero? %></h3>
+      <h3><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.zero? ?  'GBP' : @recovered_funds.currency %></h3>
     </div>
     <div>
       <h6>Recovered Orders</h6>
@@ -22,7 +38,7 @@
     </div>
     <div>
       <h6>Total Sales</h6>
-      <h3><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.currency unless @total_sales.zero? %></h3>
+      <h3><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.zero? ?  'GBP' : @total_sales.currency %></h3>
     </div>
   </div>
 
@@ -40,14 +56,18 @@
       <% @baskets.each do |basket| %>
         <tr class="muli" id="order_<%= basket.id %>">
           <td>#<%= basket.id.to_s.rjust(7, '0') %></td>
-          <td><%= basket.abandoned_at.day.ordinalize %> <%= basket.updated_at.strftime('%b, %l:%M%P') %></td>
+          <td><%= basket.abandoned_at.day.ordinalize %> <%= basket.abandoned_at.strftime('%b, %l:%M%P') %></td>
           <td><%= basket.user.full_name %></td>
           <td><%= basket.user.email %></td>
-          <td>Not Sent</td>
-          <td><%= basket.recovered? ? 'Recovered' : 'Not recovered' %></td>
+          <td><%= basket.email_status %></td>
+          <td><%= basket.recovery_status %></td>
           <td><%= humanized_money_with_symbol basket.total_price %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to 'DOWNLOAD', download_admin_baskets_path(from: @from, to: @to, format: :csv), class: "primary-button small-text w25" %>
+  </div>
 </div>

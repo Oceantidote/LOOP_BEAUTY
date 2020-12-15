@@ -136,7 +136,11 @@ Rails.application.routes.draw do
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
     resources :discount_codes, except: [:show]
-    resources :baskets, only: [:index], path: :'abandoned-bags'
+    resources :baskets, only: [:index], path: :'abandoned-bags' do
+      collection do
+        get '/download', to: 'baskets#download'
+      end
+    end
   end
 
   # ADMIN ROUTES ABOVE
