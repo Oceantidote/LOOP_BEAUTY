@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   get '/checkout', to: 'orders#new'
   get '/make-up', to: 'products#index'
   get '/abandoned-bags/:id', to: 'baskets#abandoned_basket', as: 'abandoned_basket'
-  patch '/recover-bag/:id', to: 'baskets#recover', as: 'recover'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
@@ -136,7 +135,11 @@ Rails.application.routes.draw do
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
     resources :discount_codes, except: [:show]
-    resources :baskets, only: [:index], path: :'abandoned-bags'
+    resources :baskets, only: [:index], path: :'abandoned-bags' do
+      collection do
+        get '/download', to: 'baskets#download'
+      end
+    end
   end
 
   # ADMIN ROUTES ABOVE

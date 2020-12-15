@@ -131,4 +131,12 @@ class Basket < ApplicationRecord
       errors.add :discount_code, 'cannot be your own referral code'
     end
   end
+
+  def email_status
+    'Not sent'
+  end
+
+  def recovery_status
+    recovered_completed? ? 'Recovered' : 'Not recovered'
+  end
 end

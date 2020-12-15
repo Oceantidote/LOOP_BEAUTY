@@ -46,6 +46,11 @@ class BasketsController < ApplicationController
   def abandoned_basket
     @abandoned_basket = Basket.find(params[:id])
     authorize @abandoned_basket
+    unless @abandoned_basket.recovered?
+      @basket.destroy
+      @abandoned_basket.update(recovered: true)
+      @basket = @abandoned_basket
+    end
   end
 
   def remove_discount_code
