@@ -139,6 +139,18 @@ class Basket < ApplicationRecord
     'Not sent'
   end
 
+  def to_mailchimp_cart_lines
+    basket_products.map do |bp|
+      {
+        id: bp.id.to_s,
+        product_id: bp.product.id.to_s,
+        product_variant_id: bp.shade.id.to_s,
+        quantity: bp.quantity,
+        price: bp.price_cents
+      }
+    end
+  end
+
   def recovery_status
     recovered_completed? ? 'Recovered' : 'Not recovered'
   end
