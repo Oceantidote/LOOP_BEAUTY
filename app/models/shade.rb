@@ -18,4 +18,13 @@ class Shade < ApplicationRecord
   def set_sku
     self.update(sku: "SKU-#{self.id}")
   end
+
+  def to_mailchimp_detail
+    {
+      id: id.to_s,
+      title: name,
+      sku: sku,
+      price: product.price_cents
+    }
+  end
 end

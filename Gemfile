@@ -40,6 +40,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'streamio-ffmpeg'
 gem 'recaptcha'
 gem 'geocoder'
+gem 'MailchimpMarketing'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
