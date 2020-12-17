@@ -1,0 +1,147 @@
+<!-- <mjml>
+  <mj-head>
+    <mj-font name="Unna"
+       href="https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,700&display=swap" />
+    <mj-font name="Muli"
+       href="https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap" />
+    <mj-style>
+      @media (max-width:500px) { 
+        .product-text {
+          padding-top: 12px !important;
+        }
+      	.small-text div {
+          font-size: 11px !important;
+        }
+      	.footer-text {
+      		padding: 0px 8px !important;
+      	}
+      	.footer-text div {
+          font-size: 11px !important;
+        }
+      	.track-btn a {
+          padding: 8px 20px !important;
+     			font-size: 16px !important;
+        }
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-section background-color="#F9025A">
+      <mj-column >
+      	<%= link_to :root, target: "_blank", style: "cursor: pointer" do %>
+      		<mj-image width="200px" src="https://i.imgur.com/TNBARwC.png" />
+    		<% end %>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#F9025A">
+      <mj-group>
+        <mj-column>
+          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Brands</mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Influencers</mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Make-Up</mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Insider</mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Video</mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section padding="22px 40px">
+      <mj-column>
+        <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Dear <%= @user.first_name.capitalize %>,</mj-text>
+        <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Your order has been recieved. You can monitor shipment of your Loop Beauty Buys via the track order button below.	
+        </mj-text>
+        <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Thank you for shopping with us!				</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="16px 40px">
+      <mj-column>
+        <mj-text color="#000" align="center" font-family="Muli, sans-serif" font-weight="800" padding="4px 0" font-size="20px">Order #<%= "%05d" % @order.id %></mj-text>
+        <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px" padding="0">Placed on <%= @order.created_at.strftime('%e %B %Y') %></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+      	<mj-text padding="0" color="#DADADA" align="left">PRODUCTS</mj-text>
+      </mj-column>
+    </mj-section>
+    <% @order.order_products.each do |order_product| %>
+	    <mj-section border-top="1px solid #DADADA">
+	      <mj-group>
+	        <mj-column>
+	          <%= image_tag url_for(order_product.shade.card_photo), style: "width:80px;", alt: "order product shade photo" %>
+	        </mj-column>
+	        <mj-column>
+	          <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px"><%= order_product.product.title %></mj-text>
+	          <mj-text color="#000" padding="0 0px" align="center" font-weight="300" padding="0"><%= order_product.shade.name %></mj-text>
+	        </mj-column>
+	        <mj-column>
+	          <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px">x<%= order_product.quantity %></mj-text>
+	        </mj-column>
+	        <mj-column>
+	          <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></mj-text>
+	        </mj-column>
+	      </mj-group>
+	    </mj-section>
+    <% end %>
+    <mj-section border-top="1px solid #DADADA" padding="0"></mj-section>
+    <mj-section>
+      <mj-group>
+      	<mj-column>
+      		<% if @order.discount_code %>
+        		<mj-text color="#DADADA" align="left" padding="12px 0">DISCOUNT</mj-text>
+      		<% end %>
+          <mj-text color="#DADADA" align="left" padding="4px 0">SUBTOTAL</mj-text>
+          <mj-text color="#DADADA" align="left" padding="4px 0"><%= @order.delivery_type.capitalize %></mj-text>
+          <mj-text color="#000" align="left" padding="4px 0">TOTAL</mj-text>
+        </mj-column>
+      	<mj-column>
+      		<% if @order.discount_code %>
+        		<mj-text color="#DADADA" align="right" padding="12px 0"><%= humanized_money_with_symbol @order.money_off %> OFF</mj-text>
+        	<% end %>
+          <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.unadjusted_price %></mj-text>
+          <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.delivery_cost %></mj-text>
+          <mj-text color="#000" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.total_with_delivery %></mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section>
+      <mj-group>
+      	<mj-column>
+          <mj-text color="#DADADA" align="left" padding="12px 0">SHIPPING ADDRESS</mj-text>
+          <mj-text color="#000" align="left" padding="4px 0" font-family="Unna, serif" letter-spacing="0.5px"><%= @order.user.first_name %> <%= @order.user.last_name %></mj-text>
+          <mj-text color="#000" align="left" padding="4px 0" font-family="Unna, serif" letter-spacing="0.5px"><%= @order.delivery_address.address_line1 %></mj-text>
+          <mj-text color="#000" align="left" padding="4px 0" font-family="Unna, serif" letter-spacing="0.5px"><%= @order.delivery_address.city %></mj-text>
+          <mj-text color="#000" align="left" padding="4px 0" font-family="Unna, serif" letter-spacing="0.5px"><%= @order.delivery_address.postcode %></mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text color="#DADADA" align="center" padding="12px 0">Order #34344532</mj-text>
+          <mj-button css-class="track-btn" href="https://tracking.controlport.co.uk/e9ab6870/loop-beauty/return/49cbcb" border-radius="30px" padding="10px 0 20px 0" background-color="#F9025A" inner-padding="14px 38px" font-size="16px" font-weight="600" align="center">
+        TRACK ORDER
+      		</mj-button>
+        </mj-column>
+    	</mj-group>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+    		<mj-text color="#000" padding="0px" align="center" font-family="Unna, serif" letter-spacing="0.5px">If you have any questions about your order please contact us at
+      	</mj-text>
+        <mj-text color="#000" padding="0px" align="center" font-family="Unna, serif" letter-spacing="0.5px">customercare@myloopbeauty.com
+      	</mj-text>
+    	</mj-column>
+    </mj-section>
+    <mj-section background-color="#F9025A">
+      <mj-group>
+      	<mj-column>
+          <mj-text css-class="footer-text"padding="0 25px" align="left" color="#fff">Tag your Loop Beauty! #MyLoopBeauty</mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+  </mj-body>
+</mjml> -->
