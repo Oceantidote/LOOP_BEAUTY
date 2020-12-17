@@ -24,7 +24,7 @@ class Shade < ApplicationRecord
       id: id.to_s,
       title: name,
       sku: sku,
-      price: product.price_cents
+      price: (product.price_cents / 100)
     }
   end
 end
