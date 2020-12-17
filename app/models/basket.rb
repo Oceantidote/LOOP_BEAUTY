@@ -146,7 +146,7 @@ class Basket < ApplicationRecord
         product_id: bp.product.id.to_s,
         product_variant_id: bp.shade.id.to_s,
         quantity: bp.quantity,
-        price: bp.price_cents
+        price: (bp.price_cents / 100)
       }
     end
   end
