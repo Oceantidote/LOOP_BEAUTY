@@ -34,9 +34,9 @@ class AbandonBasketJob < ApplicationJob
         id: basket.id.to_s,
         currency_code: 'GBP',
         customer: customer_info,
-        order_total: basket.total_price_cents,
+        order_total: (basket.total_price_cents / 100),
         lines: basket.to_mailchimp_cart_lines,
-        checkout_url: "https://myloopbeauty.com/abandoned-bags/#{basket.id}"
+        checkout_url: "http://myloopbeauty.com/abandoned-bags/#{basket.id}"
       }
     )
     p response
