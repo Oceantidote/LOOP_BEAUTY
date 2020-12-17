@@ -112,6 +112,9 @@
         padding: 8px 20px !important;
         font-size: 16px !important;
       }
+      .product-img {
+        width: 40px !important;
+      }
     }
   </style>
 </head>
@@ -521,7 +524,7 @@
                             <tbody>
                               <tr>
                                 <td style="width:80px;"> 
-                                  <%= image_tag url_for(order_product.shade.card_photo), style: "width:80px;", alt: "order product shade photo" %>
+                                  <%= image_tag url_for(order_product.shade.card_photo), class: "product-img", style: "width:80px;", alt: "order product shade photo" %>
                                 </td>
                               </tr>
                             </tbody>
