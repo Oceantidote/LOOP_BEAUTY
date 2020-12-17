@@ -463,114 +463,116 @@
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
       <![endif]-->
-    <div style="margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
-        <tbody>
-          <tr>
-            <td style="border-top:1px solid #DADADA;direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
-              <!--[if mso | IE]>
-                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
-        <tr>
-      
-            <td
-               class="" style="width:600px;"
-            >
-          <![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+    <% @order.order_products.each do |order_product| %>
+      <div style="margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+          <tbody>
+            <tr>
+              <td style="border-top:1px solid #DADADA;direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
                 <!--[if mso | IE]>
-        <table
-           border="0" cellpadding="0" cellspacing="0" role="presentation"
-        >
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
           <tr>
         
               <td
-                 style="vertical-align:top;width:150px;"
+                 class="" style="width:600px;"
               >
-              <![endif]-->
-                <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> </table>
-                </div>
-                <!--[if mso | IE]>
-              </td>
-              
-              <td
-                 style="vertical-align:top;width:150px;"
-              >
-              <![endif]-->
-                <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                    <tr>
-                      <td align="center" class="product-text" style="font-size:0px;padding:0 0px;padding-top:30px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;line-height:1;text-align:center;color:#000000;">
-                          <%= order_product.product.title %>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="center" style="font-size:0px;padding:0 0px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:300;line-height:1;text-align:center;color:#000000;">
-                          <%= order_product.shade.name %>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <!--[if mso | IE]>
-              </td>
-              
-              <td
-                 style="vertical-align:top;width:150px;"
-              >
-              <![endif]-->
-                <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                    <tr>
-                      <td align="center" class="product-text" style="font-size:0px;padding:0 0px;padding-top:30px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;line-height:1;text-align:center;color:#000000;">x
-                          <%= order_product.quantity %>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <!--[if mso | IE]>
-              </td>
-              
-              <td
-                 style="vertical-align:top;width:150px;"
-              >
-              <![endif]-->
-                <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                    <tr>
-                      <td align="center" class="product-text" style="font-size:0px;padding:0 0px;padding-top:30px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;line-height:1;text-align:center;color:#000000;">
-                          <%= humanized_money_with_symbol order_product.product.price * order_product.quantity %>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <!--[if mso | IE]>
-              </td>
-              
-          </tr>
-          </table>
-        <![endif]-->
-              </div>
-              <!--[if mso | IE]>
-            </td>
+            <![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                  <!--[if mso | IE]>
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation"
+          >
+            <tr>
           
-        </tr>
-      
-                  </table>
+                <td
+                   style="vertical-align:top;width:150px;"
+                >
                 <![endif]-->
-            </td>
+                  <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> </table>
+                  </div>
+                  <!--[if mso | IE]>
+                </td>
+                
+                <td
+                   style="vertical-align:top;width:150px;"
+                >
+                <![endif]-->
+                  <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tr>
+                        <td align="center" class="product-text" style="font-size:0px;padding:0 0px;padding-top:30px;word-break:break-word;">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;line-height:1;text-align:center;color:#000000;">
+                            <%= order_product.product.title %>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="font-size:0px;padding:0 0px;word-break:break-word;">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:300;line-height:1;text-align:center;color:#000000;">
+                            <%= order_product.shade.name %>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]>
+                </td>
+                
+                <td
+                   style="vertical-align:top;width:150px;"
+                >
+                <![endif]-->
+                  <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tr>
+                        <td align="center" class="product-text" style="font-size:0px;padding:0 0px;padding-top:30px;word-break:break-word;">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;line-height:1;text-align:center;color:#000000;">x
+                            <%= order_product.quantity %>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]>
+                </td>
+                
+                <td
+                   style="vertical-align:top;width:150px;"
+                >
+                <![endif]-->
+                  <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tr>
+                        <td align="center" class="product-text" style="font-size:0px;padding:0 0px;padding-top:30px;word-break:break-word;">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;line-height:1;text-align:center;color:#000000;">
+                            <%= humanized_money_with_symbol order_product.product.price * order_product.quantity %>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]>
+                </td>
+                
+            </tr>
+            </table>
+          <![endif]-->
+                </div>
+                <!--[if mso | IE]>
+              </td>
+            
           </tr>
-        </tbody>
-      </table>
-    </div>
+        
+                    </table>
+                  <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
     <!--[if mso | IE]>
           </td>
         </tr>
