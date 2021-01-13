@@ -11,6 +11,11 @@ class Basket < ApplicationRecord
     all_shades.include?(0)
   end
 
+  def us_any_out_of_stock?
+    puts all_shades = self.basket_products.map { |basket_product| basket_product.shade.us_number_in_stock }
+    all_shades.include?(0)
+  end
+
   def empty?
     basket_products.empty?
   end

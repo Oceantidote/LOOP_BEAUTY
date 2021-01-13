@@ -1,6 +1,6 @@
 <% if basket.basket_products.count == 0 %>
   <div class="primary-button bag-checkout-button disabled">CHECKOUT</div>
-<% elsif basket.any_out_of_stock? %>
+<% elsif basket.send("#{'us_' if @locale == 'US'}any_out_of_stock?") %>
     <p class="didot tiny-margin-bottom boldest">Remove out of stock items to checkout</p>
     <div class="primary-button bag-checkout-button disabled">CHECKOUT</div>
 <% else %>

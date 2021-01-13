@@ -8,4 +8,8 @@ Delivery address:
 <%= @order.delivery_address.city %>
 <%= @order.delivery_address.postcode %>
 Delivery: <%= @order.delivery_cost %>
-Total: <%= humanized_money_with_symbol @order.total_with_delivery %>
+<% if @order.locale == 'US' %>
+  Total: <%= humanized_money_with_symbol @order.us_total_with_delivery %>
+<% else %>
+  Total: <%= humanized_money_with_symbol @order.total_with_delivery %>
+<% end %>

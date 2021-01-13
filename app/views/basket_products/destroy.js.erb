@@ -6,11 +6,19 @@ document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_o
 document.querySelector('.navbar-basket-title h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %>'
 subtotals = document.querySelectorAll('.basket-total-price')
 subtotals.forEach(total => {
-  total.innerHTML = "<%= humanized_money_with_symbol @item.basket.subtotal %>"
+  <% if @locale == 'US' %>
+    total.innerHTML = "<%= humanized_money_with_symbol @item.basket.us_subtotal %>"
+  <% else %>
+    total.innerHTML = "<%= humanized_money_with_symbol @item.basket.subtotal %>"
+  <% end %>
 })
 total = document.querySelector('.shopping-bag-continue-checkout-total > p')
 if (total) {
-  total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
+  <% if @locale == 'US' %>
+    total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.us_total_price %>"
+  <% else %>
+    total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
+  <% end %>
 }
 if (<%= @basket.empty? %>) {
   document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="large-margin text-center boldest muli grey s-medium-text">Your basket is empty</p>'

@@ -24,7 +24,7 @@
 .navbar-lewagon {
   font-family: $menu-font;
   justify-content: space-between;
-  background: #FFF;
+  background: #fff;
   // border-bottom: 1px solid #ececec;
   padding: 0 16px;
   height: 60px;
@@ -74,7 +74,7 @@
 
 .navbar-nav {
   .dropdown-menu {
-      position: absolute;
+    position: absolute;
   }
 }
 
@@ -151,7 +151,7 @@
   font-weight: 900;
   // padding: 15px 0;
   // font-size: 14px;
-    background: white;
+  background: white;
   &:hover {
     color: black;
     text-decoration: none;
@@ -162,7 +162,7 @@
   @include for-medium-devices-down {
     text-align: center;
     padding: 15px !important;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 0;
   }
 }
@@ -250,7 +250,7 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   display: none;
 }
 
@@ -383,7 +383,7 @@
     &:hover {
       text-decoration: none;
       background: black;
-      color: white
+      color: white;
     }
   }
 }
@@ -398,7 +398,7 @@
   border: 3px solid #000;
   padding: 10px 10px 0 10px;
   transition: all 1s ease;
-  transition-delay: .25s;
+  transition-delay: 0.25s;
   @include for-phone-only {
     display: none;
   }
@@ -488,7 +488,7 @@
 .item-added {
   position: absolute;
   z-index: 10;
-  background: #FFF;
+  background: #fff;
   width: 100%;
   padding: 0 5px 5px;
   align-items: center;
@@ -516,9 +516,9 @@
   top: 9px; // ALIGNS CORRECTLY ON HEROKU BUT NOT ON LOCALHOST
   // top: -40px;
   z-index: 99;
-  background: #FFF;
-  transition: all .5s ease;
-  transition-delay: .25s;
+  background: #fff;
+  transition: all 0.5s ease;
+  transition-delay: 0.25s;
   // width: 312px;
   .form-group {
     margin: 0;
@@ -526,7 +526,7 @@
 }
 
 .navbar-search-input {
-  background: #FFF;
+  background: #fff;
   border: none;
   border-bottom: 3px solid transparent;
   height: 28px;
@@ -537,13 +537,13 @@
   padding-right: 25px;
   font-family: 'Muli', sans-serif;
   // background: #FCFCFC;
-  background: asset_url("navbar-search.png");
+  background: asset_url('navbar-search.png');
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
   float: right;
-  transition: all .2s ease;
-  transition-delay: .2s;
+  transition: all 0.2s ease;
+  transition-delay: 0.2s;
   cursor: pointer;
   &:focus {
     box-shadow: none;
@@ -555,18 +555,16 @@
   }
 }
 
-
-
 #navbar-search-close {
   position: relative;
-  background: #FFF;
+  background: #fff;
   // top: -1px;
   right: -1px;
   cursor: pointer;
 }
 
 .navbar-search-input::placeholder {
-  color: #BCBCBC;
+  color: #bcbcbc;
   font-size: 14px;
 }
 
@@ -600,9 +598,9 @@
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   &:hover {
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -612,13 +610,27 @@
 }
 
 @keyframes basket-bounce {
-    0%   { transform: scale(1,1)      translateY(0); }
-    10%  { transform: scale(1.1,.9)   translateY(0); }
-    30%  { transform: scale(.9,1.1)   translateY(-10px); }
-    50%  { transform: scale(1.05,.95) translateY(0); }
-    57%  { transform: scale(1,1)      translateY(-7px); }
-    64%  { transform: scale(1,1)      translateY(0); }
-    100% { transform: scale(1,1)      translateY(0); }
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
 }
 
 .hamburger {
@@ -644,7 +656,7 @@
 .hamburger-cross {
   .ham-one {
     transform: rotate(45deg);
-    margin-bottom: -8px
+    margin-bottom: -8px;
   }
 
   .ham-two {
@@ -681,3 +693,20 @@
   }
 }
 
+.flag-box {
+  height: 16px;
+  width: 32px;
+  background-size: cover;
+  &.selected {
+    outline: black solid 2px;
+    border-radius: 1px;
+  }
+
+  &.uk-flag {
+    background-image: asset_url('uk-flag.png');
+  }
+
+  &.us-flag {
+    background-image: asset_url('us-flag.png');
+  }
+}

@@ -17,7 +17,11 @@
                     <h6 class="small-text no-margin">Qty: <%= item.quantity %></h6>
                   </div>
                   <div>
-                    <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                    <% if @locale == 'US' %>
+                      <h6 class="small-text"><%= humanized_money_with_symbol item.product.us_price * item.quantity %></h6>
+                    <% else %>
+                      <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
@@ -26,12 +30,20 @@
             <div class="checkout-total-container">
               <div class="basket-price">
                 <span class="small-text grey boldest muli">Subtotal: </span>
-                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
+                <% if @locale == 'US' %>
+                  <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.us_unadjusted_price %></h5>
+                <% else %>
+                  <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
+                <% end %>
               </div>
               <% if @basket.discount_code.present? %>
                 <div class="basket-price">
                   <span class="small-text grey boldest muli">Discount: </span>
-                  <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                  <% if @locale == 'US' %>
+                    <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.us_money_off %></h5>
+                  <% else %>
+                    <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                  <% end %>
                 </div>
               <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
                 <div class="basket-price">
@@ -44,12 +56,20 @@
                 <% if @basket.basket_products.any?(&:purchase_with_credit?) %>
                   <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                 <% else %>
-                  <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                  <% if @locale == 'US' %>
+                    <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol Money.new(595, 'USD') %></h5>
+                  <% else %>
+                    <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                  <% end %>
                 <% end %>
               </div>
               <div class="basket-price">
                 <span class="grey boldest medium-text muli">Total: </span>
-                <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
+                <% if @locale == 'US' %>
+                  <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.us_total_price : @basket.us_total_price + Money.new(595, 'USD')) %></h5>
+                <% else %>
+                  <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
+                <% end %>
               </div>
             </div>
           </div>
@@ -78,7 +98,11 @@
                         <h6 class="small-text no-margin">Qty: <%= item.quantity %></h6>
                       </div>
                       <div>
-                        <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                        <% if @locale == 'US' %>
+                          <h6 class="small-text"><%= humanized_money_with_symbol item.product.us_price * item.quantity %></h6>
+                        <% else %>
+                          <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                        <% end %>
                       </div>
                     </div>
                   <% end %>
@@ -87,12 +111,20 @@
                 <div class="checkout-total-container">
                   <div class="basket-price">
                     <span class="small-text grey boldest muli">Subtotal: </span>
-                    <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
+                    <% if @locale == 'US' %>
+                      <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.us_unadjusted_price %></h5>
+                    <% else %>
+                      <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
+                    <% end %>
                   </div>
                   <% if @basket.discount_code.present? %>
                     <div class="basket-price">
                       <span class="small-text grey boldest muli">Discount: </span>
-                      <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                      <% if @locale == 'US' %>
+                        <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.us_money_off %></h5>
+                      <% else %>
+                        <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                      <% end %>
                     </div>
                   <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
                     <div class="basket-price">
@@ -105,12 +137,20 @@
                     <% if @basket.basket_products.all(&:purchase_with_credit?) %>
                       <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                     <% else %>
-                      <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                      <% if @locale == 'US' %>
+                        <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95, 'USD' %></h5>
+                      <% else %>
+                        <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                      <% end %>
                     <% end %>
                   </div>
                   <div class="basket-price">
                     <span class="grey boldest medium-text muli">Total: </span>
-                    <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
+                    <% if @locale == 'US' %>
+                      <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.us_total_price + Money.new(595, 'USD')) %></h5>
+                    <% else %>
+                      <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -127,33 +167,51 @@
               <div class="delivery-disable">
               </div>
             <% end %>
-            <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
+            <% if @locale == 'US' %>
+              <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.us_total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard" data-locale="US">
+            <% else %>
+              <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard" data-locale="UK">
+            <% end %>
               <div class="checkout-checkbox">
                 <div class="checkout-checkbox-inner"></div>
               </div>
               <p class="boldest delivery-option-text no-margin">Standard</p>
               <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
-              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
+              <% if @locale == 'US' %>
+                <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol Money.new(595, 'USD') %></p>
+              <% else %>
+                <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
+              <% end %>
             </div>
-            <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
+            <% if @locale == 'US' %>
+              <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.us_total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express" data-locale="US">
+            <% else %>
+              <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express" data-locale="UK">
+            <% end %>
               <div class="checkout-checkbox">
                 <div></div>
               </div>
               <p class="boldest delivery-option-text no-margin">Express</p>
               <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
-              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
+              <% if @locale == 'US' %>
+                <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol Money.new(695, 'USD') %></p>
+              <% else %>
+                <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
+              <% end %>
             </div>
-            <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
-              <div class="checkout-checkbox">
-                <div></div>
+            <% if @locale != 'US' %>
+              <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international" data-locale="UK">
+                <div class="checkout-checkbox">
+                  <div></div>
+                </div>
+                <div>
+                  <p class="boldest delivery-option-text no-margin">International</p>
+                  <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
+                </div>
+                <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
+                <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
               </div>
-              <div>
-                <p class="boldest delivery-option-text no-margin">International</p>
-                <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
-              </div>
-              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
-              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
-            </div>
+            <% end %>
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address delivery-address-container">

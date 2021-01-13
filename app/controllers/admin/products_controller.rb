@@ -42,8 +42,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new_in
-    @featured_products = Product.where(featured: true)
-    @not_featured_products = Product.where(featured: false).select { |product| !product.out_of_stock? }
+    if @locale == 'US'
+      @featured_products = Product.where(featured: true).where.not(us_price_cents: 0)
+      @not_featured_products = Product.where(featured: false).where.not(us_price_cents: 0).select { |product| !product.out_of_stock? }
+    else
+      @featured_products = Product.where(featured: true).where.not(price_cents: 0)
+      @not_featured_products = Product.where(featured: false).where.not(price_cents: 0).select { |product| !product.out_of_stock? }
+    end
   end
 
   def add_new_in

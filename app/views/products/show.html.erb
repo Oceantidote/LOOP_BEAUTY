@@ -2,28 +2,44 @@
   <div class="product-details">
     <div class="product-image-container">
       <div class="product-carousel">
-        <div class="product-shade-image">
-          <%= image_tag url_for(@product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").first.card_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
-        </div>
-        <% @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").first.photos.first(3).each do |shade_photo| %>
+        <% if @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").any? %>
           <div class="product-shade-image">
-            <%= image_tag url_for(shade_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+              <%= image_tag url_for(@product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").first.card_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
           </div>
+          <% @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").first.photos.first(3).each do |shade_photo| %>
+            <div class="product-shade-image">
+              <%= image_tag url_for(shade_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="product-shade-image">
+            <%= image_tag url_for(@product.shades.first.card_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+          </div>
+          <% @product.shades.first.photos.first(3).each do |shade_photo| %>
+            <div class="product-shade-image">
+              <%= image_tag url_for(shade_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <div class="product-main-image">
-        <div class="myImg" id="expandedImg" style="background-image: url(<%= url_for(@product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").first.card_photo.variant(resize: '700x700')) %>); background-position: center; background-size: cover;">
-        </div>
+        <% if @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").any? %>
+          <div class="myImg" id="expandedImg" style="background-image: url(<%= url_for(@product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").first.card_photo.variant(resize: '700x700')) %>); background-position: center; background-size: cover;">
+          </div>
+        <% else %>
+          <div class="myImg" id="expandedImg" style="background-image: url(<%= url_for(@product.shades.first.card_photo.variant(resize: '700x700')) %>); background-position: center; background-size: cover;">
+          </div>
+        <% end %>
         <%#= image_tag url_for(@product.shades.first.card_photo), id: "expandedImg", class: "myImg magniflier", alt: "shade photo" %>
       </div>
     </div>
     <div class="product-info-container assistant">
     <%= simple_form_for(([@product, BasketProduct.new(product: @product)]), remote: :true) do |f| %>
-      <%= f.input :shade_id, as: :hidden, input_html: { value: @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").order(created_at: :ASC)[0].id } %>
+      <%= f.input :shade_id, as: :hidden, input_html: { value: @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").order(created_at: :ASC)[0]&.id } %>
       <h5><%= @product.brand.name %></h5>
       <h5><%= @product.title %></h5>
       <hr>
-      <p class="product-shade-title small-margin-bottom muli"><strong><%= @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").order(created_at: :ASC).first.name %></strong></p>
+      <p class="product-shade-title small-margin-bottom muli"><strong><%= @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").order(created_at: :ASC).first&.name %></strong></p>
       <% if @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").count > 1 %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
@@ -32,7 +48,7 @@
               <div class="col-2" style="padding: 0 3px 0 0;">
                 <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color.variant(resize: '90x90')) %>)",
                   data-name="<%= shade.name %>",
-                  data-stock="<%= shade.number_in_stock %>"
+                  data-stock="<%= @locale == 'US' ? shade.us_number_in_stock : shade.number_in_stock %>"
                   data-main="<%= url_for(shade.card_photo.variant(resize: '700x700')) %>"
                   data-urls="<%= shade.photos.first(3).map { |photo| url_for(photo.variant(resize: '700x700')) } %>">
                 </div>
@@ -42,7 +58,11 @@
         </div>
       <% end %>
       <div class="d-flex justify-content-between">
-        <h5><%= humanized_money_with_symbol(@product.price) %></h5>
+        <% if @locale == 'US' %>
+          <h5><%= humanized_money_with_symbol(@product.us_price) %></h5>
+        <% else %>
+          <h5><%= humanized_money_with_symbol(@product.price) %></h5>
+        <% end %>
         <% if user_signed_in? && current_user.wishlist %>
           <div id="item-<%= @product.id %>-wishlist" class="product-show-wishlist">
             <%= render 'shared/product_show_wishlist', product: @product %>
@@ -54,9 +74,11 @@
         <p id="product-show-reviews" class="small-text muli boldest ml-1"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <div class="button-holder">
-        <% if @product.out_of_stock? %>
+        <% if @product.send("#{'us_' if @locale == 'US'}price_cents") == 0 %>
+          <%= f.submit 'NOT AVAILABLE', disabled: true, class: "primary-button disabled-button" %>
+        <% elsif (@locale == 'US' && @product.us_out_of_stock?) || (@locale != 'US' && @product.out_of_stock?) %>
           <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
-        <% elsif @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").order(created_at: :ASC).first.out_of_stock? %>
+        <% elsif @product.send("#{@locale == 'US' ? 'us' : 'uk'}_shades").order(created_at: :ASC).first.send("#{'us_' if @locale == 'US'}out_of_stock?") %>
           <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
         <% else %>
           <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
@@ -262,10 +284,16 @@
                   <p class="muli boldest"><%= product.recommended.title %></p>
                 </div>
                 <div class="card_price-heart muli boldest">
-                  <%= humanized_money_with_symbol(product.recommended.price) %>
+                  <% if @locale == 'US' %>
+                    <%= product.recommended.us_price_cents > 0 ? humanized_money_with_symbol(product.recommended.us_price) : 'NOT AVAILABLE' %>
+                  <% else %>
+                    <%= product.recommended.price_cents > 0 ? humanized_money_with_symbol(product.recommended.price) : 'NOT AVAILABLE' %>
+                  <% end %>
                 </div>
                 <div class="my-products-purchase">
-                  <%= link_to 'Add to bag', my_product_product_path(product.recommended), remote: true, method: :post, class: "my-products-button" %>
+                  <% if product.recommended.send("#{'us_' if @locale == 'US'}price_cents") > 0 %>
+                    <%= link_to 'Add to bag', my_product_product_path(product.recommended), remote: true, method: :post, class: "my-products-button" %>
+                  <% end %>
                 </div>
               </div>
             </div>

@@ -2,11 +2,19 @@ document.querySelector('.basket-item-count').innerText = '<%= @basket.total_numb
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
 subtotals = document.querySelectorAll('.basket-total-price')
 subtotals.forEach(total => {
-  total.innerHTML = "<%= humanized_money_with_symbol @item.basket.unadjusted_price %>"
+  <% if @locale == 'US' %>
+    total.innerHTML = "<%= humanized_money_with_symbol @item.basket.us_unadjusted_price %>"
+  <% else %>
+    total.innerHTML = "<%= humanized_money_with_symbol @item.basket.unadjusted_price %>"
+  <% end %>
 })
 total = document.querySelector('.shopping-bag-continue-checkout-total > p')
 if (total) {
-  total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
+  <% if @locale == 'US' %>
+    total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.us_total_price %>"
+  <% else %>
+    total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
+  <% end %>
 }
 form = document.querySelector('.item-form-<%= @item.id %>')
 form.innerHTML = "<%= j render 'baskets/shopping_bag_form_controls', item: @item %>"

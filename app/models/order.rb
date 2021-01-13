@@ -119,7 +119,7 @@ class Order < ApplicationRecord
   end
 
   def us_total_price_cents
-    us_subtotal_cents - us_credit_spent_cents
+    us_subtotal_cents - credit_spent_cents
   end
 
   def total_price_in(currency)

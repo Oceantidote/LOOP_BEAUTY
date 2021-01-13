@@ -12,7 +12,11 @@ class Shade < ApplicationRecord
   after_create :set_sku
 
   def out_of_stock?
-    (self.number_in_stock == 0) ? true : false
+    self.number_in_stock == 0
+  end
+
+  def us_out_of_stock?
+    self.us_number_in_stock == 0
   end
 
   def set_sku

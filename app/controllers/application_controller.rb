@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :check_for_empty_orders
   before_action :not_seen_cookie_message, unless: -> { cookies[:seen_cookie_message] }
   before_action :first_time_visit, unless: -> { cookies[:not_first_visit] }
-  # before_action :set_locale
+  before_action :set_locale
   include Pundit
   @influencers = User.where(influencer: true).where(published: true)
   # Pundit: white-list approach.

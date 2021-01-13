@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
   def create
     @basket = find_basket
     @order = Order.new(order_params.slice(:delivery_address_id, :billing_address_id, :delivery_type))
+    @order.locale = @locale
     @order.user = current_user
     # @order.status = 'pending'
     @order.discount_code = @basket.discount_code
@@ -95,18 +96,22 @@ class OrdersController < ApplicationController
           credit = 0
         end
       else
-        amount = item.price_cents
+        if @order.locale == 'US'
+          amount = item.us_price_cents
+        else
+          amount = item.price_cents
+        end
       end
       next if amount < 1
       {
         name: "#{item.shade.name.present? ? item.shade.name : item.product.title} × #{item.quantity}",
         amount: amount,
-        currency: 'gbp',
+        currency: @order.locale == 'US' ? 'usd' : 'gbp',
         quantity: 1
       }
     end
     items.reject!(&:nil?)
-    items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: 'gbp', quantity: 1} if @order.delivery_cost_cents > 0
+    items << {name: 'Delivery', amount: @order.delivery_cost_cents, currency: @order.locale == 'US' ? 'usd' : 'gbp', quantity: 1} if @order.delivery_cost_cents > 0
     @session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       line_items: items,

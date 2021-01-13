@@ -55,8 +55,16 @@ class Product < ApplicationRecord
     self.shades.sum(:number_in_stock)
   end
 
+  def us_total_number_of_items
+    self.shades.sum(:us_number_in_stock)
+  end
+
   def out_of_stock?
     (self.shades.sum(:number_in_stock) == 0) ? true : false
+  end
+
+  def us_out_of_stock?
+    (self.shades.sum(:us_number_in_stock) == 0) ? true : false
   end
 
   def total_reviews

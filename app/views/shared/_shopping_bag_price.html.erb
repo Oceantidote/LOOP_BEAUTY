@@ -1,8 +1,16 @@
 <div class="shopping-bag-continue-checkout-total">
   <% if basket.discount_code %>
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Savings: -<%= humanized_money_with_symbol basket.money_off %></p>
+    <% if @locale == 'US' %>
+      <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Savings: -<%= humanized_money_with_symbol basket.us_money_off %></p>
+    <% else %>
+      <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Savings: -<%= humanized_money_with_symbol basket.money_off %></p>
+    <% end %>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.subtotal %></p>
+    <% if @locale == 'US' %>
+      <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.us_subtotal %></p>
+    <% else %>
+      <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.subtotal %></p>
+    <% end %>
   <% elsif @basket.money_off_from_credit_cents > 0 %>
     <p class="boldest text-right small-text grey-font tiny-margin-bottom muli">Savings: -<%= humanized_money_with_symbol basket.money_off_from_credit %></p>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
@@ -10,6 +18,10 @@
     <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.total_price %></p>
   <% else %>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol @basket.total_price %></p>
+    <% if @locale == 'US' %>
+      <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol @basket.us_total_price %></p>
+    <% else %>
+      <p class="boldest text-right medium-text muli" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol @basket.total_price %></p>
+    <% end %>
   <% end %>
 </div>
