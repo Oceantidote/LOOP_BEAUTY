@@ -1,5 +1,5 @@
 class Admin::DiscountCodesController < ApplicationController
-  before_action :set_discount, only: [:edit, :update, :destroy]
+  before_action :set_discount, only: [:edit, :update, :destroy, :deactivate]
 
   def index
     @codes = policy_scope([:admin, DiscountCode])
@@ -35,6 +35,12 @@ class Admin::DiscountCodesController < ApplicationController
   def destroy
     authorize [:admin, @code]
     @code.destroy
+    redirect_to admin_discount_codes_path
+  end
+
+  def deactivate
+    authorize [:admin, @code]
+    @code.update(active: false)
     redirect_to admin_discount_codes_path
   end
 

@@ -45,15 +45,6 @@
     <% end %>
   </div>
   <ul class="navbar-nav" style="flex-direction: row">
-    <div style="display: flex; align-items: center; margin-right: 10px;">
-      <%= link_to locale_path(locale: 'GB'), method: :post do %>
-        <div class="flag-box uk-flag <%= 'selected' unless session['location'] == 'US' %>"></div>
-      <% end %>
-      <span  style="margin: 0 5px">|</span>
-      <%= link_to locale_path(locale: 'US'), method: :post do %>
-        <div class="flag-box us-flag <%= 'selected' if session['location'] == 'US' %>"></div>
-      <% end %>
-    </div>
     <div style="display: flex; align-items: center;">
       <li class="nav-item medium-hidden">
         <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
@@ -240,8 +231,10 @@
       <i class="far fa-check-circle"></i>
       <p class="muli">ITEM ADDED</p>
     </div>
-    <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
-      <%#= image_tag 'close.png', class: "nav-basket-close", alt: "close icon" %>
+    <div class="d-flex justify-content-between">
+      <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
+
+    </div>
   </div>
   <hr>
   <div class="navbar-basket-items-container">
@@ -254,7 +247,7 @@
     <p class="s-medium-text muli boldest">Subtotal:</p>
     <p class="s-medium-text basket-total-price muli boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
   </div>
-  <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button navbar-basket-button" %>
+  <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button mb-0 navbar-basket-button" %>
 </div>
 
 <!-- <div class="navbar-search-container">
@@ -383,7 +376,7 @@
 
   navBasketDrop = document.querySelector('.navbar-hover-container');
   basketIcon = document.querySelector('.basket-icon-container');
-  navBasketClose = document.querySelector('.nav-basket-close');
+  // navBasketClose = document.querySelector('.nav-basket-close');
   itemAdded = document.querySelector('.item-added');
 
   // basketIcon.addEventListener('mouseover', function() {
@@ -433,9 +426,9 @@
       navBasketDrop.addEventListener('mouseleave', function() {
         navBasketDrop.style.top = '-620px'
       })
-      navBasketClose.addEventListener('click', function() {
-        navBasketDrop.style.top = '-620px'
-      })
+      // navBasketClose.addEventListener('click', function() {
+      //   navBasketDrop.style.top = '-620px'
+      // })
     }, 1000)
   })
 

@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="mt-4 muli">My Abandoned Carts</h2>
+  <table id="analytics-table" class="mt-4">
+    <thead>
+      <th class="w25">Date Abandoned</th>
+      <th class="w50">Items</th>
+      <th class="w25">Total</th>
+    </thead>
+    <tbody>
+      <% @baskets.each do |basket| %>
+        <tr class="influencer-order" id="order_<%= basket.id %>">
+          <td class="w25"><strong><%= basket.updated_at.strftime('%D') %></strong></td>
+          <td class="w50">
+            <table>
+              <tbody>
+                <% basket.basket_products.each do |bp| %>
+                  <tr>
+                    <td class="w25 p-10">
+                      <%= image_tag url_for(bp.shade.card_photo.variant(resize: '50x50')), class: "item-image-thumbnail", alt: "shade photo"  %>
+                    </td>
+                    <td class="w50 p-10"><strong><%= bp.product.title %> - <%= humanized_money_with_symbol(bp.product.price) %></strong></td>
+                    <td class="w25 p-10" style="text-align: center;"><strong>x<%= bp.quantity %></strong></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </td>
+          <td class="w125">
+            <p><strong class="mt-3"><%= humanized_money_with_symbol basket.total_price %></strong></p>
+            <%= link_to 'View', abandoned_basket_path(basket), class: "primary-button hunset"  %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

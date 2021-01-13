@@ -1,5 +1,5 @@
 class BasketsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: [:abandon, :index]
 
   def show
     @basket = find_basket
@@ -10,7 +10,7 @@ class BasketsController < ApplicationController
     @basket = find_basket
     authorize @basket
     @code = params[:basket][:discount_code]
-    @discount = DiscountCode.find_by_code(@code)
+    @discount = DiscountCode.where(active: true).find_by_code(@code)
     @basket.discount_code = @discount if @discount.present?
     if @discount.present? && @basket.save
       respond_to do |format|
@@ -28,6 +28,28 @@ class BasketsController < ApplicationController
         end
         format.js
       end
+    end
+  end
+
+  def index
+    @baskets = policy_scope(Basket)
+  end
+
+  def recover
+    @old_basket = Basket.find(params[:id])
+    authorize @old_basket
+    @basket.destroy
+    @old_basket.update(recovered: true)
+    redirect_to root_path
+  end
+
+  def abandoned_basket
+    @abandoned_basket = Basket.find(params[:id])
+    authorize @abandoned_basket
+    unless @abandoned_basket.recovered?
+      @basket.destroy
+      @abandoned_basket.update(recovered: true)
+      @basket = @abandoned_basket
     end
   end
 

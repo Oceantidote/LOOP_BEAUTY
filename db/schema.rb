@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_10_29_125714) do
+=======
+ActiveRecord::Schema.define(version: 2020_12_15_143929) do
+>>>>>>> 8baa6be0b06ad7d08c04fcbf508a1f8e86bba425
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +81,11 @@ ActiveRecord::Schema.define(version: 2020_10_29_125714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "discount_code_id"
+    t.boolean "abandoned", default: false
+    t.boolean "abandonable", default: false
+    t.boolean "recovered", default: false
+    t.boolean "recovered_completed", default: false
+    t.datetime "abandoned_at"
     t.index ["discount_code_id"], name: "index_baskets_on_discount_code_id"
     t.index ["user_id"], name: "index_baskets_on_user_id"
   end
@@ -140,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_125714) do
     t.datetime "updated_at", null: false
     t.integer "uses", default: 1
     t.integer "user_uses", default: 1
+    t.boolean "active", default: true
   end
 
   create_table "exchange_rates", force: :cascade do |t|

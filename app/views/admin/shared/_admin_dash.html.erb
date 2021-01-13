@@ -41,6 +41,9 @@
   <%= link_to admin_activity_report_path, class: "each-dash-link" do %>
     <%= image_tag "activity.png", class: "dash-links-image", alt: "article icon" %>Activity Report
   <% end %>
+  <%= link_to admin_baskets_path, class: "each-dash-link" do %>
+    <%= image_tag "basket.png", class: "dash-links-image", alt: "basket icon" %>Abandoned Bags
+  <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
     <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dash icon" %>Sign Out
   <% end %>
@@ -84,6 +87,10 @@
   <%= link_to admin_insider_articles_path, class: "each-dash-link-mobile no-decoration muli" do %>
     <span>ARTICLES</span>
     <%= image_tag "magazine.png", class: "dash-links-mobile-image", alt: "article icon" %>
+  <% end %>
+  <%= link_to admin_baskets_path, class: "each-dash-link-mobile no-decoration muli" do %>
+    <span>ABANDONED BAGS</span>
+    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "basket icon" %>
   <% end %>
   <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration muli" do %>
     <span>SIGN OUT</span>

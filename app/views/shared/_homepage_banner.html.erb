@@ -1,8 +1,8 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
   <div class="carousel-inner" id="carousel-data">
     <% @home_banners.order(created_at: :ASC).each_with_index do |home_banner, index| %>
-      <%= link_to home_banner.link do %>
-        <div id="test_<%= home_banner.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>" >
+      <%= link_to home_banner.link, class: "carousel-item #{index == 0 ? 'active' : ''}" do %>
+        <div id="test_<%= home_banner.id %>">
           <style>
             @media screen and (min-width: 767px) {
               #test_<%= home_banner.id %> {

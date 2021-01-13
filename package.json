@@ -1,5 +1,5 @@
 {
-  "name": "LOOP_BEAUTY",
+  "name": "loop_beauty",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
@@ -10,6 +10,7 @@
     "jquery": "^3.4.1",
     "jquery-bar-rating": "^1.2.2",
     "js-autocomplete": "^1.0.4",
+    "mjml": "^4.7.1",
     "popper.js": "^1.15.0",
     "select2": "^4.0.12",
     "slick-carousel": "^1.8.1",

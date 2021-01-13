@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get '/checkout', to: 'orders#new'
   get '/make-up', to: 'products#index'
-  post '/locale', to: 'pages#change_locale'
+  get '/abandoned-bags/:id', to: 'baskets#abandoned_basket', as: 'abandoned_basket'
   resources :wishlist_products, except: [:new, :create] do
     member do
       post '/add_to_bag', to: 'wishlist_products#add_to_bag'
@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
   resources :lookbooks, except: [:index]
-
   resources :users, only: [], path: 'influencers' do
     resources :lookbooks, only: [:index] do
       member do
@@ -135,7 +134,16 @@ Rails.application.routes.draw do
     get '/categories', to: 'pages#categories'
     get '/sales_report', to: 'pages#sales_report'
     get '/activity_report', to: 'pages#activity_report'
-    resources :discount_codes, except: [:show]
+    resources :discount_codes, except: [:show] do
+      member do
+        patch '/deactivate', to: 'discount_codes#deactivate'
+      end
+    end
+    resources :baskets, only: [:index], path: :'abandoned-bags' do
+      collection do
+        get '/download', to: 'baskets#download'
+      end
+    end
   end
 
   # ADMIN ROUTES ABOVE

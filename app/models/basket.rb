@@ -1,7 +1,7 @@
 class Basket < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :discount_code, optional: true
-  has_many :basket_products
+  has_many :basket_products, dependent: :destroy
   has_many :products, through: :basket_products
   has_many :shades, through: :products
   validate :discount_uses
@@ -18,6 +18,8 @@ class Basket < ApplicationRecord
   def empty!
     basket_products.destroy_all
     discount_code = nil
+    abandonable = false
+    save
   end
 
   def total_number_of_products
@@ -168,8 +170,31 @@ class Basket < ApplicationRecord
     if discount_code.orders.size >= discount_code.uses || ((user&.orders&.where(discount_code: discount_code)&.size || 0) >= discount_code.user_uses)
       errors.add :discount_code, 'number of uses exceeded'
     end
+    if !discount_code.active?
+      errors.add :discount_code, 'is inactive'
+    end
     if user&.referral_code == discount_code.code
       errors.add :discount_code, 'cannot be your own referral code'
     end
+  end
+
+  def email_status
+    'Not sent'
+  end
+
+  def to_mailchimp_cart_lines
+    basket_products.map do |bp|
+      {
+        id: bp.id.to_s,
+        product_id: bp.product.id.to_s,
+        product_variant_id: bp.shade.id.to_s,
+        quantity: bp.quantity,
+        price: (bp.price_cents / 100)
+      }
+    end
+  end
+
+  def recovery_status
+    recovered_completed? ? 'Recovered' : 'Not recovered'
   end
 end

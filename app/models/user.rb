@@ -52,7 +52,8 @@ class User < ApplicationRecord
   friendly_id :instagram, use: :slugged
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_one :basket, dependent: :destroy
+  has_one :basket, -> { where(abandoned: false).or(Basket.where(recovered: true, recovered_completed: false)) }, dependent: :destroy
+  has_many :abandoned_baskets, -> { where(abandoned: true) }, class_name: 'Basket', foreign_key: :user_id
   has_one_attached :cover_photo
   has_one_attached :mobile_cover_photo
   has_one_attached :avatar_photo
