@@ -4,7 +4,7 @@
       <div class="button-overlay">
         <button class="primary-button" type="button">BUY NOW</button>
       </div>
-      <% if product.out_of_stock? %>
+      <% if product.send("#{'us_' if @locale == 'US'}out_of_stock?") %>
         <div class="out-of-stock-overlay">
           <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
         </div>
@@ -28,7 +28,11 @@
       <p class="muli boldest"><%= product.title %></p>
     </div>
     <div class="card_price-heart muli boldest">
-      <%= humanized_money_with_symbol(product.price) %>
+      <% if @locale == 'US' %>
+        <%= product.us_price_cents > 0 ? humanized_money_with_symbol(product.us_price) : 'NOT AVAILABLE' %>
+      <% else %>
+        <%= product.price_cents > 0 ? humanized_money_with_symbol(product.price) : 'NOT AVAILABLE' %>
+      <% end %>
     </div>
     <div class="card_ratings">
       <div class="rating-stars">

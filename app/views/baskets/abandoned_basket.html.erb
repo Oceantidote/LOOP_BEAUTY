@@ -7,7 +7,7 @@
         <div class="shopping-bag-card">
           <div class="shopping-bag-card-content">
             <div class="shopping-bag-image-container">
-              <% if item.shade.number_in_stock == 0 %>
+              <% if item.shade.send("#{'us_' if @locale == 'US'}number_in_stock") == 0 %>
                 <div class="out-of-stock-overlay">
                   <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                 </div>
@@ -23,7 +23,11 @@
               <div class="shopping-bag-card-quantity muli boldest">
                 <p class="boldest no-margin small-text"><%= item.quantity %></p>
               </div>
-              <p class="small-text boldest text-right shopping-bag-card-total muli"><%= humanized_money_with_symbol((item.product.price * item.quantity)) %></p>
+              <% if @locale == 'US' %>
+                <p class="small-text boldest text-right shopping-bag-card-total muli"><%= humanized_money_with_symbol((item.product.us_price * item.quantity)) %></p>
+              <% else %>
+                <p class="small-text boldest text-right shopping-bag-card-total muli"><%= humanized_money_with_symbol((item.product.price * item.quantity)) %></p>
+              <% end %>
             </span>
           </div>
           <hr style="border-color: #CFCFCF;">

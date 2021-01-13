@@ -5,7 +5,7 @@
     <mj-font name="Muli"
        href="https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap" />
     <mj-style>
-      @media (max-width:500px) { 
+      @media (max-width:500px) {
         .product-text {
           padding-top: 12px !important;
         }
@@ -45,7 +45,7 @@
           <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Make-Up</mj-text>
         </mj-column>
         <mj-column>
-          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Insider</mj-text>
+          <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Insiders</mj-text>
         </mj-column>
         <mj-column>
           <mj-text css-class="small-text" padding="0 0px" align="center" color="#fff">Video</mj-text>
@@ -55,7 +55,7 @@
     <mj-section padding="22px 40px">
       <mj-column>
         <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Dear <%= @user.first_name.capitalize %>,</mj-text>
-        <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Your order has been recieved. You can monitor shipment of your Loop Beauty Buys via the track order button below.	
+        <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Your order has been recieved. You can monitor shipment of your Loop Beauty Buys via the track order button below.
         </mj-text>
         <mj-text color="#000" align="center" font-family="Unna, serif" letter-spacing="0.5px">Thank you for shopping with us!				</mj-text>
       </mj-column>
@@ -85,7 +85,11 @@
 	          <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px">x<%= order_product.quantity %></mj-text>
 	        </mj-column>
 	        <mj-column>
-	          <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></mj-text>
+            <% if @order.locale == 'US' %>
+              <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px"><%= humanized_money_with_symbol order_product.product.us_price * order_product.quantity %></mj-text>
+            <% else %>
+              <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></mj-text>
+            <% end %>
 	        </mj-column>
 	      </mj-group>
 	    </mj-section>
@@ -103,11 +107,21 @@
         </mj-column>
       	<mj-column>
       		<% if @order.discount_code %>
-        		<mj-text color="#DADADA" align="right" padding="12px 0"><%= humanized_money_with_symbol @order.money_off %> OFF</mj-text>
+            <% if @order.locale == 'US' %>
+              <mj-text color="#DADADA" align="right" padding="12px 0"><%= humanized_money_with_symbol @order.us_money_off %> OFF</mj-text>
+            <% else %>
+              <mj-text color="#DADADA" align="right" padding="12px 0"><%= humanized_money_with_symbol @order.money_off %> OFF</mj-text>
+            <% end %>
         	<% end %>
-          <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.unadjusted_price %></mj-text>
-          <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.delivery_cost %></mj-text>
-          <mj-text color="#000" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.total_with_delivery %></mj-text>
+          <% if @order.locale == 'US' %>
+            <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.us_unadjusted_price %></mj-text>
+            <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.us_delivery_cost %></mj-text>
+            <mj-text color="#000" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.us_total_with_delivery %></mj-text>
+          <% else %>
+            <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.unadjusted_price %></mj-text>
+            <mj-text color="#DADADA" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.delivery_cost %></mj-text>
+            <mj-text color="#000" align="right" padding="4px 0"><%= humanized_money_with_symbol @order.total_with_delivery %></mj-text>
+          <% end %>
         </mj-column>
       </mj-group>
     </mj-section>

@@ -40,16 +40,32 @@ class Order < ApplicationRecord
     Money.new unadjusted_price_cents
   end
 
+  def us_unadjusted_price
+    Money.new us_unadjusted_price_cents, :usd
+  end
+
   def unadjusted_price_cents
     order_products.map(&:unadjusted_price_cents).sum
+  end
+
+  def us_unadjusted_price_cents
+    order_products.map(&:us_unadjusted_price_cents).sum
   end
 
   def money_off
     Money.new money_off_cents
   end
 
+  def us_money_off
+    Money.new us_money_off_cents
+  end
+
   def money_off_cents
     unadjusted_price_cents - total_price_cents
+  end
+
+  def us_money_off_cents
+    us_unadjusted_price_cents - us_total_price_cents
   end
 
   def total_number_of_products
@@ -60,12 +76,24 @@ class Order < ApplicationRecord
     Money.new total_price_cents
   end
 
+  def us_subtotal
+    Money.new us_total_price_cents
+  end
+
   def subtotal_cents
     order_products.map(&:price_cents).sum
   end
 
+  def us_subtotal_cents
+    order_products.map(&:us_price_cents).sum
+  end
+
   def initial_subtotal
     order_products.map(&:price).sum
+  end
+
+  def us_initial_subtotal
+    order_products.map(&:us_price).sum
   end
 
   def subtotal_in(currency)
@@ -82,8 +110,16 @@ class Order < ApplicationRecord
     Money.new total_price_cents
   end
 
+  def us_total_price
+    Money.new us_total_price_cents, :usd
+  end
+
   def total_price_cents
     subtotal_cents - credit_spent_cents
+  end
+
+  def us_total_price_cents
+    us_subtotal_cents - credit_spent_cents
   end
 
   def total_price_in(currency)
@@ -105,8 +141,16 @@ class Order < ApplicationRecord
     Money.new total_with_delivery_cents
   end
 
+  def us_total_with_delivery
+    Money.new us_total_with_delivery_cents, :usd
+  end
+
   def total_with_delivery_cents
     total_price_cents + delivery_cost_cents
+  end
+
+  def us_total_with_delivery_cents
+    us_total_price_cents + delivery_cost_cents
   end
 
   def total_with_delivery_in(currency)
@@ -152,6 +196,10 @@ class Order < ApplicationRecord
 
   def delivery_cost
     Money.new delivery_cost_cents
+  end
+
+  def us_delivery_cost
+    Money.new delivery_cost_cents, :usd
   end
 
   def set_delivery_costs_cents

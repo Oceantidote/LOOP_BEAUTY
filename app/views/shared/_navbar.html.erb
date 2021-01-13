@@ -45,6 +45,15 @@
     <% end %>
   </div>
   <ul class="navbar-nav" style="flex-direction: row">
+    <div style="display: flex; align-items: center; margin-right: 10px;">
+      <%= link_to locale_path(locale: 'GB'), method: :post do %>
+        <div class="flag-box uk-flag <%= 'selected' unless session['location'] == 'US' %>"></div>
+      <% end %>
+      <span  style="margin: 0 5px">|</span>
+      <%= link_to locale_path(locale: 'US'), method: :post do %>
+        <div class="flag-box us-flag <%= 'selected' if session['location'] == 'US' %>"></div>
+      <% end %>
+    </div>
     <div style="display: flex; align-items: center;">
       <li class="nav-item medium-hidden">
         <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
@@ -245,7 +254,11 @@
   </div>
   <div class="subtotal-container">
     <p class="s-medium-text muli boldest">Subtotal:</p>
-    <p class="s-medium-text basket-total-price muli boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
+    <% if @locale == 'US' %>
+      <p class="s-medium-text basket-total-price muli boldest"><%= humanized_money_with_symbol @basket.us_total_price %></p>
+    <% else %>
+      <p class="s-medium-text basket-total-price muli boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
+    <% end %>
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button mb-0 navbar-basket-button" %>
 </div>

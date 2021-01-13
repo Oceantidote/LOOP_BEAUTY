@@ -26,17 +26,22 @@ class SendOrderJob < ApplicationJob
     to_submit = order_hash_builder(order)
     to_submit[:order][:items] = items
     response = JSON.parse(RestClient.post("https://api.controlport.co.uk/api/1/order", to_submit.to_json, {}).body)
-    response['stock_changes'].each { |k,v| Shade.find_by_sku(k)&.update(number_in_stock: v) }
+    if order.locale == 'US'
+      response['stock_changes'].each { |k,v| Shade.find_by_sku(k)&.update(us_number_in_stock: v) }
+    else
+      response['stock_changes'].each { |k,v| Shade.find_by_sku(k)&.update(number_in_stock: v) }
+    end
     puts "XXXXXXXXXXXXXXXXXXX"
     puts response
   end
 
   def order_hash_builder(order)
+    api_key = order.locale == 'US' ? ENV['US_CONTROLPORT_API_KEY'] : ENV['CONTROLPORT_API_KEY']
     timestamp = Time.now.to_i
     {
-      half_api_key: ENV['CONTROLPORT_API_KEY'][0..15],
+      half_api_key: api_key[0..15],
       message_timestamp: timestamp,
-      security_hash: Digest::MD5.hexdigest(timestamp.to_s + ENV['CONTROLPORT_API_KEY']),
+      security_hash: Digest::MD5.hexdigest(timestamp.to_s + api_key),
       test: !Rails.env.production?,
       update_stock: true,
       order: {

@@ -86,8 +86,13 @@ class UsersController < ApplicationController
   end
 
   def showroom
-    @products = Product.where(demoable: true).page params[:page]
-    @original = Product.where(demoable: true)
+    if @locale == 'US'
+      @products = Product.where(demoable: true).where.not(us_price_cents: 0).page params[:page]
+      @original = Product.where(demoable: true).where.not(us_price_cents: 0)
+    else
+      @products = Product.where(demoable: true).where.not(price_cents: 0).page params[:page]
+      @original = Product.where(demoable: true).where.not(price_cents: 0)
+    end
     @all = @original
     @products = policy_scope(Product).filter(params[:product].slice(:sub_category, :brand)) if params[:product].present?
     @products = @products.page params[:page]
@@ -164,10 +169,16 @@ class UsersController < ApplicationController
 
   def make_up
     @showroom_products = @user.showroom.showroom_products
-    @products = @user.showroom.products.page params[:page]
-    @original = @products
+    if @locale == 'US'
+      @products = @user.showroom.products.where.not(us_price_cents: 0)
+      @original = @products
+    else
+      @products = @user.showroom.products.where.not(price_cents: 0)
+      @original = @products
+    end
+    @products = @products.page params[:page]
     @all = @original
-    @demoable_products = Product.all - @products
+    @demoable_products = Product.all - @user.showroom.products
     @products = @products.filter(params[:product].slice(:category, :brand)).page params[:page] if params[:product].present?
     if params[:product].present? && params[:product][:sort].present?
       @products = @products.filter_sort(*sort_params).page params[:page]

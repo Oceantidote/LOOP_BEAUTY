@@ -7,7 +7,11 @@
           <div style="flex: 1; margin-left: 10px;">
             <p class="no-margin boldest small-text" style="max-width: 165px;"><%= product.title %></p>
           </div>
-          <p class="no-margin boldest small-text"><%= humanized_money_with_symbol product.price %></p>
+          <% if @locale == 'US' %>
+            <p class="no-margin boldest small-text"><%= humanized_money_with_symbol product.us_price %></p>
+          <% else %>
+            <p class="no-margin boldest small-text"><%= humanized_money_with_symbol product.price %></p>
+          <% end %>
         </div>
       <% end %>
     <% end %>

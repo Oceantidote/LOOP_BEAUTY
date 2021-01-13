@@ -1,7 +1,7 @@
 <div class="card-image-results homepage-products">
   <div class="card">
     <%= link_to product_path(product) do %>
-      <% if product.out_of_stock? %>
+      <% if product.send("#{'us_' if @locale == 'US'}out_of_stock?") %>
         <div class="out-of-stock-overlay">
           <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
         </div>
@@ -23,7 +23,11 @@
       <p class="muli boldest text-center truncate-text"><%= product.title %></p>
     </div>
     <div class="card_price-heart muli boldest text-center">
-      <%= humanized_money_with_symbol(product.price) %>
+      <% if @locale == 'US' %>
+        <%= humanized_money_with_symbol(product.us_price) %>
+      <% else %>
+        <%= humanized_money_with_symbol(product.price) %>
+      <% end %>
     </div>
   </div>
 </div>

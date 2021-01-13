@@ -30,7 +30,7 @@
                         <p class="muli small-text">
                           <% if order.products.count > 1 %>
                             (and <%= order.products.count - 1 %> more)
-                          <% end %> 
+                          <% end %>
                         </p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
                         <p class="small-text boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
                         <%#= link_to 'Track this order', '#', class: "small-text"  %>
@@ -40,7 +40,11 @@
                       <p class="muli"><%= order.status %></p> <!-- STATUS OF THE ORDER -->
                     </div>
                     <div class="order-price muli boldest">
-                      <p class="small-text"><%= humanized_money_with_symbol order.total_with_delivery %></p> <!-- PRICE OF THE ORDER -->
+                      <% if order.locale == 'US' %>
+                        <p class="small-text"><%= humanized_money_with_symbol order.us_total_with_delivery %></p> <!-- PRICE OF THE ORDER -->
+                      <% else %>
+                        <p class="small-text"><%= humanized_money_with_symbol order.total_with_delivery %></p> <!-- PRICE OF THE ORDER -->
+                      <% end %>
                     </div>
                   </div>
                 <% end %>

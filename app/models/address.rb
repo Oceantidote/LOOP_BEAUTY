@@ -9,7 +9,7 @@ class Address < ApplicationRecord
   validates :country, presence: true
   validate :delivery_address_in_europe
 
-  VALID_COUNTRIES = %w[GB JE GG IE FR DE NL BE LU AT DK CZ IT SK ES FI PT SE PL EE HR HU SI LT LV BG RO GR]
+  VALID_COUNTRIES = %w[GB JE GG IE FR DE NL BE LU AT DK CZ IT SK ES FI PT SE PL EE HR HU SI LT LV BG RO GR US CA]
 
   # def set_default
   #     self.update(default_address: true) if self.id == 1

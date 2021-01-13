@@ -1,20 +1,25 @@
 const initCheckout = () => {
-  const form = document.querySelector("#new_order")
+  const form = document.querySelector('#new_order')
   if (!form) return
   const deliveryOptions = document.querySelectorAll('.checkout-delivery-option')
   const deliveryCosts = document.querySelectorAll('.delivery-cost')
   const totalCosts = document.querySelectorAll('.total-cost')
 
-  const setDeliveryOption = e => {
+  const setDeliveryOption = (e) => {
     document.querySelector('.checkout-checkbox-inner').classList.remove('checkout-checkbox-inner')
     e.currentTarget.querySelector('.checkout-checkbox').firstElementChild.classList.add('checkout-checkbox-inner')
-    const { deliverycost, total, deliverytype } = e.currentTarget.dataset
-    deliveryCosts.forEach(cost => cost.innerText = `£${Number(deliverycost) / 100}`)
-    totalCosts.forEach(cost => cost.innerText = `£${Number(total) / 100}`)
+    const { deliverycost, total, deliverytype, locale } = e.currentTarget.dataset
+    if (locale === 'US') {
+      deliveryCosts.forEach((cost) => (cost.innerText = `$${Number(deliverycost) / 100}`))
+      totalCosts.forEach((cost) => (cost.innerText = `$${Number(total) / 100}`))
+    } else {
+      deliveryCosts.forEach((cost) => (cost.innerText = `£${Number(deliverycost) / 100}`))
+      totalCosts.forEach((cost) => (cost.innerText = `£${Number(total) / 100}`))
+    }
     form.querySelector('#order_delivery_type').value = deliverytype
   }
 
-  deliveryOptions.forEach(option => {
+  deliveryOptions.forEach((option) => {
     option.addEventListener('click', setDeliveryOption)
   })
 
@@ -42,33 +47,35 @@ const initCheckout = () => {
   const savedBillingAddresses = document.querySelectorAll('.billing-address-selector')
   const useAsBilling = document.getElementById('address_use_as_billing')
 
-
-
-  savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
-    deliveryHolder.value = a.id;
-    deliveryAddressShow.innerHTML = `
+  savedDeliveryAddresses.forEach((a) =>
+    a.addEventListener('click', () => {
+      deliveryHolder.value = a.id
+      deliveryAddressShow.innerHTML = `
                                       <p class="s-medium-text muli boldest no-margin">${a.dataset.user}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.address_line1}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.city}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.country}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.postcode}</p>
                                     `
-                                    deliveryAddressShow.classList.remove('d-none')
-                                    deliveryAddressShow.parentNode.querySelector('.delivery-default').classList.add('d-none')
-  }))
+      deliveryAddressShow.classList.remove('d-none')
+      deliveryAddressShow.parentNode.querySelector('.delivery-default').classList.add('d-none')
+    })
+  )
 
-  savedBillingAddresses.forEach(a => a.addEventListener('click', () => {
-    billingHolder.value = a.id;
-    billingAddressShow.innerHTML = `
+  savedBillingAddresses.forEach((a) =>
+    a.addEventListener('click', () => {
+      billingHolder.value = a.id
+      billingAddressShow.innerHTML = `
                                       <p class="s-medium-text muli boldest no-margin">${a.dataset.user}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.address_line1}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.city}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.country}</p>
                                       <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.postcode}</p>
                                     `
-    billingAddressShow.classList.remove('d-none')
-    billingAddressShow.parentNode.querySelector('.billing-default').classList.add('d-none')
-  }))
+      billingAddressShow.classList.remove('d-none')
+      billingAddressShow.parentNode.querySelector('.billing-default').classList.add('d-none')
+    })
+  )
 
   // if (addressBtn) {
   //   addressBtn.addEventListener('click', () => {

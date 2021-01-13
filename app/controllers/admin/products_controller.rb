@@ -42,8 +42,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new_in
-    @featured_products = Product.where(featured: true)
-    @not_featured_products = Product.where(featured: false).select { |product| !product.out_of_stock? }
+    if @locale == 'US'
+      @featured_products = Product.where(featured: true).where.not(us_price_cents: 0)
+      @not_featured_products = Product.where(featured: false).where.not(us_price_cents: 0).select { |product| !product.out_of_stock? }
+    else
+      @featured_products = Product.where(featured: true).where.not(price_cents: 0)
+      @not_featured_products = Product.where(featured: false).where.not(price_cents: 0).select { |product| !product.out_of_stock? }
+    end
   end
 
   def add_new_in
@@ -68,7 +73,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:weight, :measurement, :title, :details, :lb_id, :category_id, :sub_category_id, :brand_id, :department_id, :price, :demoable, :published, :lead_product_image, product_ids: [])
+    params.require(:product).permit(:weight, :measurement, :title, :details, :lb_id, :category_id, :sub_category_id, :brand_id, :department_id, :price, :us_price, :demoable, :published, :lead_product_image, product_ids: [])
   end
 
   def set_product

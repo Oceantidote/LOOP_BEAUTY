@@ -1,6 +1,10 @@
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
-document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.subtotal %>'
+<% if @locale == 'US' %>
+  document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.us_subtotal %>'
+<% else %>
+  document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.subtotal %>'
+<% end %>
 document.querySelector('.navbar-basket-title h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %>'
 // document.querySelector('.navbar-basket-title').innerHTML = '<div class="item-added"><p><i class="far fa-check-circle"></i> Item added to bag!</p></div><h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %></h6>'
 // document.querySelector('item-added').innerHTML = ''

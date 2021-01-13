@@ -12,11 +12,14 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :department
   has_many :shades, dependent: :destroy
+  has_many :uk_shades, -> { where(uk_available: true) }, class_name: 'Shade'
+  has_many :us_shades, -> { where(us_available: true) }, class_name: 'Shade'
   has_many :tutorials, through: :tutorial_products
   has_many :lookbooks, through: :lookbook_products
   has_many :insider_reviews, dependent: :destroy
   has_many :customer_reviews, dependent: :destroy
   monetize :price_cents
+  monetize :us_price_cents, with_currency: :usd
   has_many :showroom_products, dependent: :destroy
   has_many :product_benefits, dependent: :destroy
   has_many :tutorial_products, dependent: :destroy
@@ -52,8 +55,16 @@ class Product < ApplicationRecord
     self.shades.sum(:number_in_stock)
   end
 
+  def us_total_number_of_items
+    self.shades.sum(:us_number_in_stock)
+  end
+
   def out_of_stock?
     (self.shades.sum(:number_in_stock) == 0) ? true : false
+  end
+
+  def us_out_of_stock?
+    (self.shades.sum(:us_number_in_stock) == 0) ? true : false
   end
 
   def total_reviews

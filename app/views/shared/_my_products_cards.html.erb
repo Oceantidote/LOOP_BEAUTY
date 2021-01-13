@@ -10,7 +10,7 @@
       <%= link_to product_path(product), class: 'no-decoration' do %>
         <div class="my-products-card">
           <div class="my-products-image">
-            <% if product.out_of_stock? %>
+            <% if product.send("#{'us_' if @locale == 'US'}out_of_stock?") %>
               <div class="out-of-stock-overlay">
                 <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
               </div>
@@ -21,7 +21,11 @@
             <p class="muli"><%= product.title %></p>
           </div>
           <div class="my-products-price text-center boldest no-margin muli">
-            <%= humanized_money_with_symbol(product.price) %>
+            <% if @locale == 'US' %>
+              <%= humanized_money_with_symbol(product.us_price) %>
+            <% else %>
+              <%= humanized_money_with_symbol(product.price) %>
+            <% end %>
           </div>
           <div class="my-products-purchase">
             <%= link_to 'Reorder', my_product_product_path(product), remote: true, method: :post, class: "my-products-button add-to-bag-grey" %>

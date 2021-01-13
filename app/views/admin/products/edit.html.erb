@@ -41,8 +41,12 @@
           <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Price</p>
+          <p class="boldest muli s-medium-text text-right no-margin">UK Price</p>
           <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
+        </div>
+        <div class="personal-details-input">
+          <p class="boldest muli s-medium-text text-right no-margin">US Price</p>
+          <%= f.input :us_price, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
           <p class="boldest muli s-medium-text text-right no-margin">Lead Product Image</p>
@@ -74,6 +78,14 @@
                 <div class="personal-details-input">
                   <p class="boldest muli s-medium-text text-right no-margin">Name</p>
                   <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
+                </div>
+                <div class="personal-details-input">
+                  <p class="boldest muli s-medium-text text-right no-margin ">Available in the UK and EU?</p>
+                  <%= f.input :uk_available, label: false, input_html: { class: "lb-checkbox" } %>
+                </div>
+                <div class="personal-details-input">
+                  <p class="boldest muli s-medium-text text-right no-margin ">Available in the US?</p>
+                  <%= f.input :us_available, label: false, input_html: { class: "lb-checkbox" } %>
                 </div>
 <!--                 <div class="personal-details-input">
                   <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
@@ -131,6 +143,14 @@
             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">Name</p>
               <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin ">Available in the UK and EU?</p>
+              <%= f.input :uk_available, label: false, input_html: { class: "lb-checkbox" } %>
+            </div>
+            <div class="personal-details-input">
+              <p class="boldest muli s-medium-text text-right no-margin ">Available in the US?</p>
+              <%= f.input :us_available, label: false, input_html: { class: "lb-checkbox" } %>
             </div>
 <!--             <div class="personal-details-input">
               <p class="boldest muli s-medium-text text-right no-margin">SKU</p>

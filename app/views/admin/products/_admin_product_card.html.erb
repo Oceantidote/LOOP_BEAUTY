@@ -12,8 +12,15 @@
     <div class="my-products-details text-center no-margin muli">
       <p><%= product.title %></p>
     </div>
-    <div class="my-products-price text-center boldest no-margin muli">
-      <%= humanized_money_with_symbol(product.price) %>
+    <div class="my-products-price text-center boldest no-margin muli d-flex justify-content-around">
+      <div>
+        <%= humanized_money_with_symbol(product.price) %>
+      </div>
+      <% if product.us_price > 0 %>
+        <div>
+          <%= humanized_money_with_symbol(product.us_price) %>
+        </div>
+      <% end %>
     </div>
     <div class="products-admin-options">
       <%= link_to 'EDIT', edit_admin_product_path(product), class: 'secondary-button products-admin-buttons' %>

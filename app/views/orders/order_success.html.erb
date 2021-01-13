@@ -13,16 +13,32 @@
         <p class="medium-text boldest muli">Order details are listed below!</p>
         <div class="order-show-info">
           <div class="order-show-info-left">
-            <p class="boldest small-text no-margin muli">Subtotal: <span class="grey"><%= humanized_money_with_symbol @order.unadjusted_price %></span></p>
-            <% if @order.discount_code %>
-              <p class="boldest small-text no-margin muli">Discount: <span class="grey">-<%= humanized_money_with_symbol @order.money_off %></span></p>
+            <% if @order.locale == 'US' %>
+              <p class="boldest small-text no-margin muli">Subtotal: <span class="grey"><%= humanized_money_with_symbol @order.us_unadjusted_price %></span></p>
+            <% else %>
+              <p class="boldest small-text no-margin muli">Subtotal: <span class="grey"><%= humanized_money_with_symbol @order.unadjusted_price %></span></p>
             <% end %>
-            <p class="boldest small-text no-margin muli">Delivery: <span class="grey"><%= humanized_money_with_symbol @order.delivery_cost %></span></p>
+            <% if @order.discount_code %>
+              <% if @order.locale == 'US' %>
+                <p class="boldest small-text no-margin muli">Discount: <span class="grey">-<%= humanized_money_with_symbol @order.us_money_off %></span></p>
+              <% else %>
+                <p class="boldest small-text no-margin muli">Discount: <span class="grey">-<%= humanized_money_with_symbol @order.money_off %></span></p>
+              <% end %>
+            <% end %>
+            <% if @order.locale == 'US' %>
+              <p class="boldest small-text no-margin muli">Delivery: <span class="grey"><%= humanized_money_with_symbol @order.us_delivery_cost %></span></p>
+            <% else %>
+              <p class="boldest small-text no-margin muli">Delivery: <span class="grey"><%= humanized_money_with_symbol @order.delivery_cost %></span></p>
+            <% end %>
             <% if @order.credit_spent_cents > 0 %>
               <p class="boldest small-text no-margin muli">Total credits spent: <span class="grey"><%= humanized_money_with_symbol @order.credit_spent %></span></p>
               <p class="boldest small-text no-margin muli">Remaining credits: <span class="grey"><%= humanized_money_with_symbol @order.user.remaining_credit %></span></p>
             <% end %>
-            <p class="boldest s-medium-text small-margin-bottom muli">Total: <span class="grey"><%= humanized_money_with_symbol @order.total_with_delivery %></span></p>
+            <% if @order.locale == 'US' %>
+              <p class="boldest s-medium-text small-margin-bottom muli">Total: <span class="grey"><%= humanized_money_with_symbol @order.us_total_with_delivery %></span></p>
+            <% else %>
+              <p class="boldest s-medium-text small-margin-bottom muli">Total: <span class="grey"><%= humanized_money_with_symbol @order.total_with_delivery %></span></p>
+            <% end %>
             <hr>
             <!-- <p class="boldest small-text no-margin">Status: <%= @order.status %></p> -->
             <div class="order-success-delivery-option">
@@ -64,7 +80,11 @@
                       <p class="small-text muli">Quantity: <%= order_product.quantity %></p>
                     </div>
                     <div class="order-price">
-                      <p class="boldest small-text muli"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
+                      <% if @order.locale == 'US' %>
+                        <p class="boldest small-text muli"><%= humanized_money_with_symbol order_product.product.us_price * order_product.quantity %></p>
+                      <% else %>
+                        <p class="boldest small-text muli"><%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -98,48 +118,96 @@
 
   });
 
-  gtag('event', 'purchase', {
+  <% if Rails.env.development? %>
 
-    "transaction_id": "<%= @order.id %>",
+  <% elsif @order.locale == 'US' %>
+    gtag('event', 'purchase', {
 
-    "affiliation": "LOOP BEAUTY",
+      "transaction_id": "<%= @order.id %>",
 
-    "value": <%= ((@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
+      "affiliation": "LOOP BEAUTY",
 
-    "currency": "GBP",
+      "value": <%= ((@order.us_total_price_cents / 12.to_f) * 10) / 100.to_f %>,
 
-    "tax": <%= (@order.total_price_cents - (@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
+      "currency": "USD",
 
-    "shipping": <%= @order.delivery_cost_cents / 100.to_f %>,
+      "tax": <%= (@order.us_total_price_cents - (@order.us_total_price_cents / 12.to_f) * 10) / 100.to_f %>,
 
-    "items": [
-      <% @order.order_products.each_with_index do |item, i| %>
-        {
+      "shipping": <%= @order.delivery_cost_cents / 100.to_f %>,
 
-          "id": "<%= item.shade.sku %>",
+      "items": [
+        <% @order.order_products.each_with_index do |item, i| %>
+          {
 
-          "name": "<%= item.product.title %>",
+            "id": "<%= item.shade.sku %>",
 
-          "list_name": "order-<%= item.order.id %>",
+            "name": "<%= item.product.title %>",
 
-          "brand": "<%= item.product.brand.name %>",
+            "list_name": "order-<%= item.order.id %>",
 
-          "category": "<%= item.product.category.name %>",
+            "brand": "<%= item.product.brand.name %>",
 
-          "variant": "<%= item.shade.name %>",
+            "category": "<%= item.product.category.name %>",
 
-          "list_position": <%= i + 1 %>,
+            "variant": "<%= item.shade.name %>",
 
-          "quantity": <%= item.quantity %>,
+            "list_position": <%= i + 1 %>,
 
-          "price": <%= item.price_cents / 100.to_f %>
+            "quantity": <%= item.quantity %>,
 
-        }<%= ',' if @order.order_products.size != i + 1 %>
-      <% end %>
+            "price": <%= item.us_price_cents / 100.to_f %>
 
-    ]
+          }<%= ',' if @order.order_products.size != i + 1 %>
+        <% end %>
 
-  });
+      ]
+
+    });
+  <% else %>
+    gtag('event', 'purchase', {
+
+      "transaction_id": "<%= @order.id %>",
+
+      "affiliation": "LOOP BEAUTY",
+
+      "value": <%= ((@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
+
+      "currency": "GBP",
+
+      "tax": <%= (@order.total_price_cents - (@order.total_price_cents / 12.to_f) * 10) / 100.to_f %>,
+
+      "shipping": <%= @order.delivery_cost_cents / 100.to_f %>,
+
+      "items": [
+        <% @order.order_products.each_with_index do |item, i| %>
+          {
+
+            "id": "<%= item.shade.sku %>",
+
+            "name": "<%= item.product.title %>",
+
+            "list_name": "order-<%= item.order.id %>",
+
+            "brand": "<%= item.product.brand.name %>",
+
+            "category": "<%= item.product.category.name %>",
+
+            "variant": "<%= item.shade.name %>",
+
+            "list_position": <%= i + 1 %>,
+
+            "quantity": <%= item.quantity %>,
+
+            "price": <%= item.price_cents / 100.to_f %>
+
+          }<%= ',' if @order.order_products.size != i + 1 %>
+        <% end %>
+
+      ]
+
+    });
+  <% end %>
+
 
 
 </script>

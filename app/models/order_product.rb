@@ -7,7 +7,11 @@ class OrderProduct < ApplicationRecord
   def price
     Money.new price_cents
   end
-  
+
+  def us_price
+    Money.new us_price_cents, :usd
+  end
+
   def price_cents
     if order.discount_code.present?
       (unadjusted_price_cents * ((100 - order.discount_code.discount) / 100.to_f)).ceil
@@ -15,11 +19,23 @@ class OrderProduct < ApplicationRecord
       unadjusted_price_cents
     end
   end
-  
+
+  def us_price_cents
+    if order.discount_code.present?
+      (us_unadjusted_price_cents * ((100 - order.discount_code.discount) / 100.to_f)).ceil
+    else
+      us_unadjusted_price_cents
+    end
+  end
+
   def individual_price
     Money.new individual_price_cents
   end
-  
+
+  def us_individual_price
+    Money.new us_individual_price_cents, :usd
+  end
+
   def individual_price_cents
     if order.discount_code.present?
       (product.price_cents * ((100 - order.discount_code.discount) / 100.to_f)).ceil
@@ -28,16 +44,28 @@ class OrderProduct < ApplicationRecord
     end
   end
 
+  def us_individual_price_cents
+    if order.discount_code.present?
+      (product.us_price_cents * ((100 - order.discount_code.discount) / 100.to_f)).ceil
+    else
+      product.us_price_cents
+    end
+  end
+
   def unadjusted_price_cents
     product.price_cents * quantity
   end
-  
+
+  def us_unadjusted_price_cents
+    product.us_price_cents * quantity
+  end
+
   def price_cents_in(currency)
     info = ExchangeRate.find_by_currency(currency)
     return price_cents unless info
     (price_cents * info.rate).round
   end
- 
+
   def unadjusted_price_in_cents(currency)
     info = ExchangeRate.find_by_currency(currency)
     return unadjusted_price_cents unless info

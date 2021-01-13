@@ -1,7 +1,7 @@
 <div class="card-image-results">
   <div class="card">
     <%= link_to product_path(product) do %>
-      <% if product.out_of_stock? %>
+      <% if product.send("#{'us_' if @locale == 'US'}out_of_stock?") %>
         <div class="out-of-stock-overlay">
           <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
         </div>
