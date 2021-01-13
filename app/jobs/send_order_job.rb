@@ -42,7 +42,7 @@ class SendOrderJob < ApplicationJob
       half_api_key: api_key[0..15],
       message_timestamp: timestamp,
       security_hash: Digest::MD5.hexdigest(timestamp.to_s + api_key),
-      test: !Rails.env.production? || ENV['TEST'],
+      test: !Rails.env.production? || (ENV['TEST'] == 'true'),
       update_stock: true,
       order: {
         client_ref: "%05d" % (order.id ? order.id : 1),

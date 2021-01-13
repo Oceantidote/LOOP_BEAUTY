@@ -118,7 +118,7 @@
 
   });
 
-  <% if Rails.env.development? %>
+  <% if Rails.env.development? || (ENV['TEST'] == 'true') %>
 
   <% elsif @order.locale == 'US' %>
     gtag('event', 'purchase', {
