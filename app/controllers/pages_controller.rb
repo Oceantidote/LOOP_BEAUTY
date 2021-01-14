@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     else
       @new_in = Product.where(featured: true).where.not(price_cents: 0).select { |product| !product.out_of_stock? }
       @trending = Product.where.not(price_cents: 0).select { |product| !product.out_of_stock? }.select { |product| product.brand.name == "Black Up" }
-      @best_sellers = Product.where.not(us_price_cents: 0).select { |product| !product.send.out_of_stock? }.last(5)
+      @best_sellers = Product.where.not(us_price_cents: 0).select { |product| !product.out_of_stock? }.last(5)
     end
   end
 
