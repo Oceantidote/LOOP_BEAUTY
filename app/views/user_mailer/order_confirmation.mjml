@@ -75,7 +75,7 @@
 	    <mj-section border-top="1px solid #DADADA">
 	      <mj-group>
 	        <mj-column>
-	          <%= image_tag url_for(order_product.shade.card_photo), style: "width:80px;", alt: "order product shade photo" %>
+	          <%= image_tag url_for(order_product.shade.card_photo), style: "width:100%;", alt: "order product shade photo" %>
 	        </mj-column>
 	        <mj-column>
 	          <mj-text css-class="product-text" color="#000" padding="0 0px" align="center" font-weight="600" padding-top="30px"><%= order_product.product.title %></mj-text>
