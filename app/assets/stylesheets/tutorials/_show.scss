@@ -89,7 +89,7 @@
   }
 }
 .web-tutorials-link {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   @include for-small-devices-down {
     display: none;
   }
@@ -97,7 +97,7 @@
 
 .previous-next-tutorial {
   display: flex;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   @include for-small-devices-down {
     width: 100%;
     justify-content: space-between;
@@ -115,7 +115,7 @@
   font-weight: 900;
   border-bottom: 1px solid black;
   margin-left: 16px;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   &:hover {
     color: black;
     text-decoration: none;

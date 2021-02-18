@@ -1,6 +1,6 @@
 .offers-banner {
   height: 40px;
-  background-color: black;
+  background-color: $primary;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,9 +12,8 @@
 .offers-banner-text {
   font-family: $menu-font;
   margin: 0;
-  font-weight: 800;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   @include for-phone-only {
     font-size: 12px;
@@ -103,7 +102,7 @@
 }
 
 .navbar-middle-item {
-  padding: 0 15px;
+  padding: 0 16px;
   margin: 0;
   height: 100%;
   @include absCenter;
@@ -119,6 +118,23 @@
   }
 }
 
+.freebie-item {
+  margin: 0;
+  height: 100%;
+  @include absCenter;
+  font-size: 14px;
+  font-weight: 900;
+  border-bottom: 3px solid transparent;
+  p {
+    padding: 8px 16px;
+    color: black;
+    background-color: #F2F0EE;
+    &:hover {
+      background-color:  #ECECEC;
+    }
+  }
+}
+
 .navbar-active {
   border-color: black !important;
 }
@@ -128,27 +144,36 @@
   position: fixed;
   z-index: 100;
   width: 100%;
-  max-height: 150px;
-  top: 60px;
-  justify-content: center;
+  min-height: 220px;
+  top: 100px;
+  justify-content: flex-start;
   background: white;
-  padding: 15px 50px 0px 15px;
+  padding: 32px;
   display: none;
 }
 
 .navbar-submenu-container {
-  padding-top: 30px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  // padding-top: 30px;
+  // width: 50%;
+  // display: flex;
+  // flex-direction: column;
+  // flex-wrap: wrap;
   // justify-content: center;
+  margin-right: 4vw;
+}
+
+.navbar-submenu-container:last-child {
+  margin-right: 0;
+}
+
+.submenu-title {
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 .each-item {
   margin-bottom: 5px;
-  color: #565656;
-  font-weight: 900;
+  color: #0E0000;
   // padding: 15px 0;
   // font-size: 14px;
     background: white;
@@ -535,7 +560,7 @@
   width: 0;
   padding-left: 5px;
   padding-right: 25px;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   // background: #FCFCFC;
   background: asset_url("navbar-search.png");
   background-position: right;

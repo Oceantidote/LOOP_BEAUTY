@@ -31,25 +31,22 @@
     <%= link_to brands_path do %>
       <p id="navbar-brands" class="navbar-middle-item <%= params[:controller] == 'brands' && params[:action] == 'index' ? 'navbar-active' : '' %>">Brands</p>
     <% end %>
-    <%= link_to users_path do %>
-      <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'users' && params[:action] == 'index' ? 'navbar-active' : '' %>">Influencers</p>
-    <% end %>
     <%= link_to products_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Makeup</p>
+      <p id="navbar-influencers" class="navbar-middle-item <%= params[:controller] == 'products' ? 'navbar-active' : '' %>">Shop</p>
+    <% end %>
+    <%= link_to users_path do %>
+      <p class="navbar-middle-item <%= params[:controller] == 'users' && params[:action] == 'index' ? 'navbar-active' : '' %>">Experts</p>
     <% end %>
     <%= link_to insider_articles_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'insider_articles' ? 'navbar-active' : '' %>">Insider</p>
+      <p class="navbar-middle-item <%= params[:controller] == 'insider_articles' ? 'navbar-active' : '' %>">Community</p>
     <% end %>
-    <%= link_to videos_path do %>
-      <p class="navbar-middle-item <%= params[:controller] == 'pages' && params[:action] == 'videos' ? 'navbar-active' : '' %>">Videos</p>
-    <% end %>
+    <div class="freebie-item">
+      <%= link_to freebies_path do %>
+        <p class="m-0 <%= params[:controller] == 'pages' && params[:action] == 'freebies' ? 'freebie-active' : '' %>">Freebies</p>
+      <% end %>
+    </div>
   </div>
   <ul class="navbar-nav" style="flex-direction: row">
-    <div style="display: flex; align-items: center;">
-      <li class="nav-item medium-hidden">
-        <%= link_to 'Freebies', freebies_path, class: "nav-link-normal" %>
-      </li>
-    </div>
     <li class="nav-item small-hidden" style="position: relative;">
       <div class="nav-link">
         <%= image_tag 'navbar-search.png', id: 'navbar-search-close', alt: "search icon" %>
@@ -204,23 +201,56 @@
 
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
-    <% @influencers.each do |influencer| %>
+    <p class="submenu-title mb-3">BRANDS</p>
+    <% @influencers.first(7).each do |influencer| %>
       <%= link_to user_path(influencer), class: "each-item" do %>
-        <%= influencer.first_name %> <%= influencer.last_name %>
+        <p class="lighter mb-1"><%= influencer.first_name %> <%= influencer.last_name %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="navbar-submenu-container">
+    <p class="submenu-title mb-3">EYE</p>
+    <% @influencers.first(4).each do |influencer| %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
+        <p class="lighter mb-1"><%= influencer.first_name %> <%= influencer.last_name %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="navbar-submenu-container">
+    <p class="submenu-title mb-3">FACE</p>
+    <% @influencers.first(7).each do |influencer| %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
+        <p class="lighter mb-1"><%= influencer.first_name %> <%= influencer.last_name %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="navbar-submenu-container">
+    <p class="submenu-title mb-3">LIPS</p>
+    <% @influencers.first(2).each do |influencer| %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
+        <p class="lighter mb-1"><%= influencer.first_name %> <%= influencer.last_name %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="navbar-submenu-container">
+    <p class="submenu-title mb-3">OTHER</p>
+    <% @influencers.first(1).each do |influencer| %>
+      <%= link_to user_path(influencer), class: "each-item" do %>
+        <p class="lighter mb-1"><%= influencer.first_name %> <%= influencer.last_name %></p>
       <% end %>
     <% end %>
   </div>
 </div>
 
-<div class="navbar-submenu navbar-submenu-brands">
+<!-- <div class="navbar-submenu navbar-submenu-brands">
   <div class="navbar-submenu-container">
-    <% @brands.each do |brand| %>
-      <%= link_to brand_path(brand), class: "each-item" do %>
-        <%= brand.name %>
-      <% end %>
-    <% end %>
+    <%# @brands.each do |brand| %>
+      <%#= link_to brand_path(brand), class: "each-item" do %>
+        <%#= brand.name %>
+      <%# end %>
+    <%# end %>
   </div>
-</div>
+</div> -->
 <div class="navbar-submenu-underlay"></div>
 
 <!-- HIDDEN BASKET CONTENT -->
@@ -264,31 +294,31 @@
 <script>
 
   // WEB NAV
-  navbarBrands = document.getElementById('navbar-brands');
-  menuBrands = document.querySelector('.navbar-submenu-brands');
+  // navbarBrands = document.getElementById('navbar-brands');
+  // menuBrands = document.querySelector('.navbar-submenu-brands');
   navbarInfluencers = document.getElementById('navbar-influencers');
   menuInfluencers = document.querySelector('.navbar-submenu-influencers');
   subnavUnderlay = document.querySelector('.navbar-submenu-underlay');
 
-  navbarBrands.addEventListener('mouseover', function() {
-    menuBrands.style.display = "flex";
-    subnavUnderlay.style.display = "block";
-  });
+  // navbarBrands.addEventListener('mouseover', function() {
+  //   menuBrands.style.display = "flex";
+  //   subnavUnderlay.style.display = "block";
+  // });
 
-  navbarBrands.addEventListener('mouseleave', function() {
-    menuBrands.style.display = "none";
-    subnavUnderlay.style.display = "none";
-  });
+  // navbarBrands.addEventListener('mouseleave', function() {
+  //   menuBrands.style.display = "none";
+  //   subnavUnderlay.style.display = "none";
+  // });
 
-  menuBrands.addEventListener('mouseover', function() {
-    menuBrands.style.display = "flex";
-    subnavUnderlay.style.display = "block";
-  });
+  // menuBrands.addEventListener('mouseover', function() {
+  //   menuBrands.style.display = "flex";
+  //   subnavUnderlay.style.display = "block";
+  // });
 
-  menuBrands.addEventListener('mouseleave', function() {
-    menuBrands.style.display = "none";
-    subnavUnderlay.style.display = "none";
-  });
+  // menuBrands.addEventListener('mouseleave', function() {
+  //   menuBrands.style.display = "none";
+  //   subnavUnderlay.style.display = "none";
+  // });
 
   navbarInfluencers.addEventListener('mouseover', function() {
     menuInfluencers.style.display = "flex";

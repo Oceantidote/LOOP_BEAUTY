@@ -97,13 +97,13 @@
   -webkit-appearance: none;
   -moz-appearance:    none;
   appearance:         none;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   border: 1px solid #F0F0F0;
   background: #FCFCFC;
 }
 
 #user_email::placeholder, #user_password::placeholder, #user_password_confirmation::placeholder, #user_first_name::placeholder, #user_last_name::placeholder {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   color: #BCBCBC;
   font-size: 14px;
 }
@@ -116,7 +116,7 @@
 }
 
 .sessions-new-options {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   display: flex;
   justify-content: space-between;
   @include for-phone-only {
