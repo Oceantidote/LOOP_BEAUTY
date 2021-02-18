@@ -14,7 +14,7 @@
 }
 
 h1 {
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
   @include for-large-devices-down {
     font-size: 36px;
   }
@@ -30,7 +30,7 @@ h1 {
 }
 
 h2 {
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
   @include for-large-devices-down {
     font-size: 28px;
   }
@@ -46,7 +46,7 @@ h2 {
 }
 
 h3 {
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
   @include for-large-devices-down {
     font-size: 24px;
   }
@@ -62,7 +62,7 @@ h3 {
 }
 
 h4 {
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
   @include for-large-devices-down {
     font-size: 22px;
   }
@@ -78,7 +78,7 @@ h4 {
 }
 
 h5 {
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
   @include for-large-devices-down {
     font-size: 18px;
   }
@@ -94,7 +94,7 @@ h5 {
 }
 
 h6 {
-  letter-spacing: 1px;
+  // letter-spacing: 1px;
   @include for-large-devices-down {
     font-size: 16px;
   }

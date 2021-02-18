@@ -15,13 +15,64 @@
     <% end %>
   <% end %>
 </div>
+
+
+
+
+
+
+<div class="container">
+  <div class="py-5">
+    <div class="col-12">
+      <h6 class="mb-3 bolder">TRENDING</h6>
+    </div>
+    <div class="row m-0">
+      <% @products.each do |product| %>
+        <div class="col-3">
+          <div class="card-image-results homepage-products">
+            <div class="card">
+              <%= link_to product_path(product) do %>
+                <% if product.out_of_stock? %>
+                  <div class="out-of-stock-overlay">
+                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                  </div>
+                <% end %>
+                <div class="card_image">
+                  <%= link_to product_path(product) do %>
+                    <% if product.shades.first&.card_photo %>
+                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                    <% else %>
+                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="card-info">
+              <p class="muli boldest text-center truncate-text v-small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <div class="card_header">
+                <p class="muli boldest text-center"><%= product.title.upcase %></p>
+              </div>
+              <p class="mb-2">"<%= product.details.truncate(80) %>"</p>
+              <h5 class="mb-2 text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+            </div>
+          </div>
+          <% if policy(ShowroomProduct).destroy? && (params[:controller] == 'users' && params[:action] == 'make_up' || ((params[:controller] == 'showroom_products' && params[:action] == 'destroy') || (params[:controller] == 'showroom_products' && params[:action] == 'create')) ) %>
+            <%= link_to 'Remove', user_showroom_product_path(@user, ShowroomProduct.where(showroom: @user.showroom, product: product).first.id), method: :delete, class: "small-text underline grey-font boldest showroom-delete-link", remote: true %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <h2 class="insider-info-title text-center">Insider</h2>
 <div class="insider-home-articles">
   <%= render 'insider_articles/insider_cards', insider_articles: @insider_articles.last(3) %>
 </div>
 <div class="home-featured-wrapper">
   <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-  <%= render 'shared/home_tabs' %>
+  <%#= render 'shared/home_tabs' %>
 </div>
 
 
@@ -42,15 +93,14 @@
 <%# if @first_visit %>
 <% if 1==1 %>
   <div class="homepage-pop-up">
-    <div class="pop-up-content">
-      <h3>First time with us?</h3>
-      <h6>Get 10% off your first order</h6>
-      <h6 class="grey-font">CODE: WELCOME2LOOP</h6>
+    <div class="pop-up-content" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,1)), url('<%= image_path 'the-net-popup.png' %>')">
+      <h5 class="text-white">THE NET</h5>
+      <h6 class="text-white small-text">FIRST TIME WITH US?</h6>
+      <!-- <h6 class="text-white small-text">Get 10% off your first order</h6> -->
+      <p class="text-white muli font-weight-lighter v-small-text m-0">CODE: WELCOME2NET</p>
       <p class="primary-button pop-up-content-button">SHOP NOW</p>
-      <%= link_to about_us_path, class: "no-decoration" do %>
-        <h6 class="grey-font no-margin" style="border-bottom: 1px solid #676767;">Learn more</h6>
-      <% end %>
-      <%= image_tag 'close-black.png', class: 'close-homepage-pop-up' %>
+      <%= link_to 'Learn more', about_us_path, class: "text-white muli underline small-text" %>
+      <%= image_tag 'close-white.png', class: 'close-homepage-pop-up' %>
     </div>
   </div>
 <% end %>
@@ -88,15 +138,15 @@
     })
   })
 
-  document.onreadystatechange = function() {
-    if (document.readyState !== "complete") {
-        document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'hidden' })
-        document.querySelector(".lds-spinner").style.visibility = "visible";
-    } else {
-        document.querySelector(".lds-spinner").style.display = "none";
-        document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'visible' })
-    }
-  };
+  // document.onreadystatechange = function() {
+  //   if (document.readyState !== "complete") {
+  //       document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'hidden' })
+  //       document.querySelector(".lds-spinner").style.visibility = "visible";
+  //   } else {
+  //       document.querySelector(".lds-spinner").style.display = "none";
+  //       document.querySelectorAll(".load-show").forEach((load) => { load.style.visibility = 'visible' })
+  //   }
+  // };
 
 </script>
 
