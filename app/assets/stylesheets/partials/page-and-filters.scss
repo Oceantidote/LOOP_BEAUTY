@@ -136,7 +136,7 @@
   align-items: center;
   padding: 0 15px;
   color: black;
-  font-family: 'Mukta Mahee', sans-serif;
+  font-family: 'Muli', sans-serif;
   display: none;
   cursor: pointer;
   @include for-small-devices-down {
@@ -268,7 +268,7 @@
   overflow: hidden;
   max-height: 0;
   transition: all 0.1s ease;
-  font-family: 'Mukta Mahee', sans-serif;
+  font-family: 'Muli', sans-serif;
 }
 
 .show-filters {

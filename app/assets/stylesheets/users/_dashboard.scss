@@ -65,7 +65,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  font-family: 'Mukta Mahee', sans-serif;
+  font-family: 'Muli', sans-serif;
   &:hover {
     text-decoration: none;
     color: black;
@@ -121,7 +121,7 @@
   background: white;
   text-align: center;
   font-size: 18px;
-  font-family: 'Mukta Mahee', sans-serif;
+  font-family: 'Muli', sans-serif;
   @include for-medium-devices-down {
     font-size: 14px;
     padding: 10px;
