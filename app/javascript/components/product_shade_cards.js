@@ -25,9 +25,9 @@ const initProductShadeCards = () => {
       $('.product-shade-title').html(`<strong>${e.currentTarget.dataset.name}</strong>`)
       console.log(e.currentTarget.dataset.stock)
       if (e.currentTarget.dataset.stock == "0") {
-        buttonHolder.html(`<input type="submit" name="commit" value="OUT OF STOCK" disabled="disabled" class="primary-button disabled-button" data-disable-with="OUT OF STOCK">`)
+        buttonHolder.html(`<input type="submit" name="commit" value="OUT OF STOCK" disabled="disabled" class="primary-button disabled-button w-100" data-disable-with="OUT OF STOCK">`)
       } else {
-        buttonHolder.html(`<input type="submit" name="commit" value="ADD TO BAG" id="add-to-bag" class="primary-button" data-disable-with="ADD TO BAG">`)
+        buttonHolder.html(`<input type="submit" name="commit" value="ADD TO BAG" id="add-to-bag" class="primary-button w-100" data-disable-with="ADD TO BAG">`)
       }
       initProductImageZoom();
     })

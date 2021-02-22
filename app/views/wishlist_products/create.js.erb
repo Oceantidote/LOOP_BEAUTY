@@ -3,6 +3,8 @@ heart = document.querySelector('#wishlist-<%= @wishlist_product.product.id %>')
 link = heart.querySelector('a')
 link.href = '<%= wishlist_product_path(@wishlist_product) %>'
 link.setAttribute('data-method', 'delete')
+link.querySelector('span').innerText = 'REMOVE FROM WISHLIST'
+
 
 icon = heart.querySelector('i')
 icon.classList.remove('far')

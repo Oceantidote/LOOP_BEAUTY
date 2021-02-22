@@ -24,7 +24,8 @@
   </button>
   <div class="navbar-logo">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag 'loop-beauty-logo.png', alt: "loop beauty logo" %>
+      <h4 class="m-0">THE NET</h4>
+      <%#= image_tag 'loop-beauty-logo.png', alt: "loop beauty logo" %>
     <% end %>
   </div>
   <div class="navbar-middle">
@@ -202,9 +203,9 @@
 <div class="navbar-submenu navbar-submenu-influencers">
   <div class="navbar-submenu-container">
     <p class="submenu-title mb-3">BRANDS</p>
-    <% @influencers.first(7).each do |influencer| %>
-      <%= link_to user_path(influencer), class: "each-item" do %>
-        <p class="lighter mb-1"><%= influencer.first_name %> <%= influencer.last_name %></p>
+    <% @brands.first(7).each do |brand| %>
+      <%= link_to brand_path(brand), class: "each-item" do %>
+        <p class="lighter mb-1"><%= brand.name %></p>
       <% end %>
     <% end %>
   </div>

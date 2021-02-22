@@ -19,14 +19,17 @@
 
 
 
-
-
-<div class="container">
-  <div class="py-5">
-    <div class="col-12">
-      <h6 class="mb-3 bolder">TRENDING</h6>
+<div class="content-container trending-container">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold" style="width: 98%">TRENDING</h5>
     </div>
-    <div class="row m-0">
+  </div>
+  <div class="row m-0">
+
+    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
+
+    <% 2.times do %>
       <% @products.each do |product| %>
         <div class="col-3">
           <div class="card-image-results homepage-products">
@@ -49,47 +52,127 @@
               <% end %>
             </div>
             <div class="card-info">
-              <p class="muli boldest text-center truncate-text v-small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
-              <div class="card_header">
-                <p class="muli boldest text-center"><%= product.title.upcase %></p>
+              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <div class="card_header mb-3">
+                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
               </div>
-              <p class="mb-2">"<%= product.details.truncate(80) %>"</p>
-              <h5 class="mb-2 text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
+              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
             </div>
           </div>
-          <% if policy(ShowroomProduct).destroy? && (params[:controller] == 'users' && params[:action] == 'make_up' || ((params[:controller] == 'showroom_products' && params[:action] == 'destroy') || (params[:controller] == 'showroom_products' && params[:action] == 'create')) ) %>
-            <%= link_to 'Remove', user_showroom_product_path(@user, ShowroomProduct.where(showroom: @user.showroom, product: product).first.id), method: :delete, class: "small-text underline grey-font boldest showroom-delete-link", remote: true %>
-          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="content-container">
+  <h5 class="mb-3 semi-bold" style="width: 90%">OBSESSION OF THE WEEK</h5>
+  <div class="obsession-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path 'default-make-up.jpg' %>')">
+    <div>
+      <h5 class="text-white mb-4">DERMATOLOGY</h5>
+      <h2 class="text-white mb-0">The revolutionary product that is changing</h2>
+      <h2 class="text-white mb-4">women of colour with Dermatitis</h2>
+      <%= link_to 'BUY NOW', product_path(Product.first), class: 'primary-button button-width white-button mb-0' %>
+    </div>
+  </div>
+</div>
+<div class="content-container">
+  <div class="row m-0 justify-content-between">
+    <h5 class="mb-3 semi-bold">LEARN INSIDER SECRETS</h5>
+    <p><%= link_to 'VIEW ALL ARTICLES', insider_articles_path, class: 'underline muli' %></p>
+  </div>
+  <div class="row m-0">
+    <% @insider_articles.each_with_index do |article, index| %>
+      <div class="col-6 <%= index.even? ? 'pl-0 pr-4' : 'pr-0 pl-4' %>">
+        <%= link_to insider_article_path(article) do %>
+          <div class="homepage-articles mb-4" style="background-image: url('<%= rails_blob_path article.cover_photo %>')"></div>
+        <% end %>
+        <p class="muli mb-1"><%= article.category.upcase %></p>
+        <h5 class="truncate-text mb-3"><%= article.title %></h5>
+        <p class="truncate-text muli grey-font"><%= article.text1.gsub(/<div>|<\/div>/, '') %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="content-container">
+  <div class="row m-0">
+    <div class="col-12 p-0 d-flex justify-content-start align-items-center">
+      <%= link_to tutorial_path(@tutorial), class: 'w-100' do %>
+        <div class="obsession-banner homepage-big-video p-0 justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= url_for(@tutorial.cover_photo) %>)">
+          <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
-<h2 class="insider-info-title text-center">Insider</h2>
-<div class="insider-home-articles">
-  <%= render 'insider_articles/insider_cards', insider_articles: @insider_articles.last(3) %>
-</div>
-<div class="home-featured-wrapper">
-  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-  <%#= render 'shared/home_tabs' %>
-</div>
-
-
-<% if !@tutorials.empty? %>
-  <div class="latest-videos-wrapper">
-    <h2 class="text-center no-mb-small">Latest Videos</h2>
-    <div class="latest-videos-container lookbook-max-width">
-      <div class="row-carousel">
-        <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-          <% @tutorials.each do |tutorial| %>
-            <%= render 'shared/tutorials_card', tutorial: tutorial %>
-          <% end %>
-        <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
+<div class="content-container pt-5">
+  <div class="row m-0">
+    <div class="col-6 d-flex justify-content-start align-items-center">
+      <div>
+        <p class="mb-0 muli"><%= @tutorial.user.full_name.upcase %></p>
+        <h2 class="mb-0 ">LEARN FROM THE EXPERTS</h2>
+        <p class="mb-0 muli"><%= @tutorial.title %></p>
+        <%= link_to 'MORE VIDEOS', product_path(Product.first), class: 'primary-button button-width mb-0' %>
       </div>
     </div>
+    <div class="col-6 p-0">
+      <%= link_to tutorial_path(@tutorial) do %>
+        <div class="obsession-banner p-0 justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= url_for(@tutorial.cover_photo) %>)">
+          <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
+<div class="content-container trending-container pb-5">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold" style="width: 98%">DISCOVER WHAT CUSTOMERS ARE BUYING NOW</h5>
+    </div>
+  </div>
+  <div class="row m-0">
+
+    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
+
+    <% 2.times do %>
+      <% @products.each do |product| %>
+        <div class="col-3">
+          <div class="card-image-results homepage-products">
+            <div class="card">
+              <%= link_to product_path(product) do %>
+                <% if product.out_of_stock? %>
+                  <div class="out-of-stock-overlay">
+                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                  </div>
+                <% end %>
+                <div class="card_image">
+                  <%= link_to product_path(product) do %>
+                    <% if product.shades.first&.card_photo %>
+                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                    <% else %>
+                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="card-info">
+              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <div class="card_header mb-3">
+                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+              </div>
+              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
+              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <%# if @first_visit %>
 <% if 1==1 %>
   <div class="homepage-pop-up">
@@ -98,12 +181,13 @@
       <h6 class="text-white small-text">FIRST TIME WITH US?</h6>
       <!-- <h6 class="text-white small-text">Get 10% off your first order</h6> -->
       <p class="text-white muli font-weight-lighter v-small-text m-0">CODE: WELCOME2NET</p>
-      <p class="primary-button pop-up-content-button">SHOP NOW</p>
+      <p class="primary-button white-button pop-up-content-button">SHOP NOW</p>
       <%= link_to 'Learn more', about_us_path, class: "text-white muli underline small-text" %>
       <%= image_tag 'close-white.png', class: 'close-homepage-pop-up' %>
     </div>
   </div>
 <% end %>
+
 <script>
   popUp = document.querySelector('.homepage-pop-up');
   popUpContent = document.querySelector('.pop-up-content');

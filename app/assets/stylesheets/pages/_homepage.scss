@@ -1,3 +1,36 @@
+.content-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 80px 48px 0;
+}
+
+.trending-container {
+  padding: 80px 16px 0;
+}
+
+.obsession-banner {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  padding-left: 64px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  h2, h5 {
+    font-weight: 300;
+  }
+}
+
+.homepage-big-video {
+  height: 60vh;
+}
+
+.homepage-articles {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
 .insider-info-wrapper {
   padding: 24px 16px;
   @include for-phone-only {
@@ -273,8 +306,6 @@
 
 .pop-up-content-button {
   cursor: pointer;
-  background: #FFFFFF;
-  color: #000000 !important;
   margin: 16px 0 8px 0 !important;
 
 }
@@ -523,14 +554,14 @@
 }
 
 .homepage-products {
-  width: 80%;
   margin: auto;
+  width: 90%;
   .card_header p {
     margin: auto !important;
+    font-size: 18px;
   }
   .card {
     border: none;
-    max-width: 170px;
     margin: 0 auto;
     margin-bottom: 16px;
   }
@@ -545,8 +576,7 @@
   }
 
   .card_image img {
-    max-height: 170px !important;
-    max-width: 170px !important;
+    width: 100%;
   }
 }
 

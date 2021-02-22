@@ -20,16 +20,23 @@
     <div class="product-info-container assistant">
     <%= simple_form_for(([@product, BasketProduct.new(product: @product)]), remote: :true) do |f| %>
       <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades.order(created_at: :ASC)[0].id } %>
-      <h5><%= @product.brand.name %></h5>
+      <h6 class="mb-1"><%= @product.brand.name.upcase %></h6>
       <h5><%= @product.title %></h5>
-      <hr>
-      <p class="product-shade-title small-margin-bottom muli"><strong><%= @product.shades.order(created_at: :ASC).first.name %></strong></p>
+      <div class="card_ratings">
+        <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
+        <p id="product-show-reviews" class="small-text muli ml-1"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
+      </div>
+      <div class="d-flex justify-content-between my-3">
+        <h3 class="product-price mb-0"><%= humanized_money_with_symbol(@product.price) %></h3>
+      </div>
+      <hr class="my-3">
+      <p class="product-shade-title small-margin-bottom muli"><%= @product.shades.order(created_at: :ASC).first.name %></p>
       <% if @product.shades.count > 1 %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
             <% @product.shades.order(created_at: :ASC).each_with_index do |shade, i| %>
               <% next unless shade.shade_color.attached? %>
-              <div class="col-2" style="padding: 0 3px 0 0;">
+              <div class="col-2" style="padding: 0 4px 0 0;">
                 <div class="product-shade-card shade_<%= shade.id %> <%= 'product-shade-card-selected' if i == 0 %>" data-shadeId="<%= shade.id %>" style="background-image: url(<%= url_for(shade.shade_color.variant(resize: '90x90')) %>)",
                   data-name="<%= shade.name %>",
                   data-stock="<%= shade.number_in_stock %>"
@@ -41,38 +48,31 @@
           </div>
         </div>
       <% end %>
-      <div class="d-flex justify-content-between">
-        <h5><%= humanized_money_with_symbol(@product.price) %></h5>
-        <% if user_signed_in? && current_user.wishlist %>
-          <div id="item-<%= @product.id %>-wishlist" class="product-show-wishlist">
-            <%= render 'shared/product_show_wishlist', product: @product %>
-          </div>
-        <% end %>
-      </div>
-      <div class="card_ratings">
-        <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
-        <p id="product-show-reviews" class="small-text muli boldest ml-1"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
-      </div>
       <div class="button-holder">
         <% if @product.out_of_stock? %>
-          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button w-100" %>
         <% elsif @product.shades.order(created_at: :ASC).first.out_of_stock? %>
-          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button" %>
+          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button w-100" %>
         <% else %>
-          <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button" %>
+          <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button w-100" %>
         <% end %>
       </div>
+      <% if user_signed_in? && current_user.wishlist %>
+        <div id="item-<%= @product.id %>-wishlist" class="product-show-wishlist">
+          <%= render 'shared/product_show_wishlist', product: @product %>
+        </div>
+      <% end %>
     <% end %>
       <div class="product-details-section info-expand">
         <div class="product-details-title">
-          <h6 class="small-text">Product details</h6>
+          <h6>Product Details</h6>
           <i class="fas fa-plus pd-expand"></i>
         </div>
         <p class="product-details-text didot small-text"><%= @product.details %></p>
       </div>
       <div class="benefits-section info-expand">
         <div class="benefits-title">
-          <h6 class="small-text">Benefits</h6>
+          <h6>Benefits</h6>
           <i class="fas fa-plus be-expand"></i>
         </div>
         <div class="benefits-text">
@@ -81,21 +81,25 @@
           <% end %>
         </div>
       </div>
-      <div class="about-the-brand-section info-expand">
+      <div class="about-the-brand-section info-expand mb-2">
         <div class="about-the-brand-title">
-          <h6 class="small-text">About the brand</h6>
+          <h6>About the Brand</h6>
           <i class="fas fa-plus ab-expand"></i>
         </div>
         <p class="about-the-brand-text didot small-text"><%= @product.brand.description %></p>
       </div>
       <div class="share-section">
-        <h6 class="small-text">Share</h6>
+        <h6>Share with friends</h6>
         <div class="articles-link-icons">
-          <%= link_to "http://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}&t=#{@product.title}", target: "_blank" do %>
-            <i class="fab fa-facebook-f"></i>
+          <%= link_to "http://www.facebook.com/sharer/sharer.php?u=#{product_url(@product)}&t=#{@product.title}", target: "_blank", class: 'no-decoration' do %>
+            <div class="footer-social-link mr-2 product-share-icons">
+              <i class="fab fa-facebook-f"></i>
+            </div>
           <% end %>
-          <%= link_to "https://twitter.com/intent/tweet?text=#{@product.title}&url=#{product_url(@product)}", target: "_blank" do %>
-            <i class="fab fa-twitter"></i>
+          <%= link_to "https://twitter.com/intent/tweet?text=#{@product.title}&url=#{product_url(@product)}", target: "_blank", class: 'no-decoration' do %>
+            <div class="footer-social-link product-share-icons">
+              <i class="fab fa-twitter"></i>
+            </div>
           <% end %>
         </div>
       </div>
@@ -112,6 +116,37 @@
     </div>
   </div>
 <% end %>
+<div class="insider-review-container">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold" style="width: 98%">WHAT THE EXPERTS THINK</h5>
+    </div>
+  </div>
+</div>
+<div class="product-insider-reviews-wrapper py-5">
+  <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
+    <div class="product-review-wrapper">
+      <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
+          <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
+          <div class="customer-review-input">
+            <p class="boldest muli s-medium-text no-margin">Rating</p>
+            <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
+          </div>
+          <div class="customer-review-input">
+            <p class="boldest muli s-medium-text no-margin">Review</p>
+            <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
+          </div>
+          <% unless current_user.influencer %>
+            <div class="customer-review-input">
+              <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
+              <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
+            </div>
+          <% end %>
+          <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
   <div class="product-review-wrapper">
     <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
