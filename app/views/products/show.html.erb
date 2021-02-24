@@ -116,37 +116,6 @@
     </div>
   </div>
 <% end %>
-<div class="insider-review-container">
-  <div class="row m-0">
-    <div class="col-12 d-flex justify-content-center">
-      <h5 class="mb-3 semi-bold" style="width: 98%">WHAT THE EXPERTS THINK</h5>
-    </div>
-  </div>
-</div>
-<div class="product-insider-reviews-wrapper py-5">
-  <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
-    <div class="product-review-wrapper">
-      <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
-          <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
-          <div class="customer-review-input">
-            <p class="boldest muli s-medium-text no-margin">Rating</p>
-            <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
-          </div>
-          <div class="customer-review-input">
-            <p class="boldest muli s-medium-text no-margin">Review</p>
-            <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
-          </div>
-          <% unless current_user.influencer %>
-            <div class="customer-review-input">
-              <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
-              <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-            </div>
-          <% end %>
-          <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
 <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
   <div class="product-review-wrapper">
     <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
@@ -169,109 +138,168 @@
     <% end %>
   </div>
 <% end %>
-<div class="product-insider-reviews-wrapper">
-  <h2 class="insider-info-title text-center">Insider Reviews</h2>
-  <% if @product.insider_reviews.any? %>
-    <p class="shop-look-text text-center">Click a review to see more</p>
-  <% end %>
-  <div class="insider-review-container max-width">
-    <div class="row-carousel">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-      <% if @product.insider_reviews.count == 0 %>
-        <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no insider reviews yet</p>
-      <% end %>
-      <% @product.insider_reviews.first(3).each do |review| %>
-        <div class="col-10 col-md-4 ir-cols">
-          <div class="insider-review-cards" data-toggle="modal" data-target="#review_<%= review.id %>">
-            <div class="insider-review-left">
-              <div class="insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo.variant(resize: '300x300')) %>)"></div>
-              <h6 class="truncate-text text-center"><%= review.user.instagram %></h6>
-            </div>
-            <div class="insider-review-right">
-              <div class="insider-review-text">
-                <%= render 'shared/ratings', rating: review.rating %>
-                <p class="didot"><%= review.review.truncate(100) %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="review_<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content loop-border">
-              <%= link_to user_path(review.user), class: "review-modal-header" do %>
-                <div class="modal-insider-review-image" style="background-image: url(<%= url_for(review.user.avatar_photo) %>)"></div>
-                <h6 class="review-modal-influencer"><%= review.user.instagram %></h6>
-              <% end %>
-              <div class="review-modal-body">
-                <p class="didot"><%= review.review %></p>
-                <div class="d-flex justify-content-center py-3">
-                  <%= render 'shared/ratings', rating: review.rating %>
-                </div>
-              </div>
-              <div class="review-modal-footer">
-                <button type="button" class="primary-button small-text" data-dismiss="modal">CLOSE</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
+
+<div class="content-container trending-container">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold" style="width: 98%">WHAT THE EXPERTS THINK</h5>
     </div>
-    <% if current_user&.admin %>
-      <div class="admin-options">
-          <div class="container">
-            <hr>
-            <h6 class="boldest">Admin options</h6>
-            <%= link_to 'EDIT INSIDER REVIEWS', admin_product_insider_reviews_path(@product), class: 'secondary-button' %>
-            <hr>
-          </div>
-        </div>
-    <% end %>
   </div>
 </div>
-<% if @tutorials.any? %>
-  <div class="home-featured-wrapper" style="background: #FFF !important;">
-    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    <div class="home-featured-container show-tutorial load-show h-100" data-prev="<%= asset_path 'pag-left.png' %>"  data-next="<%= asset_path 'pag-right.png' %>">
-      <h2 class="insider-info-title text-center mt-0 mb-4">Tutorials featuring <%= @product.title %></h2>
-      <div class="product-show-tutorial-container">
-        <div class="home-featured-products" style="background: #FFF !important;" aria-hidden="false">
-          <div class="homepage-slick">
-            <% @tutorials.each do |tutorial| %>
-              <div class="homepage-slick-card">
-                <%= render 'shared/product_show_tutorials', tutorial: tutorial %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% @tutorials.each do |tutorial| %>
-      <!-- Modal -->
-      <div class="product-show-modal modal fade" id="tutorial-modal_<%= tutorial.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="tutorial-show-video-banner">
-              <%= video_tag url_for(tutorial.video), style: "width: 100%", id: "tutorial-show-video_#{tutorial.id}", playsinline: true, poster: url_for(tutorial.cover_photo), alt: "influencer tutorial video", class: "product-show-video", preload: 'none' %>
-              <div class="video-overlay video-overlay_<%= tutorial.id %>" onclick="playVideo(<%= tutorial.id %>)">
-                <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+<div class="product-insider-reviews-wrapper">
+  <div class="insider-review-container">
+    <!--   <%# if @product.insider_reviews.any? %>
+      <p class="shop-look-text text-center pb-3">Click a review to see more</p>
+    <%# end %> -->
+
+    <div class="d-block d-md-none">
+      <div id="mobileProductShowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @product.insider_reviews.each_with_index do |review, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="row m-0">
+                <% if @product.insider_reviews.count == 0 %>
+                  <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no insider reviews yet</p>
+                <% end %>
+                <%= render 'insider_review_card', review: review %>
               </div>
             </div>
-            <div class="modal-content-info">
-              <%= image_tag url_for(tutorial.user.avatar_photo), class: 'modal-avatar mr-3' %>
-              <div class="">
-                <h4 class="muli boldest mt-0 mb-2"><%= tutorial.title %></h4>
-                <%= link_to user_path(tutorial.user), class: 'no-decoration' do %>
-                  <p class="muli m-0"><%= tutorial.user.instagram %></p>
+          <% end %>
+        </div>
+        <a class="carousel-control-next" href="#mobileProductShowCarousel" role="button" data-slide="next">
+          <%= image_tag 'carousel-right.png', width: 40 %>
+        </a>
+      </div>
+    </div>
+
+    <div class="d-none d-md-block">
+      <div id="productShowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @product.insider_reviews.each_slice(2) do |reviews| %>
+            <div class="carousel-item <%= 'active' if reviews[0] == @product.insider_reviews.first %>">
+              <div class="row m-0">
+                <% if @product.insider_reviews.count == 0 %>
+                  <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no insider reviews yet</p>
+                <% end %>
+                <% reviews.each do |review| %>
+                  <%= render 'insider_review_card', review: review %>
                 <% end %>
               </div>
             </div>
-          </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-next" href="#productShowCarousel" role="button" data-slide="next">
+          <%= image_tag 'carousel-right.png', width: 40 %>
+        </a>
+      </div>
+    </div>
+    <% if current_user&.admin %>
+      <div class="admin-options">
+        <div class="container">
+          <hr>
+          <h6 class="boldest">Admin options</h6>
+          <%= link_to 'EDIT INSIDER REVIEWS', admin_product_insider_reviews_path(@product), class: 'secondary-button' %>
+          <hr>
         </div>
       </div>
     <% end %>
   </div>
-<% end %>
+</div>
+
+<div class="content-container trending-container">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold" style="width: 98%">SIMILAR PRODUCTS OUR CUSTOMERS LOVE</h5>
+    </div>
+  </div>
+  <div class="row m-0">
+
+    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
+
+    <% 2.times do %>
+      <% @products.each do |product| %>
+        <div class="col-3">
+          <div class="card-image-results homepage-products">
+            <div class="card">
+              <%= link_to product_path(product) do %>
+                <% if product.out_of_stock? %>
+                  <div class="out-of-stock-overlay">
+                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                  </div>
+                <% end %>
+                <div class="card_image">
+                  <%= link_to product_path(product) do %>
+                    <% if product.shades.first&.card_photo %>
+                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                    <% else %>
+                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="card-info">
+              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <div class="card_header mb-3">
+                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+              </div>
+              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
+              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<%# if @tutorials.any? %>
+<!--   <div class="home-featured-wrapper" style="background: #FFF !important;">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div class="home-featured-container show-tutorial load-show h-100" data-prev="<%#= asset_path 'pag-left.png' %>"  data-next="<%#= asset_path 'pag-right.png' %>">
+      <h2 class="insider-info-title text-center mt-0 mb-4">Tutorials featuring <%#= @product.title %></h2>
+      <div class="product-show-tutorial-container">
+        <div class="home-featured-products" style="background: #FFF !important;" aria-hidden="false">
+          <div class="homepage-slick">
+            <%# @tutorials.each do |tutorial| %>
+              <div class="homepage-slick-card">
+                <%#= render 'shared/product_show_tutorials', tutorial: tutorial %>
+              </div>
+            <%# end %>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <%# @tutorials.each do |tutorial| %>
+      <!-- Modal -->
+     <!--  <div class="product-show-modal modal fade" id="tutorial-modal_<%#= tutorial.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="tutorial-show-video-banner">
+              <%#= video_tag url_for(tutorial.video), style: "width: 100%", id: "tutorial-show-video_#{tutorial.id}", playsinline: true, poster: url_for(tutorial.cover_photo), alt: "influencer tutorial video", class: "product-show-video", preload: 'none' %>
+              <div class="video-overlay video-overlay_<%#= tutorial.id %>" onclick="playVideo(<%#= tutorial.id %>)">
+                <%#= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+              </div>
+            </div>
+            <div class="modal-content-info">
+              <%#= image_tag url_for(tutorial.user.avatar_photo), class: 'modal-avatar mr-3' %>
+              <div class="">
+                <h4 class="muli boldest mt-0 mb-2"><%#= tutorial.title %></h4>
+                <%#= link_to user_path(tutorial.user), class: 'no-decoration' do %>
+                  <p class="muli m-0"><%#= tutorial.user.instagram %></p>
+                <%# end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    <%# end %>
+  <!-- </div> -->
+<%# end %>
 <% if @product.sent_recommended_products.any? %>
   <div class="recommended-products-wrapper">
     <div class="recommended-products-header">
@@ -311,18 +339,24 @@
     </div>
   </div>
 <% end %>
+<div class="content-container trending-container">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold" style="width: 98%">WHAT OUR CUSTOMERS THINK</h5>
+    </div>
+  </div>
+</div>
 <div id="product-show-reviews-container" class="product-insider-reviews-wrapper">
-  <h2 class="insider-info-title text-center">Customer Reviews</h2>
   <% if @product.customer_reviews.any? %>
-    <p class="shop-look-text text-center">Click a review to see more</p>
+    <!-- <p class="shop-look-text text-center">Click a review to see more</p> -->
   <% end %>
-  <div class="insider-review-container max-width">
+  <div class="insider-review-container max-width py-5">
     <div class="row-carousel" id="reviews-target">
       <!-- <div class="row-carousel"> -->
         <%= render 'review_cards', reviews: @customer_reviews %>
       <!-- </div> -->
     </div>
-    <div class="customer-review-pagination-container">
+    <div class="customer-review-pagination-container mt-3">
       <div class="col-12 d-flex justify-content-center">
         <p class="boldest muli small-text grey" id="info-target"><%= page_entries_info @customer_reviews %></p>
       </div>

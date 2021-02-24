@@ -359,6 +359,9 @@
 }
 
 .navbar-logo {
+  h4 {
+    font-size: 22px !important
+  }
   @include for-phone-only {
     @include absCenter;
     flex: 1;

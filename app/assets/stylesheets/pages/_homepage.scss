@@ -6,6 +6,9 @@
 
 .trending-container {
   padding: 80px 16px 0;
+  @include for-small-devices-down {
+    padding: 48px 16px 0;
+  }
 }
 
 .obsession-banner {

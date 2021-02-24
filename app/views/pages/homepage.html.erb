@@ -18,7 +18,6 @@
 
 
 
-
 <div class="content-container trending-container">
   <div class="row m-0">
     <div class="col-12 d-flex justify-content-center">
@@ -73,6 +72,9 @@
       <h5 class="text-white mb-4">DERMATOLOGY</h5>
       <h2 class="text-white mb-0">The revolutionary product that is changing</h2>
       <h2 class="text-white mb-4">women of colour with Dermatitis</h2>
+
+      <!-- REMOVE PRODUCT.FIRST -->
+
       <%= link_to 'BUY NOW', product_path(Product.first), class: 'primary-button button-width white-button mb-0' %>
     </div>
   </div>
@@ -113,6 +115,9 @@
         <p class="mb-0 muli"><%= @tutorial.user.full_name.upcase %></p>
         <h2 class="mb-0 ">LEARN FROM THE EXPERTS</h2>
         <p class="mb-0 muli"><%= @tutorial.title %></p>
+
+        <!-- REMOVE PRODUCT.FIRST -->
+
         <%= link_to 'MORE VIDEOS', product_path(Product.first), class: 'primary-button button-width mb-0' %>
       </div>
     </div>
