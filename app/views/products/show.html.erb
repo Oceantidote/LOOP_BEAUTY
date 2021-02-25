@@ -139,6 +139,8 @@
   </div>
 <% end %>
 
+<!-- INSIDER REVIEWS -->
+
 <div class="content-container trending-container">
   <div class="row m-0">
     <div class="col-12 d-flex justify-content-center">
@@ -146,14 +148,14 @@
     </div>
   </div>
 </div>
-<div class="product-insider-reviews-wrapper">
+<div class="product-insider-reviews-wrapper bg-insider-reviews">
   <div class="insider-review-container">
     <!--   <%# if @product.insider_reviews.any? %>
       <p class="shop-look-text text-center pb-3">Click a review to see more</p>
     <%# end %> -->
 
     <div class="d-block d-md-none">
-      <div id="mobileProductShowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div id="mobileReviewsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
           <% @product.insider_reviews.each_with_index do |review, index| %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
@@ -166,14 +168,14 @@
             </div>
           <% end %>
         </div>
-        <a class="carousel-control-next" href="#mobileProductShowCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#mobileReviewsCarousel" role="button" data-slide="next">
           <%= image_tag 'carousel-right.png', width: 40 %>
         </a>
       </div>
     </div>
 
     <div class="d-none d-md-block">
-      <div id="productShowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div id="reviewsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
           <% @product.insider_reviews.each_slice(2) do |reviews| %>
             <div class="carousel-item <%= 'active' if reviews[0] == @product.insider_reviews.first %>">
@@ -188,7 +190,7 @@
             </div>
           <% end %>
         </div>
-        <a class="carousel-control-next" href="#productShowCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#reviewsCarousel" role="button" data-slide="next">
           <%= image_tag 'carousel-right.png', width: 40 %>
         </a>
       </div>
@@ -203,6 +205,68 @@
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
+<!-- TUTORIALS -->
+
+<div class="content-container trending-container">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-0 semi-bold" style="width: 98%">THIS PRODUCT IS FEATURED ON</h5>
+    </div>
+  </div>
+</div>
+<div class="product-insider-reviews-wrapper pt-3">
+  <div class="insider-review-container">
+    <div class="d-block d-md-none">
+      <div id="mobileTutorialsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @tutorials.each_with_index do |tutorial, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="col-12 col-md-6">
+                <%= link_to tutorial_path(tutorial) do %>
+                  <div class="obsession-banner p-0 justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= url_for(tutorial.cover_photo) %>)">
+                    <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-next" href="#mobileTutorialsCarousel" role="button" data-slide="next">
+          <%= image_tag 'carousel-right.png', width: 40 %>
+        </a>
+      </div>
+    </div>
+
+    <div class="d-none d-md-block">
+      <div id="tutorialsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @tutorials.each_slice(2) do |tutorials| %>
+            <div class="carousel-item <%= 'active' if tutorials[0] == @tutorials.first %>">
+              <div class="row m-0">
+                <% if @tutorials.count == 0 %>
+                  <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no tutorials yet</p>
+                <% end %>
+                <% tutorials.each_with_index do |tutorial, index| %>
+                  <div class="col-6 ir-cols px-0 px-md-4<%#= index.even? ? 'pl-0 pr-4' : 'pr-0 pl-4' %>">
+                    <%= link_to tutorial_path(tutorial) do %>
+                      <div class="obsession-banner p-0 justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= url_for(tutorial.cover_photo) %>)">
+                        <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-next" href="#tutorialsCarousel" role="button" data-slide="next">
+          <%= image_tag 'carousel-right.png', width: 40 %>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -253,9 +317,6 @@
     <% end %>
   </div>
 </div>
-
-
-
 
 <%# if @tutorials.any? %>
 <!--   <div class="home-featured-wrapper" style="background: #FFF !important;">
@@ -339,43 +400,96 @@
     </div>
   </div>
 <% end %>
-<div class="content-container trending-container">
-  <div class="row m-0">
-    <div class="col-12 d-flex justify-content-center">
-      <h5 class="mb-3 semi-bold" style="width: 98%">WHAT OUR CUSTOMERS THINK</h5>
-    </div>
-  </div>
-</div>
-<div id="product-show-reviews-container" class="product-insider-reviews-wrapper">
-  <% if @product.customer_reviews.any? %>
-    <!-- <p class="shop-look-text text-center">Click a review to see more</p> -->
-  <% end %>
-  <div class="insider-review-container max-width py-5">
-    <div class="row-carousel" id="reviews-target">
-      <!-- <div class="row-carousel"> -->
-        <%= render 'review_cards', reviews: @customer_reviews %>
-      <!-- </div> -->
-    </div>
-    <div class="customer-review-pagination-container mt-3">
-      <div class="col-12 d-flex justify-content-center">
-        <p class="boldest muli small-text grey" id="info-target"><%= page_entries_info @customer_reviews %></p>
-      </div>
-      <div class="col-12 d-flex justify-content-center" id="paginate-target">
-        <%= paginate @customer_reviews, remote: true %>
-      </div>
-    </div>
-    <% if current_user&.admin %>
-      <div class="admin-options">
-        <div class="container">
-          <hr>
-          <h6 class="boldest">Admin options</h6>
-          <%= link_to 'EDIT CUSTOMER REVIEWS', admin_product_customer_reviews_path(@product), class: 'secondary-button' %>
-          <hr>
+
+<% if @product.customer_reviews.any? %>
+  <div class="content-container trending-container customer-reviews">
+    <div class="row m-0">
+      <div class="col-12">
+        <h5 class="col-12 mb-4 semi-bold">CUSTOMER REVIEWS</h5>
+        <div class="row m-0 mb-4">
+          <div class="col-4">
+            <div class="customer-reviews-grid-section mr-5">
+              <h5 class="normal m-0"><span class="semi-bold main-rating"><%= @product.average_rating %></span> out of 5 stars</h5>
+              <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
+              <%= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100" %>
+            </div>
+          </div>
+          <div class="">
+            <div class="rating-breakdown mr-5">
+              <h2 class="medium-text text-center"><%= @product.total_reviews %> reviews</h2>
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <%= image_tag 'checked-star.png', class: 'ratings-star mr-1', alt: "Rating stars" %>
+                <h5 class="normal mb-0 mr-2">5</h5>
+                <div class="ratings-bar" style="">
+                  <div class="filled-ratings-bar" style="width: <%= @rated_five %>%">
+                  </div>
+                </div>
+                <h6 class="small-text normal mb-0 ml-1"> <%= @product.customer_reviews.where(rating: 5).size %> </h6>
+              </div>
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <%= image_tag 'checked-star.png', class: 'ratings-star mr-1', alt: "Rating stars" %>
+                <h5 class="normal mb-0 mr-2">4</h5>
+                <div class="ratings-bar" style="">
+                  <div class="filled-ratings-bar" style="width: <%= @rated_four %>%">
+                  </div>
+                </div>
+                <h6 class="small-text normal mb-0 ml-1"> <%= @product.customer_reviews.where(rating: 4).size %> </h6>
+              </div>
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <%= image_tag 'checked-star.png', class: 'ratings-star mr-1', alt: "Rating stars" %>
+                <h5 class="normal mb-0 mr-2">3</h5>
+                <div class="ratings-bar" style="">
+                  <div class="filled-ratings-bar" style="width: <%= @rated_three %>%">
+                  </div>
+                </div>
+                <h6 class="small-text normal mb-0 ml-1"> <%= @product.customer_reviews.where(rating: 3).size %> </h6>
+              </div>
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <%= image_tag 'checked-star.png', class: 'ratings-star mr-1', alt: "Rating stars" %>
+                <h5 class="normal mb-0 mr-2">2</h5>
+                <div class="ratings-bar" style="">
+                  <div class="filled-ratings-bar" style="width: <%= @rated_two %>%">
+                  </div>
+                </div>
+                <h6 class="small-text normal mb-0 ml-1"> <%= @product.customer_reviews.where(rating: 2).size %> </h6>
+              </div>
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <%= image_tag 'checked-star.png', class: 'ratings-star mr-1', alt: "Rating stars" %>
+                <h5 class="normal mb-0 mr-2">1</h5>
+                <div class="ratings-bar" style="">
+                  <div class="filled-ratings-bar" style="width: <%= @rated_one %>%">
+                  </div>
+                </div>
+                <h6 class="small-text normal mb-0 ml-1"> <%= @product.customer_reviews.where(rating: 1).size %> </h6>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="" id="reviews-target">
+          <%= render 'customer_review_card', customer_reviews: @customer_reviews %>
+        </div>
+        <div class="customer-review-pagination-container mt-3 mb-5">
+          <div class="col-12 d-flex justify-content-center">
+            <p class="muli" id="info-target"><%= page_entries_info @customer_reviews %></p>
+          </div>
+          <div class="col-12 d-flex justify-content-center" id="paginate-target">
+            <%= paginate @customer_reviews, remote: true %>
+          </div>
+        </div>
+        <% if current_user&.admin %>
+          <div class="admin-options">
+            <div class="container">
+              <hr>
+              <h6 class="boldest">Admin options</h6>
+              <%= link_to 'EDIT CUSTOMER REVIEWS', admin_product_customer_reviews_path(@product), class: 'secondary-button' %>
+              <hr>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <script>
 

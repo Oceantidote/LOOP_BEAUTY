@@ -1,0 +1,16 @@
+<% customer_reviews.each do |review| %>
+  <div class="customer-review-section">
+    <div class="row m-0">
+      <div class="col-4">
+        <p class="muli small-text"><%= review.created_at.strftime('%B %d, %Y') %></p>
+        <%= render 'shared/ratings', rating: review.rating %>
+        <h6 class="mt-3"><%= review.user.first_name.capitalize %></h6>
+      </div>
+      <div class="col-6">
+        <h5 class=""><%= review.title %></h5>
+        <p class="muli mb-4">"<%= review.review.truncate(150) %>"</p>
+        <p class="muli"><span class="bold"><%= review.recommendation %></span>, I would recommend this product</p>
+      </div>
+    </div>
+  </div>
+<% end %>

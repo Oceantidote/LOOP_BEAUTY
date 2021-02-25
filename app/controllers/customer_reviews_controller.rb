@@ -17,6 +17,6 @@ class CustomerReviewsController < ApplicationController
   private
 
   def customer_review_params
-    params.require(:customer_review).permit(:rating, :review, :recommendation)
+    params.require(:customer_review).permit(:rating, :title, :review, :recommendation)
   end
 end

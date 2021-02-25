@@ -55,6 +55,13 @@ class ProductsController < ApplicationController
     authorize @product
     @customer_reviews = @product.customer_reviews.page params[:page]
     @tutorials = Tutorial.where(status: 'approved').select { |tutorial| tutorial.products.include?(@product) }
+    if @product.customer_reviews.any?
+      @rated_one = ((@product.customer_reviews.where(rating: 1).size.to_f / @product.customer_reviews.size) * 100).to_i
+      @rated_two = ((@product.customer_reviews.where(rating: 2).size.to_f / @product.customer_reviews.size) * 100).to_i
+      @rated_three = ((@product.customer_reviews.where(rating: 3).size.to_f / @product.customer_reviews.size) * 100).to_i
+      @rated_four = ((@product.customer_reviews.where(rating: 4).size.to_f / @product.customer_reviews.size) * 100).to_i
+      @rated_five = ((@product.customer_reviews.where(rating: 5).size.to_f / @product.customer_reviews.size) * 100).to_i
+    end
     if request.referrer&.match?(/myloopbeauty/) || Rails.env.development?
       respond_to do |format|
         format.js

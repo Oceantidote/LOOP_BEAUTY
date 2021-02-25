@@ -190,7 +190,6 @@
 }
 
 .product-insider-reviews-wrapper {
-  background: #F5F5F5;
   padding: 48px 54px;
   position: relative;
   .carousel {
@@ -214,6 +213,10 @@
   // @include for-phone-only {
   //   padding: 48px 72px 48px 36px;
   // }
+}
+
+.bg-insider-reviews {
+  background: #F5F5F5;
 }
 
 .insider-review-cards {
@@ -324,6 +327,44 @@
   p {
     margin: 0;
   }
+}
+
+.customer-reviews {
+  .main-rating {
+    font-size: 80px;
+  }
+  .ratings-star {
+    height: 25px;
+  }
+}
+
+.rating-breakdown {
+  h5, h6 {
+    // color: #FED831;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  h2 {
+    margin-left: 54px;
+    width: 229px;
+  }
+}
+
+.ratings-bar {
+  height: 28px;
+  width: 229px;
+  background: #F0F0F0;
+}
+
+.filled-ratings-bar {
+  height: 28px;
+  background-color: #FED831;
+}
+
+.customer-review-section {
+  border-top: 2px solid #ECECEC;
+  padding: 40px 0;
 }
 
 .customer-review-cards {

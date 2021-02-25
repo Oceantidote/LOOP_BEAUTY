@@ -6,7 +6,7 @@ while (reviews.firstChild) {
   reviews.firstChild.remove()
 }
 
-reviews.insertAdjacentHTML('beforeend', "<%= j render 'review_cards', reviews: @customer_reviews %>")
+reviews.insertAdjacentHTML('beforeend', "<%= j render 'customer_review_card', customer_reviews: @customer_reviews %>")
 
 while (info.firstChild) {
   info.firstChild.remove()
