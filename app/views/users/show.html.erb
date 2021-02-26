@@ -10,9 +10,9 @@
 
 <div class="influencers-show-banner" id="influencers-show-banner"  style="background-image: url('<%= @user.cover_photo.attached? ? (rails_blob_path @user.cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')" data-mob="<%= rails_blob_path @user.mobile_cover_photo %>" data-lrg="<%= rails_blob_path @user.cover_photo %>">
   <div class="influencer-show-banner-text-container">
-    <div class="influencer-show-banner-text">
-      <h4 class="<%= 'light-text' if !@user.light_text %>"><%= @user.instagram %></h4>
-      <h5 class="didot <%= 'light-text' if !@user.light_text %>"><%= @user.description %></h5>
+    <div class="influencer-show-banner-text text-center">
+      <h3 class="<%= 'light-text' if !@user.light_text %>"><%= @user.full_name.upcase %></h3>
+      <p class="<%= 'light-text' if !@user.light_text %>">"<%= @user.description %>"</p>
       <div class="influencer-social-data">
         <% if @user.instagram %>
           <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data #{'light-link' if !@user.light_text}" do %>
@@ -31,26 +31,102 @@
   </div>
   <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
 </div>
-<div class="influencer-show-banner-text-mobile-container">
-  <div class="influencer-show-banner-text">
-    <h4 class="boldest"><%= @user.instagram %></h4>
-    <h5 class="didot"><%= @user.description %></h5>
-    <div class="influencer-social-data">
-      <% if @user.instagram %>
-        <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", class: "each-social-data" do %>
-            <i class="fab fa-instagram social-instagram"></i>
-            <h6><%= @user.instagram_followers %></h6>
-        <% end %>
-      <% end %>
-      <% unless @user.youtube.empty? %>
-        <%= link_to @user.youtube, target: "_blank", class: "each-social-data" do %>
-            <i class="fab fa-youtube social-youtube"></i>
-            <h6><%= @user.youtube_subscribers %></h6>
-        <% end %>
-      <% end %>
-    </div>
+<div class="content-container mb-3">
+  <div class="row m-0 justify-content-between align-items-center">
+    <h5 class="m-0 semi-bold"> <%= @user.first_name.upcase %>'S FAVOURITES</h5>
+    <p class="m-0"><%= link_to "VIEW ALL #{@user.first_name.upcase}'S PRODUCTS", make_up_user_path(@user), class: 'underline muli' %></p>
   </div>
 </div>
+<div class="content-container trending-container pt-0">
+  <div class="row m-0">
+
+    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
+
+    <% 2.times do %>
+      <% @products.each do |product| %>
+        <div class="col-3">
+          <div class="card-image-results homepage-products">
+            <div class="card">
+              <%= link_to product_path(product) do %>
+                <% if product.out_of_stock? %>
+                  <div class="out-of-stock-overlay">
+                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                  </div>
+                <% end %>
+                <div class="card_image">
+                  <%= link_to product_path(product) do %>
+                    <% if product.shades.first&.card_photo %>
+                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                    <% else %>
+                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="card-info">
+              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <div class="card_header mb-3">
+                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+              </div>
+              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
+              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="content-container">
+  <h5 class="mb-3 semi-bold" style="width: 90%">CHAT WITH <%= @user.first_name.upcase %></h5>
+  <div class="obsession-banner influencer-show-hover p-0">
+    <div class="influencer_qa_card question-card h-100 w-100 justify-content-center align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path "influencer_qa_bg.png" %>')">
+      <h4 class="normal text-white"><%= @user.question_answer.question_one %></h4>
+    </div>
+    <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
+      <h4 class="normal"><%= @user.question_answer.answer_one %></h4>
+    </div>
+  </div>
+
+</div>
+<div class="content-container pt-5">
+  <div class="row m-0">
+      <div class="col-6 pl-0 pr-4">
+        <div class="obsession-banner influencer-show-hover p-0">
+          <div class="influencer_qa_card question-card h-100 w-100 justify-content-center align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path "influencer_qa_bg.png" %>')">
+            <h4 class="normal text-white"><%= @user.question_answer.question_two %></h4>
+          </div>
+          <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
+            <h4 class="normal"><%= @user.question_answer.answer_two %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 pr-0 pl-4">
+        <div class="obsession-banner influencer-show-hover p-0">
+          <div class="influencer_qa_card question-card h-100 w-100 justify-content-center align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path "influencer_qa_bg.png" %>')">
+            <h4 class="normal text-white"><%= @user.question_answer.question_three %></h4>
+          </div>
+          <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
+            <h4 class="normal"><%= @user.question_answer.answer_three %></h4>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center align-items-center">
+  <%= link_to 'READ ALL QUESTIONS', user_question_answer_path([@user, @user.question_answer]), class: "primary-button my-5" %>
+</div>
+
+
+
+
+
+
+
+
+
 <div id="options"></div>
 <div class="influencer-show-options">
   <div class="container">

@@ -1,33 +1,38 @@
-// Import Google fonts
-// @import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@200;300;400;500;600&display=swap');
-
-// Importing didot font face
 @font-face {
-  font-family: "Didot";
-  src: asset-url('Didot.woff'), format('truetype');
+  font-family: "Kaftan";
+  src: font-url('kaftan/kaftan-serif.woff') format('woff'),
+       font-url('kaftan/kaftan-serif.otf') format('opentype');
+  font-weight: 100;
 }
 
-// Define fonts for body and headers
-$body-font: 'Didot', serif;
-$headers-font: 'Work Sans', sans-serif;
-$menu-font: 'Work Sans', sans-serif;
-$title-font: 'Work Sans', sans-serif;
+@font-face {
+  font-family: "Neue Machina";
+  src: font-url('neue_machina/neue_machina_ultralight.eot');
+  src: font-url('neue_machina/neue_machina_ultralight.eot?#iefix') format('embedded-opentype'),
+       font-url('neue_machina/neue_machina_ultralight.woff') format('woff'),
+       font-url('neue_machina/neue_machina_ultralight.otf') format('truetype');
+  font-weight: 100;
+}
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: "Neue Machina";
+  src: font-url('neue_machina/neue_machina_light.eot');
+  src: font-url('neue_machina/neue_machina_light.eot?#iefix') format('embedded-opentype'),
+       font-url('neue_machina/neue_machina_light.woff') format('woff'),
+       font-url('neue_machina/neue_machina_light.otf') format('truetype');
+  font-weight: 200;
+}
+
+$body-font: 'Neue Machina', sans-serif;
+$headers-font: 'Kaftan', serif;
+$menu-font: 'Kaftan', serif;
+$title-font: 'Kaftan', serif;
 
 .didot {
-  font-family: 'Didot', serif !important;
+  font-family: 'Neue Machina', sans-serif !important;
 }
 
 .muli {
-  font-family: 'Work Sans', sans-serif !important;
+  font-family: 'Kaftan', serif !important;
 }
+

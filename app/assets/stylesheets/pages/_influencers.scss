@@ -1,42 +1,35 @@
-  .influencers-wrapper {
-  padding: 20px 0;
+.influencers-wrapper {
   background: $light-gray;
   min-height: calc(100vh - 100px);
   width: 100%;
 }
 
 .influencers-container {
-  width: 80%;
-  margin-top: 30px;
+  max-width: 882px;
+  margin: 0 auto;
 }
 
 .each-influencer-avatar-card {
+  width: 368px;
+  margin: 68px auto;
   h6 {
     font-weight: 900;
     margin: 5px 0;
   }
-  margin: 20px 0;
 }
 .wrap {
   flex-wrap: wrap;
 }
 .influencer-large-avatar {
-  width: 195px;
-  height: 195px;
+  width: 368px;
   object-fit: cover;
   border-radius: 50%;
   transition: all 0.3s ease;
-  @include for-large-devices-down {
-    width: 162px;
-    height: 162px;
-  }
   @include for-small-devices-down {
     width: 115px;
-    height: 115px;
   }
   @include for-xsmall-phone-only {
     width: 101px;
-    height: 101px;
   }
 }
 
