@@ -9,7 +9,7 @@
         <% end %>
       </div>
       <div class="show-page-entries">
-        <p class="boldest muli small-text grey"><%= page_entries_info @products %></p>
+        <p class="boldest kaftan small-text grey"><%= page_entries_info @products %></p>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
       <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
         <div class="partial-filters-container">
           <div class="mobile-filters">
-            <p class="boldest no-margin muli">Filter</p>
+            <p class="boldest no-margin kaftan">Filter</p>
           </div>
           <div class="partial-filters">
             <div class="partial-filters_collection">

@@ -20,17 +20,17 @@
     <div class="product-info-container assistant">
     <%= simple_form_for(([@product, BasketProduct.new(product: @product)]), remote: :true) do |f| %>
       <%= f.input :shade_id, as: :hidden, input_html: { value: @product.shades.order(created_at: :ASC)[0].id } %>
-      <h6 class="mb-1"><%= @product.brand.name.upcase %></h6>
+      <h6 class="mb-1 neue-machina"><%= @product.brand.name.upcase %></h6>
       <h5><%= @product.title %></h5>
       <div class="card_ratings">
         <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
-        <p id="product-show-reviews" class="small-text muli ml-1"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
+        <p id="product-show-reviews" class="small-text kaftan ml-1"><%= @product.average_rating %> (<%= @product.total_reviews %> Reviews)</p>
       </div>
       <div class="d-flex justify-content-between my-3">
-        <h3 class="product-price mb-0"><%= humanized_money_with_symbol(@product.price) %></h3>
+        <h3 class="product-price mb-0 neue-machina"><%= humanized_money_with_symbol(@product.price) %></h3>
       </div>
       <hr class="my-3">
-      <p class="product-shade-title small-margin-bottom muli"><%= @product.shades.order(created_at: :ASC).first.name %></p>
+      <p class="product-shade-title small-margin-bottom kaftan"><%= @product.shades.order(created_at: :ASC).first.name %></p>
       <% if @product.shades.count > 1 %>
         <div class="shades-container">
           <div class="row" style="margin: 0; width: 100%;">
@@ -68,7 +68,7 @@
           <h6>Product Details</h6>
           <i class="fas fa-plus pd-expand"></i>
         </div>
-        <p class="product-details-text didot small-text"><%= @product.details %></p>
+        <p class="product-details-text neue-machina small-text"><%= @product.details %></p>
       </div>
       <div class="benefits-section info-expand">
         <div class="benefits-title">
@@ -77,7 +77,7 @@
         </div>
         <div class="benefits-text">
           <% @product.benefits.each do |benefit| %>
-            <p class="didot no-margin small-text">- <%= benefit.name %></p>
+            <p class="neue-machina no-margin small-text">- <%= benefit.name %></p>
           <% end %>
         </div>
       </div>
@@ -86,7 +86,7 @@
           <h6>About the Brand</h6>
           <i class="fas fa-plus ab-expand"></i>
         </div>
-        <p class="about-the-brand-text didot small-text"><%= @product.brand.description %></p>
+        <p class="about-the-brand-text neue-machina small-text"><%= @product.brand.description %></p>
       </div>
       <div class="share-section">
         <h6>Share with friends</h6>
@@ -121,16 +121,16 @@
     <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
         <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
         <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Rating</p>
+          <p class="boldest kaftan s-medium-text no-margin">Rating</p>
           <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
         </div>
         <div class="customer-review-input">
-          <p class="boldest muli s-medium-text no-margin">Review</p>
+          <p class="boldest kaftan s-medium-text no-margin">Review</p>
           <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
         </div>
         <% unless current_user.influencer %>
           <div class="customer-review-input">
-            <p class="boldest muli s-medium-text no-margin">Would you recommend?</p>
+            <p class="boldest kaftan s-medium-text no-margin">Would you recommend?</p>
             <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
           </div>
         <% end %>
@@ -161,7 +161,7 @@
             <div class="carousel-item <%= 'active' if index == 0 %>">
               <div class="row m-0">
                 <% if @product.insider_reviews.count == 0 %>
-                  <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no insider reviews yet</p>
+                  <p class="text-center medium-margin width-100 kaftan grey boldest small-text">There are no insider reviews yet</p>
                 <% end %>
                 <%= render 'insider_review_card', review: review %>
               </div>
@@ -181,7 +181,7 @@
             <div class="carousel-item <%= 'active' if reviews[0] == @product.insider_reviews.first %>">
               <div class="row m-0">
                 <% if @product.insider_reviews.count == 0 %>
-                  <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no insider reviews yet</p>
+                  <p class="text-center medium-margin width-100 kaftan grey boldest small-text">There are no insider reviews yet</p>
                 <% end %>
                 <% reviews.each do |review| %>
                   <%= render 'insider_review_card', review: review %>
@@ -247,7 +247,7 @@
             <div class="carousel-item <%= 'active' if tutorials[0] == @tutorials.first %>">
               <div class="row m-0">
                 <% if @tutorials.count == 0 %>
-                  <p class="text-center medium-margin width-100 muli grey boldest small-text">There are no tutorials yet</p>
+                  <p class="text-center medium-margin width-100 kaftan grey boldest small-text">There are no tutorials yet</p>
                 <% end %>
                 <% tutorials.each_with_index do |tutorial, index| %>
                   <div class="col-6 ir-cols px-0 px-md-4<%#= index.even? ? 'pl-0 pr-4' : 'pr-0 pl-4' %>">
@@ -288,7 +288,7 @@
               <%= link_to product_path(product) do %>
                 <% if product.out_of_stock? %>
                   <div class="out-of-stock-overlay">
-                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                   </div>
                 <% end %>
                 <div class="card_image">
@@ -303,12 +303,12 @@
               <% end %>
             </div>
             <div class="card-info">
-              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
               <div class="card_header mb-3">
-                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
               </div>
               <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
               <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
             </div>
           </div>
@@ -349,9 +349,9 @@
             <div class="modal-content-info">
               <%#= image_tag url_for(tutorial.user.avatar_photo), class: 'modal-avatar mr-3' %>
               <div class="">
-                <h4 class="muli boldest mt-0 mb-2"><%#= tutorial.title %></h4>
+                <h4 class="kaftan boldest mt-0 mb-2"><%#= tutorial.title %></h4>
                 <%#= link_to user_path(tutorial.user), class: 'no-decoration' do %>
-                  <p class="muli m-0"><%#= tutorial.user.instagram %></p>
+                  <p class="kaftan m-0"><%#= tutorial.user.instagram %></p>
                 <%# end %>
               </div>
             </div>
@@ -383,9 +383,9 @@
                   </div>
                 <% end %>
                 <div class="card_header">
-                  <p class="muli boldest"><%= product.recommended.title %></p>
+                  <p class="kaftan boldest"><%= product.recommended.title %></p>
                 </div>
-                <div class="card_price-heart muli boldest">
+                <div class="card_price-heart kaftan boldest">
                   <%= humanized_money_with_symbol(product.recommended.price) %>
                 </div>
                 <div class="my-products-purchase">
@@ -409,7 +409,7 @@
         <div class="row m-0 mb-4">
           <div class="col-4">
             <div class="customer-reviews-grid-section mr-5">
-              <h5 class="normal m-0"><span class="semi-bold main-rating"><%= @product.average_rating %></span> out of 5 stars</h5>
+              <h5 class="neue-machina m-0"><span class="semi-bold main-rating"><%= @product.average_rating %></span> out of 5 stars</h5>
               <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
               <%= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100" %>
             </div>
@@ -470,7 +470,7 @@
         </div>
         <div class="customer-review-pagination-container mt-3 mb-5">
           <div class="col-12 d-flex justify-content-center">
-            <p class="muli" id="info-target"><%= page_entries_info @customer_reviews %></p>
+            <p class="kaftan" id="info-target"><%= page_entries_info @customer_reviews %></p>
           </div>
           <div class="col-12 d-flex justify-content-center" id="paginate-target">
             <%= paginate @customer_reviews, remote: true %>

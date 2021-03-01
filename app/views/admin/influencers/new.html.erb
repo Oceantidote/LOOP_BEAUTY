@@ -5,39 +5,39 @@
     <div class="admin-form-container">
       <%= simple_form_for [:admin, @influencer], url: admin_influencers_path do |f| %>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">First name</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">First name</p>
           <%= f.input :first_name, label: false, placeholder:'First name...', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Last name</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Last name</p>
             <%= f.input :last_name, label: false, placeholder:'Last name...', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Email</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Email</p>
             <%= f.input :email, label: false, placeholder:'Email...', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Commission rate (as a percentage)</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Commission rate (as a percentage)</p>
             <%= f.input :commission_rate, label: false, placeholder:'0.0', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Instagram</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Instagram</p>
             <%= f.input :instagram, label: false, placeholder:'e.g. @myloopbeauty', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Instagram Followers</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Instagram Followers</p>
             <%= f.input :instagram_followers, label: false, placeholder:'e.g. 200k', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Youtube</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Youtube</p>
             <%= f.input :youtube, label: false, placeholder:'e.g. https://www.youtube.com/user/loopbeauty', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Youtube Subscribers</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Youtube Subscribers</p>
             <%= f.input :youtube_subscribers, label: false, placeholder:'e.g. 200k', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Avatar photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Avatar photo</p>
             <div>
               <%= f.input :avatar_photo, input_html: { class: 'd-none photo-input', 'data-name': 'avatar', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.avatar_photo.attached? %>
@@ -48,11 +48,11 @@
             </div>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Dark text on Large Screens?</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Dark text on Large Screens?</p>
             <%= f.check_box :light_text, class:"form-control lb-checkbox featured-check-box" %>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Cover Photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Cover Photo</p>
             <div>
               <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.cover_photo.attached? %>
@@ -63,7 +63,7 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Mobile Cover Photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Mobile Cover Photo</p>
             <div>
               <%= f.input :mobile_cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.mobile_cover_photo.attached? %>
@@ -74,7 +74,7 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Q&A photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Q&A photo</p>
             <div>
               <%= f.input :qa_photo, input_html: { class: 'd-none photo-input', 'data-name': 'qa', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.qa_photo.attached? %>
@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Lookbook photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Lookbook photo</p>
             <div>
               <%= f.input :lookbook_photo, input_html: { class: 'd-none photo-input', 'data-name': 'lookbook', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.lookbook_photo.attached? %>
@@ -96,7 +96,7 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Tutorial photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Tutorial photo</p>
             <div>
               <%= f.input :tutorial_photo, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.tutorial_photo.attached? %>
@@ -107,7 +107,7 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Makeup photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Makeup photo</p>
             <div>
               <%= f.input :makeup_photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.makeup_photo.attached? %>
@@ -118,7 +118,7 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right photo-input-text">Makeup Cover photo</p>
+            <p class="boldest kaftan s-medium-text text-right photo-input-text">Makeup Cover photo</p>
             <div>
               <%= f.input :makeup_cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
               <% if @influencer.makeup_cover_photo.attached? %>
@@ -129,11 +129,11 @@
             </div>
           </div>
           <div class="personal-details-input align-items-start">
-            <p class="boldest muli s-medium-text text-right no-margin">Description</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Description</p>
             <%= f.input :description, label: false, placeholder:'This influencer...', input_html: { class: "admin-form-input" } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Password</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Password</p>
             <%= f.input :password, label: false, placeholder:'Password', input_html: { class: "admin-form-input" } %>
           </div>
           <%= f.submit 'CREATE INFLUENCER ACCOUNT', class: 'primary-button personal-details-button small-text' %>

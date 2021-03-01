@@ -5,59 +5,59 @@
     <div class="admin-products-container">
       <%= simple_form_for [:admin, @product] do |f| %>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Weight</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Weight</p>
           <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Measurement</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Measurement</p>
           <%= f.input :measurement, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Title</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Title</p>
           <%= f.input :title, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Details</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Details</p>
           <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
 <!--         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
           <%#= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
         </div> -->
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
           <%= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Sub category</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Sub category</p>
           <%= f.input :sub_category_id, collection: SubCategory.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Brand</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Brand</p>
           <%= f.input :brand_id, collection: Brand.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Department</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Department</p>
           <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Price</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Price</p>
           <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Lead Product Image</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Lead Product Image</p>
           <%= f.input :lead_product_image, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin ">Published?</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin ">Published?</p>
           <%= f.input :published, label: false, input_html: { class: "lb-checkbox" } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin ">Influencer Showroom</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin ">Influencer Showroom</p>
           <%= f.input :demoable, label: false, input_html: { class: "lb-checkbox" } %>
         </div>
         <div class="personal-details-input-wide align-items-start">
-          <p class="boldest muli s-medium-text text-right no-margin">Recommended Products</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Recommended Products</p>
           <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll" } %>
         </div>
         <%= f.submit 'UPDATE PRODUCT', class: 'primary-button personal-details-button small-text' %>
@@ -72,15 +72,15 @@
         <% @product.shades.each do |shade| %>
             <%= simple_form_for [:admin, shade] do |f| %>
                 <div class="personal-details-input">
-                  <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+                  <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
                   <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
                 </div>
 <!--                 <div class="personal-details-input">
-                  <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
+                  <p class="boldest kaftan s-medium-text text-right no-margin">SKU</p>
                   <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
                 </div> -->
                 <div class="personal-details-input align-items-start">
-                  <p class="boldest muli s-medium-text text-right photo-input-text">Card Photo</p>
+                  <p class="boldest kaftan s-medium-text text-right photo-input-text">Card Photo</p>
                   <div>
                     <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_card" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <% if shade.card_photo.attached? %>
@@ -91,7 +91,7 @@
                   </div>
                 </div>
                 <div class="personal-details-input align-items-start">
-                  <p class="boldest muli s-medium-text text-right photo-input-text">Shade Colour</p>
+                  <p class="boldest kaftan s-medium-text text-right photo-input-text">Shade Colour</p>
                   <div>
                     <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_color" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <% if shade.shade_color.attached? %>
@@ -102,7 +102,7 @@
                   </div>
                 </div>
                 <div class="personal-details-input align-items-start">
-                  <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
+                  <p class="boldest kaftan s-medium-text text-right photo-input-text">Photos</p>
                   <div style="max-width: 288px;">
                     <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true, id: "shade_#{shade.id}_photos" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                     <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
@@ -113,7 +113,7 @@
                   <% shade.photos.each do |photo| %>
                     <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>">
                       <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                      <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'muli small-text underline grey-font boldest text-right' %>
+                      <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'kaftan small-text underline grey-font boldest text-right' %>
                     </div>
                   <% end %>
                 </div>
@@ -129,29 +129,29 @@
         <div class="admin-products-container">
           <%= simple_form_for [:admin, @product, Shade.new] do |f| %>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+              <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
               <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
             </div>
 <!--             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">SKU</p>
+              <p class="boldest kaftan s-medium-text text-right no-margin">SKU</p>
               <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
             </div> -->
             <div class="personal-details-input align-items-start">
-              <p class="boldest muli s-medium-text text-right photo-input-text">Card Photo</p>
+              <p class="boldest kaftan s-medium-text text-right photo-input-text">Card Photo</p>
               <div>
                 <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-card-photo' %>
               </div>
             </div>
             <div class="personal-details-input align-items-start">
-              <p class="boldest muli s-medium-text text-right photo-input-text">Shade Colour</p>
+              <p class="boldest kaftan s-medium-text text-right photo-input-text">Shade Colour</p>
               <div>
                 <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-color-photo' %>
               </div>
             </div>
             <div class="personal-details-input align-items-start">
-              <p class="boldest muli s-medium-text text-right photo-input-text">Photos</p>
+              <p class="boldest kaftan s-medium-text text-right photo-input-text">Photos</p>
               <div style="max-width: 288px;">
                 <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
                 <div class="d-flex" id="newShadePhotos">
@@ -179,7 +179,7 @@
       <h6 class="insider-info-title mlb-title text-center">New Benefit</h6>
         <%= simple_form_for [:admin, @product, ProductBenefit.new] do |f| %>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Benefit</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Benefit</p>
             <%= f.input :benefit_id, collection: Benefit.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
           </div>
           <%= f.submit 'CREATE PRODUCT BENEFIT', class: 'primary-button small-text personal-details-button' %>

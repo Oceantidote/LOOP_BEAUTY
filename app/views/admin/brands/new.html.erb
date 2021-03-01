@@ -5,11 +5,11 @@
     <div class="admin-form-container">
       <%= simple_form_for [:admin, @brand] do |f| %>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
           <%= f.input :name, label: false, placeholder:'Makeup 54...', input_html: { class: "contact-form-input" } %>
         </div>
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">Photo</p>
+          <p class="boldest kaftan s-medium-text text-right photo-input-text">Photo</p>
           <div>
             <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @brand.photo.attached? %>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">Logo</p>
+          <p class="boldest kaftan s-medium-text text-right photo-input-text">Logo</p>
           <div>
             <%= f.input :logo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-logo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @brand.logo.attached? %>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right no-margin">Description</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Description</p>
           <%= f.input :description, label: false, placeholder:'The brand was created...', input_html: { class: "contact-form-input" } %>
         </div>
         <%= f.submit 'CREATE BRAND', class: 'primary-button personal-details-button small-text' %>

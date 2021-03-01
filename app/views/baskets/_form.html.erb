@@ -1,4 +1,4 @@
-<p class="boldest small-text tiny-margin-bottom muli">Promotional code</p>
+<p class="boldest small-text tiny-margin-bottom kaftan">Promotional code</p>
 <%= simple_form_for basket, url: discount_path, method: :patch, remote: :true do |f| %>
   <% if basket.discount_code %>
     <%= f.input :discount_code, label: false, placeholder: 'Enter code', disabled: true, input_html: { class: 'contact-form-input', value: basket.discount_code&.code } %>

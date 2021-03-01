@@ -5,7 +5,7 @@
     <div class="admin-form-container">
       <%= simple_form_for @banner, url: admin_change_banner_path, method: :post do |f| %>
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">Banner Photo</p>
+          <p class="boldest kaftan s-medium-text text-right photo-input-text">Banner Photo</p>
           <div>
             <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'makeup_banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @banner.photo.attached? %>

@@ -14,7 +14,7 @@
       </div>
       <div class="row admin-review-row" style="margin: 30px 0;">
         <% if @customer_reviews.count == 0 %>
-          <p class="medium-margin text-center boldest didot" style="width: 100%;">There are no customer reviews yet</p>
+          <p class="medium-margin text-center boldest neue-machina" style="width: 100%;">There are no customer reviews yet</p>
         <% end %>
         <% @customer_reviews.each do |review| %>
           <div class="col-12 col-sm-10 col-md-12 col-lg-6 ir-cols flex-column">
@@ -31,7 +31,7 @@
               <div class="customer-review-right">
                 <div class="customer-review-text">
                   <%= render 'shared/ratings', rating: review.rating %>
-                  <p class="didot">"<%= review.review.truncate(170) %>"</p>
+                  <p class="neue-machina">"<%= review.review.truncate(170) %>"</p>
                   <p class="boldest"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
                 </div>
               </div>

@@ -12,11 +12,11 @@
       <hr>
       <div class="preference-newsletter">
         <h5 class="text-center boldest">Control how you want to hear from us and how we use your data</h5>
-        <p class="boldest muli">Email: Newsletter</p>
-        <p class="didot">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
+        <p class="boldest kaftan">Email: Newsletter</p>
+        <p class="neue-machina">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
         <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
         <div class="d-flex">
-          <p class="small-margin-right muli boldest s-medium-text" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
+          <p class="small-margin-right kaftan boldest s-medium-text" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
           <%= f.input :newsletter, label: false, value: current_user.newsletter %>
         </div>
         <% end %>
@@ -24,12 +24,12 @@
         <hr>
         <div class="preference-terms">
           <%= link_to terms_and_conditions_path, class: "underline-hover" do %>
-            <p class="boldest muli">View Terms & Conditions</p>
+            <p class="boldest kaftan">View Terms & Conditions</p>
           <% end %>
-          <p class="didot">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
+          <p class="neue-machina">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
         </div>
         <hr>
-        <p class="didot" style="padding: 20px; font-style: italic;">Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.</p>
+        <p class="neue-machina" style="padding: 20px; font-style: italic;">Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.</p>
     </div>
   </div>
 </div>

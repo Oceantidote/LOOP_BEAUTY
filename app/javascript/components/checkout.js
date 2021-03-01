@@ -47,11 +47,11 @@ const initCheckout = () => {
   savedDeliveryAddresses.forEach(a => a.addEventListener('click', () => {
     deliveryHolder.value = a.id;
     deliveryAddressShow.innerHTML = `
-                                      <p class="s-medium-text muli boldest no-margin">${a.dataset.user}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.address_line1}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.city}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.country}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.postcode}</p>
+                                      <p class="s-medium-text kaftan boldest no-margin">${a.dataset.user}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.address_line1}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.city}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.country}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.postcode}</p>
                                     `
                                     deliveryAddressShow.classList.remove('d-none')
                                     deliveryAddressShow.parentNode.querySelector('.delivery-default').classList.add('d-none')
@@ -60,11 +60,11 @@ const initCheckout = () => {
   savedBillingAddresses.forEach(a => a.addEventListener('click', () => {
     billingHolder.value = a.id;
     billingAddressShow.innerHTML = `
-                                      <p class="s-medium-text muli boldest no-margin">${a.dataset.user}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.address_line1}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.city}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.country}</p>
-                                      <p class="grey-font s-medium-text muli boldest no-margin">${a.dataset.postcode}</p>
+                                      <p class="s-medium-text kaftan boldest no-margin">${a.dataset.user}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.address_line1}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.city}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.country}</p>
+                                      <p class="grey-font s-medium-text kaftan boldest no-margin">${a.dataset.postcode}</p>
                                     `
     billingAddressShow.classList.remove('d-none')
     billingAddressShow.parentNode.querySelector('.billing-default').classList.add('d-none')

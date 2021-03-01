@@ -1,7 +1,7 @@
 <!-- REMOVED REMOTE TRUE -->
 <%= simple_form_for [@user, ShowroomProduct.new] do |f| %>
   <div class="personal-details-input">
-    <p class="boldest muli s-medium-text text-right no-margin">Product</p>
+    <p class="boldest kaftan s-medium-text text-right no-margin">Product</p>
     <%= f.input :product, label: false, collection: @demoable_products, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { class: "dropdown-input sign-up-dropdown tiny-margin-left" } %>
   </div>
   <%= f.submit 'CREATE SHOWROOM PRODUCT', class: 'primary-button personal-details-button small-text' %>

@@ -5,7 +5,7 @@
         <div class="insider-home-articles-banner" style="background-image:url(<%= url_for(article.cover_photo) %>)">
           <div class="insider-article-banner-text-container">
             <div class="insider-article-banner">
-              <h2 class="didot <%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>"><%= article.title %></h2>
+              <h2 class="neue-machina <%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>"><%= article.title %></h2>
               <p class="<%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
             </div>
           </div>
@@ -17,7 +17,7 @@
           <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo.variant(resize: '700')) %>);">
             <div class="insider-home-articles-card-text">
               <h6><%= article.category %></h6>
-              <p class="didot"><%= article.title %></p>
+              <p class="neue-machina"><%= article.title %></p>
             </div>
           </div>
         <% end %>

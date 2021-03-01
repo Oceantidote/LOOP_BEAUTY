@@ -4,33 +4,33 @@
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Content</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Content</p>
           <%= f.input :content, label: false, input_html: { class: "contact-form-input" } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Link</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Link</p>
           <%= f.input :link, label: false, placeholder: 'e.g. /products', input_html: { class: "contact-form-input" } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Link text</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Link text</p>
           <%= f.input :link_text, label: false, input_html: { class: "contact-form-input" } %>
         </div>
       </div>
       <div class="col-sm-12 col-md-6">
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Text Color</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Text Color</p>
             <%= f.select(:text_color, ["White", "Black"], {}, { class: "filters-container boldest s-medium-text insider-article-category" }) %>
         </div>
         <div class="personal-details-input">
           <% if @home_banner.display %>
-            <p class="boldest muli s-medium-text text-right no-margin" style="color: green">I'm live, uncheck to take me off the homepage</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin" style="color: green">I'm live, uncheck to take me off the homepage</p>
             <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
           <% end %>
           <% if @home_banner.am_i_valid? %>
-            <p class="boldest muli s-medium-text text-right no-margin">ready to go live</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">ready to go live</p>
             <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
           <% else %>
-            <p class="boldest muli s-medium-text text-right no-margin" style="color: red;">Not yet ready to go live</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin" style="color: red;">Not yet ready to go live</p>
           <% end %>
         </div>
       </div>
@@ -40,8 +40,8 @@
     <div class="row">
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="p-2 mt-4 card">
-          <p class="boldest muli s-medium-text photo-input-text">Banner (required)</p>
-          <p class="boldest muli s-medium-text photo-input-text">1500 x 450</p>
+          <p class="boldest kaftan s-medium-text photo-input-text">Banner (required)</p>
+          <p class="boldest kaftan s-medium-text photo-input-text">1500 x 450</p>
           <%= f.input :banner, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
           <% if @home_banner.banner.attached? %>
             <%= image_tag url_for(@home_banner.banner), class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>
@@ -52,8 +52,8 @@
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="p-2 mt-4 card">
-          <p class="boldest muli s-medium-text photo-input-text">Mobile Banner (required)</p>
-          <p class="boldest muli s-medium-text photo-input-text">676 x 676</p>
+          <p class="boldest kaftan s-medium-text photo-input-text">Mobile Banner (required)</p>
+          <p class="boldest kaftan s-medium-text photo-input-text">676 x 676</p>
           <%= f.input :mobile_banner, input_html: { class: 'd-none photo-input', 'data-name': 'home-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
           <% if @home_banner.mobile_banner.attached? %>
             <%= image_tag url_for(@home_banner.mobile_banner), class: "photo-preview", 'data-name': 'home-banner', alt: "Freebie banner" %>

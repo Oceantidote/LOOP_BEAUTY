@@ -16,6 +16,10 @@
     font-weight: 900;
     margin: 5px 0;
   }
+  @include for-phone-only {
+    width: 100%;
+    padding: 24px;
+  }
 }
 .wrap {
   flex-wrap: wrap;
@@ -25,11 +29,8 @@
   object-fit: cover;
   border-radius: 50%;
   transition: all 0.3s ease;
-  @include for-small-devices-down {
-    width: 115px;
-  }
-  @include for-xsmall-phone-only {
-    width: 101px;
+  @include for-phone-only {
+    width: 100%;
   }
 }
 

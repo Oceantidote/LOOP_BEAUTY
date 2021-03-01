@@ -13,7 +13,7 @@
       <div class="my-orders-container">
         <div class="row" style="width: 100%;">
           <div class="col-12 d-flex justify-content-center">
-            <p class="boldest muli small-text grey"><%= page_entries_info @orders %></p>
+            <p class="boldest kaftan small-text grey"><%= page_entries_info @orders %></p>
           </div>
           <% @orders.each_with_index do |order, index| %>
             <div class="col-12">
@@ -26,20 +26,20 @@
                     <div class="my-order-details">
                       <%= image_tag url_for(order.products.first.shades.first.card_photo), class: "order-image", alt: "product shade photo" %>
                       <div class="order-details-text">
-                        <p class="small-text muli boldest"><%= order.products.first.title %></p>
-                        <p class="muli small-text">
+                        <p class="small-text kaftan boldest"><%= order.products.first.title %></p>
+                        <p class="kaftan small-text">
                           <% if order.products.count > 1 %>
                             (and <%= order.products.count - 1 %> more)
-                          <% end %> 
+                          <% end %>
                         </p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                        <p class="small-text boldest muli"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
+                        <p class="small-text boldest kaftan"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
                         <%#= link_to 'Track this order', '#', class: "small-text"  %>
                       </div>
                     </div>
                     <div class="order-status">
-                      <p class="muli"><%= order.status %></p> <!-- STATUS OF THE ORDER -->
+                      <p class="kaftan"><%= order.status %></p> <!-- STATUS OF THE ORDER -->
                     </div>
-                    <div class="order-price muli boldest">
+                    <div class="order-price kaftan boldest">
                       <p class="small-text"><%= humanized_money_with_symbol order.total_with_delivery %></p> <!-- PRICE OF THE ORDER -->
                     </div>
                   </div>

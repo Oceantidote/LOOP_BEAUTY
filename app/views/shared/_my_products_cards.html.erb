@@ -1,6 +1,6 @@
 <div class="row row-padding" style="width: 100%; margin: 0;">
   <% if products.count == 0 %>
-    <!-- <p class="medium-margin text-center boldest grey s-medium-text muli" style="width: 100%;">You haven't ordered any products yet.</p> -->
+    <!-- <p class="medium-margin text-center boldest grey s-medium-text kaftan" style="width: 100%;">You haven't ordered any products yet.</p> -->
     <div class="start-shopping-holder">
       <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
     </div>
@@ -12,15 +12,15 @@
           <div class="my-products-image">
             <% if product.out_of_stock? %>
               <div class="out-of-stock-overlay">
-                <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
               </div>
             <% end %>
             <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
           </div>
           <div class="my-products-details text-center no-margin">
-            <p class="muli"><%= product.title %></p>
+            <p class="kaftan"><%= product.title %></p>
           </div>
-          <div class="my-products-price text-center boldest no-margin muli">
+          <div class="my-products-price text-center boldest no-margin kaftan">
             <%= humanized_money_with_symbol(product.price) %>
           </div>
           <div class="my-products-purchase">
@@ -44,7 +44,7 @@
     </div>
   <% end %>
   <div class="col-12 d-flex justify-content-center">
-    <p class="boldest muli small-text grey"><%= page_entries_info products %></p>
+    <p class="boldest kaftan small-text grey"><%= page_entries_info products %></p>
   </div>
   <div class="paginator-container">
     <%= paginate products %>

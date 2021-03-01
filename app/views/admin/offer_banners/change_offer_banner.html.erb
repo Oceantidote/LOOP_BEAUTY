@@ -9,7 +9,7 @@
     <div class="admin-form-container">
       <%= simple_form_for @offer_banner, url: admin_change_offer_banner_path, method: :post do |f| %>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Content</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Content</p>
           <%= f.input :content, label: false %>
         </div>
         <%= f.submit 'CHANGE OFFER BANNER', class: 'primary-button personal-details-button small-text' %>

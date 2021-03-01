@@ -4,7 +4,7 @@
       <div class="dash-links">
         <h4 class="insider-info-title mlb-title text-center dash-mobile-title">Order Summary</h4>
         <% if @basket.empty? %>
-          <p class="small-text text-center didot no-margin" style="padding-bottom: 16px; margin: 0; border-bottom: 1px solid rgba(0,0,0,0.2);">There are no items in your basket</p>
+          <p class="small-text text-center neue-machina no-margin" style="padding-bottom: 16px; margin: 0; border-bottom: 1px solid rgba(0,0,0,0.2);">There are no items in your basket</p>
         <% else %>
           <div class="checkout-basket-display">
             <div class="checkout-item-container">
@@ -21,26 +21,26 @@
                   </div>
                 </div>
               <% end %>
-              <%= link_to 'Edit Bag', bag_path, class: 'muli text-center grey underline boldest small-text checkout-edit-bag' %>
+              <%= link_to 'Edit Bag', bag_path, class: 'kaftan text-center grey underline boldest small-text checkout-edit-bag' %>
             </div>
             <div class="checkout-total-container">
               <div class="basket-price">
-                <span class="small-text grey boldest muli">Subtotal: </span>
+                <span class="small-text grey boldest kaftan">Subtotal: </span>
                 <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
               </div>
               <% if @basket.discount_code.present? %>
                 <div class="basket-price">
-                  <span class="small-text grey boldest muli">Discount: </span>
+                  <span class="small-text grey boldest kaftan">Discount: </span>
                   <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
                 </div>
               <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
                 <div class="basket-price">
-                  <span class="small-text grey boldest muli">Credit Spent: </span>
+                  <span class="small-text grey boldest kaftan">Credit Spent: </span>
                   <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></h5>
                 </div>
               <% end %>
               <div class="basket-price small-margin-bottom">
-                <span class="small-text grey boldest no-margin muli">Delivery: </span>
+                <span class="small-text grey boldest no-margin kaftan">Delivery: </span>
                 <% if @basket.basket_products.any?(&:purchase_with_credit?) %>
                   <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                 <% else %>
@@ -48,7 +48,7 @@
                 <% end %>
               </div>
               <div class="basket-price">
-                <span class="grey boldest medium-text muli">Total: </span>
+                <span class="grey boldest medium-text kaftan">Total: </span>
                 <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
               </div>
             </div>
@@ -66,7 +66,7 @@
           <div class="order-summary-mobile">
             <h4 class="boldest medium-text checkout-show-mobile-subtitle">Order Summary</h4>
             <% if @basket.empty? %>
-              <p class="didot">There are no items in your basket</p>
+              <p class="neue-machina">There are no items in your basket</p>
             <% else %>
               <div class="checkout-basket-display">
                 <div class="checkout-item-container">
@@ -82,26 +82,26 @@
                       </div>
                     </div>
                   <% end %>
-                  <%= link_to 'Edit Bag', bag_path, class: 'text-center muli grey underline boldest small-text checkout-edit-bag' %>
+                  <%= link_to 'Edit Bag', bag_path, class: 'text-center kaftan grey underline boldest small-text checkout-edit-bag' %>
                 </div>
                 <div class="checkout-total-container">
                   <div class="basket-price">
-                    <span class="small-text grey boldest muli">Subtotal: </span>
+                    <span class="small-text grey boldest kaftan">Subtotal: </span>
                     <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
                   </div>
                   <% if @basket.discount_code.present? %>
                     <div class="basket-price">
-                      <span class="small-text grey boldest muli">Discount: </span>
+                      <span class="small-text grey boldest kaftan">Discount: </span>
                       <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
                     </div>
                   <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
                     <div class="basket-price">
-                      <span class="small-text grey boldest muli">Credit Spent: </span>
+                      <span class="small-text grey boldest kaftan">Credit Spent: </span>
                       <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></h5>
                     </div>
                   <% end %>
                   <div class="basket-price small-margin-bottom">
-                    <span class="small-text grey boldest no-margin muli">Delivery: </span>
+                    <span class="small-text grey boldest no-margin kaftan">Delivery: </span>
                     <% if @basket.basket_products.all(&:purchase_with_credit?) %>
                       <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
                     <% else %>
@@ -109,7 +109,7 @@
                     <% end %>
                   </div>
                   <div class="basket-price">
-                    <span class="grey boldest medium-text muli">Total: </span>
+                    <span class="grey boldest medium-text kaftan">Total: </span>
                     <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
                   </div>
                 </div>
@@ -117,10 +117,10 @@
             <% end %>
           </div>
           <div class="delivery-option-title">
-            <p class="medium-text boldest margin-top muli">Delivery Options</p>
+            <p class="medium-text boldest margin-top kaftan">Delivery Options</p>
           </div>
           <% if @basket.basket_products.any?(&:purchase_with_credit) %>
-            <h6 class="muli boldest s-medium-text">Free delivery on orders purchased with credit</h6>
+            <h6 class="kaftan boldest s-medium-text">Free delivery on orders purchased with credit</h6>
           <% end %>
           <div class="delivery-container">
             <% if @basket.basket_products.any?(&:purchase_with_credit) %>
@@ -157,7 +157,7 @@
           </div>
           <div class="checkout-addresses-container">
             <div class="checkout-address delivery-address-container">
-              <p class="checkout-address-title medium-text boldest muli">Delivery Address</p>
+              <p class="checkout-address-title medium-text boldest kaftan">Delivery Address</p>
               <hr>
               <% if @default_delivery %>
                 <div class="delivery-default">
@@ -169,13 +169,13 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content loop-border">
                     <div class="modal-header">
-                      <h5 class="modal-title insider-info-title muli boldest w-100 text-center" id="exampleModalLabel">Choose a delivery address</h5>
+                      <h5 class="modal-title insider-info-title kaftan boldest w-100 text-center" id="exampleModalLabel">Choose a delivery address</h5>
                     </div>
                     <div class="modal-body modal-delivery-addresses">
                       <%= render 'addresses/modal_addresses', addresses: @user.delivery_addresses %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
+                      <button type="button" class="secondary-button checkout-address-button small-text kaftan" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -185,15 +185,15 @@
                 <p id="deliveryAddressShow" class="d-none"></p>
                 <hr>
                 <div id="deliveryAddressButtons">
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newDeliveryAddress" data-toggle="modal" data-target="#new-delivery-address">Add new address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href kaftan" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">Choose an address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href kaftan" id="newDeliveryAddress" data-toggle="modal" data-target="#new-delivery-address">Add new address</a>
                 </div>
                 <!-- New Delivery Address Modal -->
                 <div class="modal fade" id="new-delivery-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content loop-border">
                       <div class="modal-header">
-                        <h5 class="modal-title insider-info-title muli boldest w-100 text-center" id="exampleModalLabel">Add a delivery address</h5>
+                        <h5 class="modal-title insider-info-title kaftan boldest w-100 text-center" id="exampleModalLabel">Add a delivery address</h5>
                       </div>
                       <div class="modal-body modal-delivery-addresses">
                         <div class="modal-new-delivery-address">
@@ -207,13 +207,13 @@
                             <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-modal-del-add' } %>
                             <div class="d-flex align-items-center">
                               <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                              <p class="no-bottom-margin muli">Use as billing address</p>
+                              <p class="no-bottom-margin kaftan">Use as billing address</p>
                             </div>
                             <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                         </div>
                       </div>
                         <div class="modal-footer">
-                          <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
+                          <button type="button" class="secondary-button checkout-address-button small-text kaftan" data-dismiss="modal">CLOSE</button>
                           <%= f.submit 'ADD ADDRESS', disabled: true, class: 'primary-button checkout-address-button checkout-modal-del-add-btn disabled-checkout-button', id: 'deliveryBtn' %>
                         </div>
                       <% end %>
@@ -231,7 +231,7 @@
                   <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-del-add', style: "width: 95%;" } %>
                   <div class="d-flex align-items-center">
                     <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                    <p class="no-bottom-margin muli">Use as billing address</p>
+                    <p class="no-bottom-margin kaftan">Use as billing address</p>
                   </div>
                   <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
                   <hr>
@@ -240,7 +240,7 @@
               <% end %>
             </div>
             <div class="checkout-address billing-address-container">
-              <p class="checkout-address-title medium-text boldest muli">Billing Address</p>
+              <p class="checkout-address-title medium-text boldest kaftan">Billing Address</p>
               <hr>
               <% if @default_billing %>
                 <div class="billing-default">
@@ -252,13 +252,13 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content loop-border">
                     <div class="modal-header">
-                      <h5 class="modal-title insider-info-title boldest muli w-100 text-center" id="exampleModalLabel">Choose a Billing address</h5>
+                      <h5 class="modal-title insider-info-title boldest kaftan w-100 text-center" id="exampleModalLabel">Choose a Billing address</h5>
                     </div>
                     <div class="modal-body modal-billing-addresses">
                       <%= render 'addresses/modal_addresses', addresses: @user.billing_addresses %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
+                      <button type="button" class="secondary-button checkout-address-button small-text kaftan" data-dismiss="modal">CLOSE</button>
                     </div>
                   </div>
                 </div>
@@ -268,15 +268,15 @@
                 <p id="billingAddressShow" class="d-none"></p>
                 <hr>
                 <div id="billingAddressButtons">
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
-                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href muli" id="newBillingAddress" data-toggle="modal" data-target="#new-billing-address">Add new address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href kaftan" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">Choose an address</a>
+                  <a class="grey underline boldest small-text checkout-edit-bag a-not-href kaftan" id="newBillingAddress" data-toggle="modal" data-target="#new-billing-address">Add new address</a>
                 </div>
                 <!-- New Billing Address Modal -->
                 <div class="modal fade" id="new-billing-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content loop-border">
                       <div class="modal-header">
-                        <h5 class="modal-title insider-info-title muli boldest w-100 text-center" id="exampleModalLabel">Add a billing address</h5>
+                        <h5 class="modal-title insider-info-title kaftan boldest w-100 text-center" id="exampleModalLabel">Add a billing address</h5>
                       </div>
                       <div class="modal-body modal-delivery-addresses">
                         <div class="modal-new-delivery-address">
@@ -293,7 +293,7 @@
                         </div>
                       </div>
                         <div class="modal-footer">
-                          <button type="button" class="secondary-button checkout-address-button small-text muli" data-dismiss="modal">CLOSE</button>
+                          <button type="button" class="secondary-button checkout-address-button small-text kaftan" data-dismiss="modal">CLOSE</button>
                           <%= f.submit 'ADD ADDRESS', disabled: true, class: 'primary-button checkout-address-button checkout-modal-bil-add-btn disabled-checkout-button', id: 'billingBtn' %>
                         </div>
                       <% end %>
@@ -328,10 +328,10 @@
           <% if @basket.total_price <= 0 %>
             <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
           <% elsif @user.delivery_addresses.length == 0 || @user.billing_addresses.length == 0 %>
-            <!-- <a class="stripe-button conditional-button muli" id="addressBtn">CONFIRM ADDRESSES</a> -->
-            <%= f.submit 'PAYMENT', disabled: true, class: 'disabled-checkout-button-stripe stripe-button conditional-button muli', id: "paymentHidden" %>
+            <!-- <a class="stripe-button conditional-button kaftan" id="addressBtn">CONFIRM ADDRESSES</a> -->
+            <%= f.submit 'PAYMENT', disabled: true, class: 'disabled-checkout-button-stripe stripe-button conditional-button kaftan', id: "paymentHidden" %>
           <% else %>
-            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el muli' %>
+            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el kaftan' %>
           <% end %>
         <% end %>
       </div>

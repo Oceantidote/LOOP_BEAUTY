@@ -5,15 +5,15 @@
     <div class="admin-form-container freebies-form-container">
       <%= simple_form_for [:admin, @freebie] do |f| %>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Heading</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Heading</p>
           <%= f.input :heading, label: false, input_html: { class: "contact-form-input" } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Blurb</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Blurb</p>
           <%= f.input :blurb, label: false, input_html: { class: "contact-form-input" } %>
         </div>
         <div class="personal-details-input align-items-start">
-          <p class="boldest muli s-medium-text text-right photo-input-text">Banner</p>
+          <p class="boldest kaftan s-medium-text text-right photo-input-text">Banner</p>
           <div>
             <%= f.input :banner, input_html: { class: 'd-none photo-input', 'data-name': 'freebie-banner', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
             <% if @freebie.banner.attached? %>
@@ -24,24 +24,24 @@
           </div>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Display?</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Display?</p>
           <%= f.input :display, label: false, input_html: { class: "lb-checkbox" } %>
         </div>
           <%= simple_fields_for @freebie.discount_code  do |a| %>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Code</p>
+              <p class="boldest kaftan s-medium-text text-right no-margin">Code</p>
               <%= a.input :code, label: false, input_html: { class: "contact-form-input" } %>
             </div>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Discount</p>
+              <p class="boldest kaftan s-medium-text text-right no-margin">Discount</p>
               <%= a.input :discount, label: false, input_html: { class: "contact-form-input" } %>
             </div>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">Uses</p>
+              <p class="boldest kaftan s-medium-text text-right no-margin">Uses</p>
               <%= a.input :uses, label: false, input_html: { class: "contact-form-input" } %>
             </div>
             <div class="personal-details-input">
-              <p class="boldest muli s-medium-text text-right no-margin">User uses</p>
+              <p class="boldest kaftan s-medium-text text-right no-margin">User uses</p>
               <%= a.input :user_uses, label: false, input_html: { class: "contact-form-input" } %>
             </div>
           <% end %>

@@ -11,12 +11,12 @@
           <% @categories.each do |category| %>
             <div class="col-2 no-padding">
               <div class="admin-category">
-                <h6 class="boldest muli no-margin"><%= category.name %></h6>
+                <h6 class="boldest kaftan no-margin"><%= category.name %></h6>
                 <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
               </div>
               <% category.sub_categories.each do |sub_category| %>
                 <div class="admin-sub-category">
-                  <p class="no-margin muli grey s-medium-text bold"><%= sub_category.name %></p>
+                  <p class="no-margin kaftan grey s-medium-text bold"><%= sub_category.name %></p>
                   <%= link_to 'Delete', admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny-text' %>
                 </div>
               <% end %>
@@ -27,7 +27,7 @@
       <div class="admin-products-container">
         <%= simple_form_for [:admin, @category] do |f| %>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
             <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
           </div>
           <%= f.submit 'CREATE CATEGORY', class: 'primary-button small-text personal-details-button' %>
@@ -35,11 +35,11 @@
 
         <%= simple_form_for [:admin, @sub_category] do |f| %>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Subcategory</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Subcategory</p>
             <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
           </div>
           <div class="personal-details-input">
-            <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+            <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
             <%= f.association :category, label: false,  input_html: { class: 'dropdown-input sign-up-dropdown' }  %>
           </div>
           <%= f.submit 'CREATE SUBCATEGORY', class: 'primary-button small-text personal-details-button' %>

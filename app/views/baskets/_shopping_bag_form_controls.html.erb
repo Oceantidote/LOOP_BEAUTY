@@ -1,4 +1,4 @@
-<div class="shopping-bag-card-quantity muli boldest">
+<div class="shopping-bag-card-quantity kaftan boldest">
   <% if item.quantity > 1 %>
     <%= simple_form_for item, remote: true do |f| %>
       <%= f.input :quantity, as: :hidden, input_html: {value: item.quantity - 1} %>
@@ -13,4 +13,4 @@
     <%= f.submit '+', class: "shopping-bag-quantity-controls" %>
   <% end %>
 </div>
-<p class="small-text boldest text-right shopping-bag-card-total muli"><%= humanized_money_with_symbol((item.product.price * item.quantity)) %></p>
+<p class="small-text boldest text-right shopping-bag-card-total kaftan"><%= humanized_money_with_symbol((item.product.price * item.quantity)) %></p>

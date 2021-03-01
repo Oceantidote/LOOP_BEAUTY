@@ -13,7 +13,7 @@ if (total) {
   total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
 }
 if (<%= @basket.empty? %>) {
-  document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="large-margin text-center boldest muli grey s-medium-text">Your basket is empty</p>'
+  document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="large-margin text-center boldest kaftan grey s-medium-text">Your basket is empty</p>'
   if (<%= params[:controller] == 'baskets' && params[:action] == 'show' %>) {
     checkout.classList.add("disabled")
     discount.classList.add("disabled")
@@ -29,7 +29,7 @@ if (<%= params[:controller] == 'baskets' && params[:action] == 'show' %>) {
 emptyBasketText = document.querySelector('.empty-basket-text')
 if (emptyBasketText) {
   if (<%= @basket.products.count == 0%>) {
-    emptyBasketText.innerHTML = `<p class="large-margin text-center boldest muli grey s-medium-text">Your basket is empty</p>
+    emptyBasketText.innerHTML = `<p class="large-margin text-center boldest kaftan grey s-medium-text">Your basket is empty</p>
                                  <div class="start-shopping-holder">
                                    <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
                                  </div>

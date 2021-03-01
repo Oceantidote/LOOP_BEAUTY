@@ -13,7 +13,7 @@
         <div class="my-products-image">
           <% if wishlist_product.product.out_of_stock? %>
             <div class="out-of-stock-overlay">
-              <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+              <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
             </div>
           <% end %>
           <%= image_tag url_for(wishlist_product.shade.card_photo), alt: "product shade photo" %>
@@ -41,7 +41,7 @@
     </div>
   <% end %>
   <div class="col-12 d-flex justify-content-center">
-    <p class="boldest muli small-text grey"><%= page_entries_info wishlist_products %></p>
+    <p class="boldest kaftan small-text grey"><%= page_entries_info wishlist_products %></p>
   </div>
   <div class="col-12 d-flex justify-content-center">
     <%= paginate wishlist_products, params: { controller: 'users', action: 'wishlist', user_id: current_user.id } %>

@@ -19,7 +19,7 @@
   <%= link_to admin_lookbooks_path, class: "each-dash-link" do %>
     <%= image_tag "lookbook-icon.png", class: "dash-links-image", alt: "lookbook icon" %>Pending Lookbooks
     <% if Lookbook.where(status: 'pending').any? %>
-      <div class="admin-notification muli">
+      <div class="admin-notification kaftan">
         <p><%= Lookbook.where(status: 'pending').size %></p>
       </div>
     <% end %>
@@ -27,7 +27,7 @@
   <%= link_to admin_tutorials_path, class: "each-dash-link" do %>
     <%= image_tag "admin-play-button.png", class: "dash-links-image", alt: "basket icon" %>Pending Tutorials
     <% if Tutorial.where(status: 'pending').any? %>
-      <div class="admin-notification muli">
+      <div class="admin-notification kaftan">
         <p><%= Tutorial.where(status: 'pending').size %></p>
       </div>
     <% end %>
@@ -50,49 +50,49 @@
 </div>
 
 <div class="dash-links-mobile">
-  <%= link_to admin_brands_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_brands_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>BRANDS</span>
     <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "basket icon" %>
   <% end %>
-  <%= link_to admin_products_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_products_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>PRODUCTS</span>
     <%= image_tag "lipstick.png", class: "dash-links-mobile-image", alt: "lipstick icon" %>
   <% end %>
-  <%= link_to admin_freebies_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_freebies_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>FREEBIES</span>
     <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
   <% end %>
-  <%= link_to admin_discount_codes_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_discount_codes_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>DISCOUNTS</span>
     <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
   <% end %>
-  <%= link_to admin_lookbooks_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_lookbooks_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>LOOKBOOKS</span>
     <%= image_tag "lookbook-icon.png", class: "dash-links-mobile-image", alt: "lookbook icon" %>
     <% if Lookbook.where(status: 'pending').any? %>
-      <div class="admin-mobile-notification muli lookbook-red-dot">
+      <div class="admin-mobile-notification kaftan lookbook-red-dot">
         <p><%= Lookbook.where(status: 'pending').size %></p>
       </div>
     <% end %>
   <% end %>
-  <%= link_to admin_tutorials_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_tutorials_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>TUTORIALS</span>
     <%= image_tag "admin-play-button.png", class: "dash-links-mobile-image", alt: "tutorial icon" %>
     <% if Tutorial.where(status: 'pending').any? %>
-      <div class="admin-mobile-notification muli tutorial-red-dot">
+      <div class="admin-mobile-notification kaftan tutorial-red-dot">
         <p><%= Tutorial.where(status: 'pending').size %></p>
       </div>
     <% end %>
   <% end %>
-  <%= link_to admin_insider_articles_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_insider_articles_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>ARTICLES</span>
     <%= image_tag "magazine.png", class: "dash-links-mobile-image", alt: "article icon" %>
   <% end %>
-  <%= link_to admin_baskets_path, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to admin_baskets_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>ABANDONED BAGS</span>
     <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "basket icon" %>
   <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration muli" do %>
+  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration kaftan" do %>
     <span>SIGN OUT</span>
     <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image", alt: "sign out icon" %>
   <% end %>

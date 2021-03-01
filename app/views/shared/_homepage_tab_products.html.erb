@@ -3,7 +3,7 @@
     <%= link_to product_path(product) do %>
       <% if product.out_of_stock? %>
         <div class="out-of-stock-overlay">
-          <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+          <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
         </div>
       <% end %>
       <div class="card_image">
@@ -18,11 +18,11 @@
     <% end %>
   </div>
   <div class="card-info">
-    <p class="muli boldest text-center truncate-text" style="margin-bottom: 0px;"><%= product.brand.name %></p>
+    <p class="kaftan boldest text-center truncate-text" style="margin-bottom: 0px;"><%= product.brand.name %></p>
     <div class="card_header">
-      <p class="muli boldest text-center truncate-text"><%= product.title %></p>
+      <p class="kaftan boldest text-center truncate-text"><%= product.title %></p>
     </div>
-    <div class="card_price-heart muli boldest text-center">
+    <div class="card_price-heart kaftan boldest text-center">
       <%= humanized_money_with_symbol(product.price) %>
     </div>
   </div>

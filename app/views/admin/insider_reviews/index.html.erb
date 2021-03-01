@@ -18,15 +18,15 @@
         <%= simple_form_for [@product, InsiderReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
             <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
             <div class="customer-review-input">
-              <p class="boldest muli s-medium-text no-margin">Influencer</p>
+              <p class="boldest kaftan s-medium-text no-margin">Influencer</p>
               <%= f.association :user, collection: User.where(influencer: true).order(:last_name), label_method: :full_name, label: false,  input_html: { class: 'dropdown-input sign-up-dropdown' }  %>
             </div>
             <div class="customer-review-input">
-              <p class="boldest muli s-medium-text no-margin">Rating</p>
+              <p class="boldest kaftan s-medium-text no-margin">Rating</p>
               <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
             </div>
             <div class="customer-review-input">
-              <p class="boldest muli s-medium-text no-margin">Review</p>
+              <p class="boldest kaftan s-medium-text no-margin">Review</p>
               <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
             </div>
             <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
@@ -34,7 +34,7 @@
       </div>
       <div class="row admin-review-row" style="margin: 30px 0;">
         <% if @insider_reviews.count == 0 %>
-          <p class="medium-margin text-center boldest didot" style="width: 100%;">There are no insider reviewss yet</p>
+          <p class="medium-margin text-center boldest neue-machina" style="width: 100%;">There are no insider reviewss yet</p>
         <% end %>
         <% @insider_reviews.each do |review| %>
           <div class="col-12 col-sm-10 col-md-6 ir-cols flex-column">
@@ -46,13 +46,13 @@
               <div class="insider-review-right">
                 <div class="insider-review-text">
                   <%= render 'shared/ratings', rating: review.rating %>
-                  <p class="didot"><%= review.review %></p>
+                  <p class="neue-machina"><%= review.review %></p>
                 </div>
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <%= link_to 'Edit',  edit_admin_product_insider_review_path(@product, review), class: "muli small-text underline grey-font boldest text-right small-margin-right" %>
-              <%= link_to "Remove",  admin_product_insider_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' }, class: "muli small-text underline grey-font boldest text-right" %>
+              <%= link_to 'Edit',  edit_admin_product_insider_review_path(@product, review), class: "kaftan small-text underline grey-font boldest text-right small-margin-right" %>
+              <%= link_to "Remove",  admin_product_insider_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' }, class: "kaftan small-text underline grey-font boldest text-right" %>
             </div>
           </div>
         <% end %>

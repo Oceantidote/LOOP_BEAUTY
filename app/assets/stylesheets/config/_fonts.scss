@@ -23,16 +23,24 @@
   font-weight: 200;
 }
 
+@font-face {
+  font-family: "Neue Machina";
+  src: font-url('neue_machina/neue_machina_bold.eot');
+  src: font-url('neue_machina/neue_machina_bold.eot?#iefix') format('embedded-opentype'),
+       font-url('neue_machina/neue_machina_bold.woff') format('woff'),
+       font-url('neue_machina/neue_machina_bold.otf') format('truetype');
+  font-weight: bold;
+}
+
 $body-font: 'Neue Machina', sans-serif;
 $headers-font: 'Kaftan', serif;
 $menu-font: 'Kaftan', serif;
 $title-font: 'Kaftan', serif;
 
-.didot {
+.neue-machina {
   font-family: 'Neue Machina', sans-serif !important;
 }
 
-.muli {
+.kaftan {
   font-family: 'Kaftan', serif !important;
 }
-

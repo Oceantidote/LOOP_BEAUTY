@@ -6,7 +6,7 @@
       </div>
       <% if product.out_of_stock? %>
         <div class="out-of-stock-overlay">
-          <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+          <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
         </div>
       <% end %>
       <div class="card_image">
@@ -23,19 +23,19 @@
     <% end %>
   </div>
   <div class="card-info">
-    <p class="muli boldest" style="margin-bottom: 0px;"><%= product.brand.name %></p>
+    <p class="kaftan boldest" style="margin-bottom: 0px;"><%= product.brand.name %></p>
     <div class="card_header">
-      <p class="muli boldest"><%= product.title %></p>
+      <p class="kaftan boldest"><%= product.title %></p>
     </div>
-    <div class="card_price-heart muli boldest">
+    <div class="card_price-heart kaftan boldest">
       <%= humanized_money_with_symbol(product.price) %>
     </div>
     <div class="card_ratings">
       <div class="rating-stars">
         <%= render 'shared/ratings', rating: product.average_rating.to_i %>
-        <p class="all-reviews muli boldest"><%= product.average_rating %></p>
+        <p class="all-reviews kaftan boldest"><%= product.average_rating %></p>
       </div>
-      <p class="all-reviews muli boldest">(<%= product.total_reviews %> <%= 'review'.pluralize(product.total_reviews) %>)</p>
+      <p class="all-reviews kaftan boldest">(<%= product.total_reviews %> <%= 'review'.pluralize(product.total_reviews) %>)</p>
     </div>
     <% if user_signed_in? && current_user.wishlist %>
       <div id="wishlist-<%= product.id %>">

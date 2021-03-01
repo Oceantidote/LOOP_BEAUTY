@@ -11,19 +11,19 @@
 <div class="influencers-show-banner" id="influencers-show-banner"  style="background-image: url('<%= @user.cover_photo.attached? ? (rails_blob_path @user.cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')" data-mob="<%= rails_blob_path @user.mobile_cover_photo %>" data-lrg="<%= rails_blob_path @user.cover_photo %>">
   <div class="influencer-show-banner-text-container">
     <div class="influencer-show-banner-text text-center">
-      <h3 class="<%= 'light-text' if !@user.light_text %>"><%= @user.full_name.upcase %></h3>
+      <h2 class="<%= 'light-text' if !@user.light_text %>"><%= @user.full_name.upcase %></h2>
       <p class="<%= 'light-text' if !@user.light_text %>">"<%= @user.description %>"</p>
       <div class="influencer-social-data">
         <% if @user.instagram %>
           <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data #{'light-link' if !@user.light_text}" do %>
               <i class="fab fa-instagram social-instagram"></i>
-              <h6><%= @user.instagram_followers %></h6>
+              <p class="m-0">375 posts</p>
           <% end %>
         <% end %>
         <% unless @user.youtube.empty? %>
-          <%= link_to @user.youtube, target: "_blank", class: "each-social-data #{'light-link' if !@user.light_text}" do %>
-              <i class="fab fa-youtube social-youtube"></i>
-              <h6><%= @user.youtube_subscribers %></h6>
+          <%= link_to @user.youtube, target: "_blank", class: "m-0 each-social-data #{'light-link' if !@user.light_text}" do %>
+            <i class="fab fa-youtube social-youtube"></i>
+            <p class="m-0">15 videos</p>
           <% end %>
         <% end %>
       </div>
@@ -34,7 +34,7 @@
 <div class="content-container mb-3">
   <div class="row m-0 justify-content-between align-items-center">
     <h5 class="m-0 semi-bold"> <%= @user.first_name.upcase %>'S FAVOURITES</h5>
-    <p class="m-0"><%= link_to "VIEW ALL #{@user.first_name.upcase}'S PRODUCTS", make_up_user_path(@user), class: 'underline muli' %></p>
+    <p class="m-0"><%= link_to "VIEW ALL #{@user.first_name.upcase}'S PRODUCTS", make_up_user_path(@user), class: 'underline kaftan' %></p>
   </div>
 </div>
 <div class="content-container trending-container pt-0">
@@ -50,7 +50,7 @@
               <%= link_to product_path(product) do %>
                 <% if product.out_of_stock? %>
                   <div class="out-of-stock-overlay">
-                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                   </div>
                 <% end %>
                 <div class="card_image">
@@ -65,12 +65,12 @@
               <% end %>
             </div>
             <div class="card-info">
-              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
               <div class="card_header mb-3">
-                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
               </div>
               <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
               <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
             </div>
           </div>
@@ -86,7 +86,7 @@
       <h4 class="normal text-white"><%= @user.question_answer.question_one %></h4>
     </div>
     <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
-      <h4 class="normal"><%= @user.question_answer.answer_one %></h4>
+      <h4 class="neue-machina"><%= @user.question_answer.answer_one %></h4>
     </div>
   </div>
 
@@ -99,7 +99,7 @@
             <h4 class="normal text-white"><%= @user.question_answer.question_two %></h4>
           </div>
           <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
-            <h4 class="normal"><%= @user.question_answer.answer_two %></h4>
+            <h4 class="neue-machina"><%= @user.question_answer.answer_two %></h4>
           </div>
         </div>
       </div>
@@ -109,14 +109,29 @@
             <h4 class="normal text-white"><%= @user.question_answer.question_three %></h4>
           </div>
           <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
-            <h4 class="normal"><%= @user.question_answer.answer_three %></h4>
+            <h4 class="neue-machina"><%= @user.question_answer.answer_three %></h4>
           </div>
         </div>
       </div>
   </div>
 </div>
 <div class="d-flex justify-content-center align-items-center">
-  <%= link_to 'READ ALL QUESTIONS', user_question_answer_path([@user, @user.question_answer]), class: "primary-button my-5" %>
+  <%= link_to 'READ ALL QUESTIONS', user_question_answer_path([@user, @user.question_answer]), class: "primary-button mt-5" %>
+</div>
+
+<div class="content-container mb-5 pb-5">
+  <h5 class="mb-3 semi-bold" style="width: 90%">OBSESSION OF THE WEEK</h5>
+  <div class="obsession-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path 'default-make-up.jpg' %>')">
+    <div>
+      <h5 class="text-white mb-4 neue-machina">DERMATOLOGY</h5>
+      <h2 class="text-white mb-0 kaftan">The revolutionary product that is changing</h2>
+      <h2 class="text-white mb-4 kaftan">women of colour with Dermatitis</h2>
+
+      <!-- REMOVE PRODUCT.FIRST -->
+
+      <%= link_to 'BUY NOW', product_path(Product.first), class: 'primary-button button-width white-button mb-0' %>
+    </div>
+  </div>
 </div>
 
 
@@ -125,71 +140,69 @@
 
 
 
-
-
-<div id="options"></div>
+<!-- <div id="options"></div>
 <div class="influencer-show-options">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <%= link_to make_up_user_path(@user), class: "influencer-card-link" do %>
+        <%#= link_to make_up_user_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Makeup</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%= @user.makeup_photo.attached? ?  (url_for @user.makeup_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1295&q=80') %>')">
+            <div class="influencer-show-card-image" style="background-image: url('<%#= @user.makeup_photo.attached? ?  (url_for @user.makeup_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1295&q=80') %>')">
             </div>
           </div>
-        <% end %>
+        <%# end %>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <% if @user.question_answer.nil? %>
-          <% if current_user&.admin %>
-            <%= link_to new_user_question_answer_path(@user), class: "influencer-card-link" do %>
+        <%# if @user.question_answer.nil? %>
+          <%# if current_user&.admin %>
+            <%#= link_to new_user_question_answer_path(@user), class: "influencer-card-link" do %>
               <div class="influencer-show-card">
                 <h5 class="text-center">Create Q & A</h5>
                 <div class="influencer-show-card-image" style="background-image: url('https://cdn.pixabay.com/photo/2017/07/10/23/43/question-mark-2492009_1280.jpg')">
-                  <%= image_tag 'plus-circle.png', class: 'plus-circle' %>
+                  <%#= image_tag 'plus-circle.png', class: 'plus-circle' %>
                 </div>
               </div>
-            <% end %>
-          <% else %>
+            <%# end %>
+          <%# else %>
             <div class="influencer-show-card">
               <h5 class="text-center">No Q & A</h5>
               <div class="influencer-show-card-image" style="background-image: url('https://cdn.pixabay.com/photo/2017/07/10/23/43/question-mark-2492009_1280.jpg')">
               </div>
             </div>
-          <% end %>
-        <% else %>
-          <%= link_to user_question_answer_path([@user, @user.question_answer]), class: "influencer-card-link" do %>
+          <%# end %>
+        <%# else %>
+          <%#= link_to user_question_answer_path([@user, @user.question_answer]), class: "influencer-card-link" do %>
             <div class="influencer-show-card">
               <h5 class="text-center">Q & A</h5>
-              <div class="influencer-show-card-image" style="background-image: url('<%= @user.qa_photo.attached? ?  (url_for @user.qa_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+              <div class="influencer-show-card-image" style="background-image: url('<%#= @user.qa_photo.attached? ?  (url_for @user.qa_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
               </div>
             </div>
-          <% end %>
-        <% end %>
+          <%# end %>
+        <%# end %>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <%= link_to user_tutorials_path(@user), class: "influencer-card-link" do %>
+        <%#= link_to user_tutorials_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Tutorials</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%= @user.tutorial_photo.attached? ?  (url_for @user.tutorial_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
-              <%= image_tag 'play-button.png', class: "play-button", width: 80 %>
+            <div class="influencer-show-card-image" style="background-image: url('<%#= @user.tutorial_photo.attached? ?  (url_for @user.tutorial_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+              <%#= image_tag 'play-button.png', class: "play-button", width: 80 %>
             </div>
-        <% end %>
+        <%# end %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <%= link_to user_lookbooks_path(@user), class: "influencer-card-link" do %>
+        <%#= link_to user_lookbooks_path(@user), class: "influencer-card-link" do %>
           <div class="influencer-show-card">
             <h5 class="text-center">Lookbook</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%= @user.lookbook_photo.attached? ?  (url_for @user.lookbook_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+            <div class="influencer-show-card-image" style="background-image: url('<%#= @user.lookbook_photo.attached? ?  (url_for @user.lookbook_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
             </div>
           </div>
-        <% end %>
+        <%# end %>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <% if policy([:admin, @user]).publish? %>
   <div class="admin-options">

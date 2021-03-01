@@ -8,9 +8,9 @@
     <div class="selected-article">
       <div class="article-content" id='cont'>
         <div class="article-header">
-          <h5 class="boldest muli"><%= @insider_article.category %>:</h5>
-          <h2 class="didot"><%= @insider_article.title %></h2>
-          <h6 class="boldest muli no-bottom-margin">by <%= @insider_article.by %> </h6>
+          <h5 class="boldest kaftan"><%= @insider_article.category %>:</h5>
+          <h2 class="neue-machina"><%= @insider_article.title %></h2>
+          <h6 class="boldest kaftan no-bottom-margin">by <%= @insider_article.by %> </h6>
         </div>
         <%= simple_format(@insider_article.text1) %>
         <% if @insider_article.photo1.attached? %>
@@ -20,7 +20,7 @@
             <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
           <% end %>
         <% end %>
-        <p class="didot"><%= simple_format(@insider_article.text2) %></p>
+        <p class="neue-machina"><%= simple_format(@insider_article.text2) %></p>
         <% if @insider_article.photo2.attached? %>
           <% if @movies.include?(@insider_article.photo2.filename.extension.downcase) %>
             <%= video_tag(url_for(@insider_article.photo2), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
@@ -28,7 +28,7 @@
             <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
           <% end %>
         <% end %>
-        <p class="didot"><%= simple_format(@insider_article.text3) %></p>
+        <p class="neue-machina"><%= simple_format(@insider_article.text3) %></p>
         <% if @insider_article.photo3.attached? %>
           <% if @movies.include?(@insider_article.photo3.filename.extension.downcase) %>
             <%= video_tag(url_for(@insider_article.photo3), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
@@ -36,7 +36,7 @@
             <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
           <% end %>
         <% end %>
-        <p class="didot"> <%= simple_format(@insider_article.text4) %></p>
+        <p class="neue-machina"> <%= simple_format(@insider_article.text4) %></p>
         <% if user_signed_in? && current_user.admin %>
           <% if policy([:admin, @insider_article]).publish? %>
             <div class="admin-options">
@@ -86,7 +86,7 @@
           <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
             <div class="insider-home-articles-card-text">
               <h6><%= article.category %></h6>
-              <p class="didot"><%= article.title %></p>
+              <p class="neue-machina"><%= article.title %></p>
             </div>
           </div>
         <% end %>

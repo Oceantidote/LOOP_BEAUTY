@@ -1,4 +1,16 @@
-<%= render "shared/homepage_banner"%>
+<%#= render "shared/homepage_banner"%>
+<div class="influencers-show-banner justify-content-start align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('<%= image_path 'thenet.png' %>')">
+  <div class="mb-5 pb-5">
+    <div class="pl-5" style="width: 47%">
+      <p class="text-white">FEEL THE ENERGY</p>
+      <h2 class="text-white kaftan">“The NET is here to stay. This platform will become the pinnacle of beauty for women of colour:</h2>
+      <div class="d-flex flex-column justify-content-end align-items-end">
+        <h6 class="text-white mb-0 mt-3 neue-machina" style="font-weight: 200 !important; font-size: 18px !important">Albert Manzour - Journalist at the Guardian</h6>
+        <%= link_to "NEWEST COLLECTION", '#', class: 'primary-button white-button px-3 my-4' %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <% if user_signed_in? && current_user.admin %>
     <% if policy([:admin, HomeBanner]).edit? %>
@@ -36,7 +48,7 @@
               <%= link_to product_path(product) do %>
                 <% if product.out_of_stock? %>
                   <div class="out-of-stock-overlay">
-                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                   </div>
                 <% end %>
                 <div class="card_image">
@@ -51,12 +63,12 @@
               <% end %>
             </div>
             <div class="card-info">
-              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
               <div class="card_header mb-3">
-                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
               </div>
               <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
               <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
             </div>
           </div>
@@ -69,9 +81,9 @@
   <h5 class="mb-3 semi-bold" style="width: 90%">OBSESSION OF THE WEEK</h5>
   <div class="obsession-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path 'default-make-up.jpg' %>')">
     <div>
-      <h5 class="text-white mb-4">DERMATOLOGY</h5>
-      <h2 class="text-white mb-0">The revolutionary product that is changing</h2>
-      <h2 class="text-white mb-4">women of colour with Dermatitis</h2>
+      <h5 class="text-white mb-4 neue-machina">DERMATOLOGY</h5>
+      <h2 class="text-white mb-0 kaftan">The revolutionary product that is changing</h2>
+      <h2 class="text-white mb-4 kaftan">women of colour with Dermatitis</h2>
 
       <!-- REMOVE PRODUCT.FIRST -->
 
@@ -82,7 +94,7 @@
 <div class="content-container">
   <div class="row m-0 justify-content-between">
     <h5 class="mb-3 semi-bold">LEARN INSIDER SECRETS</h5>
-    <p><%= link_to 'VIEW ALL ARTICLES', insider_articles_path, class: 'underline muli' %></p>
+    <p><%= link_to 'VIEW ALL ARTICLES', insider_articles_path, class: 'underline kaftan' %></p>
   </div>
   <div class="row m-0">
     <% @insider_articles.each_with_index do |article, index| %>
@@ -90,9 +102,9 @@
         <%= link_to insider_article_path(article) do %>
           <div class="homepage-articles mb-4" style="background-image: url('<%= rails_blob_path article.cover_photo %>')"></div>
         <% end %>
-        <p class="muli mb-1"><%= article.category.upcase %></p>
+        <p class="mb-1"><%= article.category.upcase %></p>
         <h5 class="truncate-text mb-3"><%= article.title %></h5>
-        <p class="truncate-text muli grey-font"><%= article.text1.gsub(/<div>|<\/div>/, '') %></p>
+        <p class="truncate-text grey-font"><%= article.text1.gsub(/<div>|<\/div>/, '') %></p>
       </div>
     <% end %>
   </div>
@@ -112,9 +124,9 @@
   <div class="row m-0">
     <div class="col-6 d-flex justify-content-start align-items-center">
       <div>
-        <p class="mb-0 muli"><%= @tutorial.user.full_name.upcase %></p>
-        <h2 class="mb-0 ">LEARN FROM THE EXPERTS</h2>
-        <p class="mb-0 muli"><%= @tutorial.title %></p>
+        <p class="mb-0"><%= @tutorial.user.full_name.upcase %></p>
+        <h2 class="mb-0 kaftan">learn from the experts</h2>
+        <p class="mb-0"><%= @tutorial.title %></p>
 
         <!-- REMOVE PRODUCT.FIRST -->
 
@@ -148,7 +160,7 @@
               <%= link_to product_path(product) do %>
                 <% if product.out_of_stock? %>
                   <div class="out-of-stock-overlay">
-                    <h4 class="boldest muli text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                   </div>
                 <% end %>
                 <div class="card_image">
@@ -163,12 +175,12 @@
               <% end %>
             </div>
             <div class="card-info">
-              <p class="muli semi-bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
+              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
               <div class="card_header mb-3">
-                <p class="muli semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
+                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
               </div>
               <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="text-center"><%= humanized_money_with_symbol(product.price) %></h5>
+              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
               <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
             </div>
           </div>
@@ -182,12 +194,12 @@
 <% if 1==1 %>
   <div class="homepage-pop-up">
     <div class="pop-up-content" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,1)), url('<%= image_path 'the-net-popup.png' %>')">
-      <h3 class="text-white">THE NET</h3>
+      <%= image_tag 'the-net-white.png', class: "popup-logo", alt: "the net logo" %>
       <h6 class="text-white">FIRST TIME WITH US?</h6>
       <!-- <h6 class="text-white small-text">Get 10% off your first order</h6> -->
-      <p class="text-white muli font-weight-lighter small-text popup-code">CODE: WELCOME2NET</p>
+      <p class="text-white neue-machina font-weight-lighter small-text popup-code">CODE: WELCOME2NET</p>
       <p class="primary-button white-button pop-up-content-button">SHOP NOW</p>
-      <%= link_to 'Learn more', about_us_path, class: "text-white muli underline medium-text" %>
+      <%= link_to 'Learn more', about_us_path, class: "text-white neue-machina underline medium-text" %>
       <%= image_tag 'close-white.png', class: 'close-homepage-pop-up' %>
     </div>
   </div>

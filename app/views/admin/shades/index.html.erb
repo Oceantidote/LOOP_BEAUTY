@@ -7,10 +7,10 @@
           <%= link_to 'DOWNLOAD', admin_sku_download_path(format: :csv), class: 'secondary-button', method: :get, style: 'margin: 0 0 50px 0' %>
           <table>
             <tr>
-              <th class="muli">Brand</th>
-              <th class="muli">Product</th>
-              <th class="muli">Shade</th>
-              <th class="muli">SKU</th>
+              <th class="kaftan">Brand</th>
+              <th class="kaftan">Product</th>
+              <th class="kaftan">Shade</th>
+              <th class="kaftan">SKU</th>
             </tr>
             <% @shades.each_with_index do |shade, index| %>
               <tr class="<%= index.even? ? 'shaded' : '' %>">
@@ -23,7 +23,7 @@
           </table>
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <p class="boldest muli small-text grey"><%= page_entries_info @shades %></p>
+          <p class="boldest kaftan small-text grey"><%= page_entries_info @shades %></p>
         </div>
         <div class="paginator-container">
           <%= paginate @shades %>

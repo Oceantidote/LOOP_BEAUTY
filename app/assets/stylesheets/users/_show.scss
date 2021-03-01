@@ -110,7 +110,8 @@
   margin: auto;
   width: 50%;
   @include for-phone-only {
-    width: 85%;
+    width: 88%;
+    padding-left: 0;
   }
 }
 
@@ -120,11 +121,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  h2 {
-    letter-spacing: 1px;
-  }
   a {
-    font-family: $title-font;
     color: black;
     font-weight: 900;
     border-bottom: 1px solid black;
@@ -133,6 +130,9 @@
     &:hover {
       text-decoration: none;
     }
+  }
+  @include for-medium-devices-down {
+    width: 100%;
   }
 }
 
@@ -189,12 +189,9 @@
   border: none !important;
   font-weight: normal !important;
   i {
-    font-size: 35px;
-    margin-right: 5px;
+    font-size: 20px;
+    margin-right: 6px;
     transition: all 0.3s ease;
-    @include for-small-devices-down {
-      font-size: 25px;
-    }
   }
   h6 {
     font-weight: 900;
@@ -295,19 +292,15 @@
   width: unset !important;
 }
 .light-link {
-  @include for-medium-devices-up {
-    .social-youtube, .social-instagram, h6 {
-      color: white;
-    }
+  .social-youtube, .social-instagram, p {
+    color: white;
     &:hover {
-      .social-youtube, .social-instagram, h6 {
+      .social-youtube, .social-instagram, p {
         color: gray;
       }
     }
   }
 }
 .light-text {
-  @include for-medium-devices-up {
-    color: white;
-  }
+  color: white;
 }

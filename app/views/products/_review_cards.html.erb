@@ -1,6 +1,6 @@
 <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left' %>
 <%# if @product.customer_reviews.count == 0 %>
-  <!-- <p class="text-center medium-margin width-100 muli grey s-medium-text">There are no customer reviews yet</p> -->
+  <!-- <p class="text-center medium-margin width-100 kaftan grey s-medium-text">There are no customer reviews yet</p> -->
 <%# end %>
 <% reviews.each do |review| %>
   <div class="col-10 col-md-6 ir-cols">
@@ -8,19 +8,19 @@
       <div class="customer-review-left">
         <h6><%= review.user.first_name.capitalize %></h6>
         <div class="boldest grey-font">
-          <p class="muli"><%= review.user.country %></p>
+          <p class="kaftan"><%= review.user.country %></p>
           <% if review.user.dob.present? %>
-            <p class="muli">Age: <%= review.user.age %></p>
+            <p class="kaftan">Age: <%= review.user.age %></p>
           <% end %>
-          <p class="muli">Gender: <%= review.user.gender %></p>
+          <p class="kaftan">Gender: <%= review.user.gender %></p>
         </div>
         <h6><%= review.created_at.strftime('%d.%m.%y') %></h6>
       </div>
       <div class="customer-review-right">
         <div class="customer-review-text">
           <%= render 'shared/ratings', rating: review.rating %>
-          <p class="didot">"<%= review.review.truncate(150) %>"</p>
-          <p class="boldest cust-review-recommend muli"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
+          <p class="neue-machina">"<%= review.review.truncate(150) %>"</p>
+          <p class="boldest cust-review-recommend kaftan"><%= review.recommendation %>,<span class="grey-font"> I would recommend this product</span></p>
         </div>
       </div>
     </div>
@@ -32,15 +32,15 @@
           <div class="customer-review-top-content">
             <h6 class="boldest no-margin"><%= review.user.first_name.capitalize %></h6>
             <div class="boldest grey-font">
-              <p class="no-margin muli"><%= review.user.country %></p>
-              <p class="no-margin muli">Age: 22-25</p>
-              <p class="no-margin muli">Gender: <%= review.user.gender %></p>
+              <p class="no-margin kaftan"><%= review.user.country %></p>
+              <p class="no-margin kaftan">Age: 22-25</p>
+              <p class="no-margin kaftan">Gender: <%= review.user.gender %></p>
             </div>
             <h6 class="no-margin boldest"><%= review.created_at.strftime('%d.%m.%y') %></h6>
           </div>
         </div>
         <div class="review-modal-body">
-          <p class="didot"><%= review.review %></p>
+          <p class="neue-machina"><%= review.review %></p>
           <div class="d-flex justify-content-center py-3">
             <%= render 'shared/ratings', rating: review.rating %>
           </div>

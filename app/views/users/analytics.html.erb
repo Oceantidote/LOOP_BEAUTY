@@ -11,7 +11,7 @@
           <div class="col-12 col-sm-6 col-md-5">
             <div class="analytics-data-range-form">
               <%= simple_form_for :analytics, url: user_analytics_path ,method: :get, html: { onchange: 'this.submit()' } do |f| %>
-                  <label for="range" class="muli boldest s-medium-text">Data for</label>
+                  <label for="range" class="kaftan boldest s-medium-text">Data for</label>
                   <%= f.input :range,
                               selected: @range_value || 'mtd', collection: [['Month', 'mtd'], ['Year', 'ytd']],
                               label: false,
@@ -26,7 +26,7 @@
       <hr>
       <div class="container">
         <% if params[:analytics].present? && params[:analytics][:range] == 'ytd'  %>
-          <h5 class="muli boldest mb-4">Number of Sales by Month for the last 12 Months</h5>
+          <h5 class="kaftan boldest mb-4">Number of Sales by Month for the last 12 Months</h5>
           <%= column_chart(
               @orders_graph_data,
               defer: true,
@@ -35,7 +35,7 @@
               colors: ['#000']
             )
           %>
-          <h5 class="muli boldest mb-4">Commission Earned by Day by Month for the last 12 Months</h5>
+          <h5 class="kaftan boldest mb-4">Commission Earned by Day by Month for the last 12 Months</h5>
           <%= column_chart(
               @commission_this_month,
               defer: true,
@@ -48,7 +48,7 @@
             )
           %>
         <% else %>
-          <h5 class="muli boldest mb-4">Number of Sales by Day this month</h5>
+          <h5 class="kaftan boldest mb-4">Number of Sales by Day this month</h5>
           <%= column_chart(
               @orders_graph_data,
               defer: true,
@@ -57,7 +57,7 @@
               colors: ['#000']
             )
           %>
-          <h5 class="muli boldest mb-4">Commission Earned by Day this month</h5>
+          <h5 class="kaftan boldest mb-4">Commission Earned by Day this month</h5>
           <%= column_chart(
               @commission_this_month,
               defer: true,
@@ -77,25 +77,25 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <div class="analytics-content-section analytics-content-flex">
-                <h6 class="text-center muli boldest">Pieces of content shared</h6>
+                <h6 class="text-center kaftan boldest">Pieces of content shared</h6>
                 <p class="large-text m-3"><%= @number_of_content_shared %></p>
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="analytics-content-section analytics-content-flex">
-                <h6 class="text-center muli boldest">Visitors brought to the site</h6>
+                <h6 class="text-center kaftan boldest">Visitors brought to the site</h6>
                 <p class="large-text m-3"><%= @total_visits %></p>
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="analytics-content-section analytics-content-flex">
-                <h6 class="text-center muli boldest">Total number of sales</h6>
+                <h6 class="text-center kaftan boldest">Total number of sales</h6>
                 <p class="large-text m-3"><%= @total_sales %></p>
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="analytics-content-section analytics-content-flex">
-                <h6 class="text-center muli boldest conditional-bottom-margin">Conversion rate</h6>
+                <h6 class="text-center kaftan boldest conditional-bottom-margin">Conversion rate</h6>
                 <p class="large-text m-3"><%= @total_conversion_rate %>%</p>
               </div>
             </div>
@@ -105,17 +105,17 @@
       <hr>
       <div class="analytics-content">
         <div class="container">
-          <h5 class="muli boldest mb-4">Content which generates most visits this <%= @range_value == "mtd" ? "month" : "year" %></h5>
+          <h5 class="kaftan boldest mb-4">Content which generates most visits this <%= @range_value == "mtd" ? "month" : "year" %></h5>
           <div class="row">
             <% @top_content.each_with_index do |content, index| %>
               <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
                 <div class="analytics-card">
                   <div class="analytics-number">
-                    <span class="didot mt-1"><%= index + 1 %></span>
+                    <span class="neue-machina mt-1"><%= index + 1 %></span>
                   </div>
                   <%= image_tag url_for(content.class == Lookbook ? content.photo : content.class == User ? current_user.avatar_photo : content.cover_photo  ), alt: "influencer lookbook photo"  %>
-                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= content.class == User ? "You" : content.title %></p>
-                  <p class="no-margin medium-text muli truncate-text"><%= content.visits %> visits</p>
+                  <p class="mt-1 no-bottom-margin medium-text boldest kaftan truncate-text"><%= content.class == User ? "You" : content.title %></p>
+                  <p class="no-margin medium-text kaftan truncate-text"><%= content.visits %> visits</p>
                 </div>
               </div>
             <% end %>
@@ -128,15 +128,15 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
               <div class="analytics-top-items">
-                <h6 class="boldest muli">Top Items this <%= @range_value == "mtd" ? "month" : "year" %></h6>
+                <h6 class="boldest kaftan">Top Items this <%= @range_value == "mtd" ? "month" : "year" %></h6>
                 <% @top_items_count.each_with_index do |top_item, index| %>
                   <% if top_item[1] > 0 %>
                     <div class="analytics-list-item">
                       <div class="analytics-list-item-number">
-                        <span class="didot ml-1"><%= index + 1 %></span>
+                        <span class="neue-machina ml-1"><%= index + 1 %></span>
                       </div>
                       <div class="analytics-list-item-text pl-2">
-                        <p class="no-margin didot"><%= top_item.first %></p>
+                        <p class="no-margin neue-machina"><%= top_item.first %></p>
                       </div>
                     </div>
                   <% end %>
@@ -145,15 +145,15 @@
             </div>
             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
               <div class="analytics-top-items">
-                <h6 class="boldest muli">Top Brands this <%= @range_value == "mtd" ? "month" : "year" %></h6>
+                <h6 class="boldest kaftan">Top Brands this <%= @range_value == "mtd" ? "month" : "year" %></h6>
                 <% @top_brands_count.each_with_index do |top_brand, index| %>
                   <% if top_brand[1] > 0 %>
                     <div class="analytics-list-item">
                       <div class="analytics-list-item-number">
-                        <span class="didot ml-1"><%= index + 1 %></span>
+                        <span class="neue-machina ml-1"><%= index + 1 %></span>
                       </div>
                       <div class="analytics-list-item-text pl-2">
-                        <p class="no-margin didot"><%= top_brand.first %></p>
+                        <p class="no-margin neue-machina"><%= top_brand.first %></p>
                       </div>
                     </div>
                   <% end %>
@@ -166,17 +166,17 @@
       <hr>
       <div class="analytics-content-driven-sales">
         <div class="container">
-          <h5 class="muli boldest mb-4">Top content driving your sales this <%= @range_value == "mtd" ? "month" : "year" %></h5>
+          <h5 class="kaftan boldest mb-4">Top content driving your sales this <%= @range_value == "mtd" ? "month" : "year" %></h5>
           <div class="row">
             <% @top_content.each_with_index do |content, index| %>
               <div class="col-12 col-sm-4 col-md-12 col-lg-4 d-flex flex-direction-column justify-content-end">
                 <div class="analytics-card">
                   <div class="analytics-number">
-                    <span class="didot mt-1"><%= index + 1 %></span>
+                    <span class="neue-machina mt-1"><%= index + 1 %></span>
                   </div>
                   <%= image_tag url_for(content.class == Lookbook ? content.photo : content.class == User ? current_user.avatar_photo : content.cover_photo  ), alt: "influencer lookbook photo"  %>
-                  <p class="mt-1 no-bottom-margin medium-text boldest muli truncate-text"><%= content.class == User ? "You" : content.title %></p>
-                  <p class="no-margin medium-text muli truncate-text"><%= content.visits %> visits</p>
+                  <p class="mt-1 no-bottom-margin medium-text boldest kaftan truncate-text"><%= content.class == User ? "You" : content.title %></p>
+                  <p class="no-margin medium-text kaftan truncate-text"><%= content.visits %> visits</p>
                 </div>
               </div>
             <% end %>

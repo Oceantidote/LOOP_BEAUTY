@@ -12,7 +12,7 @@
       <%= image_tag url_for(@previous_lookbook.photo), class: "main-lookbook-card-image", alt: "previous lookbook photo" %>
     </div>
     <div class="main-lookbook-card-text">
-      <p class="didot"><%= @previous_lookbook.description %></p>
+      <p class="neue-machina"><%= @previous_lookbook.description %></p>
     </div>
   </div>
   <div class="main-card-container">
@@ -24,7 +24,7 @@
           <%= image_tag url_for(@lookbook.photo), class: "main-lookbook-card-image", alt: "influencer lookbook photo" %>
       </div>
       <div class="main-lookbook-card-text">
-        <p class="didot"><%= @lookbook.description %></p>
+        <p class="neue-machina"><%= @lookbook.description %></p>
       </div>
     </div>
     <%= link_to lookbook_path(@next_lookbook, user_id: @next_lookbook.user.id) do %>
@@ -36,14 +36,14 @@
       <%= image_tag url_for(@next_lookbook.photo), class: "main-lookbook-card-image", alt: "next lookbook photo" %>
     </div>
     <div class="main-lookbook-card-text">
-      <p class="didot"><%= @next_lookbook.description %></p>
+      <p class="neue-machina"><%= @next_lookbook.description %></p>
     </div>
   </div>
 </div>
 <div class="featured-products-wrapper">
   <div class="featured-products-header lookbook-max-width">
     <div class="tutorial-spacer" style="width: 150px;">
-      <%= link_to 'Add all to bag', add_to_bag_user_lookbook_path([@user, @lookbook]), method: :post, remote: true, class: "add-all-to-bag muli" %>
+      <%= link_to 'Add all to bag', add_to_bag_user_lookbook_path([@user, @lookbook]), method: :post, remote: true, class: "add-all-to-bag kaftan" %>
     </div>
     <h2 class="insider-info-title text-center">Shop the look</h2>
     <div class="tutorial-spacer text-right" style="width: 150px;">
@@ -85,7 +85,7 @@
                 <%= image_tag url_for(lookbook.photo), alt: "influencer lookbook photo" %>
               </div>
               <div class="lookbook-card-small-text-container">
-                <p class="lookbook-card-small-text muli">Shop the look</p>
+                <p class="lookbook-card-small-text kaftan">Shop the look</p>
                 <%= image_tag 'basket.png', class: "lookbook-card-small-basket" %>
               </div>
             </div>
@@ -125,9 +125,9 @@
 <% elsif @lookbook.user == current_user && @lookbook.status == "pending" || @lookbook.status == "rejected" %>
     <div class="container tutorial-show-admin-options">
       <hr>
-        <h6 class="boldest margin-top" >Current Status: <span class="didot lighter"><%= @lookbook.status.capitalize %></span></h6>
+        <h6 class="boldest margin-top" >Current Status: <span class="neue-machina lighter"><%= @lookbook.status.capitalize %></span></h6>
         <% if @lookbook.rejection_message %>
-          <p class="boldest muli">Reason for rejection: <span class="didot lighter"><%= @lookbook.rejection_message %></span></p>
+          <p class="boldest kaftan">Reason for rejection: <span class="neue-machina lighter"><%= @lookbook.rejection_message %></span></p>
         <% end %>
         <%= link_to "RESUBMIT FOR APPROVAL", edit_lookbook_path(@lookbook), class: 'secondary-button small-margin-right' %>
       <hr>

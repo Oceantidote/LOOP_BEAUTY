@@ -2,16 +2,16 @@
   <div class="shopping-bag-container">
     <% if @basket.user&.influencer %>
       <div class="influencer-credit-container">
-        <p class="small-text boldest underline small-margin-bottom muli">Credit Remaining</p>
-        <p class="boldest small-margin-bottom influencer-remaining-credit muli"><%= humanized_money_with_symbol @basket.user.remaining_credit %></p>
-        <p class="v-small-text small-margin-bottom muli">Your credit expires last day of the month</p>
+        <p class="small-text boldest underline small-margin-bottom kaftan">Credit Remaining</p>
+        <p class="boldest small-margin-bottom influencer-remaining-credit kaftan"><%= humanized_money_with_symbol @basket.user.remaining_credit %></p>
+        <p class="v-small-text small-margin-bottom kaftan">Your credit expires last day of the month</p>
       </div>
     <% end %>
     <h2 class="shopping-bag-title text-center">Shopping Bag</h2>
     <hr style="border-color: #CFCFCF;">
     <div class="empty-basket-text">
       <% if @basket.products.count == 0 %>
-        <p class="large-margin text-center boldest muli grey s-medium-text">Your basket is empty</p>
+        <p class="large-margin text-center boldest kaftan grey s-medium-text">Your basket is empty</p>
         <div class="start-shopping-holder">
           <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
         </div>
@@ -44,7 +44,7 @@
         <%= render 'form', basket: @basket %>
       </div>
       <div class="shopping-bag-continue-checkout">
-        <p class="boldest grey-font text-right small-text no-margin muli">Subtotal: <span class="basket-total-price" ><%= humanized_money_with_symbol @basket.unadjusted_price %></span></p>
+        <p class="boldest grey-font text-right small-text no-margin kaftan">Subtotal: <span class="basket-total-price" ><%= humanized_money_with_symbol @basket.unadjusted_price %></span></p>
         <div class="shopping-bag-continue-checkout-total">
           <%= render 'shared/shopping_bag_price', basket: @basket %>
         </div>

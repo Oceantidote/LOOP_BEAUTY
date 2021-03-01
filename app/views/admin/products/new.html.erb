@@ -5,55 +5,55 @@
     <div class="admin-form-container admin-products-new-container">
       <%= simple_form_for [:admin, @product] do |f| %>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Weight</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Weight</p>
           <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Measurement</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Measurement</p>
           <%= f.input :measurement, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Title</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Title</p>
           <%= f.input :title, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Details</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Details</p>
           <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
 <!--         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Name</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
           <%#= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
         </div> -->
 <!--         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Category</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
           <%#= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div> -->
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Subcategory</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Subcategory</p>
           <%= f.input :sub_category_id, collection: SubCategory.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Brand</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Brand</p>
           <%= f.input :brand_id, collection: Brand.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Department</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Department</p>
           <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Price</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Price</p>
           <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin">Lead Product Image</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin">Lead Product Image</p>
           <%= f.input :lead_product_image, label: false, input_html: { class: 'contact-form-input' } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin ">Published?</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin ">Published?</p>
           <%= f.input :published, label: false, input_html: { class: "lb-checkbox" } %>
         </div>
         <div class="personal-details-input">
-          <p class="boldest muli s-medium-text text-right no-margin ">Influencer Showroom</p>
+          <p class="boldest kaftan s-medium-text text-right no-margin ">Influencer Showroom</p>
           <%= f.input :demoable, label: false, input_html: { class: "lb-checkbox" } %>
         </div>
         <%= f.submit 'CREATE PRODUCT', class: 'primary-button personal-details-button small-text'%>

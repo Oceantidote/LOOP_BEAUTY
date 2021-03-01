@@ -28,7 +28,7 @@ displayPreview = (input) => {
           if (preview) {
             preview.src = ''
           }
-          input.insertAdjacentHTML('afterend', `<div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin didot">${input.files[0].name}</p></div>`)
+          input.insertAdjacentHTML('afterend', `<div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin neue-machina">${input.files[0].name}</p></div>`)
           if (preview) {
             preview.classList.add('d-none')
           }

@@ -12,6 +12,16 @@
                   <div class="w-75 m-auto">
                     <h3><%= influencer.full_name.upcase %></h3>
                     <p>"<%= influencer.description %>"</p>
+                    <div class="d-flex justify-content-center">
+                      <div class="mr-4">
+                        <i class="fab fa-instagram"></i>
+                        <span>375 posts</span>
+                      </div>
+                      <div class="">
+                        <i class="fab fa-youtube"></i>
+                        <span>15 videos</span>
+                      </div>
+                    </div>
                     <%= link_to 'VIEW PROFILE', user_path(influencer), class: "primary-button" %>
                   </div>
                   <% if !influencer.published %>
