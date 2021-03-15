@@ -1,20 +1,45 @@
 <%= content_for :meta_title do %>
   Shop by Brand
 <% end %>
-<div class="brands-wrapper">
-  <div class="min-h-inner">
-    <h2 class="insider-info-title text-center mb-5">Shop by Brand</h2>
-    <div class="row" style="margin: 0; width: 100%;">
+<div class="influencers-show-banner justify-content-start align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('<%= image_path 'thenet.png' %>')">
+  <div>
+    <div class="pl-5" style="width: 47%">
+      <h1 class="text-white neue-machina">BRANDS FOR US</h1>
+      <h2 class="text-white kaftan">The NET is proud to introduce brands for black and brown skin people of all hues</h2>
+    </div>
+  </div>
+</div>
+<div class="content-container trending-container">
+  <div class="row m-0 justify-content-between align-items-center">
+    <div class="col-12 col-md-6">
+      <div class="border-left px-5 py-4">
+        <h2>"The NET is a place for us to discover incredible beauty brands making products that work for black and brown skin people"</h2>
+      </div>
+    </div>
+    <div class="col-12 col-md-5">
+      <%= image_tag 'brands_index.png', class: "w-100" %>
+    </div>
+  </div>
+</div>
+<div class="content-container trending-container mb-5">
+  <div class="row m-0">
+    <div class="col-12 d-flex justify-content-center">
+      <h5 class="mb-3 semi-bold w-100">BRANDS</h5>
+    </div>
+  </div>
+  <div class="row m-0">
+
+    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
+
+    <% 2.times do %>
       <% @brands.each_with_index do |brand, index| %>
-        <div class="col-xs-12 col-md-4" style="padding: 0;">
+        <div class="col-12 col-md-6 <%= index == 0 ? 'pr-4' : 'pl-4' %>">
           <%= link_to brand_path(brand), class: "insider-home-card-link" do %>
-            <div class="insider-home-articles-card  brand-card" style="background-image: url(<%= brand.logo.attached? ? url_for(brand.logo) : asset_path('brand-default.jpg') %>);">
+            <div class="insider-home-articles-card brand-card mb-5" style="background-image: url(<%= brand.logo.attached? ? url_for(brand.logo) : asset_path('brand-default.jpg') %>);">
             </div>
           <% end %>
         </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
-
-

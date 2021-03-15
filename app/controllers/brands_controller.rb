@@ -7,6 +7,7 @@ class BrandsController < ApplicationController
 
   def show
     @brand = Brand.friendly.find(params[:id])
+    @tag = @brand.description.split(".").first
     authorize @brand
     @products = @brand.products.where(published: true)
     @all = @products
