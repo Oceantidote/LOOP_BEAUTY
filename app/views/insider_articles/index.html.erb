@@ -5,37 +5,49 @@
   <%= link_to insider_article_path(@featured_article), class: 'no-decoration' do %>
     <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
       <div class="insider-article-banner-text-container">
-        <div class="insider-article-banner">
-          <h2 class="neue-machina <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" ><%= @featured_article.title %></h2>
-          <p class="<%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
+        <div class="insider-article-banner d-flex justify-content-center align-items-center">
+          <h4 class="neue-machina font-weight-bold <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" >ARTICLE OF THE WEEK</h4>
+          <h2 class="mb-4 <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" ><%= @featured_article.title %></h2>
+          <p class="mb-5 w-50 text-center <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">"<%= @featured_article_tag %>"</p>
+          <h4 class="border-bottom mt-4 neue-machina font-weight-bold <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">READ MORE</h4>
         </div>
       </div>
-      <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
+      <%#= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
     </div>
   <% end %>
 <% end %>
-<div class="insider-home-tabs-container">
-  <div class="insider-home-tabs">
-    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :category, params[:category], value: "All" %>
-      <%= submit_tag "All articles", class: "each-insider-home-tab #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
-    <% end %>
-    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :category, params[:category], value: "Inspiration" %>
-      <%= submit_tag "Inspiration", class: "each-insider-home-tab #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
-    <% end %>
-    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :category, params[:category], value: "News" %>
-      <%= submit_tag "News", class: "each-insider-home-tab #{ params[:category] == 'News' ? 'insider-home-tab-active' : '' }"  %>
-    <% end %>
-    <%= form_tag(insider_articles_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :category, params[:category], value: "Ask the Expert" %>
-      <%= submit_tag "Ask the Expert", class: "each-insider-home-tab #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
-    <% end %>
+<div class="content-container">
+  <div class="row m-0 justify-content-center">
+    <div class="col-9">
+      <div class="insider-home-tabs-container mb-5">
+        <div class="insider-home-tabs">
+          <%= form_tag(community_path, method: :get, remote: true) do %>
+            <%= hidden_field_tag :category, params[:category], value: "All" %>
+            <%= submit_tag "All Content", class: "each-insider-home-tab #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
+          <% end %>
+          <%= form_tag(community_path, method: :get, remote: true) do %>
+            <%= hidden_field_tag :category, params[:category], value: "Inspiration" %>
+            <%= submit_tag "Inspiration", class: "each-insider-home-tab #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
+          <% end %>
+          <%= form_tag(community_path, method: :get, remote: true) do %>
+            <%= hidden_field_tag :category, params[:category], value: "News" %>
+            <%= submit_tag "News", class: "each-insider-home-tab #{ params[:category] == 'News' ? 'insider-home-tab-active' : '' }"  %>
+          <% end %>
+          <%= form_tag(community_path, method: :get, remote: true) do %>
+            <%= hidden_field_tag :category, params[:category], value: "Ask the Expert" %>
+            <%= submit_tag "Ask the Expert", class: "each-insider-home-tab #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
+          <% end %>
+          <%= form_tag(community_path, method: :get, remote: true) do %>
+            <%= hidden_field_tag :category, params[:category], value: "How To" %>
+            <%= submit_tag "How To", class: "each-insider-home-tab #{ params[:category] == 'How To' ? 'insider-home-tab-active' : '' }"  %>
+          <% end %>
+        </div>
+      </div>
+      <div class="insider-home-articles">
+        <%= render 'insider_cards', contents: @contents %>
+      </div>
+    </div>
   </div>
-</div>
-<div class="insider-home-articles">
-  <%= render 'insider_cards', insider_articles: @insider_articles %>
 </div>
 
 <script>
@@ -46,15 +58,4 @@
       e.currentTarget.classList.add('insider-home-tab-active');
     })
   });
-
-  let arrow = document.getElementById('arrow');
-  arrow.addEventListener('click',(e) => {
-    e.preventDefault()
-    window.scroll({
-      top: window.innerHeight - 100,
-      behavior: 'smooth'
-    });
-  })
-
-
 </script>

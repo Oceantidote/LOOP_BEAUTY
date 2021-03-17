@@ -1,6 +1,10 @@
+.community-wrapper {
+  max-width: 992px;
+}
+
 .insider-article-banner-text-container {
   height: 100%;
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,15 +12,8 @@
     letter-spacing: 1px;
     text-shadow: 0 0 1px #6b6b6b;
   }
-  p {
-    font-family: $title-font;
-    font-weight: 900;
-    line-height: 15px;
-    text-decoration: underline;
-    text-shadow: 0 0 1px #6b6b6b;
-    &:hover {
-      text-decoration: none;
-    }
+  h4 {
+    width: max-content;
   }
 }
 
@@ -24,7 +21,7 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 40%;
+  width: 60%;
   @include for-medium-devices-down {
     width: 50%;
   }
@@ -61,3 +58,4 @@
     width: 100%;
   }
 }
+

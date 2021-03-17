@@ -1,27 +1,44 @@
 <div class="row" style="margin: 0; width: 100%;">
-  <% insider_articles.each_with_index do |article, index| %>
-    <% if (index + 1) % 4  == 0 %>
-      <%= link_to insider_article_path(article), class: 'no-decoration' do %>
-        <div class="insider-home-articles-banner" style="background-image:url(<%= url_for(article.cover_photo) %>)">
-          <div class="insider-article-banner-text-container">
-            <div class="insider-article-banner">
-              <h2 class="neue-machina <%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>"><%= article.title %></h2>
-              <p class="<%= article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">Read more</p>
-            </div>
+  <% count = 0 %>
+  <% contents.each_with_index do |content, index| %>
+    <% if (index + 1) % 5  == 0 %>
+      <%= link_to insider_article_path(content), class: 'no-decoration w-100' do %>
+        <div class="insider-home-articles-banner mb-5 p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo) %>)">
+          <div class="">
+            <h5 class="text-white mb-4 neue-machina">DERMATOLOGY</h5>
+            <h2 class="text-white mb-0 kaftan">The revolutionary product that is changing</h2>
+            <h2 class="text-white mb-4 kaftan">women of colour with Dermatitis</h2>
           </div>
+          <p class="primary-button button-width white-button mb-0">Read more</p>
         </div>
       <% end %>
     <% else %>
-      <div class="col-xs-12 col-md-4" style="padding: 0;">
-        <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
-          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo.variant(resize: '700')) %>);">
-            <div class="insider-home-articles-card-text">
-              <h6><%= article.category %></h6>
-              <p class="neue-machina"><%= article.title %></p>
+      <div class="col-12 col-lg-6 mb-5 <%= count.even? ? 'pl-0 pr-0 pr-lg-4' : 'pr-0 pl-0 pl-lg-4' %>">
+        <% if @how_to %>
+          <%= link_to tutorial_path(content), class: "insider-home-card-link no-decoration" do %>
+            <div class="insider-home-articles-card mb-3 position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo.variant(resize: '700')) %>);">
+              <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
             </div>
-          </div>
+            <div>
+              <small class="font-weight-bold">HOW TO</small>
+              <h6 class="mb-0"><%= content.title %></h6>
+              <small class=""><%= content.user.instagram %></small>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to insider_article_path(content), class: "insider-home-card-link no-decoration" do %>
+            <div class="insider-home-articles-card mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo.variant(resize: '700')) %>);">
+            </div>
+            <div>
+              <small class="font-weight-bold"><%= content.category.upcase %></small>
+              <h6><%= content.title %></h6>
+              <p class=""><%= simple_format(content.text1.truncate(80)) %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
+      <% count += 1 %>
     <% end %>
   <% end %>
 </div>
+

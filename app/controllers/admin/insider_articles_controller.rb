@@ -33,7 +33,7 @@ class Admin::InsiderArticlesController < ApplicationController
 
   def destroy
     @insider_article.destroy
-    redirect_to insider_articles_path
+    redirect_to community_path
   end
 
   def publish

@@ -16,6 +16,7 @@
 }
 
 .insider-home-articles {
+  min-height: 400px;
   .insider-home-banner-text {
     h2, a {
       color: #000;
@@ -27,7 +28,7 @@
 // CSS FOR INSIDER ARTICLES CURRENTLY IN PAGES
 
 .insider-show-banner {
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 100px);
   background-position: center;
   background-size: cover;

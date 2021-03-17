@@ -51,23 +51,26 @@
 }
 
 .insider-home-articles-banner {
-  width: 100vw;
+  width: 100%;
   height: calc(100vw * 0.3);
   max-height: 500px;
   background-position: center;
   background-size: cover;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
   @include for-phone-only {
     height: calc(100vw * 0.5);
   }
 }
 
 .insider-home-tabs-container {
-  height: 60px;
+  height: 48px;
   width: 100%;
   background: white;
-  @include absCenter;
+  border-bottom: 2px solid #000000;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .insider-home-tabs {
@@ -85,13 +88,12 @@
 }
 
 .each-insider-home-tab {
-  padding: 0 15px;
+  padding: 0 22px;
   margin: 0;
   height: 100%;
   border: none;
   border-radius: 0;
   background: white;
-  font-family: 'Mukta Mahee', sans-serif;
   @include absCenter;
   color: black;
   font-size: 14px;
@@ -124,11 +126,12 @@
 }
 
 .insider-home-articles-card {
-  height: 300px;
+  height: 360px;
   width: 100%;
   background-size: cover;
   background-position: center;
   display: flex;
+  justify-content: center;
   align-items: center;
   h6 {
     margin-bottom: 15px;
@@ -147,6 +150,7 @@
 .brand-card {
   -webkit-filter: brightness(100%);
   transition: all 0.5s ease;
+  height: 300px !important;
   &:hover {
     -webkit-filter: brightness(70%);
         -webkit-transition: all 0.5s ease;
@@ -154,26 +158,6 @@
         -o-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;
         transition: all 0.5s ease;
-  }
-}
-
-.insider-home-articles-card-text {
-  width: 100%;
-  margin-left: 50px;
-  @include for-medium-devices-up {
-    margin-left: 20px;
-  }
-  @include for-xlarge-devices-up {
-    margin-left: 40px;
-  }
-}
-
-.insider-home-card-link {
-  -webkit-filter: brightness(100%);
-  color: white;
-  &:hover {
-    color: white;
-    text-decoration: none;
   }
 }
 

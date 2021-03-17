@@ -11,18 +11,25 @@ class InsiderArticlesController < ApplicationController
   end
 
   def index
+    # CREATE 'HOW TO' CATEGORY
     if params[:category].present? && params[:category] == "All"
-      @insider_articles = policy_scope(InsiderArticle)
+      @contents = policy_scope(InsiderArticle)
     elsif params[:category].present? && params[:category] == "Inspiration"
-      @insider_articles = policy_scope(InsiderArticle).where(category: "Inspiration")
+      @contents = policy_scope(InsiderArticle).where(category: "Inspiration")
     elsif params[:category].present? && params[:category] == "News"
-      @insider_articles = policy_scope(InsiderArticle).where(category: "News")
+      @contents = policy_scope(InsiderArticle).where(category: "News")
     elsif params[:category].present? && params[:category] == "Ask the Expert"
-      @insider_articles = policy_scope(InsiderArticle).where(category: "Ask the Expert")
+      @contents = policy_scope(InsiderArticle).where(category: "Ask the Expert")
+    elsif params[:category].present? && params[:category] == "How To"
+      @contents = policy_scope(Tutorial).where(status: 'approved').order(created_at: :DESC)
+      @how_to = params[:category]
     else
-      @insider_articles = policy_scope(InsiderArticle)
+      @contents = policy_scope(InsiderArticle)
     end
-      @featured_article = InsiderArticle.where(featured: true).first
+    @contents += @contents
+    @contents += @contents
+    @featured_article = InsiderArticle.where(featured: true).first
+    @featured_article_tag = @featured_article.text1.gsub(/<div>/, "").truncate(80)
 
     respond_to do |format|
       format.html

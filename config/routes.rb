@@ -148,7 +148,8 @@ Rails.application.routes.draw do
 
   # ADMIN ROUTES ABOVE
 
-  resources :insider_articles, only: [:show, :index]
+  resources :insider_articles, only: [:show]
+  get '/community', to: 'insider_articles#index'
   resources :products, only: [:index, :show], path: 'make-up' do
     resources :wishlist_products, only: [:new, :create]
     resources :customer_reviews, only: [:create]
