@@ -1,0 +1,409 @@
+<!-- <div class="offers-banner">
+  <p class="offers-banner-text"><%#= OfferBanner.any? ? OfferBanner.last.content : "" %></p>
+</div> -->
+<% if current_user&.admin %>
+  <div class="admin-button-container">
+    <div style="position: fixed;right: 5px;">
+      <%= link_to 'PORTAL', admin_portal_path, class: 'admin-button' %>
+      <% if Lookbook.where(status: 'pending').any? || Tutorial.where(status: 'pending').any? %>
+        <div class="admin-notification kaftan">
+        <p><%= Lookbook.where(status: 'pending').size + Tutorial.where(status: 'pending').size %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
+  <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#mobile-nav-brands-menu,#mobile-nav-influencers-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%#= image_tag 'hamburger.png', width: 25, alt: "hamburger icon" %>
+    <div class="hamburger">
+      <div class="hamburger-stick ham-one"></div>
+      <div class="hamburger-stick ham-two"></div>
+      <div class="hamburger-stick ham-three"></div>
+    </div>
+  </button>
+  <div class="navbar-menu d-flex align-items-center">
+    <%= image_tag 'hamburger.png', class: "mr-3", alt: "hamburger icon" %>
+    <span class="font-weight-bold">MENU</span>
+  </div>
+  <div class="navbar-logo">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag 'the-net.png', alt: "the net logo" %>
+    <% end %>
+  </div>
+
+  <ul class="navbar-nav" style="flex-direction: row">
+    <li class="nav-item small-hidden" style="position: relative;">
+      <div class="nav-link">
+        <%= image_tag 'navbar-search.png', id: 'navbar-search-close', alt: "search icon" %>
+        <div id="product_search" class="navbar-search-container">
+          <%= form_tag products_path, method: :get do |f| %>
+            <div style="display: flex; justify-content: center;">
+              <div>
+                <%= text_field_tag :query, params[:query], class: 'navbar-search-input neue-machina', placeholder: 'Search for a product..', autocomplete: 'off' %>
+              </div>
+              <%#= button_tag(type: :submit, class: "button search-form-button") do %>
+                <%#= image_tag 'navbar-search-white.png' %>
+              <%# end %>
+            </div>
+            <div id="suggestions"></div>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item mobile-hidden">
+      <% if user_signed_in? %>
+        <div class="nav-link mx-4">
+          <%= image_tag 'default-user.png', class: "dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "user icon" %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="padding: 0; margin-top: 0;">
+            <ul class="web-dropdown neue-machina">
+              <li><%= link_to 'My Profile', user_dashboard_path(current_user) %></li>
+              <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to new_user_session_path, class: "nav-link mx-4" do %>
+          <%= image_tag 'default-user.png', alt: "user icon" %>
+        <% end %>
+      <% end %>
+    </li>
+    <li class="nav-item mobile-hidden">
+      <div class="nav-link basket-icon-container">
+        <%= image_tag 'basket.png', alt: "basket icon" %>
+        <p class="basket-item-count basket-web"><%= @basket.total_number_of_products %></p>
+      </div>
+    </li>
+  </ul>
+  <div class="mobile-nav-links-container">
+    <div class="mobile-left-links">
+      <% if user_signed_in? %>
+          <%= link_to user_dashboard_path(current_user) do %>
+            <%= image_tag 'navbar-user.png', alt: "user icon" %>
+          <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag 'navbar-user.png', alt: "user icon" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="mobile-left-links" style="margin-left: 5px;">
+      <%= link_to bag_path, class: "basket-icon-container basket-icon-mobile" do %>
+        <%= image_tag 'basket.png', alt: "basket icon" %>
+        <p class="basket-item-count basket-mobile"><%= @basket.total_number_of_products %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="collapse navbar-collapse main-nav-dropdown" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <!-- SHOWING ON MOBILE -->
+    <li class="nav-item position-relative">
+      <div class="dropdown-forward-container">
+        <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
+      </div>
+      <%= link_to "Brands", "#", id: "mobile-nav-brands", class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item position-relative">
+      <div class="dropdown-forward-container">
+        <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
+      </div>
+      <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Makeup", products_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Insider", community_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Videos", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Freebies", freebies_path, class: "nav-link mobile-dropdown-options each-item" %>
+    </li>
+    <% if user_signed_in? %>
+      <li class="nav-item" style="border-top: 1px solid black;">
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link mobile-dropdown-options each-item" %>
+      </li>
+    <% else %>
+      <li class="nav-item" style="border-top: 1px solid black;">
+        <%= link_to 'Log In', new_user_session_path, class: "nav-link mobile-dropdown-options each-item" %>
+      </li>
+    <% end %>
+    <!-- SHOWING ON MOBILE -->
+  </ul>
+</div>
+
+<!-- HIDDEN BRANDS BAR -->
+<div id="mobile-nav-brands-menu" class="mobile-dropdown-options-brands collapse navbar-collapse">
+  <ul class="navbar-nav mr-auto">
+    <li id="back-to-menu-brands" class="back-to-menu">
+      <div class="dropdown-back-container">
+        <%= image_tag 'dropdown-back.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
+      </div>
+      Brands</li>
+      <%= link_to brands_path, class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          SEE ALL BRANDS
+        </li>
+      <% end %>
+    <% @brands.each do |brand| %>
+      <%= link_to brand_path(brand), class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          <%= brand.name %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+<!-- HIDDEN BRANDS BAR -->
+
+<!-- HIDDEN INFLUENCERS BAR -->
+<div id="mobile-nav-influencers-menu" class="mobile-dropdown-options-influencers collapse navbar-collapse">
+  <ul class="navbar-nav mr-auto">
+    <li id="back-to-menu-influencers" class="back-to-menu">
+      <div class="dropdown-back-container">
+        <%= image_tag 'dropdown-back.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
+      </div>
+      Influencers</li>
+      <%= link_to users_path, class: "each-item" do %>
+        <li class="nav-item each-item-dropdown">
+          SEE ALL INFLUENCERS
+        </li>
+      <% end %>
+    <% @influencers.each do |influencer| %>
+      <% if influencer.published %>
+        <%= link_to user_path(influencer), class: "each-item" do %>
+          <li class="nav-item each-item-dropdown">
+            <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="navbar-hover-container">
+  <div class="navbar-basket-title">
+    <div class="item-added">
+      <i class="far fa-check-circle"></i>
+      <p class="kaftan">ITEM ADDED</p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
+
+    </div>
+  </div>
+  <hr>
+  <div class="navbar-basket-items-container">
+    <% if @basket.products.count == 0 %>
+      <p class="medium-margin text-center boldest kaftan">Your basket is empty</p>
+    <% end %>
+    <%= render 'shared/navbar_basket_product_card', item: @item %>
+  </div>
+  <div class="subtotal-container">
+    <p class="s-medium-text kaftan boldest">Subtotal:</p>
+    <p class="s-medium-text basket-total-price kaftan boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
+  </div>
+  <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button mb-0 navbar-basket-button" %>
+</div>
+
+<script>
+
+  // WEB NAV
+  // navbarBrands = document.getElementById('navbar-brands');
+  // menuBrands = document.querySelector('.navbar-submenu-brands');
+  navbarInfluencers = document.getElementById('navbar-influencers');
+  menuInfluencers = document.querySelector('.navbar-submenu-influencers');
+  subnavUnderlay = document.querySelector('.navbar-submenu-underlay');
+
+  // navbarBrands.addEventListener('mouseover', function() {
+  //   menuBrands.style.display = "flex";
+  //   subnavUnderlay.style.display = "block";
+  // });
+
+  // navbarBrands.addEventListener('mouseleave', function() {
+  //   menuBrands.style.display = "none";
+  //   subnavUnderlay.style.display = "none";
+  // });
+
+  // menuBrands.addEventListener('mouseover', function() {
+  //   menuBrands.style.display = "flex";
+  //   subnavUnderlay.style.display = "block";
+  // });
+
+  // menuBrands.addEventListener('mouseleave', function() {
+  //   menuBrands.style.display = "none";
+  //   subnavUnderlay.style.display = "none";
+  // });
+
+  // navbarInfluencers.addEventListener('mouseover', function() {
+  //   menuInfluencers.style.display = "flex";
+  //   subnavUnderlay.style.display = "block";
+  // });
+
+  // navbarInfluencers.addEventListener('mouseleave', function() {
+  //   menuInfluencers.style.display = "none";
+  //   subnavUnderlay.style.display = "none";
+  // });
+
+  // menuInfluencers.addEventListener('mouseover', function() {
+  //   menuInfluencers.style.display = "flex";
+  //   subnavUnderlay.style.display = "block";
+  // });
+
+  // menuInfluencers.addEventListener('mouseleave', function() {
+  //   menuInfluencers.style.display = "none";
+  //   subnavUnderlay.style.display = "none";
+  // });
+  // WEB NAV
+
+  // MOBILE NAV
+  mobileNavBrands = document.getElementById('mobile-nav-brands');
+  mobileNavInfluencers = document.getElementById('mobile-nav-influencers');
+  mobileNavBrandsMenu = document.getElementById('mobile-nav-brands-menu');
+  mobileNavInfluencersMenu = document.getElementById('mobile-nav-influencers-menu');
+  backToMenuBrands = document.getElementById('back-to-menu-brands');
+  backToMenuInfluencers = document.getElementById('back-to-menu-influencers');
+  nav = document.getElementById('navbarSupportedContent');
+
+  mobileNavBrands.addEventListener('click', function() {
+    mobileNavBrandsMenu.style.display = "block";
+    setTimeout(function() {
+      mobileNavBrandsMenu.style.left = 0;
+      }, 1
+    );
+  });
+
+  mobileNavInfluencers.addEventListener('click', function() {
+    mobileNavInfluencersMenu.style.display = "block";
+    setTimeout(function() {
+      mobileNavInfluencersMenu.style.left = 0;
+      }, 1
+    );
+  });
+
+  backToMenuBrands.addEventListener('click', function() {
+    mobileNavBrandsMenu.style.left = "100%";
+    setTimeout(function() {
+      mobileNavBrandsMenu.style.display = "none";
+      }, 300
+    );
+  });
+
+  backToMenuInfluencers.addEventListener('click', function() {
+    mobileNavInfluencersMenu.style.left = "100%";
+    setTimeout(function() {
+      mobileNavInfluencersMenu.style.display = "none";
+      }, 300
+    );
+  });
+
+  navbarToggler = document.getElementById('navbar-toggler');
+
+  navbarToggler.addEventListener('click', function() {
+
+    // HAMBURGER CROSS
+
+    document.querySelector('.hamburger').classList.toggle('hamburger-cross');
+
+    // HAMBURGER CROSS
+    subnavUnderlay.classList.toggle('show-underlay');
+    setTimeout(function() {
+      mobileNavBrandsMenu.style.display = "none";
+      mobileNavInfluencersMenu.style.display = "none";
+      mobileNavBrandsMenu.style.left = "100%";
+      mobileNavInfluencersMenu.style.left = "100%";
+      }, 300
+    );
+  });
+  // MOBILE NAV
+
+  // NAV BASKET DROPDOWN
+
+  navBasketDrop = document.querySelector('.navbar-hover-container');
+  basketIcon = document.querySelector('.basket-icon-container');
+  // navBasketClose = document.querySelector('.nav-basket-close');
+  itemAdded = document.querySelector('.item-added');
+
+  // basketIcon.addEventListener('mouseover', function() {
+  //   // navBasketDrop.classList.add('navbar-hover-container-top')
+  //   if (window.scrollY > 40) {
+  //     navBasketDrop.style.top = '60px'
+  //   } else {
+  //     navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
+  //   }
+  // })
+  // basketIcon.addEventListener('mouseleave', function() {
+  //   // navBasketDrop.classList.remove('navbar-hover-container-top')
+  //   navBasketDrop.style.top = '-620px'
+  // })
+  // navBasketDrop.addEventListener('mouseover', function() {
+  //   // navBasketDrop.classList.add('navbar-hover-container-top')
+  //   if (window.scrollY > 40) {
+  //     navBasketDrop.style.top = '60px'
+  //   } else {
+  //     navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
+  //   }
+  // })
+  // navBasketDrop.addEventListener('mouseleave', function() {
+  //   // navBasketDrop.classList.remove('navbar-hover-container-top')
+  //   navBasketDrop.style.top = '-620px'
+  // })
+  // navBasketClose.addEventListener('click', function() {
+  //   // navBasketDrop.classList.remove('navbar-hover-container-top')
+  //   navBasketDrop.style.top = '-620px'
+  // })
+
+  basketIcon.addEventListener('mouseover', function() {
+    if (window.scrollY > 40) {
+      navBasketDrop.style.top = '60px'
+    } else {
+      navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
+    }
+    setTimeout(function() {
+      navBasketDrop.addEventListener('mouseover', function() {
+        if (window.scrollY > 40) {
+          navBasketDrop.style.top = '60px'
+        } else {
+          navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
+        }
+      })
+      navBasketDrop.addEventListener('mouseleave', function() {
+        navBasketDrop.style.top = '-620px'
+      })
+      // navBasketClose.addEventListener('click', function() {
+      //   navBasketDrop.style.top = '-620px'
+      // })
+    }, 1000)
+  })
+
+  basketIcon.addEventListener('mouseleave', function() {
+    navBasketDrop.style.top = '-620px'
+  })
+
+  // NAV BASKET DROPDOWN
+
+  // NAV SEARCH
+
+  navSearchInput = document.querySelector('.navbar-search-input');
+  suggestions = document.getElementById('suggestions');
+  // navSearchClose = document.getElementById('navbar-search-close');
+
+  navSearchInput.addEventListener('focus', () => {
+    setTimeout(function() {
+      navSearchInput.classList.toggle('nav-no-bg');
+    }, 210)
+  })
+
+  navSearchInput.addEventListener('blur', () => {
+    setTimeout(function() {
+      suggestions.innerHTML = ''
+      navSearchInput.classList.toggle('nav-no-bg');
+    }, 210)
+  })
+
+  // NAV SEARCH
+
+</script>

@@ -139,13 +139,18 @@
   border-radius: 0;
   width: 275px;
   padding-left: 5px;
-  font-size: 12px;
+  font-size: 16px;
+  letter-spacing: 1px;
   &:focus {
     outline: none;
   }
   @include for-phone-only {
     width: auto;
   }
+}
+
+.send_email_input::placeholder {
+  color: $text !important;
 }
 
 .contact-form-button {
@@ -156,8 +161,7 @@
   border-radius: 0;
   padding: 6px 12px;
   letter-spacing: 1px;
-  font-weight: bold;
-  font-size: 12px;
+  font-size: 16px;
   p {
     margin: 0;
   }

@@ -21,14 +21,24 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: #FFF;
+  background: $background;
   // border-bottom: 1px solid #ececec;
-  padding: 0 16px;
-  height: 60px;
+  padding: 0 40px;
+  height: 96px;
   // position: relative;
   position: sticky;
-  top: 40px;
+  top: 0px;
   z-index: 105;
+}
+
+.navbar-menu {
+  span {
+    font-size: 14px;
+    padding-top: 3px;
+  }
+  img {
+    height: 15px;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -36,11 +46,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 72px;
-  margin-left: 24px;
-  @include for-medium-devices-down {
-    margin-left: 0;
-  }
+  width: 57px;
 }
 
 .nav-link {
@@ -55,7 +61,7 @@
     display: block;
   }
   img {
-    width: 25px;
+    height: 25px;
   }
 }
 
@@ -538,7 +544,7 @@
   top: 9px; // ALIGNS CORRECTLY ON HEROKU BUT NOT ON LOCALHOST
   // top: -40px;
   z-index: 99;
-  background: #FFF;
+  background: $background;
   transition: all .5s ease;
   transition-delay: .25s;
   // width: 312px;
@@ -548,16 +554,14 @@
 }
 
 .navbar-search-input {
-  background: #FFF;
+  background: $background;
   border: none;
-  border-bottom: 3px solid transparent;
-  height: 28px;
+  border-bottom: 1px solid transparent;
+  height: 25px;
   border-radius: 0;
-  // width: 275px;
   width: 0;
   padding-left: 5px;
   padding-right: 25px;
-  // background: #FCFCFC;
   background: asset_url("navbar-search.png");
   background-position: right;
   background-size: contain;
@@ -568,7 +572,7 @@
   cursor: pointer;
   &:focus {
     box-shadow: none;
-    border-bottom: 3px solid #000;
+    border-bottom: 1px solid #000;
     color: #000;
     outline: none;
     cursor: inherit;
@@ -576,18 +580,22 @@
   }
 }
 
-
+.nav-no-bg {
+  background: none;
+}
 
 #navbar-search-close {
   position: relative;
-  background: #FFF;
-  // top: -1px;
+  border-bottom: 1px solid transparent;
+  background: $background;
   right: -1px;
+  top: 1px;
   cursor: pointer;
+  transition: all .2s ease;
 }
 
 .navbar-search-input::placeholder {
-  color: #BCBCBC;
+  color: $text;
   font-size: 14px;
 }
 
@@ -610,7 +618,7 @@
 }
 
 #suggestions-box {
-  border: 3px solid #000;
+  border: 1px solid #000;
   border-top: none;
   max-height: 500px;
   overflow: scroll;
