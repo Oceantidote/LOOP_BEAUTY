@@ -23,8 +23,9 @@
     min-width: 371px;
     border: none;
     border-bottom: 1px solid $text;
-    @include for-phone-only {
+    @include for-small-devices-down {
       flex-grow: 1;
+      min-width: unset;
     }
   }
   @include for-small-devices-down {
@@ -49,6 +50,15 @@
   p, a {
     font-size: 16px !important;
   }
+  @include for-medium-devices-down {
+    text-align: center;
+  }
+}
+
+.footer-links-row-bottom {
+  @include for-medium-devices-down {
+    text-align: center;
+  }
 }
 
 .footer-info-section {
@@ -61,7 +71,7 @@
 .footer-logo-section {
   margin: 0 24px 0 0;
   @include for-small-devices-down {
-    margin: 0 0 80px 0;
+    margin: 0 0 32px 0;
   }
 }
 
@@ -72,19 +82,18 @@
   }
 }
 
+.footer-section:last-child {
+  @include for-small-devices-down {
+    width: 100%;
+  }
+}
+
 .support-section {
   @include for-medium-devices-down {
     margin-right: 20vw;
   }
   @include for-small-devices-down {
     margin-right: 0;
-  }
-}
-
-.footer-section:last-child {
-  margin-right: 0;
-  @include for-medium-devices-down {
-    display: none;
   }
 }
 

@@ -192,15 +192,22 @@
 
 <%# if @first_visit %>
 <% if 1==1 %>
-  <div class="homepage-pop-up d-none">
-    <div class="pop-up-content" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,1)), url('<%= image_path 'the-net-popup.png' %>')">
-      <%= image_tag 'the-net-white.png', class: "popup-logo", alt: "the net logo" %>
-      <h6 class="text-white">FIRST TIME WITH US?</h6>
-      <!-- <h6 class="text-white small-text">Get 10% off your first order</h6> -->
-      <p class="text-white neue-machina font-weight-lighter small-text popup-code">CODE: WELCOME2NET</p>
-      <p class="primary-button white-button pop-up-content-button">SHOP NOW</p>
-      <%= link_to 'Learn more', about_us_path, class: "text-white neue-machina underline medium-text" %>
-      <%= image_tag 'close-white.png', class: 'close-homepage-pop-up' %>
+  <div class="homepage-pop-up">
+    <div class="pop-up-content">
+      <div class="d-flex justify-content-center">
+        <%= image_tag 'the-net.png', class: "popup-logo mb-5", alt: "the net logo" %>
+      </div>
+      <div class="">
+        <%= image_tag 'popup_image.png', class: "w-100 mb-5", alt: "the net logo" %>
+        <h3 class="mb-3 large-text">welcome</h3>
+        <p class="medium-text letter-spacing">You entered the realm of beauty for women of colour and we are so excited to have you here.</p>
+        <p class="medium-text letter-spacing mb-5">Here's a little treat to complement your experience.</p>
+      </div>
+      <div class="">
+        <h2 class="text-center mb-0">WELCOME2NET</h2>
+        <p class="mb-0 small-text text-center">USE AT CHECKOUT</p>
+      </div>
+      <%= image_tag 'popup_close.png', class: 'close-homepage-pop-up' %>
     </div>
   </div>
 <% end %>
