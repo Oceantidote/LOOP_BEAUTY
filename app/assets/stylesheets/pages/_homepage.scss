@@ -1,7 +1,29 @@
 .content-container {
-  max-width: 1260px;
+  max-width: 1046px;
   margin: 0 auto;
-  padding: 80px 48px 0;
+}
+
+.content-padding {
+  padding: 0 54px;
+}
+
+.row-products {
+  margin-left: -26px;
+  margin-right: -26px;
+}
+
+.homepage-banner {
+  height: 536px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 32px;
+  h1 {
+    font-size: 64px;
+  }
+  h5 {
+    width: 382px;
+  }
 }
 
 .trending-container {

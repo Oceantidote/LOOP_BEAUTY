@@ -1,16 +1,97 @@
 <%#= render "shared/homepage_banner"%>
-<div class="influencers-show-banner justify-content-start align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('<%= image_path 'thenet.png' %>')">
-  <div class="mb-5 pb-5">
-    <div class="pl-5" style="width: 47%">
-      <p class="text-white">FEEL THE ENERGY</p>
-      <h2 class="text-white kaftan">“The NET is here to stay. This platform will become the pinnacle of beauty for women of colour:</h2>
-      <div class="d-flex flex-column justify-content-end align-items-end">
-        <h6 class="text-white mb-0 mt-3 neue-machina" style="font-weight: 200 !important; font-size: 18px !important">Albert Manzour - Journalist at the Guardian</h6>
-        <%= link_to "NEWEST COLLECTION", '#', class: 'primary-button white-button px-3 my-4' %>
+<div class="content-padding">
+  <div class="content-container py-5">
+    <div class="homepage-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('<%= image_path 'homepage_banner.png' %>')">
+      <div>
+        <h1 class="text-white mb-4">inspire</h1>
+        <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4">The revolutionary beauty marketplace that is changing women of colour.</h5>
+        <%= link_to 'View Products', products_path, class: 'oval-button ls-sm text-white border-white no-decoration' %>
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="content-padding position-relative my-5">
+  <h2 class="text-center neue-machina ls-md my-5">What's Hot Now</h2>
+  <div class="content-container content-carousel">
+    <!-- <div class="d-block d-md-none">
+      <div id="mobileReviewsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <%# @product.insider_reviews.each_with_index do |review, index| %>
+            <div class="carousel-item <%#= 'active' if index == 0 %>">
+              <div class="row m-0">
+                <%# if @product.insider_reviews.count == 0 %>
+                  <p class="text-center medium-margin width-100 kaftan grey boldest small-text">There are no insider reviews yet</p>
+                <%# end %>
+                <%#= render 'insider_review_card', review: review %>
+              </div>
+            </div>
+          <%# end %>
+        </div>
+        <a class="carousel-control-next" href="#mobileReviewsCarousel" role="button" data-slide="next">
+          <%#= image_tag 'carousel-right.png', width: 40 %>
+        </a>
+      </div>
+    </div> -->
+
+    <div class="d-none d-md-block">
+      <div id="whatsHotNowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @products.each_slice(3) do |products| %>
+            <div class="carousel-item <%= 'active' if products[0] == @products.first %>">
+              <div class="row row-products">
+                <% products.each do |product| %>
+                  <div class="col-4">
+                    <div class="card-image-results homepage-products">
+                      <div class="card">
+                        <%= link_to product_path(product) do %>
+                          <% if product.out_of_stock? %>
+                            <div class="out-of-stock-overlay">
+                              <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                            </div>
+                          <% end %>
+                          <div class="button-overlay">
+                            <p class="oval-button product-oval ls-sm border-dark m-0">Add to Cart</p>
+                          </div>
+                          <div class="card_image">
+                            <%= link_to product_path(product) do %>
+                              <% if product.shades.first&.card_photo %>
+                                <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                              <% else %>
+                                <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                              <% end %>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="card-info">
+                        <p class="mb-2 truncate-text lighter ls-xs"><%= product.brand.name %>, <%= product.title %></p>
+                        <p class="neue-machina text-secondary"><%= humanized_money_with_symbol(product.price) %></p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% if @products.count > 3 %>
+          <a class="carousel-control-prev" href="#whatsHotNowCarousel" role="button" data-slide="prev">
+            <%= image_tag 'right_caret.png', width: 40 %>
+          </a>
+          <a class="carousel-control-next" href="#whatsHotNowCarousel" role="button" data-slide="next">
+            <%= image_tag 'right_caret.png', width: 40 %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="container">
   <% if user_signed_in? && current_user.admin %>
     <% if policy([:admin, HomeBanner]).edit? %>
@@ -29,54 +110,6 @@
 </div>
 
 
-
-<div class="content-container trending-container">
-  <div class="row m-0">
-    <div class="col-12 d-flex justify-content-center">
-      <h5 class="mb-3 semi-bold" style="width: 98%">TRENDING</h5>
-    </div>
-  </div>
-  <div class="row m-0">
-
-    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
-
-    <% 2.times do %>
-      <% @products.each do |product| %>
-        <div class="col-3">
-          <div class="card-image-results homepage-products">
-            <div class="card">
-              <%= link_to product_path(product) do %>
-                <% if product.out_of_stock? %>
-                  <div class="out-of-stock-overlay">
-                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
-                  </div>
-                <% end %>
-                <div class="card_image">
-                  <%= link_to product_path(product) do %>
-                    <% if product.shades.first&.card_photo %>
-                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
-                    <% else %>
-                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-            <div class="card-info">
-              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
-              <div class="card_header mb-3">
-                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
-              </div>
-              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
-              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 <div class="content-container">
   <h5 class="mb-3 semi-bold" style="width: 90%">OBSESSION OF THE WEEK</h5>
   <div class="obsession-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path 'default-make-up.jpg' %>')">
@@ -157,6 +190,9 @@
         <div class="col-3">
           <div class="card-image-results homepage-products">
             <div class="card">
+              <div class="button-overlay">
+                <button class="primary-button" type="button">BUY NOW</button>
+              </div>
               <%= link_to product_path(product) do %>
                 <% if product.out_of_stock? %>
                   <div class="out-of-stock-overlay">
@@ -192,7 +228,7 @@
 
 <%# if @first_visit %>
 <% if 1==1 %>
-  <div class="homepage-pop-up">
+  <div class="homepage-pop-up d-none">
     <div class="pop-up-content">
       <div class="d-flex justify-content-center">
         <%= image_tag 'the-net.png', class: "popup-logo mb-5", alt: "the net logo" %>

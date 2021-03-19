@@ -17,6 +17,9 @@ class PagesController < ApplicationController
     @new_in = Product.all.where(featured: true).select { |product| !product.out_of_stock? }
     @trending = Product.all.select { |product| !product.out_of_stock? }.select { |product| product.brand.name == "Black Up" }
     @best_sellers = Product.all.select { |product| !product.out_of_stock? }.last(5)
+
+    @products = Product.all + Product.all + Product.all
+    # FIX ABOVE LINE
   end
 
   def freebies

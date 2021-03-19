@@ -25,6 +25,15 @@
 
 @font-face {
   font-family: "Neue Machina";
+  src: font-url('neue_machina/neue_machina_regular.eot');
+  src: font-url('neue_machina/neue_machina_regular.eot?#iefix') format('embedded-opentype'),
+       font-url('neue_machina/neue_machina_regular.woff') format('woff'),
+       font-url('neue_machina/neue_machina_regular.otf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Neue Machina";
   src: font-url('neue_machina/neue_machina_bold.eot');
   src: font-url('neue_machina/neue_machina_bold.eot?#iefix') format('embedded-opentype'),
        font-url('neue_machina/neue_machina_bold.woff') format('woff'),

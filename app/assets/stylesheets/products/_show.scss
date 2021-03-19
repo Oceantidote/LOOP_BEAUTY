@@ -189,14 +189,27 @@
   margin-bottom: 5px;
 }
 
-.product-insider-reviews-wrapper {
-  padding: 48px 54px;
-  position: relative;
+.content-carousel {
   .carousel {
     position: unset;
   }
+  .carousel-control-prev {
+    background: #E6D9C7;
+    opacity: 1;
+    width: 36px;
+    height: 100px;
+    top: calc(50% - 50px);
+    img {
+      transform: rotate(180deg);
+    }
+    @include for-small-devices-down {
+      height: 40px;
+      top: unset;
+      bottom: 16px;
+    }
+  }
   .carousel-control-next {
-    background: $eerie-black;
+    background: #E6D9C7;
     opacity: 1;
     width: 40px;
     height: 100px;

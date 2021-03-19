@@ -9,8 +9,32 @@ body {
   font-family: 'Raleway', 'sans-serif';
 }
 
-.letter-spacing {
+.ls-xs {
+  letter-spacing: 1px;
+}
+
+.ls-sm {
   letter-spacing: 2px;
+}
+
+.ls-md {
+  letter-spacing: 4px;
+}
+
+.ls-lg {
+  letter-spacing: 6px;
+}
+
+.lh-sm {
+  line-height: 26px;
+}
+
+.lh-md {
+  line-height: 30px;
+}
+
+.lh-lg {
+  line-height: 34px;
 }
 
 // FONT WEIGHTS
@@ -21,7 +45,7 @@ body {
   font-weight: bold;
 }
 .lighter {
-  font-weight: lighter;
+  font-weight: 200;
 }
 
 .boldest {

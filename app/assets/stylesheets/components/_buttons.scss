@@ -1,3 +1,23 @@
+.oval-button {
+  border: 1px solid;
+  height: 72px;
+  width: 244px;
+  border-radius: 122px / 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-oval {
+  height: 20%;
+  width: 70%;
+  @include for-medium-devices-down {
+    height: 24%;
+    width: 80%;
+    font-size: 12px;
+  }
+}
+
 .primary-button {
   -webkit-appearance: none;
   -moz-appearance:    none;
