@@ -5,6 +5,21 @@
 
 .content-padding {
   padding: 0 54px;
+  margin-top: 120px;
+  @include for-small-devices-down {
+    margin-top: 60px;
+    padding: 0 24px;
+  }
+}
+
+.pop-out-no-padding-mobile {
+  @include for-small-devices-down {
+    padding: 0;
+  }
+}
+
+.first-banner-padding {
+  margin-top: 60px;
 }
 
 .row-products {
@@ -18,12 +33,53 @@
   background-size: cover;
   background-position: center;
   padding: 32px;
+  position: relative;
   h1 {
     font-size: 64px;
   }
   h5 {
     width: 382px;
   }
+}
+
+.main-home-title {
+  font-size: 56px;
+}
+
+.the-net-watermark {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  width: 72px;
+}
+
+.pop-out-image-banner {
+  max-height: 720px;
+  background: $background-light;
+  img {
+    width: 80%;
+    max-height: 576px;
+    object-fit: cover;
+    @include for-small-devices-down {
+      width: 100%;
+    }
+  }
+  @include for-small-devices-down {
+    padding: 0 24px;
+  }
+}
+
+.pop-out-image-banner-content {
+  position: relative;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-out-bottom-padding {
+  padding-bottom: 96px;
 }
 
 .trending-container {
@@ -54,6 +110,23 @@
   height: 400px;
   background-size: cover;
   background-position: center;
+}
+
+
+.homepage-article-image {
+  img {
+    height: 400px;
+    object-fit: cover;
+    @include for-medium-devices-down {
+      height: 320px;
+    }
+    @include for-small-devices-down {
+      height: 440px;
+    }
+    @include for-phone-only {
+      height: 320px;
+    }
+  }
 }
 
 .insider-info-wrapper {
@@ -263,6 +336,10 @@
 
 .play-button {
   transition: transform 0.3s ease;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
 }
 
 .card-link {

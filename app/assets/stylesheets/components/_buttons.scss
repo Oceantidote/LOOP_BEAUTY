@@ -18,6 +18,15 @@
   }
 }
 
+.dotted-underline-button {
+  padding: 4px 8px;
+  border-bottom: 1px dashed $text;
+  letter-spacing: 2px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .primary-button {
   -webkit-appearance: none;
   -moz-appearance:    none;

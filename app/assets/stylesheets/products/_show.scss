@@ -202,11 +202,11 @@
     img {
       transform: rotate(180deg);
     }
-    @include for-small-devices-down {
-      height: 40px;
-      top: unset;
-      bottom: 16px;
-    }
+    // @include for-small-devices-down {
+    //   height: 40px;
+    //   top: unset;
+    //   bottom: 16px;
+    // }
   }
   .carousel-control-next {
     background: #E6D9C7;
@@ -214,18 +214,18 @@
     width: 40px;
     height: 100px;
     top: calc(50% - 50px);
-    @include for-small-devices-down {
-      height: 40px;
-      top: unset;
-      bottom: 16px;
-    }
+    // @include for-small-devices-down {
+    //   height: 40px;
+    //   top: unset;
+    //   bottom: 16px;
+    // }
   }
   @include for-small-devices-down {
-    padding: 40px 40px 78px 40px;
+    padding: 0 0 68px;
   }
-  // @include for-phone-only {
-  //   padding: 48px 72px 48px 36px;
-  // }
+  @include for-phone-only {
+    padding: 0;
+  }
 }
 
 .bg-insider-reviews {

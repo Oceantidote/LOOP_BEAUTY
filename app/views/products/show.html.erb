@@ -581,15 +581,15 @@
     });
   })
 
-  document.onreadystatechange = function() {
-    if (document.readyState !== "complete") {
-        document.querySelector(".load-show").style.visibility = 'hidden';
-        document.querySelector(".lds-spinner").style.visibility = "visible";
-    } else {
-        document.querySelector(".lds-spinner").style.display = "none";
-        document.querySelector(".load-show").style.visibility = 'visible';
-    }
-  };
+  // document.onreadystatechange = function() {
+  //   if (document.readyState !== "complete") {
+  //       document.querySelector(".load-show").style.visibility = 'hidden';
+  //       document.querySelector(".lds-spinner").style.visibility = "visible";
+  //   } else {
+  //       document.querySelector(".lds-spinner").style.display = "none";
+  //       document.querySelector(".load-show").style.visibility = 'visible';
+  //   }
+  // };
 
   function playVideo(tutorial_id) {
     videoOverlay = document.querySelector(`.video-overlay_${tutorial_id}`);

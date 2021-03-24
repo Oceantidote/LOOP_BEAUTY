@@ -13,11 +13,11 @@ class PagesController < ApplicationController
     @breaks = HomeBanner::UNIQUE_VIEWPORTS.to_a.reverse
     @home_banners = HomeBanner.where(display: true)
     @tutorial = Tutorial.where(status: 'approved').order(created_at: :DESC).first
-    @insider_articles = InsiderArticle.first(2)
+    @insider_articles = InsiderArticle.first(6) + InsiderArticle.first(6)
     @new_in = Product.all.where(featured: true).select { |product| !product.out_of_stock? }
     @trending = Product.all.select { |product| !product.out_of_stock? }.select { |product| product.brand.name == "Black Up" }
     @best_sellers = Product.all.select { |product| !product.out_of_stock? }.last(5)
-
+    @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC)
     @products = Product.all + Product.all + Product.all
     # FIX ABOVE LINE
   end

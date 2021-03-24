@@ -1,39 +1,90 @@
 <%#= render "shared/homepage_banner"%>
-<div class="content-padding">
-  <div class="content-container py-5">
-    <div class="homepage-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('<%= image_path 'homepage_banner.png' %>')">
-      <div>
-        <h1 class="text-white mb-4">inspire</h1>
-        <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4">The revolutionary beauty marketplace that is changing women of colour.</h5>
-        <%= link_to 'View Products', products_path, class: 'oval-button ls-sm text-white border-white no-decoration' %>
+<div class="content-padding first-banner-padding">
+  <div class="content-container">
+    <div class="d-block d-md-none">
+      <h1 class="mb-4 main-home-title">inspire</h1>
+      <h5 class="mb-0 neue-machina ls-sm lh-md mb-3">The revolutionary beauty marketplace that is changing women of colour.</h5>
+      <%= link_to 'View Products', products_path, class: 'oval-button ls-sm no-decoration mb-4' %>
+      <%= image_tag 'homepage_banner.png', class: 'w-100' %>
+    </div>
+    <div class="d-none d-md-block">
+      <div class="homepage-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('<%= image_path 'homepage_banner.png' %>')">
+        <div class="homepage-banner-text">
+          <h1 class="text-white mb-4">inspire</h1>
+          <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4">The revolutionary beauty marketplace that is changing women of colour.</h5>
+          <%= link_to 'View Products', products_path, class: 'oval-button ls-sm text-white border-white no-decoration' %>
+          <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark' %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container">
+  <% if user_signed_in? && current_user.admin %>
+    <% if policy([:admin, HomeBanner]).edit? %>
+      <div class="admin-options">
+        <hr>
+        <div class="container">
+          <h6 class="boldest">Admin options</h6>
+          <div class="d-flex">
+            <%= link_to "EDIT HOME BANNERS", admin_home_banners_path, class: 'secondary-button small-margin-right' %>
+          </div>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
-<div class="content-padding position-relative my-5">
-  <h2 class="text-center neue-machina ls-md my-5">What's Hot Now</h2>
+<div class="content-padding position-relative">
+  <h2 class="text-center neue-machina ls-sm py-5">What's Hot Now</h2>
   <div class="content-container content-carousel">
-    <!-- <div class="d-block d-md-none">
-      <div id="mobileReviewsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="d-block d-md-none">
+      <div id="mobileProductsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
-          <%# @product.insider_reviews.each_with_index do |review, index| %>
-            <div class="carousel-item <%#= 'active' if index == 0 %>">
-              <div class="row m-0">
-                <%# if @product.insider_reviews.count == 0 %>
-                  <p class="text-center medium-margin width-100 kaftan grey boldest small-text">There are no insider reviews yet</p>
-                <%# end %>
-                <%#= render 'insider_review_card', review: review %>
+          <% @products.each_with_index do |product, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="col-12">
+                <div class="card-image-results homepage-products">
+                  <div class="card">
+                    <%= link_to product_path(product) do %>
+                      <% if product.out_of_stock? %>
+                        <div class="out-of-stock-overlay">
+                          <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                        </div>
+                      <% end %>
+                      <div class="button-overlay d-none d-md-flex">
+                        <p class="oval-button product-oval ls-sm border-dark m-0">Add to Cart</p>
+                      </div>
+                      <div class="card_image">
+                        <%= link_to product_path(product) do %>
+                          <% if product.shades.first&.card_photo %>
+                            <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                          <% else %>
+                            <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="card-info">
+                    <p class="mb-2 truncate-text lighter ls-xs"><%= product.brand.name %>, <%= product.title %></p>
+                    <p class="neue-machina text-secondary"><%= humanized_money_with_symbol(product.price) %></p>
+                  </div>
+                </div>
               </div>
             </div>
-          <%# end %>
+          <% end %>
         </div>
-        <a class="carousel-control-next" href="#mobileReviewsCarousel" role="button" data-slide="next">
-          <%#= image_tag 'carousel-right.png', width: 40 %>
+        <a class="carousel-control-prev" href="#mobileProductsCarousel" role="button" data-slide="prev">
+          <%= image_tag 'right_caret.png', width: 40 %>
+        </a>
+        <a class="carousel-control-next" href="#mobileProductsCarousel" role="button" data-slide="next">
+          <%= image_tag 'right_caret.png', width: 40 %>
         </a>
       </div>
-    </div> -->
+    </div>
 
     <div class="d-none d-md-block">
       <div id="whatsHotNowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -51,7 +102,7 @@
                               <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                             </div>
                           <% end %>
-                          <div class="button-overlay">
+                          <div class="button-overlay d-none d-md-flex">
                             <p class="oval-button product-oval ls-sm border-dark m-0">Add to Cart</p>
                           </div>
                           <div class="card_image">
@@ -89,146 +140,168 @@
   </div>
 </div>
 
-
-
-
-<div class="container">
-  <% if user_signed_in? && current_user.admin %>
-    <% if policy([:admin, HomeBanner]).edit? %>
-      <div class="admin-options">
-        <hr>
-        <div class="container">
-          <h6 class="boldest">Admin options</h6>
-          <div class="d-flex">
-            <%= link_to "EDIT HOME BANNERS", admin_home_banners_path, class: 'secondary-button small-margin-right' %>
-          </div>
-        </div>
-        <hr>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-
-<div class="content-container">
-  <h5 class="mb-3 semi-bold" style="width: 90%">OBSESSION OF THE WEEK</h5>
-  <div class="obsession-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path 'default-make-up.jpg' %>')">
-    <div>
-      <h5 class="text-white mb-4 neue-machina">DERMATOLOGY</h5>
-      <h2 class="text-white mb-0 kaftan">The revolutionary product that is changing</h2>
-      <h2 class="text-white mb-4 kaftan">women of colour with Dermatitis</h2>
-
-      <!-- REMOVE PRODUCT.FIRST -->
-
-      <%= link_to 'BUY NOW', product_path(Product.first), class: 'primary-button button-width white-button mb-0' %>
-    </div>
-  </div>
-</div>
-<div class="content-container">
-  <div class="row m-0 justify-content-between">
-    <h5 class="mb-3 semi-bold">LEARN INSIDER SECRETS</h5>
-    <p><%= link_to 'VIEW ALL ARTICLES', community_path, class: 'underline kaftan' %></p>
-  </div>
-  <div class="row m-0">
-    <% @insider_articles.each_with_index do |article, index| %>
-      <div class="col-6 <%= index.even? ? 'pl-0 pr-4' : 'pr-0 pl-4' %>">
-        <%= link_to insider_article_path(article) do %>
-          <div class="homepage-articles mb-4" style="background-image: url('<%= rails_blob_path article.cover_photo %>')"></div>
-        <% end %>
-        <p class="mb-1"><%= article.category.upcase %></p>
-        <h5 class="truncate-text mb-3"><%= article.title %></h5>
-        <p class="truncate-text grey-font"><%= article.text1.gsub(/<div>|<\/div>/, '') %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class="content-container">
-  <div class="row m-0">
-    <div class="col-12 p-0 d-flex justify-content-start align-items-center">
-      <%= link_to tutorial_path(@tutorial), class: 'w-100' do %>
-        <div class="obsession-banner homepage-big-video p-0 justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= url_for(@tutorial.cover_photo) %>)">
-          <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="content-container pt-5">
-  <div class="row m-0">
-    <div class="col-6 d-flex justify-content-start align-items-center">
-      <div>
-        <p class="mb-0"><%= @tutorial.user.full_name.upcase %></p>
-        <h2 class="mb-0 kaftan">learn from the experts</h2>
-        <p class="mb-0"><%= @tutorial.title %></p>
-
-        <!-- REMOVE PRODUCT.FIRST -->
-
-        <%= link_to 'MORE VIDEOS', product_path(Product.first), class: 'primary-button button-width mb-0' %>
+<div class="content-padding pop-out-no-padding-mobile">
+  <div class="content-container pop-out-bottom-padding">
+    <div class="pop-out-image-banner">
+      <div class="pop-out-image-banner-content">
+        <h2 class="neue-machina ls-sm mb-3 text-center">Obsession of the Week</h2>
+        <p class="lighter mb-4 ls-sm text-center">Try our newest Dermatological line of makeups</p>
+        <%= link_to 'Shop Now', '#', class: 'dotted-underline-button lighter mb-5' %>
+        <%= image_tag 'pop_out_image.png' %>
       </div>
     </div>
-    <div class="col-6 p-0">
-      <%= link_to tutorial_path(@tutorial) do %>
-        <div class="obsession-banner p-0 justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= url_for(@tutorial.cover_photo) %>)">
-          <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>
-<div class="content-container trending-container pb-5">
-  <div class="row m-0">
-    <div class="col-12 d-flex justify-content-center">
-      <h5 class="mb-3 semi-bold" style="width: 98%">DISCOVER WHAT CUSTOMERS ARE BUYING NOW</h5>
-    </div>
+
+<div class="content-padding position-relative">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h2 class="neue-machina ls-sm mb-3 text-center">Insider Secrets From Our Community</h2>
+    <p class="lighter mb-4 ls-sm text-center">Our Experts are here to share their secrets from their experiences</p>
+    <%= link_to 'View All Content', community_path, class: 'dotted-underline-button lighter mb-5' %>
   </div>
-  <div class="row m-0">
-
-    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
-
-    <% 2.times do %>
-      <% @products.each do |product| %>
-        <div class="col-3">
-          <div class="card-image-results homepage-products">
-            <div class="card">
-              <div class="button-overlay">
-                <button class="primary-button" type="button">BUY NOW</button>
+  <div class="content-container content-carousel">
+    <div class="d-block d-md-none">
+      <div id="mobileArticleCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @insider_articles.each_with_index do |article, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="col-12">
+                <div class="card-image-results homepage-products">
+                  <div class="card">
+                    <div class="card_image homepage-article-image">
+                      <%= link_to insider_article_path(article) do %>
+                        <%= image_tag url_for(article.cover_photo.variant(resize: '300x300')), alt: "insider article photo" %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="card-info">
+                    <p class="mb-2 truncate-text lighter ls-xs small-text grey-font"><%= article.category.downcase %></p>
+                    <p class="mb-3 truncate-text lighter ls-xs"><%= article.title %></p>
+                    <%= link_to 'Read More', insider_article_path(article), class: 'dotted-underline-button lighter mb-5 px-0' %>
+                  </div>
+                </div>
               </div>
-              <%= link_to product_path(product) do %>
-                <% if product.out_of_stock? %>
-                  <div class="out-of-stock-overlay">
-                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#mobileArticleCarousel" role="button" data-slide="prev">
+          <%= image_tag 'right_caret.png', width: 40 %>
+        </a>
+        <a class="carousel-control-next" href="#mobileArticleCarousel" role="button" data-slide="next">
+          <%= image_tag 'right_caret.png', width: 40 %>
+        </a>
+      </div>
+    </div>
+
+    <div class="d-none d-md-block">
+      <div id="insiderArticleCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @insider_articles.each_slice(2) do |articles| %>
+            <div class="carousel-item <%= 'active' if articles[0] == @insider_articles.first %>">
+              <div class="row row-products">
+                <% articles.each do |article| %>
+                  <div class="col-6">
+                    <div class="card-image-results homepage-products">
+                      <div class="card">
+                        <div class="card_image homepage-article-image">
+                          <%= link_to insider_article_path(article) do %>
+                            <%= image_tag url_for(article.cover_photo.variant(resize: '300x300')), alt: "insider article photo" %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="card-info">
+                        <p class="mb-2 truncate-text lighter ls-xs small-text grey-font"><%= article.category.downcase %></p>
+                        <p class="mb-3 truncate-text lighter ls-xs"><%= article.title %></p>
+                        <%= link_to 'Read More', insider_article_path(article), class: 'dotted-underline-button lighter mb-5 px-0' %>
+                      </div>
+                    </div>
                   </div>
                 <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% if @insider_articles.count > 3 %>
+          <a class="carousel-control-prev" href="#insiderArticleCarousel" role="button" data-slide="prev">
+            <%= image_tag 'right_caret.png', width: 40 %>
+          </a>
+          <a class="carousel-control-next" href="#insiderArticleCarousel" role="button" data-slide="next">
+            <%= image_tag 'right_caret.png', width: 40 %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-padding pop-out-no-padding-mobile">
+  <div class="content-container pop-out-bottom-padding">
+    <div class="pop-out-image-banner">
+      <div class="pop-out-image-banner-content">
+        <h2 class="neue-machina ls-sm mb-3 text-center">How We Are Changing The Game</h2>
+        <p class="lighter mb-4 ls-sm text-center">Meet our founder Ariel Okubanjo</p>
+        <%= link_to 'About Us', 'about_us_path', class: 'dotted-underline-button lighter mb-5' %>
+        <%= image_tag 'pop_out_image_two.png' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-padding">
+  <div class="content-container position-relative">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <h2 class="neue-machina ls-sm mb-3">Need Some Guidance?</h2>
+      <p class="lighter mb-4 ls-sm">Here are our tips and tricks from our influencers.</p>
+      <%= link_to "View All How To's", community_path, class: 'dotted-underline-button lighter mb-5' %>
+    </div>
+    <div class="row row-products">
+      <% @tutorials.each do |tutorial| %>
+        <div class="col-12 col-md-4">
+          <div class="card-image-results homepage-products mb-5">
+            <div class="card">
+              <%= link_to tutorial_path(tutorial) do %>
+                <div class="button-overlay d-none d-md-flex">
+                  <p class="oval-button product-oval ls-sm border-dark m-0">Play Video</p>
+                </div>
                 <div class="card_image">
-                  <%= link_to product_path(product) do %>
-                    <% if product.shades.first&.card_photo %>
-                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
-                    <% else %>
-                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
-                    <% end %>
-                  <% end %>
+                  <%= image_tag url_for(tutorial.cover_photo.variant(resize: '300x300')), alt: "product shade photo" %>
                 </div>
               <% end %>
+              <%= image_tag 'play-button.png', class: 'play-button' %>
             </div>
             <div class="card-info">
-              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
-              <div class="card_header mb-3">
-                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
-              </div>
-              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
-              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
+              <p class="mb-2 truncate-text lighter ls-xs"><%= tutorial.title %></p>
+              <p class="neue-machina text-secondary"><%= tutorial.user.instagram %></p>
             </div>
           </div>
         </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
+
+<div class="content-padding pop-out-no-padding-mobile">
+  <div class="content-container pop-out-bottom-padding">
+    <div class="pop-out-image-banner">
+      <div class="pop-out-image-banner-content">
+        <h2 class="neue-machina ls-sm mb-3 text-center">How We Are Changing The Game</h2>
+        <p class="lighter mb-4 ls-sm text-center">Meet our founder Ariel Okubanjo</p>
+        <%= link_to 'About Us', 'about_us_path', class: 'dotted-underline-button lighter mb-5' %>
+        <%= image_tag 'pop_out_image_two.png' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 <%# if @first_visit %>
 <% if 1==1 %>
-  <div class="homepage-pop-up d-none">
+  <div class="homepage-pop-up">
     <div class="pop-up-content">
       <div class="d-flex justify-content-center">
         <%= image_tag 'the-net.png', class: "popup-logo mb-5", alt: "the net logo" %>

@@ -29,6 +29,24 @@
   position: sticky;
   top: 0px;
   z-index: 105;
+  @include for-small-devices-down {
+    padding: 0 24px;
+  }
+}
+
+.navbar-toggler {
+  .mobile-hamburger-container {
+    width: 166px;
+    @include for-small-devices-down {
+      width: 126px;
+    }
+    @include for-phone-only {
+      width: 67px;
+    }
+  }
+  img {
+    height: 15px;
+  }
 }
 
 .navbar-menu {
@@ -39,6 +57,9 @@
   }
   img {
     height: 15px;
+  }
+  @include for-small-devices-down {
+    width: 126px;
   }
 }
 
@@ -73,7 +94,7 @@
     display: block;
   }
   img {
-    width: 25px;
+    height: 25px;
   }
 }
 
@@ -241,12 +262,6 @@
   border: none;
   &:focus {
     outline: none;
-  }
-  @include for-medium-devices-down {
-    margin-right: 70px;
-  }
-  @include for-small-devices-down {
-    margin-right: 0px;
   }
 }
 

@@ -14,15 +14,12 @@
   </div>
 <% end %>
 <div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
-  <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#mobile-nav-brands-menu,#mobile-nav-influencers-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <%#= image_tag 'hamburger.png', width: 25, alt: "hamburger icon" %>
-    <div class="hamburger">
-      <div class="hamburger-stick ham-one"></div>
-      <div class="hamburger-stick ham-two"></div>
-      <div class="hamburger-stick ham-three"></div>
+  <button id="navbar-toggler" class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#mobile-nav-brands-menu,#mobile-nav-influencers-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="mobile-hamburger-container d-flex">
+      <%= image_tag 'hamburger.png', class: "", alt: "hamburger icon" %>
     </div>
   </button>
-  <div class="navbar-menu d-flex align-items-center">
+  <div class="navbar-menu d-none d-lg-flex align-items-center">
     <%= image_tag 'hamburger.png', class: "mr-3", alt: "hamburger icon" %>
     <span class="font-weight-bold">MENU</span>
   </div>
@@ -83,7 +80,7 @@
           <% end %>
       <% else %>
         <%= link_to new_user_session_path do %>
-          <%= image_tag 'navbar-user.png', alt: "user icon" %>
+          <%= image_tag 'default-user.png', class: "mr-3", alt: "user icon" %>
         <% end %>
       <% end %>
     </div>
