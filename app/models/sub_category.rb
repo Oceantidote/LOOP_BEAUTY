@@ -9,7 +9,7 @@ class SubCategory < ApplicationRecord
 
   def self.product_filter_labels_and_values(original)
     all.map do |sub_category|
-      [ sub_category.id, "#{sub_category.name} (#{original.where(sub_category: sub_category).size})" ]
+      [ sub_category.id, "#{sub_category.name.downcase} (#{original.where(sub_category: sub_category).size})" ]
     end
   end
 end

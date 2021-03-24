@@ -2,7 +2,7 @@
   <h6 class="neue-machina text-center large-margin-top width-100">There are no products <%= @query ? "matching '#{ @query }'" : "" %></h6>
 <% else %>
   <% products.each do |product| %>
-    <div class="col-6 col-sm-6 col-md-4" style="padding: 10px;">
+    <div class="col-6 col-sm-6 col-md-4 p-2 p-lg-3">
       <!-- removed d-flex justify-content-center from above div -->
       <div class="product-cards-holder">
         <%= render 'shared/product_cards', product: product %>
@@ -10,6 +10,11 @@
     </div>
   <% end %>
 <% end %>
+<div class="col-12 d-flex justify-content-center my-4">
+  <div class="show-page-entries">
+    <p class="ls-xs lighter"><%= page_entries_info @products %></p>
+  </div>
+</div>
 <div class="col-12 d-flex justify-content-center">
   <%= paginate products %>
 </div>

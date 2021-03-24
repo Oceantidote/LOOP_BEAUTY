@@ -18,7 +18,7 @@ class Brand < ApplicationRecord
 
   def self.product_filter_labels_and_values(original)
     all.map do |brand|
-      [ brand.id, "#{brand.name} (#{original.where(brand: brand).size})" ]
+      [ brand.id, "#{brand.name.downcase} (#{original.where(brand: brand).size})" ]
     end
   end
 end

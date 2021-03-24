@@ -3,7 +3,9 @@ heart = document.querySelector('#wishlist-<%= @wishlist_product.product.id %>')
 link = heart.querySelector('a')
 link.href = '<%= product_wishlist_products_path(@wishlist_product.product) %>'
 link.setAttribute('data-method', 'post')
-link.querySelector('span').innerText = 'ADD TO WISHLIST'
+if (link.querySelector('span')) {
+  link.querySelector('span').innerText = 'ADD TO WISHLIST'
+}
 
 icon = heart.querySelector('i')
 icon.classList.remove('fas')

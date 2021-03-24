@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @best_sellers = Product.all.select { |product| !product.out_of_stock? }.last(5)
     @tutorials = Tutorial.where(status: 'approved').order(created_at: :DESC)
     @products = Product.all + Product.all + Product.all
-    # FIX ABOVE LINE
+    # FIX THIS CONTROLLER ACTION
   end
 
   def freebies

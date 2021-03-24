@@ -1,14 +1,6 @@
 <div class="card-image-results">
-  <div class="card">
+  <div class="card mb-3">
     <%= link_to product_path(product) do %>
-      <div class="button-overlay">
-        <button class="primary-button" type="button">BUY NOW</button>
-      </div>
-      <% if product.out_of_stock? %>
-        <div class="out-of-stock-overlay">
-          <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
-        </div>
-      <% end %>
       <div class="card_image">
         <%= link_to product_path(product) do %>
           <% if product.lead_product_image.attached? %>
@@ -19,37 +11,25 @@
             <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
           <% end %>
         <% end %>
+        <% if user_signed_in? && current_user.wishlist %>
+          <div id="wishlist-<%= product.id %>">
+            <% if Wishlist.where(user: current_user).first.products.include?(product) %>
+              <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
+                <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>
+              <% end %>
+            <% else %>
+              <%= link_to product_wishlist_products_path(product), method: :post, remote: :true, class: 'no-decoration' do %>
+                <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
   <div class="card-info">
-    <p class="kaftan boldest" style="margin-bottom: 0px;"><%= product.brand.name %></p>
-    <div class="card_header">
-      <p class="kaftan boldest"><%= product.title %></p>
-    </div>
-    <div class="card_price-heart kaftan boldest">
-      <%= humanized_money_with_symbol(product.price) %>
-    </div>
-    <div class="card_ratings">
-      <div class="rating-stars">
-        <%= render 'shared/ratings', rating: product.average_rating.to_i %>
-        <p class="all-reviews kaftan boldest"><%= product.average_rating %></p>
-      </div>
-      <p class="all-reviews kaftan boldest">(<%= product.total_reviews %> <%= 'review'.pluralize(product.total_reviews) %>)</p>
-    </div>
-    <% if user_signed_in? && current_user.wishlist %>
-      <div id="wishlist-<%= product.id %>">
-        <% if Wishlist.where(user: current_user).first.products.include?(product) %>
-          <%= link_to wishlist_product_path(WishlistProduct.where(wishlist: current_user.wishlist, product: product).first), method: :delete, remote: :true, class: 'no-decoration' do %>
-            <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>
-          <% end %>
-        <% else %>
-          <%= link_to product_wishlist_products_path(product), method: :post, remote: :true, class: 'no-decoration' do %>
-            <i class="<%= current_user.wishlist.products.include?(product) ? 'fas fa-heart' : 'far fa-heart' %> wishlist-heart-icon"></i>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
+    <p class="mb-2 truncate-text lighter ls-xs"><%= product.brand.name %>, <%= product.title %></p>
+    <p class="neue-machina text-secondary ls-xs lighter"><%= humanized_money_with_symbol(product.price) %></p>
   </div>
 </div>
 <% if policy(ShowroomProduct).destroy? && (params[:controller] == 'users' && params[:action] == 'make_up' || ((params[:controller] == 'showroom_products' && params[:action] == 'destroy') || (params[:controller] == 'showroom_products' && params[:action] == 'create')) ) %>

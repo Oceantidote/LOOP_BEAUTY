@@ -1,15 +1,11 @@
 <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
   <div class="products-index-filters-container">
     <div class="partial-filters-one">
-      <h5 class="medium-text no-bottom-margin">Refine By</h5>
+      <h3 class="large-text no-bottom-margin lighter">products</h3>
       <div class="d-flex align-items-center">
-        <%#= image_tag 'dropdown-down.png', class: "dropdown-arrow" %>
         <%= f.fields_for :sort do |s| %>
-          <%= s.input :method, collection: [['New in', 'created_at,desc'], ['Price: High to low', 'price_cents,desc'], ['Price: Low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container boldest s-medium-text' } %>
+          <%= s.input :method, collection: [['new in', 'created_at,desc'], ['price: high to low', 'price_cents,desc'], ['price: low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container small-text ls-xs' } %>
         <% end %>
-      </div>
-      <div class="show-page-entries">
-        <p class="boldest kaftan small-text grey"><%= page_entries_info @products %></p>
       </div>
     </div>
   </div>
@@ -17,24 +13,21 @@
     <div class="partial-filters-two">
       <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
         <div class="partial-filters-container">
-          <div class="mobile-filters">
-            <p class="boldest no-margin kaftan">Filter</p>
-          </div>
           <div class="partial-filters">
             <div class="partial-filters_collection">
               <div class="filter-title filter-title-categories">
-                <h6>Category</h6>
-                <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
+                <h6 class="neue-machina ls-xs lighter">category</h6>
+                <%= image_tag 'popup_close.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
               </div>
               <div class="filters-options filters-options-categories show-filters">
                 <% Category.order(name: :ASC).each do |category| %>
                   <%# raise if category.sub_categories.ids.include?(11)%>
                   <% next if category.sub_categories.all? { |sc| !@all.map(&:sub_category).include?(sc) } %>
-                  <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
-                    <h6><%= category.name %></h6>
-                    <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
+                  <div class="filter-subtitle filter-subtitle-<%= category.name %> ml-2" data-sub="<%= category.name %>">
+                    <h6 class="neue-machina ls-xs lighter"><%= category.name.downcase %></h6>
+                    <%= image_tag 'popup_close.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
                   </div>
-                  <div class="filter-subcategory-container filter-subcategory-<%= category.name %>" data-sub="<%= category.name %>">
+                  <div class="filter-subcategory-container filter-subcategory-<%= category.name %> ml-3" data-sub="<%= category.name %>">
                     <%= f.input :sub_category, collection: category.sub_categories.joins(:products).merge(@original.where(sub_category_id: category.sub_categories.ids)).order(name: :ASC).product_filter_labels_and_values(@original).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
                   </div>
                 <% end %>
@@ -43,10 +36,10 @@
             <% unless params[:controller] == 'brands' %>
               <div class="partial-filters_collection">
                 <div class="filter-title filter-title-brands">
-                  <h6>Brand</h6>
-                  <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-brands' %>
+                  <h6 class="neue-machina ls-xs lighter">brands</h6>
+                  <%= image_tag 'popup_close.png', class: 'filter-arrow filter-arrow-brands' %>
                 </div>
-                <div class="filters-options filters-options-brands">
+                <div class="filters-options filters-options-brands ml-2">
                   <%= f.input :brand, collection: Brand.order(name: :ASC).joins(:products).merge(@original.where(brand_id: Brand.all.ids)).product_filter_labels_and_values(@original).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:brand] : [], value_method: :first, label_method: :last %>
                 </div>
               </div>
@@ -54,27 +47,6 @@
           </div>
         </div>
       <% end %>
-        <!--   <div class="partial-products">
-            <%# @products.each do |product| %>
-              <div class="card">
-                <%#= link_to product_path(product) do %>
-                  <div class="card_image">
-                    <%#= image_tag product.shades.first.photos.first.variant(resize: "100x100") %>
-                    </div>
-                  <%# end %>
-                  <div class="card_header">
-                    <%#= product.title %>
-                  </div>
-                </div>
-                <%#= hidden_field_tag :query , "", id: "query-filter" %>
-                <%#= hidden_field_tag :place , "", id: "place-filter" %>
-
-                <%#= submit_tag 'Apply', id: "filter-button" %>
-              <%# end %>
-            </div> -->
-          <!--   <div class="partial-products" id="results">
-                <%#= render 'card_results', products: @products %>
-            </div> -->
         <div class="row" id="card-target" style="flex: 1; margin: 0;">
           <%= render 'shared/filter_cards', products: products %>
         </div>
@@ -89,6 +61,11 @@
 
   filterTitleBrands = document.querySelector('.filter-title-brands')
   filterOptionsBrands = document.querySelector('.filters-options-brands')
+
+  if (window.innerWidth < 768) {
+    filterOptionsCategories.classList.remove('show-filters')
+    document.querySelector('.filter-arrow-category').classList.remove('arrow-flip')
+  }
 
   if (filterTitleCategories) {
     filterTitleCategories.addEventListener('click', () => {
