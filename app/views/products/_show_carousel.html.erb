@@ -1,0 +1,24 @@
+<div id="mobileProductImageCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators" id="mobileCarouselIndicators">
+    <li data-target="#mobileProductImageCarousel" data-slide-to="0" class="active"></li>
+    <% count = 1 %>
+    <% photos.each do |shade_photo| %>
+      <li data-target="#mobileProductImageCarousel" data-slide-to="<%= count %>"></li>
+      <% count += 1 %>
+    <% end %>
+  </ol>
+  <div class="carousel-inner" id="mobileCarouselInner">
+    <div class="carousel-item active">
+      <div class="product-shade-image">
+        <%= image_tag url_for(@product.shades.first.card_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+      </div>
+    </div>
+    <% photos.each do |shade_photo| %>
+      <div class="carousel-item">
+        <div class="product-shade-image">
+          <%= image_tag url_for(shade_photo.variant(resize: '700x700')), onclick: "myFunction(this);", class: "item-image-thumbnail", alt: "shade photo"  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

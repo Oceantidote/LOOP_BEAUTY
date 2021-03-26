@@ -4,6 +4,8 @@ const initProductShadeCards = () => {
   const buttonHolder = $('.button-holder')
   const cards = $('.product-shade-card')
   const mainImage = $('.product-main-image')
+  const mobileCarousel = $('#mobileCarouselInner')
+  const mobileCarouselIndicators = $('#mobileCarouselIndicators')
     $(cards).click((e) => {
       $(cards).removeClass('product-shade-card-selected')
       e.currentTarget.classList.add('product-shade-card-selected')
@@ -24,6 +26,31 @@ const initProductShadeCards = () => {
       })
       $('.product-shade-title').html(`<strong>${e.currentTarget.dataset.name}</strong>`)
       console.log(e.currentTarget.dataset.stock)
+
+
+      // MOBILE CAROUSEL
+      mobileCarousel.empty()
+      mobileCarouselIndicators.empty()
+      mobileCarousel.append(`<div class="carousel-item active">
+                                <div class="product-shade-image">
+                                  <div class="myImg" id="expandedImg" style="background-image: url(${e.currentTarget.dataset.main}); background-position: center; background-size: cover;">
+                                  </div>
+                                </div>
+                              </div>`)
+      mobileCarouselIndicators.append(`<li data-target="#mobileProductImageCarousel" data-slide-to="0" class="active"></li>`)
+      let count = 1
+      JSON.parse(e.currentTarget.dataset.urls).forEach(url => {
+        mobileCarousel.append(`<div class="carousel-item">
+                                <div class="product-shade-image">
+                                  <img onclick="myFunction(this);" class="item-image-thumbnail" src=${url}>
+                                </div>
+                              </div>`)
+        mobileCarouselIndicators.append(`<li data-target="#mobileProductImageCarousel" data-slide-to="${count}"></li>`)
+        count ++
+      })
+
+
+
       if (e.currentTarget.dataset.stock == "0") {
         buttonHolder.html(`<input type="submit" name="commit" value="OUT OF STOCK" disabled="disabled" class="primary-button disabled-button w-100" data-disable-with="OUT OF STOCK">`)
       } else {

@@ -52,6 +52,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.friendly.find(params[:id])
+    @products = Product.last(3)
     authorize @product
     @customer_reviews = @product.customer_reviews.page params[:page]
     @tutorials = Tutorial.where(status: 'approved').select { |tutorial| tutorial.products.include?(@product) }

@@ -7,9 +7,22 @@
   }
 }
 
-.insider-review-container {
-  max-width: 1260px;
-  margin: 0 auto;
+.insider-reviews-container {
+  padding: 70px 54px;
+  margin-top: 120px;
+  background: $background-light;
+  .carousel-control-next, .carousel-control-prev {
+    background: #131210 !important;
+  }
+  @include for-small-devices-down {
+    margin-top: 60px;
+    padding: 24px;
+  }
+  .content-carousel {
+    @include for-small-devices-down {
+      padding: 36px !important;
+    }
+  }
 }
 
 .sku-holder {
@@ -24,6 +37,8 @@
   height: 100%;
   @include for-small-devices-down {
     display: block;
+    width: 100%;
+    padding: 0 16px;
   }
 }
 
@@ -33,6 +48,8 @@
   align-items: center;
   height: 100%;
   align-items: flex-start;
+  position: sticky;
+  top: 96px;
   @include for-small-devices-down {
     flex-direction: column-reverse;
     align-items: center;
@@ -45,10 +62,38 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-right: 16px;
+  @include for-medium-devices-down {
+    width: 68px;
+  }
   @include for-small-devices-down {
     width: 100%;
     flex-direction: row;
     margin: 0;
+  }
+}
+
+#mobileProductImageCarousel {
+  margin: 0 -16px;
+  .myImg {
+    width: 100%;
+    padding-top: 100%;
+  }
+  .carousel-inner {
+    margin-bottom: 40px;
+  }
+  .carousel-indicators {
+    bottom: -28px !important;
+    li {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid #000000;
+      opacity: 1;
+    }
+  }
+  .carousel-indicators .active {
+    background: #000000;
   }
 }
 
@@ -59,9 +104,7 @@
     width: 100%;
   }
   @include for-small-devices-down {
-    flex: 0 0 25%;
-    max-width: 25%;
-    padding: 0 15px;
+    width: 100%;
   }
 }
 
@@ -70,6 +113,10 @@
   margin-right: 60px;
   img {
     width: 100%;
+  }
+  @include for-medium-devices-down {
+    margin-right: 20px;
+    width: 348px;
   }
   @include for-small-devices-down {
     margin: 20px 0;
@@ -91,7 +138,7 @@
 
 .product-info-container {
   height: 100%;
-  width: 260px;
+  width: 320px;
   h4, h5 {
     font-weight: 600;
   }
@@ -100,7 +147,7 @@
   }
   hr {
     margin: 10px 0;
-    border-top: 2px solid black;
+    border-top: 3px solid black;
   }
   .product-price {
     font-weight: 600;
@@ -108,9 +155,12 @@
   .primary-button {
     margin: 8px 0;
   }
+  @include for-medium-devices-down {
+    width: 240px;
+  }
   @include for-small-devices-down {
     margin: 30px auto 0 auto;
-    width: 95%;
+    width: 100%;
   }
   .form-group {
     margin: 0
@@ -122,26 +172,29 @@
 }
 
 .shades-container {
-  margin-bottom: 32px;
+  margin-bottom: 60px;
   img {
     width: 100%;
+  }
+  @include for-medium-devices-down {
+    margin-bottom: 40px;
   }
 }
 
 .info-expand {
-  margin-bottom: 12px;
+  margin-bottom: 26px;
   h6 {
     font-weight: 500;
     margin: 0;
   }
-  border-bottom: 2px solid #ECECEC;
+  border-bottom: 1px solid #DDCCB5;
 }
 
 .product-details-title, .about-the-brand-title, .benefits-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   cursor: pointer;
   h6 {
     font-size: 14px;
@@ -249,10 +302,7 @@
       height: 28px;
     }
   }
-  @include for-small-devices-down {
-    height: auto;
-  }
-  @include for-phone-only {
+  @include for-medium-devices-down {
     padding: 40px 32px;
   }
 }
@@ -367,17 +417,24 @@
 .ratings-bar {
   height: 28px;
   width: 229px;
-  background: #F0F0F0;
+  background: $background-light;
 }
 
 .filled-ratings-bar {
   height: 28px;
-  background-color: #FED831;
+  background-color: #0A0504;
 }
 
 .customer-review-section {
-  border-top: 2px solid #ECECEC;
+  border-top: 2px solid #DDCCB5;
   padding: 40px 0;
+}
+
+.customer-reviews-left {
+  width: 272px;
+  @include for-phone-only {
+    width: 100%;
+  }
 }
 
 .customer-review-cards {
@@ -584,6 +641,7 @@
 
 #product-show-reviews {
   cursor: pointer;
+  line-height: 15px;
 }
 
 .product-show-video-card {
