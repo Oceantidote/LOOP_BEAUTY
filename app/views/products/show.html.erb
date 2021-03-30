@@ -275,11 +275,11 @@
               <div class="customer-reviews-grid-section">
                 <h6 class="neue-machina medium-text mb-0"><span class="semi-bold main-rating"><%= @product.average_rating %></span> out of 5 stars</h6>
                 <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
-                <%# if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
+                <% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
                   <%= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100 mt-4", data: { toggle: 'modal', target: '#customerReviewsModal' } %>
-                <%# else %>
-                  <%#= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100 mt-4 disable-click" %>
-                <%# end %>
+                <% else %>
+                  <%= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100 mt-4 disable-click" %>
+                <% end %>
               </div>
             </div>
             <div class="d-none d-md-block">
@@ -360,7 +360,7 @@
   </div>
 <% end %>
 
-<%# if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
+<% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
   <div class="modal fade" id="customerReviewsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered customer-review-modal" role="document">
       <div class="modal-content">
@@ -388,7 +388,7 @@
       </div>
     </div>
   </div>
-<%# end %>
+<% end %>
 
 <script>
 
