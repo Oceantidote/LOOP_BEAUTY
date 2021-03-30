@@ -76,7 +76,7 @@
     <div class="mobile-left-links">
       <% if user_signed_in? %>
           <%= link_to user_dashboard_path(current_user) do %>
-            <%= image_tag 'navbar-user.png', alt: "user icon" %>
+            <%= image_tag 'default-user.png', class: "mr-3", alt: "user icon" %>
           <% end %>
       <% else %>
         <%= link_to new_user_session_path do %>

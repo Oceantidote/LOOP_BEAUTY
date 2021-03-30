@@ -51,14 +51,16 @@
           </div>
         </div>
       <% end %>
-      <div class="button-holder mb-5">
-        <% if @product.out_of_stock? %>
-          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button w-100 ls-xs" %>
-        <% elsif @product.shades.order(created_at: :ASC).first.out_of_stock? %>
-          <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button w-100 ls-xs" %>
-        <% else %>
-          <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button w-100 ls-xs" %>
-        <% end %>
+      <div class="mb-5">
+        <div class="button-holder">
+          <% if @product.out_of_stock? %>
+            <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button w-100 ls-xs" %>
+          <% elsif @product.shades.order(created_at: :ASC).first.out_of_stock? %>
+            <%= f.submit 'OUT OF STOCK', disabled: true, class: "primary-button disabled-button w-100 ls-xs" %>
+          <% else %>
+            <%= f.submit 'ADD TO BAG', id: "add-to-bag", class: "primary-button w-100 ls-xs" %>
+          <% end %>
+        </div>
         <% if user_signed_in? && current_user.wishlist %>
           <div id="item-<%= @product.id %>-wishlist" class="product-show-wishlist">
             <%= render 'shared/product_show_wishlist', product: @product %>
@@ -117,28 +119,6 @@
       <%= link_to 'EDIT PRODUCT', edit_admin_product_path(@product), class: 'secondary-button' %>
       <hr>
     </div>
-  </div>
-<% end %>
-<% if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
-  <div class="product-review-wrapper">
-    <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new], html: { class: 'customer-review-form small-padding' } do |f| %>
-        <h6 class="insider-info-title text-center">How did you enjoy our <%= @product.title %>?</h6>
-        <div class="customer-review-input">
-          <p class="boldest kaftan s-medium-text no-margin">Rating</p>
-          <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
-        </div>
-        <div class="customer-review-input">
-          <p class="boldest kaftan s-medium-text no-margin">Review</p>
-          <%= f.input :review, label: false, placeholder: "Please leave your review here...", input_html: { class: 'product-show-review-input' } %>
-        </div>
-        <% unless current_user.influencer %>
-          <div class="customer-review-input">
-            <p class="boldest kaftan s-medium-text no-margin">Would you recommend?</p>
-            <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-          </div>
-        <% end %>
-        <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button personal-details-button small-text' %>
-    <% end %>
   </div>
 <% end %>
 
@@ -289,13 +269,17 @@
     <div class="content-container position-relative customer-reviews">
       <h2 class="neue-machina ls-sm mb-5 text-center">What People Are Saying</h2>
       <div class="row m-0">
-        <div class="col-12">
+        <div class="col-12 p-0 px-md-3">
           <div class="row m-0 mb-4">
             <div class="customer-reviews-left m-0 mr-md-5">
               <div class="customer-reviews-grid-section">
                 <h6 class="neue-machina medium-text mb-0"><span class="semi-bold main-rating"><%= @product.average_rating %></span> out of 5 stars</h6>
                 <%= render 'shared/ratings', rating: @product.average_rating.to_i %>
-                <%= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100 mt-4" %>
+                <%# if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
+                  <%= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100 mt-4", data: { toggle: 'modal', target: '#customerReviewsModal' } %>
+                <%# else %>
+                  <%#= link_to 'WRITE A REVIEW', '#', class: "primary-button w-100 mt-4 disable-click" %>
+                <%# end %>
               </div>
             </div>
             <div class="d-none d-md-block">
@@ -375,6 +359,36 @@
     </div>
   </div>
 <% end %>
+
+<%# if current_user&.ordered_products&.include?(@product) && (current_user.influencer ? !@product.insider_reviews.any?{|review| review.user == current_user} : !@product.customer_reviews.any?{|review| review.user == current_user}) %>
+  <div class="modal fade" id="customerReviewsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered customer-review-modal" role="document">
+      <div class="modal-content">
+        <div class="product-review-wrapper">
+          <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new] do |f| %>
+              <h4 class="neue-machina text-center mb-5">Tell Us About Your Experience?</h4>
+              <div class="customer-review-input mb-5">
+                <%= f.input :title, label: false, placeholder: "Review Title", input_html: { class: 'product-show-review-input pl-0' } %>
+              </div>
+              <div class="customer-review-input mb-5">
+                <%= f.input :review, label: false, placeholder: "Describe Your Product Experience", input_html: { class: 'product-show-review-input pl-0' } %>
+              </div>
+              <div class="customer-review-input mb-5">
+                <p class="s-medium-text mb-2 ls-xs">How Would You Rate The Product?</p>
+                <%= f.input :rating, collection: [1,2,3,4,5], label: false, input_html: { class: 'dropdown-input sign-up-dropdown', id: 'review_rating' } %>
+              </div>
+              <% unless current_user.influencer %>
+                <div class="customer-review-input mb-5">
+                  <%= f.input :recommendation, collection: ['Yes', 'No', 'Maybe'], label: false, prompt: 'Would you recommend this product?', input_html: { class: 'dropdown-input sign-up-dropdown pl-0' } %>
+                </div>
+              <% end %>
+              <%= f.submit 'LEAVE A REVIEW' , class: 'primary-button s-medium-text mx-auto my-0' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%# end %>
 
 <script>
 

@@ -202,10 +202,27 @@
   }
 }
 
+#customerReviewsModal {
+  padding: 0 36px;
+  @include for-phone-only {
+    padding: 0;
+  }
+}
+
 .customer-review-input {
   margin-bottom: 5px;
   input, textarea, select {
     width: 100% !important;
+    background-color: $background;
+    border: none;
+    border-bottom: 2px solid #000000;
+    border-radius: 0;
+    box-shadow: none;
+    letter-spacing: 1px;
+    &:focus {
+      background-color: $background;
+      box-shadow: none;
+    }
   }
   @include for-phone-only {
     flex-direction: column;

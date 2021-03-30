@@ -41,9 +41,6 @@
       margin-right: 5px;
       font-size: 14px;
     }
-    @include for-phone-only {
-      display: block;
-    }
   }
 }
 

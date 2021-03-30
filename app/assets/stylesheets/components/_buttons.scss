@@ -51,9 +51,6 @@
   @include for-medium-devices-down {
     margin: 10px 0;
   }
-  @include for-phone-only {
-    padding: 5px 10px;
-  }
 }
 
 .secondary-button {
@@ -97,6 +94,11 @@
 .button-width {
   max-width: 164px;
   padding: 6px 0px;
+}
+
+.disable-click {
+  pointer-events: none;
+  background: #E0D8CC;
 }
 
 .aff-btn {

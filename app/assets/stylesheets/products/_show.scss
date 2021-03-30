@@ -594,17 +594,34 @@
 }
 
 .product-review-wrapper {
-  background: #ECECEC;
-  padding: 30px 0;
+  background: $background;
+  padding: 60px 80px;
+  @include for-small-devices-down {
+    padding: 60px 40px;
+  }
+  @include for-phone-only {
+    padding: 60px 32px;
+  }
 }
 
-#insider_review_review::placeholder, #customer_review_review::placeholder {
-  color: #BCBCBC;
+.customer-review-modal {
+  max-width: 960px;
+}
+
+#insider_review_review::placeholder, #customer_review_review::placeholder,
+#customer_review_title::placeholder {
+  color: $text;
   font-size: 14px;
+  font-weight: 200;
 }
 
-.product-show-review-input {
-  width: 100% !important;
+.br-theme-css-stars .br-widget a {
+  height: 28px !important;
+  width: 28px !important;
+  font-size: 30px !important;
+  &:after {
+    color: #E0D8CC !important;
+  }
 }
 
 //
