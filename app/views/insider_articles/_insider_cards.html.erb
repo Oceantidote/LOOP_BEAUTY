@@ -1,44 +1,48 @@
-<div class="row" style="margin: 0; width: 100%;">
-  <% count = 0 %>
+<div class="row row-articles">
   <% contents.each_with_index do |content, index| %>
     <% if (index + 1) % 5  == 0 %>
-      <%= link_to insider_article_path(content), class: 'no-decoration w-100' do %>
-        <div class="insider-home-articles-banner mb-5 p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo) %>)">
-          <div class="">
-            <h5 class="text-white mb-4 neue-machina">DERMATOLOGY</h5>
-            <h2 class="text-white mb-0 kaftan">The revolutionary product that is changing</h2>
-            <h2 class="text-white mb-4 kaftan">women of colour with Dermatitis</h2>
+      <div class="pop-out-bottom-padding-community my-5 w-100 px-0 px-sm-4 px-md-5">
+        <div class="pop-out-image-banner">
+          <div class="pop-out-image-banner-content">
+            <h2 class="neue-machina ls-sm mb-3 text-center">How We Are Changing The Game</h2>
+            <p class="lighter mb-4 ls-sm text-center">Meet our founder Ariel Okubanjo</p>
+            <%= link_to 'About Us', 'about_us_path', class: 'dotted-underline-button lighter mb-5' %>
+            <%= image_tag 'pop_out_image_two.png' %>
           </div>
-          <p class="primary-button button-width white-button mb-0">Read more</p>
         </div>
-      <% end %>
+      </div>
     <% else %>
-      <div class="col-12 col-lg-6 mb-5 <%= count.even? ? 'pl-0 pr-0 pr-lg-4' : 'pr-0 pl-0 pl-lg-4' %>">
+      <div class="col-12 col-md-6">
         <% if @how_to %>
           <%= link_to tutorial_path(content), class: "insider-home-card-link no-decoration" do %>
-            <div class="insider-home-articles-card mb-3 position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo.variant(resize: '700')) %>);">
-              <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
-            </div>
-            <div>
-              <small class="font-weight-bold">HOW TO</small>
-              <h6 class="mb-0"><%= content.title %></h6>
-              <small class=""><%= content.user.instagram %></small>
+            <div class="inside-how-to my-5">
+              <div class="insider-home-articles-card mb-3 position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo.variant(resize: '700')) %>);">
+                <%= image_tag 'play-button.png', class: "play-button", width: 200, alt: "Play button" %>
+              </div>
+              <div>
+                <p class="mb-3 truncate-text lighter ls-xs"><%= content.title %></p>
+                <p class="mb-2 truncate-text lighter ls-xs small-text grey-font"><%= content.user.instagram %></p>
+              </div>
             </div>
           <% end %>
         <% else %>
-          <%= link_to insider_article_path(content), class: "insider-home-card-link no-decoration" do %>
-            <div class="insider-home-articles-card mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(content.cover_photo.variant(resize: '700')) %>);">
+          <div class="card-image-results homepage-products my-5">
+            <div class="card">
+              <div class="card_image homepage-article-image">
+                <%= link_to insider_article_path(content) do %>
+                  <%= image_tag url_for(content.cover_photo.variant(resize: '300x300')), alt: "insider article photo" %>
+                <% end %>
+              </div>
             </div>
-            <div>
-              <small class="font-weight-bold"><%= content.category.upcase %></small>
-              <h6><%= content.title %></h6>
-              <p class=""><%= simple_format(content.text1.truncate(80)) %></p>
+            <div class="card-info">
+              <p class="mb-2 truncate-text lighter ls-xs small-text grey-font"><%= content.category.downcase %></p>
+              <p class="mb-3 truncate-text lighter ls-xs"><%= content.title %></p>
+              <%= link_to 'Read More', insider_article_path(content), class: 'dotted-underline-button lighter mb-5 px-0' %>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
-      <% count += 1 %>
-    <% end %>
+      <% end %>
   <% end %>
 </div>
 

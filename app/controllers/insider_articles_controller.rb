@@ -26,8 +26,6 @@ class InsiderArticlesController < ApplicationController
     else
       @contents = policy_scope(InsiderArticle)
     end
-    @contents += @contents
-    @contents += @contents
     @featured_article = InsiderArticle.where(featured: true).first
     @featured_article_tag = @featured_article.text1.gsub(/<div>/, "").truncate(80)
 

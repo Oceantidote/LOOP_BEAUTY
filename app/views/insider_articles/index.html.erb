@@ -2,40 +2,48 @@
   Beauty tutorials from your favourite influencers
 <% end %>
 <% if @featured_article %>
-  <%= link_to insider_article_path(@featured_article), class: 'no-decoration' do %>
-    <div class="insider-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@featured_article.cover_photo) %>)">
-      <div class="insider-article-banner-text-container">
-        <div class="insider-article-banner d-flex justify-content-center align-items-center">
-          <h4 class="neue-machina font-weight-bold <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" >ARTICLE OF THE WEEK</h4>
-          <h2 class="mb-4 <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>" ><%= @featured_article.title %></h2>
-          <p class="mb-5 w-50 text-center <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">"<%= @featured_article_tag %>"</p>
-          <h4 class="border-bottom mt-4 neue-machina font-weight-bold <%= @featured_article.card_text_color == 'White' ? 'article-white' : 'article-black' %>">READ MORE</h4>
+  <div class="content-padding first-banner-padding">
+    <div class="content-container">
+      <div class="d-block d-md-none">
+        <h1 class="mb-4 main-home-title"><%= @featured_article.title %></h1>
+        <h5 class="mb-0 neue-machina ls-sm lh-md mb-3"><%= @featured_article_tag %></h5>
+        <%= link_to 'Read More', insider_article_path(@featured_article), class: 'oval-button ls-sm no-decoration mb-4' %>
+        <%= image_tag url_for(@featured_article.cover_photo), class: 'w-100' %>
+      </div>
+      <div class="d-none d-md-block">
+        <div class="homepage-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= url_for(@featured_article.cover_photo) %>)">
+          <div class="homepage-banner-text">
+            <h1 class="text-white mb-4"><%= @featured_article.title %></h1>
+            <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4"><%= @featured_article_tag %></h5>
+            <%= link_to 'Read More', insider_article_path(@featured_article), class: 'oval-button ls-sm text-white border-white no-decoration' %>
+            <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark' %>
+          </div>
         </div>
       </div>
-      <%#= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
     </div>
-  <% end %>
+  </div>
 <% end %>
-<div class="content-container">
-  <div class="row m-0 justify-content-center">
-    <div class="col-9">
-      <div class="insider-home-tabs-container mb-5">
+
+<div class="content-padding position-relative">
+  <div class="content-container">
+    <div class="row m-0 justify-content-center">
+      <div class="insider-home-tabs-container mb-3">
         <div class="insider-home-tabs">
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "All" %>
-            <%= submit_tag "All Content", class: "each-insider-home-tab #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "All Content", class: "each-insider-home-tab mr-5 #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "Inspiration" %>
-            <%= submit_tag "Inspiration", class: "each-insider-home-tab #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "Inspiration", class: "each-insider-home-tab mr-5 #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "News" %>
-            <%= submit_tag "News", class: "each-insider-home-tab #{ params[:category] == 'News' ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "News", class: "each-insider-home-tab mr-5 #{ params[:category] == 'News' ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "Ask the Expert" %>
-            <%= submit_tag "Ask the Expert", class: "each-insider-home-tab #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "Ask the Expert", class: "each-insider-home-tab mr-5 #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "How To" %>
