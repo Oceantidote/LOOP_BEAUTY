@@ -1,7 +1,22 @@
+.influencer-wrapper {
+  @include for-small-devices-down {
+    margin-top: 24px;
+    padding: 0;
+  }
+}
+
 .influencer-tabs {
   justify-content: center;
+  @include for-phone-only {
+    justify-content: space-around;
+  }
   .nav-link {
     border-radius: 0;
+    letter-spacing: 2px;
+    @include for-phone-only {
+      letter-spacing: 1px;
+      padding: 0.5rem 0.3rem;
+    }
   }
   .nav-link.active {
     color: #19191C;
@@ -26,6 +41,7 @@
     padding-left: 0;
     width: 100%;
     min-width: auto;
+    height: unset;
   }
 }
 
@@ -35,6 +51,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  h2 {
+    @include for-small-devices-down {
+      font-size: 20px;
+    }
+  }
   @include for-medium-devices-down {
     width: 300px;
   }
@@ -53,7 +74,8 @@
   margin-bottom: 80px;
   @include for-small-devices-down {
     flex-direction: column-reverse;
-    margin-bottom: 90%;
+    height: unset;
+    margin-bottom: 10%;
   }
 }
 
