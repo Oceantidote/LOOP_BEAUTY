@@ -17,6 +17,12 @@
   }
 }
 
+.articles-padding-mobile {
+  @include for-phone-only {
+    padding: 0;
+  }
+}
+
 .insider-article-banner {
   display: flex;
   flex-direction: column;

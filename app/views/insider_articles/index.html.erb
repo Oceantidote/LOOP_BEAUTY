@@ -5,7 +5,7 @@
   <div class="content-padding first-banner-padding">
     <div class="content-container">
       <div class="d-block d-md-none">
-        <h1 class="mb-4 main-home-title"><%= @featured_article.title %></h1>
+        <h1 class="mb-4 featured-article-title"><%= @featured_article.title %></h1>
         <h5 class="mb-0 neue-machina ls-sm lh-md mb-3"><%= @featured_article_tag %></h5>
         <%= link_to 'Read More', insider_article_path(@featured_article), class: 'oval-button ls-sm no-decoration mb-4' %>
         <%= image_tag url_for(@featured_article.cover_photo), class: 'w-100' %>
@@ -24,26 +24,26 @@
   </div>
 <% end %>
 
-<div class="content-padding position-relative">
+<div class="content-padding articles-padding-mobile position-relative">
   <div class="content-container">
     <div class="row m-0 justify-content-center">
       <div class="insider-home-tabs-container mb-3">
         <div class="insider-home-tabs">
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "All" %>
-            <%= submit_tag "All Content", class: "each-insider-home-tab mr-5 #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "All Content", class: "each-insider-home-tab mr-sm-3 mr-lg-5 #{ (params[:category] == 'All' || !params[:category].present? ) ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "Inspiration" %>
-            <%= submit_tag "Inspiration", class: "each-insider-home-tab mr-5 #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "Inspiration", class: "each-insider-home-tab mr-sm-3 mr-lg-5 #{ params[:category] == 'Inspiration' ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "News" %>
-            <%= submit_tag "News", class: "each-insider-home-tab mr-5 #{ params[:category] == 'News' ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "News", class: "each-insider-home-tab mr-sm-3 mr-lg-5 #{ params[:category] == 'News' ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "Ask the Expert" %>
-            <%= submit_tag "Ask the Expert", class: "each-insider-home-tab mr-5 #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
+            <%= submit_tag "Ask the Expert", class: "each-insider-home-tab mr-sm-3 mr-lg-5 #{ params[:category] == 'Ask the Expert' ? 'insider-home-tab-active' : '' }"  %>
           <% end %>
           <%= form_tag(community_path, method: :get, remote: true) do %>
             <%= hidden_field_tag :category, params[:category], value: "How To" %>

@@ -23,6 +23,9 @@
       border-color: #000;
     }
   }
+  @include for-phone-only {
+    width: 100%;
+  }
 }
 
 // CSS FOR INSIDER ARTICLES CURRENTLY IN PAGES
