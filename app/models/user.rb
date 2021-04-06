@@ -80,7 +80,6 @@ class User < ApplicationRecord
   # WISHLIST TEST
   before_save :set_referral_code, :check_newsletter
   after_save :create_wishlist
-  after_create :send_welcome
   # AFFILIATIONS
 
   def admin?
@@ -221,16 +220,6 @@ class User < ApplicationRecord
       client.lists(id).members(Digest::MD5.hexdigest(email)).update(body: {status: "subscribed"})
     rescue Gibbon::MailChimpError
       flash[:notice] = 'There was a problem subscribing you to the mailing list'
-    end
-  end
-
-  def send_welcome
-    article = InsiderArticle.where(featured: true).first&.id
-    tutorial = Tutorial.where(featured: true).first&.id
-    if influencer?
-      UserMailer.with(user: self.id).welcome_influencer.deliver_now
-    else
-      UserMailer.with(user: self.id, article: article, tutorial: tutorial).welcome.deliver_now
     end
   end
 
