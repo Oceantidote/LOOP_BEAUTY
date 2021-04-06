@@ -1,288 +1,476 @@
 .about-us-wrapper {
-  background-size: cover;
-  background-position: top;
-  @include absCenterColumn;
-  padding: 0;
-  padding-bottom: 10vh;
-}
-.about-us-top-cont {
-  height: calc(100vh - 100px);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  @include for-medium-devices-down {
-    flex-direction: column-reverse;
-  }
-}
-.static-title {
-  font-size: 3.5rem;
-  color: black;
-  font-weight: 900;
-  @include for-small-devices-down {
-    font-size: 3rem;
-  }
-}
-.lh {
-  line-height: 1.5;
-}
-.about-us-title {
-  display: flex;
-  align-items: flex-end;
-  height: 100%;
-  width: 33%;
-  padding: 5%;
-  h1 {
-    font-size: 3.5rem;
-    color: black;
-    font-weight: boldest;
-  }
-  @include for-medium-devices-down {
-    align-items: flex-start;
-    flex-order: 2;
-    width: 100%;
-    height: 30%;
-  }
-  @include for-small-devices-down {
-    h1 {
-      font-size: 3rem;
-    }
-  }
-}
-.about-us-top {
-  height: 100%;
-  width: 67%;
-  background-size: cover;
-  background-position: center;
-  @include for-medium-devices-down {
-    width: 100%;
-    height: 70%;
-  }
+  overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-.about-us-cont {
-  padding-top: 80px;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @include for-medium-devices-down {
-    padding-top: 40px;
-  }
-  @include for-small-devices-down {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-.no-padt-mdown {
-  @include for-medium-devices-down {
-    padding-top: 0px;
-  }
-}
-.about-us-img {
-  width: 50%;
-  @include for-small-devices-down {
-    width: 100%;
-  }
-}
 .about-us-text {
-  width: 50%;
-  padding: 5%;
-  h1 {
-    font-weight: boldest;
-    font-size: 4rem;
-  }
-  @include for-small-devices-down {
-    width: 100%;
-    h1 {
-      font-size: 3rem;
-    }
-  }
-}
-.rev {
-  @include for-small-devices-up {
-    flex-direction: row-reverse;
-  }
-  @include for-small-devices-down {
-    flex-direction: column;
-  }
-}
-
-.about-us-banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  margin: 50px auto;
-  height: 500px;
-  @include for-large-devices-down {
-    width: 80%;
-  }
-  @include for-medium-devices-down {
-    width: 100%;
-  }
-  @include for-phone-only {
-    flex-direction: column-reverse;
-    height: auto;
-  }
-}
-
-.about-us-image {
-  width: 380px;
-  height: 500px;
-  background-size: cover;
-  background-position: center;
-  margin-right: 50px;
-  @include for-small-devices-down {
-    width: 300px;
-    height: 420px;
-    margin-right: 12px;
-  }
-  @include for-phone-only {
-    margin: 20px 0 0 0;
-    width: 100%;
-  }
-  // img {
-  //   max-height: 100%;
-  //   max-width: 100%;
-  // }
-}
-
-
-
-.our-history-banner {
-  width: 70%;
-  margin: 50px auto;
-  text-align: center;
-  @include absCenterColumn;
-  h3 {
-    font-weight: 900;
-  }
-  h6 {
-    width: 60%;
-    @include for-small-devices-down {
-      width: 90%;
-    }
-  }
-  @include for-medium-devices-down {
-    width: 100%;
-  }
-}
-
-.our-history-image {
-  width: 350px;
-  height: 500px;
-  background-size: cover;
-  background-position: center;
-  margin: 25px auto;
-  @include for-small-devices-down {
-    width: 300px;
-    height: 420px;
-  }
-  @include for-phone-only {
-    width: 100%;
-  }
-}
-
-.loop-beauty-banner {
-  width: 70%;
-  margin: 50px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  h4 {
-    width: 50%;
-    font-weight: 900;
-    text-align: center;
-    margin-bottom: 50px;
-    @include for-phone-only {
+  .top-text {
+    width: 67%;
+    @include for-medium-devices-down {
       width: 100%;
     }
   }
-  @include for-medium-devices-down {
-    width: 100%;
+}
+
+.signature {
+  position: relative;
+  margin-right: 32px;
+  img {
+    width: 300px;
+    @include for-small-devices-down {
+      width: 226px;
+    }
+  }
+  .founder {
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+    @include for-small-devices-down {
+      bottom: 0;
+    }
+  }
+  @include for-small-devices-down {
+    margin-right: 0;
   }
 }
 
-.about-us-loop-logo {
-  width: 40%;
-  margin-bottom: 20px;
-  @include for-phone-only {
-    width: 70%;
+.asterisk {
+  position: absolute;
+  left: -24px;
+  top: 40%;
+  width: 48px;
+}
+
+.about-us-image-container {
+  position: relative;
+  .oval-button {
+    position: absolute;
+    top: 126px;
+    right: -156px;
+    transform: rotate(28deg)
+  }
+  .double-loop-arrow {
+    position: absolute;
+    bottom: -60px;
+    right: 76px;
+  }
+  .the-net-watermark {
+    bottom: 12px;
+    right: 12px;
   }
 }
 
-.loop-beauty-founder-container {
+.about-us-image-wide-container {
+  position: relative;
+  .asterisk {
+    left: -20px;
+    top: 18%;
+    width: 72px;
+    @include for-small-devices-down {
+      width: 42px;
+    }
+  }
+  .oval-button {
+    position: absolute;
+    top: 126px;
+    right: -108px;
+    transform: rotate(28deg)
+  }
+  .single-loop-arrow {
+    position: absolute;
+    bottom: -60px;
+    right: 76px;
+    @include for-small-devices-down {
+      bottom: -35px;
+      right: 54%;
+      width: 60px;
+    }
+  }
+  .oval-button {
+    @include for-small-devices-down {
+      width: 144px;
+      top: 2px;
+      right: -102px;
+    }
+  }
+}
+
+.about-us-community {
+  height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  @include for-phone-only {
-    flex-direction: column-reverse;
+  position: relative;
+  h1 {
+    position: relative;
+    font-size: 92px;
+    @include for-small-devices-down {
+      font-size: 68px;
+    }
+  }
+  .oval-button {
+    width: 144px;
+    position: absolute;
+    top: 55%;
+    right: 10%;
+    transform: rotate(35deg);
+    @include for-small-devices-down {
+      width: 114px;
+      top: 72%;
+      right: 22%;
+    }
   }
 }
 
-.loop-beauty-founder-text {
-  text-align: right;
-  width: 38%;
-  margin-right: 50px;
-  @include for-small-devices-down {
-    margin-right: 12px;
+.about-us-brands-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .asterisk {
+    left: 56%;
+    top: 0;
+    width: 72px;
+    @include for-small-devices-down {
+      left: 70%;
+      top: -21px;
+      width: 42px;
+    }
   }
-  @include for-phone-only {
-    width: 100%;
-    text-align: center;
-    margin: 20px 0 0 0;
-  }
-}
-
-.loop-beauty-founder-image {
-  width: 350px;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  @include for-small-devices-down {
-    width: 250px;
-    height: 300px;
-  }
-}
-
-.about-us-group {
-  width: 350px;
-  margin: 0 50px;
-  @include for-medium-devices-down {
-    margin: 0 30px;
-  }
-  @include for-small-devices-down {
-    width: 300px;
-    margin: 0 20px 0 0;
-  }
-  @include for-phone-only {
-    margin-top: 30px;
-    width: 70%;
+  p {
+    width: 42%;
+    @include for-medium-devices-down {
+      width: 60%;
+    }
+    @include for-small-devices-down {
+      width: 100%;
+    }
   }
 }
 
-.about-us-lipstick {
-  width: 370px;
-  margin: 20px auto;
+.about-us-last-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  top: -480px;
+  margin-bottom: -520px;
   @include for-small-devices-down {
-    width: 300px;
+    top: 0;
+    margin-bottom: 0px;
+    .oval-button {
+      width: 200px;
+      margin-left: 100px;
+    }
   }
-  @include for-phone-only {
-    width: 70%;
+  .oval-button {
+    @include for-small-devices-down {
+      width: 200px;
+      margin-left: 100px;
+    }
+    @include for-phone-only {
+      width: 60%;
+      max-width: 200px;
+    }
+  }
+}
+.sideways-title {
+  position: relative;
+  left: -154px;
+  top: -190px;
+  font-size: 92px;
+  transform: rotate(-90deg);
+  @include for-small-devices-down {
+    top: 30px;
   }
 }
 
-.about-us-ariel {
-  width: 320px;
-  @include for-small-devices-down {
-    width: 250px;
-  }
-  @include for-phone-only {
-    width: 70%;
-  }
-}
+
+// .about-us-wrapper {
+//   background-size: cover;
+//   background-position: top;
+//   @include absCenterColumn;
+//   padding: 0;
+//   padding-bottom: 10vh;
+// }
+
+// .about-us-top-cont {
+//   height: calc(100vh - 100px);
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   @include for-medium-devices-down {
+//     flex-direction: column-reverse;
+//   }
+// }
+// .static-title {
+//   font-size: 3.5rem;
+//   color: black;
+//   font-weight: 900;
+//   @include for-small-devices-down {
+//     font-size: 3rem;
+//   }
+// }
+// .lh {
+//   line-height: 1.5;
+// }
+// .about-us-title {
+//   display: flex;
+//   align-items: flex-end;
+//   height: 100%;
+//   width: 33%;
+//   padding: 5%;
+//   h1 {
+//     font-size: 3.5rem;
+//     color: black;
+//     font-weight: boldest;
+//   }
+//   @include for-medium-devices-down {
+//     align-items: flex-start;
+//     flex-order: 2;
+//     width: 100%;
+//     height: 30%;
+//   }
+//   @include for-small-devices-down {
+//     h1 {
+//       font-size: 3rem;
+//     }
+//   }
+// }
+// .about-us-top {
+//   height: 100%;
+//   width: 67%;
+//   background-size: cover;
+//   background-position: center;
+//   @include for-medium-devices-down {
+//     width: 100%;
+//     height: 70%;
+//   }
+// }
+
+// html {
+//   scroll-behavior: smooth;
+// }
+
+// .about-us-cont {
+//   padding-top: 80px;
+//   width: 90%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   @include for-medium-devices-down {
+//     padding-top: 40px;
+//   }
+//   @include for-small-devices-down {
+//     width: 100%;
+//     flex-direction: column;
+//   }
+// }
+// .no-padt-mdown {
+//   @include for-medium-devices-down {
+//     padding-top: 0px;
+//   }
+// }
+// .about-us-img {
+//   width: 50%;
+//   @include for-small-devices-down {
+//     width: 100%;
+//   }
+// }
+// .about-us-text {
+//   width: 50%;
+//   padding: 5%;
+//   h1 {
+//     font-weight: boldest;
+//     font-size: 4rem;
+//   }
+//   @include for-small-devices-down {
+//     width: 100%;
+//     h1 {
+//       font-size: 3rem;
+//     }
+//   }
+// }
+// .rev {
+//   @include for-small-devices-up {
+//     flex-direction: row-reverse;
+//   }
+//   @include for-small-devices-down {
+//     flex-direction: column;
+//   }
+// }
+
+// .about-us-banner {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 70%;
+//   margin: 50px auto;
+//   height: 500px;
+//   @include for-large-devices-down {
+//     width: 80%;
+//   }
+//   @include for-medium-devices-down {
+//     width: 100%;
+//   }
+//   @include for-phone-only {
+//     flex-direction: column-reverse;
+//     height: auto;
+//   }
+// }
+
+// .about-us-image {
+//   width: 380px;
+//   height: 500px;
+//   background-size: cover;
+//   background-position: center;
+//   margin-right: 50px;
+//   @include for-small-devices-down {
+//     width: 300px;
+//     height: 420px;
+//     margin-right: 12px;
+//   }
+//   @include for-phone-only {
+//     margin: 20px 0 0 0;
+//     width: 100%;
+//   }
+//   // img {
+//   //   max-height: 100%;
+//   //   max-width: 100%;
+//   // }
+// }
+
+
+
+// .our-history-banner {
+//   width: 70%;
+//   margin: 50px auto;
+//   text-align: center;
+//   @include absCenterColumn;
+//   h3 {
+//     font-weight: 900;
+//   }
+//   h6 {
+//     width: 60%;
+//     @include for-small-devices-down {
+//       width: 90%;
+//     }
+//   }
+//   @include for-medium-devices-down {
+//     width: 100%;
+//   }
+// }
+
+// .our-history-image {
+//   width: 350px;
+//   height: 500px;
+//   background-size: cover;
+//   background-position: center;
+//   margin: 25px auto;
+//   @include for-small-devices-down {
+//     width: 300px;
+//     height: 420px;
+//   }
+//   @include for-phone-only {
+//     width: 100%;
+//   }
+// }
+
+// .loop-beauty-banner {
+//   width: 70%;
+//   margin: 50px auto;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   h4 {
+//     width: 50%;
+//     font-weight: 900;
+//     text-align: center;
+//     margin-bottom: 50px;
+//     @include for-phone-only {
+//       width: 100%;
+//     }
+//   }
+//   @include for-medium-devices-down {
+//     width: 100%;
+//   }
+// }
+
+// .about-us-loop-logo {
+//   width: 40%;
+//   margin-bottom: 20px;
+//   @include for-phone-only {
+//     width: 70%;
+//   }
+// }
+
+// .loop-beauty-founder-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   @include for-phone-only {
+//     flex-direction: column-reverse;
+//   }
+// }
+
+// .loop-beauty-founder-text {
+//   text-align: right;
+//   width: 38%;
+//   margin-right: 50px;
+//   @include for-small-devices-down {
+//     margin-right: 12px;
+//   }
+//   @include for-phone-only {
+//     width: 100%;
+//     text-align: center;
+//     margin: 20px 0 0 0;
+//   }
+// }
+
+// .loop-beauty-founder-image {
+//   width: 350px;
+//   height: 300px;
+//   background-size: cover;
+//   background-position: center;
+//   @include for-small-devices-down {
+//     width: 250px;
+//     height: 300px;
+//   }
+// }
+
+// .about-us-group {
+//   width: 350px;
+//   margin: 0 50px;
+//   @include for-medium-devices-down {
+//     margin: 0 30px;
+//   }
+//   @include for-small-devices-down {
+//     width: 300px;
+//     margin: 0 20px 0 0;
+//   }
+//   @include for-phone-only {
+//     margin-top: 30px;
+//     width: 70%;
+//   }
+// }
+
+// .about-us-lipstick {
+//   width: 370px;
+//   margin: 20px auto;
+//   @include for-small-devices-down {
+//     width: 300px;
+//   }
+//   @include for-phone-only {
+//     width: 70%;
+//   }
+// }
+
+// .about-us-ariel {
+//   width: 320px;
+//   @include for-small-devices-down {
+//     width: 250px;
+//   }
+//   @include for-phone-only {
+//     width: 70%;
+//   }
+// }

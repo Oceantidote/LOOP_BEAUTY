@@ -1,107 +1,105 @@
-<div class="insider-show-banner" id="article-banner" style="background-image: url(<%= url_for(@insider_article.cover_photo) %>)" data-mob="<%= rails_blob_path @insider_article.mobile_cover_photo %>" data-lrg="<%= rails_blob_path @insider_article.cover_photo %>">
-  <!-- <i id='arrow' class="banner-arrow white animated bounce fa fa-chevron-down"></i> -->
-  <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
-</div>
-<div id="here"></div>
-<div class="insider-show-article-wrapper">
-  <div class="container">
-    <div class="selected-article">
-      <div class="article-content" id='cont'>
-        <div class="article-header">
-          <h5 class="boldest kaftan"><%= @insider_article.category %>:</h5>
-          <h2 class="neue-machina"><%= @insider_article.title %></h2>
-          <h6 class="boldest kaftan no-bottom-margin">by <%= @insider_article.by %> </h6>
-        </div>
-        <%= simple_format(@insider_article.text1) %>
-        <% if @insider_article.photo1.attached? %>
-          <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
-            <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
-          <% else %>
-            <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
-          <% end %>
-        <% end %>
-        <p class="neue-machina"><%= simple_format(@insider_article.text2) %></p>
-        <% if @insider_article.photo2.attached? %>
-          <% if @movies.include?(@insider_article.photo2.filename.extension.downcase) %>
-            <%= video_tag(url_for(@insider_article.photo2), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
-          <% else %>
-            <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
-          <% end %>
-        <% end %>
-        <p class="neue-machina"><%= simple_format(@insider_article.text3) %></p>
-        <% if @insider_article.photo3.attached? %>
-          <% if @movies.include?(@insider_article.photo3.filename.extension.downcase) %>
-            <%= video_tag(url_for(@insider_article.photo3), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
-          <% else %>
-            <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
-          <% end %>
-        <% end %>
-        <p class="neue-machina"> <%= simple_format(@insider_article.text4) %></p>
-        <% if user_signed_in? && current_user.admin %>
-          <% if policy([:admin, @insider_article]).publish? %>
-            <div class="admin-options">
-              <hr>
-              <div class="container">
-                <h6 class="boldest">Admin options</h6>
-                <div class="d-flex">
-                  <% if @insider_article.published %>
-                    <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
-                  <% else %>
-                    <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
-                  <% end %>
-                  <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article), class: 'secondary-button small-margin-right' %>
-                  <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
-                </div>
-              </div>
-              <hr>
-            </div>
-          <% end %>
-        <% end %>
+<div class="content-padding pop-out-no-padding-mobile first-banner-padding article-show-first-banner">
+  <div class="content-container pop-out-bottom-padding">
+    <div class="pop-out-image-banner">
+      <div class="pop-out-image-banner-content">
+        <h2 class="neue-machina ls-sm mb-3 text-center"><%= @insider_article.category %></h2>
+        <p class="lighter mb-4 ls-sm text-center"><%= @insider_article.title %></p>
+        <p class="lighter mb-4 ls-sm text-center">by <%= @insider_article.by %></p>
+        <%= image_tag url_for(@insider_article.cover_photo) %>
       </div>
-      <div class="share-articles-links">
-        <h6>Share</h6>
-        <div class="articles-link-icons">
+    </div>
+  </div>
+</div>
+
+<div class="content-padding first-banner-padding">
+  <div class="content-container">
+    <div id="here"></div>
+    <div class="insider-show-article-wrapper">
+      <div class="selected-article">
+        <div class="article-content" id='cont'>
+          <%= simple_format(@insider_article.text1) %>
+          <% if @insider_article.photo1.attached? %>
+            <% if @movies.include?(@insider_article.photo1.filename.extension.downcase) %>
+              <%= video_tag(url_for(@insider_article.photo1), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
+            <% else %>
+              <%= image_tag(url_for(@insider_article.photo1), alt: @insider_article.photo1_alt_text, class: "insider_article_photo") %>
+            <% end %>
+          <% end %>
+          <p class="neue-machina"><%= simple_format(@insider_article.text2) %></p>
+          <% if @insider_article.photo2.attached? %>
+            <% if @movies.include?(@insider_article.photo2.filename.extension.downcase) %>
+              <%= video_tag(url_for(@insider_article.photo2), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
+            <% else %>
+              <%= image_tag(url_for(@insider_article.photo2), alt: @insider_article.photo2_alt_text, class: "insider_article_photo") %>
+            <% end %>
+          <% end %>
+          <p class="neue-machina"><%= simple_format(@insider_article.text3) %></p>
+          <% if @insider_article.photo3.attached? %>
+            <% if @movies.include?(@insider_article.photo3.filename.extension.downcase) %>
+              <%= video_tag(url_for(@insider_article.photo3), controls: true, alt: @insider_article.photo1_alt_text, playsinline: true, poster: url_for(@insider_article.cover_photo), class: "insider_article_photo", preload: 'none') %>
+            <% else %>
+              <%= image_tag(url_for(@insider_article.photo3), alt: @insider_article.photo3_alt_text, class: "insider_article_photo") %>
+            <% end %>
+          <% end %>
+          <p class="neue-machina"> <%= simple_format(@insider_article.text4) %></p>
+          <% if user_signed_in? && current_user.admin %>
+            <% if policy([:admin, @insider_article]).publish? %>
+              <div class="admin-options">
+                <hr>
+                <div class="container">
+                  <h6 class="boldest">Admin options</h6>
+                  <div class="d-flex">
+                    <% if @insider_article.published %>
+                      <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
+                    <% else %>
+                      <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
+                    <% end %>
+                    <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article), class: 'secondary-button small-margin-right' %>
+                    <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="share-articles-links">
+          <p class="bold mb-2">Share:</p>
           <%= link_to "http://www.facebook.com/sharer/sharer.php?u=#{insider_article_url(@insider_article)}&t=#{@insider_article.title}", target: "_blank" do %>
-            <i class="fab fa-facebook-f"></i>
+            Facebook
           <% end %>
           <%= link_to "https://twitter.com/intent/tweet?text=#{@insider_article.title}&url=#{insider_article_url(@insider_article)}", target: "_blank" do %>
-            <i class="fab fa-twitter"></i>
+            Twitter
           <% end %>
           <%= link_to "http://pinterest.com/pin/create/button/?url=#{insider_article_url(@insider_article)}&media=#{url_for(@insider_article.cover_photo)}&description=#{@insider_article.title}", target: "_blank" do %>
-            <i class="fab fa-pinterest-p"></i>
+            Pintrest
           <% end %>
           <%= mail_to 'contact@hoxton-digital.com', subject: @insider_article.title, body: insider_article_url(@insider_article) do %>
-            <i class="far fa-envelope"></i>
+            Email
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="insider-home-articles">
-  <div class="row" style="width: 100%; margin: 0">
-    <% @insider_articles.first(6).each do |article| %>
-      <div class="col-xs-12 col-sm-6 col-lg-4" style="padding: 0;">
-        <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
-          <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
-            <div class="insider-home-articles-card-text">
-              <h6><%= article.category %></h6>
-              <p class="neue-machina"><%= article.title %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
-<script>
-  let arrow = document.getElementById('arrow');
-  arrow.addEventListener('click',() => {
-    window.scroll({
-      top: window.innerHeight - 100,
-      behavior: 'smooth'
-    });
-  })
+
+<!-- <div class="share-articles-links d-flex d-md-none">
+  <p class="bold mb-0">Share:</p>
+  <%#= link_to "http://www.facebook.com/sharer/sharer.php?u=#{insider_article_url(@insider_article)}&t=#{@insider_article.title}", target: "_blank" do %>
+    Fb.
+  <%# end %>
+  <%#= link_to "https://twitter.com/intent/tweet?text=#{@insider_article.title}&url=#{insider_article_url(@insider_article)}", target: "_blank" do %>
+    Twt.
+  <%# end %>
+  <%#= link_to "http://pinterest.com/pin/create/button/?url=#{insider_article_url(@insider_article)}&media=#{url_for(@insider_article.cover_photo)}&description=#{@insider_article.title}", target: "_blank" do %>
+    Pint.
+  <%# end %>
+  <%#= mail_to 'contact@hoxton-digital.com', subject: @insider_article.title, body: insider_article_url(@insider_article) do %>
+    Email
+  <%# end %>
+</div> -->
+
+<!-- <script>
   function set_articles() {
     if (window.innerWidth < 767.98) {
       document.getElementById('article-banner').style.backgroundImage = `url('${document.getElementById('article-banner').dataset.mob}')`
@@ -111,4 +109,4 @@
   }
   set_articles()
   window.onresize = set_articles;
-</script>
+</script> -->

@@ -28,6 +28,12 @@
   }
 }
 
+.article-show-first-banner {
+  @include for-small-devices-down {
+    margin: 0;
+  }
+}
+
 // CSS FOR INSIDER ARTICLES CURRENTLY IN PAGES
 
 .insider-show-banner {
@@ -50,8 +56,7 @@
 }
 .selected-article {
   width: 50%;
-  margin: 40px auto;
-  padding-bottom: 10vh;
+  margin: 40px auto 0;
 
   @include for-medium-devices-down {
     width: 70%;
@@ -73,18 +78,22 @@
 
 .insider-show-article-wrapper {
   position: relative;
+  letter-spacing: 1px;
+  font-weight: 200;
+  strong {
+    font-weight: 700;
+  }
 }
 
 .share-articles-links {
   position: absolute;
   top: 0;
-  left: 3%;
-  h6 {
-    font-weight: 900;
-  }
+  left: 0;
+  display: flex;
+  flex-direction: column;
   @include for-small-devices-down {
     position: relative;
-    left: 0;
+    margin-top: 48px;
   }
 }
 

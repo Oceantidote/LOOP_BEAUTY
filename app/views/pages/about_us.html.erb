@@ -1,47 +1,128 @@
 <div class="about-us-wrapper">
-  <div class="about-us-top-cont">
-    <div class="about-us-title">
-      <h1 class="boldest">ABOUT LOOP BEAUTY</h1>
-    </div>
-    <div class="about-us-top" style="background-image: url('<%= asset_path('about_us_top.png') %>')">
-    </div>
-  </div>
-  <div class="about-us-cont no-padt-mdown">
-    <%= image_tag 'about-us-group.png', class: 'about-us-img', alt: 'Loop Beauty influencers together' %>
-    <div class="about-us-text">
-      <h1 class="boldest">What's Loop Beauty?</h1>
-      <h6 class="neue-machina lh">We make cosmetic selection for women of colour aspirational, accessible and more effective.</h6>
-      <h6 class="neue-machina lh">Our team partners with a network of the best-inclass influencers to sort through the 1000s of beauty products and brands on the market to bring you all the best products in "one-stop shops" along with tutorials, editorial and recommendations straight from our expert network of influencers to help you get the perfect product.</h6>
-    </div>
-  </div>
-  <div class="about-us-cont rev">
-    <%= image_tag 'lipstick.png', class: 'about-us-img', alt: "Lipstick for women of color" %>
-    <div class="about-us-text">
-      <h1 class="boldest">Our History</h1>
-      <h6 class="neue-machina lh">Everyone knows it's no secret that women of colour get the short end of the stick in the world of beauty. Ariel, our founder, saw upclose the beauty industry's challenge meeting the needs of women of colour. Filtering between beauty brands, tracking beauty experts and trends to determine the best product can be an uphill battle.</h6>
-      <!-- <div class="our-history-image"> -->
-
-      <!-- </div> -->
-      <h6 class="neue-machina lh">Although brands are now embracing inclusivity and shifting their marketing and products to suit the needs of women of colour, it's still challenging to understand and find the best for us.</h6>
-    </div>
-  </div>
-  <div class="about-us-cont">
-    <%= image_tag 'ariel-about-us.png', class: 'about-us-img', alt: 'Ariel Okubanjo our founder' %>
-    <div class="about-us-text">
-      <h1 class="boldest">Ariel Okubanjo <br>Founder & CEO</h1>
-      <h6 class="neue-machina lh">Launched in 2020 by Ariel Okubanjo, a beauty executive with 10 years experience working in the industry,  Ariel wanted a place made especially for women of colour to introduce them to incredible beauty brands. A place where people could discover incredible beauty experts, and find suggestions from a trusted friend - not from an anonymous, crowd-sourced recommendation engine.</h6>
-    </div>
-  </div>
-
- <!--  <div class="loop-beauty-banner">
-    <%#= image_tag 'loop-beauty-logo.png', class: 'about-us-loop-logo', alt: "Loop beauty logo" %>
-    <h4>Making cosmetic selection easier for women of colour</h4>
-    <div class="loop-beauty-founder-container">
-      <div class="loop-beauty-founder-text">
-        <h6 class="neue-machina lh">Launched in 2018 by Ariel Roberts, a beauty executive with 10 years experience working in the industry, Ariel wanted a place made especially for women of colour to introduce them to incredible beauty brands, a place where people could discover incredible beauty experts, and find suggestions from a trusted friend - not from an anonymous, crowd-sourced recommendation engine.</h6>
+  <div class="content-padding position-relative">
+    <div class="content-container">
+      <div class="row m-0">
+        <div class="col-12 col-md-6">
+          <div class="about-us-text mt-0 mt-mb-5">
+            <%= image_tag 'the-net.png', width: 200, class: 'mb-5' %>
+            <p class="ls-sm lighter mb-5 top-text">For buyers like me, finding a beauty product can be a frustrating experience. Too often brands put people who look like me low on their priority list. Shades are rarely “in stock”. Beauty advisors are ill equipped to advise. Filtering between brands, tracking beauty experts and trends to determine the best product is an uphill battle. I created The Net to integrate discovery and shopping into a solution that makes finding the perfect product simple. The Net is more than an e-tailer, we are your beauty bible, your beauty internet and your source of unrivalled beauty insider tips.  We scout out the most exciting brands so that you don’t have to.</p>
+            <div class="signature d-flex justify-content-end">
+              <%= image_tag 'signature.png' %>
+              <div class="founder d-flex flex-column">
+                <p class="m-0 small-text">Ariel Okunbanjo</p>
+                <small>Founder</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 d-none d-md-block">
+          <div class="about-us-image-container">
+            <div class="oval-button">
+              <div class="button-text">
+                <p class="mb-0 bt-5 ls-sm">Strength</p>
+              </div>
+              <%= image_tag 'oval-button.svg' %>
+            </div>
+            <%= image_tag 'double-loop-arrow.png', class: 'double-loop-arrow' %>
+            <%= image_tag 'about-us-image.png', class: 'w-100' %>
+            <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark' %>
+          </div>
+        </div>
       </div>
-      <%= image_tag 'ariel-about-us.png', class: 'about-us-ariel', alt: 'Ariel Okubanjo our founder' %>
     </div>
-  </div> -->
+    <%= image_tag 'asterisk.png', class: 'asterisk' %>
+  </div>
 
+  <div class="content-padding position-relative">
+    <div class="content-container">
+      <div class="row m-0">
+        <div class="col-12">
+          <div class="about-us-image-wide-container">
+            <%= image_tag 'about-us-image-two.png', class: 'w-100' %>
+            <%= image_tag 'asterisk.png', class: 'asterisk' %>
+            <%= image_tag 'single-loop-arrow.png', class: 'single-loop-arrow' %>
+            <div class="oval-button">
+              <div class="button-text">
+                <p class="mb-0 bt-5 ls-sm">Digital</p>
+              </div>
+              <%= image_tag 'oval-button.svg' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-padding position-relative">
+    <div class="content-container">
+      <div class="row m-0 flex-column-reverse flex-md-row">
+        <div class="col-12 col-md-6">
+          <div class="about-us-text mt-5">
+            <p class="ls-sm lighter mb-5 top-text">It’s no secret that women of colour too often get the short end of the stick in the world of beauty. What brands can you trust? What Beauty Advisor can give you the advice you are really looking for? Filtering between the 1000s of brands, tracking beauty experts and trends to determine the best product can be an uphill battle.</p>
+            <p class="ls-sm lighter mb-5 top-text">Our team partners with a Net-work of the best-in class content creators to sort through the noise in the market to bring you all the best products along with expert tutorials and advice to help you find the perfect product.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="about-us-community my-5 m-md-0">
+            <h1>COMMUNITY</h1>
+            <div class="oval-button">
+              <div class="button-text">
+                <p class="mb-0 bt-5 ls-sm">Beauty</p>
+              </div>
+              <%= image_tag 'oval-button.svg' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-padding position-relative">
+    <div class="content-container">
+      <div class="row m-0 justify-content-center">
+        <div class="col-12 col-md-9">
+          <div class="about-us-brands-container">
+            <%= image_tag 'about-us-brand-image.png', class: 'w-100 mb-5' %>
+            <p class="ls-sm lighter mb-5 top-text text-right">The NET is focused on offering you the best-in-class beauty, skincare and haircare products from Black and Brown brands. Our network of brands and experts create the ultimate Net worth for diverse brands and customers.</p>
+            <p class="ls-sm lighter mb-5 top-text text-right">While our community is our priority, we also include non-Black and Brown brands who make a demonstrated commitment to both expert products for us and furthering the conversation on inclusion in beauty. We want to ensure The Net is your one stop online store regardless of the brands you shop.</p>
+            <%= image_tag 'asterisk.png', class: 'asterisk' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="content-padding position-relative">
+    <div class="content-container">
+      <div class="row m-0">
+        <div class="col-12">
+          <div class="about-us-last-container">
+            <h1 class="sideways-title">BRANDS</h1>
+            <div class="oval-button mb-4">
+                <div class="button-text">
+                  <p class="mb-0 bt-5 ls-sm">DISCIPLINE</p>
+                </div>
+                <%= image_tag 'oval-button.svg' %>
+              </div>
+              <div class="oval-button mb-4">
+                <div class="button-text">
+                  <p class="mb-0 bt-5 ls-sm">HISTORY</p>
+                </div>
+                <%= image_tag 'oval-button.svg' %>
+              </div>
+              <div class="oval-button mb-5">
+                <div class="button-text">
+                  <p class="mb-0 bt-5 ls-sm">PASSION</p>
+                </div>
+                <%= image_tag 'oval-button.svg' %>
+              </div>
+            <div class="about-us-image-wide-container">
+              <%= image_tag 'about-us-last-image.png', class: 'w-100' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

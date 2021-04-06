@@ -1,11 +1,19 @@
 .oval-button {
-  border: 1px solid;
-  height: 72px;
   width: 244px;
-  border-radius: 122px / 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  .button-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 100%;
+  }
 }
 
 .product-oval {
