@@ -1,34 +1,65 @@
-<div class="container">
-  <div class="contact-us-container">
-    <h1 class="text-center static-title margin-bottom">Contact Us</h1>
-    <p class="neue-machina">Our Customer Care & Beauty Advice Team are here to help if you need assistance. Just drop us a note.</p>
+<div class="contact-us-container">
+  <div class="row m-0">
+    <div class="col-12 col-md-6 col-lg-5">
+      <div class="contact-us-form-container">
+        <h1 class="contact-us-title mb-5 pt-5 w-100 large-text">contact us</h1>
 
-    <!-- CODE FOR STYLING.. MAILER IS NOT SET UP!!! -->
+        <!-- CODE FOR STYLING.. MAILER IS NOT SET UP!!! -->
 
-    <%= simple_form_for :send_email, url: contact_us_path, method: :get do |f| %>
-      <div class="contact-form-name">
-        <div class="row">
-          <div class="col-sm-6">
-            <%= f.input :first_name, label: false, placeholder:'First Name', input_html: { class: "contact-form-input" } %>
+        <%= simple_form_for :send_email, url: contact_us_path, method: :get do |f| %>
+          <div class="contact-form-name">
+            <div class="row">
+              <div class="col-sm-12">
+                <%= f.input :first_name, label: false, placeholder:'first name', input_html: { class: "contact-form-input" } %>
+              </div>
+              <div class="col-sm-12">
+                <%= f.input :last_name, label: false, placeholder:'last name', input_html: { class: "contact-form-input" } %>
+              </div>
+              <div class="col-12">
+                <%= f.input :phone_number, label: false, placeholder:'phone number', input_html: { class: "contact-form-input" } %>
+              </div>
+            </div>
+            <div class="col-12 p-0">
+              <%= f.input :subject, label: false, placeholder:'email address', input_html: { class: "contact-form-input" } %>
+            </div>
+            <div class="col-12 p-0">
+              <%= f.input :message, as: :text, label: false, placeholder:'how can we help?', input_html: { class: "contact-form-input" } %>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <%= f.input :last_name, label: false, placeholder:'Last Name', input_html: { class: "contact-form-input" } %>
-          </div>
-          <div class="col-12">
-            <%= f.input :phone_number, label: false, placeholder:'Phone Number', input_html: { class: "contact-form-input" } %>
-          </div>
-        </div>
-        <div class="col-12 p-0">
-          <%= f.input :subject, label: false, placeholder:'email', input_html: { class: "contact-form-input" } %>
-        </div>
-        <div class="col-12 p-0">
-          <%= f.input :message, as: :text, label: false, placeholder:'type your message here', input_html: { class: "contact-form-input" } %>
-        </div>
+          <%= f.submit 'submit', class: "primary-button w-100 ls-xs mt-5" %>
+        <% end %>
+        <div class="py-5"></div>
+
+        <!-- CODE FOR STYLING.. MAILER IS NOT SET UP!!! -->
+
       </div>
-      <%= f.submit 'SUBMIT', class: "contact-form-button contact-us-button" %>
-    <% end %>
-
-    <!-- CODE FOR STYLING.. MAILER IS NOT SET UP!!! -->
-
+    </div>
+    <div class="col-12 col-md-6 col-lg-7 p-0">
+      <div class="contact-us-right position-relative">
+        <div class="row m-0 justify-content-center">
+          <div class="col-10 col-md-8">
+            <div class="contact-us-image-container">
+              <div class="contact-us-image position-relative mb-4">
+                <%= image_tag 'pop_out_image.png', class: 'w-100' %>
+                <div class="oval-button">
+                  <div class="button-text">
+                    <p class="mb-0 bt-5 ls-sm">Play</p>
+                  </div>
+                  <%= image_tag 'oval-button.svg' %>
+                </div>
+                <%= image_tag 'asterisk.png', class: 'asterisk' %>
+              </div>
+              <p class="ls-xs"><strong>Write to us:</strong></p>
+              <p class="lighter ls-xs mb-5">hello@thenet.com</p>
+              <p class="lighter ls-xs">Returns & Exchange Policy <%= link_to 'here', returns_policy_path, class: 'dotted-underline-button px-0' %></p>
+              <p class="lighter ls-xs"><%= link_to 'Shipping Information', shipping_path, class: 'no-decoration' %></p>
+              <p class="lighter ls-xs"><%= link_to 'Sale Terms', sale_terms_path, class: 'no-decoration' %></p>
+            </div>
+          </div>
+        </div>
+        <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark' %>
+      </div>
+    </div>
   </div>
 </div>
+

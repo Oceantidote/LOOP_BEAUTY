@@ -1,28 +1,59 @@
-.contact-form-input {
-  -webkit-appearance: none;
-  -moz-appearance:    none;
-  appearance:         none;
-  border: 1px solid #F0F0F0;
-  background: #FCFCFC;
-  font-family: 'Mukta Mahee', sans-serif;
+.contact-us-right {
+  background: $background-light;
+  height: 100%;
+  padding: 80px 0;
 }
 
-.contact-form-input::placeholder {
-  color: #BCBCBC;
-  font-size: 14px;
+.contact-us-title {
+  font-size: 44px;
 }
 
-.contact-us-container {
-  width: 500px;
-  margin: 50px auto 0 auto;
+.contact-us-form-container {
+  height: calc(100vh - 96px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  @include for-medium-devices-down {
+    height: unset;
+  }
   @include for-phone-only {
-    width: 100%;
-    padding: 10px;
-    margin: 20px auto 0 auto;
+    padding: 0 24px;
   }
 }
 
-.contact-us-button {
-  display: block;
-  margin: auto;
+.contact-form-input {
+  width: 100% !important;
+  background-color: $background;
+  border: none;
+  border-bottom: 1px solid #000000;
+  border-radius: 0;
+  box-shadow: none;
+  letter-spacing: 1px;
+  padding-left: 0;
+  &:focus {
+    background-color: $background;
+    box-shadow: none;
+  }
+}
+
+.contact-form-input::placeholder {
+  color: $text !important;
+}
+
+.contact-us-image {
+  .asterisk {
+    left: unset;
+    right: -24px;
+    top: unset;
+    bottom: 16%;
+  }
+  .oval-button {
+    position: absolute;
+    top: -14px;
+    left: -62px;
+    transform: rotate(-45deg);
+    width: 144px;
+  }
 }
