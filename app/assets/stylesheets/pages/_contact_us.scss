@@ -24,6 +24,9 @@
 }
 
 .contact-form-input {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
   width: 100% !important;
   background-color: $background;
   border: none;

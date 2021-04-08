@@ -1,49 +1,45 @@
-<div class="sessions-new-wrapper">
-  <h1>Login or create an account</h1>
-  <div class="container sessions-new-container">
-    <div class="create-account-container">
-      <h3>New Customer</h3>
-      <h5>By creating an account with our store, you will be able to:</h5>
-      <ul>
-        <li>Store delivery addresses</li>
-        <li>Checkout quicker</li>
-        <li>View and track orders</li>
-        <li>Create your wish list</li>
-        <li>Access exclusive promotions</li>
-      </ul>
-      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "CREATE ACCOUNT", new_registration_path(resource_name), class: "primary-button" %>
-      <% end %>
-      <%#= link_to 'CREATE ACCOUNT', new_registration_path, class: "primary-button" %>
-    </div>
+<div class="sessions-new-container position-relative">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'h-100' }) do |f| %>
     <div class="log-in-container">
-      <h3>Registered Customers</h3>
-      <h5>If you have an account with us, please log in.</h5>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h1 class="text-center mb-3 mb-sm-5 devise-title">login</h1>
         <div class="form-inputs">
           <%= f.input :email,
                       required: false,
                       autofocus: true,
                       label: false,
-                      placeholder: "Email address",
-                      input_html: { autocomplete: "email" } %>
+                      placeholder: "email address",
+                      input_html: { autocomplete: "email", class: 'contact-form-input mb-3 mb-sm-5' } %>
           <%= f.input :password,
                       required: false,
-                      placeholder: "Password",
+                      placeholder: "password",
                       label: false,
-                      input_html: { autocomplete: "current-password" } %>
-
-        </div>
-        <div class="sessions-new-options">
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-          <% end %>
+                      input_html: { autocomplete: "current-password", class: 'contact-form-input mb-3 mb-sm-5' } %>
+          <div class="d-block d-md-flex justify-content-between mb-4">
+            <div class="remember-me-container">
+              <%= f.input :remember_me, as: :boolean, label: 'remember me', class: 'lighter ls-xs'  if devise_mapping.rememberable? %>
+            </div>
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "forgot password?", new_password_path(resource_name), class: 'lighter ls-xs' %>
+            <% end %>
+          </div>
+          <%= f.button :submit, "submit", class: "primary-button w-100" %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "LOG IN", class: "primary-button" %>
+          <div class="d-flex justify-content-center">
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "create account", new_registration_path(resource_name), class: 'lighter ls-xs' %>
+            <% end %>
+          </div>
         </div>
-      <% end %>
     </div>
-  </div>
+  <% end %>
+  <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark d-none d-sm-block' %>
 </div>
+
+<script>
+  const container = document.querySelector('.sessions-new-container');
+  if (window.innerWidth < 768) {
+    container.style.minHeight = `calc(${window.innerHeight - 96}px)`
+    container.style.height = `calc(${window.innerHeight - 96}px)`
+  }
+</script>

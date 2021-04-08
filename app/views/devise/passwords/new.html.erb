@@ -1,21 +1,33 @@
-<div class="forgotten-password-wrapper">
-  <h1>Forgotten password</h1>
-  <div class="forgotten-password-container">
-    <h3>Forgot your password?</h3>
-    <h5>Please enter your email address below. You will receive a link to reset your password.</h5>
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= f.error_notification %>
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: true,
-                    label: false,
-                    placeholder: "Email address",
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "CONTINUE", class: "primary-button" %>
-      </div>
-    <% end %>
+<div class="sessions-new-container position-relative">
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'h-100' }) do |f| %>
+        <div class="log-in-container">
+          <h1 class="text-center mb-3 mb-sm-5 devise-title">forgot password?</h1>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        label: false,
+                        placeholder: "email address",
+                        autofocus: true,
+                        input_html: { autocomplete: "email", class: 'contact-form-input mb-3 mb-sm-5' } %>
+            <%= f.button :submit, "submit", class: "primary-button w-100" %>
+          </div>
+          <div class="form-actions">
+            <div class="d-flex justify-content-center">
+              <%= link_to 'back to login', new_user_session_path, class: "lighter ls-xs" %>
+            </div>
+          </div>
+      <% end %>
+    </div>
   </div>
+  <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark d-none d-sm-block' %>
 </div>
+
+<script>
+  const container = document.querySelector('.sessions-new-container');
+  console.log(container)
+  if (window.innerWidth < 768) {
+    container.style.minHeight = `calc(${window.innerHeight - 96}px)`
+    container.style.height = `calc(${window.innerHeight - 96}px)`
+  }
+</script>

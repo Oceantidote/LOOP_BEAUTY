@@ -1,160 +1,199 @@
-.registrations-new-wrapper {
-  background: #F5F5F5;
-  min-height: calc(100vh - 358px);
-  width: 100%;
-  @include absCenterColumn;
-  h1 {
-    font-weight: 900;
-    margin-bottom: 50px;
-    text-align: center;
+.user_password {
+  small {
+    margin-bottom: 24px;
+    font-size: 10px;
+    @include for-small-devices-down {
+      margin-bottom: 16px;
+    }
     @include for-phone-only {
-      padding: 0 20px;
-      margin-bottom: 20px;
-    }
-  }
-  padding: 80px 0;
-  @include for-small-devices-down {
-    padding: 20px 10px;
-  }
-  @include for-phone-only {
-    .primary-button {
-      margin: auto;
-      padding: 6px 30px;
+      margin-bottom: 0;
     }
   }
 }
 
-.sign-up-container {
-  background: white;
-  padding: 20px 10px 20px 40px;
-  flex: 1;
-  h3, h5 {
-    font-weight: 900;
-    margin-bottom: 30px;
-  }
-  @include for-medium-devices-down {
-    margin-bottom: 15px;
-  }
-  @include for-small-devices-down {
-    padding: 30px 10px 0 10px;
-
-  }
+.sign-up-dots {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  margin: 8px 4px;
 }
 
-.registrations-new-container {
-  display: flex;
-  @include for-medium-devices-down {
-    flex-direction: column;
-  }
+.filled {
+  background: #000000;
 }
 
-.sign-up-extras-container {
-  background: white;
-  padding: 20px 40px 20px 10px;
-  flex: 1;
+.sign-up-steps {
+  height: 100%;
+  width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  h6 {
-    font-weight: 900;
-    width: 80%;
-  }
-  input[type="submit"] {
-    font-size: 14px;
+  .form-group {
     @include for-phone-only {
-      font-size: 12px;
+      margin-bottom: 8px !important;
     }
   }
-  @include for-medium-devices-down {
-    margin-bottom: 15px;
-  }
-  @include for-small-devices-down {
-    padding: 0 10px;
-
-  }
-}
-
-.registrations-new-sub-wrapper {
-  background: white;
-  padding: 30px 0;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-  h3 {
-    font-weight: 900;
-  }
-}
-
-.dropdown-input {
-  -webkit-appearance: none;
-  -moz-appearance:    none;
-  appearance:         none;
-  min-width: 200px;
-  height: 35px;
-  background-image: asset_url('dropdown-down-small.png');
-  background-size: contain;
-  background-position: right;
-  background-repeat: no-repeat;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  border: 1px solid #F0F0F0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-  color: black;
-  &:focus {
-    background-color: $background;
-    box-shadow: none;
-  }
-}
-
-#user_origin {
   @include for-phone-only {
-    margin-top: 5px;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 24px;
   }
 }
 
-.mt-pp {
-  @include for-phone-only {
-    margin: 10px 0 0 0 !important;
-  }
-}
+// .registrations-new-wrapper {
+//   background: #F5F5F5;
+//   min-height: calc(100vh - 358px);
+//   width: 100%;
+//   @include absCenterColumn;
+//   h1 {
+//     font-weight: 900;
+//     margin-bottom: 50px;
+//     text-align: center;
+//     @include for-phone-only {
+//       padding: 0 20px;
+//       margin-bottom: 20px;
+//     }
+//   }
+//   padding: 80px 0;
+//   @include for-small-devices-down {
+//     padding: 20px 10px;
+//   }
+//   @include for-phone-only {
+//     .primary-button {
+//       margin: auto;
+//       padding: 6px 30px;
+//     }
+//   }
+// }
 
-.user_newsletter {
-  margin-bottom: 0;
-}
+// .sign-up-container {
+//   background: white;
+//   padding: 20px 10px 20px 40px;
+//   flex: 1;
+//   h3, h5 {
+//     font-weight: 900;
+//     margin-bottom: 30px;
+//   }
+//   @include for-medium-devices-down {
+//     margin-bottom: 15px;
+//   }
+//   @include for-small-devices-down {
+//     padding: 30px 10px 0 10px;
 
-small {
-  font-size: 10px !important;
-}
+//   }
+// }
+
+// .registrations-new-container {
+//   display: flex;
+//   @include for-medium-devices-down {
+//     flex-direction: column;
+//   }
+// }
+
+// .sign-up-extras-container {
+//   background: white;
+//   padding: 20px 40px 20px 10px;
+//   flex: 1;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   h6 {
+//     font-weight: 900;
+//     width: 80%;
+//   }
+//   input[type="submit"] {
+//     font-size: 14px;
+//     @include for-phone-only {
+//       font-size: 12px;
+//     }
+//   }
+//   @include for-medium-devices-down {
+//     margin-bottom: 15px;
+//   }
+//   @include for-small-devices-down {
+//     padding: 0 10px;
+
+//   }
+// }
+
+// .registrations-new-sub-wrapper {
+//   background: white;
+//   padding: 30px 0;
+//       border: 1px solid rgba(0, 0, 0, 0.1);
+//   h3 {
+//     font-weight: 900;
+//   }
+// }
+
+// .dropdown-input {
+//   -webkit-appearance: none;
+//   -moz-appearance:    none;
+//   appearance:         none;
+//   min-width: 200px;
+//   height: 35px;
+//   background-image: asset_url('dropdown-down-small.png');
+//   background-size: contain;
+//   background-position: right;
+//   background-repeat: no-repeat;
+//   box-shadow: 0 0 4px rgba(0,0,0,0.1);
+//   border: 1px solid #F0F0F0;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 0 15px;
+//   color: black;
+//   &:focus {
+//     background-color: $background;
+//     box-shadow: none;
+//   }
+// }
+
+// #user_origin {
+//   @include for-phone-only {
+//     margin-top: 5px;
+//   }
+// }
+
+// .mt-pp {
+//   @include for-phone-only {
+//     margin: 10px 0 0 0 !important;
+//   }
+// }
+
+// .user_newsletter {
+//   margin-bottom: 0;
+// }
 
 
-#date_of_birth[name="user[dob(3i)]"] {
-  width: 20% !important;
-  min-width: auto;
-}
+// #date_of_birth[name="user[dob(3i)]"] {
+//   width: 20% !important;
+//   min-width: auto;
+// }
 
-#date_of_birth[name="user[dob(2i)]"] {
-  width: 50% !important;
-  min-width: auto;
-}
+// #date_of_birth[name="user[dob(2i)]"] {
+//   width: 50% !important;
+//   min-width: auto;
+// }
 
-#date_of_birth[name="user[dob(1i)]"] {
-  width: 30% !important;
-  min-width: auto;
-}
+// #date_of_birth[name="user[dob(1i)]"] {
+//   width: 30% !important;
+//   min-width: auto;
+// }
 
-.text-muted {
-  font-family: 'Mukta Mahee', sans-serif;
-}
+// .text-muted {
+//   font-family: 'Mukta Mahee', sans-serif;
+// }
 
-.reg-new-checkbox-label {
-  font-weight: 900 !important;
-  width: 80% !important;
-  font-size: 14px !important;
-  // color: #676767 !important;
-  font-family: 'Mukta Mahee', sans-serif !important;
-}
+// .reg-new-checkbox-label {
+//   font-weight: 900 !important;
+//   width: 80% !important;
+//   font-size: 14px !important;
+//   // color: #676767 !important;
+//   font-family: 'Mukta Mahee', sans-serif !important;
+// }
 
-.grey-important {
-  color: #676767 !important;
-}
+// .grey-important {
+//   color: #676767 !important;
+// }
 
