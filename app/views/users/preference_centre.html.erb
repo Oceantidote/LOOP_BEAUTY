@@ -1,5 +1,8 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
+    <h4 class="mb-5">my profile</h4>
+  </div>
+  <div class="dashboard-container">
     <div class="dash-menu-container">
       <% if current_user.influencer %>
         <%= render 'shared/influencer_dash' %>
@@ -8,28 +11,26 @@
       <% end %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Preference Center</h2>
-      <hr>
-      <div class="preference-newsletter">
-        <h5 class="text-center boldest">Control how you want to hear from us and how we use your data</h5>
-        <p class="boldest kaftan">Email: Newsletter</p>
-        <p class="neue-machina">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
-        <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
-        <div class="d-flex">
-          <p class="small-margin-right kaftan boldest s-medium-text" style="margin: 2px 5px 0 0 !important;"><%= current_user.newsletter ? 'Click here to unsubscribe' : 'Click here to subscribe' %></p>
-          <%= f.input :newsletter, label: false, value: current_user.newsletter %>
-        </div>
-        <% end %>
-      </div>
-        <hr>
-        <div class="preference-terms">
-          <%= link_to terms_and_conditions_path, class: "underline-hover" do %>
-            <p class="boldest kaftan">View Terms & Conditions</p>
+      <p class="ls-xs mb-2">preference centre</p>
+      <div class="dash-content p-4">
+        <div class="preference-newsletter mb-5">
+          <h5 class="neue-machina ls-xs mb-5"><strong>Data Processing</strong></h5>
+          <p class="ls-xs mb-3">Email: Newsletter</p>
+          <p class="neue-machina lighter ml-4 mb-2">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
+          <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
+            <div class="remember-me-container ml-4">
+              <%= f.input :newsletter, label: "#{current_user.newsletter ? 'click here to unsubscribe' : 'click here to subscribe'}", value: current_user.newsletter %>
+            </div>
           <% end %>
-          <p class="neue-machina">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
         </div>
-        <hr>
-        <p class="neue-machina" style="padding: 20px; font-style: italic;">Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.</p>
+        <div class="preference-terms mb-5">
+          <%= link_to terms_and_conditions_path, class: "underline-hover" do %>
+            <p class="ls-xs">Terms & Conditions</p>
+          <% end %>
+          <p class="lighter ls-xs ml-4">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
+        </div>
+        <p class="neue-machina lighter">**Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.**</p>
+      </div>
     </div>
   </div>
 </div>

@@ -185,23 +185,23 @@
   <div class="navbar-basket-title">
     <div class="item-added">
       <i class="far fa-check-circle"></i>
-      <p class="kaftan">ITEM ADDED</p>
+      <p class="ls-xs">item added</p>
     </div>
     <div class="d-flex justify-content-between">
-      <h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
+      <h6 class="neue-machina s-medium-text ls-xs mb-0">my bag, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
 
     </div>
   </div>
-  <hr>
+  <hr class="mt-2">
   <div class="navbar-basket-items-container">
     <% if @basket.products.count == 0 %>
-      <p class="medium-margin text-center boldest kaftan">Your basket is empty</p>
+      <p class="medium-margin text-center ls-xs">your basket is empty</p>
     <% end %>
     <%= render 'shared/navbar_basket_product_card', item: @item %>
   </div>
   <div class="subtotal-container">
-    <p class="s-medium-text kaftan boldest">Subtotal:</p>
-    <p class="s-medium-text basket-total-price kaftan boldest"><%= humanized_money_with_symbol @basket.total_price %></p>
+    <p class="s-medium-text ls-xs">subtotal:</p>
+    <p class="s-medium-text basket-total-price ls-xs"><%= humanized_money_with_symbol @basket.total_price %></p>
   </div>
   <%= link_to 'VIEW BAG & CHECKOUT', bag_path, class: "primary-button mb-0 navbar-basket-button" %>
 </div>
@@ -327,7 +327,7 @@
   // basketIcon.addEventListener('mouseover', function() {
   //   // navBasketDrop.classList.add('navbar-hover-container-top')
   //   if (window.scrollY > 40) {
-  //     navBasketDrop.style.top = '60px'
+  //     navBasketDrop.style.top = '96px'
   //   } else {
   //     navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
   //   }
@@ -339,7 +339,7 @@
   // navBasketDrop.addEventListener('mouseover', function() {
   //   // navBasketDrop.classList.add('navbar-hover-container-top')
   //   if (window.scrollY > 40) {
-  //     navBasketDrop.style.top = '60px'
+  //     navBasketDrop.style.top = '96px'
   //   } else {
   //     navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
   //   }
@@ -355,14 +355,14 @@
 
   basketIcon.addEventListener('mouseover', function() {
     if (window.scrollY > 40) {
-      navBasketDrop.style.top = '60px'
+      navBasketDrop.style.top = '96px'
     } else {
       navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
     }
     setTimeout(function() {
       navBasketDrop.addEventListener('mouseover', function() {
         if (window.scrollY > 40) {
-          navBasketDrop.style.top = '60px'
+          navBasketDrop.style.top = '96px'
         } else {
           navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
         }

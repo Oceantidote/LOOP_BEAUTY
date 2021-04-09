@@ -5,19 +5,19 @@
         <div class="basket-items-card-image">
           <% if item.shade.number_in_stock == 0 %>
             <div class="out-of-stock-overlay">
-              <p class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</p>
+              <p class="boldest text-center out-of-stock-overlay-message ls-xs">OUT OF STOCK</p>
             </div>
           <% end %>
           <%= image_tag url_for(item.shade.card_photo), alt: "product shade photo" %>
         </div>
         <div class="basket-items-card-info">
           <div class="basket-items-card-info-top">
-            <p class="no-margin boldest small-text kaftan"><%= item.product.title %></p>
-            <p class="no-margin small-text kaftan"><%= item.shade.name %></p>
+            <p class="no-margin small-text ls-xs"><%= item.product.title %></p>
+            <p class="no-margin boldest small-text ls-xs"><%= item.shade.name %></p>
           </div>
           <div class="basket-items-card-info-bottom">
-            <p class="no-margin kaftan small-text item-<%= item.id %>-quantity">Quantity: <%= item.quantity %></p>
-            <p class="no-margin kaftan small-text"><%= humanized_money_with_symbol(item.product.price) %></p>
+            <p class="no-margin small-text ls-xs item-<%= item.id %>-quantity">Quantity: <%= item.quantity %></p>
+            <p class="no-margin small-text ls-xs"><%= humanized_money_with_symbol(item.product.price) %></p>
           </div>
         </div>
       </div>

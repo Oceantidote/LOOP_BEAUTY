@@ -1,26 +1,26 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
+    <h4 class="mb-5">my profile</h4>
+  </div>
+  <div class="dashboard-container">
     <div class="dash-menu-container">
       <%= render 'shared/dash' %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Share Loop Beauty</h2>
-      <hr>
-      <div class="refer-friend-container">
-        <div class="refer-friend-section">
-          <p class="boldest grey-font text-center">Refer a friend and get 15% off when they shop!</p>
-          <p class="boldest grey-font text-center">your friend will get 15% off too.</p>
-        </div>
-        <div class="referral-code-section">
-          <p class="boldest no-margin">Share your personalised referral code:</p> <p class=" grey-font boldest" style="margin: 0 0 0 10px; font-size: 20px; letter-spacing: 1px;"><%= current_user.referral_code %></p>
-        </div>
-        <div class="refer-share-section">
-<!--           <h6 class="boldest"><i class="far fa-comment-dots"></i> Share Loop Beauty by Text</h6>
-          <h6 class="boldest"><i class="fab fa-whatsapp"></i> Share Loop Beauty by Whatsapp</h6>
-          <h6 class="boldest"><i class="far fa-envelope"></i> Share Loop Beauty by Email</h6> -->
+      <p class="ls-xs mb-2">refer a friend</p>
+      <div class="dash-content">
+        <div class="refer-friend-container h-100 p-5">
+          <div class="">
+            <p class="text-center lighter ls-xs">Refer a friend and get 15% off when they shop!</p>
+            <p class="text-center lighter ls-xs m-0">your friend will get 15% off too.</p>
+          </div>
+          <div class="referral-code-section">
+            <p class="lighter mb-4 ls-xs">Share your personalised referral code:</p>
+            <p class="ls-xs m-0"><strong><%= current_user.referral_code %></strong></p>
+          </div>
+          <p class="lighter ls-xs">*Offer valid for up to 5 referrals per person</p>
         </div>
       </div>
-      <p class="boldest grey-font" style="padding-left: 15px;">*Offer valid for up to 5 referrals per person</p>
     </div>
   </div>
 </div>

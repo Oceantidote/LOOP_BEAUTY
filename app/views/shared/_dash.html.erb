@@ -1,29 +1,15 @@
 <div class="dash-links">
-  <h2 class="insider-info-title mlb-title text-center dash-mobile-title">My Loop Beauty</h2>
-  <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
-  <div class="each-dash-link-title">ORDERS</div>
-  <%= link_to user_my_orders_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image", alt: "dash basket icon" %>My Orders
-  <% end %>
-  <%= link_to user_my_products_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-image", alt: "dash lipstick icon" %>My Products
-  <% end %>
-  <%= link_to user_refer_a_friend_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "dash-refer.png", class: "dash-links-image", alt: "dash refer icon" %>Refer a Friend
-  <% end %>
-  <%= link_to user_wishlist_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "dash-wish.png", class: "dash-links-image", alt: "dash wishlist icon" %>Wishlist
-  <% end %>
-  <div class="each-dash-link-title">ACCOUNT SETTINGS</div>
-  <%= link_to user_account_details_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "default-user.png", class: "dash-links-image", alt: "dash user icon" %>Account Details
-  <% end %>
-  <%= link_to user_preference_centre_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "dash-preferences.png", class: "dash-links-image", alt: "dash preferences icon" %>Preference Centre
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dash sign out icon" %>Sign Out
-  <% end %>
+  <div class="d-flex flex-column">
+    <h6 class="neue-machina mb-3 ls-xs">orders</h6>
+    <%= link_to 'my orders', user_my_orders_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'my_orders'}" %>
+    <%= link_to 'my products', user_my_products_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'my_products'}" %>
+    <%= link_to 'refer a friend', user_refer_a_friend_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'refer_a_friend'}" %>
+    <%= link_to 'wishlist', user_wishlist_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'wishlist'}" %>
+    <h6 class="neue-machina mt-4 mb-3 ls-xs">account settings</h6>
+    <%= link_to 'account details', user_account_details_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'account_details'}" %>
+    <%= link_to 'preference centre', user_preference_centre_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'preference_centre'}" %>
+  </div>
+  <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: "no-decoration mb-3 ls-xs px-0 dash-option dash-option-active" %>
 </div>
 
 <div class="dash-links-mobile">

@@ -1,28 +1,22 @@
 .account-details-tabs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-  font-family: 'Mukta Mahee', sans-serif;
-  p {
-    padding: 5px 30px;
-    margin: 0;
-    cursor: pointer;
-    @include for-phone-only {
-      padding: 5px 10px;
-    }
-  }
+  width: 250px;
+  border-right: 1px solid #DDCCB5;
 }
 
 .all-tabs {
-  @include for-phone-only {
-    text-align: center;
-  }
+  cursor: pointer;
+}
+
+.acc-arrow {
+  opacity: 0;
+}
+
+.acc-arrow-show {
+  opacity: 1 !important;
 }
 
 .account-active-tab {
   color: black !important;
-  text-decoration: underline !important;
 }
 //
 .account-content-one, .account-content-three, .account-content-two-add-address {

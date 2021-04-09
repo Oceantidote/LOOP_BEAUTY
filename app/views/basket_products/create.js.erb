@@ -1,7 +1,7 @@
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-total-price').innerText = '<%= humanized_money_with_symbol @basket.subtotal %>'
-document.querySelector('.navbar-basket-title h6').innerHTML = '<span class="boldest">My Bag</span>, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %>'
+document.querySelector('.navbar-basket-title h6').innerHTML = 'my bag, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %>'
 // document.querySelector('.navbar-basket-title').innerHTML = '<div class="item-added"><p><i class="far fa-check-circle"></i> Item added to bag!</p></div><h6 class="s-medium-text"><span class="boldest">My Bag</span>, <%= @basket.products.size %> <%= 'item'.pluralize(@basket.products.size) %></h6>'
 // document.querySelector('item-added').innerHTML = ''
 container = document.querySelector('.navbar-basket-items-container')
@@ -13,7 +13,7 @@ container.innerHTML = "<%= j render 'shared/navbar_basket_product_card', item: @
 
 navBasketDrop = document.querySelector('.navbar-hover-container');
 if (window.scrollY > 40) {
-  navBasketDrop.style.top = '60px'
+  navBasketDrop.style.top = '96px'
 } else {
   navBasketDrop.style.top = `calc(100px - ${window.scrollY}px)`
 }

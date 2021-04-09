@@ -12,9 +12,11 @@
 }
 
 .referral-code-section {
-  padding: 40px 100px;
+  width: 96%;
+  padding: 40px 0;
   border: 1px dashed black;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   @include for-medium-devices-down {

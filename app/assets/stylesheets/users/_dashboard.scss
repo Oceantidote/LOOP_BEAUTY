@@ -1,6 +1,6 @@
 .dashboard-wrapper {
-  background: #F5F5F5;
-  min-height: calc(100vh - 358px);
+  background: $background;
+  min-height: calc(100vh - 96px);
   padding: 50px;
   @include for-medium-devices-down {
     padding: 50px 10px;
@@ -35,9 +35,22 @@
   }
 }
 
+.dash-option {
+  width: max-content;
+  padding: 4px 0;
+  letter-spacing: 1px;
+  border-bottom: 1px dashed transparent;
+}
+
+.dash-option-active {
+  border-bottom: 1px dashed #000000;
+}
+
 .dash-links {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 519px;
   @include for-small-devices-down {
     display: none;
   }
@@ -55,28 +68,6 @@
   }
 }
 
-.each-dash-link {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  width: 100%;
-  padding: 10px 30px;
-  color: black;
-  font-weight: 900;
-  background: #FBFBFB;
-  position: relative;
-  display: flex;
-  align-items: center;
-  font-family: 'Kaftan', sans-serif;
-  &:hover {
-    text-decoration: none;
-    color: black;
-    background: #F1F1F1;
-  }
-  @include for-medium-devices-down {
-    padding: 10px;
-    font-size: 12px;
-  }
-}
-
 .dash-links-image {
   width: 25px;
   margin-right: 20px;
@@ -85,12 +76,9 @@
 .dash-menu-container {
   width: 250px;
   height: max-content;
-  border: 1px solid rgba(0,0,0,0.2);
   border-bottom: none;
-  background: white;
-  margin: 50px 10px 50px 0;
   position: sticky;
-  top: 70px;
+  top: 96px;
   @include for-medium-devices-down {
     width: 200px;
   }
@@ -112,29 +100,17 @@
   padding: 0 20px 30px 20px;
 }
 
-.each-dash-link-title {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  width: 100%;
-  padding: 10px 30px;
-  color: black;
-  font-weight: 900;
-  background: white;
-  text-align: center;
-  font-size: 18px;
-  font-family: 'Kaftan', sans-serif;
-  @include for-medium-devices-down {
-    font-size: 14px;
-    padding: 10px;
-  }
-}
-
 .dash-content-container {
   position: relative;
   flex: 1;
   height: 100%;
-  border: 1px solid rgba(0,0,0,0.2);
-  background: white;
-  margin: 50px 0;
+
+}
+
+.dash-content {
+  background: $background-light;
+  height: 500px;
+  overflow: scroll;
   @include for-small-devices-down {
     margin: 10px;
   }
