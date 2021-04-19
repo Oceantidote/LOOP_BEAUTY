@@ -7,7 +7,14 @@
       <div class="d-block d-md-none">
         <h1 class="mb-4 featured-article-title"><%= @featured_article.title %></h1>
         <h5 class="mb-0 neue-machina ls-sm lh-md mb-3"><%= @featured_article_tag %></h5>
-        <%= link_to 'Read More', insider_article_path(@featured_article), class: 'oval-button ls-sm no-decoration mb-4' %>
+        <%= link_to insider_article_path(@featured_article) do %>
+          <div class="oval-button mb-4">
+            <div class="button-text">
+              <p class="mb-0 bt-5 ls-sm">Read More</p>
+            </div>
+            <%= image_tag 'oval-button.svg' %>
+          </div>
+        <% end %>
         <%= image_tag url_for(@featured_article.cover_photo), class: 'w-100' %>
       </div>
       <div class="d-none d-md-block">
@@ -15,7 +22,14 @@
           <div class="homepage-banner-text">
             <h1 class="text-white mb-4"><%= @featured_article.title %></h1>
             <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4"><%= @featured_article_tag %></h5>
-            <%= link_to 'Read More', insider_article_path(@featured_article), class: 'oval-button ls-sm text-white border-white no-decoration' %>
+            <%= link_to insider_article_path(@featured_article) do %>
+              <div class="oval-button">
+                <div class="button-text">
+                  <p class="mb-0 bt-5 ls-sm text-white">Read More</p>
+                </div>
+                <%= image_tag 'oval-button-white.svg' %>
+              </div>
+            <% end %>
             <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark' %>
           </div>
         </div>
@@ -24,7 +38,7 @@
   </div>
 <% end %>
 
-<div class="content-padding articles-padding-mobile position-relative">
+<div class="content-padding articles-padding-mobile position-relative last-content-padding">
   <div class="content-container">
     <div class="row m-0 justify-content-center">
       <div class="insider-home-tabs-container mb-3">

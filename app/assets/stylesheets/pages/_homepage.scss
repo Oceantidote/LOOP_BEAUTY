@@ -12,6 +12,13 @@
   }
 }
 
+.last-content-padding {
+  padding-bottom: 100px !important;
+  @include for-phone-only {
+    padding-bottom: 40px !important;
+  }
+}
+
 .pop-out-no-padding-mobile {
   @include for-small-devices-down {
     padding: 0;

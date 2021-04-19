@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="products-index-container">
+  <div class="products-index-container last-content-padding">
     <div class="partial-filters-two">
       <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
         <div class="partial-filters-container">

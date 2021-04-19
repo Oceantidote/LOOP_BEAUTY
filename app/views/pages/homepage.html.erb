@@ -4,7 +4,14 @@
     <div class="d-block d-md-none">
       <h1 class="mb-4 main-home-title">inspire</h1>
       <h5 class="mb-0 neue-machina ls-sm lh-md mb-3">The revolutionary beauty marketplace that is changing women of colour.</h5>
-      <%= link_to 'View Products', products_path, class: 'oval-button ls-sm no-decoration mb-4' %>
+      <%= link_to products_path do %>
+        <div class="oval-button mb-4">
+          <div class="button-text">
+            <p class="mb-0 bt-5 ls-sm">View Products</p>
+          </div>
+          <%= image_tag 'oval-button.svg' %>
+        </div>
+      <% end %>
       <%= image_tag 'homepage_banner.png', class: 'w-100' %>
     </div>
     <div class="d-none d-md-block">
@@ -12,7 +19,14 @@
         <div class="homepage-banner-text">
           <h1 class="text-white mb-4">inspire</h1>
           <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4">The revolutionary beauty marketplace that is changing women of colour.</h5>
-          <%= link_to 'View Products', products_path, class: 'oval-button ls-sm text-white border-white no-decoration' %>
+          <%= link_to products_path do %>
+            <div class="oval-button">
+              <div class="button-text">
+                <p class="mb-0 bt-5 ls-sm text-white">View Products</p>
+              </div>
+              <%= image_tag 'oval-button-white.svg' %>
+            </div>
+          <% end %>
           <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark' %>
         </div>
       </div>
@@ -54,9 +68,6 @@
                           <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
                         </div>
                       <% end %>
-                      <div class="button-overlay d-none d-md-flex">
-                        <p class="oval-button product-oval ls-sm border-dark m-0">Add to Cart</p>
-                      </div>
                       <div class="card_image">
                         <%= link_to product_path(product) do %>
                           <% if product.shades.first&.card_photo %>
@@ -103,7 +114,12 @@
                             </div>
                           <% end %>
                           <div class="button-overlay d-none d-md-flex">
-                            <p class="oval-button product-oval ls-sm border-dark m-0">Add to Cart</p>
+                            <div class="oval-button mx-3">
+                              <div class="button-text">
+                                <p class="mb-0 bt-5 ls-sm">Add to Cart</p>
+                              </div>
+                              <%= image_tag 'oval-button.svg' %>
+                            </div>
                           </div>
                           <div class="card_image">
                             <%= link_to product_path(product) do %>
@@ -261,7 +277,12 @@
             <div class="card">
               <%= link_to tutorial_path(tutorial) do %>
                 <div class="button-overlay d-none d-md-flex">
-                  <p class="oval-button product-oval ls-sm border-dark m-0">Play Video</p>
+                  <div class="oval-button mx-3">
+                    <div class="button-text">
+                      <p class="mb-0 bt-5 ls-sm">Play Video</p>
+                    </div>
+                    <%= image_tag 'oval-button.svg' %>
+                  </div>
                 </div>
                 <div class="card_image">
                   <%= image_tag url_for(tutorial.cover_photo.variant(resize: '300x300')), alt: "product shade photo" %>
@@ -280,7 +301,7 @@
   </div>
 </div>
 
-<div class="content-padding pop-out-no-padding-mobile">
+<div class="content-padding pop-out-no-padding-mobile last-content-padding">
   <div class="content-container pop-out-bottom-padding">
     <div class="pop-out-image-banner">
       <div class="pop-out-image-banner-content">

@@ -190,7 +190,12 @@
             <div class="card">
               <%= link_to tutorial_path(tutorial) do %>
                 <div class="button-overlay d-none d-md-flex">
-                  <p class="oval-button product-oval ls-sm border-dark m-0">Play Video</p>
+                  <div class="oval-button mx-3">
+                    <div class="button-text">
+                      <p class="mb-0 bt-5 ls-sm">Play Video</p>
+                    </div>
+                    <%= image_tag 'oval-button.svg' %>
+                  </div>
                 </div>
                 <div class="card_image">
                   <%= image_tag url_for(tutorial.cover_photo.variant(resize: '300x300')), alt: "product shade photo" %>
@@ -209,7 +214,7 @@
   </div>
 </div>
 
-<div class="content-padding">
+<div class="content-padding last-content-padding">
   <div class="content-container position-relative">
     <h2 class="neue-machina ls-sm mb-5 text-center">Similar Products Our Customers Love</h2>
     <div class="row m-0">
@@ -265,7 +270,7 @@
 <%# end %> -->
 
 <% if @product.customer_reviews.any? %>
-  <div class="content-padding">
+  <div class="content-padding last-content-padding mt-0">
     <div class="content-container position-relative customer-reviews">
       <h2 class="neue-machina ls-sm mb-5 text-center">What People Are Saying</h2>
       <div class="row m-0">
@@ -367,9 +372,11 @@
         <div class="product-review-wrapper">
           <%= simple_form_for [@product, current_user.influencer ? InsiderReview.new : CustomerReview.new] do |f| %>
               <h4 class="neue-machina text-center mb-5">Tell Us About Your Experience?</h4>
-              <div class="customer-review-input mb-5">
-                <%= f.input :title, label: false, placeholder: "Review Title", input_html: { class: 'product-show-review-input pl-0' } %>
-              </div>
+              <% unless current_user.influencer %>
+                <div class="customer-review-input mb-5">
+                  <%= f.input :title, label: false, placeholder: "Review Title", input_html: { class: 'product-show-review-input pl-0' } %>
+                </div>
+              <% end %>
               <div class="customer-review-input mb-5">
                 <%= f.input :review, label: false, placeholder: "Describe Your Product Experience", input_html: { class: 'product-show-review-input pl-0' } %>
               </div>
