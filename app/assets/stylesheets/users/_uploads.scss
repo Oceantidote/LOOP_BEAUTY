@@ -1,3 +1,21 @@
+.check-status-show {
+  display: block !important;
+  padding: 24px 0;
+  overflow: scroll;
+}
+
+.upload-card {
+  .card_image {
+    img {
+      height: 180px;
+      object-fit: cover;
+      @include for-phone-only {
+        height: 300px !important;
+      }
+    }
+  }
+}
+
 .pending_row {
   display: flex;
   flex-direction: row;
@@ -8,21 +26,21 @@
   flex-direction: row;
 }
 
-.uploads-content-one,
-.uploads-content-two,
-.uploads-content-three {
-  min-height: 319px;
-  width: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
+// .uploads-content-one,
+// .uploads-content-two,
+// .uploads-content-three {
+//   min-height: 319px;
+//   width: 100%;
+//   display: none;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 .uploads-lookbook-card {
   height: 255px;
 }
 
-.uploads-card-image {
+.upload-card-image {
   img {
     width: 100%;
     height: 180px;

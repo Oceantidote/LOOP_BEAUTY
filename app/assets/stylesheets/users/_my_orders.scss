@@ -1,3 +1,44 @@
+.dash-order-container {
+  padding: 30px 16px;
+  @include for-medium-devices-down {
+    padding: 16px 0;
+  }
+}
+
+.order-titles {
+  display: flex;
+  @include for-medium-devices-down {
+    flex-direction: column;
+  }
+}
+
+.order-number, .order-date {
+  width: 100px;
+  min-width: 100px;
+  margin-right: 32px;
+  @include for-medium-devices-down {
+    width: unset;
+    min-width: unset;
+    margin-right: 0;
+  }
+}
+
+.order-item {
+  flex-grow: 1;
+  margin-right: 32px;
+}
+
+.order-total {
+  display: flex;
+  align-items: center;
+  @include for-medium-devices-down {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// OLD ORDERS CSS
+
 .my-orders-container {
   width: 100%;
   @include absCenterColumn;
@@ -43,22 +84,6 @@
   flex: 3;
 }
 
-.order-details-text {
-}
-
-.order-image {
-  height: 90px;
-  margin-right: 10px;
-  @include for-phone-only {
-    height: 60px;
-  }
-}
-
-.order-show-image {
-  height: auto;
-  width: 100%;
-  margin-bottom: 10px;
-}
 
 .orders-button {
   width: fit-content;
@@ -68,22 +93,22 @@
   letter-spacing: 1px;
 }
 
-.order-show-info {
-  display: flex;
-  width: 80%;
-  padding: 10px 30px;
-  @include for-large-devices-down {
-    width: 90%;
-  }
-  @include for-medium-devices-down {
-    width: 95%;
-  }
-  @include for-phone-only {
-    display: block;
-    width: 100%;
-    padding: 10px;
-  }
-}
+// .order-show-info {
+//   display: flex;
+//   width: 80%;
+//   padding: 10px 30px;
+//   @include for-large-devices-down {
+//     width: 90%;
+//   }
+//   @include for-medium-devices-down {
+//     width: 95%;
+//   }
+//   @include for-phone-only {
+//     display: block;
+//     width: 100%;
+//     padding: 10px;
+//   }
+// }
 
 .order-show-each-order {
   display: block !important;

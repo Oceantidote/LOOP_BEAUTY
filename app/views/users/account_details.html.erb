@@ -1,6 +1,12 @@
 <div class="dashboard-wrapper">
-  <div class="dashboard-container">
-    <h4 class="mb-5">my profile</h4>
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-4' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
   </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
@@ -11,34 +17,29 @@
       <% end %>
     </div>
     <div class="dash-content-container">
-      <p class="ls-xs mb-2">account details</p>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">account details</p>
       <div class="dash-content">
-        <div class="d-flex h-100">
-          <div class="account-details-tabs p-4 h-100">
-            <p class="account-tab-one all-tabs account-active-tab mb-4"><i class="fas fa-caret-right acc-arrow acc-arrow-show mr-2"></i>personal details</p>
-            <p class="account-tab-two all-tabs mb-4"><i class="fas fa-caret-right acc-arrow mr-2"></i>address</p>
-            <p class="account-tab-three all-tabs mb-4"><i class="fas fa-caret-right acc-arrow mr-2"></i>password</p>
+        <!-- <div class="d-block d-md-flex h-100"> -->
+          <div class="account-details-tabs pt-4 px-3 h-100">
+            <p class="account-tab-one all-tabs account-active-tab mb-2 mb-md-4 small-text"><i class="fas fa-caret-right acc-arrow acc-arrow-show mr-2"></i>personal details</p>
+            <p class="account-tab-two all-tabs mb-2 mb-md-4 small-text"><i class="fas fa-caret-right acc-arrow mr-2"></i>address</p>
+            <p class="account-tab-three all-tabs mb-2 mb-md-4 small-text"><i class="fas fa-caret-right acc-arrow mr-2"></i>password</p>
+            <div class="d-md-none">
+              <hr class="w-100 mb-0" style="border-color: #DDCCB5;">
+            </div>
           </div>
-          <div class="account-details-content">
-            <div class="account-content-one account-content-show" data-tab="<%= params[:tab] %>" id="tab-info">
-              <%= simple_form_for current_user, url: user_path(current_user), method: :patch do |f| %>
-                <div class="personal-details-input">
-                  <p class="boldest kaftan text-right no-margin">First Name</p>
-                  <%= f.input :first_name, label: false %>
-                </div>
-                <div class="personal-details-input">
-                  <p class="boldest kaftan text-right no-margin">Last Name</p>
-                  <%= f.input :last_name, label: false %>
-                </div>
-                <div class="personal-details-input">
-                  <p class="boldest kaftan text-right no-margin">Email</p>
-                  <%= f.input :email, label: false %>
-                </div>
-                <div class="personal-details-input">
-                  <p class="boldest kaftan text-right no-margin">D.O.B</p>
+          <div class="account-details-content w-100">
+            <div class="account-content-one h-100 account-content-show" data-tab="<%= params[:tab] %>" id="tab-info">
+              <%= simple_form_for current_user, url: user_path(current_user), method: :patch, html: { class: 'h-100 d-flex flex-column justify-content-between' } do |f| %>
+                <div class="">
+                  <p class="ls-xs mb-4">personal details</p>
+                  <%= f.input :first_name, label: false, input_html: { class: 'contact-form-input mb-3' } %>
+                  <%= f.input :last_name, label: false, input_html: { class: 'contact-form-input mb-3' } %>
+                  <%= f.input :email, label: false, input_html: { class: 'contact-form-input mb-3' } %>
+                  <p class="ls-xs mb-0">Date of Birth</p>
                   <div class="form-group date optional user_dob">
                     <div class="d-flex flex-row justify-content-between align-items-center">
-                      <select id="user_dob_3i" name="user[dob(3i)]" data-user="<%= current_user.dob %>" class="form-control mx-1 date optional dob-container">
+                      <select id="user_dob_3i" name="user[dob(3i)]" data-user="<%= current_user.dob %>" class="contact-form-input form-control mr-1 date optional mb-3 mb-sm-4">
                         <option selected disabled>Day</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -72,7 +73,7 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                       </select>
-                      <select id="user_dob_2i" name="user[dob(2i)]" class="form-control mx-1 date optional dob-container">
+                      <select id="user_dob_2i" name="user[dob(2i)]" class="form-control mx-1 date optional contact-form-input mb-3 mb-sm-4">
                         <option selected disabled>Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -87,7 +88,7 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                       </select>
-                      <select id="user_dob_1i" name="user[dob(1i)]" class="form-control mx-1 date optional dob-container">
+                      <select id="user_dob_1i" name="user[dob(1i)]" class="form-control mx-1 date optional contact-form-input mb-3 mb-sm-4">
                         <option selected disabled>Year</option>
                         <option value="1919">1919</option>
                         <option value="1920">1920</option>
@@ -184,157 +185,119 @@
                     </div>
                   </div>
                 </div>
-                <%= f.submit 'SAVE CHANGES', class: 'primary-button personal-details-button small-text' %>
+                <%= f.submit 'save', class: 'primary-button personal-details-button small-text' %>
               <% end %>
             </div>
-            <div class="account-content-two">
-              <div class="address-container">
-                <h6 class="boldest">Delivery Address</h6>
-                <div>
-                  <% if current_user.delivery_addresses.count == 0 %>
+            <div class="account-content-two h-100">
+              <div class="address-container h-100">
+                <div class="pb-0 pb-md-5">
+                  <p class="ls-xs mb-4">address</p>
+                  <p class="ls-xs mb-2">delivery address</p>
+                  <div>
+                    <% if current_user.delivery_addresses.count == 0 %>
+                        <div class="address-card">
+                          <p class="small-text tiny-margin-bottom ls-xs">You don't have any delivery addresses</p>
+                        </div>
+                    <% end %>
+                    <% delivery_counter = 0 %>
+                    <% current_user.delivery_addresses.each do |add| %>
+                      <% delivery_counter +=1 %>
+                      <div class="row row-style">
+                        <div class="account-details-address-card w-100">
+                          <div class="address-card">
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= current_user.full_name %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.address_line1 %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.city %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.postcode %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.phone_number %></p>
+                            <a href="#" class="sweet-alert-delivery-trigger d-block small-text lighter underline ls-xs text-right no-margin" data-id="<%= delivery_counter %>">Remove</a>
+                            <%= link_to "", address_path(add, request_location: "account_details"), method: :delete, class: "hidden ", id: "delete-delivery-link#{delivery_counter}" %>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                  <p class="ls-xs mb-2">billing address</p>
+                  <div>
+                    <% if current_user.billing_addresses.count == 0 %>
                       <div class="address-card">
-                        <p class="grey-font small-text kaftan boldest tiny-margin-bottom">You don't have any delivery addresses</p>
+                        <p class="small-text tiny-margin-bottom ls-xs">You don't have any billing addresses</p>
                       </div>
-                  <% end %>
-                  <% delivery_counter = 0 %>
-                  <% current_user.delivery_addresses.each do |add| %>
-                    <% delivery_counter +=1 %>
-                    <div class="row row-style">
-                      <div class="account-details-address-card">
-                        <div class="address-card">
-                          <p class="grey-font small-text kaftan boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
-                          <p class="grey-font small-text kaftan boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
-
-                          <a href="#" class="sweet-alert-delivery-trigger d-block small-text underline grey-font boldest text-right no-margin kaftan" data-id="<%= delivery_counter %>">Remove</a>
-                          <%= link_to "", address_path(add, request_location: "account_details"), method: :delete, class: "hidden ", id: "delete-delivery-link#{delivery_counter}" %>
+                    <% end %>
+                    <% billing_counter = 0 %>
+                    <% current_user.billing_addresses.each do |add| %>
+                      <% billing_counter +=1 %>
+                      <div class="row row-style">
+                        <div class="account-details-address-card w-100">
+                          <div class="address-card">
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= current_user.full_name %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.address_line1 %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.city %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.postcode %></p>
+                            <p class="tiny-margin-bottom lighter small-text ls-xs"><%= add.phone_number %></p>
+                            <a href="#" class="sweet-alert-billing-trigger d-block underline text-right small-text no-margin ls-xs lighter" data-id="<%= billing_counter %>">Remove</a>
+                            <%= link_to "", address_path(add, request_location: "account_details"), method: :delete, class: "hidden", id: "delete-billing-link#{billing_counter}" %>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  <% end %>
+                    <% end %>
+                  </div>
+                  <p class="primary-button address-button small-text">add new address</p>
                 </div>
-                <h6 class="boldest">Billing Address</h6>
-                <div>
-                  <% if current_user.billing_addresses.count == 0 %>
-                    <div class="address-card">
-                      <p class="grey-font small-text kaftan boldest tiny-margin-bottom">You don't have any billing addresses</p>
-                    </div>
-                  <% end %>
-                  <% billing_counter = 0 %>
-                  <% current_user.billing_addresses.each do |add| %>
-                    <% billing_counter +=1 %>
-                    <div class="row row-style">
-                      <div class="account-details-address-card">
-                        <div class="address-card">
-                          <p class="grey-font small-text kaftan boldest tiny-margin-bottom"><%= "#{current_user.full_name}, #{add.address_line1}" %></p>
-                          <p class="grey-font small-text kaftan boldest no-margin"><%= "#{add.city}, #{add.postcode}" %></p>
-                          <a href="#" class="sweet-alert-billing-trigger d-block small-text underline grey-font boldest text-right no-margin kaftan" data-id="<%= billing_counter %>">Remove</a>
-                          <%= link_to "", address_path(add, request_location: "account_details"), method: :delete, class: "hidden", id: "delete-billing-link#{billing_counter}" %>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-                <p class="primary-button address-button small-text">ADD NEW ADDRESS</p>
               </div>
             </div>
-            <div class="account-content-two-add-address">
+            <div class="account-content-two-add-address h-100">
               <div class="address-form-container">
-                <h6 class="boldest text-center margin-bottom">Add Delivery Address</h6>
+                <p class="ls-xs mb-4">address</p>
+                <p class="ls-xs mb-2">add delivery address</p>
                 <%= simple_form_for @delivery_address || Address.new(delivery_address: true) do |f| %>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Address Line 1</p>
-                    <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Address Line 2</p>
-                    <%= f.input :address_line2, label: false, input_html: { class: 'contact-form-input' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">City</p>
-                    <%= f.input :city, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">County/State</p>
-                    <%= f.input :county, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Country</p>
-                    <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown req-d-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Postcode</p>
-                    <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Phone Number</p>
-                    <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input req-d-add' } %>
-                  </div>
-                  <div class="d-flex align-items-end account-details-check">
-                    <%= f.input :use_as_billing, label: false, input_html: { class: 'lb-checkbox' } %>
-                    <p class="no-bottom-margin kaftan">Use as billing address</p>
+                    <%= f.input :address_line1, label: false, placeholder: 'address line 1', input_html: { class: 'contact-form-input mb-3 req-d-add' } %>
+                    <%= f.input :address_line2, label: false, placeholder: 'address line 2', input_html: { class: 'contact-form-input mb-3' } %>
+                    <%= f.input :city, label: false, placeholder: 'city', input_html: { class: 'contact-form-input mb-3 req-d-add' } %>
+                    <%= f.input :county, label: false, placeholder: 'county/state', input_html: { class: 'contact-form-input mb-3 req-d-add' } %>
+                    <%= f.input :country, label: false, prompt: 'country', input_html: { class: 'contact-form-input mb-3 req-d-add' } %>
+                    <%= f.input :postcode, label: false, placeholder: 'post code', input_html: { class: 'contact-form-input mb-3 req-d-add' } %>
+                    <%= f.input :phone_number, label: false, placeholder: 'phone number', input_html: { class: 'contact-form-input mb-3 req-d-add' } %>
+                  <div class="remember-me-container">
+                    <%= f.input :use_as_billing, label: 'use as billing address', label_html: { class: 'lighter ls-xs s-medium-text' } %>
                   </div>
                   <%= f.hidden_field :request_location, value: "account_details" %>
                   <%= f.input :delivery_address, as: :hidden %>
-                  <%= f.submit 'ADD DELIVERY ADDRESS', disabled: true, id: 'acc-add-delivery', class: 'primary-button address-button small-text disabled' %>
+                  <%= f.submit 'add delivery address', disabled: true, id: 'acc-add-delivery', class: 'primary-button address-button small-text disabled' %>
                 <% end %>
               </div>
               <div class="address-form-container">
-                <h6 class="boldest text-center margin-bottom">Add Billing Address</h6>
+                <p class="ls-xs mt-4 mb-2">add billing address</p>
                 <%= simple_form_for @billing_address || Address.new(delivery_address: false) do |f| %>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Address Line 1</p>
-                    <%= f.input :address_line1, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Address Line 2</p>
-                    <%= f.input :address_line2, label: false, input_html: { class: 'contact-form-input' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">City</p>
-                    <%= f.input :city, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">County/State</p>
-                    <%= f.input :county, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Country</p>
-                    <%= f.input :country, label: false, input_html: { class: 'dropdown-input sign-up-dropdown req-b-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Postcode</p>
-                    <%= f.input :postcode, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
-                  </div>
-                  <div class="personal-details-input">
-                    <p class="boldest kaftan text-right no-margin">Phone Number</p>
-                    <%= f.input :phone_number, label: false, input_html: { class: 'contact-form-input req-b-add' } %>
-                  </div>
+                  <%= f.input :address_line1, label: false, placeholder: 'address line 1', input_html: { class: 'contact-form-input mb-3 req-b-add' } %>
+                  <%= f.input :address_line2, label: false, placeholder: 'address line 2', input_html: { class: 'contact-form-input mb-3' } %>
+                  <%= f.input :city, label: false, placeholder: 'city', input_html: { class: 'contact-form-input mb-3 req-b-add' } %>
+                  <%= f.input :county, label: false, placeholder: 'county/state', input_html: { class: 'contact-form-input mb-3 req-b-add' } %>
+                  <%= f.input :country, label: false, prompt: 'country', input_html: { class: 'contact-form-input mb-3 req-b-add' } %>
+                  <%= f.input :postcode, label: false, placeholder: 'post code', input_html: { class: 'contact-form-input mb-3 req-b-add' } %>
+                  <%= f.input :phone_number, label: false, placeholder: 'phone number', input_html: { class: 'contact-form-input mb-3 req-b-add' } %>
                   <%= f.hidden_field :request_location, value: "account_details" %>
                   <%= f.input :delivery_address, as: :hidden %>
-                  <%= f.submit 'ADD BILLING ADDRESS', disabled: true, id: 'acc-add-billing', class: 'primary-button address-button small-text disabled' %>
+                  <%= f.submit 'add billing address', disabled: true, id: 'acc-add-billing', class: 'primary-button address-button small-text disabled' %>
                 <% end %>
               </div>
             </div>
-            <div class="account-content-three">
-              <%= simple_form_for current_user, url: user_change_password_path(current_user) do |f| %>
-                <div class="account-password-input">
-                  <p class="boldest kaftan text-right no-margin">Old Password</p>
-                  <%= f.input :old_password, label: false %>
-                </div>
-                <div class="account-password-input">
-                  <p class="boldest kaftan text-right no-margin">New Password</p>
-                    <%= f.input :password, label: false %>
+            <div class="account-content-three h-100">
+              <%= simple_form_for current_user, url: user_change_password_path(current_user), html: { class: 'h-100' } do |f| %>
+                <div class="d-flex flex-column justify-content-between h-100">
+                  <div class="">
+                    <p class="ls-xs mb-4">password</p>
+                    <%= f.input :old_password, label: false, placeholder: 'old password', input_html: { class: 'contact-form-input mb-3' } %>
+                    <%= f.input :password, label: false, placeholder: 'new password', input_html: { class: 'contact-form-input mb-3' } %>
+                    <%= f.input :password_confirmation, label: false, placeholder: 'confirm password', input_html: { class: 'contact-form-input mb-3' } %>
                   </div>
-                <div class="account-password-input">
-                  <p class="boldest kaftan text-right no-margin">Confirm Password</p>
-                  <%= f.input :password_confirmation, label: false %>
+                  <%= f.submit 'save', class: 'primary-button personal-details-button small-text' %>
                 </div>
-                <%= f.submit 'SAVE CHANGES', class: 'primary-button personal-details-button small-text' %>
               <% end %>
             </div>
           </div>
 
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>

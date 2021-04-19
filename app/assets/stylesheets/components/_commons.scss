@@ -136,6 +136,10 @@ body {
   color: #000;
 }
 
+.gold-link {
+  color: $gold !important;
+}
+
 // Spacing
 
 .no-padding {
@@ -336,11 +340,6 @@ body {
 }
 
 //avatars
-.avatar {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-}
 
 .row-carousel {
   display: flex;

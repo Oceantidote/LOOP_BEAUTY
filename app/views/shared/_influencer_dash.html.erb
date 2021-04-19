@@ -1,61 +1,50 @@
 <div class="dash-links">
-  <%= image_tag @user == current_user ? url_for(@user.avatar_photo) : 'loop-oo.png', class: "dash-links-avatar", alt: "influencer avatar" %>
-  <div class="each-dash-link-title">Hello <%= @user == current_user ? @user.first_name : Admin %></div>
-  <%= link_to user_dashboard_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "account-overview.png", class: "dash-links-image", alt: "dash account icon" %>Account Overview
-  <% end %>
-  <%= link_to user_my_orders_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image", alt: "dash basket icon" %>My Orders
-  <% end %>
-  <%= link_to  user_share_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "share.png", class: "dash-links-image", alt: "dash share icon" %>Share
-  <% end %>
-  <%= link_to user_analytics_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "analytics.png", class: "dash-links-image", alt: "dash analytics icon" %>Analytics
-  <% end %>
-  <%= link_to user_showroom_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-image", alt: "dash lipstick icon" %>Showroom
-  <% end %>
-  <%= link_to user_account_details_path(@user), class: "each-dash-link" do %>
-    <%= image_tag "default-user.png", class: "dash-links-image", alt: "dash user icon" %>Account Details
-  <% end %>
-  <%= link_to user_preference_centre_path(current_user), class: "each-dash-link" do %>
-    <%= image_tag "dash-preferences.png", class: "dash-links-image", alt: "dash preferences icon" %>Preference Centre
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dash sign out icon" %>Sign Out
-  <% end %>
+  <div class="d-flex flex-column">
+    <h6 class="neue-machina mb-3 ls-xs">orders</h6>
+    <%= link_to 'my orders', user_my_orders_path(@user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'my_orders'}" %>
+    <%= link_to 'share', user_share_path(@user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'share'}" %>
+    <%= link_to 'analytics', user_analytics_path(@user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'analytics'}" %>
+    <%= link_to 'show room', user_showroom_path(@user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'showroom'}" %>
+    <h6 class="neue-machina mt-4 mb-3 ls-xs">account settings</h6>
+    <%= link_to 'account details', user_account_details_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'account_details'}" %>
+    <%= link_to 'preference centre', user_preference_centre_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'preference_centre'}" %>
+  </div>
+  <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: "no-decoration mb-3 ls-xs px-0 dash-option dash-option-active" %>
 </div>
 
 <!-- NEED TO ADD MY ORDERS FOR INFLUENCERS ON MOBILE -->
 <div class="dash-links-mobile">
-  <%= link_to user_my_orders_path(@user), class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>MY ORDERS</span>
-    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "dash basket icon" %>
-  <% end %>
-  <%= link_to  user_share_path(@user), class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>SHARE</span>
-    <%= image_tag "share.png", class: "dash-links-mobile-image", alt: "dash share icon" %>
-  <% end %>
-  <%= link_to user_analytics_path(@user), class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>ANALYTICS</span>
-    <%= image_tag "analytics.png", class: "dash-links-mobile-image", alt: "dash analytics icon" %>
-  <% end %>
-  <%= link_to user_showroom_path(@user), class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>SHOWROOM</span>
-    <%= image_tag "lipstick.png", class: "dash-links-mobile-image", alt: "dash lipstick icon" %>
-  <% end %>
-  <%= link_to user_account_details_path(@user), class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>ACCOUNT</span>
-    <%= image_tag "default-user.png", class: "dash-links-mobile-image", alt: "dash user icon" %>
-  <% end %>
-  <%= link_to user_preference_centre_path(current_user), class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>PREFERENCES</span>
-    <%= image_tag "dash-preferences.png", class: "dash-links-mobile-image", alt: "dash preferences icon" %>
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile kaftan no-decoration" do %>
-    <span>SIGN OUT</span>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image", alt: "dash sign out icon" %>
-  <% end %>
-</div>
+  <div id="accordion">
+    <div class="">
+      <div class="d-flex justify-content-between align-items-center px-3 px-md-0 py-2" id="headingOne">
+        <p class="ls-xs mb-0 flex-grow-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">orders</p>
+        <i class="fas fa-caret-down"></i>
+      </div>
 
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="pl-4">
+          <%= link_to 'my orders', user_my_orders_path(@user), class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+          <%= link_to 'share', user_share_path(@user), class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+          <%= link_to 'analytics', user_analytics_path(@user), class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+          <%= link_to 'show room', user_showroom_path(@user), class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="d-flex justify-content-between align-items-center px-3 px-md-0 py-2" id="headingTwo">
+        <p class="ls-xs mb-0 flex-grow-1" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">account settings</p>
+        <i class="fas fa-caret-down"></i>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="pl-4">
+          <%= link_to 'account details', user_account_details_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+          <%= link_to 'preference centre', user_preference_centre_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+          <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: "each-dash-link-mobile ls-xs no-decoration px-0 py-1" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="px-3">
+    <hr class="w-100 mt-2" style="border-color: #DDCCB5;">
+  </div>
+</div>

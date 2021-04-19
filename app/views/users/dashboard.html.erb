@@ -1,6 +1,12 @@
 <div class="dashboard-wrapper">
-  <div class="dashboard-container">
-    <h4 class="mb-5">my profile</h4>
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-2' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
   </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
@@ -10,143 +16,19 @@
         <%= render 'shared/dash' %>
       <% end %>
     </div>
-    <% if current_user.influencer? %>
-      <div class="dash-content-container">
-        <h2 class="insider-info-title pt-2 pb-2 text-center">Account Overview</h2>
-        <hr>
-        <div class="row m-3">
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_showroom_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'lipstick.png', alt: "dash lipstick icon" %>
-                  <h5>Showroom</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_analytics_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'analytics.png', alt: "dash analytics icon" %>
-                  <h5>Analytics</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_share_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'share.png', alt: "dash share icon" %>
-                  <h5>Share</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_my_orders_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'basket.png', alt: "dash basket icon" %>
-                  <h5>My Orders</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_account_details_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'default-user.png', alt: "dash user icon" %>
-                  <h5>Account Details</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_preference_centre_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'dash-preferences.png', alt: "dash preferences icon" %>
-                  <h5>Preference Center</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
+    <div class="dash-content-container">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">welcome</p>
+      <div class="dash-content">
+        <div class="dashboard-home py-5">
+          <%= image_tag 'the-net.png', alt: "the net logo" %>
+          <hr class="my-4">
+          <h4 class="neue-machina ls-sm lighter"><%= current_user.influencer ? "influencer" : "welcome #{current_user.first_name}" %></h4>
         </div>
       </div>
-    <% else %>
-      <div class="dash-content-container">
-        <h2 class="insider-info-title mlb-title text-center">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
-        <hr>
-        <div class="row m-3">
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_my_orders_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'basket.png', alt: "dash basket icon" %>
-                  <h5>My Orders</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_my_products_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'lipstick.png', alt: "dash lipstick icon" %>
-                  <h5>My Products</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_refer_a_friend_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'dash-refer.png', alt: "dash refer a friend icon" %>
-                  <h5>Refer a Friend</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_wishlist_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'dash-wish.png', alt: "dash wishlist icon" %>
-                  <h5>Wishlist</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_account_details_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'default-user.png', alt: "dash user icon" %>
-                  <h5>Account Details</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4" style="padding: 0;">
-            <div class="dash-home-options">
-              <%= link_to user_preference_centre_path(current_user), class: "dash-home-option-links" do %>
-                <div class="each-dash-home-option">
-                  <%= image_tag 'dash-preferences.png', alt: "dash preferences icon" %>
-                  <h5>Preference Center</h5>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
+
 <script>
   function myFunction() {
     /* Get the text field */

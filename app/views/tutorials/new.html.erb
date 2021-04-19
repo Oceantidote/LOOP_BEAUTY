@@ -1,66 +1,61 @@
 <div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-2' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
+  </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
       <% if current_user.influencer? %>
         <%= render 'shared/influencer_dash' %>
-      <% elsif current_user.admin %>
-        <%= render 'admin/shared/admin_dash' %>
+      <% else %>
+        <%= render 'shared/dash' %>
       <% end %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Share Tutorial</h2>
-      <hr>
-      <div class="dash-upload-content-container-wide">
-        <%= simple_form_for @tutorial do |f| %>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">welcome</p>
+      <div class="dash-content dash-new-lookbook-container justify-content-center pt-4">
+        <%= simple_form_for @tutorial, html: { class: 'dash-new-lookbook' } do |f| %>
+          <div class="d-flex justify-content-center">
+            <%= image_tag 'upload-tutorial.png', class: 'dash-new-lookbook-img' %>
+          </div>
+          <p class="ls-xs lighter text-center mt-3">upload tutorial</p>
           <% if current_user.admin %>
-            <div class="personal-details-input-wide">
-              <p class="boldest kaftan s-medium-text text-right no-margin">Influencer</p>
-              <%= f.input :user_id, collection: @users, label_method: ->(user){ "#{user.full_name}" }, label: false %>
-            </div>
+              <%= f.input :user_id, collection: @users, label_method: ->(user){ "#{user.full_name}" }, label: false, prompt: 'influencer', input_html: { class: 'contact-form-input mb-3' } %>
           <% end %>
-          <div class="personal-details-input-wide">
-            <p class="boldest kaftan s-medium-text text-right no-margin">Title</p>
-            <%= f.input :title, label: false, input_html: { class: "contact-form-input" } %>
+          <%= f.input :title, label: false, placeholder: 'title', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :category, collection: [['Tutorial','tutorial'], ['Ask the Expert', 'ask the expert']], prompt: 'category', label: false, include_blank: false, input_html: { class: 'contact-form-input mb-3' } %>
+          <div class="dash-upload-photo">
+            <p class="ls-xs lighter v-small-text mb-1">The video may be portrait or landscape, and cannot be greater than 500MB.</p>
+            <%= f.input :video, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial-video', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose video' %>
+            <% if @tutorial.video.attached? %>
+              <div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin neue-machina"><%= @tutorial.video.filename.to_s %></p></div>
+            <% end %>
           </div>
-          <div class="personal-details-input-wide">
-            <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
-            <%= f.input :category, collection: [['Tutorial','tutorial'], ['Ask the Expert', 'ask the expert']], label: false, include_blank: false %>
-          </div>
-          <div class="personal-details-input-wide align-items-start">
-            <p class="boldest kaftan s-medium-text text-right photo-input-text">Video</p>
-            <div class="dash-upload-photo">
-              <p class="kaftan" style="width: unset;padding: 5px;">The video may be portrait or landscape, and cannot be greater than 500MB.</p>
-              <%= f.input :video, input_html: { class: 'd-none photo-input', 'data-name': 'tutorial-video', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-              <% if @tutorial.video.attached? %>
-                <div class="video-preview" data-name="tutorial-video"><p class="boldest no-margin neue-machina"><%= @tutorial.video.filename.to_s %></p></div>
+          <div class="dash-upload-photo">
+            <p class="ls-xs lighter v-small-text mb-1">The cover photo should have the same dimensions as your video.</p>
+            <div style="width: 150px">
+              <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose cover photo' %>
+              <% if @tutorial.cover_photo.attached? %>
+                <%= image_tag url_for(@tutorial.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover-photo', alt: "tutorial cover photo preview" %>
+              <% else %>
+                <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover-photo', alt: "tutorial cover photo preview" %>
               <% end %>
             </div>
           </div>
-          <div class="personal-details-input-wide align-items-start">
-            <p class="boldest kaftan s-medium-text text-right photo-input-text">Cover photo</p>
-            <div class="dash-upload-photo">
-              <p class="kaftan" style="width: unset;padding: 5px;">The cover photo should have the same dimensions as your video.</p>
-              <div style="width: 150px">
-                <%= f.input :cover_photo, input_html: { class: 'd-none photo-input', 'data-name': 'cover-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                <% if @tutorial.cover_photo.attached? %>
-                  <%= image_tag url_for(@tutorial.cover_photo), height: 100, class: "photo-preview", 'data-name': 'cover-photo', alt: "tutorial cover photo preview" %>
-                <% else %>
-                  <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'cover-photo', alt: "tutorial cover photo preview" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="personal-details-input-wide align-items-start">
-            <p class="boldest kaftan s-medium-text text-right no-margin">Products</p>
-            <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll" } %>
-          </div>
+          <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll", class: 'contact-form-input mb-3'  } %>
           <% if current_user.admin %>
-            <div class="personal-details-input-wide">
-              <p class="boldest kaftan s-medium-text text-right no-margin">Featured</p>
-              <%= f.input :featured, label: false, input_html: { class: "contact-form-input lb-checkbox" } %>
+            <div class="remember-me-container mt-3">
+              <%= f.input :featured, label: 'featured', label_html: { class: "lighter s-medium-text ls-xs" } %>
             </div>
           <% end %>
-          <%= f.submit 'SHARE TUTORIAL', class: 'primary-button personal-details-button small-text', id: 'submitter' %>
+          <div class="d-flex justify-content-center pb-4 pt-3">
+            <%= f.submit 'submit', class: 'primary-button dash-share-button small-text mx-auto my-0', id: 'submitter' %>
+          </div>
         <% end %>
       </div>
     </div>

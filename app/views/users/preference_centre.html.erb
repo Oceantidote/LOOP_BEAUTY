@@ -1,6 +1,12 @@
 <div class="dashboard-wrapper">
-  <div class="dashboard-container">
-    <h4 class="mb-5">my profile</h4>
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-4' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
   </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
@@ -11,15 +17,15 @@
       <% end %>
     </div>
     <div class="dash-content-container">
-      <p class="ls-xs mb-2">preference centre</p>
-      <div class="dash-content p-4">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">preference centre</p>
+      <div class="dash-content flex-column p-4">
         <div class="preference-newsletter mb-5">
           <h5 class="neue-machina ls-xs mb-5"><strong>Data Processing</strong></h5>
           <p class="ls-xs mb-3">Email: Newsletter</p>
-          <p class="neue-machina lighter ml-4 mb-2">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
+          <p class="neue-machina lighter ml-4 mb-2 ls-xs">We will send you beauty news, exclusive promotions and may ask you to review products and services after you place an order.</p>
           <%= simple_form_for current_user, url: user_newsletter_path, method: :patch, html: { onchange: "this.submit()" } do |f| %>
             <div class="remember-me-container ml-4">
-              <%= f.input :newsletter, label: "#{current_user.newsletter ? 'click here to unsubscribe' : 'click here to subscribe'}", value: current_user.newsletter %>
+              <%= f.input :newsletter, label: "#{current_user.newsletter ? 'click here to unsubscribe' : 'click here to subscribe'}", value: current_user.newsletter, label_html: { class: 'lighter ls-xs s-medium-text' } %>
             </div>
           <% end %>
         </div>
@@ -29,7 +35,7 @@
           <% end %>
           <p class="lighter ls-xs ml-4">You agreed to our Terms & Privacy Policy on 24/04/2019</p>
         </div>
-        <p class="neue-machina lighter">**Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.**</p>
+        <p class="neue-machina lighter ls-xs">**Please note that we will continue to email you in relation to any orders you place such as order and delivery updates.**</p>
       </div>
     </div>
   </div>

@@ -1,11 +1,43 @@
-.order-show-info-left, .order-show-info-right {
-  width: 50%;
-  border: 1px solid rgba(0,0,0,0.2);
-  padding: 16px;
-  margin: 16px;
+.order-show-info {
+  display: flex;
+  justify-content: space-between;
   @include for-phone-only {
-    width: 100%;
+    display: block;
   }
+}
+
+.order-image {
+  height: 160px;
+  margin-right: 32px;
+  @include for-phone-only {
+    height: 120px;
+    margin-right: 16px;
+  }
+}
+
+.order-title-show {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include for-phone-only {
+    display: block;
+  }
+}
+
+.order-show-date {
+  margin-right: 12px;
+  @include for-phone-only {
+    width: 110px;
+    margin-right: 32px;
+  }
+}
+
+
+
+
+.order-show-info-left {
+  width: 110px;
+  margin-right: 32px;
 }
 
 .order-show-info-left {

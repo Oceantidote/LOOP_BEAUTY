@@ -1,4 +1,13 @@
 <div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-2' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
+  </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
       <% if current_user.influencer %>
@@ -8,47 +17,65 @@
       <% end %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">My Orders</h2>
-      <hr>
-      <div class="my-orders-container">
-        <div class="row" style="width: 100%;">
-          <div class="col-12 d-flex justify-content-center">
-            <p class="boldest kaftan small-text grey"><%= page_entries_info @orders %></p>
-          </div>
-          <% @orders.each_with_index do |order, index| %>
-            <div class="col-12">
-              <div class="each-order-card">
-                <% unless index == 0 %>
-                  <hr>
-                <% end %>
-                <%= link_to order_path(order), class: "no-decoration my-orders-cards" do %>
-                  <div class="each-order-container">
-                    <div class="my-order-details">
-                      <%= image_tag url_for(order.products.first.shades.first.card_photo), class: "order-image", alt: "product shade photo" %>
-                      <div class="order-details-text">
-                        <p class="small-text kaftan boldest"><%= order.products.first.title %></p>
-                        <p class="kaftan small-text">
-                          <% if order.products.count > 1 %>
-                            (and <%= order.products.count - 1 %> more)
-                          <% end %>
-                        </p> <!-- NUMBER OF PRODUCTS IN THE ORDER -->
-                        <p class="small-text boldest kaftan"><%= order.created_at.strftime('%d/%m/%Y') %>, Order No. <%= "%05d" % order.id %></p> <!-- DATE OF THE ORDER AND SKU NUMBER -->
-                        <%#= link_to 'Track this order', '#', class: "small-text"  %>
-                      </div>
-                    </div>
-                    <div class="order-status">
-                      <p class="kaftan"><%= order.status %></p> <!-- STATUS OF THE ORDER -->
-                    </div>
-                    <div class="order-price kaftan boldest">
-                      <p class="small-text"><%= humanized_money_with_symbol order.total_with_delivery %></p> <!-- PRICE OF THE ORDER -->
-                    </div>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">my orders</p>
+      <div class="dash-content">
+        <div class="dash-order-container">
+          <div class="row m-0" style="width: 100%;">
+            <div class="col-12 d-none d-lg-block">
+              <div class="">
+                <div class="order-titles">
+                  <div class="order-number">
+                    <p class="lighter ls-xs small-text mb-1">order number:</p>
                   </div>
-                <% end %>
+                  <div class="order-date">
+                    <p class="lighter ls-xs small-text mb-1">date ordered:</p>
+                  </div>
+                  <div class="order-item">
+                    <p class="lighter ls-xs small-text mb-1">items:</p>
+                  </div>
+                  <div class="order-total">
+                    <p class="lighter ls-xs small-text mb-1">total:</p>
+                  </div>
+                </div>
+                <hr class="w-100 mt-2" style="border-color: #DDCCB5;">
               </div>
             </div>
-          <% end %>
-          <div class="col-12 d-flex justify-content-center mt-3">
-            <%= paginate @orders %>
+            <% @orders.each_with_index do |order, index| %>
+              <div class="col-12">
+                <div class="col-12 px-0">
+                  <div class="order-titles">
+                    <div class="order-number">
+                      <p class="bold ls-xs small-text mb-1 d-block d-lg-none">order number:</p>
+                      <p class="lighter ls-xs small-text"><%= "%05d" % order.id %></p>
+                    </div>
+                    <div class="order-date">
+                      <p class="bold ls-xs small-text mb-1 d-block d-lg-none">date ordered:</p>
+                      <p class="lighter ls-xs small-text"><%= order.created_at.strftime('%b %d, %Y') %></p>
+                    </div>
+                    <div class="order-item">
+                      <p class="bold ls-xs small-text mb-1 d-block d-lg-none">items:</p>
+                      <% order.order_products.each do |order_product| %>
+                        <p class="lighter ls-xs small-text"><%= order_product.product.title %>, <%= order_product.shade.name %></p>
+                      <% end %>
+                    </div>
+                    <div class="order-total">
+                      <p class="bold ls-xs small-text mb-1 d-block d-lg-none">total:</p>
+                      <p class="lighter ls-xs small-text"><%= humanized_money_with_symbol order.total_with_delivery %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 px-0 d-flex justify-content-end">
+                  <%= link_to 'view order', order_path(order), class: 'no-decoration gold-link px-0 small-text ls-xs' %>
+                </div>
+                <hr class="w-100 mt-2" style="border-color: #DDCCB5;">
+              </div>
+            <% end %>
+            <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+              <p class="small-text ls-xs lighter"><%= page_entries_info @orders %></p>
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-3">
+              <%= paginate @orders %>
+            </div>
           </div>
         </div>
       </div>

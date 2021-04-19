@@ -1,9 +1,97 @@
+.dashboard-home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 200px;
+  }
+  hr {
+    width: 32px;
+    border-color: #000000;
+    // border-width: 2px;
+  }
+}
+
+.upload-icon {
+  position: absolute;
+  left: 12px;
+  width: 24px;
+}
+
+.dash-share-options-container {
+  padding: 32px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  @include for-medium-devices-down {
+    padding: 32px 16px;
+  }
+}
+
+.dash-share-button {
+  padding: 3px 25px;
+  max-width: 160px;
+  height: 40px !important;
+  margin: auto;
+  @include for-medium-devices-down {
+    max-width: 150px;
+  }
+}
+
+.dash-share-options {
+  border-radius: 2px;
+  background: #F5F5F5;
+  height: 180px;
+  width: 180px;
+  margin: auto;
+  position: relative;
+  @include absCenter;
+
+  img {
+    width: 48%;
+  }
+  @include for-medium-devices-down {
+    height: 160px;
+    width: 160px;
+  }
+  @include for-phone-only {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.dash-share-option-text {
+  position: absolute;
+  bottom: 16px;
+  @include for-medium-devices-down {
+    bottom: 12px;
+  }
+}
+
+.dash-new-lookbook {
+  max-width: 400px;
+  margin: auto;
+}
+
+.dash-new-lookbook-img {
+  width: 70px;
+}
+
+.dash-new-lookbook-container {
+  @include for-small-devices-down {
+    padding: 24px;
+  }
+}
+
 .dashboard-wrapper {
   background: $background;
   min-height: calc(100vh - 96px);
   padding: 50px;
   @include for-medium-devices-down {
     padding: 50px 10px;
+    min-height: unset;
   }
   @include for-small-devices-down {
     padding: 0;
@@ -26,6 +114,17 @@
     min-width: 150px;
   }
 }
+
+.dashboard-container-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  @include for-small-devices-down {
+  }
+}
+
 .dashboard-container {
   display: flex;
   max-width: 1200px;
@@ -77,17 +176,11 @@
   width: 250px;
   height: max-content;
   border-bottom: none;
-  position: sticky;
-  top: 96px;
   @include for-medium-devices-down {
     width: 200px;
   }
   @include for-small-devices-down {
-    top: 60px;
     width: 100%;
-    z-index: 3;
-    background: #FBFBFB;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
     margin: 0;
   }
 }
@@ -104,28 +197,33 @@
   position: relative;
   flex: 1;
   height: 100%;
-
+  .contact-form-input {
+    max-width: 400px;
+  }
+  .was-validated .form-control:valid, .form-control.is-valid {
+    border-color: #000000;
+  }
 }
 
 .dash-content {
   background: $background-light;
   height: 500px;
   overflow: scroll;
+  display: flex;
+  @include for-small-devices-down {
+    display: block;
+  }
   @include for-small-devices-down {
     margin: 10px;
+    height: unset;
   }
-}
-
-.dash-home-options {
-  background: #F5F5F5;
-  border: 1px solid rgba(0,0,0,0.1);
-  padding: 40px 0;
 }
 
 .each-dash-home-option {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   img {
     width: 100px;
     margin-bottom: 20px;
@@ -170,8 +268,6 @@
 }
 
 .dash-links-mobile {
-  display: flex;
-  justify-content: space-evenly;
   width: 100%;
   overflow: scroll;
   @include for-medium-devices-up {
@@ -180,12 +276,11 @@
 }
 
 .each-dash-link-mobile {
-  padding: 8px;
+  margin: 4px 0;
   color: black;
-  background: #FBFBFB;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   font-size: 12px;
   position: relative;
   // font-weight: 900;
@@ -195,17 +290,7 @@
   &:hover {
     text-decoration: none;
     color: black;
-    background: #F1F1F1;
   }
-  @include for-phone-only {
-    font-size: 7px;
-    padding: 5px;
-  }
-  @include for-xsmall-phone-only {
-    font-size: 6px;
-    padding: 5px;
-  }
-
 }
 
 .dash-links-mobile-image {
@@ -257,8 +342,3 @@
   right: 7px;
 }
 
-.dash-share-options {
-  @include for-large-devices-up {
-    padding: 84px 0 116px 0;
-  }
-}

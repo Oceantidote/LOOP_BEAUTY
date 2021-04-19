@@ -11,3 +11,9 @@
   justify-content: center;
   width: 100%;
 }
+
+.wishlist-product-cards-container {
+  @include for-small-devices-down {
+    padding: 16px 0;
+  }
+}

@@ -1,7 +1,14 @@
 <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
   <div class="products-index-filters-container">
     <div class="partial-filters-one">
-      <h3 class="large-text no-bottom-margin lighter">products</h3>
+      <% if params[:controller] == 'products' %>
+        <h3 class="large-text lighter mb-3 mb-sm-0">products</h3>
+      <% elsif params[:action] == 'showroom' %>
+        <div class="influencer-credit-container dotted-underline-button mb-3 mb-sm-0">
+          <p class="small-text mb-0 mr-2">Credit Remaining</p>
+          <p class="small-text mb-0"><%= humanized_money_with_symbol @user.remaining_credit %></p>
+        </div>
+      <% end %>
       <div class="d-flex align-items-center">
         <%= f.fields_for :sort do |s| %>
           <%= s.input :method, collection: [['new in', 'created_at,desc'], ['price: high to low', 'price_cents,desc'], ['price: low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container small-text ls-xs' } %>

@@ -1,24 +1,30 @@
 <div class="dashboard-wrapper">
-  <div class="dashboard-container">
-    <h4 class="mb-5">my profile</h4>
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-2' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
   </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
       <%= render 'shared/dash' %>
     </div>
     <div class="dash-content-container">
-      <p class="ls-xs mb-2">refer a friend</p>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">refer a friend</p>
       <div class="dash-content">
-        <div class="refer-friend-container h-100 p-5">
+        <div class="refer-friend-container h-100">
           <div class="">
             <p class="text-center lighter ls-xs">Refer a friend and get 15% off when they shop!</p>
-            <p class="text-center lighter ls-xs m-0">your friend will get 15% off too.</p>
+            <p class="text-center lighter ls-xs mb-4 mb-md-0">your friend will get 15% off too.</p>
           </div>
           <div class="referral-code-section">
             <p class="lighter mb-4 ls-xs">Share your personalised referral code:</p>
-            <p class="ls-xs m-0"><strong><%= current_user.referral_code %></strong></p>
+            <p class="ls-xs "><strong><%= current_user.referral_code %></strong></p>
           </div>
-          <p class="lighter ls-xs">*Offer valid for up to 5 referrals per person</p>
+          <p class="lighter ls-xs mt-4 mt-md-0">*Offer valid for up to 5 referrals per person</p>
         </div>
       </div>
     </div>

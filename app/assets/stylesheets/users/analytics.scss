@@ -20,13 +20,13 @@
     height: 275px;
     width: 100%;
     object-fit: cover;
-    border: 3px solid #000;
+    border: 1px solid #000;
   }
 }
 
 .analytics-content-section {
   height: 160px;
-  border: 3px solid #000;
+  border: 1px solid #000;
   margin: 10px 0;
   padding: 30px 10px;
   @include absCenterColumn;
@@ -67,7 +67,7 @@
 }
 
 .analytics-list-item-text {
-  border: 3px solid #000;
+  border: 1px solid #000;
   width: 200px;
   display: flex;
   align-items: center;
@@ -80,8 +80,8 @@
 .analytics-number {
   height: 30px;
   width: 40%;
-  background: #000;
-  color: #FFF;
+  border: 1px solid #000;
+  border-bottom: none;
   @include absCenter;
 }
 

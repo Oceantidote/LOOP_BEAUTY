@@ -1,11 +1,7 @@
 .influencer-credit-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 150px;
+  display: flex;
   @include for-phone-only {
-    position: initial;
-    margin: 10px 10px 0 auto;
+    padding: 4px 0;
+    width: max-content;
   }
-
 }

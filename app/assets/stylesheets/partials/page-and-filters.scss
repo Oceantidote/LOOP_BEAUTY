@@ -18,6 +18,10 @@
   @include for-medium-devices-down {
     padding: 0px 26px;
   }
+  @include for-phone-only {
+    display: block;
+    height: unset;
+  }
 
   .transparent-filter {
     padding: 10px 30px;

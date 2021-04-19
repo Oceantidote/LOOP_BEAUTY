@@ -3,6 +3,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 48px;
+  width: 100%;
+  @include for-small-devices-down {
+    padding: 24px;
+  }
 }
 .refer-friend-section {
   padding: 40px 0;

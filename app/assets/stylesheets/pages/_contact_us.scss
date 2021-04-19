@@ -28,15 +28,17 @@
   -moz-appearance:    none;
   appearance:         none;
   width: 100% !important;
-  background-color: $background;
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid #000000;
   border-radius: 0;
   box-shadow: none;
   letter-spacing: 1px;
   padding-left: 0;
+  font-size: 14px;
+  font-weight: 200;
   &:focus {
-    background-color: $background;
+    background-color: transparent;
     box-shadow: none;
   }
 }

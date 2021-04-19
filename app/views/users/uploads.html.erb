@@ -1,66 +1,78 @@
 <div class="dashboard-wrapper">
-  <div class="dashboard-container">
-    <div class="dash-menu-container">
-      <% if current_user.influencer? %>
-        <%= render 'shared/influencer_dash' %>
-      <% else %>
-        <%= render 'shared/dash' %>
-      <% end %>
-    </div>
-    <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Uploads</h2>
-      <hr>
-      <div class="account-details-tabs">
-        <p class="boldest grey-font account-tab-one all-tabs account-active-tab">Pending (<%= @pending.count %>)</p>
-        <span>|</span>
-        <p class="boldest grey-font account-tab-two all-tabs">Rejected (<%= @rejected.count %>)</p>
-        <span>|</span>
-        <p class="boldest grey-font account-tab-three all-tabs">Approved (<%= @approved.count %>)</p>
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-4' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
       </div>
-      <div class="account-details-content">
-        <div class="uploads-content-one account-content-show">
-          <% if @pending.count == 0 %>
-            <p class="large-margin text-center boldest kaftan grey">You have no pending uploads</p>
-          <% else %>
-            <div class="row row-style">
-              <% @pending.each do |item| %>
-                <%= render 'shared/upload_cards', item: item %>
+    <% end %>
+  </div>
+    <div class="dashboard-container">
+      <div class="dash-menu-container">
+        <% if current_user.influencer? %>
+          <%= render 'shared/influencer_dash' %>
+        <% else %>
+          <%= render 'shared/dash' %>
+        <% end %>
+      </div>
+      <div class="dash-content-container">
+        <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">share / check status</p>
+        <div class="dash-content">
+          <div class="account-details-tabs">
+            <div class="account-details-tabs pt-4 px-3 h-100">
+              <p class="account-tab-one all-tabs account-active-tab mb-2 mb-md-4 small-text"><i class="fas fa-caret-right acc-arrow acc-arrow-show mr-2"></i>pending (<%= @pending.count %>)</p>
+              <p class="account-tab-two all-tabs mb-2 mb-md-4 small-text"><i class="fas fa-caret-right acc-arrow mr-2"></i>rejected (<%= @rejected.count %>)</p>
+              <p class="account-tab-three all-tabs mb-2 mb-md-4 small-text"><i class="fas fa-caret-right acc-arrow mr-2"></i>approved (<%= @approved.count %>)</p>
+              <div class="d-md-none">
+                <hr class="w-100 mb-0" style="border-color: #DDCCB5;">
+              </div>
+            </div>
+          </div>
+          <div class="account-details-content w-100">
+            <div class="account-content-one h-100 check-status-show">
+              <% if @pending.count == 0 %>
+                <p class="large-margin text-center ls-xs">You have no pending uploads</p>
+              <% else %>
+                <div class="row m-0">
+                  <% @pending.each do |item| %>
+                    <%= render 'shared/upload_cards', item: item %>
+                  <% end %>
+                </div>
               <% end %>
             </div>
-          <% end %>
-        </div>
-        <div class="uploads-content-two">
-          <% if @rejected.count == 0 %>
-            <p class="large-margin text-center boldest kaftan grey">You have no rejected uploads</p>
-          <% else %>
-            <div class="row row-style">
-              <% @rejected.each do |item| %>
-                <%= render 'shared/upload_cards', item: item %>
+            <div class="account-content-two h-100">
+              <% if @rejected.count == 0 %>
+                <p class="large-margin text-center ls-xs">You have no rejected uploads</p>
+              <% else %>
+                <div class="row m-0">
+                  <% @rejected.each do |item| %>
+                    <%= render 'shared/upload_cards', item: item %>
+                  <% end %>
+                </div>
               <% end %>
             </div>
-          <% end %>
-        </div>
-        <div class="uploads-content-three wrap">
-          <% if @approved.count == 0 %>
-            <p class="large-margin text-center boldest kaftan grey">You have no approved uploads</p>
-          <% else %>
-            <div class="row row-style">
-              <% @approved.each do |item| %>
-                <%= render 'shared/upload_cards', item: item %>
+            <div class="account-content-three h-100">
+              <% if @approved.count == 0 %>
+                <p class="large-margin text-center ls-xs">You have no approved uploads</p>
+              <% else %>
+                <div class="row m-0">
+                  <% @approved.each do |item| %>
+                    <%= render 'shared/upload_cards', item: item %>
+                  <% end %>
+                </div>
+              <% end %>
+              <% if current_user.affiliate_link %>
+                <div class="d-flex flex-column justify-content-center align-items-center p-3 mt-4">
+                  <p class="ls-xs">Your Overall Shop affiliate link: </p>
+                  <input type="text" value="<%= current_user.affiliate_link %>" id="link" class="aff-link min-200-w contact-form-input mb-3 text-center">
+                  <!-- The button used to copy the text -->
+                  <button class="dotted-underline-button small-text" onclick="myFunction(<%= current_user.id %>)">Copy Link</button>
+                </div>
               <% end %>
             </div>
-          <% end %>
-          <% if current_user.affiliate_link %>
-            <div class="link-row pb-2 mt-4">
-              <h5 class="mr-2">Your Overall Shop affiliate link: </h5>
-              <input type="text" value="<%= current_user.affiliate_link %>" id="link" class="aff-link min-200-w">
-
-              <!-- The button used to copy the text -->
-              <button class="aff-btn" onclick="myFunction(<%= current_user.id %>)">Copy Link</button>
-            </div>
-          <% end %>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -70,9 +82,10 @@
   tabOne = document.querySelector('.account-tab-one');
   tabTwo = document.querySelector('.account-tab-two');
   tabThree = document.querySelector('.account-tab-three');
-  contentOne = document.querySelector('.uploads-content-one');
-  contentTwo = document.querySelector('.uploads-content-two');
-  contentThree = document.querySelector('.uploads-content-three');
+  arrows = document.querySelectorAll('.acc-arrow');
+  contentOne = document.querySelector('.account-content-one');
+  contentTwo = document.querySelector('.account-content-two');
+  contentThree = document.querySelector('.account-content-three');
 
   tabs = document.querySelectorAll('.all-tabs');
   tabs.forEach(function(tab) {
@@ -83,21 +96,27 @@
   });
 
   tabOne.addEventListener('click', function() {
-    contentOne.classList.add('account-content-show');
-    contentTwo.classList.remove('account-content-show');
-    contentThree.classList.remove('account-content-show');
+    arrows.forEach(arrow => arrow.classList.remove('acc-arrow-show'));
+    tabOne.firstElementChild.classList.add('acc-arrow-show');
+    contentOne.classList.add('check-status-show');
+    contentTwo.classList.remove('check-status-show');
+    contentThree.classList.remove('check-status-show');
   });
 
   tabTwo.addEventListener('click', function() {
-    contentTwo.classList.add('account-content-show');
-    contentOne.classList.remove('account-content-show');
-    contentThree.classList.remove('account-content-show');
+    arrows.forEach(arrow => arrow.classList.remove('acc-arrow-show'));
+    tabTwo.firstElementChild.classList.add('acc-arrow-show');
+    contentTwo.classList.add('check-status-show');
+    contentOne.classList.remove('check-status-show');
+    contentThree.classList.remove('check-status-show');
   });
 
   tabThree.addEventListener('click', function() {
-    contentThree.classList.add('account-content-show');
-    contentOne.classList.remove('account-content-show');
-    contentTwo.classList.remove('account-content-show');
+    arrows.forEach(arrow => arrow.classList.remove('acc-arrow-show'));
+    tabThree.firstElementChild.classList.add('acc-arrow-show');
+    contentThree.classList.add('check-status-show');
+    contentOne.classList.remove('check-status-show');
+    contentTwo.classList.remove('check-status-show');
   });
 
 

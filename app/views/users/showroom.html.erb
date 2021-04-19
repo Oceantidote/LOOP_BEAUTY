@@ -1,17 +1,27 @@
 <div class="dashboard-wrapper">
-  <div class="dashboard-container">
-    <div class="dash-menu-container">
-      <%= render 'shared/influencer_dash' %>
-    </div>
-    <div class="dash-content-container">
-      <div class="influencer-credit-container">
-        <p class="small-text boldest underline small-margin-bottom kaftan">Credit Remaining</p>
-        <p class="boldest small-margin-bottom kaftan"><%= humanized_money_with_symbol @user.remaining_credit %></p>
-        <p class="v-small-text small-margin-bottom kaftan">Your credit expires last day of the month</p>
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-0 <%= 'mb-4' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
       </div>
-      <h2 class="insider-info-title mlb-title text-center">Showroom</h2>
-      <hr>
-      <%= render 'shared/card_results', sort_method: @sort_method, products: @products, form_url: user_showroom_path(@user) %>
+    <% end %>
+  </div>
+    <div class="dashboard-container">
+      <div class="dash-menu-container">
+        <% if current_user.influencer? %>
+          <%= render 'shared/influencer_dash' %>
+        <% else %>
+          <%= render 'shared/dash' %>
+        <% end %>
+      </div>
+      <div class="dash-content-container">
+        <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">show room</p>
+        <div class="dash-content">
+          <%= render 'shared/card_results', sort_method: @sort_method, products: @products, form_url: user_showroom_path(@user) %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
