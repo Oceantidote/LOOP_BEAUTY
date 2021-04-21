@@ -1,5 +1,6 @@
-<div class="shopping-bag-wrapper minimum-height">
-  <div class="shopping-bag-container">
+<div class="shopping-bag-main-container minimum-height">
+  <div class="shopping-bag-items">
+    <h4 class="ls-xs shopping-bag-title">shopping bag (<span class="shopping-bag-items-count"><%= @basket.basket_products.size %> <%= 'item'.pluralize(@basket.basket_products.size) %></span>)</h4>
     <% if @basket.user&.influencer %>
       <div class="influencer-credit-container">
         <p class="small-text boldest underline small-margin-bottom kaftan">Credit Remaining</p>
@@ -7,15 +8,12 @@
         <p class="v-small-text small-margin-bottom kaftan">Your credit expires last day of the month</p>
       </div>
     <% end %>
-    <h2 class="shopping-bag-title text-center">Shopping Bag</h2>
-    <hr style="border-color: #CFCFCF;">
     <div class="empty-basket-text">
       <% if @basket.products.count == 0 %>
-        <p class="large-margin text-center s-medium-text ls-xs">your basket is empty</p>
+        <p class="text-center s-medium-text ls-xs mt-5 mb-3">your basket is empty</p>
         <div class="start-shopping-holder">
           <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
         </div>
-        <hr style="border-color: #CFCFCF;">
       <% end %>
     </div>
     <% @basket.basket_products.each do |item| %>
@@ -23,37 +21,86 @@
         <%= render 'shopping_bag_product_card', item: item %>
       </div>
     <% end %>
-    <div class="shopping-bag-checkout">
-      <div class="shopping-bag-code">
-        <!-- <p class="boldest small-text tiny-margin-bottom">Promotional code</p> -->
-        <%#= simple_form_for @basket, url: discount_path, method: :patch, remote: :true do |f| %>
-          <%# if @basket.discount_code %>
-            <%#= f.input :discount_code, label: false, placeholder: 'Enter code', disabled: true, input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
-          <%# else %>
-            <%#= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: @basket.discount_code&.code } %>
-          <%# end %>
-          <!-- <div class="discount-message"></div> -->
-          <%# if @basket.basket_products.count == 0 %>
-            <!-- <div class="primary-button discount-code-button disabled" style="width: 98px;">APPLY</div> -->
-          <%# elsif @basket.discount_code.nil? %>
-            <%#= f.submit 'APPLY', class: "primary-button discount-code-button", id: "discount-apply"  %>
-          <%# else %>
-            <%#= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button" %>
-          <%# end %>
-        <%# end %>
-        <%= render 'form', basket: @basket %>
-      </div>
+  </div>
+  <div class="shopping-bag-checkout">
+    <div class="shopping-bag-checkout-container">
       <div class="shopping-bag-continue-checkout">
-        <p class="boldest grey-font text-right small-text no-margin kaftan">Subtotal: <span class="basket-total-price" ><%= humanized_money_with_symbol @basket.unadjusted_price %></span></p>
-        <div class="shopping-bag-continue-checkout-total">
+        <div class="d-flex justify-content-between w-100">
+          <p class="ls-xs mb-1 lighter">Subtotal:</p>
+          <p class="ls-xs mb-1 lighter"><span class="basket-total-price" ><%= humanized_money_with_symbol @basket.unadjusted_price %></span></p>
+        </div>
+        <div class="shopping-bag-continue-checkout-total w-100">
           <%= render 'shared/shopping_bag_price', basket: @basket %>
+        </div>
+        <div class="d-flex justify-content-between w-100 mb-5">
+          <p class="ls-xs mb-1 lighter">Shipping Cost:</p>
+          <p class="ls-xs mb-1 lighter text-secondary">Next Page</p>
+        </div>
+      </div>
+      <div class="discount-code-and-checkout-button mb-5 mb-md-0">
+        <div class="shopping-bag-code">
+          <%= render 'form', basket: @basket %>
         </div>
         <div class="checkout-button">
           <%= render 'checkout_button', basket: @basket %>
         </div>
-        <%= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe', alt: 'stripe photo' %>
+        <div>
+          <%= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe', alt: 'stripe photo' %>
+        </div>
+      </div>
+      <div class="my-4 my-md-0">
+        <p class="text-center bold ls-xs mb-0">Customer Service</p>
+        <p class="medium-text ls-xs text-center lighter"><i class="far fa-envelope mr-2"></i>hello@thenetbeauty.com</p>
+      </div>
+      <div class="my-4 my-md-0">
+        <p class="medium-text text-center ls-xs mb-0"><i class="fas fa-lock mr-2"></i>Shop Safely</p>
+        <p class="medium-text ls-xs text-center lighter"><i class="fas fa-exchange-alt mr-2"></i>Returns & Exchanges</p>
+      </div>
+    </div>
+    <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark-small' %>
+  </div>
+</div>
+
+<!-- <div class="shopping-bag-wrapper minimum-height">
+  <div class="shopping-bag-container">
+    <%# if @basket.user&.influencer %>
+      <div class="influencer-credit-container">
+        <p class="small-text boldest underline small-margin-bottom kaftan">Credit Remaining</p>
+        <p class="boldest small-margin-bottom influencer-remaining-credit kaftan"><%#= humanized_money_with_symbol @basket.user.remaining_credit %></p>
+        <p class="v-small-text small-margin-bottom kaftan">Your credit expires last day of the month</p>
+      </div>
+    <%# end %>
+    <h2 class="shopping-bag-title text-center">Shopping Bag</h2>
+    <hr style="border-color: #CFCFCF;">
+    <div class="empty-basket-text">
+      <%# if @basket.products.count == 0 %>
+        <p class="large-margin text-center s-medium-text ls-xs">your basket is empty</p>
+        <div class="start-shopping-holder">
+          <%#= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+        </div>
+        <hr style="border-color: #CFCFCF;">
+      <%# end %>
+    </div>
+    <%# @basket.basket_products.each do |item| %>
+      <div class="item-<%#= item.id %> item-bag-<%#= item.id %> %>">
+        <%#= render 'shopping_bag_product_card', item: item %>
+      </div>
+    <%# end %>
+    <div class="shopping-bag-checkout">
+      <div class="shopping-bag-code">
+        <%#= render 'form', basket: @basket %>
+      </div>
+      <div class="shopping-bag-continue-checkout">
+        <p class="boldest grey-font text-right small-text no-margin kaftan">Subtotal: <span class="basket-total-price" ><%#= humanized_money_with_symbol @basket.unadjusted_price %></span></p>
+        <div class="shopping-bag-continue-checkout-total">
+          <%#= render 'shared/shopping_bag_price', basket: @basket %>
+        </div>
+        <div class="checkout-button">
+          <%#= render 'checkout_button', basket: @basket %>
+        </div>
+        <%#= image_tag 'powered-by-stripe.png', class: 'powered-by-stripe', alt: 'stripe photo' %>
       </div>
     </div>
   </div>
 </div>
-
+ -->

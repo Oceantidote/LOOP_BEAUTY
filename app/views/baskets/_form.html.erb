@@ -1,16 +1,17 @@
-<p class="boldest small-text tiny-margin-bottom kaftan">Promotional code</p>
-<%= simple_form_for basket, url: discount_path, method: :patch, remote: :true do |f| %>
-  <% if basket.discount_code %>
-    <%= f.input :discount_code, label: false, placeholder: 'Enter code', disabled: true, input_html: { class: 'contact-form-input', value: basket.discount_code&.code } %>
-  <% else %>
-    <%= f.input :discount_code, label: false, placeholder: 'Enter code', input_html: { class: 'contact-form-input', value: basket.discount_code&.code } %>
-  <% end %>
-  <div class="discount-message"></div>
+<%= simple_form_for basket, url: discount_path, method: :patch, remote: :true, html: { class: 'd-flex' } do |f| %>
+  <div class="flex-grow-1">
+    <% if basket.discount_code %>
+      <%= f.input :discount_code, label: false, placeholder: 'discount code', disabled: true, input_html: { class: 'contact-form-input', value: basket.discount_code&.code } %>
+    <% else %>
+      <%= f.input :discount_code, label: false, placeholder: 'discount code', input_html: { class: 'contact-form-input', value: basket.discount_code&.code } %>
+    <% end %>
+    <div class="discount-message"></div>
+  </div>
   <% if basket.basket_products.count == 0 %>
-    <div class="primary-button discount-code-button disabled" style="width: 98px;">APPLY</div>
+    <div class="discount-code-button disabled">enter</div>
   <% elsif basket.discount_code.nil? %>
-    <%= f.submit 'APPLY', class: "primary-button discount-code-button", id: "discount-apply"  %>
+    <%= f.submit 'apply', class: "discount-code-button", id: "discount-apply"  %>
   <% else %>
-    <%= link_to 'REMOVE', remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button width-min-content" %>
+    <%= link_to 'remove', remove_discount_path, method: :patch, remote: true, class: "discount-code-button width-min-content no-decoration" %>
   <% end %>
 <% end %>

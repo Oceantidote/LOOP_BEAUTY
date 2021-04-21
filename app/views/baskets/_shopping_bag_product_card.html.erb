@@ -8,21 +8,26 @@
       <% end %>
       <%= image_tag url_for(item.shade.card_photo), class: 'shopping-bag-card-image', alt: "shade photo" %>
     </div>
-    <div class="shopping-bag-card-title">
-      <p class="small-text boldest no-margin kaftan"><%= item.product.title %></p>
-      <p class="small-text no-margin kaftan"><%= item.shade.name %></p>
-      <p class="small-text no-margin kaftan"><%= item.product.brand.name %></p>
-      <%= link_to 'Remove', basket_product_path(item), method: :delete, remote: true, class: "small-text kaftan underline grey-font boldest text-right" %>
-      <%# if policy(item).set_credit_purchase? && item.product.demoable %>
-        <%#= simple_form_for item, url: set_credit_purchase_basket_product_path(item), method: :patch, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>
-            <%#= f.input :purchase_with_credit, class: 'Mukta Mahee' %>
+    <div class="shopping-bag-item-info">
+      <div class="pt-4 d-none d-sm-block"></div>
+      <div class="shopping-bag-card-title mb-4 mb-sm-0">
+        <p class="mb-2 lighter ls-xs"><%= item.product.brand.name %>, <%= item.product.title %>, <%= item.shade.name %></p>
+        <p class="neue-machina text-secondary ls-xs lighter mb-0"><%= humanized_money_with_symbol(item.product.price) %></p>
+        <%# if policy(item).set_credit_purchase? && item.product.demoable %>
+          <%#= simple_form_for item, url: set_credit_purchase_basket_product_path(item), method: :patch, html: { onchange: "Rails.fire(this, 'submit')" }, remote: true do |f| %>
+              <%#= f.input :purchase_with_credit, class: 'Mukta Mahee' %>
+          <%# end %>
         <%# end %>
-      <%# end %>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="item-form-<%= item.id %>" style="display: contents;">
+          <%= render 'baskets/shopping_bag_form_controls', item: item %>
+        </span>
+        <%= link_to basket_product_path(item), method: :delete, remote: true, class: "ls-xs lighter no-decoration" do %>
+          Remove <%= image_tag 'popup_close.png', width: 12 %>
+        <% end %>
+      </div>
     </div>
-    <p class="small-text boldest text-right shopping-bag-card-price kaftan"><%= humanized_money_with_symbol(item.product.price) %></p>
-    <span class="item-form-<%= item.id %>" style="display: contents;">
-      <%= render 'baskets/shopping_bag_form_controls', item: item %>
-    </span>
   </div>
-  <hr style="border-color: #CFCFCF;">
+  <hr class="m-0" style="border-color: #DDCCB5;">
 </div>

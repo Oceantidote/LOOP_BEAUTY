@@ -1,6 +1,7 @@
 checkout = document.getElementById("pos-checkout")
 discount = document.getElementById("discount-apply")
 containers = document.querySelectorAll('.item-<%= @item.id %>')
+document.querySelector('.shopping-bag-items-count').innerText = '<%= @basket.basket_products.size %> <%= 'item'.pluralize(@basket.basket_products.size) %>'
 document.querySelector('.basket-item-count').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.basket-mobile').innerText = '<%= @basket.total_number_of_products %>'
 document.querySelector('.navbar-basket-title h6').innerHTML = 'my bag, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %>'
@@ -8,9 +9,9 @@ subtotals = document.querySelectorAll('.basket-total-price')
 subtotals.forEach(total => {
   total.innerHTML = "<%= humanized_money_with_symbol @item.basket.subtotal %>"
 })
-total = document.querySelector('.shopping-bag-continue-checkout-total > p')
+total = document.querySelector('.shopping-bag-continue-checkout-total .checkout-total-price')
 if (total) {
-  total.innerText = "Total: <%= humanized_money_with_symbol @item.basket.total_price %>"
+  total.innerText = "<%= humanized_money_with_symbol @item.basket.total_price %>"
 }
 if (<%= @basket.empty? %>) {
   document.querySelector('.navbar-basket-items-container').innerHTML = '<p class="large-margin text-center s-medium-text ls-xs">your basket is empty</p>'

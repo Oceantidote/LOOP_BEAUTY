@@ -1,15 +1,33 @@
-<div class="shopping-bag-continue-checkout-total">
+<div class="shopping-bag-continue-checkout-total w-100">
   <% if basket.discount_code %>
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom kaftan">Savings: -<%= humanized_money_with_symbol basket.money_off %></p>
+    <div class="d-flex justify-content-between w-100">
+      <p class="ls-xs mb-1 lighter">Savings:</p>
+      <p class="ls-xs mb-1 lighter">-<%= humanized_money_with_symbol basket.money_off %></p>
+    </div>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right medium-text kaftan" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.subtotal %></p>
+    <div class="d-flex justify-content-between w-100">
+      <p class="ls-xs mb-1 lighter">Total:</p>
+      <p class="ls-xs mb-1 lighter checkout-total-price"><%= humanized_money_with_symbol basket.subtotal %></p>
+    </div>
   <% elsif @basket.money_off_from_credit_cents > 0 %>
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom kaftan">Savings: -<%= humanized_money_with_symbol basket.money_off_from_credit %></p>
+    <div class="d-flex justify-content-between w-100">
+      <p class="ls-xs mb-1 lighter">Savings:</p>
+      <p class="ls-xs mb-1 lighter">-<%= humanized_money_with_symbol basket.money_off_from_credit %></p>
+    </div>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right small-text grey-font tiny-margin-bottom kaftan">Credit remaining: <%= humanized_money_with_symbol (@basket.user.remaining_credit - @basket.money_off_from_credit) %></p>
-    <p class="boldest text-right medium-text kaftan" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol basket.total_price %></p>
+    <div class="d-flex justify-content-between w-100">
+      <p class="ls-xs mb-1 lighter">Credit remaining:</p>
+      <p class="ls-xs mb-1 lighter"><%= humanized_money_with_symbol (@basket.user.remaining_credit - @basket.money_off_from_credit) %></p>
+    </div>
+    <div class="d-flex justify-content-between w-100">
+      <p class="ls-xs mb-1 lighter">Total:</p>
+      <p class="ls-xs mb-1 lighter checkout-total-price"><%= humanized_money_with_symbol basket.total_price %></p>
+    </div>
   <% else %>
     <!-- <p class="boldest text-right small-text grey-font tiny-margin-bottom">Delivery: <%#= humanized_money_with_symbol 5 %></p> -->
-    <p class="boldest text-right medium-text kaftan" style="margin-bottom: 12px;">Total: <%= humanized_money_with_symbol @basket.total_price %></p>
+    <div class="d-flex justify-content-between w-100">
+      <p class="ls-xs mb-1 lighter">Total:</p>
+      <p class="ls-xs mb-1 lighter checkout-total-price"><%= humanized_money_with_symbol @basket.total_price %></p>
+    </div>
   <% end %>
 </div>

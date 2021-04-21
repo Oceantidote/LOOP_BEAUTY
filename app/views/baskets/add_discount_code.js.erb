@@ -12,7 +12,7 @@ if ('<%= @discount.present? && @basket.valid? %>' === 'true') {
   input.style.margin = 'auto'
   document.querySelector('.discount-message').innerHTML = `<p style='font-size: 10px; color: #1EDD88; margin-bottom: 1px;'>Discount code applied.</p>`
   discountForm.lastElementChild.remove()
-  discountForm.insertAdjacentHTML('beforeend', '<%= link_to "REMOVE", remove_discount_path, method: :patch, remote: true, class: "primary-button discount-code-button width-max-content" %>')
+  discountForm.insertAdjacentHTML('beforeend', '<%= link_to "remove", remove_discount_path, method: :patch, remote: true, class: "discount-code-button width-max-content no-decoration" %>')
 } else {
   input.classList.add("form-group-invalid")
   input.firstElementChild.classList.remove("is-valid")

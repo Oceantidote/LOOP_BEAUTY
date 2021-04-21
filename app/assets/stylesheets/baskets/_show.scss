@@ -1,3 +1,117 @@
+.shopping-bag-main-container {
+  display: flex;
+  @include for-small-devices-down {
+    display: block;
+  }
+}
+
+.discount-code-form {
+  display: flex;
+  .form-group {
+    margin: 0;
+  }
+}
+
+.shopping-bag-items {
+  padding: 30px;
+  flex-grow: 1;
+  background: $background;
+}
+
+.shopping-bag-checkout {
+  position: sticky;
+  top: 96px;
+  padding: 30px 0;
+  background: $background-light;
+  height: calc(100vh - 96px);
+  @include for-small-devices-down {
+    height: unset;
+  }
+}
+
+.shopping-bag-checkout-container {
+  margin-top: 48px;
+  padding: 0 30px 72px;
+  width: 428px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include for-medium-devices-down {
+    width: 300px;
+  }
+  @include for-small-devices-down {
+    margin-top: 0;
+    width: 100%;
+    padding: 0 30px;
+  }
+}
+
+.shopping-bag-card-image {
+  width: 200px;
+  margin-right: 30px;
+  @include for-medium-devices-down {
+    width: 172px;
+    margin-right: 20px;
+  }
+  @include for-phone-only {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+}
+
+.shopping-bag-card {
+  margin: auto;
+}
+
+.the-net-watermark-small {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 40px;
+}
+
+.shopping-bag-card-content {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include for-medium-devices-down {
+    padding: 16px 0;
+  }
+  @include for-phone-only {
+    flex-direction: column;
+  }
+}
+
+.shopping-bag-item-info {
+  flex-grow: 1;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include for-phone-only {
+    width: 100%;
+    display: block;
+    height: unset;
+  }
+}
+
+.shopping-bag-title {
+  background: $background;
+  position: sticky;
+  top: 96px;
+  padding: 16px 0;
+  margin: 32px 0 24px 0;
+  z-index: 1;
+  @include for-small-devices-down {
+    position: relative;
+    top: unset;
+    margin: 0;
+  }
+}
+
 .shopping-bag-wrapper {
   height: 100%;
   width: 100%;
@@ -40,47 +154,21 @@
   }
 }
 
-.shopping-bag-title {
-  font-weight: 900;
-  margin: 40px 0;
-}
-
-.shopping-bag-card {
-  width: 70%;
-  margin: auto;
-  @include for-small-devices-down {
-    width: 90%;
-  }
-}
-
-.shopping-bag-card-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @include for-phone-only {
-    flex-direction: column;
-  }
-}
-
-.shopping-bag-card-image {
-  width: 150px;
-}
-
 .shopping-bag-card-quantity {
   display: flex;
   align-items: center;
-  background: #F2F2F2;
   .form-group {
     margin: 0;
   }
 }
 
 .shopping-bag-quantity-controls {
-  background: #F2F2F2;
+  background: $background;
   border: none;
-  font-weight: 900;
-  color: #6C6C6C;
-  padding: 5px 10px;
+  padding: 0;
+  &:focus {
+    outline: none !important;
+  }
 }
 
 .no-quantity {
@@ -88,27 +176,16 @@
   padding: 5px 10px;
 }
 
-.shopping-bag-checkout {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
-  margin: auto;
-  padding-bottom: 30px;
-  @include for-small-devices-down {
-    width: 90%;
-  }
-  @include for-phone-only {
-    display: flex;
-    flex-direction: column;
-  }
+.item-quantity {
+  text-align: center;
+  min-width: 68px;
 }
 
+
 .shopping-bag-code {
-  @include for-phone-only {
-    margin-bottom: 50px;
-  }
   .disabled {
-    background-color: #ECECEC !important;
+    background-color: $background-light !important;
+    opacity: 0.5;
   }
   .invalid-feedback {
     margin: 0 !important;
@@ -118,18 +195,18 @@
 }
 
 .discount-code-button {
-  font-size: 12px !important;
-  height: 40px !important;
-  padding: 0 25px !important;
-  margin: auto 0 auto auto !important;
-}
-
-.bag-checkout-button {
-  font-size: 12px !important;
-  height: 40px !important;
-  padding: 0 25px !important;
-  margin: auto 0 auto 10px !important;
-  width: max-content !important;
+  font-size: 14px !important;
+  height: 35px !important;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  height: 35px !important;
+  letter-spacing: 2px;
+  display: inline-flex;
+  align-items: center;
+  &:focus {
+    outline: none !important;
+  }
 }
 
 .checkout-button {
@@ -142,14 +219,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-
-.shopping-bag-card-title {
-  flex: 1;
-  padding: 0 10px;
-  @include for-phone-only {
-    @include absCenterColumn;
-  }
 }
 
 .shopping-bag-card-price {
@@ -168,7 +237,6 @@
 
 .powered-by-stripe {
   height: 35px;
-  margin: 15px 0;
 }
 
 .width-max-content {
