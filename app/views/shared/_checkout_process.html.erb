@@ -1,20 +1,75 @@
-<div class="checkout-process">
-  <div class="checkout-process-steps">
-    <div class="checkout-number tiny-margin-bottom">
-      <h4 class="no-margin boldest">1</h4>
+<div class="accordion p-5" id="accordionExample">
+  <div class="">
+    <div class="card-header p-3" id="headingOne">
+      <div class="ls-xs d-flex justify-content-between" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Delivery Options
+      </div>
     </div>
-    <p class="boldest no-margin kaftan">Sign in</p>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="delivery-option-title">
+        <p class="medium-text boldest margin-top kaftan">Delivery Options</p>
+      </div>
+      <% if @basket.basket_products.any?(&:purchase_with_credit) %>
+        <p class="ls-xs lighter">Free delivery on orders purchased with credit</p>
+      <% end %>
+      <div class="delivery-container">
+        <% if @basket.basket_products.any?(&:purchase_with_credit) %>
+          <div class="delivery-disable">
+          </div>
+        <% end %>
+        <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
+          <div class="checkout-checkbox">
+            <div class="checkout-checkbox-inner"></div>
+          </div>
+          <p class="boldest delivery-option-text no-margin">Standard</p>
+          <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
+          <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
+        </div>
+        <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
+          <div class="checkout-checkbox">
+            <div></div>
+          </div>
+          <p class="boldest delivery-option-text no-margin">Express</p>
+          <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
+          <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
+        </div>
+        <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
+          <div class="checkout-checkbox">
+            <div></div>
+          </div>
+          <div>
+            <p class="boldest delivery-option-text no-margin">International</p>
+            <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
+          </div>
+          <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
+          <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="checkout-process-steps <%= (params[:controller] == 'orders' && params[:action] == 'new') ? 'checkout-active' : '' %>">
-    <div class="checkout-number tiny-margin-bottom">
-      <h4 class="no-margin boldest">2</h4>
+  <div class="">
+    <div class="card-header p-3" id="headingTwo">
+     <div class="ls-xs d-flex justify-content-between" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Delivery Address
+      </div>
     </div>
-    <p class="boldest no-margin kaftan">Summary / Payment</p>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body ls-xs lighter">
+        Some placeholder content for the second accordion panel. This panel is hidden by default.
+      </div>
+    </div>
   </div>
-  <div class="checkout-process-steps <%= (params[:controller] == 'orders' && params[:action] == 'order_success') ? 'checkout-active' : '' %>">
-    <div class="checkout-number tiny-margin-bottom">
-      <h4 class="no-margin boldest">3</h4>
+  <div class="">
+    <div class="card-header p-3" id="headingThree">
+     <div class="ls-xs d-flex justify-content-between" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        Billing Address
+      </div>
     </div>
-    <p class="boldest no-margin kaftan">Order Complete</p>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body ls-xs lighter">
+        And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+      </div>
+    </div>
   </div>
 </div>

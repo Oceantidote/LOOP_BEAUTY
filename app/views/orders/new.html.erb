@@ -1,8 +1,7 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container">
-    <div class="dash-menu-container">
-      <div class="dash-links">
-        <h4 class="insider-info-title mlb-title text-center dash-mobile-title">Order Summary</h4>
+    <div class="checkout-basket-container">
+      <div class="checkout-basket-content">
         <% if @basket.empty? %>
           <p class="small-text text-center neue-machina no-margin" style="padding-bottom: 16px; margin: 0; border-bottom: 1px solid rgba(0,0,0,0.2);">There are no items in your basket</p>
         <% else %>
@@ -10,55 +9,69 @@
             <div class="checkout-item-container">
               <% @basket.basket_products.each do |item| %>
                 <div class="checkout-item">
-                  <div>
-                    <h6 class="boldest small-text"><%= item.product.title %></h6>
-                    <h6 class="small-text"><%= item.shade.name %></h6>
-                    <h6 class="small-text"><%= item.product.brand.name %></h6>
-                    <h6 class="small-text no-margin">Qty: <%= item.quantity %></h6>
-                  </div>
-                  <div>
-                    <h6 class="small-text"><%= humanized_money_with_symbol item.product.price * item.quantity %></h6>
+                  <p class="mb-0 ls-xs"><%= item.product.title %></p>
+                  <p class="mb-0 ls-xs small-text lighter"><%= item.shade.name %></p>
+                  <p class="mb-2 ls-xs small-text lighter"><%= item.product.brand.name %></p>
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-0 ls-xs lighter">Qty: <%= item.quantity %></p>
+                    <p class="mb-0 lighter ls-xs"><%= humanized_money_with_symbol item.product.price * item.quantity %></p>
                   </div>
                 </div>
               <% end %>
-              <%= link_to 'Edit Bag', bag_path, class: 'kaftan text-center grey underline boldest small-text checkout-edit-bag' %>
-            </div>
-            <div class="checkout-total-container">
-              <div class="basket-price">
-                <span class="small-text grey boldest kaftan">Subtotal: </span>
-                <h5 class="small-text grey boldest no-margin"><%= humanized_money_with_symbol @basket.unadjusted_price %></h5>
+              <div class="d-flex justify-content-center my-4">
+                <%= link_to 'Edit Bag', bag_path, class: 'ls-xs text-center dotted-underline-button px-0' %>
               </div>
-              <% if @basket.discount_code.present? %>
+              <div class="checkout-total-container">
                 <div class="basket-price">
-                  <span class="small-text grey boldest kaftan">Discount: </span>
-                  <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off %></h5>
+                  <p class="lighter ls-xs mb-0">Subtotal: </p>
+                  <p class="lighter ls-xs mb-0"><%= humanized_money_with_symbol @basket.unadjusted_price %></p>
                 </div>
-              <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
-                <div class="basket-price">
-                  <span class="small-text grey boldest kaftan">Credit Spent: </span>
-                  <h5 class="small-text grey boldest no-margin">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></h5>
-                </div>
-              <% end %>
-              <div class="basket-price small-margin-bottom">
-                <span class="small-text grey boldest no-margin kaftan">Delivery: </span>
-                <% if @basket.basket_products.any?(&:purchase_with_credit?) %>
-                  <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 0.00 %></h5>
-                <% else %>
-                  <h5 class="small-text grey boldest no-margin delivery-cost"><%= humanized_money_with_symbol 5.95 %></h5>
+                <% if @basket.discount_code.present? %>
+                  <div class="basket-price">
+                    <p class="lighter ls-xs mb-0">Discount: </p>
+                    <p class="lighter ls-xs mb-0">-<%= humanized_money_with_symbol @basket.money_off %></p>
+                  </div>
+                <% elsif @basket.basket_products.any?(&:purchase_with_credit) %>
+                  <div class="basket-price">
+                    <p class="lighter ls-xs mb-0">Credit Spent: </p>
+                    <p class="lighter ls-xs mb-0">-<%= humanized_money_with_symbol @basket.money_off_from_credit %></p>
+                  </div>
                 <% end %>
-              </div>
-              <div class="basket-price">
-                <span class="grey boldest medium-text kaftan">Total: </span>
-                <h5 class="grey boldest medium-text no-margin total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></h5>
+                <div class="basket-price small-margin-bottom">
+                  <p class="lighter ls-xs mb-0">Delivery: </p>
+                  <% if @basket.basket_products.any?(&:purchase_with_credit?) %>
+                    <p class="lighter ls-xs mb-0 delivery-cost"><%= humanized_money_with_symbol 0.00 %></p>
+                  <% else %>
+                    <p class="lighter ls-xs mb-0 delivery-cost"><%= humanized_money_with_symbol 5.95 %></p>
+                  <% end %>
+                </div>
+                <div class="basket-price">
+                  <p class="medium-text lighter mb-0 ls-xs">Total: </p>
+                  <p class="medium-text lighter mb-0 ls-xs total-cost"><%= humanized_money_with_symbol(@basket.basket_products.any?(&:purchase_with_credit) ? @basket.total_price : @basket.total_price + Money.new(595)) %></p>
+                </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
+      <%= simple_form_for @order, remote: true do |f| %>
+        <div class="checkout-mobile">
+          <%= f.input :delivery_address_id, as: :hidden, input_html: { id: "deliveryHolder", value: current_user&.delivery_addresses&.last&.id } %>
+          <%= f.input :billing_address_id, as: :hidden, input_html: { id: "billingHolder", value: current_user&.billing_addresses&.last&.id } %>
+          <%= f.input :delivery_type, as: :hidden, input_html: { value: 'standard' } %>
+        </div>
+        <script src="https://js.stripe.com/v3/"></script>
+        <% if @basket.total_price <= 0 %>
+          <%= f.submit 'Complete Purchase', class: 'primary-button w-100'  %>
+        <% elsif @user.delivery_addresses.length == 0 || @user.billing_addresses.length == 0 %>
+          <!-- <a class="stripe-button conditional-button kaftan" id="addressBtn">CONFIRM ADDRESSES</a> -->
+          <%= f.submit 'Pay Now', disabled: true, class: 'disabled-checkout-button-stripe stripe-button conditional-button', id: "paymentHidden" %>
+        <% else %>
+          <%= f.submit 'Pay Now', class: 'stripe-button stripe-button-el' %>
+        <% end %>
+      <% end %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Checkout</h2>
-      <hr>
       <%= render 'shared/checkout_process' %>
       <hr>
       <div class="order-summary-container">
@@ -116,45 +129,7 @@
               </div>
             <% end %>
           </div>
-          <div class="delivery-option-title">
-            <p class="medium-text boldest margin-top kaftan">Delivery Options</p>
-          </div>
-          <% if @basket.basket_products.any?(&:purchase_with_credit) %>
-            <h6 class="kaftan boldest s-medium-text">Free delivery on orders purchased with credit</h6>
-          <% end %>
-          <div class="delivery-container">
-            <% if @basket.basket_products.any?(&:purchase_with_credit) %>
-              <div class="delivery-disable">
-              </div>
-            <% end %>
-            <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
-              <div class="checkout-checkbox">
-                <div class="checkout-checkbox-inner"></div>
-              </div>
-              <p class="boldest delivery-option-text no-margin">Standard</p>
-              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
-              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
-            </div>
-            <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
-              <div class="checkout-checkbox">
-                <div></div>
-              </div>
-              <p class="boldest delivery-option-text no-margin">Express</p>
-              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
-              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
-            </div>
-            <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
-              <div class="checkout-checkbox">
-                <div></div>
-              </div>
-              <div>
-                <p class="boldest delivery-option-text no-margin">International</p>
-                <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
-              </div>
-              <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
-              <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
-            </div>
-          </div>
+
           <div class="checkout-addresses-container">
             <div class="checkout-address delivery-address-container">
               <p class="checkout-address-title medium-text boldest kaftan">Delivery Address</p>
@@ -318,22 +293,6 @@
             </div>
           </div>
         </div>
-        <%= simple_form_for @order, remote: true do |f| %>
-          <div class="checkout-mobile">
-            <%= f.input :delivery_address_id, as: :hidden, input_html: { id: "deliveryHolder", value: current_user&.delivery_addresses&.last&.id } %>
-            <%= f.input :billing_address_id, as: :hidden, input_html: { id: "billingHolder", value: current_user&.billing_addresses&.last&.id } %>
-            <%= f.input :delivery_type, as: :hidden, input_html: { value: 'standard' } %>
-          </div>
-          <script src="https://js.stripe.com/v3/"></script>
-          <% if @basket.total_price <= 0 %>
-            <%= f.submit 'COMPLETE PURCHASE', class: 'primary-button checkout-complete-button'  %>
-          <% elsif @user.delivery_addresses.length == 0 || @user.billing_addresses.length == 0 %>
-            <!-- <a class="stripe-button conditional-button kaftan" id="addressBtn">CONFIRM ADDRESSES</a> -->
-            <%= f.submit 'PAYMENT', disabled: true, class: 'disabled-checkout-button-stripe stripe-button conditional-button kaftan', id: "paymentHidden" %>
-          <% else %>
-            <%= f.submit 'PAYMENT', class: 'stripe-button stripe-button-el kaftan' %>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>
