@@ -14,14 +14,11 @@
   </div>
 <% end %>
 <div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
-  <button id="navbar-toggler" class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#mobile-nav-brands-menu,#mobile-nav-influencers-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <div class="mobile-hamburger-container d-flex">
-      <%= image_tag 'hamburger.png', class: "", alt: "hamburger icon" %>
+  <div class="navbar-menu-container">
+    <div class="d-flex align-items-center navbar-menu">
+      <%= image_tag 'hamburger.png', class: "mr-0 mr-sm-3", alt: "hamburger icon" %>
+      <span class="font-weight-bold d-none d-sm-inline">MENU</span>
     </div>
-  </button>
-  <div class="navbar-menu d-none d-lg-flex align-items-center">
-    <%= image_tag 'hamburger.png', class: "mr-3", alt: "hamburger icon" %>
-    <span class="font-weight-bold">MENU</span>
   </div>
   <div class="navbar-logo">
     <%= link_to root_path, class: "navbar-brand" do %>
@@ -92,93 +89,29 @@
     </div>
   </div>
 </div>
-<div class="collapse navbar-collapse main-nav-dropdown" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-    <!-- SHOWING ON MOBILE -->
-    <li class="nav-item position-relative">
-      <div class="dropdown-forward-container">
-        <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
+<div class="web-menu web-menu-transition d-none">
+  <div class="web-menu-content">
+    <%= image_tag 'popup_close.png', class: 'nav-close', id: 'close-navbar-menu' %>
+    <div class="web-menu-links">
+      <%= link_to "new in", products_path %>
+      <%= link_to "shop", products_path %>
+      <%= link_to "lookbook", '#' %>
+      <%= link_to "experts", users_path %>
+      <%= link_to "community", community_path %>
+    </div>
+    <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark-menu' %>
+    <div class="web-menu-image-container d-md-none">
+      <div class="oval-button oval-nav">
+        <div class="button-text">
+          <p class="mb-0 bt-5 ls-sm">Hottest Beauty</p>
+        </div>
+        <%= image_tag 'oval-button.svg' %>
       </div>
-      <%= link_to "Brands", "#", id: "mobile-nav-brands", class: "nav-link mobile-dropdown-options each-item" %>
-    </li>
-    <li class="nav-item position-relative">
-      <div class="dropdown-forward-container">
-        <%= image_tag 'dropdown-forward.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
-      </div>
-      <%= link_to "Influencers", "#", id: "mobile-nav-influencers", class: "nav-link mobile-dropdown-options each-item" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Makeup", products_path, class: "nav-link mobile-dropdown-options each-item" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Insider", community_path, class: "nav-link mobile-dropdown-options each-item" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Videos", videos_path, class: "nav-link mobile-dropdown-options each-item" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Freebies", freebies_path, class: "nav-link mobile-dropdown-options each-item" %>
-    </li>
-    <% if user_signed_in? %>
-      <li class="nav-item" style="border-top: 1px solid black;">
-        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link mobile-dropdown-options each-item" %>
-      </li>
-    <% else %>
-      <li class="nav-item" style="border-top: 1px solid black;">
-        <%= link_to 'Log In', new_user_session_path, class: "nav-link mobile-dropdown-options each-item" %>
-      </li>
-    <% end %>
-    <!-- SHOWING ON MOBILE -->
-  </ul>
-</div>
-
-<!-- HIDDEN BRANDS BAR -->
-<div id="mobile-nav-brands-menu" class="mobile-dropdown-options-brands collapse navbar-collapse">
-  <ul class="navbar-nav mr-auto">
-    <li id="back-to-menu-brands" class="back-to-menu">
-      <div class="dropdown-back-container">
-        <%= image_tag 'dropdown-back.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
-      </div>
-      Brands</li>
-      <%= link_to brands_path, class: "each-item" do %>
-        <li class="nav-item each-item-dropdown">
-          SEE ALL BRANDS
-        </li>
-      <% end %>
-    <% @brands.each do |brand| %>
-      <%= link_to brand_path(brand), class: "each-item" do %>
-        <li class="nav-item each-item-dropdown">
-          <%= brand.name %>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
-<!-- HIDDEN BRANDS BAR -->
-
-<!-- HIDDEN INFLUENCERS BAR -->
-<div id="mobile-nav-influencers-menu" class="mobile-dropdown-options-influencers collapse navbar-collapse">
-  <ul class="navbar-nav mr-auto">
-    <li id="back-to-menu-influencers" class="back-to-menu">
-      <div class="dropdown-back-container">
-        <%= image_tag 'dropdown-back.png', class: "dropdown-arrow", alt: "dropdown arrow" %>
-      </div>
-      Influencers</li>
-      <%= link_to users_path, class: "each-item" do %>
-        <li class="nav-item each-item-dropdown">
-          SEE ALL INFLUENCERS
-        </li>
-      <% end %>
-    <% @influencers.each do |influencer| %>
-      <% if influencer.published %>
-        <%= link_to user_path(influencer), class: "each-item" do %>
-          <li class="nav-item each-item-dropdown">
-            <%= influencer.first_name.capitalize %> <%= influencer.last_name.capitalize %>
-          </li>
-        <% end %>
-      <% end %>
-    <% end %>
-  </ul>
+      <%= image_tag 'asterisk.png', class: 'asterisk asterisk-nav' %>
+      <%= image_tag 'mobile-nav-image.png', class: 'mobile-nav-image' %>
+    </div>
+  </div>
+  <div class="web-menu-underlay"></div>
 </div>
 
 <div class="navbar-hover-container">
@@ -189,7 +122,6 @@
     </div>
     <div class="d-flex justify-content-between">
       <h6 class="neue-machina s-medium-text ls-xs mb-0">my bag, <%= @basket.total_number_of_products %> <%= 'item'.pluralize(@basket.total_number_of_products) %></h6>
-
     </div>
   </div>
   <hr class="mt-2">
@@ -209,6 +141,40 @@
 <script>
 
   // WEB NAV
+
+  navClose = document.getElementById('close-navbar-menu');
+  navUnderlay = document.querySelector('.web-menu-underlay');
+  navMenuPopup = document.querySelector('.web-menu');
+  navMenuContent = document.querySelector('.web-menu-content');
+  navMenu = document.querySelector('.navbar-menu');
+
+  if (window.innerWidth < 769) {
+    navMenuPopup.style.height = `${window.innerHeight}px`
+    navMenuContent.style.height = `${window.innerHeight}px`
+  }
+
+  navClose.addEventListener('click', (event) => {
+    navMenuPopup.classList.add('web-menu-transition');
+    setTimeout(function() {
+      navMenuPopup.classList.add('d-none')
+    }, 200)
+  })
+
+  navUnderlay.addEventListener('click', (event) => {
+    navMenuPopup.classList.add('web-menu-transition');
+    setTimeout(function() {
+      navMenuPopup.classList.add('d-none')
+    }, 200)
+  })
+
+  navMenu.addEventListener('click', (event) => {
+    navMenuPopup.classList.remove('d-none');
+    setTimeout(function() {
+      navMenuPopup.classList.remove('web-menu-transition')
+    }, 200)
+  })
+
+
   // navbarBrands = document.getElementById('navbar-brands');
   // menuBrands = document.querySelector('.navbar-submenu-brands');
   navbarInfluencers = document.getElementById('navbar-influencers');
@@ -255,67 +221,6 @@
   //   subnavUnderlay.style.display = "none";
   // });
   // WEB NAV
-
-  // MOBILE NAV
-  mobileNavBrands = document.getElementById('mobile-nav-brands');
-  mobileNavInfluencers = document.getElementById('mobile-nav-influencers');
-  mobileNavBrandsMenu = document.getElementById('mobile-nav-brands-menu');
-  mobileNavInfluencersMenu = document.getElementById('mobile-nav-influencers-menu');
-  backToMenuBrands = document.getElementById('back-to-menu-brands');
-  backToMenuInfluencers = document.getElementById('back-to-menu-influencers');
-  nav = document.getElementById('navbarSupportedContent');
-
-  mobileNavBrands.addEventListener('click', function() {
-    mobileNavBrandsMenu.style.display = "block";
-    setTimeout(function() {
-      mobileNavBrandsMenu.style.left = 0;
-      }, 1
-    );
-  });
-
-  mobileNavInfluencers.addEventListener('click', function() {
-    mobileNavInfluencersMenu.style.display = "block";
-    setTimeout(function() {
-      mobileNavInfluencersMenu.style.left = 0;
-      }, 1
-    );
-  });
-
-  backToMenuBrands.addEventListener('click', function() {
-    mobileNavBrandsMenu.style.left = "100%";
-    setTimeout(function() {
-      mobileNavBrandsMenu.style.display = "none";
-      }, 300
-    );
-  });
-
-  backToMenuInfluencers.addEventListener('click', function() {
-    mobileNavInfluencersMenu.style.left = "100%";
-    setTimeout(function() {
-      mobileNavInfluencersMenu.style.display = "none";
-      }, 300
-    );
-  });
-
-  navbarToggler = document.getElementById('navbar-toggler');
-
-  navbarToggler.addEventListener('click', function() {
-
-    // HAMBURGER CROSS
-
-    document.querySelector('.hamburger').classList.toggle('hamburger-cross');
-
-    // HAMBURGER CROSS
-    subnavUnderlay.classList.toggle('show-underlay');
-    setTimeout(function() {
-      mobileNavBrandsMenu.style.display = "none";
-      mobileNavInfluencersMenu.style.display = "none";
-      mobileNavBrandsMenu.style.left = "100%";
-      mobileNavInfluencersMenu.style.left = "100%";
-      }, 300
-    );
-  });
-  // MOBILE NAV
 
   // NAV BASKET DROPDOWN
 

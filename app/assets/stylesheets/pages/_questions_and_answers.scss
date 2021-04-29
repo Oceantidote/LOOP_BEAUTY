@@ -9,11 +9,37 @@
   }
 }
 
+.qna-content {
+  p {
+    font-size: 16px;
+    @include for-small-devices-down {
+      font-size: 14px;
+    }
+  }
+  img {
+    @include for-phone-only {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.qna-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  @include for-medium-devices-down {
+    height: 320px;
+  }
+  @include for-phone-only {
+    height: unset;
+  }
+}
+
 .question-banner {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   @include for-phone-only {
     flex-direction: column;
   }
@@ -24,14 +50,18 @@
   flex: 1;
   img {
     width: 100%;
+    height: 400px;
+    object-fit: cover;
   }
 }
 
 .question-text {
   padding: 10px;
   flex: 1;
-  @include absCenterColumn;
-  h4, p {
+  display: flex;
+  flex-direction: column;
+  align-item: flex-start;
+  h4, p, .qa-link {
     width: 80%;
     @include for-medium-devices-down {
       width: 100%;

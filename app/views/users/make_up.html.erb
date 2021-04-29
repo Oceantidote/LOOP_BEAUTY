@@ -1,17 +1,36 @@
-<div class="makeup-show-banner"  style="background-image: url('<%= @user.makeup_cover_photo.attached? ? (rails_blob_path @user.makeup_cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
-  <div class="influencer-show-banner-text-container" style="width: 40%;">
-    <div class="influencer-show-banner-text">
-      <h3 class="kaftan boldest"><%= @user.first_name.upcase %> <%= @user.last_name.upcase %>'S</h3>
-      <h1 class="neue-machina" style="margin-bottom: 178px;">Makeup Picks</h1>
+<div class="content-margin pop-out-no-padding-mobile brands-banner">
+  <%= link_to :back, class: 'back-button d-md-none' do %>
+    <%= image_tag 'back.png', width: 28 %>
+  <% end %>
+  <div class="content-container">
+    <div class="pop-out-image-banner py-5">
+        <h2 class="neue-machina ls-sm mb-3 pt-5 text-center"><%= @user.instagram %></h2>
+        <% if @user.description %>
+          <p class="lighter mb-4 ls-sm text-center px-3 px-md-5 user-description"><%= @user.description %></p>
+        <% end %>
+        <div class="influencer-socials mb-4">
+          <div class="mr-0 mr-sm-4 mb-3 mb-sm-0 lighter">
+            <i class="fab fa-instagram"></i>
+            <span>375 posts</span>
+          </div>
+          <div class="mb-3 mb-sm-0 lighter">
+            <i class="fab fa-youtube"></i>
+            <span>15 videos</span>
+          </div>
+        </div>
     </div>
   </div>
 </div>
-<div class="influencer-makeup-container">
-  <div class="text-center">
-    <h3 class="kaftan boldest influencer-makeup-title"><%= @user.first_name.upcase %> <%= @user.last_name.upcase %>'S MAKEUP PICKS</h3>
+
+<div class="brand-padding mt-5">
+  <div class="content-container">
+    <div class="influencer-makeup-container">
+      <%= render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>
+    </div>
   </div>
-  <%= render 'shared/card_results', products: @products, form_url: make_up_user_path(@user), sort_method: @sort_method %>
 </div>
+
+
 <% if policy(ShowroomProduct).create? %>
   <div class="showroom-product-form">
     <%= render 'shared/showroom_product_form' %>

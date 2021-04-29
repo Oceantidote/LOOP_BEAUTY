@@ -1,15 +1,18 @@
 <div class="row row-style">
   <div class="col-xs-12 modal-address-col">
     <% addresses.each do |address| %>
-      <div class="address-card checkout-address-card" style="<%= address.default_address ? 'border: 3px solid #000' : '' %>">
+      <div class="checkout-address-card">
+        <% if address.default_address %>
+          <span class="default-address">default</span>
+          <% end %>
         <div class="address-info">
           <%= render 'addresses/address', add: address %>
         </div>
         <div class="modal-address-buttons">
           <% unless address.default_address %>
-            <%= link_to 'SET AS DEFAULT', address_set_default_path(address), method: :patch, remote: true, class: 'secondary-button secondary-checkout-button' %>
+            <%= link_to 'set as default', address_set_default_path(address), method: :patch, remote: true, class: 'dotted-underline-button px-0 lighter mr-4 mb-3 s-medium-text' %>
           <% end %>
-          <button class=" <%= address.delivery_address ? "delivery-address-selector" : "billing-address-selector" %> primary-button secondary-checkout-button" id="<%= address.id %>" data-user="<%= @user.full_name %>" data-address_line1="<%= address.address_line1 %>" data-address_line2="<%= address.address_line2 %>" data-city="<%= address.city %>" data-country="<%= address.country %>" data-postcode="<%= address.postcode %>" data-dismiss="modal">USE ADDRESS</button>
+          <button class=" <%= address.delivery_address ? "delivery-address-selector" : "billing-address-selector" %> dotted-underline-button px-0 lighter mb-3 s-medium-text" id="<%= address.id %>" data-user="<%= @user.full_name %>" data-address_line1="<%= address.address_line1 %>" data-address_line2="<%= address.address_line2 %>" data-city="<%= address.city %>" data-country="<%= address.country %>" data-postcode="<%= address.postcode %>" data-dismiss="modal">use address</button>
         </div>
       </div>
     <% end %>

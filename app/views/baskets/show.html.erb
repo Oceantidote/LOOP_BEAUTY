@@ -1,18 +1,11 @@
 <div class="shopping-bag-main-container minimum-height">
   <div class="shopping-bag-items">
     <h4 class="ls-xs shopping-bag-title">shopping bag (<span class="shopping-bag-items-count"><%= @basket.basket_products.size %> <%= 'item'.pluralize(@basket.basket_products.size) %></span>)</h4>
-    <% if @basket.user&.influencer %>
-      <div class="influencer-credit-container">
-        <p class="small-text boldest underline small-margin-bottom kaftan">Credit Remaining</p>
-        <p class="boldest small-margin-bottom influencer-remaining-credit kaftan"><%= humanized_money_with_symbol @basket.user.remaining_credit %></p>
-        <p class="v-small-text small-margin-bottom kaftan">Your credit expires last day of the month</p>
-      </div>
-    <% end %>
     <div class="empty-basket-text">
       <% if @basket.products.count == 0 %>
         <p class="text-center s-medium-text ls-xs mt-5 mb-3">your basket is empty</p>
         <div class="start-shopping-holder">
-          <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+          <%= link_to "Shop Now", products_path, class: "primary-button"  %>
         </div>
       <% end %>
     </div>

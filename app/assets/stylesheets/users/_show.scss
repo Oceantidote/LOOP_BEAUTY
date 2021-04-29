@@ -304,3 +304,20 @@
 .light-text {
   color: white;
 }
+
+.influencer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include for-phone-only {
+    flex-direction: column;
+  }
+}
+
+.user-description {
+  width: 500px;
+  margin: auto;
+  @include for-phone-only {
+    width: 100%;
+  }
+}

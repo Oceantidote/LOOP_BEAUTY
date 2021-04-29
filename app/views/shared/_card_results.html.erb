@@ -11,12 +11,12 @@
       <% end %>
       <div class="d-flex align-items-center">
         <%= f.fields_for :sort do |s| %>
-          <%= s.input :method, collection: [['new in', 'created_at,desc'], ['price: high to low', 'price_cents,desc'], ['price: low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container small-text ls-xs' } %>
+          <%= s.input :method, collection: [['new in', 'created_at,desc'], ['price: high to low', 'price_cents,desc'], ['price: low to high', 'price_cents,asc']], selected: sort_method, label: false, input_html: { class: 'filters-container small-text ls-xs px-0' } %>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="products-index-container last-content-padding">
+  <div class="products-index-container last-content-margin">
     <div class="partial-filters-two">
       <%= simple_form_for Product.new, url: form_url, method: :get, remote: true, html: { id: 'product-filter', onchange: "Rails.fire(this, 'submit')" } do |f| %>
         <div class="partial-filters-container">

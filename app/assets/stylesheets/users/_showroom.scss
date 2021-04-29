@@ -1,5 +1,4 @@
 .influencer-credit-container {
-  display: flex;
   @include for-phone-only {
     padding: 4px 0;
     width: max-content;

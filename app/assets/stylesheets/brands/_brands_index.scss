@@ -59,4 +59,49 @@
   }
 }
 
+.brands-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  @include for-medium-devices-down {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @include for-small-devices-down {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include for-phone-only {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brand-letter {
+  font-size: 80px;
+  @include for-phone-only {
+    font-size: 40px;
+  }
+}
+
+.brands-banner {
+  position: relative;
+  @include for-phone-only {
+    margin-top: 0;
+  }
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 4px;
+}
+
+.brand-padding {
+  padding: 0 54px;
+  margin-top: 60px;
+  @include for-small-devices-down {
+    padding: 0 24px;
+  }
+  @include for-phone-only {
+    padding: 0;
+    margin-top: 0;
+  }
+}
 

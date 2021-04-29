@@ -50,6 +50,10 @@
 }
 
 .navbar-menu {
+  cursor: pointer;
+}
+
+.navbar-menu-container {
   width: 166px;
   span {
     font-size: 14px;
@@ -60,6 +64,119 @@
   }
   @include for-small-devices-down {
     width: 126px;
+  }
+  @include for-phone-only {
+    width: 68px;
+  }
+}
+
+.web-menu-transition {
+  opacity: 0;
+}
+
+.web-menu {
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  z-index: 105;
+  top: 0;
+  transition: all 0.2s ease;
+}
+
+.web-menu-content {
+  background: $background;
+  width: 578px;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  padding: 48px 32px;
+  @include for-medium-devices-down {
+    width: 478px;
+  }
+  @include for-small-devices-down {
+    width: 100%;
+  }
+  @include for-phone-only {
+    padding: 20px;
+  }
+}
+
+.web-menu-underlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.9);
+  @include for-small-devices-down {
+    display: none;
+  }
+}
+
+.web-menu-image-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  .mobile-nav-image {
+    width: 136px;
+  }
+}
+
+.asterisk-nav {
+  left: unset !important;
+  top: -28px !important;
+  right: 8px !important;
+}
+
+.oval-nav {
+  position: absolute !important;
+  width: 160px !important;
+  left: -108px !important;
+  bottom: 40px !important;
+}
+
+.web-menu-links {
+  margin-top: 48px;
+  padding: 0 24px;
+  a {
+    display: block;
+    width: 100%;
+    border-bottom: 1.5px solid #000000;
+    padding: 16px 0;
+    margin-top: 4px;
+    letter-spacing: 1px;
+    font-weight: 200;
+    font-size: 18px;
+    &:hover {
+      text-decoration: none;
+    }
+    @include for-xsmall-phone-only {
+      padding: 8px 0;
+    }
+  }
+  @include for-xsmall-phone-only {
+    margin-top: 28px;
+    padding: 0;
+  }
+}
+
+.the-net-watermark-menu {
+  position: absolute;
+  width: 50px;
+  bottom: 32px;
+  left: 32px;
+  @include for-phone-only {
+    width: 36px;
+    bottom: 16px;
+    left: 16px;
+  }
+}
+
+.nav-close {
+  width: 20px;
+  cursor: pointer;
+  @include for-phone-only {
+    width: 14px;
   }
 }
 

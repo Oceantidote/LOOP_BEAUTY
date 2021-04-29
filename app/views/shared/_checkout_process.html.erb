@@ -1,74 +1,269 @@
-<div class="accordion p-5" id="accordionExample">
+<div class="accordion" id="accordionExample">
   <div class="">
-    <div class="card-header p-3" id="headingOne">
-      <div class="ls-xs d-flex justify-content-between" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Delivery Options
+    <div class="card-header p-0" id="headingOne">
+      <div class="ls-xs d-flex justify-content-between pl-0 py-3 pr-3" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Shipping Options
       </div>
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="delivery-option-title">
-        <p class="medium-text boldest margin-top kaftan">Delivery Options</p>
-      </div>
       <% if @basket.basket_products.any?(&:purchase_with_credit) %>
-        <p class="ls-xs lighter">Free delivery on orders purchased with credit</p>
+        <p class="ls-xs lighter mt-4">Free delivery on orders purchased with credit</p>
       <% end %>
-      <div class="delivery-container">
+      <div class="delivery-container mt-4">
         <% if @basket.basket_products.any?(&:purchase_with_credit) %>
           <div class="delivery-disable">
           </div>
         <% end %>
-        <div class="checkout-delivery-option no-border-bottom"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
-          <div class="checkout-checkbox">
-            <div class="checkout-checkbox-inner"></div>
+        <div class="checkout-delivery-option no-border-bottom w-100"  data-total="<%= @basket.total_price_cents + 595 %>" data-deliveryCost="595" data-deliveryType="standard">
+          <div class="d-flex justify-content-between w-100">
+            <div class="d-flex">
+              <div class="checkout-checkbox">
+                <div class="checkout-checkbox-inner"></div>
+              </div>
+              <p class="delivery-option-text shipping-option ml-2 mb-0">Standard</p>
+            </div>
+            <p class="delivery-option-text delivery-time mb-0 px-2">2-5 working days from despatch</p>
+            <p class="delivery-option-text mb-0 delivery-price"><%= humanized_money_with_symbol 5.95 %></p>
           </div>
-          <p class="boldest delivery-option-text no-margin">Standard</p>
-          <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">2-5 working days from despatch</p>
-          <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 5.95 %></p>
         </div>
-        <div class="checkout-delivery-option no-border-bottom" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
-          <div class="checkout-checkbox">
-            <div></div>
+        <div class="checkout-delivery-option no-border-bottom w-100" data-total="<%= @basket.total_price_cents + 695 %>" data-deliveryCost="695" data-deliveryType="express">
+          <div class="d-flex justify-content-between w-100">
+            <div class="d-flex">
+              <div class="checkout-checkbox">
+                <div></div>
+              </div>
+              <p class="delivery-option-text shipping-option mb-0 ml-2">Express</p>
+            </div>
+            <p class="delivery-option-text delivery-time mb-0 px-2">Next working day from despatch</p>
+            <p class="delivery-option-text mb-0 delivery-price"><%= humanized_money_with_symbol 6.95 %></p>
           </div>
-          <p class="boldest delivery-option-text no-margin">Express</p>
-          <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">Next working day from despatch</p>
-          <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 6.95 %></p>
         </div>
-        <div class="checkout-delivery-option margin-bottom" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
-          <div class="checkout-checkbox">
-            <div></div>
+        <div class="checkout-delivery-option margin-bottom w-100" data-total="<%= @basket.total_price_cents + 1295 %>" data-deliveryCost="1295" data-deliveryType="international">
+          <div class="d-flex justify-content-between w-100">
+            <div class="d-flex">
+              <div class="checkout-checkbox">
+                <div></div>
+              </div>
+              <div>
+                <p class="delivery-option-text shipping-option mb-0 ml-2">International</p>
+                <p class="delivery-option-text shipping-option mb-0 ml-2">(Europe Only)</p>
+              </div>
+            </div>
+            <p class="delivery-option-text delivery-time mb-0 px-2">3-5 working days from despatch</p>
+            <p class="delivery-option-text mb-0 delivery-price"><%= humanized_money_with_symbol 12.95 %></p>
           </div>
-          <div>
-            <p class="boldest delivery-option-text no-margin">International</p>
-            <p class="boldest delivery-option-text no-margin">(Europe Only)</p>
-          </div>
-          <p class="boldest delivery-option-text grey no-margin" style="padding: 0 10px;">3-5 working days from despatch</p>
-          <p class="boldest delivery-option-text no-margin"><%= humanized_money_with_symbol 12.95 %></p>
         </div>
       </div>
     </div>
   </div>
   <div class="">
-    <div class="card-header p-3" id="headingTwo">
-     <div class="ls-xs d-flex justify-content-between" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <div class="card-header p-0" id="headingTwo">
+     <div class="ls-xs d-flex justify-content-between pl-0 py-3 pr-3" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         Delivery Address
       </div>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body ls-xs lighter">
-        Some placeholder content for the second accordion panel. This panel is hidden by default.
+      <div class="checkout-address delivery-address-container">
+        <% if @default_delivery %>
+          <div class="delivery-default">
+            <%= render 'addresses/address', add: @default_delivery %>
+          </div>
+        <% end %>
+        <!-- Delivery Address Modal -->
+        <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content address-modal">
+              <h4 class="ls-xs mb-0 pl-4">addresses</h4>
+              <hr class="w-100" style="border-color: #DDCCB5;">
+              <div class="modal-body modal-delivery-addresses">
+                <%= render 'addresses/modal_addresses', addresses: @user.delivery_addresses %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="dotted-underline-button px-0" data-dismiss="modal">close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% if @user.delivery_addresses.any? %>
+          <p id="deliveryAddressShow" class="d-none"></p>
+          <div id="deliveryAddressButtons">
+            <a class="dotted-underline-button px-0 mr-4 mb-2" id="savedDeliveryAddress" data-toggle="modal" data-target="#deliveryModal">use a different address</a>
+            <a class="dotted-underline-button px-0 mb-2" id="newDeliveryAddress" data-toggle="modal" data-target="#new-delivery-address">add new address</a>
+          </div>
+          <!-- New Delivery Address Modal -->
+          <div class="modal fade" id="new-delivery-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content address-modal">
+                <h4 class="ls-xs mb-0 pl-4">add a delivery address</h4>
+                <hr class="w-100" style="border-color: #DDCCB5;">
+                <div class="modal-body modal-delivery-addresses">
+                  <div class="modal-new-delivery-address">
+                    <%= simple_form_for @address do |f| %>
+                      <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+                      <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input mw-100 mb-3' } %>
+                      <div class="row m-0">
+                        <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                          <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+                        </div>
+                        <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                          <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+                        </div>
+                      </div>
+                      <div class="row m-0">
+                        <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                          <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+                        </div>
+                        <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                          <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+                        </div>
+                      </div>
+                      <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+                      <div class="remember-me-container">
+                        <%= f.input :use_as_billing, label: 'Use as billing address', input_html: { class: 'lb-checkbox' }, label_html: { class: 's-medium-text ls-xs' } %>
+                      </div>
+                      <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
+                  </div>
+                </div>
+                  <div class="modal-footer">
+                    <button type="button" class="dotted-underline-button px-0" data-dismiss="modal">close</button>
+                    <%= f.submit 'add address', disabled: true, class: 'primary-button checkout-address-button checkout-modal-del-add-btn disabled-checkout-button', id: 'deliveryBtn' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <%= simple_form_for @address do |f| %>
+            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+            <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input mw-100 mb-3' } %>
+            <div class="row m-0">
+              <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+              </div>
+              <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+              </div>
+            </div>
+            <div class="row m-0">
+              <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+              </div>
+              <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+              </div>
+            </div>
+            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-del-add mw-100 mb-3' } %>
+            <div class="remember-me-container">
+              <%= f.input :use_as_billing, label: 'Use as billing address', input_html: { class: 'lb-checkbox' }, label_html: { class: 's-medium-text ls-xs' } %>
+            </div>
+            <%= f.input :delivery_address, as: :hidden, input_html: { value: true } %>
+            <%= f.submit 'add address', disabled: true, class: 'primary-button checkout-address-button disabled-checkout-button', id: 'deliveryBtn' %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="">
-    <div class="card-header p-3" id="headingThree">
-     <div class="ls-xs d-flex justify-content-between" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+    <div class="card-header p-0" id="headingThree">
+     <div class="ls-xs d-flex justify-content-between pl-0 py-3 pr-3" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
         Billing Address
       </div>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body ls-xs lighter">
-        And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+      <div class="checkout-address billing-address-container">
+        <% if @default_billing %>
+          <div class="billing-default">
+            <%= render 'addresses/address', add: @default_billing %>
+          </div>
+        <% end %>
+        <!-- Billing Address Modal -->
+        <div class="modal fade" id="billingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content address-modal">
+                <h4 class="ls-xs mb-0 pl-4">add a delivery address</h4>
+                <hr class="w-100" style="border-color: #DDCCB5;">
+              <div class="modal-body modal-billing-addresses">
+                <%= render 'addresses/modal_addresses', addresses: @user.billing_addresses %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="dotted-underline-button px-0" data-dismiss="modal">close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <% if @user.billing_addresses.any? %>
+          <p id="billingAddressShow" class="d-none"></p>
+          <div id="billingAddressButtons">
+            <a class="dotted-underline-button px-0 mr-4 mb-2" id="savedBillingAddress" data-toggle="modal" data-target="#billingModal">use a different address</a>
+            <a class="dotted-underline-button px-0 mb-2" id="newBillingAddress" data-toggle="modal" data-target="#new-billing-address">add new address</a>
+          </div>
+          <!-- New Billing Address Modal -->
+          <div class="modal fade" id="new-billing-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content address-modal">
+                <h4 class="ls-xs mb-0 pl-4">add a billing address</h4>
+                <hr class="w-100" style="border-color: #DDCCB5;">
+                <div class="modal-body modal-delivery-addresses">
+                  <div class="modal-new-delivery-address">
+                    <%= simple_form_for @address do |f| %>
+                      <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+                      <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input mw-100 mb-3' } %>
+                      <div class="row m-0">
+                        <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                          <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+                        </div>
+                        <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                          <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+                        </div>
+                      </div>
+                      <div class="row m-0">
+                        <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                          <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+                        </div>
+                        <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                          <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+                        </div>
+                      </div>
+                      <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+                      <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+                  </div>
+                </div>
+                  <div class="modal-footer">
+                    <button type="button" class="dotted-underline-button px-0" data-dismiss="modal">close</button>
+                    <%= f.submit 'add address', disabled: true, class: 'primary-button checkout-address-button checkout-modal-bil-add-btn disabled-checkout-button', id: 'billingBtn' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <%= simple_form_for @address do |f| %>
+            <%= f.input :address_line1, label: false, placeholder: 'Address Line 1', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+            <%= f.input :address_line2, label: false, placeholder: 'Address Line 2  (optional)', required: false, input_html: { class: 'contact-form-input mw-100 mb-3' } %>
+            <div class="row m-0">
+              <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                <%= f.input :county, label: false, placeholder: 'County/State', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+              </div>
+              <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                <%= f.input :city, label: false, placeholder: 'City', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+              </div>
+            </div>
+            <div class="row m-0">
+              <div class="col-12 col-lg-6 pl-0 pr-0 pr-lg-3">
+                <%= f.input :country, label: false, prompt: 'Country', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+              </div>
+              <div class="col-12 col-lg-6 pr-0 pl-0 pl-lg-3">
+                <%= f.input :postcode, label: false, placeholder: 'Post/zip code', required: true, input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+              </div>
+            </div>
+            <%= f.input :phone_number, label: false, placeholder: 'Phone Number', input_html: { class: 'contact-form-input checkout-bil-add mw-100 mb-3' } %>
+            <%= f.input :delivery_address, as: :hidden, input_html: { value: false } %>
+            <%= f.submit 'add address', disabled: true, class: 'primary-button checkout-address-button disabled-checkout-button', id: 'billingBtn' %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

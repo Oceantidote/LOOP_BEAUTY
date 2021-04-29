@@ -5,31 +5,31 @@
 # #
 # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # #   Character.create(name: 'Luke', movie: movies.first)
-BasketProduct.destroy_all
-Basket.destroy_all
-Order.destroy_all
-Wishlist.destroy_all
-HomeBanner.destroy_all
-OfferBanner.destroy_all
-DiscountCode.destroy_all
-Freebie.destroy_all
-ShowroomProduct.destroy_all
-Showroom.destroy_all
-CustomerReview.destroy_all
-InsiderReview.destroy_all
-InsiderArticle.destroy_all
-Department.destroy_all
-Brand.destroy_all
-Category.destroy_all
-SubCategory.destroy_all
-Shade.destroy_all
-ProductBenefit.destroy_all
-Benefit.destroy_all
-RecommendedProduct.destroy_all
-TutorialProduct.destroy_all
-Product.destroy_all
-Tutorial.destroy_all
-QuestionAnswer.destroy_all
+# BasketProduct.destroy_all
+# Basket.destroy_all
+# Order.destroy_all
+# Wishlist.destroy_all
+# HomeBanner.destroy_all
+# OfferBanner.destroy_all
+# DiscountCode.destroy_all
+# Freebie.destroy_all
+# ShowroomProduct.destroy_all
+# Showroom.destroy_all
+# CustomerReview.destroy_all
+# InsiderReview.destroy_all
+# InsiderArticle.destroy_all
+# Department.destroy_all
+# Brand.destroy_all
+# Category.destroy_all
+# SubCategory.destroy_all
+# Shade.destroy_all
+# ProductBenefit.destroy_all
+# Benefit.destroy_all
+# RecommendedProduct.destroy_all
+# TutorialProduct.destroy_all
+# Product.destroy_all
+# Tutorial.destroy_all
+# QuestionAnswer.destroy_all
 # User.destroy_all
 
 # # CREATING HOME BANNERS

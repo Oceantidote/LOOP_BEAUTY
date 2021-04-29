@@ -156,6 +156,8 @@ class UsersController < ApplicationController
 
   # FOR INFLUENCERS SHOW PAGE CREATED BY IFE
   def show
+    @question_answer = QuestionAnswer.find_by(user: User.friendly.find(params[:id]))
+    @favorite_products = User.friendly.find(params[:id]).showroom.products
   end
 
   def index

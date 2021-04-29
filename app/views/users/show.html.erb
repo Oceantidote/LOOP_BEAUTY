@@ -8,201 +8,177 @@
   </div>
 <% end %>
 
-<div class="influencers-show-banner" id="influencers-show-banner"  style="background-image: url('<%= @user.cover_photo.attached? ? (rails_blob_path @user.cover_photo) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')" data-mob="<%= rails_blob_path @user.mobile_cover_photo %>" data-lrg="<%= rails_blob_path @user.cover_photo %>">
-  <div class="influencer-show-banner-text-container">
-    <div class="influencer-show-banner-text text-center">
-      <h2 class="<%= 'light-text' if !@user.light_text %>"><%= @user.full_name.upcase %></h2>
-      <p class="<%= 'light-text' if !@user.light_text %>">"<%= @user.description %>"</p>
-      <div class="influencer-social-data">
-        <% if @user.instagram %>
-          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data #{'light-link' if !@user.light_text}" do %>
-              <i class="fab fa-instagram social-instagram"></i>
-              <p class="m-0">375 posts</p>
-          <% end %>
+<div class="content-margin pop-out-no-padding-mobile brands-banner">
+  <%= link_to :back, class: 'back-button d-md-none' do %>
+  <%= image_tag 'back.png', width: 28 %>
+  <% end %>
+  <div class="content-container pop-out-bottom-padding">
+    <div class="pop-out-image-banner">
+      <div class="pop-out-image-banner-content">
+        <h2 class="neue-machina ls-sm mb-3 text-center"><%= @user.instagram %></h2>
+        <% if @user.description %>
+          <p class="lighter mb-4 ls-sm text-center px-3 px-md-5 user-description"><%= @user.description %></p>
         <% end %>
-        <% unless @user.youtube.empty? %>
-          <%= link_to @user.youtube, target: "_blank", class: "m-0 each-social-data #{'light-link' if !@user.light_text}" do %>
-            <i class="fab fa-youtube social-youtube"></i>
-            <p class="m-0">15 videos</p>
-          <% end %>
-        <% end %>
+        <div class="d-block d-sm-flex justify-content-center mb-4">
+          <div class="mr-0 mr-sm-4 mb-3 mb-sm-0 lighter">
+            <i class="fab fa-instagram"></i>
+            <span>375 posts</span>
+          </div>
+          <div class="mb-3 mb-sm-0 lighter">
+            <i class="fab fa-youtube"></i>
+            <span>15 videos</span>
+          </div>
+        </div>
+        <%= image_tag url_for(@user.cover_photo) %>
       </div>
     </div>
   </div>
-  <%= image_tag "chev-down.png", alt: "alttext", class: "banner-arrow animated bounce", id: 'arrow' %>
 </div>
-<div class="content-container mb-3">
-  <div class="row m-0 justify-content-between align-items-center">
-    <h5 class="m-0 semi-bold"> <%= @user.first_name.upcase %>'S FAVOURITES</h5>
-    <p class="m-0"><%= link_to "VIEW ALL #{@user.first_name.upcase}'S PRODUCTS", make_up_user_path(@user), class: 'underline kaftan' %></p>
+
+<div class="content-margin position-relative mt-0">
+  <h2 class="text-center neue-machina ls-sm pt-5 pb-3"><%= @user.first_name %>'s Favourite Products</h2>
+  <div class="d-flex justify-content-center">
+    <%= link_to "browse all of #{@user.first_name}'s products", make_up_user_path(@user), class: 'dotted-underline-button lighter mb-5 px-0' %>
   </div>
-</div>
-<div class="content-container trending-container pt-0">
-  <div class="row m-0">
+  <div class="content-container content-carousel">
+    <div class="d-block d-md-none">
+      <div id="mobileProductsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @favorite_products.each_with_index do |product, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="col-12">
+                <div class="card-image-results homepage-products">
+                  <div class="card">
+                    <%= link_to product_path(product) do %>
+                      <% if product.out_of_stock? %>
+                        <div class="out-of-stock-overlay">
+                          <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                        </div>
+                      <% end %>
+                      <div class="card_image">
+                        <%= link_to product_path(product) do %>
+                          <% if product.shades.first&.card_photo %>
+                            <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                          <% else %>
+                            <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="card-info">
+                    <p class="mb-2 truncate-text lighter ls-xs"><%= product.brand.name %>, <%= product.title %></p>
+                    <p class="neue-machina text-secondary"><%= humanized_money_with_symbol(product.price) %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#mobileProductsCarousel" role="button" data-slide="prev">
+          <%= image_tag 'right_caret.png', width: 40 %>
+        </a>
+        <a class="carousel-control-next" href="#mobileProductsCarousel" role="button" data-slide="next">
+          <%= image_tag 'right_caret.png', width: 40 %>
+        </a>
+      </div>
+    </div>
 
-    <!-- DON'T FORGET TO REMOVE THE 2.TIMES DO -->
-
-    <% 2.times do %>
-      <% @products.each do |product| %>
-        <div class="col-3">
-          <div class="card-image-results homepage-products">
-            <div class="card">
-              <%= link_to product_path(product) do %>
-                <% if product.out_of_stock? %>
-                  <div class="out-of-stock-overlay">
-                    <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+    <div class="d-none d-md-block">
+      <div id="whatsHotNowCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <% @favorite_products.each_slice(3) do |products| %>
+            <div class="carousel-item <%= 'active' if products[0] == @favorite_products.first %>">
+              <div class="row row-products">
+                <% products.each do |product| %>
+                  <div class="col-4">
+                    <div class="card-image-results homepage-products">
+                      <div class="card">
+                        <%= link_to product_path(product) do %>
+                          <% if product.out_of_stock? %>
+                            <div class="out-of-stock-overlay">
+                              <h4 class="boldest kaftan text-center out-of-stock-overlay-message">OUT OF STOCK</h4>
+                            </div>
+                          <% end %>
+                          <div class="button-overlay d-none d-md-flex">
+                            <div class="oval-button mx-3">
+                              <div class="button-text">
+                                <p class="mb-0 bt-5 ls-sm">Add to Cart</p>
+                              </div>
+                              <%= image_tag 'oval-button.svg' %>
+                            </div>
+                          </div>
+                          <div class="card_image">
+                            <%= link_to product_path(product) do %>
+                              <% if product.shades.first&.card_photo %>
+                                <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                              <% else %>
+                                <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+                              <% end %>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="card-info">
+                        <p class="mb-2 truncate-text lighter ls-xs"><%= product.brand.name %>, <%= product.title %></p>
+                        <p class="neue-machina text-secondary"><%= humanized_money_with_symbol(product.price) %></p>
+                      </div>
+                    </div>
                   </div>
                 <% end %>
-                <div class="card_image">
-                  <%= link_to product_path(product) do %>
-                    <% if product.shades.first&.card_photo %>
-                      <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '300x300')), alt: "product shade photo" %>
-                    <% else %>
-                      <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-            <div class="card-info">
-              <p class="bold text-center truncate-text small-text" style="margin-bottom: 0px;"><%= product.brand.name.upcase %></p>
-              <div class="card_header mb-3">
-                <p class="kaftan semi-bold text-center truncate-text medium-text"><%= product.title.upcase %></p>
               </div>
-              <p class="mb-3">"<%= product.details.truncate(88) %>"</p>
-              <h5 class="bold text-center neue-machina"><%= humanized_money_with_symbol(product.price) %></h5>
-              <%= link_to 'SHOP', product_path(product), class: "primary-button" %>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-<div class="content-container">
-  <h5 class="mb-3 semi-bold" style="width: 90%">CHAT WITH <%= @user.first_name.upcase %></h5>
-  <div class="obsession-banner influencer-show-hover p-0">
-    <div class="influencer_qa_card question-card h-100 w-100 justify-content-center align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path "influencer_qa_bg.png" %>')">
-      <h4 class="normal text-white"><%= @user.question_answer.question_one %></h4>
-    </div>
-    <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
-      <h4 class="neue-machina"><%= @user.question_answer.answer_one %></h4>
-    </div>
-  </div>
-
-</div>
-<div class="content-container pt-5">
-  <div class="row m-0">
-      <div class="col-6 pl-0 pr-4">
-        <div class="obsession-banner influencer-show-hover p-0">
-          <div class="influencer_qa_card question-card h-100 w-100 justify-content-center align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path "influencer_qa_bg.png" %>')">
-            <h4 class="normal text-white"><%= @user.question_answer.question_two %></h4>
-          </div>
-          <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
-            <h4 class="neue-machina"><%= @user.question_answer.answer_two %></h4>
-          </div>
-        </div>
+        <% if @products.count > 3 %>
+          <a class="carousel-control-prev" href="#whatsHotNowCarousel" role="button" data-slide="prev">
+            <%= image_tag 'right_caret.png', width: 40 %>
+          </a>
+          <a class="carousel-control-next" href="#whatsHotNowCarousel" role="button" data-slide="next">
+            <%= image_tag 'right_caret.png', width: 40 %>
+          </a>
+        <% end %>
       </div>
-      <div class="col-6 pr-0 pl-4">
-        <div class="obsession-banner influencer-show-hover p-0">
-          <div class="influencer_qa_card question-card h-100 w-100 justify-content-center align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path "influencer_qa_bg.png" %>')">
-            <h4 class="normal text-white"><%= @user.question_answer.question_three %></h4>
-          </div>
-          <div class="influencer_qa_card answer-card h-100 w-100 justify-content-center align-items-center" style="background-color: #E8E5E2;">
-            <h4 class="neue-machina"><%= @user.question_answer.answer_three %></h4>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-<div class="d-flex justify-content-center align-items-center">
-  <%= link_to 'READ ALL QUESTIONS', user_question_answer_path([@user, @user.question_answer]), class: "primary-button mt-5" %>
-</div>
-
-<div class="content-container mb-5 pb-5">
-  <h5 class="mb-3 semi-bold" style="width: 90%">OBSESSION OF THE WEEK</h5>
-  <div class="obsession-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('<%= image_path 'default-make-up.jpg' %>')">
-    <div>
-      <h5 class="text-white mb-4 neue-machina">DERMATOLOGY</h5>
-      <h2 class="text-white mb-0 kaftan">The revolutionary product that is changing</h2>
-      <h2 class="text-white mb-4 kaftan">women of colour with Dermatitis</h2>
-
-      <!-- REMOVE PRODUCT.FIRST -->
-
-      <%= link_to 'BUY NOW', product_path(Product.first), class: 'primary-button button-width white-button mb-0' %>
     </div>
   </div>
 </div>
 
-
-
-
-
-
-
-<!-- <div id="options"></div>
-<div class="influencer-show-options">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%#= link_to make_up_user_path(@user), class: "influencer-card-link" do %>
-          <div class="influencer-show-card">
-            <h5 class="text-center">Makeup</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%#= @user.makeup_photo.attached? ?  (url_for @user.makeup_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1295&q=80') %>')">
+<div class="content-margin">
+  <div class="content-container">
+    <div class="qna-wrapper">
+      <h2 class="text-center neue-machina ls-sm pt-5 pb-3">Q&A</h2>
+      <div class="d-flex justify-content-center">
+        <%= link_to "browse all of #{@user.first_name}'s questions", user_question_answer_path([@user, @user.question_answer]), class: 'dotted-underline-button lighter mb-5 px-0' %>
+      </div>
+      <div class="qna-content">
+        <div class="row m-0 p-0 py-sm-5 justify-content-between">
+          <div class="col-12 col-sm-6 col-md-5">
+            <%= image_tag(url_for(@question_answer.photo_one), alt: @question_answer.photo_one_alt_text, class: 'qna-image') %>
+          </div>
+          <div class="col-12 col-sm-6 col-md-5">
+            <h4 class="neue-machina ls-xs font-weight-normal mb-4"><%= @question_answer.question_one %></h4>
+            <p class="ls-xs lighter medium-text mb-4"><%= @question_answer.answer_one %></p>
+            <div class="qa-link d-flex justify-content-start">
+              <%= link_to "read more", user_question_answer_path([@user, @user.question_answer]), class: 'dotted-underline-button lighter mb-5 px-0' %>
             </div>
           </div>
-        <%# end %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%# if @user.question_answer.nil? %>
-          <%# if current_user&.admin %>
-            <%#= link_to new_user_question_answer_path(@user), class: "influencer-card-link" do %>
-              <div class="influencer-show-card">
-                <h5 class="text-center">Create Q & A</h5>
-                <div class="influencer-show-card-image" style="background-image: url('https://cdn.pixabay.com/photo/2017/07/10/23/43/question-mark-2492009_1280.jpg')">
-                  <%#= image_tag 'plus-circle.png', class: 'plus-circle' %>
-                </div>
-              </div>
-            <%# end %>
-          <%# else %>
-            <div class="influencer-show-card">
-              <h5 class="text-center">No Q & A</h5>
-              <div class="influencer-show-card-image" style="background-image: url('https://cdn.pixabay.com/photo/2017/07/10/23/43/question-mark-2492009_1280.jpg')">
-              </div>
-            </div>
-          <%# end %>
-        <%# else %>
-          <%#= link_to user_question_answer_path([@user, @user.question_answer]), class: "influencer-card-link" do %>
-            <div class="influencer-show-card">
-              <h5 class="text-center">Q & A</h5>
-              <div class="influencer-show-card-image" style="background-image: url('<%#= @user.qa_photo.attached? ?  (url_for @user.qa_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
-              </div>
-            </div>
-          <%# end %>
-        <%# end %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%#= link_to user_tutorials_path(@user), class: "influencer-card-link" do %>
-          <div class="influencer-show-card">
-            <h5 class="text-center">Tutorials</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%#= @user.tutorial_photo.attached? ?  (url_for @user.tutorial_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
-              <%#= image_tag 'play-button.png', class: "play-button", width: 80 %>
-            </div>
-        <%# end %>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%#= link_to user_lookbooks_path(@user), class: "influencer-card-link" do %>
-          <div class="influencer-show-card">
-            <h5 class="text-center">Lookbook</h5>
-            <div class="influencer-show-card-image" style="background-image: url('<%#= @user.lookbook_photo.attached? ?  (url_for @user.lookbook_photo.variant(resize: '600')) : ('https://images.unsplash.com/photo-1512207128881-1baee87126fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80') %>')">
+        <div class="row m-0 p-0 py-sm-5 justify-content-between question-middle">
+          <div class="col-12 col-sm-6 col-md-5">
+            <h4 class="neue-machina ls-xs font-weight-normal mb-4"><%= @question_answer.question_two %></h4>
+            <p class="ls-xs lighter medium-text mb-4"><%= @question_answer.answer_two %></p>
+            <div class="qa-link d-flex justify-content-start">
+              <%= link_to "read more", user_question_answer_path([@user, @user.question_answer]), class: 'dotted-underline-button lighter mb-5 px-0' %>
             </div>
           </div>
-        <%# end %>
+          <div class="col-12 col-sm-6 col-md-5">
+            <%= image_tag(url_for(@question_answer.photo_two), alt: @question_answer.photo_two_alt_text, class: 'qna-image') %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <% if policy([:admin, @user]).publish? %>
   <div class="admin-options">
@@ -221,13 +197,7 @@
   </div>
 <% end %>
 <script>
-  let arrow = document.getElementById('arrow');
-  arrow.addEventListener('click',() => {
-    window.scroll({
-      top: window.innerHeight - 100,
-      behavior: 'smooth'
-    });
-  })
+
   function change_users() {
     if (window.innerWidth < 767.98) {
       document.getElementById('influencers-show-banner').style.backgroundImage = `url('${document.getElementById('influencers-show-banner').dataset.mob}')`

@@ -1,31 +1,28 @@
-<!-- <h2 class="insider-info-title text-center"><%#= @brand.name %></h2> -->
 <%= content_for :meta_title do %>
   <%= @brand.name %>
 <% end %>
-<div class="influencers-show-banner justify-content-start align-items-center" style="background-image: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('<%= rails_blob_path @brand.photo %>')">
-  <div>
-    <div class="pl-5" style="width: 47%">
-      <h1 class="text-white neue-machina"><%= @brand.name.upcase %></h1>
-      <h3 class="text-white kaftan"><%= @tag %>.</h3>
-    </div>
-  </div>
-</div>
-<div class="content-container pb-5">
-  <div class="row m-0 justify-content-between align-items-center">
-    <div class="col-12 col-md-6 pl-0">
-      <div class="border-left px-5 py-4">
+<div class="content-margin pop-out-no-padding-mobile brands-banner">
+  <%= link_to :back, class: 'back-button d-md-none' do %>
+  <%= image_tag 'back.png', width: 28 %>
+  <% end %>
+  <div class="content-container pop-out-bottom-padding">
+    <div class="pop-out-image-banner">
+      <div class="pop-out-image-banner-content">
+        <h2 class="neue-machina ls-sm mb-3 text-center"><%= @brand.name %></h2>
         <% if @brand.description %>
-          <h3><%= @brand.description %></h3>
+          <p class="lighter mb-4 ls-sm text-center px-3 px-md-5"><%= @tag %></p>
         <% end %>
+        <p class="dotted-underline-button lighter mb-5 px-0"><%= @brand.products.size %> <%= 'product'.pluralize(@brand.products.size) %></p>
+        <%= image_tag url_for(@brand.logo) %>
       </div>
     </div>
-    <div class="col-12 col-md-5 pr-0">
-      <% if @brand.logo.attached? %>
-        <%= image_tag url_for(@brand.logo), class: 'w-100', alt: "brand logo" %>
-      <% end %>
-    </div>
   </div>
 </div>
-<div class="brands-results pt-3" id="brandsResults">
-  <%= render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>
+
+<div class="brand-padding">
+  <div class="content-container">
+    <div class="brands-results pt-3" id="brandsResults">
+      <%= render 'shared/card_results', products: @products, form_url: brand_path(@brand), sort_method: @sort_method %>
+    </div>
+  </div>
 </div>
