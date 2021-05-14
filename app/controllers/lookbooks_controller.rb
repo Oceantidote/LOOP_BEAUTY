@@ -3,10 +3,10 @@ class LookbooksController < ApplicationController
   before_action :set_lookbook, only: [:edit, :update, :destroy]
 
   def index
-    @user = User.friendly.find(params[:user_id])
-    @lookbooks = policy_scope(Lookbook).where(user: @user).where(status: 'approved')
+    # @user = User.friendly.find(params[:user_id])
+    @lookbooks = policy_scope(Lookbook).where(status: 'approved')
     @sort_method = params[:sort].present? ? params[:sort][:sort_method] : 'created_at,desc'
-    @lookbooks = @lookbooks.filter_sort(*@sort_method.split(','))
+    @lookbooks = @lookbooks.filter_sort(*@sort_method.split(',')).page params[:page]
   end
 
   def show

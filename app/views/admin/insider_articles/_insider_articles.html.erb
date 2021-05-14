@@ -1,15 +1,21 @@
-<%= link_to "NEW ARTICLE", new_admin_insider_article_path, class: 'primary-button products-admin-primary m10' %>
-<div class="row" style="margin: 0; width: 100%;">
+<div class="row m-0 w-100">
   <% insider_articles.each_with_index do |article, index| %>
-    <div class="col-12 col-sm-6 col-xl-4" style="padding: 0;">
-      <%= link_to insider_article_path(article), class: "insider-home-card-link" do %>
-        <div class="insider-home-articles-card" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(article.cover_photo) %>);">
-          <div class="insider-home-articles-card-text">
-            <h6><%= article.category %></h6>
-            <p class="neue-machina small-text"><%= article.title %></p>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card-image-results mb-5">
+        <div class="card">
+          <div class="card_image">
+            <%= link_to insider_article_path(article) do %>
+              <%= image_tag url_for(article.cover_photo.variant(resize: '300x300')), alt: "insider article photo" %>
+            <% end %>
           </div>
         </div>
-      <% end %>
+        <div class="card-info">
+          <p class="mb-2 truncate-text lighter ls-xs small-text grey-font"><%= article.category.downcase %></p>
+          <p class="mb-3 truncate-text lighter ls-xs"><%= article.title %></p>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
+
+

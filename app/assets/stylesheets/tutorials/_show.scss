@@ -235,3 +235,12 @@
 .card-image-results {
   margin-bottom: 10px;
 }
+
+.back-arrow {
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  width: 28px;
+  cursor: pointer;
+  z-index: 20;
+}

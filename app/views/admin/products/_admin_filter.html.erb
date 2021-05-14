@@ -6,27 +6,27 @@
     <div class="partial-filters">
       <div class="partial-filters_collection">
         <div class="filter-title filter-title-categories">
-          <h6>Category</h6>
-          <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
+          <h6 class="neue-machina ls-xs lighter">category</h6>
+          <%= image_tag 'popup_close.png', class: 'filter-arrow filter-arrow-category arrow-flip' %>
         </div>
         <div class="filters-options filters-options-categories show-filters">
           <% Category.order(name: :ASC).each do |category| %>
             <% next if category.sub_categories.all? { |sc| !@all.map(&:sub_category).include?(sc) } %>
             <div class="filter-subtitle filter-subtitle-<%= category.name %>" data-sub="<%= category.name %>">
-              <h6><%= category.name %></h6>
-              <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
+              <h6 class="neue-machina ls-xs lighter"><%= category.name.downcase %></h6>
+              <%= image_tag 'popup_close.png', class: 'filter-arrow filter-arrow-subcategory', data: { sub: "#{ category.name }" } %>
             </div>
-            <div class="filter-subcategory-container filter-subcategory-<%= category.name %>" data-sub="<%= category.name %>">
+            <div class="filter-subcategory-container filter-subcategory-<%= category.name %> ml-3" data-sub="<%= category.name %>">
               <%= f.input :sub_category, collection: category.sub_categories.joins(:products).merge(Product.where(sub_category_id: category.sub_categories.ids)).order(name: :ASC).product_filter_labels_and_values(Product.all).uniq, as: :check_boxes, required: false, label: "", checked: params[:product] ? params[:product][:sub_category] : [], value_method: :first, label_method: :last %>
             </div>
           <% end %>
         </div>
         <div class="partial-filters_collection">
           <div class="filter-title filter-title-brands">
-            <h6>Brand</h6>
-            <%= image_tag 'filter-arrow.png', class: 'filter-arrow filter-arrow-brands' %>
+            <h6 class="neue-machina ls-xs lighter">brands</h6>
+            <%= image_tag 'popup_close.png', class: 'filter-arrow filter-arrow-brands' %>
           </div>
-          <div class="filters-options filters-options-brands">
+          <div class="filters-options filters-options-brands ml-2">
             <%= f.input :brand, collection: Brand.order(name: :ASC).joins(:products).merge(Product.all.where(brand_id: Brand.all.ids)).product_filter_labels_and_values(Product.all).uniq, as: :check_boxes, value_method: :first,label: "", required: false, label_method: :last, checked: params[:filter] ? params[:filter][:brand] : [] %>
           </div>
         </div>

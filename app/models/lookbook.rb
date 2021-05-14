@@ -3,6 +3,7 @@ class Lookbook < ApplicationRecord
   include Affiliation
   include Tracked
 
+  paginates_per 12
   friendly_id :title, use: :slugged
   belongs_to :user
   has_one_attached :photo

@@ -38,13 +38,13 @@ Rails.application.routes.draw do
   # WISHLIST TEST
   resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
-  resources :lookbooks, except: [:index]
-  resources :users, only: [], path: 'influencers' do
-    resources :lookbooks, only: [:index] do
-      member do
-        post '/add_to_bag', to: 'lookbooks#add_to_bag'
-      end
+  resources :lookbooks do
+    # MAKE SURE THIS ROUTE STILL WORKS
+    member do
+      post '/add_to_bag', to: 'lookbooks#add_to_bag'
     end
+  end
+  resources :users, only: [], path: 'influencers' do
     resources :tutorials, only: [:index, :show]
     resources :question_answers
     member do

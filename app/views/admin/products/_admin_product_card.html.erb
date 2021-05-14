@@ -1,23 +1,29 @@
-<div class="col-6 col-lg-6 col-xl-4" style="margin-bottom: 15px;">
-  <div class="my-products-card">
-    <div class="my-products-image">
-      <% if product.lead_product_image.attached? %>
-        <%= image_tag url_for(product.lead_product_image), alt: "product shade photo" %>
-      <% elsif product.shades.first&.card_photo %>
-        <%= image_tag url_for(product.shades.first.card_photo), alt: "product shade photo" %>
-      <% else %>
-        <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+<div class="col-6 col-lg-6 col-xl-4 pb-3">
+  <div class="card-image-results">
+    <div class="card mb-3">
+      <%= link_to product_path(product) do %>
+        <div class="card_image position-relative">
+          <%= link_to product_path(product) do %>
+            <% if product.lead_product_image.attached? %>
+              <%= image_tag url_for(product.lead_product_image.variant(resize: '450x450')), alt: "product shade photo" %>
+            <% elsif product.shades.first&.card_photo %>
+              <%= image_tag url_for(product.shades.first.card_photo.variant(resize: '450x450')), alt: "product shade photo" %>
+            <% else %>
+              <div style="background-color: #EFEFEF; min-height: 131.5px; max-height: 204px; height: 13rem; width: 100%"></div>
+            <% end %>
+          <% end %>
+          <div class="products-admin-options">
+            <%= link_to 'delete', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'primary-button bg-delete admin-options-button mt-0 mb-2' %>
+            <%= link_to 'edit', edit_admin_product_path(product), class: 'primary-button bg-edit admin-options-button m-0' %>
+          </div>
+        </div>
       <% end %>
     </div>
-    <div class="my-products-details text-center no-margin kaftan">
-      <p><%= product.title %></p>
-    </div>
-    <div class="my-products-price text-center boldest no-margin kaftan">
-      <%= humanized_money_with_symbol(product.price) %>
-    </div>
-    <div class="products-admin-options">
-      <%= link_to 'EDIT', edit_admin_product_path(product), class: 'secondary-button products-admin-buttons' %>
-      <%= link_to 'DELETE', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button products-admin-buttons' %>
+    <div class="card-info">
+      <p class="mb-2 truncate-text lighter ls-xs"><%= product.brand.name %>, <%= product.title %></p>
+      <p class="neue-machina text-secondary ls-xs lighter"><%= humanized_money_with_symbol(product.price) %></p>
     </div>
   </div>
 </div>
+
+

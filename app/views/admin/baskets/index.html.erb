@@ -1,73 +1,65 @@
-<div class="container">
-  <h2 class="mt-4 kaftan">Abandoned Bags</h2>
+<div class="admin-wrapper minimum-height">
+  <div class="w-100">
+    <%= link_to "dashboard", admin_portal_path, class: "dotted-underline-button px-0 mb-4 d-inline-block" %>
+    <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">abandoned bags</p>
+    <div class="admin-sales-report-container p-3">
+      <div class="admin-form-container admin-products-new-container sales-report-container mb-5">
+        <%= simple_form_for :filter, method: :get, url: admin_baskets_path, html: { style: 'width: 500px;' }  do |f| %>
+          <%= f.input :from, label: false, placeholder: 'start date', input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
+          <%= f.input :to, label: false, placeholder: 'end date', input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
+          <%= f.submit 'filter', class: "primary-button personal-details-button small-text" %>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-end mb-4">
+        <%= link_to 'download', download_admin_baskets_path(from: @from, to: @to, format: :csv), class: "primary-button personal-details-button small-text m-0" %>
+      </div>
+      <div class="stats-container kaftan d-flex justify-content-between">
+        <div>
+          <h6 class="neue-machina ls-xs">Recovered Funds</h6>
+          <p class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.zero? ?  'GBP' : @recovered_funds.currency %></p>
+        </div>
+        <div>
+          <h6 class="neue-machina ls-xs">Recovered Orders</h6>
+          <div class="d-flex align-items-end">
+            <p class="neue-machina ls-xs lighter"><%= @recovered_orders %> <%= "order".pluralize(@recovered_orders) %></p>
+          </div>
+        </div>
+        <div>
+          <h6 class="neue-machina ls-xs">Total Emails</h6>
+          <div class="d-flex align-items-end">
+            <p class="neue-machina ls-xs lighter"><%= @total_emails %> <%= "email".pluralize(@total_emails) %></p>
+          </div>
+        </div>
+        <div>
+          <h6 class="neue-machina ls-xs">Total Sales</h6>
+          <p class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.zero? ?  'GBP' : @total_sales.currency %></p>
+        </div>
+      </div>
 
-  <div class="admin-form-container admin-products-new-container sales-report-container">
-    <%= simple_form_for :filter, method: :get, url: admin_baskets_path  do |f| %>
-      <div class="personal-details-input">
-        <p class="boldest kaftan s-medium-text text-right no-margin">Start Date</p>
-        <%= f.input :from, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
-      </div>
-      <div class="personal-details-input align-items-center">
-        <p class="boldest kaftan s-medium-text text-right no-margin">End Date</p>
-        <%= f.input :to, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
-      </div>
-      <div class="d-flex justify-content-around">
-        <%= f.submit 'FILTER', class: "primary-button personal-details-button small-text" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="stats-container kaftan d-flex justify-content-between">
-    <div>
-      <h6>Recovered Funds</h6>
-      <h3><%= humanized_money_with_symbol @recovered_funds %> <%= @recovered_funds.zero? ?  'GBP' : @recovered_funds.currency %></h3>
+      <table id="analytics-table" class="mt-4">
+        <thead>
+          <th class="neue-machina ls-xs">id</th>
+          <th class="neue-machina ls-xs">date</th>
+          <th class="neue-machina ls-xs">placed by</th>
+          <th class="neue-machina ls-xs">email address</th>
+          <th class="neue-machina ls-xs">email status</th>
+          <th class="neue-machina ls-xs">recovery status</th>
+          <th class="neue-machina ls-xs">total</th>
+        </thead>
+        <tbody>
+          <% @baskets.each do |basket| %>
+            <tr class="kaftan" id="order_<%= basket.id %>">
+              <td class="neue-machina ls-xs lighter">#<%= basket.id.to_s.rjust(7, '0') %></td>
+              <td class="neue-machina ls-xs lighter"><%= basket.abandoned_at.day.ordinalize %> <%= basket.abandoned_at.strftime('%b, %l:%M%P') %></td>
+              <td class="neue-machina ls-xs lighter"><%= basket.user.full_name %></td>
+              <td class="neue-machina ls-xs lighter"><%= basket.user.email %></td>
+              <td class="neue-machina ls-xs lighter"><%= basket.email_status %></td>
+              <td class="neue-machina ls-xs lighter"><%= basket.recovery_status %></td>
+              <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol basket.total_price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <div>
-      <h6>Recovered Orders</h6>
-      <div class="d-flex align-items-end">
-        <h3><%= @recovered_orders %></h3>
-        <p class="mb-2 ml-1"><%= "ORDER".pluralize(@recovered_orders).upcase %></p>
-      </div>
-    </div>
-    <div>
-      <h6>Total Emails</h6>
-      <div class="d-flex align-items-end">
-        <h3><%= @total_emails %></h3>
-        <p class="mb-2 ml-1"><%= "EMAIL".pluralize(@total_emails).upcase %></p>
-      </div>
-    </div>
-    <div>
-      <h6>Total Sales</h6>
-      <h3><%= humanized_money_with_symbol @total_sales %> <%= @total_sales.zero? ?  'GBP' : @total_sales.currency %></h3>
-    </div>
-  </div>
-
-  <table id="analytics-table" class="mt-4">
-    <thead>
-      <th>ID</th>
-      <th>Date</th>
-      <th>Placed By</th>
-      <th>Email Address</th>
-      <th>Email Status</th>
-      <th>Recovery Status</th>
-      <th>Total</th>
-    </thead>
-    <tbody>
-      <% @baskets.each do |basket| %>
-        <tr class="kaftan" id="order_<%= basket.id %>">
-          <td>#<%= basket.id.to_s.rjust(7, '0') %></td>
-          <td><%= basket.abandoned_at.day.ordinalize %> <%= basket.abandoned_at.strftime('%b, %l:%M%P') %></td>
-          <td><%= basket.user.full_name %></td>
-          <td><%= basket.user.email %></td>
-          <td><%= basket.email_status %></td>
-          <td><%= basket.recovery_status %></td>
-          <td><%= humanized_money_with_symbol basket.total_price %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <div class="d-flex justify-content-center">
-    <%= link_to 'DOWNLOAD', download_admin_baskets_path(from: @from, to: @to, format: :csv), class: "primary-button small-text w25" %>
   </div>
 </div>

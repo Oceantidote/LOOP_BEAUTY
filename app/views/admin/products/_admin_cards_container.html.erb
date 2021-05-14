@@ -1,9 +1,9 @@
-<div class="row row-admin-cards" id="admin-cards-container">
+<div class="row row-admin-cards pb-4" id="admin-cards-container">
   <% @products.each do |product| %>
     <%= render 'admin/products/admin_product_card', product: product %>
   <% end %>
   <div class="col-12 d-flex justify-content-center">
-    <p class="boldest kaftan small-text grey"><%= page_entries_info @products %></p>
+    <p class="lighter ls-xs"><%= page_entries_info @products %></p>
   </div>
   <div class="col-12 d-flex justify-content-center">
     <%= paginate @products %>

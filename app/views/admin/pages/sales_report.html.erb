@@ -1,77 +1,69 @@
 <div class="admin-wrapper minimum-height">
-  <div class="admin-sales-report-container">
-    <%= link_to "Dashboard", admin_portal_path, class: "secondary-button mt-3 ml-3"  %>
-    <h2 class="insider-info-title mlb-title-admin-dash text-center">Sales Report</h2>
-    <hr>
-    <div class="admin-form-container admin-products-new-container sales-report-container">
-      <%= simple_form_for :filter, url: admin_sales_report_path, method: :get do |f| %>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Start Date</p>
-          <%= f.input :from, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input align-items-center">
-          <p class="boldest kaftan s-medium-text text-right no-margin">End Date</p>
-          <%= f.input :to, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input align-items-center">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Influencer</p>
-          <%= f.input :influencer_id, collection: User.where(influencer: true), label: false, label_method: :full_name, value_method: :id, selected: params[:filter].nil? ? '' : params[:filter][:influencer_id], include_blank: true, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-        </div>
-        <%= f.submit 'FILTER', class: "primary-button personal-details-button small-text" %>
-      <% end %>
-    </div>
-    <div class="influencer-orders-container">
-        <table id="analytics-table">
-            <thead>
-                <tr>
-                    <th>Influencer ID</th>
-                    <th>Influencer Name</th>
-                    <th>Commission Rate</th>
-                    <th>Order Date</th>
-                    <th>Order Number</th>
-                    <th>Order Amount</th>
-                    <th>VAT</th>
-                    <th>Total</th>
-                    <th>Commission Amount</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @orders.each do |order| %>
-                    <% user = order.affiliation&.class == User ? order.affiliation : order.affiliation&.user %>
-                    <tr class="influencer-order" id="order_<%= order.id %>">
-                        <td><%= user&.id %></td>
-                        <td><%= user&.full_name %></td>
-                        <td><%= user&.commission_rate %></td>
-                        <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
-                        <td><%= order.id %></td>
-                        <td><%= humanized_money_with_symbol Money.new (order.total_price_cents / 12.to_f) * 10 %></td>
-                        <td><%= humanized_money_with_symbol Money.new order.total_price_cents - (order.total_price_cents / 12.to_f) * 10 %></td>
-                        <td><%= humanized_money_with_symbol order.total_price %></td>
-                        <td><%= humanized_money_with_symbol Money.new ((order.total_price_cents / 12.to_f) * 10) * ((user&.commission_rate || 0) / 100)  %></td>
-                        <td>
-                          <%= link_to admin_order_path(order), method: :delete, remote: true do  %>
-                            <i class="fas fa-trash"></i>
-                          <% end %>
-                        </td>
-                    </tr>
-                <% end %>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><strong>TOTAL</strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| (order.total_price_cents / 12.to_f) * 10 } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| order.total_price_cents - (order.total_price_cents / 12.to_f) * 10 } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| order.total_price } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| ((order.total_price_cents / 12.to_f) * 10) * (((order.affiliation&.class == User ? order.affiliation : order.affiliation&.user)&.commission_rate || 0) / 100) } %></strong></td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
+  <div class="">
+    <%= link_to "dashboard", admin_portal_path, class: "dotted-underline-button px-0 mb-4 d-inline-block" %>
+    <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">sales report</p>
+    <div class="admin-sales-report-container p-3">
+      <div class="admin-form-container admin-products-new-container sales-report-container">
+        <%= simple_form_for :filter, url: admin_sales_report_path, method: :get, html: { style: 'width: 500px;' } do |f| %>
+          <%= f.input :from, label: false, placeholder: 'start date', input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
+          <%= f.input :to, label: false, placeholder: 'end date', input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
+          <%= f.input :influencer_id, collection: User.where(influencer: true), label: false, label_method: :full_name, value_method: :id, selected: params[:filter].nil? ? '' : params[:filter][:influencer_id], include_blank: true, prompt: 'influencer', input_html: { class: 'contact-form-input' } %>
+          <%= f.submit 'filter', class: "primary-button personal-details-button small-text" %>
+        <% end %>
+      </div>
+      <div class="influencer-orders-container">
+          <table id="analytics-table">
+              <thead>
+                  <tr>
+                      <th class="neue-machina ls-xs">influencer id</th>
+                      <th class="neue-machina ls-xs">influencer name</th>
+                      <th class="neue-machina ls-xs">commission rate</th>
+                      <th class="neue-machina ls-xs">order date</th>
+                      <th class="neue-machina ls-xs">order number</th>
+                      <th class="neue-machina ls-xs">order amount</th>
+                      <th class="neue-machina ls-xs">vat</th>
+                      <th class="neue-machina ls-xs">total</th>
+                      <th class="neue-machina ls-xs">commission amount</th>
+                      <th class="neue-machina ls-xs">delete</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <% @orders.each do |order| %>
+                      <% user = order.affiliation&.class == User ? order.affiliation : order.affiliation&.user %>
+                      <tr class="influencer-order" id="order_<%= order.id %>">
+                          <td class="neue-machina ls-xs lighter"><%= user&.id %></td>
+                          <td class="neue-machina ls-xs lighter"><%= user&.full_name %></td>
+                          <td class="neue-machina ls-xs lighter"><%= user&.commission_rate %></td>
+                          <td class="neue-machina ls-xs lighter"><%= order.created_at.strftime('%d/%m/%Y') %></td>
+                          <td class="neue-machina ls-xs lighter"><%= order.id %></td>
+                          <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new (order.total_price_cents / 12.to_f) * 10 %></td>
+                          <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new order.total_price_cents - (order.total_price_cents / 12.to_f) * 10 %></td>
+                          <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol order.total_price %></td>
+                          <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new ((order.total_price_cents / 12.to_f) * 10) * ((user&.commission_rate || 0) / 100)  %></td>
+                          <td class="neue-machina ls-xs lighter">
+                            <%= link_to admin_order_path(order), method: :delete, remote: true do  %>
+                              <i class="fas fa-trash"></i>
+                            <% end %>
+                          </td>
+                      </tr>
+                  <% end %>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="neue-machina ls-xs"><strong>total</strong></td>
+                      <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| (order.total_price_cents / 12.to_f) * 10 } %></strong></td>
+                      <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| order.total_price_cents - (order.total_price_cents / 12.to_f) * 10 } %></strong></td>
+                      <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| order.total_price } %></strong></td>
+                      <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @orders.sum { |order| ((order.total_price_cents / 12.to_f) * 10) * (((order.affiliation&.class == User ? order.affiliation : order.affiliation&.user)&.commission_rate || 0) / 100) } %></strong></td>
+                      <td></td>
+                  </tr>
+              </tfoot>
+          </table>
+      </div>
     </div>
   </div>
 </div>

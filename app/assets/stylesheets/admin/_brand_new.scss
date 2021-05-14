@@ -1,7 +1,7 @@
 .admin-wrapper {
   height: 100%;
   width: 100vw;
-  background: #F5F5F5;
+  background: $background;
   @include absCenter;
   padding: 20px;
 }
@@ -20,17 +20,8 @@
 }
 
 .admin-form-container {
-  height: 100%;
-  width: 100%;
-  @include absCenter;
-  padding: 50px 100px;
+  background: $background-light;
   .form-group {
     margin: 0;
-  }
-  @include for-small-devices-down {
-    padding: 50px;
-  }
-  @include for-phone-only {
-    padding: 50px 10px;
   }
 }

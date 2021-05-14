@@ -1,3 +1,24 @@
+<% if user_signed_in? && current_user.admin %>
+  <% if policy([:admin, @insider_article]).publish? %>
+    <div class="container">
+      <div class="admin-options">
+      <hr>
+        <h6 class="bold neue-machina ls-xs">admin options</h6>
+        <div class="d-flex">
+          <% if @insider_article.published %>
+            <%= link_to "unpublish", unpublish_admin_insider_article_path(@insider_article), method: :patch, class: 'dotted-underline-button px-0 mr-2' %>
+          <% else %>
+            <%= link_to "publish", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'dotted-underline-button px-0 mr-2' %>
+          <% end %>
+          <%= link_to "edit", edit_admin_insider_article_path(@insider_article), class: 'dotted-underline-button px-0 mr-2' %>
+          <%= link_to "delete", admin_insider_article_path(@insider_article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dotted-underline-button' %>
+        </div>
+      </div>
+      <hr>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="content-margin pop-out-no-padding-mobile first-banner-padding article-show-first-banner">
   <div class="content-container pop-out-bottom-padding">
     <div class="pop-out-image-banner">
@@ -42,26 +63,6 @@
             <% end %>
           <% end %>
           <p class="neue-machina"> <%= simple_format(@insider_article.text4) %></p>
-          <% if user_signed_in? && current_user.admin %>
-            <% if policy([:admin, @insider_article]).publish? %>
-              <div class="admin-options">
-                <hr>
-                <div class="container">
-                  <h6 class="boldest">Admin options</h6>
-                  <div class="d-flex">
-                    <% if @insider_article.published %>
-                      <%= link_to "UNPUBLISH", unpublish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
-                    <% else %>
-                      <%= link_to "PUBLISH", publish_admin_insider_article_path(@insider_article), method: :patch, class: 'secondary-button small-margin-right' %>
-                    <% end %>
-                    <%= link_to "EDIT", edit_admin_insider_article_path(@insider_article), class: 'secondary-button small-margin-right' %>
-                    <%= link_to "DELETE", admin_insider_article_path(@insider_article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
-                  </div>
-                </div>
-                <hr>
-              </div>
-            <% end %>
-          <% end %>
         </div>
         <div class="share-articles-links">
           <p class="bold mb-2">Share:</p>

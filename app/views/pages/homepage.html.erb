@@ -15,14 +15,14 @@
       <%= image_tag 'homepage_banner.png', class: 'w-100' %>
     </div>
     <div class="d-none d-md-block">
-      <div class="homepage-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('<%= image_path 'homepage_banner.png' %>')">
+      <div class="homepage-banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= url_for(@home_banners.last.banner) %>)">
         <div class="homepage-banner-text">
           <h1 class="text-white mb-4">inspire</h1>
-          <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4">The revolutionary beauty marketplace that is changing women of colour.</h5>
+          <h5 class="text-white mb-0 neue-machina ls-lg lh-md mb-4"><%= @home_banners.last.content %></h5>
           <%= link_to products_path do %>
             <div class="oval-button">
               <div class="button-text">
-                <p class="mb-0 bt-5 ls-sm text-white">View Products</p>
+                <p class="mb-0 bt-5 ls-sm text-white"><%= @home_banners.last.link_text %></p>
               </div>
               <%= image_tag 'oval-button-white.svg' %>
             </div>
@@ -40,9 +40,9 @@
       <div class="admin-options">
         <hr>
         <div class="container">
-          <h6 class="boldest">Admin options</h6>
+          <h6 class="neue-machina boldest ls-xs">admin options</h6>
           <div class="d-flex">
-            <%= link_to "EDIT HOME BANNERS", admin_home_banners_path, class: 'secondary-button small-margin-right' %>
+            <%= link_to "edit home banners", admin_home_banners_path, class: 'dotted-underline-button px-0' %>
           </div>
         </div>
         <hr>
@@ -161,9 +161,9 @@
     <div class="pop-out-image-banner">
       <div class="pop-out-image-banner-content">
         <h2 class="neue-machina ls-sm mb-3 text-center">Obsession of the Week</h2>
-        <p class="lighter mb-4 ls-sm text-center">Try our newest Dermatological line of makeups</p>
-        <%= link_to 'Shop Now', '#', class: 'dotted-underline-button lighter mb-5' %>
-        <%= image_tag 'pop_out_image.png' %>
+        <p class="lighter mb-4 ls-sm text-center"><%= @home_banners.last.content %></p>
+        <a href="<%= @home_banners.last.link %>" class="dotted-underline-button lighter mb-5"><%= @home_banners.last.link_text %></a>
+        <%= image_tag url_for(@home_banners.last.banner) %>
       </div>
     </div>
   </div>
@@ -175,7 +175,7 @@
     <p class="lighter mb-4 ls-sm text-center">Our Experts are here to share their secrets from their experiences</p>
     <%= link_to 'View All Content', community_path, class: 'dotted-underline-button lighter mb-5' %>
   </div>
-  <div class="content-container content-carousel">
+  <div class="content-container content-carousel" id="tutorial-anchor">
     <div class="d-block d-md-none">
       <div id="mobileArticleCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
@@ -329,13 +329,13 @@
       </div>
       <div class="">
         <%= image_tag 'popup_image.png', class: "w-100 mb-5", alt: "the net logo" %>
-        <h3 class="mb-3 large-text">welcome</h3>
-        <p class="medium-text letter-spacing">You entered the realm of beauty for women of colour and we are so excited to have you here.</p>
-        <p class="medium-text letter-spacing mb-5">Here's a little treat to complement your experience.</p>
+        <h3 class="mb-3 large-text ls-xs">welcome</h3>
+        <p class="medium-text ls-xs">You entered the realm of beauty for women of colour and we are so excited to have you here.</p>
+        <p class="medium-text ls-xs mb-5">Here's a little treat to complement your experience.</p>
       </div>
       <div class="">
-        <h2 class="text-center mb-0">WELCOME2NET</h2>
-        <p class="mb-0 small-text text-center">USE AT CHECKOUT</p>
+        <h2 class="text-center mb-0 ls-xs">WELCOME2NET</h2>
+        <p class="mb-0 small-text text-center ls-xs">USE AT CHECKOUT</p>
       </div>
       <%= image_tag 'popup_close.png', class: 'close-homepage-pop-up' %>
     </div>

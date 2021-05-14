@@ -1,29 +1,31 @@
 <div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admit portal</h4>
+  </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
       <%= render 'admin/shared/admin_dash' %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">New In</h2>
-      <hr>
-      <div class="row row-admin-cards">
-        <% @featured_products.each do |product| %>
-          <div class="col-6 col-sm-6 col-md-4" style="padding: 10px;">
-            <!-- removed d-flex justify-content-center from above div -->
-            <div class="product-cards-holder">
-              <%= render 'admin/products/new_in_products', product: product %>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">products / new in</p>
+      <div class="dash-content p-3">
+        <div class="row row-admin-cards">
+          <div class="mb-2">
+            <%= simple_form_for :new_in, url: admin_add_new_in_path, method: :post do |f| %>
+              <%= f.input :products, label: false, collection: @not_featured_products, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll", class: '' } %>
+              <%= f.submit 'update new in', class: 'primary-button personal-details-button small-text mt-3 mx-0' %>
+            <% end %>
+          </div>
+          <% @featured_products.each do |product| %>
+            <div class="col-6 col-sm-6 col-md-4" style="padding: 10px;">
+              <!-- removed d-flex justify-content-center from above div -->
+              <div class="product-cards-holder">
+                <%= render 'admin/products/new_in_products', product: product %>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-      <div class="admin-form-container">
-        <%= simple_form_for :new_in, url: admin_add_new_in_path, method: :post do |f| %>
-          <div class="personal-details-input-wide align-items-start">
-            <p class="boldest kaftan s-medium-text text-right no-margin">Products</p>
-            <%= f.input :products, label: false, collection: @not_featured_products, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll" } %>
-          </div>
-        <%= f.submit 'UPDATE NEW IN', class: 'primary-button personal-details-button small-text' %>
-      <% end %>
     </div>
   </div>
 </div>

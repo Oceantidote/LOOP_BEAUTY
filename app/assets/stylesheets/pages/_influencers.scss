@@ -51,3 +51,21 @@
     word-break: break-word;
   }
 }
+
+.influencer-content-underlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 40;
+}
+
+.influencer-content-layer {
+  position: relative;
+  z-index: 50;
+}
+
+.influencer-modal-close {
+  z-index: 50;
+}

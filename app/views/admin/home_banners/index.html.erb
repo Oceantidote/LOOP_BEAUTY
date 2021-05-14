@@ -1,31 +1,39 @@
 <div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admit portal</h4>
+  </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
       <%= render 'admin/shared/admin_dash' %>
     </div>
     <div class="dash-content-container">
-      <h2 class="insider-info-title mlb-title text-center">Home Banners</h2>
-      <hr>
-      <div class="row" style="width: 100%; margin: 0; padding: 30px;">
-        <% @home_banners.order(display: :desc).each do |home_banner| %>
-          <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
-            <div class="freebies-card">
-              <%= image_tag url_for(home_banner.banner), alt: "Home banner" %>
-              <p class="small-text boldest no-margin"><%= home_banner.content %></p>
-              <% if home_banner.display %>
-                <p class="small-text boldest kaftan no-margin green">LIVE</p>
-              <% else %>
-                <p class="small-text boldest kaftan no-margin">Dormant</p>
-              <% end %>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">content / home banners</p>
+      <div class="dash-content p-3">
+        <div class="">
+          <div class="row m-0">
+            <div class="col-12 d-flex justify-content-end">
+              <%= link_to 'add home banner', new_admin_home_banner_path, class: 'primary-button personal-details-button small-text my-0 mt-0 mb-3' %>
             </div>
-            <div class="products-admin-options d-flex justify-content-around">
-              <%= link_to 'EDIT', edit_admin_home_banner_path(home_banner), class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'DELETE', admin_home_banner_path(home_banner), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button products-admin-buttons' %>
-            </div>
+            <% @home_banners.order(display: :desc).each do |home_banner| %>
+              <div class="col-12 col-sm-6 col-lg-4 pb-3">
+                <div class="home-banner-card">
+                  <%= image_tag url_for(home_banner.banner), alt: "Home banner" %>
+                  <p class="small-text boldest no-margin"><%= home_banner.content %></p>
+                  <% if home_banner.display %>
+                    <p class="small-text boldest kaftan no-margin green">LIVE</p>
+                  <% else %>
+                    <p class="small-text boldest kaftan no-margin">Dormant</p>
+                  <% end %>
+                </div>
+                <div class="products-admin-options">
+                  <%= link_to 'edit', edit_admin_home_banner_path(home_banner), class: 'primary-button bg-edit admin-options-button mt-0 mb-2' %>
+                  <%= link_to 'delete', admin_home_banner_path(home_banner), method: :delete, data: { confirm: 'Are you sure?' }, class: 'primary-button bg-delete admin-options-button mt-0 mb-2' %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
-      <%= link_to 'NEW HOME BANNER', new_admin_home_banner_path, class: 'primary-button products-admin-primary' %>
     </div>
   </div>
 </div>

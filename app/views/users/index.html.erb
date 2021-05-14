@@ -1,6 +1,20 @@
 <%= content_for :meta_title do %>
   Shop by Influncer
 <% end %>
+<% if policy([:admin, User]).create? %>
+  <div class="container">
+    <div class="admin-options">
+      <hr>
+      <div class="container">
+        <h6 class="neue-machina ls-xs bold">Admin options</h6>
+        <div class="d-flex">
+          <%= link_to 'add influencer', new_admin_influencer_path, class: 'dotted-underline-button px-0' %>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+<% end %>
 
 <div class="content-margin influencer-wrapper last-content-margin">
   <div class="content-container position-relative">
@@ -27,6 +41,11 @@
             </div>
             <div class="influencer-card-info-container">
               <div class="influencer-card-info">
+                <% if !influencer.published %>
+                  <p class="ls-xs lighter">UNPUBLISHED</p>
+                <% elsif current_user&.admin? %>
+                  <p class="ls-xs lighter"><%= influencer.affiliate_link %></p>
+                <% end %>
                 <%= link_to user_path(influencer) do %>
                   <h2 class="neue-machina ls-sm mb-3"><%= influencer.instagram %></h2>
                 <% end %>
@@ -44,11 +63,6 @@
               </div>
             </div>
           </div>
-          <% if !influencer.published %>
-            <p>UNPUBLISHED</p>
-          <% elsif current_user&.admin? %>
-            <p><%= influencer.affiliate_link %></p>
-          <% end %>
         <% end %>
       </div>
       <div class="tab-pane fade" id="pills-hair" role="tabpanel" aria-labelledby="pills-hair-tab">
@@ -72,16 +86,3 @@
   <%= paginate @users %>
 </div>
 
-
-<% if policy([:admin, User]).create? %>
-  <div class="admin-options">
-    <hr>
-    <div class="container">
-      <h6 class="boldest">Admin options</h6>
-      <div class="d-flex">
-        <%= link_to 'ADD INFLUENCER', new_admin_influencer_path, class: 'secondary-button' %>
-      </div>
-    </div>
-    <hr>
-  </div>
-<% end %>

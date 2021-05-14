@@ -23,8 +23,38 @@
 }
 
 .products-admin-options {
-  display: flex;
-  justify-content: space-evenly;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+.admin-options-button {
+  height: 38px !important;
+  width: 100px !important;
+  font-size: 12px !important;
+  border-radius: 5px !important;
+}
+
+.bg-delete {
+  background: #D31A1A;
+  &:hover {
+    background: #AF1414 !important;
+  }
+}
+
+.bg-edit {
+  background: #C1C1C1;
+  color: #000000 !important;
+  &:hover {
+    background: #AFADAD;
+  }
+}
+
+.bg-approve {
+  background: #2CAB42;
+  &:hover {
+    background: #269439 !important;
+  }
 }
 
 .edit_product, .edit_shade, .new_shade {
@@ -63,8 +93,3 @@
 
 // FREEBIES
 
-.freebies-card {
-  img {
-    width: 100%;
-  }
-}

@@ -13,5 +13,15 @@ td {
   padding: 2.5px 10px;
 }
 .shaded {
-  background-color: #f4f4f4;
+  background-color: #F3EEE9;
+}
+
+.sku-table {
+  th {
+    background: $background-light;
+    border: none !important;
+    font-weight: normal !important;
+    position: sticky;
+    top: 0;
+  }
 }

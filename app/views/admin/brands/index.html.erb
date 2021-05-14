@@ -1,33 +1,38 @@
 <div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admit portal</h4>
+  </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
       <%= render 'admin/shared/admin_dash' %>
     </div>
     <div class="dash-content-container">
-    <h2 class="insider-info-title mlb-title text-center">All Brands</h2>
-    <hr>
-    <div class="row" style="width: 100%; margin: 0; padding: 30px;">
-      <% @brands.each do |brand| %>
-        <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 15px;">
-          <div class="my-products-card">
-            <div class="my-products-details text-center no-margin">
-              <p class="kaftan boldest"><%= brand.name %></p>
-            </div>
-            <div class="my-products-image">
-              <% if brand.logo.attached? %>
-                <%= image_tag url_for(brand.logo), alt: "brand logo" %>
-              <% else %>
-                <%= image_tag 'brand-default.png', alt: "default photo for brands" %>
-              <% end %>
-            </div>
-            <div class="products-admin-options">
-              <%= link_to 'EDIT', edit_admin_brand_path(brand), class: 'secondary-button products-admin-buttons' %>
-              <%= link_to 'DELETE', admin_brand_path(brand), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button products-admin-buttons' %>
-            </div>
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">products / all brands</p>
+      <div class="dash-content">
+        <div class="row mx-0 mb-5 p-3">
+          <div class="col-12 d-flex justify-content-end">
+            <%= link_to 'add brand', new_admin_brand_path, class: 'primary-button personal-details-button small-text my-0 mt-0 mb-3' %>
           </div>
+          <% @brands.each do |brand| %>
+            <div class="col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="my-products-card">
+                <div class="my-products-image position-relative">
+                  <% if brand.logo.attached? %>
+                    <%= image_tag url_for(brand.logo), alt: "brand logo" %>
+                  <% else %>
+                    <%= image_tag 'brand-default.png', alt: "default photo for brands" %>
+                  <% end %>
+                  <div class="products-admin-options">
+                    <%= link_to 'delete', admin_brand_path(brand), method: :delete, data: { confirm: 'Are you sure?' }, class: 'primary-button bg-delete admin-options-button mt-0 mb-2' %>
+                    <%= link_to 'edit', edit_admin_brand_path(brand), class: 'primary-button bg-edit admin-options-button m-0' %>
+                  </div>
+                </div>
+                <p class="ls-xs lighter"><%= brand.name %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-    <%= link_to 'NEW BRAND', new_admin_brand_path, class: 'primary-button products-admin-primary' %>
   </div>
 </div>

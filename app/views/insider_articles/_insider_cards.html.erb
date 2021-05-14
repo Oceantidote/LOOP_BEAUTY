@@ -1,4 +1,4 @@
-<div class="row row-articles">
+<div class="row m-0 justify-content-between">
   <% contents.each_with_index do |content, index| %>
     <% if (index + 1) % 5  == 0 %>
       <div class="pop-out-bottom-padding-community my-5 w-100 px-0 px-sm-4 px-md-5">
@@ -12,7 +12,7 @@
         </div>
       </div>
     <% else %>
-      <div class="col-12 col-md-6">
+      <div class="insider-cards">
         <% if @how_to %>
           <%= link_to tutorial_path(content), class: "insider-home-card-link no-decoration" do %>
             <div class="inside-how-to my-5">
@@ -26,7 +26,7 @@
             </div>
           <% end %>
         <% else %>
-          <div class="card-image-results homepage-products my-5">
+          <div class="card-image-results homepage-products w-100 my-5">
             <div class="card">
               <div class="card_image homepage-article-image">
                 <%= link_to insider_article_path(content) do %>

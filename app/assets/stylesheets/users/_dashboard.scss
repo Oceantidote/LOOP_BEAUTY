@@ -298,6 +298,12 @@
   margin-top: 5px;
 }
 
+.notification-dash {
+  top: 0 !important;
+  right: unset !important;
+  left: -20px !important;
+}
+
 .admin-notification {
   background: #F40000;
   border-radius: 50%;
@@ -308,10 +314,9 @@
   position: absolute;
   z-index: 1000;
   top: -2px;
-  right: -2px;
+  right: -7px;
   p {
     font-size: 9px;
-    font-weight: bold;
     margin: 0;
   }
 }

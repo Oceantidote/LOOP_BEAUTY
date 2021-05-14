@@ -1,29 +1,46 @@
 .admin-sales-report-container {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: white;
+  background: $background-light;
   min-height: 500px;
   width: 100%;
-  width: 100%;
   margin: auto;
-  padding-bottom: 16px;
-  select {
-    margin-left: 5px;
-  }
+}
+
+.tablesorter-default {
+  margin: 0 !important;
 }
 
 .tablesorter-header {
   position: sticky;
-  top: 96px;
+  top: 0px;
 }
 
 .tablesorter-default .header, .tablesorter-default .tablesorter-header {
-  background: #000 !important;
-  color: #FFF;
+  background-color: $background-light !important;
+  font-size: 12px;
 }
 
-.influencer-orders-container {
-  padding: 10px;
+.tablesorter-default th {
+  border: none !important;
+  font-weight: normal !important;
+  padding: 20px 20px 20px 4px !important;
 }
+
+.tablesorter-default td {
+  border: none !important;
+  background-color: $background-light !important;
+  font-size: 12px !important;
+}
+
 .send_email_input::placeholder {
   color: white;
+}
+
+.discount-button-container {
+  position: sticky;
+  bottom: 0;
+  background: $background-light;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background: $background-light;
 }

@@ -29,13 +29,6 @@
   }
 }
 
-.unpublished_bar {
-  width: 100%;
-  background-color: $blue;
-  color: white;
-  text-align: center;
-}
-
 .lookbook-show-text {
   font-family: $menu-font;
   text-align: center;
@@ -167,3 +160,69 @@
   }
 }
 
+.influencer-content-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.93);
+  display: flex;
+  transition: all 0.2s ease;
+  @include for-small-devices-down {
+    display: block;
+    overflow: scroll;
+  }
+  .row {
+    width: 75%;
+    @include for-medium-devices-down {
+      width: 100%;
+    }
+  }
+}
+
+.influencer-content-wrapper-mobile {
+  display: block !important;
+}
+
+.influencer-content-image-container {
+  flex-grow: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  @include for-small-devices-down {
+    min-height: unset;
+  }
+}
+
+.influencer-content-products {
+  background: $background;
+  min-width: 360px;
+  width: 35%;
+  max-width: 460px;
+  min-height: 100vh;
+  overflow: scroll;
+  @include for-medium-devices-down {
+    min-width: 300px;
+  }
+  @include for-small-devices-down {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+}
+
+.influencer-content-image {
+  max-width: 80%;
+  max-height: 72%;
+  object-fit: cover;
+  @include for-small-devices-down {
+    max-width: unset;
+    max-height: unset;
+    width: 100%;
+  }
+}

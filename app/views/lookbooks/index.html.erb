@@ -1,46 +1,50 @@
-<div class="lookbooks-show-banner" style="background-image: url('https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
-  <div class="lookbook-show-banner-text-container">
-    <div class="lookbook-show-banner-text">
-      <div style="width:250px;"></div>
-      <div class="lookbook-index-avatar">
-        <%= image_tag url_for(@user.avatar_photo.variant(resize: '200')), class: "lookbook-avatar", alt: "lookbook user avatar" %>
-        <h4><%= @user.instagram %></h4>
-      </div>
-      <div class="lookbook-social-data">
-        <% if @user.instagram %>
-          <%= link_to "https://www.instagram.com/#{@user.instagram.remove('@')}", target: "_blank", rel: "noopener", class: "each-social-data" do %>
-              <i class="fab fa-instagram social-instagram"></i>
-              <h6>274k</h6>
-          <% end %>
-        <% end %>
-        <% if @user.youtube %>
-          <%= link_to @user.youtube, target: "_blank", class: "each-social-data" do %>
-              <i class="fab fa-youtube social-youtube"></i>
-              <h6>400k</h6>
-          <% end %>
-        <% end %>
-      </div>
+<div class="content-margin pop-out-no-padding-mobile brands-banner">
+  <%= link_to :back, class: 'back-button d-md-none' do %>
+    <%= image_tag 'back.png', width: 28 %>
+  <% end %>
+  <div class="content-container">
+    <div class="pop-out-image-banner py-5">
+      <h2 class="neue-machina ls-sm mb-3 pt-4 text-center">Shop LookBook</h2>
+      <p class="lighter mb-0 ls-sm text-center px-3 px-md-5 pb-4 user-description">Shop the various looks from our best curated products in the market used by our influencers.</p>
     </div>
   </div>
 </div>
-<div class="shop-lookbook-bar">
-  <div style="width: 200px;"></div>
-  <p class="shop-look-text">Click the image to shop the look</p>
-  <%= simple_form_for :sort, url: user_lookbooks_path(@user), method: :get, remote: true, html: { onchange: "this.submit()" } do |f| %>
-    <%= f.input :sort_method, collection: [['New in', 'created_at,desc'], ['Old', 'created_at,asc']], label: false, required: false, selected: @sort_method, input_html: { class: 'filters-container boldest s-medium-text' } %>
-  <% end %>
-</div>
-<div class="lookbooks-container">
-  <div class="row" style="width: 100%; margin: 0;">
-    <% @lookbooks.reverse.each do |lookbook| %>
-      <div class="col-xs-12 col-sm-6 col-md-4" style="padding: 10px;">
-        <%= link_to lookbook_path(lookbook, user_id: @user.id) do %>
-          <div class="lookbook-index-card">
-            <%= image_tag url_for(lookbook.photo.variant(resize: '400')), alt: "influencer lookbook photo" %>
+<div class="content-margin">
+  <div class="content-container position-relative">
+    <div class="row row-products">
+      <% @lookbooks.each do |lookbook| %>
+        <div class="col-12 col-md-4">
+          <div class="card-image-results homepage-products mb-5">
+            <div class="card influencerCard_<%= lookbook.id %> cursor-pointer" data-id="<%= lookbook.id %>">
+              <div class="button-overlay d-none d-md-flex">
+                <div class="oval-button mx-3">
+                  <div class="button-text">
+                    <p class="mb-0 bt-5 ls-sm">View Look</p>
+                  </div>
+                  <%= image_tag 'oval-button.svg' %>
+                </div>
+              </div>
+              <div class="card_image">
+                <%= image_tag url_for(lookbook.photo.variant(resize: '300x300')), alt: "product shade photo" %>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="mb-2 truncate-text lighter ls-xs"><%= lookbook.title %></p>
+              <p class="neue-machina text-secondary"><%= lookbook.user.instagram %></p>
+            </div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
+        </div>
+        <%= render 'shared/influencer_content_modal', content: lookbook %>
+      <% end %>
+    </div>
   </div>
 </div>
 
+<div class="col-12 d-flex justify-content-center my-4">
+  <div class="show-page-entries">
+    <p class="ls-xs lighter"><%= page_entries_info @lookbooks %></p>
+  </div>
+</div>
+<div class="col-12 d-flex justify-content-center mb-5">
+  <%= paginate @lookbooks %>
+</div>

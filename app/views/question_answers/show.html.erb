@@ -1,3 +1,17 @@
+<% if policy(@question_answer).edit? %>
+  <div class="container">
+    <div class="admin-options">
+      <hr>
+      <h6 class="bold ls-xs neue-machina">admin options</h6>
+      <div class="d-flex">
+        <%= link_to "edit", edit_user_question_answer_path(@question_answer.user, @question_answer), class: 'dotted-underline-button mr-2' %>
+        <%= link_to "delete", user_question_answer_path(@question_answer.user, @question_answer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dotted-underline-button' %>
+      </div>
+      <hr>
+    </div>
+  </div>
+<% end %>
+
 <div class="content-margin pop-out-no-padding-mobile brands-banner">
   <%= link_to :back, class: 'back-button d-md-none' do %>
     <%= image_tag 'back.png', width: 28 %>
@@ -71,16 +85,3 @@
   </div>
 </div>
 
-<% if policy(@question_answer).edit? %>
-  <div class="admin-options">
-    <div class="container">
-      <hr>
-      <h6 class="boldest">Admin options</h6>
-      <div class="d-flex">
-        <%= link_to "EDIT Q&A", edit_user_question_answer_path(@question_answer.user, @question_answer), class: 'secondary-button small-margin-right' %>
-        <%= link_to "DELETE Q&A", user_question_answer_path(@question_answer.user, @question_answer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
-      </div>
-      <hr>
-    </div>
-  </div>
-<% end %>

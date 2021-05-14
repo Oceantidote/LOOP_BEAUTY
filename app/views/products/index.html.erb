@@ -3,13 +3,3 @@
 <% end %>
 
 <%= render 'shared/card_results', products: @products, form_url: products_path, sort_method: @sort_method %>
-<% if current_user&.admin %>
-  <div class="admin-options">
-    <div class="container">
-      <hr>
-      <h6 class="boldest">Admin options</h6>
-      <%= link_to 'CHANGE MAKEUP BANNER', admin_change_banner_path, class: 'secondary-button' %>
-      <hr>
-    </div>
-  </div>
-<% end %>

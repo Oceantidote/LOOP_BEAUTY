@@ -1,134 +1,76 @@
-<div class="tutorial-show-title-content">
-  <% if request&.referrer&.include?('videos') %>
-    <%= link_to 'See all tutorials', videos_path, class: "web-tutorials-link" %>
-  <% else %>
-    <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
-  <% end %>
-  <h2 class="insider-info-title text-center"><%= @tutorial.title %></h2>
-  <div class="previous-next-tutorial">
-    <div class="previous-tutorial">
-      <%= image_tag 'dropdown-forward.png', width: 10, style: "transform: rotate(180deg)", alt: "dropdown icon" %>
-      <%= link_to 'Previous', tutorial_path(@previous_tutorial) %>
-    </div>
-    <span class="previous-next-seperator"><strong style="margin: 0 5px;">|</strong></span>
-    <div class="next-tutorial">
-      <%= link_to 'Next', tutorial_path(@next_tutorial) %>
-      <%= image_tag 'dropdown-forward.png', width: 10, alt: "dropdown icon" %>
-    </div>
-  </div>
-</div>
-<div class="tutorial-show-video-banner">
-  <% if @tutorial.processing? %>
-  <div class="d-flex align-items-center justify-content-center flex-column" style="width: 100%; height: 600px;">
-    <h3>Video is processing</h3>
-    <h6><%= @tutorial.progress %>% done</h6>
-  </div>
-  <% else %>
-    <%= video_tag url_for(@tutorial.video), style: "margin: 0 auto;max-width: 100%;max-height: 60vh;", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video", preload: 'none' %>
-    <div class="video-overlay">
-      <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
-    </div>
-  <% end %>
-</div>
-<% if request&.referrer&.include?('videos') %>
-  <%= link_to 'See all tutorials', videos_path, class: "mobile-tutorials-link" %>
-<% else %>
-  <%= link_to 'See all tutorials', user_tutorials_path(@tutorial.user), class: "mobile-tutorials-link" %>
-<% end %>
-<div class="featured-products-wrapper">
-  <div class="featured-products-header max-width">
-    <div class="tutorial-spacer" style="width: 150px;"></div>
-    <h2 class="insider-info-title text-center">Featured Products</h2>
-    <%= link_to 'Shop more products', products_path, class: "web-tutorials-link" %>
-  </div>
-  <div class="max-width">
-    <% if @tutorial.products.count > 4 %>
-      <p class="shop-look-text text-center">Scroll across to see more products</p>
+<div class="influencer-content-wrapper">
+  <div class="influencer-content-image-container">
+    <%= image_tag 'the-net-white.png', width: 68, class: "mb-3 d-none d-md-block" %>
+    <% if @tutorial.processing? %>
+      <div class="d-flex align-items-center justify-content-center flex-column" style="width: 100%; height: 600px;">
+        <h3 class="text-white neue-machina ls-xs">Video is processing</h3>
+        <h6 class="text-white neue-machina ls-xs"><%= @tutorial.progress %>% done</h6>
+      </div>
+    <% else %>
+      <div class="d-flex position-relative mx-md-5">
+      <%= video_tag url_for(@tutorial.video), style: "max-height: 80vh; max-width: 100%", id: "tutorial-show-video", playsinline: true, poster: url_for(@tutorial.cover_photo), alt: "influencer tutorial video", preload: 'none' %>
+        <div class="video-overlay">
+          <%= image_tag 'play-button.png', class: "video-home-play-button", width: 80, alt: "play button" %>
+        </div>
+      </div>
     <% end %>
-    <div class="row-carousel scrolling">
-      <%= image_tag 'small-back.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
+    <%= link_to :back do %>
+      <%= image_tag 'dropdown-back.png', class: 'back-arrow' %>
+    <% end %>
+  </div>
+  <div class="influencer-content-products py-5 px-4 px-lg-5">
+    <% if policy([:admin, Tutorial]).featured? && @tutorial.status == 'approved' %>
+      <div class="admin-options">
+        <hr>
+        <div class="container">
+          <h6 class="neue-machina ls-xs boldest">Admin options</h6>
+          <p class="neue-machina ls-xs"><strong>Affiliate link:</strong> <%= @tutorial.affiliate_link %></p>
+          <div class="d-flex flex-column align-items-start">
+            <% if @tutorial.featured %>
+              <p class="primary-button" style="width: max-content; height: 40px; padding: 6px 25px; margin: 0;cursor: default;">FEATURED</p>
+            <% else %>
+              <%= link_to 'set as featured', featured_admin_tutorial_path(@tutorial), method: :patch, class: 'dotted-underline-button d-inline-block px-0 mb-3' %>
+            <% end %>
+            <%= link_to 'edit', edit_tutorial_path(@tutorial), class: 'dotted-underline-button d-inline-block px-0 mb-3' %>
+            <%= link_to 'download', url_for(@tutorial.video), class: 'dotted-underline-button d-inline-block px-0 mb-3' %>
+            <%= link_to 'delete', tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dotted-underline-button d-inline-block px-0 mb-3' %>
+          </div>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+    <% if current_user&.admin? && (@tutorial.status == "pending" || @tutorial.status == "rejected") %>
+      <div class="d-flex flex-column align-items-start mb-5">
+        <h6 class="bold neue-machina ls-xs" >Current Status: <%= @tutorial.status %></h6>
+        <%= link_to "edit", edit_tutorial_path(@tutorial), class: 'dotted-underline-button d-inline-block px-0 mb-3' %>
+        <%= link_to "approve", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'dotted-underline-button d-inline-block px-0 mb-3' %>
+        <%= link_to "download", url_for(@tutorial.video) , class: 'dotted-underline-button d-inline-block px-0 mb-3'  %>
+        <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch, html: { class: 'w-100' } do |f| %>
+          <%= f.input :rejection_message, label: false, placeholder: 'rejection message', input_html: { class: 'contact-form-input' } %>
+          <%= f.submit "REJECT", class: 'dotted-underline-button px-0 small-text' %>
+        <% end %>
+      </div>
+    <% elsif @tutorial.user == current_user && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
+        <div class="container tutorial-show-admin-options">
+          <hr>
+            <h6 class="boldest margin-top" >Current Status: <span class="neue-machina lighter"><%= @tutorial.status.capitalize %></span></h6>
+            <% if @tutorial.rejection_message %>
+              <p class="boldest">Reason for rejection: <span class="neue-machina lighter"><%= @tutorial.rejection_message %></span></p>
+            <% end %>
+            <%= link_to "RESUBMIT FOR APPROVAL", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
+          <hr>
+        </div>
+    <% end %>
+    <h5 class="neue-machina ls-sm text-center font-weight-bold">FEATURED PRODUCTS</h5>
+    <div class="row my-5 mx-auto justify-content-center">
       <% @tutorial.products.each do |product| %>
-        <div class="col-8 col-sm-6 col-md-3 d-flex justify-content-center tp-cols">
+        <div class="col-12">
           <%= render 'shared/product_cards', product: product %>
         </div>
       <% end %>
-      <%= image_tag 'small-forward.png', class: 'carousel-buttons cb-right', alt: "forward arrow" %>
     </div>
   </div>
-  <%= link_to 'Shop more products', products_path, class: "mobile-tutorials-link" %>
 </div>
-<div class="similar-tutorials-wrapper">
-  <div class="similar-tutorials-header max-width">
-    <div class="tutorial-spacer" style="width: 150px;"></div>
-    <h2 class="insider-info-title text-center">You'll also love</h2>
-    <%= link_to 'View more tutorials', user_tutorials_path(@tutorial.user), class: "web-tutorials-link" %>
-  </div>
-  <div class="max-width">
-    <div class="row-carousel">
-      <%= image_tag 'small-back-dark.png', class: 'carousel-buttons cb-left', alt: "back arrow" %>
-      <% @users_tutorials.each do |tutorial| %>
-        <div class="col-10 col-md-6 col-lg-3 lv-cols">
-          <%= link_to tutorial_path(tutorial), class: "video-card-link card-link" do %>
-            <div class="homepage-video-card">
-              <div class="video-holder" style="background-image: url(<%= url_for(tutorial.cover_photo) %>)">
-                <%= image_tag 'play-button.png', class: "play-button", width: 80, alt: "forward arrow" %>
-              </div>
-              <div class="homepage-video-card-text">
-                <p class="video-card-text-title">by <%= tutorial.user.instagram %></p>
-                <p class="video-card-text-content"><%= tutorial.title %></p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-      <%= image_tag 'small-forward-dark.png', class: 'carousel-buttons cb-right' %>
-    </div>
-  </div>
-  <%= link_to 'View more tutorials', user_tutorials_path(@tutorial.user), class: "mobile-tutorials-link" %>
-</div>
-
-<% if policy([:admin, Tutorial]).featured? && @tutorial.status == 'approved' %>
-  <div class="admin-options">
-    <hr>
-    <div class="container">
-      <h6 class="boldest">Admin options</h6>
-      <h6><span class="boldest">Affiliate link:</span> <%= @tutorial.affiliate_link %></h6>
-      <div class="d-flex">
-        <% if @tutorial.featured %>
-          <p class="primary-button" style="width: max-content; height: 40px; padding: 6px 25px; margin: 0;cursor: default;">FEATURED</p>
-        <% else %>
-          <%= link_to 'SET AS FEATURED', featured_admin_tutorial_path(@tutorial), method: :patch, class: 'secondary-button' %>
-        <% end %>
-        <%= link_to 'EDIT', edit_tutorial_path(@tutorial), class: 'secondary-button' %>
-        <%= link_to 'DOWNLOAD', url_for(@tutorial.video), class: 'secondary-button' %>
-        <%= link_to 'DELETE', tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button' %>
-      </div>
-    </div>
-    <hr>
-  </div>
-<% end %>
-<% if current_user&.admin? && (@tutorial.status == "pending" || @tutorial.status == "rejected") %>
-  <div class="container tutorial-show-admin-options">
-    <h6 class="boldest margin-top" >Current Status: <%= @tutorial.status %></h6>
-    <%= link_to "EDIT", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
-    <%= link_to "APPROVE", approve_admin_tutorial_path(@tutorial), method: :patch, class: 'primary-button personal-details-button small-text' %>
-    <%= link_to "DOWNLOAD", url_for(@tutorial.video) , class: 'primary-button personal-details-button small-text'  %>
-    <%= simple_form_for @tutorial, url: reject_admin_tutorial_path, method: :patch do |f| %>
-      <%= f.input :rejection_message, input_html: { class: 'contact-form-input' } %>
-      <%= f.submit "REJECT", class: 'secondary-button personal-details-button small-text' %>
-    <% end %>
-  </div>
-<% elsif @tutorial.user == current_user && @tutorial.status == "pending" || @tutorial.status == "rejected" %>
-    <div class="container tutorial-show-admin-options">
-      <hr>
-        <h6 class="boldest margin-top" >Current Status: <span class="neue-machina lighter"><%= @tutorial.status.capitalize %></span></h6>
-        <% if @tutorial.rejection_message %>
-          <p class="boldest">Reason for rejection: <span class="neue-machina lighter"><%= @tutorial.rejection_message %></span></p>
-        <% end %>
-        <%= link_to "RESUBMIT FOR APPROVAL", edit_tutorial_path(@tutorial), class: 'secondary-button small-margin-right' %>
-      <hr>
-    </div>
-<% end %>
 <script>
   videoOverlay = document.querySelector('.video-overlay');
   video = document.getElementById('tutorial-show-video');

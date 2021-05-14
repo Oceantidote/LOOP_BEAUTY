@@ -1,12 +1,14 @@
-heart = document.querySelector('#wishlist-<%= @wishlist_product.product.id %>')
+hearts = document.querySelectorAll('#wishlist-<%= @wishlist_product.product.id %>')
+hearts.forEach((heart) => {
+  link = heart.querySelector('a')
+  link.href = '<%= wishlist_product_path(@wishlist_product) %>'
+  link.setAttribute('data-method', 'delete')
+  if (link.querySelector('span')) {
+    link.querySelector('span').innerText = 'REMOVE FROM WISHLIST'
+  }
 
-link = heart.querySelector('a')
-link.href = '<%= wishlist_product_path(@wishlist_product) %>'
-link.setAttribute('data-method', 'delete')
-if (link.querySelector('span')) {
-  link.querySelector('span').innerText = 'REMOVE FROM WISHLIST'
-}
+  icon = heart.querySelector('i')
+  icon.classList.remove('far')
+  icon.classList.add('fas')
+})
 
-icon = heart.querySelector('i')
-icon.classList.remove('far')
-icon.classList.add('fas')

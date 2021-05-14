@@ -1,6 +1,6 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container-title mb-3 px-3 px-md-0">
-    <h4 class="ls-xs mb-0 <%= 'mb-4' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
+    <h4 class="ls-xs mb-0 <%= 'mb-2' unless current_user.influencer %>"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
     <% if current_user.influencer? %>
       <div class="d-flex justify-content-center align-items-center">
         <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>

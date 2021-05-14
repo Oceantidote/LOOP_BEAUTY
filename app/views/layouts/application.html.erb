@@ -84,7 +84,7 @@
       <% end %>
       <!-- COOKIE MESSAGE - JS IN PACKS/COMPONENTS/COOKIE_BOX -->
     </div>
-    <% unless (params[:controller] == 'pages' && params[:action] == 'home') || (params[:controller] == 'pages' && params[:action] == 'freebies') %>
+    <% unless (params[:controller] == 'pages' && params[:action] == 'home') || (params[:controller] == 'tutorials' && params[:action] == 'show') %>
       <%= render 'shared/footer' %>
     <% end %>
 

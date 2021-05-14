@@ -3,8 +3,25 @@
 <% end %>
 
 <% if !@user.published %>
-  <div class="unpublished_bar">
-    <h3>PENDING PUBLICATION</h3>
+  <div class="unpublished_bar mb-3 py-3">
+    <h3 class="mb-0 ls-sm neue-machina">PENDING PUBLICATION</h3>
+  </div>
+<% end %>
+
+<% if policy([:admin, @user]).publish? %>
+  <div class="container">
+    <div class="admin-options">
+      <h6 class="bold neue-machina ls-xs">admin options</h6>
+      <div class="d-flex">
+        <% if @user.published %>
+          <%= link_to "unpublish", unpublish_admin_influencer_path(@user), method: :patch, class: 'dotted-underline-button px-0 d-inline-block mr-3' %>
+        <% else %>
+          <%= link_to "publish", publish_admin_influencer_path(@user), method: :patch, class: 'dotted-underline-button px-0 d-inline-block mr-3' %>
+        <% end %>
+        <%= link_to "edit", edit_admin_influencer_path(@user), class: 'dotted-underline-button px-0 d-inline-block' %>
+      </div>
+    </div>
+    <hr>
   </div>
 <% end %>
 
@@ -180,22 +197,6 @@
   </div>
 </div>
 
-<% if policy([:admin, @user]).publish? %>
-  <div class="admin-options">
-    <hr>
-    <div class="container">
-      <h6 class="boldest">Admin options</h6>
-      <div class="d-flex">
-        <% if @user.published %>
-          <%= link_to "UNPUBLISH", unpublish_admin_influencer_path(@user), method: :patch, class: 'secondary-button small-margin-right' %>
-        <% else %>
-          <%= link_to "PUBLISH", publish_admin_influencer_path(@user), method: :patch, class: 'secondary-button small-margin-right' %>
-        <% end %>
-        <%= link_to "EDIT", edit_admin_influencer_path(@user), class: 'secondary-button' %>
-      </div>
-    </div>
-  </div>
-<% end %>
 <script>
 
   function change_users() {

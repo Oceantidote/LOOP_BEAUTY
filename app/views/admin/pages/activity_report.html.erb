@@ -1,59 +1,50 @@
 <div class="admin-wrapper minimum-height">
-  <div class="admin-sales-report-container">
-    <%= link_to "Dashboard", admin_portal_path, class: "secondary-button mt-3 ml-3"  %>
-    <h2 class="insider-info-title mlb-title-admin-dash text-center">Activity Report</h2>
-    <hr>
-    <div class="admin-form-container admin-products-new-container sales-report-container">
-      <%= simple_form_for :filter, url: admin_activity_report_path, method: :get do |f| %>
-          <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Start Date</p>
-          <%= f.input :from, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input align-items-center">
-          <p class="boldest kaftan s-medium-text text-right no-margin">End Date</p>
-          <%= f.input :to, label: false, input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input align-items-center">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Influencer</p>
-          <%= f.input :influencer_id, collection: User.where(influencer: true), label: false, label_method: :full_name, value_method: :id, selected: params[:filter].nil? ? '' : params[:filter][:influencer_id], include_blank: true, input_html: { class: 'dropdown-input sign-up-dropdown' } %>
-        </div>
-          <%= f.submit 'FILTER', class: "primary-button personal-details-button small-text" %>
+  <div class="">
+    <%= link_to "dashboard", admin_portal_path, class: "dotted-underline-button px-0 mb-4 d-inline-block" %>
+    <p class="ls-xs mb-3 mb-md-2 pl-3 pl-3 pl-md-0">activity report</p>
+    <div class="admin-sales-report-container p-3">
+      <div class="admin-form-container admin-products-new-container sales-report-container">
+      <%= simple_form_for :filter, url: admin_activity_report_path, method: :get, html: { style: 'width: 500px;' } do |f| %>
+        <%= f.input :from, label: false, placeholder: 'start date', input_html: { value: params[:filter].nil? ? '' : params[:filter][:from], class: 'contact-form-input' } %>
+        <%= f.input :to, label: false, placeholder: 'end date', input_html: { value: params[:filter].nil? ? '' : params[:filter][:to], class: 'contact-form-input' } %>
+        <%= f.input :influencer_id, collection: User.where(influencer: true), label: false, label_method: :full_name, value_method: :id, selected: params[:filter].nil? ? '' : params[:filter][:influencer_id], include_blank: true, prompt: 'influencer', input_html: { class: 'contact-form-input' } %>
+        <%= f.submit 'filter', class: "primary-button personal-details-button small-text" %>
       <% end %>
     </div>
     <div class="influencer-orders-container">
         <table id="analytics-table">
             <thead>
                 <tr>
-                    <th>Influencer ID</th>
-                    <th>Influencer Name</th>
-                    <th>Commission Rate</th>
-                    <th>Content Publish Date</th>
-                    <th>Content Name</th>
-                    <th>Content Type</th>
-                    <th>Number of Visits</th>
-                    <th>Number of Transactions</th>
-                    <th>Transaction Value</th>
-                    <th>VAT</th>
-                    <th>Transaction Total</th>
-                    <th>Commission Amount</th>
+                    <th class="neue-machina ls-xs">Influencer ID</th>
+                    <th class="neue-machina ls-xs">Influencer Name</th>
+                    <th class="neue-machina ls-xs">Commission Rate</th>
+                    <th class="neue-machina ls-xs">Content Publish Date</th>
+                    <th class="neue-machina ls-xs">Content Name</th>
+                    <th class="neue-machina ls-xs">Content Type</th>
+                    <th class="neue-machina ls-xs">Number of Visits</th>
+                    <th class="neue-machina ls-xs">Number of Transactions</th>
+                    <th class="neue-machina ls-xs">Transaction Value</th>
+                    <th class="neue-machina ls-xs">VAT</th>
+                    <th class="neue-machina ls-xs">Transaction Total</th>
+                    <th class="neue-machina ls-xs">Commission Amount</th>
                 </tr>
             </thead>
             <tbody>
                 <% @results.each do |result| %>
                     <% user = result.class == User ? result : result.user %>
                     <tr class="influencer-order">
-                        <td><%= user.id %></td>
-                        <td><%= user.full_name %></td>
-                        <td><%= user.commission_rate %></td>
-                        <td><%= result.publish_date.present? ? result.publish_date.strftime('%d/%m/%Y') : 'Not Published' %></td>
-                        <td><%= result.class == User ? result.full_name : result.title %></td>
-                        <td><%= result.class == User ? 'Influencer' : (result.class == Lookbook ? 'Image' : 'Video') %></td>
-                        <td><%= result.visits %></td>
-                        <td><%= result.sales %></td>
-                        <td><%= humanized_money_with_symbol Money.new (result.sales_total_cents / 12.to_f) * 10 %></td>
-                        <td><%= humanized_money_with_symbol Money.new result.sales_total_cents - (result.sales_total_cents / 12.to_f) * 10 %></td>
-                        <td><%= humanized_money_with_symbol Money.new result.sales_total_cents %></td>
-                        <td><%= humanized_money_with_symbol Money.new ((result.sales_total_cents / 12.to_f) * 10) * ((user.commission_rate) / 100)  %></td>
+                        <td class="neue-machina ls-xs lighter"><%= user.id %></td>
+                        <td class="neue-machina ls-xs lighter"><%= user.full_name %></td>
+                        <td class="neue-machina ls-xs lighter"><%= user.commission_rate %></td>
+                        <td class="neue-machina ls-xs lighter"><%= result.publish_date.present? ? result.publish_date.strftime('%d/%m/%Y') : 'Not Published' %></td>
+                        <td class="neue-machina ls-xs lighter"><%= result.class == User ? result.full_name : result.title %></td>
+                        <td class="neue-machina ls-xs lighter"><%= result.class == User ? 'Influencer' : (result.class == Lookbook ? 'Image' : 'Video') %></td>
+                        <td class="neue-machina ls-xs lighter"><%= result.visits %></td>
+                        <td class="neue-machina ls-xs lighter"><%= result.sales %></td>
+                        <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new (result.sales_total_cents / 12.to_f) * 10 %></td>
+                        <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new result.sales_total_cents - (result.sales_total_cents / 12.to_f) * 10 %></td>
+                        <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new result.sales_total_cents %></td>
+                        <td class="neue-machina ls-xs lighter"><%= humanized_money_with_symbol Money.new ((result.sales_total_cents / 12.to_f) * 10) * ((user.commission_rate) / 100)  %></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -63,14 +54,14 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><strong>TOTAL</strong></td>
-                    <td></td>
-                    <td><strong><%= @results.sum(&:visits) %></strong></td>
-                    <td><strong><%= @results.sum(&:sales) %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| (result.sales_total_cents / 12.to_f) * 10 } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| result.sales_total_cents - (result.sales_total_cents / 12.to_f) * 10 } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| result.sales_total_cents } %></strong></td>
-                    <td><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| ((result.sales_total_cents / 12.to_f) * 10) * (((result.class == User ? result : result.user).commission_rate) / 100) } %></strong></td>
+                    <td class="neue-machina ls-xs"><strong>total</strong></td>
+                    <td class="neue-machina ls-xs"></td>
+                    <td class="neue-machina ls-xs"><strong><%= @results.sum(&:visits) %></strong></td>
+                    <td class="neue-machina ls-xs"><strong><%= @results.sum(&:sales) %></strong></td>
+                    <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| (result.sales_total_cents / 12.to_f) * 10 } %></strong></td>
+                    <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| result.sales_total_cents - (result.sales_total_cents / 12.to_f) * 10 } %></strong></td>
+                    <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| result.sales_total_cents } %></strong></td>
+                    <td class="neue-machina ls-xs"><strong><%= humanized_money_with_symbol Money.new @results.sum { |result| ((result.sales_total_cents / 12.to_f) * 10) * (((result.class == User ? result : result.user).commission_rate) / 100) } %></strong></td>
                 </tr>
             </tfoot>
         </table>

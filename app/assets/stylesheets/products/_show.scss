@@ -13,6 +13,7 @@
   background: $background-light;
   .carousel-control-next, .carousel-control-prev {
     background: #131210 !important;
+    bottom: calc(50% - 50px) !important;
   }
   @include for-small-devices-down {
     margin-top: 60px;
@@ -235,9 +236,6 @@
 }
 
 .product-details-text, .benefits-text, .about-the-brand-text {
-  // transition: max-height 0.5s ease;
-  // max-height: 0;
-  // overflow: hidden;
   display: none;
   margin-bottom: 5px;
 }
@@ -251,27 +249,20 @@
     opacity: 1;
     width: 36px;
     height: 100px;
-    top: calc(50% - 50px);
+    bottom: calc(46% - 50px);
+    top: unset;
     img {
       transform: rotate(180deg);
     }
-    // @include for-small-devices-down {
-    //   height: 40px;
-    //   top: unset;
-    //   bottom: 16px;
-    // }
+
   }
   .carousel-control-next {
     background: #E6D9C7;
     opacity: 1;
-    width: 40px;
+    width: 36px;
     height: 100px;
-    top: calc(50% - 50px);
-    // @include for-small-devices-down {
-    //   height: 40px;
-    //   top: unset;
-    //   bottom: 16px;
-    // }
+    bottom: calc(46% - 50px);
+    top: unset;
   }
   @include for-small-devices-down {
     padding: 0 0 68px;

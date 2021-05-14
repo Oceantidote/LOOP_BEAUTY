@@ -1,5 +1,5 @@
 class Shade < ApplicationRecord
-  paginates_per 20
+  paginates_per 60
   belongs_to :product
   has_many :basket_products, dependent: :destroy
   has_many :order_products, dependent: :destroy

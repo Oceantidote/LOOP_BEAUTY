@@ -1,41 +1,63 @@
-<div class="influencer-orders-container">
-  <%= link_to 'Add discount code', new_admin_discount_code_path, class: 'btn btn-primary' %>
-    <table id="analytics-table">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Discount %</th>
-                <th>Type</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @codes.each do |code| %>
-                <tr class="influencer-order" id="order_<%= code.id %>">
-                    <td><%= code.code %></td>
-                    <td><%= code.discount %></td>
-                    <td>
-                      <% if User.find_by(referral_code: code.code) %>
-                        Friend Code
-                      <% elsif code.freebie.present? %>
-                        Freebie
-                      <% elsif code.orders.any? || code.baskets.any? %>
-                        In use
-                      <% else %>
-                        Brand Created Code
+<div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admit portal</h4>
+  </div>
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">products / discounts</p>
+      <div class="dash-content">
+        <div class="w-100 position-relative">
+          <div class="influencer-orders-container pt-0 pb-3 px-3">
+              <table id="analytics-table">
+                  <thead>
+                      <tr>
+                          <th class="neue-machina ls-xs">code</th>
+                          <th class="neue-machina ls-xs">discount %</th>
+                          <th class="neue-machina ls-xs">type</th>
+                          <th class="neue-machina ls-xs">edit</th>
+                          <th class="neue-machina ls-xs">delete</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% @codes.each do |code| %>
+                          <tr class="influencer-order" id="order_<%= code.id %>">
+                              <td class="neue-machina ls-xs lighter"><%= code.code %></td>
+                              <td class="neue-machina ls-xs lighter"><%= code.discount %></td>
+                              <td class="neue-machina ls-xs lighter">
+                                <% if User.find_by(referral_code: code.code) %>
+                                  Friend Code
+                                <% elsif code.freebie.present? %>
+                                  Freebie
+                                <% elsif code.orders.any? || code.baskets.any? %>
+                                  In use
+                                <% else %>
+                                  Brand Created Code
+                                <% end %>
+                              </td>
+                              <td><%= link_to 'edit', edit_admin_discount_code_path(code), class: 'text-warning neue-machina ls-xs lighter' %></td>
+                              <td>
+                                <% if (User.find_by(referral_code: code.code).nil? && code.freebie.nil? && code.orders.empty? && code.baskets.empty?)  %>
+                                  <%= link_to 'delete', admin_discount_code_path(code), method: :delete, class: 'text-danger neue-machina ls-xs lighter' %>
+                                <% elsif (User.find_by(referral_code: code.code).nil?) %>
+                                  <%= link_to 'deactivate', deactivate_admin_discount_code_path(code), method: :patch, class: 'text-danger neue-machina ls-xs lighter' %>
+                                <% end %>
+                              </td>
+                          </tr>
                       <% end %>
-                    </td>
-                    <td><%= link_to 'Edit', edit_admin_discount_code_path(code) %></td>
-                    <td>
-                      <% if (User.find_by(referral_code: code.code).nil? && code.freebie.nil? && code.orders.empty? && code.baskets.empty?)  %>
-                        <%= link_to 'Delete', admin_discount_code_path(code), method: :delete %>
-                      <% elsif (User.find_by(referral_code: code.code).nil?) %>
-                        <%= link_to 'Deactivate', deactivate_admin_discount_code_path(code), method: :patch %>
-                      <% end %>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+                  </tbody>
+              </table>
+          </div>
+          <div class="discount-button-container">
+            <hr class="w-100 m-0" style="border-color: #DDCCB5;">
+            <div class="p-3 d-flex justify-content-end">
+              <%= link_to 'add discount code', new_admin_discount_code_path, class: 'primary-button personal-details-button small-text m-0' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

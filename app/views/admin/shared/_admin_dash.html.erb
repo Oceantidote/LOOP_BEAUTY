@@ -1,99 +1,100 @@
 <div class="dash-links">
-  <h2 class="insider-info-title mlb-title text-center dash-mobile-title">Menu</h2>
-  <h2 class="insider-info-title text-center dash-mobile-name">Hello <%= current_user.first_name %> <%= current_user.last_name %></h2>
-  <%= link_to admin_brands_path, class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image", alt: "basket icon" %>All Brands
-  <% end %>
-  <%= link_to admin_products_path, class: "each-dash-link" do %>
-    <%= image_tag "lipstick.png", class: "dash-links-image", alt: "lipstick icon" %>All Products
-  <% end %>
-  <%= link_to admin_freebies_path, class: "each-dash-link" do %>
-    <%= image_tag "freebie-icon.png", class: "dash-links-image", alt: "freebie icon" %>Freebies
-  <% end %>
-  <%= link_to admin_discount_codes_path, class: "each-dash-link" do %>
-    <%= image_tag "freebie-icon.png", class: "dash-links-image", alt: "freebie icon" %>Discounts
-  <% end %>
-  <%= link_to admin_sku_path, class: "each-dash-link" do %>
-    <%= image_tag "warehouse.png", class: "dash-links-image", alt: "freebie icon" %>SKUs
-  <% end %>
-  <%= link_to admin_lookbooks_path, class: "each-dash-link" do %>
-    <%= image_tag "lookbook-icon.png", class: "dash-links-image", alt: "lookbook icon" %>Pending Lookbooks
-    <% if Lookbook.where(status: 'pending').any? %>
-      <div class="admin-notification kaftan">
-        <p><%= Lookbook.where(status: 'pending').size %></p>
-      </div>
+  <div class="d-flex flex-column">
+    <h6 class="neue-machina mb-1 ls-xs">products</h6>
+    <%= link_to 'all brands', admin_brands_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/brands'}" %>
+    <%= link_to 'all products', admin_products_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/products' && params[:action] == 'index'}" %>
+    <%= link_to 'new in', admin_new_in_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'new_in'}" %>
+    <%= link_to 'discounts', admin_discount_codes_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/discount_codes'}" %>
+    <%= link_to "sku's", admin_sku_path, class: "no-decoration mb-2 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/shades'}" %>
+    <h6 class="neue-machina mb-1 ls-xs">content</h6>
+    <%= link_to 'offer banner', admin_change_offer_banner_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'change_offer_banner'}" %>
+    <%= link_to 'home banners', admin_home_banners_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'home_banners'}" %>
+    <%= link_to admin_lookbooks_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option position-relative #{ 'dash-option-active' if params[:controller] == 'admin/lookbooks'}" do %>
+      pending lookbooks
+      <% if Lookbook.where(status: 'pending').any? %>
+        <div class="admin-notification notification-dash">
+          <p><%= Lookbook.where(status: 'pending').size %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= link_to admin_tutorials_path, class: "each-dash-link" do %>
-    <%= image_tag "admin-play-button.png", class: "dash-links-image", alt: "basket icon" %>Pending Tutorials
-    <% if Tutorial.where(status: 'pending').any? %>
-      <div class="admin-notification kaftan">
-        <p><%= Tutorial.where(status: 'pending').size %></p>
-      </div>
+    <%= link_to admin_tutorials_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option position-relative #{ 'dash-option-active' if params[:controller] == 'admin/tutorials'}" do %>
+      pending tutorials
+      <% if Tutorial.where(status: 'pending').any? %>
+        <div class="admin-notification notification-dash">
+          <p><%= Tutorial.where(status: 'pending').size %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= link_to admin_insider_articles_path, class: "each-dash-link" do %>
-    <%= image_tag "magazine.png", class: "dash-links-image", alt: "article icon" %>Insider Articles
-  <% end %>
-  <%= link_to admin_sales_report_path, class: "each-dash-link" do %>
-    <%= image_tag "sales.png", class: "dash-links-image", alt: "article icon" %>Sales Report
-  <% end %>
-  <%= link_to admin_activity_report_path, class: "each-dash-link" do %>
-    <%= image_tag "activity.png", class: "dash-links-image", alt: "article icon" %>Activity Report
-  <% end %>
-  <%= link_to admin_baskets_path, class: "each-dash-link" do %>
-    <%= image_tag "basket.png", class: "dash-links-image", alt: "basket icon" %>Abandoned Bags
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link" do %>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-image", alt: "dash icon" %>Sign Out
-  <% end %>
+    <%= link_to 'insider articles', admin_insider_articles_path, class: "no-decoration mb-2 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/insider_articles'}" %>
+    <h6 class="neue-machina mb-1 ls-xs">reports</h6>
+    <%= link_to 'sales report', admin_sales_report_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/sales_report'}" %>
+    <%= link_to 'activity report', admin_activity_report_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/activity_report'}" %>
+    <%= link_to 'abandoned bags', admin_baskets_path, class: "no-decoration mb-0 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:controller] == 'admin/abandoned_bags'}" %>
+    <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: "no-decoration mb-0 ls-xs px-0 dash-option dash-option-active" %>
+  </div>
 </div>
 
 <div class="dash-links-mobile">
-  <%= link_to admin_brands_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>BRANDS</span>
-    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "basket icon" %>
-  <% end %>
-  <%= link_to admin_products_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>PRODUCTS</span>
-    <%= image_tag "lipstick.png", class: "dash-links-mobile-image", alt: "lipstick icon" %>
-  <% end %>
-  <%= link_to admin_freebies_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>FREEBIES</span>
-    <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
-  <% end %>
-  <%= link_to admin_discount_codes_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>DISCOUNTS</span>
-    <%= image_tag "freebie-icon.png", class: "dash-links-mobile-image", alt: "freebie icon" %>
-  <% end %>
-  <%= link_to admin_lookbooks_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>LOOKBOOKS</span>
-    <%= image_tag "lookbook-icon.png", class: "dash-links-mobile-image", alt: "lookbook icon" %>
-    <% if Lookbook.where(status: 'pending').any? %>
-      <div class="admin-mobile-notification kaftan lookbook-red-dot">
-        <p><%= Lookbook.where(status: 'pending').size %></p>
+  <div id="accordion">
+    <div class="">
+      <div class="d-flex justify-content-between align-items-center px-3 px-md-0 py-2" id="headingOne">
+        <p class="ls-xs mb-0 flex-grow-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">products</p>
+        <i class="fas fa-caret-down"></i>
       </div>
-    <% end %>
-  <% end %>
-  <%= link_to admin_tutorials_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>TUTORIALS</span>
-    <%= image_tag "admin-play-button.png", class: "dash-links-mobile-image", alt: "tutorial icon" %>
-    <% if Tutorial.where(status: 'pending').any? %>
-      <div class="admin-mobile-notification kaftan tutorial-red-dot">
-        <p><%= Tutorial.where(status: 'pending').size %></p>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="pl-4">
+          <%= link_to 'all brands', admin_brands_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to 'all products', admin_products_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to 'new in', admin_new_in_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to 'discounts', admin_discount_codes_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to "sku's", admin_sku_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+        </div>
       </div>
-    <% end %>
-  <% end %>
-  <%= link_to admin_insider_articles_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>ARTICLES</span>
-    <%= image_tag "magazine.png", class: "dash-links-mobile-image", alt: "article icon" %>
-  <% end %>
-  <%= link_to admin_baskets_path, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>ABANDONED BAGS</span>
-    <%= image_tag "basket.png", class: "dash-links-mobile-image", alt: "basket icon" %>
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "each-dash-link-mobile no-decoration kaftan" do %>
-    <span>SIGN OUT</span>
-    <%= image_tag "dash-sign-out.png", class: "dash-links-mobile-image", alt: "sign out icon" %>
-  <% end %>
+    </div>
+    <div class="">
+      <div class="d-flex justify-content-between align-items-center px-3 px-md-0 py-2" id="headingTwo">
+        <p class="ls-xs mb-0 flex-grow-1" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">content</p>
+        <i class="fas fa-caret-down"></i>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="pl-4">
+          <%= link_to 'offer banner', admin_change_offer_banner_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to 'home banners', admin_home_banners_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to admin_lookbooks_path, class: "each-dash-link-mobile ls-xs no-decoration" do %>
+            pending lookbooks
+            <% if Lookbook.where(status: 'pending').any? %>
+              <div class="admin-notification notification-dash">
+                <p><%= Lookbook.where(status: 'pending').size %></p>
+              </div>
+            <% end %>
+          <% end %>
+          <%= link_to admin_tutorials_path, class: "each-dash-link-mobile ls-xs no-decoration" do %>
+            pending tutorials
+            <% if Tutorial.where(status: 'pending').any? %>
+              <div class="admin-notification notification-dash">
+                <p><%= Tutorial.where(status: 'pending').size %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="d-flex justify-content-between align-items-center px-3 px-md-0 py-2" id="headingThree">
+        <p class="ls-xs mb-0 flex-grow-1" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">reports</p>
+        <i class="fas fa-caret-down"></i>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="pl-4">
+          <%= link_to 'sales report', admin_sales_report_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to 'activity report', admin_activity_report_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%= link_to 'abandoned bags', admin_baskets_path, class: "each-dash-link-mobile ls-xs no-decoration" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: "each-dash-link-mobile d-inline-block ls-xs px-3 mt-3 no-decoration" %>
+  <div class="px-3">
+    <hr class="w-100 mt-2" style="border-color: #DDCCB5;">
+  </div>
 </div>
