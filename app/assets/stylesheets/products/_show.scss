@@ -220,6 +220,12 @@
 .product-share-icons {
   background: $eerie-black;
   cursor: pointer;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   i {
     color: #FFFFFF !important;
   }

@@ -180,40 +180,41 @@
 </div>
 
 <!-- TUTORIALS -->
-
-<div class="content-margin">
-  <div class="content-container position-relative">
-    <h2 class="neue-machina ls-sm mb-5 text-center">Watch Our Experts Use The Product</h2>
-    <div class="row row-products">
-      <% @tutorials.each do |tutorial| %>
-        <div class="col-12 col-md-6">
-          <div class="card-image-results homepage-products mb-5">
-            <div class="card">
-              <%= link_to tutorial_path(tutorial) do %>
-                <div class="button-overlay d-none d-md-flex">
-                  <div class="oval-button mx-3">
-                    <div class="button-text">
-                      <p class="mb-0 bt-5 ls-sm">Play Video</p>
+<% if @tutorials.any? %>
+  <div class="content-margin">
+    <div class="content-container position-relative">
+      <h2 class="neue-machina ls-sm mb-5 text-center">Watch Our Experts Use The Product</h2>
+      <div class="row row-products">
+        <% @tutorials.each do |tutorial| %>
+          <div class="col-12 col-md-6">
+            <div class="card-image-results homepage-products mb-5">
+              <div class="card">
+                <%= link_to tutorial_path(tutorial) do %>
+                  <div class="button-overlay d-none d-md-flex">
+                    <div class="oval-button mx-3">
+                      <div class="button-text">
+                        <p class="mb-0 bt-5 ls-sm">Play Video</p>
+                      </div>
+                      <%= image_tag 'oval-button.svg' %>
                     </div>
-                    <%= image_tag 'oval-button.svg' %>
                   </div>
-                </div>
-                <div class="card_image">
-                  <%= image_tag url_for(tutorial.cover_photo.variant(resize: '300x300')), alt: "product shade photo" %>
-                </div>
-              <% end %>
-              <%= image_tag 'play-button.png', class: 'play-button' %>
-            </div>
-            <div class="card-info">
-              <p class="mb-2 truncate-text lighter ls-xs"><%= tutorial.title %></p>
-              <p class="neue-machina text-secondary"><%= tutorial.user.instagram %></p>
+                  <div class="card_image">
+                    <%= image_tag url_for(tutorial.cover_photo.variant(resize: '300x300')), alt: "product shade photo" %>
+                  </div>
+                <% end %>
+                <%= image_tag 'play-button.png', class: 'play-button' %>
+              </div>
+              <div class="card-info">
+                <p class="mb-2 truncate-text lighter ls-xs"><%= tutorial.title %></p>
+                <p class="neue-machina text-secondary"><%= tutorial.user.instagram %></p>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <div class="content-margin last-content-margin">
   <div class="content-container position-relative">

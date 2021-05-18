@@ -32,7 +32,7 @@ if (emptyBasketText) {
   if (<%= @basket.products.count == 0%>) {
     emptyBasketText.innerHTML = `<p class="large-margin text-center s-medium-text ls-xs">your basket is empty</p>
                                  <div class="start-shopping-holder">
-                                   <%= link_to "SHOP NOW", products_path, class: "primary-button"  %>
+                                   <%= link_to "Shop Now", products_path, class: "primary-button"  %>
                                  </div>
                                  <hr style="border-color: #CFCFCF;">
                                 `
