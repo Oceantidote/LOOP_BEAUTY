@@ -2,7 +2,7 @@
   <div class="d-flex flex-column">
     <h6 class="neue-machina mb-3 ls-xs">orders</h6>
     <%= link_to 'my orders', user_my_orders_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'my_orders'}" %>
-    <%= link_to 'my products', user_my_products_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'my_products'}" %>
+    <%#= link_to 'my products', user_my_products_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'my_products'}" %>
     <%= link_to 'refer a friend', user_refer_a_friend_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'refer_a_friend'}" %>
     <%= link_to 'wishlist', user_wishlist_path(current_user), class: "no-decoration mb-3 ls-xs ml-4 mr-2 px-0 dash-option #{ 'dash-option-active' if params[:action] == 'wishlist'}" %>
     <h6 class="neue-machina mt-4 mb-3 ls-xs">account settings</h6>
@@ -23,7 +23,7 @@
       <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="pl-4">
           <%= link_to 'my orders', user_my_orders_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration"  %>
-          <%= link_to 'my products', user_my_products_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration" %>
+          <%#= link_to 'my products', user_my_products_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration" %>
           <%= link_to 'refer a friend', user_refer_a_friend_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration" %>
           <%= link_to 'wishlist', user_wishlist_path(current_user), class: "each-dash-link-mobile ls-xs no-decoration" %>
         </div>

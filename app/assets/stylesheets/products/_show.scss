@@ -13,7 +13,7 @@
   background: $background-light;
   .carousel-control-next, .carousel-control-prev {
     background: #131210 !important;
-    bottom: calc(50% - 50px) !important;
+    bottom: calc(42% - 50px) !important;
   }
   @include for-small-devices-down {
     margin-top: 60px;

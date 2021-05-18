@@ -1,10 +1,12 @@
 <div class="dashboard-wrapper">
   <div class="dashboard-container-title mb-3 px-3 px-md-0">
     <h4 class="ls-xs mb-0"><%= current_user.influencer ? "influencer portal" : "my profile" %></h4>
-    <div class="d-flex justify-content-center align-items-center">
-      <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
-      <%= image_tag url_for(@user.avatar_photo), class: 'avatar-large ml-3' %>
-    </div>
+    <% if current_user.influencer? %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 lighter ls-xs d-none d-sm-block">hello, <%= current_user.first_name %></p>
+        <%= image_tag url_for(current_user.avatar_photo), class: 'avatar-large ml-3' %>
+      </div>
+    <% end %>
   </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
@@ -61,7 +63,7 @@
                         <% end %>
                         <div class="d-flex flex-column justify-content-center">
                           <p class="small-text ls-xs my-1">Qty: <%= order_product.quantity %></p>
-                          <p class="small-text ls-xs my-1"><%= order_product.shade.name %></p>
+                          <p class="small-text ls-xs my-1 pr-3"><%= order_product.product.brand.name %>, <%= order_product.product.title %>, <%= order_product.shade.name %></p>
                           <p class="small-text ls-xs my-1">Price: <%= humanized_money_with_symbol order_product.product.price * order_product.quantity %></p>
                           <%= link_to 'View Product', product_path(order_product.product), class: 'no-decoration gold-link px-0 small-text ls-xs d-inline-block d-sm-none' %>
                         </div>

@@ -36,7 +36,6 @@ Rails.application.routes.draw do
     end
   end
   # WISHLIST TEST
-  resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
   resources :lookbooks do
     # MAKE SURE THIS ROUTE STILL WORKS
@@ -65,7 +64,7 @@ Rails.application.routes.draw do
     get 'showroom', to: 'users#showroom'
     get 'analytics', to: 'users#analytics'
     get 'my_orders', to: 'users#my_orders'
-    get 'my_products', to: 'users#my_products'
+    # get 'my_products', to: 'users#my_products'
     get 'refer_a_friend', to: 'users#refer_a_friend'
     get 'wishlist', to: 'users#wishlist'
     get 'account_details', to: 'users#account_details'
