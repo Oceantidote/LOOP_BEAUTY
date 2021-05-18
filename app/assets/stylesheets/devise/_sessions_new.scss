@@ -55,6 +55,10 @@
   }
 }
 
+.form-control:focus {
+  border-color: #000000;
+}
+
 .remember-me-container {
   overflow: hidden;
   transition: all 0.3s ease;
