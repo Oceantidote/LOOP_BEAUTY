@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
   end
   # WISHLIST TEST
+  # resources :freebies, only: [:index]
   resources :tutorials, except: [:index]
   resources :lookbooks do
     # MAKE SURE THIS ROUTE STILL WORKS

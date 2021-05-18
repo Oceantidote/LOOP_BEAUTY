@@ -1,24 +1,36 @@
-<div class="forgotten-password-wrapper">
-  <h1>Reset your password</h1>
-  <div class="forgotten-password-container">
-    <h5>Enter your new password below.</h5>
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :reset_password_token, as: :hidden %>
-      <%= f.full_error :reset_password_token %>
+<div class="sessions-new-container position-relative">
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'h-100' }) do |f| %>
+    <div class="log-in-container">
+      <h1 class="text-center mb-3 devise-title">reset your password</h1>
       <div class="form-inputs">
+        <%= f.error_notification %>
+        <%= f.full_error :reset_password_token %>
+        <%= f.input :reset_password_token, as: :hidden %>
         <%= f.input :password,
                     label: false,
-                    placeholder: "Enter you new password",
+                    placeholder: "Enter your new password",
                     required: true,
                     autofocus: true,
                     hint: ("Password must be #{@minimum_password_length} characters minimum and contain one capital letter and one non-letter character" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation, label: false, placeholder: "Confirm your new password", required: true %>
+                    input_html: { autocomplete: "new-password", class: "contact-form-input" } %>
+        <%= f.input :password_confirmation, label: false, placeholder: "Confirm your new password", required: true, input_html: { class: "contact-form-input" } %>
+        <%= f.button :submit, "reset password", class: "primary-button w-100 mt-3 mt-sm-5" %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "RESET MY PASSWORD", class: "primary-button" %>
+        <div class="d-flex justify-content-center">
+          <%= link_to 'back to login', new_user_session_path, class: "lighter ls-xs" %>
+        </div>
       </div>
     <% end %>
   </div>
+  <%= image_tag 'the_net_watermark.png', class: 'the-net-watermark d-none d-sm-block' %>
 </div>
+
+<script>
+  const container = document.querySelector('.sessions-new-container');
+  console.log(container)
+  if (window.innerWidth < 768) {
+    container.style.minHeight = `calc(${window.innerHeight - 96}px)`
+    container.style.height = `calc(${window.innerHeight - 96}px)`
+  }
+</script>
