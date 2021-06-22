@@ -1,63 +1,44 @@
-<div class="admin-wrapper minimum-height">
-  <div class="admin-container">
-    <h2 class="insider-info-title mlb-title text-center">Create a Product</h2>
-    <hr>
-    <div class="admin-form-container admin-products-new-container">
-      <%= simple_form_for [:admin, @product] do |f| %>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Weight</p>
-          <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Measurement</p>
-          <%= f.input :measurement, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Title</p>
-          <%= f.input :title, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Details</p>
-          <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-<!--         <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
-          <%#= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
-        </div> -->
-<!--         <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
-          <%#= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div> -->
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Subcategory</p>
-          <%= f.input :sub_category_id, collection: SubCategory.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Brand</p>
-          <%= f.input :brand_id, collection: Brand.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Department</p>
-          <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Price</p>
-          <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Lead Product Image</p>
-          <%= f.input :lead_product_image, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin ">Published?</p>
-          <%= f.input :published, label: false, input_html: { class: "lb-checkbox" } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin ">Influencer Showroom</p>
-          <%= f.input :demoable, label: false, input_html: { class: "lb-checkbox" } %>
-        </div>
-        <%= f.submit 'CREATE PRODUCT', class: 'primary-button personal-details-button small-text'%>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admin portal</h4>
+  </div>
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">products / all products / add product</p>
+      <div class="dash-content dash-new-lookbook-container justify-content-center pt-4">
+      <%= simple_form_for [:admin, @product], html: { class: 'dash-new-lookbook w-100' } do |f| %>
+        <p class="ls-xs lighter text-center mt-3">add product</p>
+          <%= f.input :weight, label: false, placeholder: 'weight (number)', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :measurement, label: false, placeholder: 'measurement (e.g. grams)', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :title, label: false, placeholder: 'title', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :details, label: false, placeholder: 'details', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :sub_category_id, collection: SubCategory.all, label: false, prompt: 'subcategory', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :brand_id, collection: Brand.all, label: false, prompt: 'brand', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :department_id, collection: Department.all, label: false, prompt: 'department', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :price, label: false, placeholder: 'price', input_html: { class: 'contact-form-input mb-3' } %>
+          <%= f.input :lead_product_image,  input_html: { class: 'd-none photo-input', 'data-name': 'product-lead-image', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose product lead image' %>
+          <% if @product.lead_product_image.attached? %>
+            <%= image_tag url_for(@product.lead_product_image), height: 100, class: "photo-preview", 'data-name': 'product-lead-image', alt: "product image" %>
+          <% else %>
+            <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'product-lead-image', alt: "product image" %>
+          <% end %>
+          <div class="remember-me-container mb-2">
+            <%= f.input :published, as: :boolean, label: 'published?', label_html: { class: "s-medium-text lighter ls-xs" } %>
+          </div>
+          <div class="remember-me-container">
+            <%= f.input :demoable, as: :boolean, label: 'influencer showroom', label_html: { class: "s-medium-text lighter ls-xs" } %>
+          </div>
+          <div class="pb-4">
+              <%= f.submit 'add product', class: 'primary-button personal-details-button small-text'%>
+          </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_preview' %>
+<% end %>

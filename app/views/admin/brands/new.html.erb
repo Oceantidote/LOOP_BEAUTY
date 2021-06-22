@@ -1,41 +1,26 @@
-<div class="admin-wrapper minimum-height">
-  <div class="admin-container" style="max-width: 800px;">
-    <h2 class="insider-info-title mlb-title text-center">Create a brand</h2>
-    <hr>
-    <div class="admin-form-container">
-      <%= simple_form_for [:admin, @brand] do |f| %>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
-          <%= f.input :name, label: false, placeholder:'Makeup 54...', input_html: { class: "contact-form-input" } %>
-        </div>
-        <div class="personal-details-input align-items-start">
-          <p class="boldest kaftan s-medium-text text-right photo-input-text">Photo</p>
-          <div>
-            <%= f.input :photo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-            <% if @brand.photo.attached? %>
-              <%= image_tag url_for(@brand.photo), height: 100, class: "photo-preview", 'data-name': 'brand-photo', alt: "brand photo" %>
-            <% else %>
-              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-photo', alt: "brand photo" %>
-            <% end %>
-          </div>
-        </div>
-        <div class="personal-details-input align-items-start">
-          <p class="boldest kaftan s-medium-text text-right photo-input-text">Logo</p>
-          <div>
-            <%= f.input :logo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-logo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admin portal</h4>
+  </div>
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">products / all brands / add brand</p>
+      <div class="dash-content dash-new-lookbook-container justify-content-center pt-4">
+          <%= simple_form_for [:admin, @brand], html: { class: 'dash-new-lookbook w-100' } do |f| %>
+            <p class="ls-xs lighter text-center mt-3">add brand</p>
+            <%= f.input :name, label: false, placeholder:'name', input_html: { class: "contact-form-input mb-3" } %>
+            <%= f.input :logo, input_html: { class: 'd-none photo-input', 'data-name': 'brand-logo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose logo' %>
             <% if @brand.logo.attached? %>
               <%= image_tag url_for(@brand.logo), height: 100, class: "photo-preview", 'data-name': 'brand-logo', alt: "brand logo" %>
             <% else %>
               <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'brand-logo', alt: "brand logo" %>
             <% end %>
-          </div>
-        </div>
-        <div class="personal-details-input align-items-start">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Description</p>
-          <%= f.input :description, label: false, placeholder:'The brand was created...', input_html: { class: "contact-form-input" } %>
-        </div>
-        <%= f.submit 'CREATE BRAND', class: 'primary-button personal-details-button small-text' %>
-      <% end %>
+            <%= f.input :description, label: false, placeholder:'description', input_html: { class: "contact-form-input mb-3" } %>
+            <%= f.submit 'add brand', class: 'primary-button personal-details-button small-text' %>
+          <% end %>
     </div>
   </div>
 </div>

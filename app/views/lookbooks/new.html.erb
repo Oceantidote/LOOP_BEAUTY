@@ -10,10 +10,10 @@
   </div>
   <div class="dashboard-container">
     <div class="dash-menu-container">
-      <% if current_user.influencer? %>
-        <%= render 'shared/influencer_dash' %>
+      <% if current_user.admin? %>
+        <%= render 'admin/shared/admin_dash' %>
       <% else %>
-        <%= render 'shared/dash' %>
+        <%= render 'shared/influencer_dash' %>
       <% end %>
     </div>
     <div class="dash-content-container">

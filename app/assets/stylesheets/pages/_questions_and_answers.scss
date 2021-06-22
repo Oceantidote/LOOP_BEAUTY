@@ -132,7 +132,7 @@
     }
   }
   trix-toolbar {
-    margin: 10px 0 0 4px;
+    margin: 10px 0 0 0px;
     .button_row {
       @include for-small-devices-down {
         flex-wrap: wrap !important;
@@ -148,7 +148,7 @@
   trix-editor {
     border: 1px solid #F0F0F0;
     background: #FCFCFC;
-    margin: 0 0 0 4px;
+    // margin: 0 0 0 4px;
     max-width: 600px;
     @include for-medium-devices-down {
       max-width: 550px;

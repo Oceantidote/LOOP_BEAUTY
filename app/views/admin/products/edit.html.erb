@@ -1,189 +1,124 @@
-<div class="admin-products-wrapper minimum-height">
-  <div class="admin-container" style="max-width: 800px;">
-    <h2 class="insider-info-title mlb-title text-center"><%= @product.title %></h2>
-    <hr>
-    <div class="admin-products-container">
-      <%= simple_form_for [:admin, @product] do |f| %>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Weight</p>
-          <%= f.input :weight, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Measurement</p>
-          <%= f.input :measurement, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Title</p>
-          <%= f.input :title, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Details</p>
-          <%= f.input :details, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-<!--         <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
-          <%#= f.input :lb_id, label: false, input_html: { class: 'contact-form-input' } %>
-        </div> -->
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Category</p>
-          <%= f.input :category_id, collection: Category.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Sub category</p>
-          <%= f.input :sub_category_id, collection: SubCategory.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Brand</p>
-          <%= f.input :brand_id, collection: Brand.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Department</p>
-          <%= f.input :department_id, collection: Department.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Price</p>
-          <%= f.input :price, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Lead Product Image</p>
-          <%= f.input :lead_product_image, label: false, input_html: { class: 'contact-form-input' } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin ">Published?</p>
-          <%= f.input :published, label: false, input_html: { class: "lb-checkbox" } %>
-        </div>
-        <div class="personal-details-input">
-          <p class="boldest kaftan s-medium-text text-right no-margin ">Influencer Showroom</p>
-          <%= f.input :demoable, label: false, input_html: { class: "lb-checkbox" } %>
-        </div>
-        <div class="personal-details-input-wide align-items-start">
-          <p class="boldest kaftan s-medium-text text-right no-margin">Recommended Products</p>
-          <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll" } %>
-        </div>
-        <%= f.submit 'UPDATE PRODUCT', class: 'primary-button personal-details-button small-text' %>
-      <% end %>
-    </div>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admin portal</h4>
   </div>
-  <div class="admin-wrapper minimum-height">
-    <div class="admin-container" style="max-width: 800px;">
-      <h4 class="insider-info-title mlb-title text-center">Shades</h4>
-      <hr>
-      <div class="admin-products-container">
-        <% @product.shades.each do |shade| %>
-            <%= simple_form_for [:admin, shade] do |f| %>
-                <div class="personal-details-input">
-                  <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
-                  <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
-                </div>
-<!--                 <div class="personal-details-input">
-                  <p class="boldest kaftan s-medium-text text-right no-margin">SKU</p>
-                  <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
-                </div> -->
-                <div class="personal-details-input align-items-start">
-                  <p class="boldest kaftan s-medium-text text-right photo-input-text">Card Photo</p>
-                  <div>
-                    <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_card" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                    <% if shade.card_photo.attached? %>
-                      <%= image_tag url_for(shade.card_photo), height: 100, class: "photo-preview", 'data-name': 'shade-card-photo', alt: "shade photo" %>
-                    <% else %>
-                      <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo', alt: "shade photo" %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="personal-details-input align-items-start">
-                  <p class="boldest kaftan s-medium-text text-right photo-input-text">Shade Colour</p>
-                  <div>
-                    <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_color" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                    <% if shade.shade_color.attached? %>
-                      <%= image_tag url_for(shade.shade_color), height: 100, class: "photo-preview", 'data-name': 'shade-color-photo', alt: "shade colour" %>
-                    <% else %>
-                      <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-color-photo', alt: "shade colour" %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="personal-details-input align-items-start">
-                  <p class="boldest kaftan s-medium-text text-right photo-input-text">Photos</p>
-                  <div style="max-width: 288px;">
-                    <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true, id: "shade_#{shade.id}_photos" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
-                    <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                  </div>
-                </div>
-                <!-- <h6>Current Photos</h6> -->
-                <div class="shade-photos-container">
-                  <% shade.photos.each do |photo| %>
-                    <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>">
-                      <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
-                      <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'kaftan small-text underline grey-font boldest text-right' %>
-                    </div>
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">products / all products / edit product</p>
+      <div class="dash-content dash-new-lookbook-container justify-content-center pt-4">
+        <div class="">
+
+          <!-- PRODUCT -->
+
+          <%= simple_form_for [:admin, @product], html: { class: 'dash-new-lookbook w-100' } do |f| %>
+            <p class="ls-xs lighter text-center mt-3">edit product</p>
+            <%= f.input :weight, label: false, placeholder: 'weight (number)', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :measurement, label: false, placeholder: 'measurement (e.g. grams)', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :title, label: false, placeholder: 'title', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :details, label: false, placeholder: 'details', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :sub_category_id, collection: SubCategory.all, label: false, prompt: 'subcategory', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :brand_id, collection: Brand.all, label: false, prompt: 'brand', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :department_id, collection: Department.all, label: false, prompt: 'department', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :price, label: false, placeholder: 'price', input_html: { class: 'contact-form-input mb-3' } %>
+            <%= f.input :lead_product_image,  input_html: { class: 'd-none photo-input', 'data-name': 'product-lead-image', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose product lead image' %>
+            <% if @product.lead_product_image.attached? %>
+              <%= image_tag url_for(@product.lead_product_image), height: 100, class: "photo-preview", 'data-name': 'product-lead-image', alt: "product image" %>
+            <% else %>
+              <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'product-lead-image', alt: "product image" %>
+            <% end %>
+            <div class="remember-me-container mb-2">
+              <%= f.input :published, as: :boolean, label: 'published?', label_html: { class: "s-medium-text lighter ls-xs" } %>
+            </div>
+            <div class="remember-me-container mb-3">
+              <%= f.input :demoable, as: :boolean, label: 'influencer showroom', label_html: { class: "s-medium-text lighter ls-xs" } %>
+            </div>
+            <%= f.input :product_ids, label: false, collection: Product.all, label_method: ->(product){ "#{product.title} (#{product.brand.name})" }, input_html: { multiple: true, style: "overflow: scroll" } %>
+            <%= f.submit 'update product', class: 'primary-button personal-details-button small-text' %>
+          <% end %>
+
+          <!-- SHADES -->
+
+          <p class="ls-xs lighter text-center my-5">shades</p>
+          <% @product.shades.each do |shade| %>
+              <%= simple_form_for [:admin, shade], html: { class: 'dash-new-lookbook w-100' } do |f| %>
+                <%= f.input :name, label: false, placeholder: 'name', input_html: { class: 'contact-form-input mb-3' } %>
+                <div>
+                  <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'shade-card-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_card" }, label_html: { class: 'upload-photo'}, label: 'choose card photo' %>
+                  <% if shade.card_photo.attached? %>
+                    <%= image_tag url_for(shade.card_photo), height: 100, class: "photo-preview", 'data-name': 'shade-card-photo', alt: "shade photo" %>
+                  <% else %>
+                    <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-card-photo', alt: "shade photo" %>
                   <% end %>
                 </div>
-                <div class="d-flex justify-content-end">
-                  <%= link_to 'DESTROY', admin_shade_path(shade), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button admin-product-shade-secondary-button' %>
-                  <%= f.submit 'UPDATE SHADE', class: 'primary-button small-text admin-product-shade-primary-button' %>
+                <div>
+                  <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)", id: "shade_#{shade.id}_color" }, label_html: { class: 'upload-photo'}, label: 'choose shade colour' %>
+                  <% if shade.shade_color.attached? %>
+                    <%= image_tag url_for(shade.shade_color), height: 100, class: "photo-preview", 'data-name': 'shade-color-photo', alt: "shade colour" %>
+                  <% else %>
+                    <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-color-photo', alt: "shade colour" %>
+                  <% end %>
                 </div>
-                <hr>
-            <% end %>
-        <% end %>
-      </div>
-      <h6 class="insider-info-title mlb-title text-center">New Shade</h6>
-        <div class="admin-products-container">
-          <%= simple_form_for [:admin, @product, Shade.new] do |f| %>
-            <div class="personal-details-input">
-              <p class="boldest kaftan s-medium-text text-right no-margin">Name</p>
-              <%= f.input :name, label: false, input_html: { class: 'contact-form-input' } %>
-            </div>
-<!--             <div class="personal-details-input">
-              <p class="boldest kaftan s-medium-text text-right no-margin">SKU</p>
-              <%#= f.input :sku, label: false, input_html: { class: 'contact-form-input' } %>
-            </div> -->
-            <div class="personal-details-input align-items-start">
-              <p class="boldest kaftan s-medium-text text-right photo-input-text">Card Photo</p>
+                  <div style="max-width: 288px;">
+                    <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'shade-photos', onchange: "displayPreview(this)", multiple: true, id: "shade_#{shade.id}_photos" }, label_html: { class: 'upload-photo'}, label: 'choose photos' %>
+                    <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
+                  </div>
+                  <div class="shade-photos-container">
+                    <% shade.photos.each do |photo| %>
+                      <div class="d-flex flex-column align-items-center" id="target-<%= photo.id %>">
+                        <%= image_tag url_for(photo), height: 100, class: "photo-preview", 'data-name': 'shade-photos', alt: "shade photo" %>
+                        <%= link_to 'Delete', admin_destroy_photo_path(photo.id), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'kaftan small-text underline grey-font boldest text-right' %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="d-flex">
+                    <%= link_to 'destroy shade', admin_shade_path(shade), method: :delete, data: { confirm: 'Are you sure?' }, class: 'primary-button personal-details-button small-text bg-delete' %>
+                    <%= f.submit 'update shade', class: 'primary-button personal-details-button small-text bg-approve ml-3' %>
+                  </div>
+                  <hr class="w-100 mt-4" style="border-color: #DDCCB5;">
+              <% end %>
+          <% end %>
+          <p class="ls-xs lighter text-center mt-3">add shade</p>
+          <div class="py-4">
+            <%= simple_form_for [:admin, @product, Shade.new], html: { class: 'dash-new-lookbook w-100' } do |f| %>
+              <%= f.input :name, label: false, placeholder: 'name', input_html: { class: 'contact-form-input mb-3' } %>
               <div>
-                <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= f.input :card_photo, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-card-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose card photo' %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-card-photo' %>
               </div>
-            </div>
-            <div class="personal-details-input align-items-start">
-              <p class="boldest kaftan s-medium-text text-right photo-input-text">Shade Colour</p>
               <div>
-                <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= f.input :shade_color, input_html: { class: 'd-none photo-input', 'data-name': 'shade-color-photo', onchange: "displayPreview(this)" }, label_html: { class: 'upload-photo'}, label: 'choose shade colour' %>
                 <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'shade-color-photo' %>
               </div>
-            </div>
-            <div class="personal-details-input align-items-start">
-              <p class="boldest kaftan s-medium-text text-right photo-input-text">Photos</p>
               <div style="max-width: 288px;">
-                <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'CHOOSE FILE' %>
+                <%= f.input :photos, input_html: { class: 'd-none photo-input', 'data-name': 'new-shade-photos', onchange: "displayPreview(this)", multiple: true }, label_html: { class: 'upload-photo'}, label: 'choose photos' %>
                 <div class="d-flex" id="newShadePhotos">
                   <%= image_tag "", width: 100, class: "d-none photo-preview", 'data-name': 'new-shade-photos', alt: "shade photo" %>
                 </div>
               </div>
+              <%= f.submit 'add shade', class: 'primary-button small-text personal-details-button' %>
+            <% end %>
+          </div>
+
+          <!-- BENEFITS -->
+          <p class="ls-xs lighter text-center my-5">benefits</p>
+          <% @product.product_benefits.each do |product_benefit| %>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h6 class="neue-machina lighter ls-xs mb-0"><%= product_benefit.benefit.name %></h6>
+              <%= link_to 'destroy', admin_product_benefit_path(product_benefit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dotted-underline-button px-0' %>
             </div>
-            <%= f.submit 'CREATE SHADE', class: 'primary-button small-text personal-details-button' %>
           <% end %>
+          <div class="py-4">
+            <%= simple_form_for [:admin, @product, ProductBenefit.new], html: { class: 'dash-new-lookbook w-100' } do |f| %>
+              <p class="ls-xs lighter text-center mt-3">add benefit</p>
+              <%= f.input :benefit_id, collection: Benefit.all, label: false, prompt: 'benefit', input_html: { class: 'contact-form-input' } %>
+              <%= f.submit 'add product benefit', class: 'primary-button small-text personal-details-button' %>
+            <% end %>
+          </div>
         </div>
-    </div>
-  </div>
-  <div class="admin-wrapper py-0">
-    <div class="admin-container" style="max-width: 800px;">
-      <h4 class="insider-info-title mlb-title text-center">Benefits</h4>
-      <hr>
-      <div class="admin-products-container">
-        <% @product.product_benefits.each do |product_benefit| %>
-          <div class="d-flex align-items-center">
-            <h6 class="boldest shade-benefit-name"><%= product_benefit.benefit.name %></h6>
-            <%= link_to 'DESTROY', admin_product_benefit_path(product_benefit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'secondary-button admin-product-shade-secondary-button' %>
-          </div>
-        <% end %>
-        <hr>
-      <h6 class="insider-info-title mlb-title text-center">New Benefit</h6>
-        <%= simple_form_for [:admin, @product, ProductBenefit.new] do |f| %>
-          <div class="personal-details-input">
-            <p class="boldest kaftan s-medium-text text-right no-margin">Benefit</p>
-            <%= f.input :benefit_id, collection: Benefit.all, label: false, input_html: { class: 'filters-container-admin-products filters-container boldest s-medium-text insider-article-category' } %>
-          </div>
-          <%= f.submit 'CREATE PRODUCT BENEFIT', class: 'primary-button small-text personal-details-button' %>
-        <% end %>
+      </div>
     </div>
   </div>
 </div>

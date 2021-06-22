@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Page Not Found 404 | Loop Beauty</title>
+    <title>Page Not Found 404 | The NET</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
       .rails-default-error-page {
@@ -29,7 +29,8 @@
       }
 
       .error-container {
-        min-height: calc(100vh - 40px);
+        background: #EBE3D8;
+        min-height: 100vh;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -48,35 +49,19 @@
         width: 200px;
       }
 
-      .primary-button {
-        border: none;
-        height: 40px;
-        background-color: black;
-        color: #FFF;
-        text-decoration: none;
-        border-radius: 0;
-        padding: 6px 50px;
-        letter-spacing: 2px;
-        font-weight: bold;
-        margin: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
       .pb-shop {
-        height: 40px;
         text-decoration: none;
         border-radius: 0;
-        letter-spacing: 2px;
-        padding: 6px 50px;
-        font-weight: bold;
+        letter-spacing: 1px;
+        padding: 12px 20px;
+        font-weight: lighter;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 10px 5px;
-        box-shadow: inset 0 0 0 2px #000;
-        color: #000;
+        color: #FFFFFF;
+        background: #000000;
+        border-radius: 12px;
       }
 
       .pb-shop:hover {
@@ -88,7 +73,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 15px;
       }
 
       .buttons {
@@ -101,75 +85,50 @@
       }
 
       h1 {
-        font-size: 70px;
+        font-family: 'Kaftan', 'serif' !important;
+        font-size: 200px;
+        font-weight: lighter;
+        letter-spacing: 6px;
         color: #000000;
-        margin: 0 0 20px 0;
+        margin: 20px;
+        padding: 0 20px;
+        border-bottom: 1px solid #000000;
       }
 
       h2 {
+        font-family: 'Neue-machina', 'sans-serif' !important;
+        font-weight: lighter;
+        letter-spacing: 1px;
         margin: 0 0 5px 0;
-      }
-
-      @media only screen and (max-width: 768px) {
-        .make-up-powder {
-          width: 100%;
-        }
-        .buttons {
-          display: block;
-        }
-        h1 {
-          font-size: 40px;
-        }
-        h2 {
-          font-size: 20px;
-        }
+        font-size: 20px;
       }
 
       @media only screen and (max-width: 576px) {
-        .make-up-powder {
-          width: 100%;
-        }
         h1 {
-          font-size: 30px;
+          font-size: 160px;
         }
         h2 {
           font-size: 16px;
         }
-        .error-text {
-          margin: 0 10px 15px 10px;
-        }
-        .error-page-buttons {
-          display: block;
-          margin: 0;
-        }
-        .pb-shop {
-          height: 32px;
-          padding: 6px 32px;
+      }
+
+      @media only screen and (max-width: 576px) {
+        h1 {
+          font-size: 140px;
         }
       }
     </style>
   </head>
   <body class="rails-default-error-page">
     <!-- This file lives in public/404.html -->
-    <div class="offers-banner">
-      <p class="offers-banner-text s-medium-text"></p>
-    </div>
     <div class="error-container">
-      <img src="/images/404.png" alt="make-up-powder" class="make-up-powder">
-      <!-- <img src="/images/oops.jpg" alt="oops" class="oops"> -->
       <div class="error-text">
-        <h1>OOPS!</h1>
-        <h2>We couldn't find the page you were looking for...</h2>
-        <h2>Don't worry, we've got you covered</h2>
+        <h1>404</h1>
+        <h2>Sorry we can't find this page</h2>
       </div>
       <div class="error-page-buttons">
         <div class="buttons">
-          <a href="/" class="pb-shop">HOME</a>
-          <a href="/products" class="pb-shop">SHOP</a>
-        </div>
-        <div class="buttons">
-          <a href="/videos" class="pb-shop">VIDEOS</a>
-          <a href="/insider_articles" class="pb-shop">INSIDER</a>
+          <a href="/" class="pb-shop">Return Home</a>
         </div>
       </div>
     </div>

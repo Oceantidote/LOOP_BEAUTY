@@ -1,8 +1,16 @@
-<div class="admin-wrapper minimum-height">
-  <div class="admin-container"  style="max-width: 1200px">
-    <h2 class="insider-info-title mlb-title text-center">New Homepage banner</h2>
-    <%= link_to "back", admin_home_banners_path, class: "kaftan bold ml-4 black"  %>
-    <%= render "form" %>
+<div class="dashboard-wrapper">
+  <div class="dashboard-container-title mb-3 px-3 px-md-0">
+    <h4 class="ls-xs mb-2">admin portal</h4>
+  </div>
+  <div class="dashboard-container">
+    <div class="dash-menu-container">
+      <%= render 'admin/shared/admin_dash' %>
+    </div>
+    <div class="dash-content-container">
+      <p class="ls-xs mb-3 mb-md-2 pl-3 pl-md-0">content / home banners / add home banner</p>
+      <div class="dash-content dash-new-lookbook-container justify-content-center pt-4">
+        <%= render "form" %>
+      </div>
   </div>
 </div>
 
